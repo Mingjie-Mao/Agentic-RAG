@@ -135,6 +135,243 @@
     ]
   },
   {
+    "question_id": "qst_0097",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In the OpenAI Responses v3 compatibility work, how are overly large user-provided seeds handled to keep determinism, and where is the original seed stored for auditing?",
+    "expected_doc_ids": [
+      "dsid_6c58ddb8ecf543d89fca8352351dea29"
+    ],
+    "gold_answer": "If a user-provided seed exceeds 64 bits, it is normalized by hashing it down with siphash64 (siphash64) to produce a deterministic 64-bit seed. The original unmodified seed is preserved for auditing in `compat_metadata.seed_raw`.",
+    "answer_facts": [
+      "If a user-provided seed exceeds 64 bits, it is normalized by hashing it down with siphash64 to produce a deterministic 64-bit seed.",
+      "The original unmodified seed is preserved for auditing in compat_metadata.seed_raw."
+    ]
+  },
+  {
+    "question_id": "qst_0127",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the phased rollout plan for the change that smooths dedicated autoscaling signals and adds an advisory gateway-to-controller backpressure mechanism?",
+    "expected_doc_ids": [
+      "dsid_dc9df99fcfd64f5f89791781b699610c"
+    ],
+    "gold_answer": "The rollout is staged: (1) ship feature-gated off by default, (2) enable on Canary Dedicated clusters for 48 hours, (3) enable for opt-in customers via a console toggle, and (4) turn it on by default after two weeks of stable metrics.",
+    "answer_facts": [
+      "The rollout is staged in four phases",
+      "Phase 1 ships the change feature-gated and off by default",
+      "Phase 2 enables the change on Canary Dedicated clusters for 48 hours",
+      "Phase 3 enables the change for opt-in customers via a console toggle",
+      "Phase 4 turns the change on by default after two weeks of stable metrics"
+    ]
+  },
+  {
+    "question_id": "qst_0167",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What configuration option was added to let repositories explicitly allow Docker-in-Docker during the staged rollout of the new GitHub composite action CI setup?",
+    "expected_doc_ids": [
+      "dsid_9d1624818a004c53b3b7020412275cc0"
+    ],
+    "gold_answer": "They added an opt-out configuration flag in `.github/ci-config.yml` called `allow_dind` (set it to `true`) to explicitly allow Docker-in-Docker during the rollout.",
+    "answer_facts": [
+      "A configuration flag named allow_dind was added in .github/ci-config.yml to let repositories explicitly allow Docker-in-Docker during the staged rollout of the new GitHub composite action CI setup.",
+      "Setting allow_dind to true explicitly allows Docker-in-Docker during the rollout."
+    ]
+  },
+  {
+    "question_id": "qst_0002",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the name of the new metric added so SRE can track when server-side streaming sessions get finalized due to hitting the time limit?",
+    "expected_doc_ids": [
+      "dsid_9550250a59e74f1bbd5612480b2e7100"
+    ],
+    "gold_answer": "The new metric is `stream.timebox_finalized` (with labels for route and model).",
+    "answer_facts": [
+      "The new metric added is named stream.timebox_finalized",
+      "The metric stream.timebox_finalized includes labels for route and model"
+    ]
+  },
+  {
+    "question_id": "qst_0075",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What change was introduced to prevent oscillations in the new GPU scratch memory allocator that can trigger repeated micro-batch splits?",
+    "expected_doc_ids": [
+      "dsid_caf02469a41c46cf8387713b83c628f3"
+    ],
+    "gold_answer": "They added a per-model backoff cooldown mechanism in the AdaptiveScratchManager (via `cooldown_ms`) to prevent allocator oscillations that would otherwise trigger repeated micro-batch splits.",
+    "answer_facts": [
+      "A per-model backoff cooldown mechanism was added to the AdaptiveScratchManager to prevent allocator oscillations that can trigger repeated micro-batch splits",
+      "The per-model cooldown mechanism is implemented via a cooldown_ms parameter"
+    ]
+  },
+  {
+    "question_id": "qst_0077",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the three-step message sequence used for the new cross-language streaming startup handshake in the SDKs?",
+    "expected_doc_ids": [
+      "dsid_88b39d13bd584ef8b1422d76994808c7"
+    ],
+    "gold_answer": "The new streaming startup handshake uses a three-step sequence: CLIENT_HELLO → AUTH_OK → SERVER_READY.",
+    "answer_facts": [
+      "The new cross-language streaming startup handshake uses a three-step message sequence: CLIENT_HELLO, then AUTH_OK, then SERVER_READY."
+    ]
+  },
+  {
+    "question_id": "qst_0089",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What are the three runtime precision settings introduced for controlling fp32 vs lower precision execution, and what does each mode allow?",
+    "expected_doc_ids": [
+      "dsid_426ca69578a84dd4af512e5a2782086e"
+    ],
+    "gold_answer": "The PR introduces three precision modes: **strict** (fp32 only), **balanced** (fp16 allowed but only under strict runtime validators), and **aggressive** (fp16/int8 allowed once the deployment has warmed and validators have a recent success window).",
+    "answer_facts": [
+      "Three runtime precision modes are introduced: strict, balanced, and aggressive.",
+      "Strict mode allows fp32 only.",
+      "Balanced mode allows fp16 but only under strict runtime validators.",
+      "Aggressive mode allows fp16 or int8 once the deployment has warmed and validators have a recent success window."
+    ]
+  },
+  {
+    "question_id": "qst_0103",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "How is the baseline token cost computed for the per-span cost delta metric in the new tracing observability change?",
+    "expected_doc_ids": [
+      "dsid_47fa00c889fb4446b0481efea384a7ce"
+    ],
+    "gold_answer": "The baseline token cost is computed using a rolling median of the first 32 tokens for the given route/model combination, and it's periodically recomputed by a background aggregator.",
+    "answer_facts": [
+      "The baseline token cost is computed using a rolling median of the first 32 tokens for the given route/model combination",
+      "The baseline token cost is periodically recomputed by a background aggregator"
+    ]
+  },
+  {
+    "question_id": "qst_0148",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In the recent SDK update that added typed streaming errors and a reconnecting iterator API across Python, TypeScript, and Go, what package versions were released for each SDK?",
+    "expected_doc_ids": [
+      "dsid_707ad933d7fd447197439ed606abfb26"
+    ],
+    "gold_answer": "The update released SDK versions Python 1.8.0, TypeScript 2.3.0, and Go v0.9.1.",
+    "answer_facts": [
+      "The SDK update released Python SDK version 1.8.0.",
+      "The SDK update released TypeScript SDK version 2.3.0.",
+      "The SDK update released Go SDK version v0.9.1."
+    ]
+  },
+  {
+    "question_id": "qst_0160",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What change reduced GPU memory use and improved first-token latency by prepacking INT8 weights and fusing smoothquant dequantization into the GEMM kernel without creating intermediate tensors?",
+    "expected_doc_ids": [
+      "dsid_c84c8581594e47d49e82d024a6da915d"
+    ],
+    "gold_answer": "The PR \"prepack-int8-weights-and-smoothquant-fuse-with-kernel-lane-allocator\" introduced a new INT8 weight prepack module plus kernel adapter hooks to fuse smoothquant per-channel scaling directly into the GEMM launcher, avoiding intermediate dequant tensors and reducing both peak GPU memory and first-token latency.",
+    "answer_facts": [
+      "The change was introduced by the PR named prepack-int8-weights-and-smoothquant-fuse-with-kernel-lane-allocator.",
+      "The PR introduced a new INT8 weight prepack module.",
+      "The PR added kernel adapter hooks to fuse smoothquant per-channel scaling directly into the GEMM launcher.",
+      "The fused approach avoided creating intermediate dequantization tensors.",
+      "The change reduced peak GPU memory usage and improved first-token latency."
+    ]
+  },
+  {
+    "question_id": "qst_0074",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "How does the new v1 chat compatibility layer handle invalid tool or function schemas, and what HTTP status does it return when validation fails?",
+    "expected_doc_ids": [
+      "dsid_8779ac72d6504759b701178632772f6c"
+    ],
+    "gold_answer": "The compatibility layer validates forced tool/function calls against the registered schemas and fails closed if the schema is invalid. On validation failure, it returns an HTTP 422 with a structured error payload (and emits a telemetry event).",
+    "answer_facts": [
+      "The v1 chat compatibility layer validates forced tool or function calls against the registered schemas.",
+      "If a tool or function schema is invalid, the compatibility layer fails closed.",
+      "When validation fails, the compatibility layer returns HTTP status 422."
+    ]
+  },
+  {
+    "question_id": "qst_0168",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the HTTP endpoint and method for the new service that returns recommended default profiles for batching, cache lifetimes, and quantization based on recent traffic telemetry?",
+    "expected_doc_ids": [
+      "dsid_9ad34d10c60a4c88931642a247aeb063"
+    ],
+    "gold_answer": "The new service is exposed as a POST request to the endpoint `/optimize/v1/suggestions`.",
+    "answer_facts": [
+      "The new service uses the HTTP POST method.",
+      "The HTTP endpoint for the new service is /optimize/v1/suggestions."
+    ]
+  },
+  {
+    "question_id": "qst_0010",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "How does the new alerting approach group model-serving requests by the stages they pass through to reduce noisy alerts and speed up root cause analysis?",
+    "expected_doc_ids": [
+      "dsid_c1a6a71323c04c1ba5445aadea340362"
+    ],
+    "gold_answer": "It adds a lightweight token_stage_cohort service that computes a deterministic \"cohort key\" for each invocation from stage-level signals (e.g., token counts per stage, KV-cache hit patterns, decode batch size) and keeps short-lived aggregates per cohort. An alert route-matrix generator then uses those cohort rollups to build a route × stage alert matrix that attributes SLO violations to the most likely pipeline stages and biases escalation to the top-k responsible stages, reducing per-route alert noise and speeding RCA.",
+    "answer_facts": [
+      "The approach adds a lightweight token_stage_cohort service that groups each model-serving invocation by computing a deterministic cohort key from stage-level signals.",
+      "Stage-level signals used to compute the cohort key can include token counts per stage, KV-cache hit patterns, and decode batch size.",
+      "The token_stage_cohort service maintains short-lived aggregate metrics per cohort.",
+      "An alert route-matrix generator uses the per-cohort rollups to build a route-by-stage alert matrix.",
+      "The route-by-stage alert matrix attributes SLO violations to the most likely pipeline stages and biases escalation to the top-k responsible stages, reducing per-route alert noise and speeding root cause analysis."
+    ]
+  },
+  {
+    "question_id": "qst_0052",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the sampling policy for request routes of different telemetry priority levels in the new path-based observability change?",
+    "expected_doc_ids": [
+      "dsid_49215834c17d4f0c98d4ad11f62f0c9a"
+    ],
+    "gold_answer": "The path-sampling policy is: always sample routes marked with telemetry priority == high, sample medium-priority routes probabilistically at 1%, and use an adaptive (rate-limited with burst tokens) sampling approach for low-priority routes.",
+    "answer_facts": [
+      "Routes with telemetry priority high are always sampled",
+      "Routes with telemetry priority medium are sampled probabilistically at a 1% rate",
+      "Routes with telemetry priority low use an adaptive sampling approach that is rate-limited with burst tokens"
+    ]
+  },
+  {
     "question_id": "qst_0178",
     "question_type": "semantic",
     "source_types": [
@@ -238,6 +475,149 @@
     ]
   },
   {
+    "question_id": "qst_0230",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "For a chat style server sent events stream that must survive mobile disconnects without re running tool side effects, what mechanism was introduced to let a client reconnect from a safe checkpoint using a server issued marker plus an explicit receipt from the client, while keeping compatibility with existing OpenAI like streaming clients?",
+    "expected_doc_ids": [
+      "dsid_7d7a89d91c3d4c1c854cc513e76316aa"
+    ],
+    "gold_answer": "The PR introduces a \"streaming session snapshot\" protocol with server-emitted checkpoint markers via a `resume_token` (with `session_id` and `seq`) and explicit client ACK semantics: the server only commits tool-call/side-effect fences after receiving an `ack` for the last checkpoint (or a soft timeout), so a disconnected client can reconnect and resume safely. It keeps OpenAI-style compatibility by exposing `resume_token` as a top-level SSE event named `resume_token` and accepting the resume/session headers while preserving standard `text/event-stream` framing.",
+    "answer_facts": [
+      "A streaming session snapshot protocol was introduced.",
+      "The server emits checkpoint markers using a resume_token that includes a session_id and a seq.",
+      "The client explicitly ACKs the last checkpoint marker to confirm receipt.",
+      "The server only commits tool-call or side-effect fences after receiving an ACK for the last checkpoint or after a soft timeout.",
+      "A disconnected client can reconnect and resume safely from the last acknowledged checkpoint using the resume_token.",
+      "OpenAI-style streaming compatibility is kept by exposing resume_token as a top-level SSE event named resume_token.",
+      "The server accepts resume and session headers while preserving standard text/event-stream framing."
+    ]
+  },
+  {
+    "question_id": "qst_0292",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What change reduced out of memory failures for long context transformer serving by reusing temporary GPU buffers across microbatches and adding an optional recompute mode, and what kind of memory savings was observed on an A100 at around 4k tokens?",
+    "expected_doc_ids": [
+      "dsid_49d64735870b48b79f1e6f2724f1e7e2"
+    ],
+    "gold_answer": "The PR reduced long-context OOMs by introducing an opt-in activation checkpointing mode (trading some recompute for lower activation memory) and refactoring CUDA scratch buffers so temporary GPU allocations are reused across micro-batches in the continuous-batching loop. On an A100 40GB at seq≈4096, it cut peak GPU memory by about 36% (with expected savings up to ~40% on long-sequence workloads).",
+    "answer_facts": [
+      "The change refactored CUDA scratch or temporary GPU buffers so allocations are reused across microbatches in the continuous batching loop.",
+      "The change added an opt-in activation checkpointing or recompute mode that trades extra recomputation for lower activation memory use.",
+      "On an A100 40GB at about 4096 tokens, peak GPU memory usage dropped by about 36 percent."
+    ]
+  },
+  {
+    "question_id": "qst_0180",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In our rollout system, what is the name of the new mechanism that prevents a candidate release from getting full user traffic until a dry run with replayed requests and smoke checks has passed?",
+    "expected_doc_ids": [
+      "dsid_730ed8ee5fc84e0b9be761003b9a60d3"
+    ],
+    "gold_answer": "It's the **TrafficEscrow** (the **traffic_escrow** service), which escrows routing/commit promotion and only releases it after a rehearse run with replayed requests and smoke checks succeeds.",
+    "answer_facts": [
+      "The new mechanism is named TrafficEscrow.",
+      "TrafficEscrow is implemented as the traffic_escrow service.",
+      "TrafficEscrow prevents a candidate release from getting full user traffic by escrowing routing or commit promotion until a rehearse dry run with replayed requests and smoke checks succeeds."
+    ]
+  },
+  {
+    "question_id": "qst_0276",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In our model serving stack, what change was proposed to reduce cost swings when traffic mixes tiny chat style requests with much longer generations, by dynamically choosing between a few preset group sizes under latency budgets instead of waiting for one fixed threshold?",
+    "expected_doc_ids": [
+      "dsid_ee6c23c178dc428bbd71af6526c70251"
+    ],
+    "gold_answer": "The PR proposed adding a conservative \"stepped\" batching policy to the serving scheduler, where you configure an ordered list of batch sizes (e.g., 1, 4, 16) with per-step max-latency budgets, and the runtime opportunistically serves smaller batches under tight latency SLOs and ramps to larger batches when throughput allows instead of waiting for a single fixed max-batch threshold.",
+    "answer_facts": [
+      "The proposed change was to add a conservative stepped batching policy to the serving scheduler.",
+      "The stepped batching policy uses an ordered list of preset batch sizes (for example 1, 4, 16).",
+      "Each batch size step has its own maximum latency budget.",
+      "At runtime the scheduler serves smaller batches under tight latency SLOs and increases to larger batches when throughput allows.",
+      "This approach replaces waiting for a single fixed maximum batch threshold."
+    ]
+  },
+  {
+    "question_id": "qst_0266",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In the recent SDK update that made streaming behave the same across Python, TypeScript, and Go, what is the new wrapper layer called that handles automatic reauthentication on expired credentials and lets a client resume a dropped stream using a small persisted checkpoint token?",
+    "expected_doc_ids": [
+      "dsid_415b72b7d40a405e87b9671946e894d8"
+    ],
+    "gold_answer": "It's called the **SessionDecorator**-a lightweight wrapper around the stream iterator that automatically refreshes expired credentials and supports resuming via a small persisted **ResumeToken v2** checkpoint token.",
+    "answer_facts": [
+      "The new wrapper layer is called SessionDecorator",
+      "SessionDecorator is a lightweight wrapper around the stream iterator",
+      "SessionDecorator automatically refreshes expired credentials",
+      "SessionDecorator supports resuming a dropped stream using a small persisted ResumeToken v2 checkpoint token"
+    ]
+  },
+  {
+    "question_id": "qst_0192",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In our GPU inference runtime, what change was introduced to cut the worst-case temporary device-memory spike when short and long requests are interleaved, especially for attention-heavy ops that used to grab per-op temp buffers?",
+    "expected_doc_ids": [
+      "dsid_a193f9b7483248ad86c52e684d98a760"
+    ],
+    "gold_answer": "They added dynamic scratch reuse: a runtime scratch manager/allocator that lifetime-tags short-lived temporary buffers and reuses them across operators within the same execution frame, so attention/rotary/layernorm no longer allocate fresh per-op scratch and the transient device-memory spikes are reduced.",
+    "answer_facts": [
+      "The runtime introduced dynamic scratch reuse to reduce worst-case temporary device-memory spikes when short and long requests are interleaved.",
+      "Dynamic scratch reuse is implemented via a runtime scratch manager or allocator that lifetime-tags short-lived temporary buffers.",
+      "The scratch manager reuses temporary buffers across operators within the same execution frame instead of allocating fresh per-op scratch buffers.",
+      "With dynamic scratch reuse, attention-heavy operators such as attention, rotary, and layernorm no longer allocate new per-op scratch buffers, reducing transient device-memory spikes."
+    ]
+  },
+  {
+    "question_id": "qst_0232",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In our agent runtime, parallel tool responses sometimes stomp each other and the final structured payload varies run to run; where is the proposal that adds a deterministic way to combine overlapping JSON outputs plus per-invocation jittered exponential retry limits to prevent retry storms?",
+    "expected_doc_ids": [
+      "dsid_b253f5cc715f4d47bdd578edd6f2f19e"
+    ],
+    "gold_answer": "It's in the proposal/PR titled \"tool-result-merge-policy-and-exponential-backoff-for-parallel-calls,\" which introduces deterministic tool result merge policies (including depth-aware merge_patch) and a per-invocation RetryPolicy with jittered exponential backoff and an overall retry_budget_ms to prevent retry storms.",
+    "answer_facts": [
+      "The proposal or PR is titled tool-result-merge-policy-and-exponential-backoff-for-parallel-calls.",
+      "The proposal introduces deterministic tool result merge policies for combining overlapping JSON outputs, including a depth-aware merge_patch.",
+      "The proposal introduces a per-invocation RetryPolicy with jittered exponential backoff and an overall retry_budget_ms to prevent retry storms."
+    ]
+  },
+  {
+    "question_id": "qst_0246",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "Where are the small on-node files stored that capture the GPU communication tuning fingerprints, and what should ops do with them during cluster upgrades?",
+    "expected_doc_ids": [
+      "dsid_6f0be39ff1ae49c19ce0662bdd6de352"
+    ],
+    "gold_answer": "The NCCL autotuner stores its small fingerprint files on-node in `/var/lib/redwood/nccl-fingerprints`. During cluster upgrades, ops should rotate and/or back up these files as part of the upgrade process.",
+    "answer_facts": [
+      "The NCCL autotuner stores its small fingerprint files on-node in /var/lib/redwood/nccl-fingerprints.",
+      "During cluster upgrades, ops should rotate and or back up these fingerprint files as part of the upgrade process."
+    ]
+  },
+  {
     "question_id": "qst_0339",
     "question_type": "intra_document_reasoning",
     "source_types": [
@@ -272,70 +652,23 @@
     ]
   },
   {
-    "question_id": "qst_0097",
-    "question_type": "basic",
+    "question_id": "qst_0467",
+    "question_type": "miscellaneous",
     "source_types": [
       "github"
     ],
-    "question": "In the OpenAI Responses v3 compatibility work, how are overly large user-provided seeds handled to keep determinism, and where is the original seed stored for auditing?",
+    "question": "Is there an internal hackathon demo project that uses a small web UI and a fake backend to visualize model serving behavior like batching and cache hit rates, and can be run locally or deployed for a quick demo?",
     "expected_doc_ids": [
-      "dsid_6c58ddb8ecf543d89fca8352351dea29"
+      "dsid_514b8181941d47cb85e460c68e9d30a2"
     ],
-    "gold_answer": "If a user-provided seed exceeds 64 bits, it is normalized by hashing it down with siphash64 (siphash64) to produce a deterministic 64-bit seed. The original unmodified seed is preserved for auditing in `compat_metadata.seed_raw`.",
+    "gold_answer": "Yes. The document describes an internal hackathon project (\"hackathon-2025-inference-ui-demo\") that includes a small Next.js web UI and a mocked backend that simulates batching behavior and exposes synthetic instrumentation (including KV cache hit/miss stats), designed to run locally or be deployed (e.g., to Vercel) for quick demos.",
     "answer_facts": [
-      "If a user-provided seed exceeds 64 bits, it is normalized by hashing it down with siphash64 to produce a deterministic 64-bit seed.",
-      "The original unmodified seed is preserved for auditing in compat_metadata.seed_raw."
-    ]
-  },
-  {
-    "question_id": "qst_0127",
-    "question_type": "basic",
-    "source_types": [
-      "github"
-    ],
-    "question": "What is the phased rollout plan for the change that smooths dedicated autoscaling signals and adds an advisory gateway-to-controller backpressure mechanism?",
-    "expected_doc_ids": [
-      "dsid_dc9df99fcfd64f5f89791781b699610c"
-    ],
-    "gold_answer": "The rollout is staged: (1) ship feature-gated off by default, (2) enable on Canary Dedicated clusters for 48 hours, (3) enable for opt-in customers via a console toggle, and (4) turn it on by default after two weeks of stable metrics.",
-    "answer_facts": [
-      "The rollout is staged in four phases",
-      "Phase 1 ships the change feature-gated and off by default",
-      "Phase 2 enables the change on Canary Dedicated clusters for 48 hours",
-      "Phase 3 enables the change for opt-in customers via a console toggle",
-      "Phase 4 turns the change on by default after two weeks of stable metrics"
-    ]
-  },
-  {
-    "question_id": "qst_0167",
-    "question_type": "basic",
-    "source_types": [
-      "github"
-    ],
-    "question": "What configuration option was added to let repositories explicitly allow Docker-in-Docker during the staged rollout of the new GitHub composite action CI setup?",
-    "expected_doc_ids": [
-      "dsid_9d1624818a004c53b3b7020412275cc0"
-    ],
-    "gold_answer": "They added an opt-out configuration flag in `.github/ci-config.yml` called `allow_dind` (set it to `true`) to explicitly allow Docker-in-Docker during the rollout.",
-    "answer_facts": [
-      "A configuration flag named allow_dind was added in .github/ci-config.yml to let repositories explicitly allow Docker-in-Docker during the staged rollout of the new GitHub composite action CI setup.",
-      "Setting allow_dind to true explicitly allows Docker-in-Docker during the rollout."
-    ]
-  },
-  {
-    "question_id": "qst_0002",
-    "question_type": "basic",
-    "source_types": [
-      "github"
-    ],
-    "question": "What is the name of the new metric added so SRE can track when server-side streaming sessions get finalized due to hitting the time limit?",
-    "expected_doc_ids": [
-      "dsid_9550250a59e74f1bbd5612480b2e7100"
-    ],
-    "gold_answer": "The new metric is `stream.timebox_finalized` (with labels for route and model).",
-    "answer_facts": [
-      "The new metric added is named stream.timebox_finalized",
-      "The metric stream.timebox_finalized includes labels for route and model"
+      "There is an internal hackathon demo project called hackathon-2025-inference-ui-demo",
+      "The project includes a small Next.js web UI",
+      "The project includes a mocked or fake backend",
+      "The mocked backend simulates batching behavior",
+      "The mocked backend exposes synthetic instrumentation including KV cache hit and miss statistics",
+      "The project is designed to run locally or be deployed (for example to Vercel) for quick demos"
     ]
   }
 ]

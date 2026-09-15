@@ -1,7 +1,7 @@
 PY := .venv/bin/python
 
 .PHONY: setup infra models models-cpu migrate seed web run test integration browser \
-	s3-retrieval s3-generate s3-public s3-freeze s3-validate
+	s3-retrieval s3-generate s3-public s3-freeze s3-validate s5-dialogues rerank-model check-docs
 
 setup:
 	uv venv --python 3.13 --allow-existing
@@ -38,6 +38,7 @@ run:
 test:
 	.venv/bin/ruff check app scripts tests migrations
 	.venv/bin/pytest -q
+	$(PY) scripts/check_docs.py
 
 integration:
 	RAG_RUN_INTEGRATION=1 .venv/bin/pytest -q --junitxml=artifacts/s1-tests.xml
@@ -59,3 +60,12 @@ s3-validate:
 
 s3-freeze:
 	PYTHONPATH=scripts $(PY) scripts/freeze_s3.py
+
+s5-dialogues:
+	$(PY) scripts/build_s5_dialogues.py
+
+rerank-model:
+	$(PY) scripts/setup_reranker.py
+
+check-docs:
+	$(PY) scripts/check_docs.py

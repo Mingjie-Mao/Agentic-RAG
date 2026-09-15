@@ -19,7 +19,7 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "df3e9805-c961-4a9f-bd78-7c5a7c266e84",
+    "id": "98563e86-1eff-45e0-a780-ba228d6bd353",
     "question": "星桥标准套餐每分钟可以调用多少次 API？",
     "status": "answered",
     "claims": [
@@ -54,46 +54,94 @@
     ],
     "message": "",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 29,
+        "searchable_documents": 29
+      },
+      "original_question": "星桥标准套餐每分钟可以调用多少次 API？",
+      "retrieval_query": "星桥标准套餐每分钟可以调用多少次 API？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 887,
+      "context_tokens_estimate": 915,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "rank": 1,
           "title": "API 调用配额说明",
-          "score": 0.8123
+          "document_id": "seed-api-limits",
+          "locator_label": "第 1–9 行",
+          "score": 0.8123,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
+        },
+        {
+          "chunk_id": "8ed52eef-363a-502f-a4b2-9396e71c1f54",
+          "rank": 2,
+          "title": "业务数据保留规则",
+          "document_id": "seed-data-retention",
+          "locator_label": "第 1 页",
+          "score": 0.5678,
+          "bm25_rank": 2,
+          "dense_rank": 5,
+          "fusion_score": 0.031514,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
           "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "rank": 3,
           "title": "Python SDK 重试配置",
-          "score": 0.6221
+          "document_id": "seed-sdk-retry",
+          "locator_label": "第 1–8 行",
+          "score": 0.6221,
+          "bm25_rank": 6,
+          "dense_rank": 2,
+          "fusion_score": 0.031281,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
         },
         {
-          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
-          "title": "文件上传接口手册",
-          "score": 0.6187
-        },
-        {
-          "chunk_id": "723730e0-bb63-539b-b6d1-862f43f4fa00",
-          "title": "单点登录会话规则",
-          "score": 0.6064
+          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "rank": 4,
+          "title": "套餐功能对照表",
+          "document_id": "seed-plan-comparison",
+          "locator_label": "第 1–11 行",
+          "score": 0.5657,
+          "bm25_rank": 3,
+          "dense_rank": 6,
+          "fusion_score": 0.031025,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 2391.2,
-      "retrieval_ms": 69.9,
-      "generation_ms": 31623.8,
-      "total_ms": 34124.1
+      "embed_ms": 489.4,
+      "retrieval_ms": 70.7,
+      "generation_ms": 9200.3,
+      "total_ms": 9855.4
     },
     "usage": {
-      "prompt_tokens": 1079,
-      "completion_tokens": 52,
-      "model_duration_ms": 31601.4,
+      "prompt_tokens": 1105,
+      "completion_tokens": 53,
+      "model_duration_ms": 9166.7,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

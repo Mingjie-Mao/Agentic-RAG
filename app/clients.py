@@ -41,7 +41,16 @@ class ModelAnswer(BaseModel):
 class ConflictCheck(BaseModel):
     model_config = ConfigDict(extra="forbid")
     conflict: bool
+    left_id: str
+    right_id: str
     reason: str
+
+
+def conflict_schema(cited):
+    schema = ConflictCheck.model_json_schema()
+    for field in ["left_id", "right_id"]:
+        schema["properties"][field]["enum"] = cited
+    return schema
 
 
 def evidence_spans(evidence):
@@ -53,7 +62,11 @@ def evidence_spans(evidence):
         parts = [part.strip() for part in re.split(r"(?<=[。！？])|\n", item["text"]) if part.strip()]
         for number, part in enumerate(parts, 1):
             key = f"{item['id']}:S{number}"
-            sources[key] = {"id": item["id"], "quote": part}
+            sources[key] = {
+                "id": item["id"],
+                "document_id": item.get("document_id", item["id"]),
+                "quote": part,
+            }
             spans.append({"id": key, "text": part})
         context.append(
             {
@@ -117,22 +130,34 @@ class Models:
         )
         try:
             wire = ModelAnswer.model_validate_json(result["message"]["content"])
-            selected = {sources[key]["id"] for claim in wire.claims for key in claim.source_ids}
+            cited = list(dict.fromkeys(key for claim in wire.claims for key in claim.source_ids))
+            by_document = {}
+            for key in cited:
+                by_document.setdefault(sources[key]["document_id"], []).append(
+                    {"id": key, "text": sources[key]["quote"]}
+                )
             conflict_check = None
-            if len(selected) > 1 and wire.status != "insufficient_evidence":
-                # A focused second check prevents two contradictory regulations
-                # from being presented merely as two compatible answer bullets.
+            # Two regulations can only contradict each other across documents.
+            # Several spans of one document are one statement, not a conflict.
+            if len(by_document) > 1 and wire.status != "insufficient_evidence":
                 check = self._post(
                     "/api/chat",
                     {
                         "model": cfg.chat_model,
                         "stream": False,
                         "keep_alive": "30m",
-                        "format": ConflictCheck.model_json_schema(),
+                        "format": conflict_schema(cited),
                         "messages": [
                             {
                                 "role": "system",
-                                "content": "核对资料之间是否存在事实冲突。只有同一事项、同一适用时间或人群的规则不能同时成立，才算冲突；不同指标或不同产品的数值不同不算冲突。没有优先关系的两份不同服务时段属于冲突。只依据提供的原文，返回 conflict 和简短 reason。",
+                                "content": (
+                                    "核对不同文档之间是否存在事实冲突。只有同一事项、同一适用时间或人群的"
+                                    "规则不能同时成立，才算冲突；不同指标、不同对象或不同产品的数值不同不算冲突，"
+                                    "同一问题的多个子问题各有答案也不算冲突。没有优先关系的两份不同服务时段属于冲突。"
+                                    "判定为冲突时，必须在 left_id 与 right_id 给出两个互相矛盾的原文编号，"
+                                    "且二者必须来自不同文档；举不出这样两条就返回 conflict=false。"
+                                    "只依据提供的原文，返回简短 reason。"
+                                ),
                             },
                             {
                                 "role": "user",
@@ -140,7 +165,8 @@ class Models:
                                     {
                                         "question": question,
                                         "documents": [
-                                            item for item in context if item["document"] in selected
+                                            {"document": key, "sources": spans}
+                                            for key, spans in by_document.items()
                                         ],
                                     },
                                     ensure_ascii=False,
@@ -151,11 +177,23 @@ class Models:
                     },
                 )
                 verdict = ConflictCheck.model_validate_json(check["message"]["content"])
-                conflict_check = verdict.model_dump()
-                if verdict.conflict:
+                accepted = (
+                    verdict.conflict
+                    and verdict.left_id in sources
+                    and verdict.right_id in sources
+                    and sources[verdict.left_id]["document_id"]
+                    != sources[verdict.right_id]["document_id"]
+                )
+                conflict_check = verdict.model_dump() | {"accepted": accepted}
+                if accepted:
                     wire.status = "conflict"
+                elif wire.status == "conflict":
+                    wire.status = "answered"
                 for key in ["prompt_eval_count", "eval_count", "total_duration"]:
                     result[key] = result.get(key, 0) + check.get(key, 0)
+            elif wire.status == "conflict":
+                # One document cannot contradict itself; the check never ran.
+                wire.status = "answered"
             parsed = GeneratedAnswer(
                 answerable=wire.status != "insufficient_evidence",
                 claims=[
@@ -307,6 +345,23 @@ class Search:
             {"chunk_id": hit["_id"], "score": hit["_score"], "cosine_similarity": hit["_score"] * 2 - 1}
             for hit in result["hits"]["hits"]
         ]
+
+    def retrieve_hybrid(self, question, vector, tenant_id, version_ids, top_k, depth=50, constant=60):
+        """Reciprocal rank fusion. Both paths run under one authorization scope, and
+        ranks are fused rather than scores, which are not comparable across paths."""
+        runs = [
+            ("bm25_rank", self.retrieve_bm25(question, tenant_id, version_ids, depth)),
+            ("dense_rank", self.retrieve(vector, tenant_id, version_ids, depth)),
+        ]
+        fused = {}
+        for label, hits in runs:
+            for position, hit in enumerate(hits, 1):
+                entry = fused.setdefault(hit["chunk_id"], {"chunk_id": hit["chunk_id"], "score": 0.0})
+                entry["score"] += 1 / (constant + position)
+                entry[label] = position
+                entry.update({k: v for k, v in hit.items() if k not in {"score", "chunk_id"}})
+        ordered = sorted(fused.values(), key=lambda item: (-item["score"], item["chunk_id"]))
+        return ordered[:top_k]
 
     def retrieve_bm25(self, question, tenant_id, version_ids, top_k):
         if not version_ids:

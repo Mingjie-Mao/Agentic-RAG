@@ -1,0 +1,2962 @@
+[
+  {
+    "id": "D001",
+    "user": "xq-engineer",
+    "family": "batch-api",
+    "subject": "批量导入",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥批量导入的每批记录上限是多少？",
+        "resolved_question": "星桥批量导入的每批记录上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "240 条"
+        ],
+        "source_ids": [
+          "eval-batch-api-1"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那请求超时呢？",
+        "resolved_question": "星桥批量导入的请求超时是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "35 秒"
+        ],
+        "source_ids": [
+          "eval-batch-api-1"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥批量导入超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-batch-api-1"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥指标采集的采样周期是多少？",
+        "resolved_question": "星桥指标采集的采样周期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "20 秒"
+        ],
+        "source_ids": [
+          "eval-observability-1"
+        ],
+        "must_not_mention": [
+          "批量导入"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D002",
+    "user": "xq-engineer",
+    "family": "batch-api",
+    "subject": "异步任务",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥异步任务的状态轮询间隔是多少？",
+        "resolved_question": "星桥异步任务的状态轮询间隔是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "6 秒"
+        ],
+        "source_ids": [
+          "eval-batch-api-2"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那结果保留呢？",
+        "resolved_question": "星桥异步任务的结果保留是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "36 小时"
+        ],
+        "source_ids": [
+          "eval-batch-api-2"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 6 秒 从什么时候开始执行？",
+        "resolved_question": "星桥异步任务的状态轮询间隔 6 秒 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-batch-api-2"
+        ],
+        "must_preserve": [
+          "6 秒"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥指标采集的采样周期是多少？",
+        "resolved_question": "星桥指标采集的采样周期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "20 秒"
+        ],
+        "source_ids": [
+          "eval-observability-1"
+        ],
+        "must_not_mention": [
+          "异步任务"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D003",
+    "user": "xq-engineer",
+    "family": "batch-api",
+    "subject": "接口签名",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥接口签名的时间戳偏差是多少？",
+        "resolved_question": "星桥接口签名的时间戳偏差是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "120 秒"
+        ],
+        "source_ids": [
+          "eval-batch-api-4"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那随机串长度呢？",
+        "resolved_question": "星桥接口签名的随机串长度是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "24 位"
+        ],
+        "source_ids": [
+          "eval-batch-api-4"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥接口签名超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-batch-api-4"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥指标采集的采样周期是多少？",
+        "resolved_question": "星桥指标采集的采样周期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "20 秒"
+        ],
+        "source_ids": [
+          "eval-observability-1"
+        ],
+        "must_not_mention": [
+          "接口签名"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D004",
+    "user": "xq-engineer",
+    "family": "batch-api",
+    "subject": "附件处理",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥附件处理的并行任务上限是多少？",
+        "resolved_question": "星桥附件处理的并行任务上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "7 个"
+        ],
+        "source_ids": [
+          "eval-batch-api-5"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那排队时限呢？",
+        "resolved_question": "星桥附件处理的排队时限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "18 分钟"
+        ],
+        "source_ids": [
+          "eval-batch-api-5"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 7 个 从什么时候开始执行？",
+        "resolved_question": "星桥附件处理的并行任务上限 7 个 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-batch-api-5"
+        ],
+        "must_preserve": [
+          "7 个"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥指标采集的采样周期是多少？",
+        "resolved_question": "星桥指标采集的采样周期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "20 秒"
+        ],
+        "source_ids": [
+          "eval-observability-1"
+        ],
+        "must_not_mention": [
+          "附件处理"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D005",
+    "user": "xq-engineer",
+    "family": "observability",
+    "subject": "指标采集",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥指标采集的采样周期是多少？",
+        "resolved_question": "星桥指标采集的采样周期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "20 秒"
+        ],
+        "source_ids": [
+          "eval-observability-1"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那保留窗口呢？",
+        "resolved_question": "星桥指标采集的保留窗口是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "21 天"
+        ],
+        "source_ids": [
+          "eval-observability-1"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥指标采集超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-observability-1"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥金丝雀发布的首批流量比例是多少？",
+        "resolved_question": "星桥金丝雀发布的首批流量比例是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8%"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-1"
+        ],
+        "must_not_mention": [
+          "指标采集"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D006",
+    "user": "xq-engineer",
+    "family": "observability",
+    "subject": "告警抑制",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥告警抑制的静默窗口是多少？",
+        "resolved_question": "星桥告警抑制的静默窗口是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "12 分钟"
+        ],
+        "source_ids": [
+          "eval-observability-2"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那连续触发次数呢？",
+        "resolved_question": "星桥告警抑制的连续触发次数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "4 次"
+        ],
+        "source_ids": [
+          "eval-observability-2"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 12 分钟 从什么时候开始执行？",
+        "resolved_question": "星桥告警抑制的静默窗口 12 分钟 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-observability-2"
+        ],
+        "must_preserve": [
+          "12 分钟"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥金丝雀发布的首批流量比例是多少？",
+        "resolved_question": "星桥金丝雀发布的首批流量比例是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8%"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-1"
+        ],
+        "must_not_mention": [
+          "告警抑制"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D007",
+    "user": "xq-engineer",
+    "family": "observability",
+    "subject": "错误面板",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥错误面板的刷新周期是多少？",
+        "resolved_question": "星桥错误面板的刷新周期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "45 秒"
+        ],
+        "source_ids": [
+          "eval-observability-4"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那显示记录上限呢？",
+        "resolved_question": "星桥错误面板的显示记录上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "180 条"
+        ],
+        "source_ids": [
+          "eval-observability-4"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥错误面板超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-observability-4"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥金丝雀发布的首批流量比例是多少？",
+        "resolved_question": "星桥金丝雀发布的首批流量比例是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8%"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-1"
+        ],
+        "must_not_mention": [
+          "错误面板"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D008",
+    "user": "xq-engineer",
+    "family": "observability",
+    "subject": "日志检索",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥日志检索的查询跨度是多少？",
+        "resolved_question": "星桥日志检索的查询跨度是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "14 天"
+        ],
+        "source_ids": [
+          "eval-observability-5"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那单次结果上限呢？",
+        "resolved_question": "星桥日志检索的单次结果上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "600 条"
+        ],
+        "source_ids": [
+          "eval-observability-5"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 14 天 从什么时候开始执行？",
+        "resolved_question": "星桥日志检索的查询跨度 14 天 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-observability-5"
+        ],
+        "must_preserve": [
+          "14 天"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥金丝雀发布的首批流量比例是多少？",
+        "resolved_question": "星桥金丝雀发布的首批流量比例是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8%"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-1"
+        ],
+        "must_not_mention": [
+          "日志检索"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D009",
+    "user": "xq-engineer",
+    "family": "deployment-controls",
+    "subject": "金丝雀发布",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥金丝雀发布的首批流量比例是多少？",
+        "resolved_question": "星桥金丝雀发布的首批流量比例是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8%"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-1"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那观察窗口呢？",
+        "resolved_question": "星桥金丝雀发布的观察窗口是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "25 分钟"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-1"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥金丝雀发布超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-1"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥审计导出的单文件记录上限是多少？",
+        "resolved_question": "星桥审计导出的单文件记录上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8000 条"
+        ],
+        "source_ids": [
+          "eval-data-export-1"
+        ],
+        "must_not_mention": [
+          "金丝雀发布"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D010",
+    "user": "xq-engineer",
+    "family": "deployment-controls",
+    "subject": "制品签名",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥制品签名的签名有效期是多少？",
+        "resolved_question": "星桥制品签名的签名有效期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "150 天"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-2"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那复核人数呢？",
+        "resolved_question": "星桥制品签名的复核人数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "3 人"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-2"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 150 天 从什么时候开始执行？",
+        "resolved_question": "星桥制品签名的签名有效期 150 天 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-2"
+        ],
+        "must_preserve": [
+          "150 天"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥审计导出的单文件记录上限是多少？",
+        "resolved_question": "星桥审计导出的单文件记录上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8000 条"
+        ],
+        "source_ids": [
+          "eval-data-export-1"
+        ],
+        "must_not_mention": [
+          "制品签名"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D011",
+    "user": "xq-engineer",
+    "family": "deployment-controls",
+    "subject": "数据库变更",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥数据库变更的迁移锁时限是多少？",
+        "resolved_question": "星桥数据库变更的迁移锁时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "40 秒"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-4"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那回滚备份保留呢？",
+        "resolved_question": "星桥数据库变更的回滚备份保留是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "14 天"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-4"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥数据库变更超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-4"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥审计导出的单文件记录上限是多少？",
+        "resolved_question": "星桥审计导出的单文件记录上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8000 条"
+        ],
+        "source_ids": [
+          "eval-data-export-1"
+        ],
+        "must_not_mention": [
+          "数据库变更"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D012",
+    "user": "xq-engineer",
+    "family": "deployment-controls",
+    "subject": "配置开关",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥配置开关的灰度用户上限是多少？",
+        "resolved_question": "星桥配置开关的灰度用户上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "300 人"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-5"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那自动过期时间呢？",
+        "resolved_question": "星桥配置开关的自动过期时间是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "72 小时"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-5"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 300 人 从什么时候开始执行？",
+        "resolved_question": "星桥配置开关的灰度用户上限 300 人 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-deployment-controls-5"
+        ],
+        "must_preserve": [
+          "300 人"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥审计导出的单文件记录上限是多少？",
+        "resolved_question": "星桥审计导出的单文件记录上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8000 条"
+        ],
+        "source_ids": [
+          "eval-data-export-1"
+        ],
+        "must_not_mention": [
+          "配置开关"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D013",
+    "user": "xq-support",
+    "family": "support-workflow",
+    "subject": "工单分派",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥工单分派的自动分派时限是多少？",
+        "resolved_question": "星桥工单分派的自动分派时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "7 分钟"
+        ],
+        "source_ids": [
+          "eval-support-workflow-1"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那每人待办上限呢？",
+        "resolved_question": "星桥工单分派的每人待办上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "18 单"
+        ],
+        "source_ids": [
+          "eval-support-workflow-1"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥工单分派超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-support-workflow-1"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥组织邀请的邀请链接有效期是多少？",
+        "resolved_question": "星桥组织邀请的邀请链接有效期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "48 小时"
+        ],
+        "source_ids": [
+          "eval-workspace-config-1"
+        ],
+        "must_not_mention": [
+          "工单分派"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D014",
+    "user": "xq-support",
+    "family": "support-workflow",
+    "subject": "客户回访",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥客户回访的结单后回访时间是多少？",
+        "resolved_question": "星桥客户回访的结单后回访时间是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "3 个工作日"
+        ],
+        "source_ids": [
+          "eval-support-workflow-2"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那尝试次数呢？",
+        "resolved_question": "星桥客户回访的尝试次数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2 次"
+        ],
+        "source_ids": [
+          "eval-support-workflow-2"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 3 个工作日 从什么时候开始执行？",
+        "resolved_question": "星桥客户回访的结单后回访时间 3 个工作日 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-support-workflow-2"
+        ],
+        "must_preserve": [
+          "3 个工作日"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥组织邀请的邀请链接有效期是多少？",
+        "resolved_question": "星桥组织邀请的邀请链接有效期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "48 小时"
+        ],
+        "source_ids": [
+          "eval-workspace-config-1"
+        ],
+        "must_not_mention": [
+          "客户回访"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D015",
+    "user": "xq-support",
+    "family": "support-workflow",
+    "subject": "知识纠错",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥知识纠错的事实复核时限是多少？",
+        "resolved_question": "星桥知识纠错的事实复核时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "2 个工作日"
+        ],
+        "source_ids": [
+          "eval-support-workflow-4"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那复核人数呢？",
+        "resolved_question": "星桥知识纠错的复核人数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2 人"
+        ],
+        "source_ids": [
+          "eval-support-workflow-4"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥知识纠错超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-support-workflow-4"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥组织邀请的邀请链接有效期是多少？",
+        "resolved_question": "星桥组织邀请的邀请链接有效期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "48 小时"
+        ],
+        "source_ids": [
+          "eval-workspace-config-1"
+        ],
+        "must_not_mention": [
+          "知识纠错"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D016",
+    "user": "xq-support",
+    "family": "support-workflow",
+    "subject": "轮值交接",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥轮值交接的交接前整理时间是多少？",
+        "resolved_question": "星桥轮值交接的交接前整理时间是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "20 分钟"
+        ],
+        "source_ids": [
+          "eval-support-workflow-5"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那未结工单检查数呢？",
+        "resolved_question": "星桥轮值交接的未结工单检查数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "30 单"
+        ],
+        "source_ids": [
+          "eval-support-workflow-5"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 20 分钟 从什么时候开始执行？",
+        "resolved_question": "星桥轮值交接的交接前整理时间 20 分钟 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-support-workflow-5"
+        ],
+        "must_preserve": [
+          "20 分钟"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥组织邀请的邀请链接有效期是多少？",
+        "resolved_question": "星桥组织邀请的邀请链接有效期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "48 小时"
+        ],
+        "source_ids": [
+          "eval-workspace-config-1"
+        ],
+        "must_not_mention": [
+          "轮值交接"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D017",
+    "user": "xq-support",
+    "family": "workspace-config",
+    "subject": "组织邀请",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥组织邀请的邀请链接有效期是多少？",
+        "resolved_question": "星桥组织邀请的邀请链接有效期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "48 小时"
+        ],
+        "source_ids": [
+          "eval-workspace-config-1"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那每天邀请上限呢？",
+        "resolved_question": "星桥组织邀请的每天邀请上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "70 人"
+        ],
+        "source_ids": [
+          "eval-workspace-config-1"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥组织邀请超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-workspace-config-1"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥服务登记的负责人更新时限是多少？",
+        "resolved_question": "星桥服务登记的负责人更新时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "3 个工作日"
+        ],
+        "source_ids": [
+          "eval-service-catalog-1"
+        ],
+        "must_not_mention": [
+          "组织邀请"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D018",
+    "user": "xq-support",
+    "family": "workspace-config",
+    "subject": "项目标签",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥项目标签的标签数量上限是多少？",
+        "resolved_question": "星桥项目标签的标签数量上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "45 个"
+        ],
+        "source_ids": [
+          "eval-workspace-config-2"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那标签字数上限呢？",
+        "resolved_question": "星桥项目标签的标签字数上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "16 字"
+        ],
+        "source_ids": [
+          "eval-workspace-config-2"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 45 个 从什么时候开始执行？",
+        "resolved_question": "星桥项目标签的标签数量上限 45 个 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-workspace-config-2"
+        ],
+        "must_preserve": [
+          "45 个"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥服务登记的负责人更新时限是多少？",
+        "resolved_question": "星桥服务登记的负责人更新时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "3 个工作日"
+        ],
+        "source_ids": [
+          "eval-service-catalog-1"
+        ],
+        "must_not_mention": [
+          "项目标签"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D019",
+    "user": "xq-support",
+    "family": "workspace-config",
+    "subject": "团队归档",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥团队归档的归档冷静期是多少？",
+        "resolved_question": "星桥团队归档的归档冷静期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "10 天"
+        ],
+        "source_ids": [
+          "eval-workspace-config-4"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那恢复处理时限呢？",
+        "resolved_question": "星桥团队归档的恢复处理时限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "6 小时"
+        ],
+        "source_ids": [
+          "eval-workspace-config-4"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥团队归档超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-workspace-config-4"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥服务登记的负责人更新时限是多少？",
+        "resolved_question": "星桥服务登记的负责人更新时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "3 个工作日"
+        ],
+        "source_ids": [
+          "eval-service-catalog-1"
+        ],
+        "must_not_mention": [
+          "团队归档"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D020",
+    "user": "xq-support",
+    "family": "workspace-config",
+    "subject": "成员转移",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥成员转移的转移审核时限是多少？",
+        "resolved_question": "星桥成员转移的转移审核时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "2 个工作日"
+        ],
+        "source_ids": [
+          "eval-workspace-config-5"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那批量转移上限呢？",
+        "resolved_question": "星桥成员转移的批量转移上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "25 人"
+        ],
+        "source_ids": [
+          "eval-workspace-config-5"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 2 个工作日 从什么时候开始执行？",
+        "resolved_question": "星桥成员转移的转移审核时限 2 个工作日 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-workspace-config-5"
+        ],
+        "must_preserve": [
+          "2 个工作日"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥服务登记的负责人更新时限是多少？",
+        "resolved_question": "星桥服务登记的负责人更新时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "3 个工作日"
+        ],
+        "source_ids": [
+          "eval-service-catalog-1"
+        ],
+        "must_not_mention": [
+          "成员转移"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D021",
+    "user": "xq-engineer",
+    "family": "data-export",
+    "subject": "审计导出",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥审计导出的单文件记录上限是多少？",
+        "resolved_question": "星桥审计导出的单文件记录上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8000 条"
+        ],
+        "source_ids": [
+          "eval-data-export-1"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那临时文件保留呢？",
+        "resolved_question": "星桥审计导出的临时文件保留是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "18 小时"
+        ],
+        "source_ids": [
+          "eval-data-export-1"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥审计导出超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-data-export-1"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥测试沙箱的单次使用时长是多少？",
+        "resolved_question": "星桥测试沙箱的单次使用时长是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "5 小时"
+        ],
+        "source_ids": [
+          "eval-developer-tools-1"
+        ],
+        "must_not_mention": [
+          "审计导出"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D022",
+    "user": "xq-engineer",
+    "family": "data-export",
+    "subject": "报表排程",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥报表排程的最短执行间隔是多少？",
+        "resolved_question": "星桥报表排程的最短执行间隔是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "3 小时"
+        ],
+        "source_ids": [
+          "eval-data-export-2"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那同时排程上限呢？",
+        "resolved_question": "星桥报表排程的同时排程上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "16 个"
+        ],
+        "source_ids": [
+          "eval-data-export-2"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 3 小时 从什么时候开始执行？",
+        "resolved_question": "星桥报表排程的最短执行间隔 3 小时 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-data-export-2"
+        ],
+        "must_preserve": [
+          "3 小时"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥测试沙箱的单次使用时长是多少？",
+        "resolved_question": "星桥测试沙箱的单次使用时长是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "5 小时"
+        ],
+        "source_ids": [
+          "eval-developer-tools-1"
+        ],
+        "must_not_mention": [
+          "报表排程"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D023",
+    "user": "xq-engineer",
+    "family": "data-export",
+    "subject": "增量导出",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥增量导出的增量窗口是多少？",
+        "resolved_question": "星桥增量导出的增量窗口是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8 小时"
+        ],
+        "source_ids": [
+          "eval-data-export-4"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那水位重试次数呢？",
+        "resolved_question": "星桥增量导出的水位重试次数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "4 次"
+        ],
+        "source_ids": [
+          "eval-data-export-4"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥增量导出超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-data-export-4"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥测试沙箱的单次使用时长是多少？",
+        "resolved_question": "星桥测试沙箱的单次使用时长是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "5 小时"
+        ],
+        "source_ids": [
+          "eval-developer-tools-1"
+        ],
+        "must_not_mention": [
+          "增量导出"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D024",
+    "user": "xq-engineer",
+    "family": "data-export",
+    "subject": "导出通知",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥导出通知的链接有效期是多少？",
+        "resolved_question": "星桥导出通知的链接有效期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "30 小时"
+        ],
+        "source_ids": [
+          "eval-data-export-5"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那提醒次数呢？",
+        "resolved_question": "星桥导出通知的提醒次数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2 次"
+        ],
+        "source_ids": [
+          "eval-data-export-5"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 30 小时 从什么时候开始执行？",
+        "resolved_question": "星桥导出通知的链接有效期 30 小时 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-data-export-5"
+        ],
+        "must_preserve": [
+          "30 小时"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥测试沙箱的单次使用时长是多少？",
+        "resolved_question": "星桥测试沙箱的单次使用时长是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "5 小时"
+        ],
+        "source_ids": [
+          "eval-developer-tools-1"
+        ],
+        "must_not_mention": [
+          "导出通知"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D025",
+    "user": "xq-engineer",
+    "family": "developer-tools",
+    "subject": "测试沙箱",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥测试沙箱的单次使用时长是多少？",
+        "resolved_question": "星桥测试沙箱的单次使用时长是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "5 小时"
+        ],
+        "source_ids": [
+          "eval-developer-tools-1"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那同时实例上限呢？",
+        "resolved_question": "星桥测试沙箱的同时实例上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "6 个"
+        ],
+        "source_ids": [
+          "eval-developer-tools-1"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥测试沙箱超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-developer-tools-1"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥临时权限的最长期限是多少？",
+        "resolved_question": "星桥临时权限的最长期限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "6 小时"
+        ],
+        "source_ids": [
+          "eval-access-operations-1"
+        ],
+        "must_not_mention": [
+          "测试沙箱"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D026",
+    "user": "xq-engineer",
+    "family": "developer-tools",
+    "subject": "分支环境",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥分支环境的闲置回收时间是多少？",
+        "resolved_question": "星桥分支环境的闲置回收时间是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "7 小时"
+        ],
+        "source_ids": [
+          "eval-developer-tools-2"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那保留分支上限呢？",
+        "resolved_question": "星桥分支环境的保留分支上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "12 个"
+        ],
+        "source_ids": [
+          "eval-developer-tools-2"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 7 小时 从什么时候开始执行？",
+        "resolved_question": "星桥分支环境的闲置回收时间 7 小时 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-developer-tools-2"
+        ],
+        "must_preserve": [
+          "7 小时"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥临时权限的最长期限是多少？",
+        "resolved_question": "星桥临时权限的最长期限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "6 小时"
+        ],
+        "source_ids": [
+          "eval-access-operations-1"
+        ],
+        "must_not_mention": [
+          "分支环境"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D027",
+    "user": "xq-engineer",
+    "family": "developer-tools",
+    "subject": "测试数据",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥测试数据的样本库保留是多少？",
+        "resolved_question": "星桥测试数据的样本库保留是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "16 天"
+        ],
+        "source_ids": [
+          "eval-developer-tools-4"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那单表行数上限呢？",
+        "resolved_question": "星桥测试数据的单表行数上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "9000 行"
+        ],
+        "source_ids": [
+          "eval-developer-tools-4"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥测试数据超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-developer-tools-4"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥临时权限的最长期限是多少？",
+        "resolved_question": "星桥临时权限的最长期限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "6 小时"
+        ],
+        "source_ids": [
+          "eval-access-operations-1"
+        ],
+        "must_not_mention": [
+          "测试数据"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D028",
+    "user": "xq-engineer",
+    "family": "developer-tools",
+    "subject": "调试会话",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥调试会话的调试令牌有效期是多少？",
+        "resolved_question": "星桥调试会话的调试令牌有效期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "50 分钟"
+        ],
+        "source_ids": [
+          "eval-developer-tools-5"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那并发连接上限呢？",
+        "resolved_question": "星桥调试会话的并发连接上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "3 个"
+        ],
+        "source_ids": [
+          "eval-developer-tools-5"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 50 分钟 从什么时候开始执行？",
+        "resolved_question": "星桥调试会话的调试令牌有效期 50 分钟 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-developer-tools-5"
+        ],
+        "must_preserve": [
+          "50 分钟"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥临时权限的最长期限是多少？",
+        "resolved_question": "星桥临时权限的最长期限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "6 小时"
+        ],
+        "source_ids": [
+          "eval-access-operations-1"
+        ],
+        "must_not_mention": [
+          "调试会话"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D029",
+    "user": "xq-support",
+    "family": "service-catalog",
+    "subject": "服务登记",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥服务登记的负责人更新时限是多少？",
+        "resolved_question": "星桥服务登记的负责人更新时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "3 个工作日"
+        ],
+        "source_ids": [
+          "eval-service-catalog-1"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那负责人上限呢？",
+        "resolved_question": "星桥服务登记的负责人上限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "4 人"
+        ],
+        "source_ids": [
+          "eval-service-catalog-1"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥服务登记超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-service-catalog-1"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥工单分派的自动分派时限是多少？",
+        "resolved_question": "星桥工单分派的自动分派时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "7 分钟"
+        ],
+        "source_ids": [
+          "eval-support-workflow-1"
+        ],
+        "must_not_mention": [
+          "服务登记"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D030",
+    "user": "xq-support",
+    "family": "service-catalog",
+    "subject": "依赖清单",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥依赖清单的检查周期是多少？",
+        "resolved_question": "星桥依赖清单的检查周期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "14 天"
+        ],
+        "source_ids": [
+          "eval-service-catalog-2"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那最大依赖层数呢？",
+        "resolved_question": "星桥依赖清单的最大依赖层数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "6 层"
+        ],
+        "source_ids": [
+          "eval-service-catalog-2"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 14 天 从什么时候开始执行？",
+        "resolved_question": "星桥依赖清单的检查周期 14 天 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-service-catalog-2"
+        ],
+        "must_preserve": [
+          "14 天"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥工单分派的自动分派时限是多少？",
+        "resolved_question": "星桥工单分派的自动分派时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "7 分钟"
+        ],
+        "source_ids": [
+          "eval-support-workflow-1"
+        ],
+        "must_not_mention": [
+          "依赖清单"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D031",
+    "user": "xq-support",
+    "family": "service-catalog",
+    "subject": "维护公告",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥维护公告的提前发布时长是多少？",
+        "resolved_question": "星桥维护公告的提前发布时长是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "36 小时"
+        ],
+        "source_ids": [
+          "eval-service-catalog-4"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那提醒间隔呢？",
+        "resolved_question": "星桥维护公告的提醒间隔是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "12 小时"
+        ],
+        "source_ids": [
+          "eval-service-catalog-4"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥维护公告超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-service-catalog-4"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥工单分派的自动分派时限是多少？",
+        "resolved_question": "星桥工单分派的自动分派时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "7 分钟"
+        ],
+        "source_ids": [
+          "eval-support-workflow-1"
+        ],
+        "must_not_mention": [
+          "维护公告"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D032",
+    "user": "xq-support",
+    "family": "service-catalog",
+    "subject": "下线服务",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥下线服务的通知提前量是多少？",
+        "resolved_question": "星桥下线服务的通知提前量是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "45 天"
+        ],
+        "source_ids": [
+          "eval-service-catalog-5"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那只读保留时间呢？",
+        "resolved_question": "星桥下线服务的只读保留时间是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "20 天"
+        ],
+        "source_ids": [
+          "eval-service-catalog-5"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 45 天 从什么时候开始执行？",
+        "resolved_question": "星桥下线服务的通知提前量 45 天 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-service-catalog-5"
+        ],
+        "must_preserve": [
+          "45 天"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥工单分派的自动分派时限是多少？",
+        "resolved_question": "星桥工单分派的自动分派时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "7 分钟"
+        ],
+        "source_ids": [
+          "eval-support-workflow-1"
+        ],
+        "must_not_mention": [
+          "下线服务"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D033",
+    "user": "xq-engineer",
+    "family": "access-operations",
+    "subject": "临时权限",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥临时权限的最长期限是多少？",
+        "resolved_question": "星桥临时权限的最长期限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "6 小时"
+        ],
+        "source_ids": [
+          "eval-access-operations-1"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那审批人数呢？",
+        "resolved_question": "星桥临时权限的审批人数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2 人"
+        ],
+        "source_ids": [
+          "eval-access-operations-1"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥临时权限超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-access-operations-1"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥故障演练的演练频率是多少？",
+        "resolved_question": "星桥故障演练的演练频率是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "28 天"
+        ],
+        "source_ids": [
+          "eval-incident-drills-1"
+        ],
+        "must_not_mention": [
+          "临时权限"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D034",
+    "user": "xq-engineer",
+    "family": "access-operations",
+    "subject": "服务账号",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥服务账号的密钥轮换周期是多少？",
+        "resolved_question": "星桥服务账号的密钥轮换周期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "45 天"
+        ],
+        "source_ids": [
+          "eval-access-operations-2"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那过渡窗口呢？",
+        "resolved_question": "星桥服务账号的过渡窗口是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "16 小时"
+        ],
+        "source_ids": [
+          "eval-access-operations-2"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 45 天 从什么时候开始执行？",
+        "resolved_question": "星桥服务账号的密钥轮换周期 45 天 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-access-operations-2"
+        ],
+        "must_preserve": [
+          "45 天"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥故障演练的演练频率是多少？",
+        "resolved_question": "星桥故障演练的演练频率是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "28 天"
+        ],
+        "source_ids": [
+          "eval-incident-drills-1"
+        ],
+        "must_not_mention": [
+          "服务账号"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D035",
+    "user": "xq-engineer",
+    "family": "access-operations",
+    "subject": "离职交接",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥离职交接的停权处理时限是多少？",
+        "resolved_question": "星桥离职交接的停权处理时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "30 分钟"
+        ],
+        "source_ids": [
+          "eval-access-operations-4"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那交接确认人数呢？",
+        "resolved_question": "星桥离职交接的交接确认人数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2 人"
+        ],
+        "source_ids": [
+          "eval-access-operations-4"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥离职交接超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-access-operations-4"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥故障演练的演练频率是多少？",
+        "resolved_question": "星桥故障演练的演练频率是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "28 天"
+        ],
+        "source_ids": [
+          "eval-incident-drills-1"
+        ],
+        "must_not_mention": [
+          "离职交接"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D036",
+    "user": "xq-engineer",
+    "family": "access-operations",
+    "subject": "权限复核",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥权限复核的复核周期是多少？",
+        "resolved_question": "星桥权限复核的复核周期是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "60 天"
+        ],
+        "source_ids": [
+          "eval-access-operations-5"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那整改时限呢？",
+        "resolved_question": "星桥权限复核的整改时限是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "4 个工作日"
+        ],
+        "source_ids": [
+          "eval-access-operations-5"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 60 天 从什么时候开始执行？",
+        "resolved_question": "星桥权限复核的复核周期 60 天 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-access-operations-5"
+        ],
+        "must_preserve": [
+          "60 天"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥故障演练的演练频率是多少？",
+        "resolved_question": "星桥故障演练的演练频率是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "28 天"
+        ],
+        "source_ids": [
+          "eval-incident-drills-1"
+        ],
+        "must_not_mention": [
+          "权限复核"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D037",
+    "user": "xq-engineer",
+    "family": "incident-drills",
+    "subject": "故障演练",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥故障演练的演练频率是多少？",
+        "resolved_question": "星桥故障演练的演练频率是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "28 天"
+        ],
+        "source_ids": [
+          "eval-incident-drills-1"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那最长影响时间呢？",
+        "resolved_question": "星桥故障演练的最长影响时间是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "3 分钟"
+        ],
+        "source_ids": [
+          "eval-incident-drills-1"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥故障演练超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-incident-drills-1"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥批量导入的每批记录上限是多少？",
+        "resolved_question": "星桥批量导入的每批记录上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "240 条"
+        ],
+        "source_ids": [
+          "eval-batch-api-1"
+        ],
+        "must_not_mention": [
+          "故障演练"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D038",
+    "user": "xq-engineer",
+    "family": "incident-drills",
+    "subject": "区域切换",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥区域切换的切换目标是多少？",
+        "resolved_question": "星桥区域切换的切换目标是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "12 分钟"
+        ],
+        "source_ids": [
+          "eval-incident-drills-2"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那观察时间呢？",
+        "resolved_question": "星桥区域切换的观察时间是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "45 分钟"
+        ],
+        "source_ids": [
+          "eval-incident-drills-2"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 12 分钟 从什么时候开始执行？",
+        "resolved_question": "星桥区域切换的切换目标 12 分钟 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-incident-drills-2"
+        ],
+        "must_preserve": [
+          "12 分钟"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥批量导入的每批记录上限是多少？",
+        "resolved_question": "星桥批量导入的每批记录上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "240 条"
+        ],
+        "source_ids": [
+          "eval-batch-api-1"
+        ],
+        "must_not_mention": [
+          "区域切换"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D039",
+    "user": "xq-engineer",
+    "family": "incident-drills",
+    "subject": "应急联络",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥应急联络的联系确认时限是多少？",
+        "resolved_question": "星桥应急联络的联系确认时限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "8 分钟"
+        ],
+        "source_ids": [
+          "eval-incident-drills-4"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那备用联系人数呢？",
+        "resolved_question": "星桥应急联络的备用联系人数是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "3 人"
+        ],
+        "source_ids": [
+          "eval-incident-drills-4"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "anaphora",
+        "question": "超出这个限制要怎么办？",
+        "resolved_question": "星桥应急联络超出规定范围要怎么办？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "例外申请"
+        ],
+        "source_ids": [
+          "eval-incident-drills-4"
+        ],
+        "must_preserve": []
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥批量导入的每批记录上限是多少？",
+        "resolved_question": "星桥批量导入的每批记录上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "240 条"
+        ],
+        "source_ids": [
+          "eval-batch-api-1"
+        ],
+        "must_not_mention": [
+          "应急联络"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  },
+  {
+    "id": "D040",
+    "user": "xq-engineer",
+    "family": "incident-drills",
+    "subject": "复盘跟进",
+    "turns": [
+      {
+        "turn": 1,
+        "kind": "opening",
+        "question": "星桥复盘跟进的整改复查时间是多少？",
+        "resolved_question": "星桥复盘跟进的整改复查时间是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "9 个工作日"
+        ],
+        "source_ids": [
+          "eval-incident-drills-5"
+        ]
+      },
+      {
+        "turn": 2,
+        "kind": "ellipsis",
+        "question": "那复查轮次呢？",
+        "resolved_question": "星桥复盘跟进的复查轮次是多少？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2 次"
+        ],
+        "source_ids": [
+          "eval-incident-drills-5"
+        ]
+      },
+      {
+        "turn": 3,
+        "kind": "condition_carry",
+        "question": "这个 9 个工作日 从什么时候开始执行？",
+        "resolved_question": "星桥复盘跟进的整改复查时间 9 个工作日 从什么时候开始执行？",
+        "standalone_answerable": false,
+        "expected": "answered",
+        "facts": [
+          "2026 年 9 月 1 日"
+        ],
+        "source_ids": [
+          "eval-incident-drills-5"
+        ],
+        "must_preserve": [
+          "9 个工作日"
+        ]
+      },
+      {
+        "turn": 4,
+        "kind": "topic_shift",
+        "question": "星桥批量导入的每批记录上限是多少？",
+        "resolved_question": "星桥批量导入的每批记录上限是多少？",
+        "standalone_answerable": true,
+        "expected": "answered",
+        "facts": [
+          "240 条"
+        ],
+        "source_ids": [
+          "eval-batch-api-1"
+        ],
+        "must_not_mention": [
+          "复盘跟进"
+        ]
+      }
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "facts located in the cited s3-v2 development documents"
+    }
+  }
+]

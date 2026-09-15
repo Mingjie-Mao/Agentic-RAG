@@ -19,7 +19,7 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "8345a858-fd0d-449a-a17e-c5f0a953130d",
+    "id": "9d9c176d-b9a3-47f7-b8dc-3a18616ddc07",
     "question": "单点登录会话多久无操作会失效？",
     "status": "answered",
     "claims": [
@@ -54,46 +54,94 @@
     ],
     "message": "",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 29,
+        "searchable_documents": 29
+      },
+      "original_question": "单点登录会话多久无操作会失效？",
+      "retrieval_query": "单点登录会话多久无操作会失效？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 934,
+      "context_tokens_estimate": 908,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "723730e0-bb63-539b-b6d1-862f43f4fa00",
+          "rank": 1,
           "title": "单点登录会话规则",
-          "score": 0.771
+          "document_id": "seed-sso-session",
+          "locator_label": "第 1–8 行",
+          "score": 0.771,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
+        },
+        {
+          "chunk_id": "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
+          "rank": 2,
+          "title": "认证错误 E401 排查",
+          "document_id": "seed-token-errors",
+          "locator_label": "第 1–8 行",
+          "score": 0.5137,
+          "bm25_rank": 2,
+          "dense_rank": 8,
+          "fusion_score": 0.030835,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
           "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "rank": 3,
           "title": "Webhook 投递与签名",
-          "score": 0.5565
+          "document_id": "seed-webhook",
+          "locator_label": "第 1–9 行",
+          "score": 0.5565,
+          "bm25_rank": null,
+          "dense_rank": 2,
+          "fusion_score": 0.016129,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
         },
         {
           "chunk_id": "8ed52eef-363a-502f-a4b2-9396e71c1f54",
+          "rank": 4,
           "title": "业务数据保留规则",
-          "score": 0.5504
-        },
-        {
-          "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
-          "title": "支持响应等级表",
-          "score": 0.5476
+          "document_id": "seed-data-retention",
+          "locator_label": "第 1 页",
+          "score": 0.5504,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "fusion_score": 0.015873,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 182.5,
-      "retrieval_ms": 36.5,
-      "generation_ms": 24858.3,
-      "total_ms": 25113.4
+      "embed_ms": 212.5,
+      "retrieval_ms": 62.1,
+      "generation_ms": 23228.2,
+      "total_ms": 23544.1
     },
     "usage": {
-      "prompt_tokens": 1109,
+      "prompt_tokens": 1056,
       "completion_tokens": 53,
-      "model_duration_ms": 24835.5,
+      "model_duration_ms": 23204.1,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

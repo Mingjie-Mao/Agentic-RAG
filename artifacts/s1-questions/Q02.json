@@ -19,7 +19,7 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "ccbb0267-950c-4528-91a6-682431b40432",
+    "id": "f0c16a92-b6ac-44c5-b682-2b96ebd16a71",
     "question": "Python SDK 默认最多重试几次？",
     "status": "answered",
     "claims": [
@@ -54,46 +54,94 @@
     ],
     "message": "",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 29,
+        "searchable_documents": 29
+      },
+      "original_question": "Python SDK 默认最多重试几次？",
+      "retrieval_query": "Python SDK 默认最多重试几次？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 923,
+      "context_tokens_estimate": 908,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "rank": 1,
           "title": "Python SDK 重试配置",
-          "score": 0.7905
+          "document_id": "seed-sdk-retry",
+          "locator_label": "第 1–8 行",
+          "score": 0.7905,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
         },
         {
           "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "rank": 2,
           "title": "API 调用配额说明",
-          "score": 0.5749
+          "document_id": "seed-api-limits",
+          "locator_label": "第 1–9 行",
+          "score": 0.5749,
+          "bm25_rank": 3,
+          "dense_rank": 2,
+          "fusion_score": 0.032002,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
           "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "rank": 3,
           "title": "Webhook 投递与签名",
-          "score": 0.5666
+          "document_id": "seed-webhook",
+          "locator_label": "第 1–9 行",
+          "score": 0.5666,
+          "bm25_rank": 2,
+          "dense_rank": 3,
+          "fusion_score": 0.032002,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
         },
         {
-          "chunk_id": "f5401de6-c2c3-5d2a-a241-e1bc178a3a82",
-          "title": "工单 218：重复回调",
-          "score": 0.5255
+          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+          "rank": 4,
+          "title": "文件上传接口手册",
+          "document_id": "seed-upload-guide",
+          "locator_label": "第 1 页",
+          "score": 0.459,
+          "bm25_rank": 4,
+          "dense_rank": 8,
+          "fusion_score": 0.030331,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 202.8,
-      "retrieval_ms": 77.8,
-      "generation_ms": 23597.7,
-      "total_ms": 23917.4
+      "embed_ms": 212.1,
+      "retrieval_ms": 54.5,
+      "generation_ms": 26002.1,
+      "total_ms": 26325.6
     },
     "usage": {
-      "prompt_tokens": 1136,
-      "completion_tokens": 47,
-      "model_duration_ms": 23575.4,
+      "prompt_tokens": 1100,
+      "completion_tokens": 46,
+      "model_duration_ms": 25976.1,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

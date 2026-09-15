@@ -19,7 +19,7 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "4f64e47b-7fb7-4bd2-8308-bb7b785e45f8",
+    "id": "95641120-5386-42c5-bdb1-9286a1adb198",
     "question": "生产发布需要几名工程师完成代码审查？",
     "status": "answered",
     "claims": [
@@ -54,46 +54,94 @@
     ],
     "message": "",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 21,
+        "searchable_documents": 21
+      },
+      "original_question": "生产发布需要几名工程师完成代码审查？",
+      "retrieval_query": "生产发布需要几名工程师完成代码审查？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 891,
+      "context_tokens_estimate": 915,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+          "rank": 1,
           "title": "生产发布审批规则",
-          "score": 0.7391
+          "document_id": "seed-deploy-review",
+          "locator_label": "第 1–8 行",
+          "score": 0.7391,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
         },
         {
           "chunk_id": "49a2b4e8-d0e1-5ea4-b8f8-acbcb5dcf95a",
+          "rank": 2,
           "title": "发布回滚操作手册",
-          "score": 0.5162
-        },
-        {
-          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
-          "title": "Python SDK 重试配置",
-          "score": 0.5028
+          "document_id": "seed-rollback",
+          "locator_label": "第 1 页",
+          "score": 0.5162,
+          "bm25_rank": 3,
+          "dense_rank": 2,
+          "fusion_score": 0.032002,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
           "chunk_id": "454925a8-bae3-5783-a050-840482386fba",
+          "rank": 3,
           "title": "入职设备申请",
-          "score": 0.4913
+          "document_id": "seed-equipment",
+          "locator_label": "第 1–8 行",
+          "score": 0.4913,
+          "bm25_rank": 4,
+          "dense_rank": 4,
+          "fusion_score": 0.03125,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
+        },
+        {
+          "chunk_id": "da3d04b3-8a44-514e-a37b-82decfaea8eb",
+          "rank": 4,
+          "title": "灰度发布验证口令",
+          "document_id": "seed-release-code",
+          "locator_label": "第 1–8 行",
+          "score": 0.4773,
+          "bm25_rank": 2,
+          "dense_rank": 8,
+          "fusion_score": 0.030835,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 194.3,
-      "retrieval_ms": 35.7,
-      "generation_ms": 20900.6,
-      "total_ms": 21162.7
+      "embed_ms": 267.4,
+      "retrieval_ms": 88.4,
+      "generation_ms": 22466.5,
+      "total_ms": 22959.7
     },
     "usage": {
-      "prompt_tokens": 1000,
+      "prompt_tokens": 991,
       "completion_tokens": 48,
-      "model_duration_ms": 20879.9,
+      "model_duration_ms": 22414.4,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

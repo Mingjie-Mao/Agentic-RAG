@@ -20,7 +20,7 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "12fa50d8-51c7-45ff-8b07-0d46718870d4",
+    "id": "d939ceff-d260-47a5-97df-6430c6b63843",
     "question": "生产数据库的 RPO 和 RTO 分别是多少？",
     "status": "answered",
     "claims": [
@@ -64,46 +64,94 @@
     ],
     "message": "",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 21,
+        "searchable_documents": 21
+      },
+      "original_question": "生产数据库的 RPO 和 RTO 分别是多少？",
+      "retrieval_query": "生产数据库的 RPO 和 RTO 分别是多少？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 914,
+      "context_tokens_estimate": 888,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "55b4f36e-afed-5285-83e0-a1aa3909ee5a",
+          "rank": 1,
           "title": "数据库备份与恢复目标",
-          "score": 0.6794
+          "document_id": "seed-db-backup",
+          "locator_label": "第 1–8 行",
+          "score": 0.6794,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
         },
         {
           "chunk_id": "fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+          "rank": 2,
           "title": "生产发布审批规则",
-          "score": 0.4645
-        },
-        {
-          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
-          "title": "套餐功能对照表",
-          "score": 0.4616
+          "document_id": "seed-deploy-review",
+          "locator_label": "第 1–8 行",
+          "score": 0.4645,
+          "bm25_rank": 3,
+          "dense_rank": 2,
+          "fusion_score": 0.032002,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
           "chunk_id": "bfac905b-f34d-5792-992a-ed9f894f25dc",
+          "rank": 3,
           "title": "本地研发环境配置",
-          "score": 0.4582
+          "document_id": "seed-dev-environment",
+          "locator_label": "第 1–8 行",
+          "score": 0.4582,
+          "bm25_rank": 2,
+          "dense_rank": 4,
+          "fusion_score": 0.031754,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
+        },
+        {
+          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+          "rank": 4,
+          "title": "文件上传接口手册",
+          "document_id": "seed-upload-guide",
+          "locator_label": "第 1 页",
+          "score": 0.4252,
+          "bm25_rank": 6,
+          "dense_rank": 7,
+          "fusion_score": 0.030077,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 162.5,
-      "retrieval_ms": 42.4,
-      "generation_ms": 28038.1,
-      "total_ms": 28271.1
+      "embed_ms": 349.2,
+      "retrieval_ms": 116.7,
+      "generation_ms": 28767.7,
+      "total_ms": 29305.7
     },
     "usage": {
-      "prompt_tokens": 1041,
+      "prompt_tokens": 1008,
       "completion_tokens": 81,
-      "model_duration_ms": 28017.3,
+      "model_duration_ms": 28731.1,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

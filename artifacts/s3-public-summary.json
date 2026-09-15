@@ -1,0 +1,692 @@
+{
+  "config": {
+    "snapshot": "83625bf079f62cc72430e03d3e34855c63e2f25ee8e60c2a86c3b9a0444a5f6c",
+    "dataset": "fixtures/public_subset",
+    "split": "public",
+    "retrievers": [
+      "bm25",
+      "dense",
+      "hybrid"
+    ],
+    "generated": true,
+    "retrieval_depth": 50,
+    "dataset_sha256": {
+      "manifest.json": "65dfbed6ecac9a750fcd48499754e1f253f96b450f62670373e51e91c68acba8",
+      "questions.json": "aa9c43b260e3cc2ceb472785e3a9ce2a27a4105fa723b8c42141c4bc09520682",
+      "selection.json": "7bc05c41388991a6dc38c9cb6b5e6c74f7de90d09b15a161cd586c18c50abb64"
+    },
+    "source_sha256": {
+      "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/chunking.py": "1d1c9166fc299789bb866f4fa1c2840a856545a77bea9dacb6fdea26084d9dc4",
+      "app/clients.py": "fb1e301cbc689fc5717124115d519a30f59c760fdc37e4ab56b50b3c190ef3e3",
+      "app/config.py": "02ac42593c39a0127140cb2cd8b4a8e4ae4d4394ecdb6e5386222ca5441b86c7",
+      "app/db.py": "2abb8e780941f681d9d4a7dce40f3e77e9cba62a040671bf092507c7b27ec437",
+      "app/evaluation.py": "32b3b24104269c5e94806f674afea570b7d496b1381afac9a948cc88a12d7560",
+      "app/ingestion.py": "1a7aaa41b35fad44ec555790ff1ede1f2f565f432dbf3730b245eb8cf4835e05",
+      "app/main.py": "a4754034aeb98375dfcc5ec97ec186e447df2fbe2a194d43da68fc38b3b47ea6",
+      "app/models.py": "0a09bd6523b8484ae478579c5d1c8e6a76ac148f996898c730747031e6e5f4a9",
+      "app/office_parsing.py": "1024cf7268876da02cbd5a5be9f4c15cf5c9939ede020eeda88cfb566d5d545a",
+      "app/parsing.py": "5b2bcdce56775c6102c62639b041891676493d38c240178a3586012842db7fba",
+      "app/pdf_parsing.py": "201cb8df76edadab58c740946f067642348e7bfeb59e6055073af1866eda7ad0",
+      "app/qa.py": "e32992e17eb33e37826f74955263108460b65a5048317c1a8497d80e060bd63a",
+      "app/security.py": "5f9a5e33014f3683ebce98b4e7b7de60697fc2269a8726cb4f99681107db749d",
+      "app/worker.py": "8e570a60dfcf8002120ab2d5f4b32ddf83a1147906f91f99461ee9099a61ef07",
+      "scripts/run_s3_baseline.py": "99ac9c6e0500d9feccc2961c738709912380eba5e1f7f9f540ae48a2f04e6722"
+    },
+    "models": {
+      "embedding": {
+        "name": "bge-m3:567m",
+        "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab"
+      },
+      "generation": {
+        "name": "qwen2.5:7b-instruct",
+        "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+      }
+    },
+    "generation": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 700,
+      "conflict_predict": 200,
+      "prompt": "grounded-v5-conflict-gated"
+    },
+    "pipeline": {
+      "parser": "docling-2.127-office-xml-v2",
+      "chunking": "structure",
+      "chunk_chars": 700,
+      "chunk_overlap": 100,
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000
+    },
+    "evidence_admission": "Top 4 chunks within 5000 estimated tokens, without score cutoff for either retriever; production dense cutoff is not used.",
+    "metric_definition": "Document ranking deduplicated from first 50 retrieved chunks; document Recall@5/10, MRR@10, binary nDCG@10. Gold-free queries excluded from retrieval metric denominators.",
+    "question_ids": [
+      "qst_0001",
+      "qst_0161",
+      "qst_0125",
+      "qst_0147",
+      "qst_0068",
+      "qst_0146",
+      "qst_0140",
+      "qst_0020",
+      "qst_0097",
+      "qst_0127",
+      "qst_0167",
+      "qst_0002",
+      "qst_0075",
+      "qst_0077",
+      "qst_0089",
+      "qst_0103",
+      "qst_0148",
+      "qst_0160",
+      "qst_0074",
+      "qst_0168",
+      "qst_0010",
+      "qst_0052",
+      "qst_0178",
+      "qst_0189",
+      "qst_0243",
+      "qst_0207",
+      "qst_0290",
+      "qst_0261",
+      "qst_0230",
+      "qst_0292",
+      "qst_0180",
+      "qst_0276",
+      "qst_0266",
+      "qst_0192",
+      "qst_0232",
+      "qst_0246",
+      "qst_0339",
+      "qst_0322",
+      "qst_0467"
+    ]
+  },
+  "chunks": 1419,
+  "documents": 139,
+  "results": {
+    "bm25": {
+      "queries": 39,
+      "errors": 0,
+      "recall_at_5": {
+        "mean": 0.8974358974358975,
+        "n": 39
+      },
+      "recall_at_10": {
+        "mean": 0.9743589743589743,
+        "n": 39
+      },
+      "mrr": {
+        "mean": 0.8446886446886447,
+        "n": 39
+      },
+      "ndcg_at_10": {
+        "mean": 0.8750594272086334,
+        "n": 39
+      },
+      "generated": 39,
+      "status_correct": {
+        "count": 33,
+        "n": 39
+      },
+      "literal_fact_coverage": {
+        "matches": 1,
+        "total": 126,
+        "label": "literal normalized matching; not human correctness"
+      },
+      "permission_violations": 0,
+      "semantic_correctness": "not measured; requires human review/calibrated judge",
+      "citation_entailment": "not measured; requires human review/calibrated judge",
+      "latency_seconds": {
+        "p50": 21.387267540674657,
+        "p95": 52.8958237497136
+      },
+      "failure_classes": {
+        "generation_fact_miss": 32,
+        "generation_status_miss": 6,
+        "retrieval_miss": 1
+      },
+      "by_kind": {
+        "basic": {
+          "queries": 22,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.9545454545454546,
+            "n": 22
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 22
+          },
+          "mrr": {
+            "mean": 0.9136363636363637,
+            "n": 22
+          },
+          "ndcg_at_10": {
+            "mean": 0.9341329242482183,
+            "n": 22
+          },
+          "generated": 22,
+          "status_correct": {
+            "count": 19,
+            "n": 22
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 64,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 20.933371666586027,
+            "p95": 29.19667545799166
+          }
+        },
+        "intra_document_reasoning": {
+          "queries": 2,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "generated": 2,
+          "status_correct": {
+            "count": 2,
+            "n": 2
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 6,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 36.82520100008696,
+            "p95": 40.87588845891878
+          }
+        },
+        "miscellaneous": {
+          "queries": 1,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "generated": 1,
+          "status_correct": {
+            "count": 1,
+            "n": 1
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 6,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 26.662211667280644,
+            "p95": 26.662211667280644
+          }
+        },
+        "semantic": {
+          "queries": 14,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.7857142857142857,
+            "n": 14
+          },
+          "recall_at_10": {
+            "mean": 0.9285714285714286,
+            "n": 14
+          },
+          "mrr": {
+            "mean": 0.7030612244897959,
+            "n": 14
+          },
+          "ndcg_at_10": {
+            "mean": 0.755456666262564,
+            "n": 14
+          },
+          "generated": 14,
+          "status_correct": {
+            "count": 11,
+            "n": 14
+          },
+          "literal_fact_coverage": {
+            "matches": 1,
+            "total": 50,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 21.45562820788473,
+            "p95": 87.74604499991983
+          }
+        }
+      },
+      "per_question": "artifacts/s3-public/public-bm25-generated.jsonl"
+    },
+    "dense": {
+      "queries": 39,
+      "errors": 0,
+      "recall_at_5": {
+        "mean": 0.8974358974358975,
+        "n": 39
+      },
+      "recall_at_10": {
+        "mean": 0.9487179487179487,
+        "n": 39
+      },
+      "mrr": {
+        "mean": 0.844973544973545,
+        "n": 39
+      },
+      "ndcg_at_10": {
+        "mean": 0.8695898819729803,
+        "n": 39
+      },
+      "generated": 39,
+      "status_correct": {
+        "count": 29,
+        "n": 39
+      },
+      "literal_fact_coverage": {
+        "matches": 0,
+        "total": 126,
+        "label": "literal normalized matching; not human correctness"
+      },
+      "permission_violations": 0,
+      "semantic_correctness": "not measured; requires human review/calibrated judge",
+      "citation_entailment": "not measured; requires human review/calibrated judge",
+      "latency_seconds": {
+        "p50": 18.14506895793602,
+        "p95": 38.9855141248554
+      },
+      "failure_classes": {
+        "generation_fact_miss": 29,
+        "generation_status_miss": 8,
+        "retrieval_miss": 2
+      },
+      "by_kind": {
+        "basic": {
+          "queries": 22,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.9545454545454546,
+            "n": 22
+          },
+          "recall_at_10": {
+            "mean": 0.9545454545454546,
+            "n": 22
+          },
+          "mrr": {
+            "mean": 0.9090909090909091,
+            "n": 22
+          },
+          "ndcg_at_10": {
+            "mean": 0.9209936139610416,
+            "n": 22
+          },
+          "generated": 22,
+          "status_correct": {
+            "count": 15,
+            "n": 22
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 64,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 17.552767750108615,
+            "p95": 27.29776341607794
+          }
+        },
+        "intra_document_reasoning": {
+          "queries": 2,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "generated": 2,
+          "status_correct": {
+            "count": 2,
+            "n": 2
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 6,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 29.689304916653782,
+            "p95": 30.639299541246146
+          }
+        },
+        "miscellaneous": {
+          "queries": 1,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "generated": 1,
+          "status_correct": {
+            "count": 1,
+            "n": 1
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 6,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 20.05813533393666,
+            "p95": 20.05813533393666
+          }
+        },
+        "semantic": {
+          "queries": 14,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.7857142857142857,
+            "n": 14
+          },
+          "recall_at_10": {
+            "mean": 0.9285714285714286,
+            "n": 14
+          },
+          "mrr": {
+            "mean": 0.7109977324263038,
+            "n": 14
+          },
+          "ndcg_at_10": {
+            "mean": 0.7608675635573796,
+            "n": 14
+          },
+          "generated": 14,
+          "status_correct": {
+            "count": 11,
+            "n": 14
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 50,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 18.292980458354577,
+            "p95": 63.52532874979079
+          }
+        }
+      },
+      "per_question": "artifacts/s3-public/public-dense-generated.jsonl"
+    },
+    "hybrid": {
+      "queries": 39,
+      "errors": 0,
+      "recall_at_5": {
+        "mean": 0.9743589743589743,
+        "n": 39
+      },
+      "recall_at_10": {
+        "mean": 0.9743589743589743,
+        "n": 39
+      },
+      "mrr": {
+        "mean": 0.847008547008547,
+        "n": 39
+      },
+      "ndcg_at_10": {
+        "mean": 0.8795733610829422,
+        "n": 39
+      },
+      "generated": 39,
+      "status_correct": {
+        "count": 33,
+        "n": 39
+      },
+      "literal_fact_coverage": {
+        "matches": 1,
+        "total": 126,
+        "label": "literal normalized matching; not human correctness"
+      },
+      "permission_violations": 0,
+      "semantic_correctness": "not measured; requires human review/calibrated judge",
+      "citation_entailment": "not measured; requires human review/calibrated judge",
+      "latency_seconds": {
+        "p50": 19.056399959139526,
+        "p95": 50.571446834132075
+      },
+      "failure_classes": {
+        "generation_fact_miss": 33,
+        "generation_status_miss": 5,
+        "retrieval_miss": 1
+      },
+      "by_kind": {
+        "basic": {
+          "queries": 22,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 22
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 22
+          },
+          "mrr": {
+            "mean": 0.8863636363636364,
+            "n": 22
+          },
+          "ndcg_at_10": {
+            "mean": 0.9161203985389677,
+            "n": 22
+          },
+          "generated": 22,
+          "status_correct": {
+            "count": 20,
+            "n": 22
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 64,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 18.906900083413348,
+            "p95": 34.56092412490398
+          }
+        },
+        "intra_document_reasoning": {
+          "queries": 2,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 2
+          },
+          "generated": 2,
+          "status_correct": {
+            "count": 2,
+            "n": 2
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 6,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 26.57653612527065,
+            "p95": 29.48737437510863
+          }
+        },
+        "miscellaneous": {
+          "queries": 1,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "generated": 1,
+          "status_correct": {
+            "count": 1,
+            "n": 1
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 6,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 21.767899750266224,
+            "p95": 21.767899750266224
+          }
+        },
+        "semantic": {
+          "queries": 14,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.9285714285714286,
+            "n": 14
+          },
+          "recall_at_10": {
+            "mean": 0.9285714285714286,
+            "n": 14
+          },
+          "mrr": {
+            "mean": 0.7523809523809524,
+            "n": 14
+          },
+          "ndcg_at_10": {
+            "mean": 0.796336593884104,
+            "n": 14
+          },
+          "generated": 14,
+          "status_correct": {
+            "count": 10,
+            "n": 14
+          },
+          "literal_fact_coverage": {
+            "matches": 1,
+            "total": 50,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 17.119373020948842,
+            "p95": 63.55000533303246
+          }
+        }
+      },
+      "per_question": "artifacts/s3-public/public-hybrid-generated.jsonl"
+    }
+  },
+  "state": "complete",
+  "digest": "efde23181710995cc6d12f03f8ebe09a034475d386156d8075a90cd22116bf25"
+}

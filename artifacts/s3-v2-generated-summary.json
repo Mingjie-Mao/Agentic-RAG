@@ -1,0 +1,1140 @@
+{
+  "config": {
+    "snapshot": "192bc89271af4b1f61d6766b9c369e3d5bea7362765736fa20e109812f318fce",
+    "dataset": "fixtures/s3-v2",
+    "split": "development",
+    "retrievers": [
+      "bm25",
+      "dense",
+      "hybrid"
+    ],
+    "generated": true,
+    "retrieval_depth": 50,
+    "dataset_sha256": {
+      "manifest.json": "ae0b341ce6e0476d095f615e5897c7ccd893b97660c0ba2ba7237dd72aa8a1d1",
+      "questions.json": "a0605575523541c0f7f542e20dac716489f3a0b48e5418804ca0953daa4ee979",
+      "split.json": "0b6fc6be50fa940f1ae75ad492e9f2aca7df9b8d2851c2c04de1968c722b0cf8",
+      "freeze.json": "7870693a96d917b7ba29fdf117610d71be05211cfb2d5b27e3d0ab88cb29eabb"
+    },
+    "source_sha256": {
+      "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/chunking.py": "1d1c9166fc299789bb866f4fa1c2840a856545a77bea9dacb6fdea26084d9dc4",
+      "app/clients.py": "fb1e301cbc689fc5717124115d519a30f59c760fdc37e4ab56b50b3c190ef3e3",
+      "app/config.py": "7f1950a98bcc991aa7df9e772c578b7e817d3ad4bc6638ccf4fed3608db5f10a",
+      "app/db.py": "2abb8e780941f681d9d4a7dce40f3e77e9cba62a040671bf092507c7b27ec437",
+      "app/evaluation.py": "32b3b24104269c5e94806f674afea570b7d496b1381afac9a948cc88a12d7560",
+      "app/ingestion.py": "1a7aaa41b35fad44ec555790ff1ede1f2f565f432dbf3730b245eb8cf4835e05",
+      "app/main.py": "a4754034aeb98375dfcc5ec97ec186e447df2fbe2a194d43da68fc38b3b47ea6",
+      "app/models.py": "0a09bd6523b8484ae478579c5d1c8e6a76ac148f996898c730747031e6e5f4a9",
+      "app/office_parsing.py": "1024cf7268876da02cbd5a5be9f4c15cf5c9939ede020eeda88cfb566d5d545a",
+      "app/parsing.py": "5b2bcdce56775c6102c62639b041891676493d38c240178a3586012842db7fba",
+      "app/pdf_parsing.py": "201cb8df76edadab58c740946f067642348e7bfeb59e6055073af1866eda7ad0",
+      "app/qa.py": "e32992e17eb33e37826f74955263108460b65a5048317c1a8497d80e060bd63a",
+      "app/security.py": "5f9a5e33014f3683ebce98b4e7b7de60697fc2269a8726cb4f99681107db749d",
+      "app/worker.py": "8e570a60dfcf8002120ab2d5f4b32ddf83a1147906f91f99461ee9099a61ef07",
+      "scripts/run_s3_baseline.py": "9c548cbf372e9b45d21576beabf6b625dcbc5c1153c9676d7841cda7d88bb60e"
+    },
+    "models": {
+      "embedding": {
+        "name": "bge-m3:567m",
+        "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab"
+      },
+      "generation": {
+        "name": "qwen2.5:7b-instruct",
+        "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+      }
+    },
+    "generation": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 700,
+      "conflict_predict": 200,
+      "prompt": "grounded-v5-conflict-gated"
+    },
+    "pipeline": {
+      "parser": "docling-2.127-office-xml-v2",
+      "chunking": "structure",
+      "chunk_chars": 700,
+      "chunk_overlap": 100,
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000
+    },
+    "evidence_admission": "Top 4 chunks within 5000 estimated tokens, without score cutoff for either retriever; production dense cutoff is not used.",
+    "metric_definition": "Document ranking deduplicated from first 50 retrieved chunks; document Recall@5/10, MRR@10, binary nDCG@10. Gold-free queries excluded from retrieval metric denominators.",
+    "question_ids": [
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04",
+      "Q05",
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q11",
+      "Q12",
+      "Q13",
+      "Q14",
+      "Q15",
+      "Q16",
+      "Q17",
+      "Q18",
+      "Q19",
+      "Q20",
+      "Q021",
+      "Q022",
+      "Q023",
+      "Q024",
+      "Q025",
+      "Q026",
+      "Q027",
+      "Q028",
+      "Q029",
+      "Q030",
+      "Q031",
+      "Q032",
+      "Q033",
+      "Q034",
+      "Q035",
+      "Q036",
+      "Q037",
+      "Q038",
+      "Q039",
+      "Q040",
+      "Q041",
+      "Q042",
+      "Q043",
+      "Q044",
+      "Q045",
+      "Q046",
+      "Q047",
+      "Q048",
+      "Q049",
+      "Q050",
+      "Q051",
+      "Q052",
+      "Q053",
+      "Q054",
+      "Q055",
+      "Q056",
+      "Q057",
+      "Q058",
+      "Q059",
+      "Q060",
+      "Q061",
+      "Q062",
+      "Q063",
+      "Q064",
+      "Q065",
+      "Q066",
+      "Q067",
+      "Q068",
+      "Q069",
+      "Q070",
+      "Q071",
+      "Q072",
+      "Q073",
+      "Q074",
+      "Q075",
+      "Q076",
+      "Q077",
+      "Q078",
+      "Q079",
+      "Q080",
+      "Q081",
+      "Q082",
+      "Q083",
+      "Q084",
+      "Q085",
+      "Q086",
+      "Q087",
+      "Q088",
+      "Q089",
+      "Q090",
+      "Q091",
+      "Q092",
+      "Q093",
+      "Q094",
+      "Q095",
+      "Q096",
+      "Q097",
+      "Q098",
+      "Q099",
+      "Q100",
+      "Q101",
+      "Q102",
+      "Q103",
+      "Q104",
+      "Q105",
+      "Q106",
+      "Q107",
+      "Q108",
+      "Q109",
+      "Q110",
+      "Q111",
+      "Q112",
+      "Q113",
+      "Q114",
+      "Q115",
+      "Q116",
+      "Q117",
+      "Q118",
+      "Q119",
+      "Q120",
+      "Q201",
+      "Q202",
+      "Q203",
+      "Q204",
+      "Q205",
+      "Q206",
+      "Q207",
+      "Q208",
+      "Q209",
+      "Q210",
+      "Q211",
+      "Q212",
+      "Q213",
+      "Q214",
+      "Q215",
+      "Q216",
+      "Q217",
+      "Q218",
+      "Q219",
+      "Q220",
+      "Q221",
+      "Q222",
+      "Q223",
+      "Q224",
+      "Q225",
+      "Q226",
+      "Q227"
+    ]
+  },
+  "chunks": 918,
+  "documents": 165,
+  "results": {
+    "bm25": {
+      "queries": 147,
+      "errors": 0,
+      "recall_at_5": {
+        "mean": 0.9838709677419355,
+        "n": 124
+      },
+      "recall_at_10": {
+        "mean": 0.9919354838709677,
+        "n": 124
+      },
+      "mrr": {
+        "mean": 0.9274193548387096,
+        "n": 124
+      },
+      "ndcg_at_10": {
+        "mean": 0.943573700199061,
+        "n": 124
+      },
+      "generated": 147,
+      "status_correct": {
+        "count": 124,
+        "n": 147
+      },
+      "literal_fact_coverage": {
+        "matches": 132,
+        "total": 156,
+        "label": "literal normalized matching; not human correctness"
+      },
+      "permission_violations": 0,
+      "semantic_correctness": "not measured; requires human review/calibrated judge",
+      "citation_entailment": "not measured; requires human review/calibrated judge",
+      "latency_seconds": {
+        "p50": 18.080475499853492,
+        "p95": 40.06227400014177
+      },
+      "failure_classes": {
+        "false_answer": 3,
+        "generation_fact_miss": 4,
+        "generation_status_miss": 19,
+        "ok": 120,
+        "retrieval_miss": 1
+      },
+      "by_kind": {
+        "conflict": {
+          "queries": 13,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "generated": 13,
+          "status_correct": {
+            "count": 10,
+            "n": 13
+          },
+          "literal_fact_coverage": {
+            "matches": 25,
+            "total": 28,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 35.198092124890536,
+            "p95": 59.09165087481961
+          }
+        },
+        "conflict_lookalike": {
+          "queries": 9,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 9
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 9
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 9
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 9
+          },
+          "generated": 9,
+          "status_correct": {
+            "count": 9,
+            "n": 9
+          },
+          "literal_fact_coverage": {
+            "matches": 12,
+            "total": 12,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 19.617200208362192,
+            "p95": 32.21557083306834
+          }
+        },
+        "conflict_lookalike_cross": {
+          "queries": 6,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 6
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 6
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 6
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 6
+          },
+          "generated": 6,
+          "status_correct": {
+            "count": 6,
+            "n": 6
+          },
+          "literal_fact_coverage": {
+            "matches": 6,
+            "total": 6,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 20.96552262478508,
+            "p95": 27.15422270866111
+          }
+        },
+        "lookup": {
+          "queries": 86,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.9767441860465116,
+            "n": 86
+          },
+          "recall_at_10": {
+            "mean": 0.9883720930232558,
+            "n": 86
+          },
+          "mrr": {
+            "mean": 0.8953488372093024,
+            "n": 86
+          },
+          "ndcg_at_10": {
+            "mean": 0.9186411491242275,
+            "n": 86
+          },
+          "generated": 86,
+          "status_correct": {
+            "count": 69,
+            "n": 86
+          },
+          "literal_fact_coverage": {
+            "matches": 72,
+            "total": 90,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 17.729549437994137,
+            "p95": 27.884449209086597
+          }
+        },
+        "multi_document": {
+          "queries": 10,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "generated": 10,
+          "status_correct": {
+            "count": 10,
+            "n": 10
+          },
+          "literal_fact_coverage": {
+            "matches": 17,
+            "total": 20,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 38.620070207864046,
+            "p95": 47.57785570807755
+          }
+        },
+        "permission": {
+          "queries": 12,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "generated": 12,
+          "status_correct": {
+            "count": 9,
+            "n": 12
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 0,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 13.948738124920055,
+            "p95": 40.06227400014177
+          }
+        },
+        "unanswerable": {
+          "queries": 11,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "generated": 11,
+          "status_correct": {
+            "count": 11,
+            "n": 11
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 0,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 13.242093208711594,
+            "p95": 23.5202374169603
+          }
+        }
+      },
+      "per_question": "artifacts/s3-v2-generated/development-bm25-generated.jsonl"
+    },
+    "dense": {
+      "queries": 147,
+      "errors": 0,
+      "recall_at_5": {
+        "mean": 0.9032258064516129,
+        "n": 124
+      },
+      "recall_at_10": {
+        "mean": 0.9354838709677419,
+        "n": 124
+      },
+      "mrr": {
+        "mean": 0.8395257296466975,
+        "n": 124
+      },
+      "ndcg_at_10": {
+        "mean": 0.8610953512739661,
+        "n": 124
+      },
+      "generated": 147,
+      "status_correct": {
+        "count": 125,
+        "n": 147
+      },
+      "literal_fact_coverage": {
+        "matches": 128,
+        "total": 156,
+        "label": "literal normalized matching; not human correctness"
+      },
+      "permission_violations": 0,
+      "semantic_correctness": "not measured; requires human review/calibrated judge",
+      "citation_entailment": "not measured; requires human review/calibrated judge",
+      "latency_seconds": {
+        "p50": 26.799451374914497,
+        "p95": 59.76018979214132
+      },
+      "failure_classes": {
+        "false_answer": 1,
+        "generation_fact_miss": 6,
+        "generation_status_miss": 15,
+        "ok": 117,
+        "retrieval_miss": 8
+      },
+      "by_kind": {
+        "conflict": {
+          "queries": 13,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "generated": 13,
+          "status_correct": {
+            "count": 9,
+            "n": 13
+          },
+          "literal_fact_coverage": {
+            "matches": 25,
+            "total": 28,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 40.059623166918755,
+            "p95": 64.85094274999574
+          }
+        },
+        "conflict_lookalike": {
+          "queries": 9,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 9
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 9
+          },
+          "mrr": {
+            "mean": 0.8888888888888888,
+            "n": 9
+          },
+          "ndcg_at_10": {
+            "mean": 0.9179843896825461,
+            "n": 9
+          },
+          "generated": 9,
+          "status_correct": {
+            "count": 8,
+            "n": 9
+          },
+          "literal_fact_coverage": {
+            "matches": 11,
+            "total": 12,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 21.107419167179614,
+            "p95": 39.526330791879445
+          }
+        },
+        "conflict_lookalike_cross": {
+          "queries": 6,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.6666666666666666,
+            "n": 6
+          },
+          "recall_at_10": {
+            "mean": 0.8333333333333334,
+            "n": 6
+          },
+          "mrr": {
+            "mean": 0.5208333333333334,
+            "n": 6
+          },
+          "ndcg_at_10": {
+            "mean": 0.596220730654774,
+            "n": 6
+          },
+          "generated": 6,
+          "status_correct": {
+            "count": 5,
+            "n": 6
+          },
+          "literal_fact_coverage": {
+            "matches": 4,
+            "total": 6,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 16.18971835449338,
+            "p95": 36.75866016699001
+          }
+        },
+        "lookup": {
+          "queries": 86,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.8953488372093024,
+            "n": 86
+          },
+          "recall_at_10": {
+            "mean": 0.9186046511627907,
+            "n": 86
+          },
+          "mrr": {
+            "mean": 0.8272425249169435,
+            "n": 86
+          },
+          "ndcg_at_10": {
+            "mean": 0.8500703348307157,
+            "n": 86
+          },
+          "generated": 86,
+          "status_correct": {
+            "count": 71,
+            "n": 86
+          },
+          "literal_fact_coverage": {
+            "matches": 70,
+            "total": 90,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 26.895360687049106,
+            "p95": 51.270004250109196
+          }
+        },
+        "multi_document": {
+          "queries": 10,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.9,
+            "n": 10
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "mrr": {
+            "mean": 0.8833333333333334,
+            "n": 10
+          },
+          "ndcg_at_10": {
+            "mean": 0.8830590871458673,
+            "n": 10
+          },
+          "generated": 10,
+          "status_correct": {
+            "count": 10,
+            "n": 10
+          },
+          "literal_fact_coverage": {
+            "matches": 18,
+            "total": 20,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 56.449367228895426,
+            "p95": 62.88955737510696
+          }
+        },
+        "permission": {
+          "queries": 12,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "generated": 12,
+          "status_correct": {
+            "count": 11,
+            "n": 12
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 0,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 17.852034896146506,
+            "p95": 27.134995291940868
+          }
+        },
+        "unanswerable": {
+          "queries": 11,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "generated": 11,
+          "status_correct": {
+            "count": 11,
+            "n": 11
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 0,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 17.40761712472886,
+            "p95": 28.163006542250514
+          }
+        }
+      },
+      "per_question": "artifacts/s3-v2-generated/development-dense-generated.jsonl"
+    },
+    "hybrid": {
+      "queries": 147,
+      "errors": 0,
+      "recall_at_5": {
+        "mean": 0.9354838709677419,
+        "n": 124
+      },
+      "recall_at_10": {
+        "mean": 0.9758064516129032,
+        "n": 124
+      },
+      "mrr": {
+        "mean": 0.9003360215053763,
+        "n": 124
+      },
+      "ndcg_at_10": {
+        "mean": 0.9184629543865308,
+        "n": 124
+      },
+      "generated": 147,
+      "status_correct": {
+        "count": 131,
+        "n": 147
+      },
+      "literal_fact_coverage": {
+        "matches": 139,
+        "total": 156,
+        "label": "literal normalized matching; not human correctness"
+      },
+      "permission_violations": 0,
+      "semantic_correctness": "not measured; requires human review/calibrated judge",
+      "citation_entailment": "not measured; requires human review/calibrated judge",
+      "latency_seconds": {
+        "p50": 24.45012629078701,
+        "p95": 45.6752897920087
+      },
+      "failure_classes": {
+        "false_answer": 2,
+        "generation_fact_miss": 2,
+        "generation_status_miss": 12,
+        "ok": 128,
+        "retrieval_miss": 3
+      },
+      "by_kind": {
+        "conflict": {
+          "queries": 13,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 13
+          },
+          "generated": 13,
+          "status_correct": {
+            "count": 11,
+            "n": 13
+          },
+          "literal_fact_coverage": {
+            "matches": 26,
+            "total": 28,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 37.40926079219207,
+            "p95": 57.06275537516922
+          }
+        },
+        "conflict_lookalike": {
+          "queries": 9,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 9
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 9
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 9
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 9
+          },
+          "generated": 9,
+          "status_correct": {
+            "count": 8,
+            "n": 9
+          },
+          "literal_fact_coverage": {
+            "matches": 11,
+            "total": 12,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 23.863521583378315,
+            "p95": 25.615874416660517
+          }
+        },
+        "conflict_lookalike_cross": {
+          "queries": 6,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.8333333333333334,
+            "n": 6
+          },
+          "recall_at_10": {
+            "mean": 0.8333333333333334,
+            "n": 6
+          },
+          "mrr": {
+            "mean": 0.8333333333333334,
+            "n": 6
+          },
+          "ndcg_at_10": {
+            "mean": 0.8333333333333334,
+            "n": 6
+          },
+          "generated": 6,
+          "status_correct": {
+            "count": 6,
+            "n": 6
+          },
+          "literal_fact_coverage": {
+            "matches": 5,
+            "total": 6,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 18.338829604443163,
+            "p95": 26.717454875353724
+          }
+        },
+        "lookup": {
+          "queries": 86,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 0.9186046511627907,
+            "n": 86
+          },
+          "recall_at_10": {
+            "mean": 0.9767441860465116,
+            "n": 86
+          },
+          "mrr": {
+            "mean": 0.8679263565891473,
+            "n": 86
+          },
+          "ndcg_at_10": {
+            "mean": 0.8940628644643003,
+            "n": 86
+          },
+          "generated": 86,
+          "status_correct": {
+            "count": 75,
+            "n": 86
+          },
+          "literal_fact_coverage": {
+            "matches": 77,
+            "total": 90,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 24.06725045782514,
+            "p95": 34.80684829084203
+          }
+        },
+        "multi_document": {
+          "queries": 10,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "generated": 10,
+          "status_correct": {
+            "count": 10,
+            "n": 10
+          },
+          "literal_fact_coverage": {
+            "matches": 20,
+            "total": 20,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 37.90822118753567,
+            "p95": 61.57082816725597
+          }
+        },
+        "permission": {
+          "queries": 12,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "generated": 12,
+          "status_correct": {
+            "count": 10,
+            "n": 12
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 0,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 15.114448292413726,
+            "p95": 49.72907620901242
+          }
+        },
+        "unanswerable": {
+          "queries": 11,
+          "errors": 0,
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "generated": 11,
+          "status_correct": {
+            "count": 11,
+            "n": 11
+          },
+          "literal_fact_coverage": {
+            "matches": 0,
+            "total": 0,
+            "label": "literal normalized matching; not human correctness"
+          },
+          "permission_violations": 0,
+          "semantic_correctness": "not measured; requires human review/calibrated judge",
+          "citation_entailment": "not measured; requires human review/calibrated judge",
+          "latency_seconds": {
+            "p50": 11.105613958090544,
+            "p95": 42.350305874831975
+          }
+        }
+      },
+      "per_question": "artifacts/s3-v2-generated/development-hybrid-generated.jsonl"
+    }
+  },
+  "state": "complete",
+  "digest": "3d2b5b18dd47d6ed1a514ecb2764b27fb317acf4a86cc8e24500a201277bae8c"
+}

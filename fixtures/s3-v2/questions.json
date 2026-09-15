@@ -1,0 +1,4638 @@
+[
+  {
+    "id": "Q01",
+    "user": "xq-support",
+    "question": "星桥标准套餐每分钟可以调用多少次 API？",
+    "expected": "answered",
+    "facts": [
+      "120"
+    ],
+    "sources": [
+      "api-limits"
+    ],
+    "split": "development",
+    "family": "api",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-api-limits"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q02",
+    "user": "xq-support",
+    "question": "Python SDK 默认最多重试几次？",
+    "expected": "answered",
+    "facts": [
+      "3"
+    ],
+    "sources": [
+      "sdk-retry"
+    ],
+    "split": "development",
+    "family": "sdk",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-sdk-retry"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q03",
+    "user": "xq-support",
+    "question": "星桥产品上传接口单个文件的大小上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "20",
+      "MB"
+    ],
+    "sources": [
+      "upload-guide"
+    ],
+    "split": "development",
+    "family": "files",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-upload-guide"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q04",
+    "user": "xq-support",
+    "question": "标准套餐的业务事件日志保留多久？",
+    "expected": "answered",
+    "facts": [
+      "90"
+    ],
+    "sources": [
+      "data-retention"
+    ],
+    "split": "development",
+    "family": "retention",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-data-retention"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q05",
+    "user": "xq-support",
+    "question": "Webhook 投递失败最多重试几次？",
+    "expected": "answered",
+    "facts": [
+      "5"
+    ],
+    "sources": [
+      "webhook"
+    ],
+    "split": "development",
+    "family": "webhook",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-webhook"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q06",
+    "user": "xq-support",
+    "question": "错误 E401 表示什么，应该怎么处理？",
+    "expected": "answered",
+    "facts": [
+      "过期",
+      "刷新"
+    ],
+    "sources": [
+      "token-errors"
+    ],
+    "split": "development",
+    "family": "auth",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-token-errors"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q07",
+    "user": "xq-support",
+    "question": "单点登录会话多久无操作会失效？",
+    "expected": "answered",
+    "facts": [
+      "30"
+    ],
+    "sources": [
+      "sso-session"
+    ],
+    "split": "development",
+    "family": "auth",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-sso-session"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q08",
+    "user": "xq-support",
+    "question": "2026 年悉尼出差的酒店每晚报销上限是多少澳元？",
+    "expected": "answered",
+    "facts": [
+      "250"
+    ],
+    "sources": [
+      "travel-2026"
+    ],
+    "split": "development",
+    "family": "travel",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-travel-2026"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q09",
+    "user": "xq-support",
+    "question": "连续 3 天年假应该提前多久申请？",
+    "expected": "answered",
+    "facts": [
+      "5"
+    ],
+    "sources": [
+      "leave"
+    ],
+    "split": "development",
+    "family": "people",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-leave"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q10",
+    "user": "xq-support",
+    "question": "P1 服务不可用工单要求多久首次响应？",
+    "expected": "answered",
+    "facts": [
+      "15"
+    ],
+    "sources": [
+      "support-sla"
+    ],
+    "split": "development",
+    "family": "support",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-support-sla"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q11",
+    "user": "xq-support",
+    "question": "确认 SEV1 事故后多久通知值班负责人？",
+    "expected": "answered",
+    "facts": [
+      "10"
+    ],
+    "sources": [
+      "support-escalate"
+    ],
+    "split": "development",
+    "family": "support",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-support-escalate"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q12",
+    "user": "xq-engineer",
+    "question": "生产发布需要几名工程师完成代码审查？",
+    "expected": "answered",
+    "facts": [
+      "2"
+    ],
+    "sources": [
+      "deploy-review"
+    ],
+    "split": "development",
+    "family": "release",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-deploy-review"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q13",
+    "user": "xq-engineer",
+    "question": "生产数据库的 RPO 和 RTO 分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "15",
+      "60"
+    ],
+    "sources": [
+      "db-backup"
+    ],
+    "split": "development",
+    "family": "recovery",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-db-backup"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q14",
+    "user": "xq-support",
+    "question": "数据导出的下载链接有效期是多久？",
+    "expected": "answered",
+    "facts": [
+      "24"
+    ],
+    "sources": [
+      "export"
+    ],
+    "split": "development",
+    "family": "files",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-export"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q15",
+    "user": "xq-support",
+    "question": "团队版支持多少成员，每日可以导出多少次？",
+    "expected": "answered",
+    "facts": [
+      "100",
+      "30"
+    ],
+    "sources": [
+      "plan-comparison"
+    ],
+    "split": "development",
+    "family": "plans",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-plan-comparison"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q16",
+    "user": "xq-support",
+    "question": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+    "expected": "conflict",
+    "facts": [
+      "09:00",
+      "18:00",
+      "08:00",
+      "20:00"
+    ],
+    "sources": [
+      "pilot-a",
+      "pilot-b"
+    ],
+    "split": "development",
+    "family": "pilot-conflict",
+    "kind": "conflict",
+    "source_ids": [
+      "seed-pilot-a",
+      "seed-pilot-b"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q17",
+    "user": "xq-support",
+    "question": "公司去火星出差的补贴是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "sources": [],
+    "split": "development",
+    "family": "s0-negative",
+    "kind": "unanswerable",
+    "source_ids": [],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q18",
+    "user": "xq-support",
+    "question": "工程组灰度发布验证口令是什么？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "sources": [],
+    "forbidden": [
+      "ORCHID-7319"
+    ],
+    "split": "development",
+    "family": "s0-negative",
+    "kind": "permission",
+    "source_ids": [],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    },
+    "hidden_source_ids": [
+      "seed-release-code"
+    ],
+    "hidden_facts": [
+      "ORCHID-7319"
+    ]
+  },
+  {
+    "id": "Q19",
+    "user": "hc-admin",
+    "question": "海川工作室业务日志保留多久？",
+    "expected": "answered",
+    "facts": [
+      "45"
+    ],
+    "sources": [
+      "hc-retention"
+    ],
+    "split": "development",
+    "family": "hc-retention",
+    "kind": "lookup",
+    "source_ids": [
+      "seed-hc-retention"
+    ],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    }
+  },
+  {
+    "id": "Q20",
+    "user": "xq-engineer",
+    "question": "海川工作室的网关测试标记是什么？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "sources": [],
+    "forbidden": [
+      "CORAL-4826"
+    ],
+    "split": "development",
+    "family": "s0-negative",
+    "kind": "permission",
+    "source_ids": [],
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "S0 source audit"
+    },
+    "hidden_source_ids": [
+      "seed-hc-gateway"
+    ],
+    "hidden_facts": [
+      "CORAL-4826"
+    ]
+  },
+  {
+    "id": "Q021",
+    "user": "xq-engineer",
+    "question": "星桥：客户一次推送整批订单，每个请求最多可以放多少条记录？",
+    "expected": "answered",
+    "facts": [
+      "240 条"
+    ],
+    "source_ids": [
+      "eval-batch-api-1"
+    ],
+    "split": "development",
+    "family": "batch-api",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q022",
+    "user": "xq-engineer",
+    "question": "星桥批量导入的请求超时是多少？",
+    "expected": "answered",
+    "facts": [
+      "35 秒"
+    ],
+    "source_ids": [
+      "eval-batch-api-1"
+    ],
+    "split": "development",
+    "family": "batch-api",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q023",
+    "user": "xq-engineer",
+    "question": "星桥：提交后台作业后，客户端隔多久查一次执行进度？",
+    "expected": "answered",
+    "facts": [
+      "6 秒"
+    ],
+    "source_ids": [
+      "eval-batch-api-2"
+    ],
+    "split": "development",
+    "family": "batch-api",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q024",
+    "user": "xq-engineer",
+    "question": "星桥异步任务的结果保留是多少？",
+    "expected": "answered",
+    "facts": [
+      "36 小时"
+    ],
+    "source_ids": [
+      "eval-batch-api-2"
+    ],
+    "split": "development",
+    "family": "batch-api",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q025",
+    "user": "xq-engineer",
+    "question": "星桥：从队列里领取待处理消息时，一次取多少条？",
+    "expected": "answered",
+    "facts": [
+      "80 条"
+    ],
+    "source_ids": [
+      "eval-batch-api-3"
+    ],
+    "split": "development",
+    "family": "batch-api",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q026",
+    "user": "xq-support",
+    "question": "星桥消息队列的可见性超时是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "batch-api",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-batch-api-3"
+    ],
+    "hidden_facts": [
+      "75 秒"
+    ]
+  },
+  {
+    "id": "Q027",
+    "user": "xq-engineer",
+    "question": "星桥：调用方和服务端的时钟最多可以相差多久才不影响验签？",
+    "expected": "answered",
+    "facts": [
+      "120 秒"
+    ],
+    "source_ids": [
+      "eval-batch-api-4"
+    ],
+    "split": "development",
+    "family": "batch-api",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q028",
+    "user": "xq-engineer",
+    "question": "星桥接口签名在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "batch-api",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q029",
+    "user": "xq-engineer",
+    "question": "星桥：一批文件同时送来，后台最多能一起处理几个？",
+    "expected": "answered",
+    "facts": [
+      "7 个"
+    ],
+    "source_ids": [
+      "eval-batch-api-5"
+    ],
+    "split": "development",
+    "family": "batch-api",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q030",
+    "user": "xq-engineer",
+    "question": "请对照星桥的接口签名和附件处理：前者的时间戳偏差、后者的排队时限分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "120 秒",
+      "18 分钟"
+    ],
+    "source_ids": [
+      "eval-batch-api-4",
+      "eval-batch-api-5"
+    ],
+    "split": "development",
+    "family": "batch-api",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q031",
+    "user": "xq-engineer",
+    "question": "星桥：监控曲线上相邻两次数据采集通常间隔多久？",
+    "expected": "answered",
+    "facts": [
+      "20 秒"
+    ],
+    "source_ids": [
+      "eval-observability-1"
+    ],
+    "split": "development",
+    "family": "observability",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q032",
+    "user": "xq-engineer",
+    "question": "星桥指标采集的保留窗口是多少？",
+    "expected": "answered",
+    "facts": [
+      "21 天"
+    ],
+    "source_ids": [
+      "eval-observability-1"
+    ],
+    "split": "development",
+    "family": "observability",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q033",
+    "user": "xq-engineer",
+    "question": "星桥：同一故障重复发通知，暂时不再提醒的窗口有多长？",
+    "expected": "answered",
+    "facts": [
+      "12 分钟"
+    ],
+    "source_ids": [
+      "eval-observability-2"
+    ],
+    "split": "development",
+    "family": "observability",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q034",
+    "user": "xq-engineer",
+    "question": "星桥告警抑制的连续触发次数是多少？",
+    "expected": "answered",
+    "facts": [
+      "4 次"
+    ],
+    "source_ids": [
+      "eval-observability-2"
+    ],
+    "split": "development",
+    "family": "observability",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q035",
+    "user": "xq-engineer",
+    "question": "星桥：不是每个请求都保存调用链，默认保留的比例是多少？",
+    "expected": "answered",
+    "facts": [
+      "12%"
+    ],
+    "source_ids": [
+      "eval-observability-3"
+    ],
+    "split": "development",
+    "family": "observability",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q036",
+    "user": "xq-support",
+    "question": "星桥链路追踪的慢请求阈值是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "observability",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-observability-3"
+    ],
+    "hidden_facts": [
+      "1800 毫秒"
+    ]
+  },
+  {
+    "id": "Q037",
+    "user": "xq-engineer",
+    "question": "星桥：故障明细列表多久自动更新一次？",
+    "expected": "answered",
+    "facts": [
+      "45 秒"
+    ],
+    "source_ids": [
+      "eval-observability-4"
+    ],
+    "split": "development",
+    "family": "observability",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q038",
+    "user": "xq-engineer",
+    "question": "星桥错误面板在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "observability",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q039",
+    "user": "xq-engineer",
+    "question": "星桥：排查历史故障时，一次搜索最多能跨多少天的日志？",
+    "expected": "answered",
+    "facts": [
+      "14 天"
+    ],
+    "source_ids": [
+      "eval-observability-5"
+    ],
+    "split": "development",
+    "family": "observability",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q040",
+    "user": "xq-engineer",
+    "question": "请对照星桥的错误面板和日志检索：前者的刷新周期、后者的单次结果上限分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "45 秒",
+      "600 条"
+    ],
+    "source_ids": [
+      "eval-observability-4",
+      "eval-observability-5"
+    ],
+    "split": "development",
+    "family": "observability",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q041",
+    "user": "xq-engineer",
+    "question": "星桥：准备先让小部分用户用新版本，第一批应分配多少流量？",
+    "expected": "answered",
+    "facts": [
+      "8%"
+    ],
+    "source_ids": [
+      "eval-deployment-controls-1"
+    ],
+    "split": "development",
+    "family": "deployment-controls",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q042",
+    "user": "xq-engineer",
+    "question": "星桥金丝雀发布的观察窗口是多少？",
+    "expected": "answered",
+    "facts": [
+      "25 分钟"
+    ],
+    "source_ids": [
+      "eval-deployment-controls-1"
+    ],
+    "split": "development",
+    "family": "deployment-controls",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q043",
+    "user": "xq-engineer",
+    "question": "星桥：发布镜像所用的制品签名能够有效多久？",
+    "expected": "answered",
+    "facts": [
+      "150 天"
+    ],
+    "source_ids": [
+      "eval-deployment-controls-2"
+    ],
+    "split": "development",
+    "family": "deployment-controls",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q044",
+    "user": "xq-engineer",
+    "question": "星桥制品签名的复核人数是多少？",
+    "expected": "answered",
+    "facts": [
+      "3 人"
+    ],
+    "source_ids": [
+      "eval-deployment-controls-2"
+    ],
+    "split": "development",
+    "family": "deployment-controls",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q045",
+    "user": "xq-engineer",
+    "question": "星桥：想在维护时段做改动，至少要提前多久提交申请？",
+    "expected": "answered",
+    "facts": [
+      "6 小时"
+    ],
+    "source_ids": [
+      "eval-deployment-controls-3"
+    ],
+    "split": "development",
+    "family": "deployment-controls",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q046",
+    "user": "xq-support",
+    "question": "星桥变更窗口的窗口长度是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "deployment-controls",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-deployment-controls-3"
+    ],
+    "hidden_facts": [
+      "90 分钟"
+    ]
+  },
+  {
+    "id": "Q047",
+    "user": "xq-engineer",
+    "question": "星桥：执行数据库结构迁移，等待迁移锁的时限是多少？",
+    "expected": "answered",
+    "facts": [
+      "40 秒"
+    ],
+    "source_ids": [
+      "eval-deployment-controls-4"
+    ],
+    "split": "development",
+    "family": "deployment-controls",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q048",
+    "user": "xq-engineer",
+    "question": "星桥数据库变更在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "deployment-controls",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q049",
+    "user": "xq-engineer",
+    "question": "星桥：功能开关按用户做灰度时，最多能圈入多少人？",
+    "expected": "answered",
+    "facts": [
+      "300 人"
+    ],
+    "source_ids": [
+      "eval-deployment-controls-5"
+    ],
+    "split": "development",
+    "family": "deployment-controls",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q050",
+    "user": "xq-engineer",
+    "question": "请对照星桥的数据库变更和配置开关：前者的迁移锁时限、后者的自动过期时间分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "40 秒",
+      "72 小时"
+    ],
+    "source_ids": [
+      "eval-deployment-controls-4",
+      "eval-deployment-controls-5"
+    ],
+    "split": "development",
+    "family": "deployment-controls",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q051",
+    "user": "xq-support",
+    "question": "星桥：新客服请求进了公共池，系统应在多久内把它分给处理人？",
+    "expected": "answered",
+    "facts": [
+      "7 分钟"
+    ],
+    "source_ids": [
+      "eval-support-workflow-1"
+    ],
+    "split": "development",
+    "family": "support-workflow",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q052",
+    "user": "xq-support",
+    "question": "星桥工单分派的每人待办上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "18 单"
+    ],
+    "source_ids": [
+      "eval-support-workflow-1"
+    ],
+    "split": "development",
+    "family": "support-workflow",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q053",
+    "user": "xq-support",
+    "question": "星桥：客户问题关单后，要过多久进行回访？",
+    "expected": "answered",
+    "facts": [
+      "3 个工作日"
+    ],
+    "source_ids": [
+      "eval-support-workflow-2"
+    ],
+    "split": "development",
+    "family": "support-workflow",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q054",
+    "user": "xq-support",
+    "question": "星桥客户回访的尝试次数是多少？",
+    "expected": "answered",
+    "facts": [
+      "2 次"
+    ],
+    "source_ids": [
+      "eval-support-workflow-2"
+    ],
+    "split": "development",
+    "family": "support-workflow",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q055",
+    "user": "xq-support",
+    "question": "星桥：客户投诉收进来以后，首次打回电话的期限是多少？",
+    "expected": "answered",
+    "facts": [
+      "40 分钟"
+    ],
+    "source_ids": [
+      "eval-support-workflow-3"
+    ],
+    "split": "development",
+    "family": "support-workflow",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q056",
+    "user": "xq-engineer",
+    "question": "星桥投诉处理的升级时限是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "support-workflow",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-support-workflow-3"
+    ],
+    "hidden_facts": [
+      "6 小时"
+    ]
+  },
+  {
+    "id": "Q057",
+    "user": "xq-support",
+    "question": "星桥：有人反馈帮助条目事实不对，应该多久完成事实核验？",
+    "expected": "answered",
+    "facts": [
+      "2 个工作日"
+    ],
+    "source_ids": [
+      "eval-support-workflow-4"
+    ],
+    "split": "development",
+    "family": "support-workflow",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q058",
+    "user": "xq-support",
+    "question": "星桥知识纠错在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "support-workflow",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q059",
+    "user": "xq-support",
+    "question": "星桥：马上要换班，交班人需要提前多久开始整理未完事项？",
+    "expected": "answered",
+    "facts": [
+      "20 分钟"
+    ],
+    "source_ids": [
+      "eval-support-workflow-5"
+    ],
+    "split": "development",
+    "family": "support-workflow",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q060",
+    "user": "xq-support",
+    "question": "请对照星桥的知识纠错和轮值交接：前者的事实复核时限、后者的未结工单检查数分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "2 个工作日",
+      "30 单"
+    ],
+    "source_ids": [
+      "eval-support-workflow-4",
+      "eval-support-workflow-5"
+    ],
+    "split": "development",
+    "family": "support-workflow",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q061",
+    "user": "xq-support",
+    "question": "星桥：发给新成员的加入链接多久以后会失效？",
+    "expected": "answered",
+    "facts": [
+      "48 小时"
+    ],
+    "source_ids": [
+      "eval-workspace-config-1"
+    ],
+    "split": "development",
+    "family": "workspace-config",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q062",
+    "user": "xq-support",
+    "question": "星桥组织邀请的每天邀请上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "70 人"
+    ],
+    "source_ids": [
+      "eval-workspace-config-1"
+    ],
+    "split": "development",
+    "family": "workspace-config",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q063",
+    "user": "xq-support",
+    "question": "星桥：一个项目最多可以维护多少个分类标签？",
+    "expected": "answered",
+    "facts": [
+      "45 个"
+    ],
+    "source_ids": [
+      "eval-workspace-config-2"
+    ],
+    "split": "development",
+    "family": "workspace-config",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q064",
+    "user": "xq-support",
+    "question": "星桥项目标签的标签字数上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "16 字"
+    ],
+    "source_ids": [
+      "eval-workspace-config-2"
+    ],
+    "split": "development",
+    "family": "workspace-config",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q065",
+    "user": "xq-support",
+    "question": "星桥：关闭逐条提醒改收汇总后，多长时间收到一轮摘要？",
+    "expected": "answered",
+    "facts": [
+      "4 小时"
+    ],
+    "source_ids": [
+      "eval-workspace-config-3"
+    ],
+    "split": "development",
+    "family": "workspace-config",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q066",
+    "user": "xq-engineer",
+    "question": "星桥通知摘要的摘要事件上限是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "workspace-config",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-workspace-config-3"
+    ],
+    "hidden_facts": [
+      "60 条"
+    ]
+  },
+  {
+    "id": "Q067",
+    "user": "xq-support",
+    "question": "星桥：误把团队归档后，可以反悔的冷静期有多久？",
+    "expected": "answered",
+    "facts": [
+      "10 天"
+    ],
+    "source_ids": [
+      "eval-workspace-config-4"
+    ],
+    "split": "development",
+    "family": "workspace-config",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q068",
+    "user": "xq-support",
+    "question": "星桥团队归档在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "workspace-config",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q069",
+    "user": "xq-support",
+    "question": "星桥：员工要调到另一个组织，成员转移审核需要多久？",
+    "expected": "answered",
+    "facts": [
+      "2 个工作日"
+    ],
+    "source_ids": [
+      "eval-workspace-config-5"
+    ],
+    "split": "development",
+    "family": "workspace-config",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q070",
+    "user": "xq-support",
+    "question": "请对照星桥的团队归档和成员转移：前者的归档冷静期、后者的批量转移上限分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "10 天",
+      "25 人"
+    ],
+    "source_ids": [
+      "eval-workspace-config-4",
+      "eval-workspace-config-5"
+    ],
+    "split": "development",
+    "family": "workspace-config",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q071",
+    "user": "xq-engineer",
+    "question": "星桥：审计记录打包下载时，每个文件最多放多少条？",
+    "expected": "answered",
+    "facts": [
+      "8000 条"
+    ],
+    "source_ids": [
+      "eval-data-export-1"
+    ],
+    "split": "development",
+    "family": "data-export",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q072",
+    "user": "xq-engineer",
+    "question": "星桥审计导出的临时文件保留是多少？",
+    "expected": "answered",
+    "facts": [
+      "18 小时"
+    ],
+    "source_ids": [
+      "eval-data-export-1"
+    ],
+    "split": "development",
+    "family": "data-export",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q073",
+    "user": "xq-engineer",
+    "question": "星桥：定时报表安排得很频繁，两次执行最少要隔多久？",
+    "expected": "answered",
+    "facts": [
+      "3 小时"
+    ],
+    "source_ids": [
+      "eval-data-export-2"
+    ],
+    "split": "development",
+    "family": "data-export",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q074",
+    "user": "xq-engineer",
+    "question": "星桥报表排程的同时排程上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "16 个"
+    ],
+    "source_ids": [
+      "eval-data-export-2"
+    ],
+    "split": "development",
+    "family": "data-export",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q075",
+    "user": "xq-engineer",
+    "question": "星桥：把真实字段替换成匿名值后，反向对应表保留多久？",
+    "expected": "answered",
+    "facts": [
+      "9 天"
+    ],
+    "source_ids": [
+      "eval-data-export-3"
+    ],
+    "split": "development",
+    "family": "data-export",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q076",
+    "user": "xq-support",
+    "question": "星桥匿名化处理的复核抽样比例是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "data-export",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-data-export-3"
+    ],
+    "hidden_facts": [
+      "6%"
+    ]
+  },
+  {
+    "id": "Q077",
+    "user": "xq-engineer",
+    "question": "星桥：只同步上次以来新产生的数据，增量时间窗口是多少？",
+    "expected": "answered",
+    "facts": [
+      "8 小时"
+    ],
+    "source_ids": [
+      "eval-data-export-4"
+    ],
+    "split": "development",
+    "family": "data-export",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q078",
+    "user": "xq-engineer",
+    "question": "星桥增量导出在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "data-export",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q079",
+    "user": "xq-engineer",
+    "question": "星桥：导出完成的提醒里，下载链接能用多久？",
+    "expected": "answered",
+    "facts": [
+      "30 小时"
+    ],
+    "source_ids": [
+      "eval-data-export-5"
+    ],
+    "split": "development",
+    "family": "data-export",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q080",
+    "user": "xq-engineer",
+    "question": "请对照星桥的增量导出和导出通知：前者的增量窗口、后者的提醒次数分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "8 小时",
+      "2 次"
+    ],
+    "source_ids": [
+      "eval-data-export-4",
+      "eval-data-export-5"
+    ],
+    "split": "development",
+    "family": "data-export",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q081",
+    "user": "xq-engineer",
+    "question": "星桥：申请一次隔离联调环境，最多能连续用多久？",
+    "expected": "answered",
+    "facts": [
+      "5 小时"
+    ],
+    "source_ids": [
+      "eval-developer-tools-1"
+    ],
+    "split": "development",
+    "family": "developer-tools",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q082",
+    "user": "xq-engineer",
+    "question": "星桥测试沙箱的同时实例上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "6 个"
+    ],
+    "source_ids": [
+      "eval-developer-tools-1"
+    ],
+    "split": "development",
+    "family": "developer-tools",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q083",
+    "user": "xq-engineer",
+    "question": "星桥：为代码分支临时起的环境不用了，闲置多久会回收？",
+    "expected": "answered",
+    "facts": [
+      "7 小时"
+    ],
+    "source_ids": [
+      "eval-developer-tools-2"
+    ],
+    "split": "development",
+    "family": "developer-tools",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q084",
+    "user": "xq-engineer",
+    "question": "星桥分支环境的保留分支上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "12 个"
+    ],
+    "source_ids": [
+      "eval-developer-tools-2"
+    ],
+    "split": "development",
+    "family": "developer-tools",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q085",
+    "user": "xq-engineer",
+    "question": "星桥：流水线一直在编译，一次构建到多久应判超时？",
+    "expected": "answered",
+    "facts": [
+      "22 分钟"
+    ],
+    "source_ids": [
+      "eval-developer-tools-3"
+    ],
+    "split": "development",
+    "family": "developer-tools",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q086",
+    "user": "xq-support",
+    "question": "星桥CI 构建的失败重跑次数是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "developer-tools",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-developer-tools-3"
+    ],
+    "hidden_facts": [
+      "2 次"
+    ]
+  },
+  {
+    "id": "Q087",
+    "user": "xq-engineer",
+    "question": "星桥：为了复现缺陷准备的样本库可以保留多久？",
+    "expected": "answered",
+    "facts": [
+      "16 天"
+    ],
+    "source_ids": [
+      "eval-developer-tools-4"
+    ],
+    "split": "development",
+    "family": "developer-tools",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q088",
+    "user": "xq-engineer",
+    "question": "星桥测试数据在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "developer-tools",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q089",
+    "user": "xq-engineer",
+    "question": "星桥：工程师临时连上服务排查问题，调试凭据的有效期是多少？",
+    "expected": "answered",
+    "facts": [
+      "50 分钟"
+    ],
+    "source_ids": [
+      "eval-developer-tools-5"
+    ],
+    "split": "development",
+    "family": "developer-tools",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q090",
+    "user": "xq-engineer",
+    "question": "请对照星桥的测试数据和调试会话：前者的样本库保留、后者的并发连接上限分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "16 天",
+      "3 个"
+    ],
+    "source_ids": [
+      "eval-developer-tools-4",
+      "eval-developer-tools-5"
+    ],
+    "split": "development",
+    "family": "developer-tools",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q091",
+    "user": "xq-support",
+    "question": "星桥：某个服务换了负责人，目录信息必须在多久内更新？",
+    "expected": "answered",
+    "facts": [
+      "3 个工作日"
+    ],
+    "source_ids": [
+      "eval-service-catalog-1"
+    ],
+    "split": "development",
+    "family": "service-catalog",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q092",
+    "user": "xq-support",
+    "question": "星桥服务登记的负责人上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "4 人"
+    ],
+    "source_ids": [
+      "eval-service-catalog-1"
+    ],
+    "split": "development",
+    "family": "service-catalog",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q093",
+    "user": "xq-support",
+    "question": "星桥：上游下游关系可能变化，依赖清单隔多久检查一次？",
+    "expected": "answered",
+    "facts": [
+      "14 天"
+    ],
+    "source_ids": [
+      "eval-service-catalog-2"
+    ],
+    "split": "development",
+    "family": "service-catalog",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q094",
+    "user": "xq-support",
+    "question": "星桥依赖清单的最大依赖层数是多少？",
+    "expected": "answered",
+    "facts": [
+      "6 层"
+    ],
+    "source_ids": [
+      "eval-service-catalog-2"
+    ],
+    "split": "development",
+    "family": "service-catalog",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q095",
+    "user": "xq-support",
+    "question": "星桥：客户想预约一次应急演练，需要提前几个工作日？",
+    "expected": "answered",
+    "facts": [
+      "5 个工作日"
+    ],
+    "source_ids": [
+      "eval-service-catalog-3"
+    ],
+    "split": "development",
+    "family": "service-catalog",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q096",
+    "user": "xq-engineer",
+    "question": "星桥客户演练的演练时长是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "service-catalog",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-service-catalog-3"
+    ],
+    "hidden_facts": [
+      "75 分钟"
+    ]
+  },
+  {
+    "id": "Q097",
+    "user": "xq-support",
+    "question": "星桥：计划维护影响客户之前，应提前多久发布公告？",
+    "expected": "answered",
+    "facts": [
+      "36 小时"
+    ],
+    "source_ids": [
+      "eval-service-catalog-4"
+    ],
+    "split": "development",
+    "family": "service-catalog",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q098",
+    "user": "xq-support",
+    "question": "星桥维护公告在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "service-catalog",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q099",
+    "user": "xq-support",
+    "question": "星桥：旧服务准备退出使用，至少要提前多久通知客户？",
+    "expected": "answered",
+    "facts": [
+      "45 天"
+    ],
+    "source_ids": [
+      "eval-service-catalog-5"
+    ],
+    "split": "development",
+    "family": "service-catalog",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q100",
+    "user": "xq-support",
+    "question": "请对照星桥的维护公告和下线服务：前者的提前发布时长、后者的只读保留时间分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "36 小时",
+      "20 天"
+    ],
+    "source_ids": [
+      "eval-service-catalog-4",
+      "eval-service-catalog-5"
+    ],
+    "split": "development",
+    "family": "service-catalog",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q101",
+    "user": "xq-engineer",
+    "question": "星桥：为处理应急任务临时开放资料访问，授权最长能持续多久？",
+    "expected": "answered",
+    "facts": [
+      "6 小时"
+    ],
+    "source_ids": [
+      "eval-access-operations-1"
+    ],
+    "split": "development",
+    "family": "access-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q102",
+    "user": "xq-engineer",
+    "question": "星桥临时权限的审批人数是多少？",
+    "expected": "answered",
+    "facts": [
+      "2 人"
+    ],
+    "source_ids": [
+      "eval-access-operations-1"
+    ],
+    "split": "development",
+    "family": "access-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q103",
+    "user": "xq-engineer",
+    "question": "星桥：机器使用的账号密钥按多久一次的周期更换？",
+    "expected": "answered",
+    "facts": [
+      "45 天"
+    ],
+    "source_ids": [
+      "eval-access-operations-2"
+    ],
+    "split": "development",
+    "family": "access-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q104",
+    "user": "xq-engineer",
+    "question": "星桥服务账号的过渡窗口是多少？",
+    "expected": "answered",
+    "facts": [
+      "16 小时"
+    ],
+    "source_ids": [
+      "eval-access-operations-2"
+    ],
+    "split": "development",
+    "family": "access-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q105",
+    "user": "xq-engineer",
+    "question": "星桥：同一台设备刚通过身份校验，校验缓存能维持多久？",
+    "expected": "answered",
+    "facts": [
+      "8 小时"
+    ],
+    "source_ids": [
+      "eval-access-operations-3"
+    ],
+    "split": "development",
+    "family": "access-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q106",
+    "user": "xq-support",
+    "question": "星桥设备校验的失败锁定次数是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "access-operations",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-access-operations-3"
+    ],
+    "hidden_facts": [
+      "6 次"
+    ]
+  },
+  {
+    "id": "Q107",
+    "user": "xq-engineer",
+    "question": "星桥：人员离职后，需要在多久内完成停权处理？",
+    "expected": "answered",
+    "facts": [
+      "30 分钟"
+    ],
+    "source_ids": [
+      "eval-access-operations-4"
+    ],
+    "split": "development",
+    "family": "access-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q108",
+    "user": "xq-engineer",
+    "question": "星桥离职交接在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "access-operations",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q109",
+    "user": "xq-engineer",
+    "question": "星桥：岗位和资源权限需要定期对照，每隔多久复核一次？",
+    "expected": "answered",
+    "facts": [
+      "60 天"
+    ],
+    "source_ids": [
+      "eval-access-operations-5"
+    ],
+    "split": "development",
+    "family": "access-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q110",
+    "user": "xq-engineer",
+    "question": "请对照星桥的离职交接和权限复核：前者的停权处理时限、后者的整改时限分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "30 分钟",
+      "4 个工作日"
+    ],
+    "source_ids": [
+      "eval-access-operations-4",
+      "eval-access-operations-5"
+    ],
+    "split": "development",
+    "family": "access-operations",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q111",
+    "user": "xq-engineer",
+    "question": "星桥：为了检验告警与恢复流程，故障注入演练多久开展一次？",
+    "expected": "answered",
+    "facts": [
+      "28 天"
+    ],
+    "source_ids": [
+      "eval-incident-drills-1"
+    ],
+    "split": "development",
+    "family": "incident-drills",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q112",
+    "user": "xq-engineer",
+    "question": "星桥故障演练的最长影响时间是多少？",
+    "expected": "answered",
+    "facts": [
+      "3 分钟"
+    ],
+    "source_ids": [
+      "eval-incident-drills-1"
+    ],
+    "split": "development",
+    "family": "incident-drills",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q113",
+    "user": "xq-engineer",
+    "question": "星桥：主区域出问题后转向备用区域，切换目标用时是多少？",
+    "expected": "answered",
+    "facts": [
+      "12 分钟"
+    ],
+    "source_ids": [
+      "eval-incident-drills-2"
+    ],
+    "split": "development",
+    "family": "incident-drills",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q114",
+    "user": "xq-engineer",
+    "question": "星桥区域切换的观察时间是多少？",
+    "expected": "answered",
+    "facts": [
+      "45 分钟"
+    ],
+    "source_ids": [
+      "eval-incident-drills-2"
+    ],
+    "split": "development",
+    "family": "incident-drills",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q115",
+    "user": "xq-engineer",
+    "question": "星桥：不能只看备份任务成功，要实际读回验证的抽查比例是多少？",
+    "expected": "answered",
+    "facts": [
+      "8%"
+    ],
+    "source_ids": [
+      "eval-incident-drills-3"
+    ],
+    "split": "development",
+    "family": "incident-drills",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q116",
+    "user": "xq-support",
+    "question": "星桥恢复抽查的检查间隔是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "incident-drills",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-incident-drills-3"
+    ],
+    "hidden_facts": [
+      "10 天"
+    ]
+  },
+  {
+    "id": "Q117",
+    "user": "xq-engineer",
+    "question": "星桥：事故中通知应急联系人后，应在多久内取得联系确认？",
+    "expected": "answered",
+    "facts": [
+      "8 分钟"
+    ],
+    "source_ids": [
+      "eval-incident-drills-4"
+    ],
+    "split": "development",
+    "family": "incident-drills",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q118",
+    "user": "xq-engineer",
+    "question": "星桥应急联络在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "development",
+    "family": "incident-drills",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q119",
+    "user": "xq-engineer",
+    "question": "星桥：事故复盘安排了整改，应在多久后回头验证落实情况？",
+    "expected": "answered",
+    "facts": [
+      "9 个工作日"
+    ],
+    "source_ids": [
+      "eval-incident-drills-5"
+    ],
+    "split": "development",
+    "family": "incident-drills",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q120",
+    "user": "xq-engineer",
+    "question": "请对照星桥的应急联络和复盘跟进：前者的联系确认时限、后者的复查轮次分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "8 分钟",
+      "2 次"
+    ],
+    "source_ids": [
+      "eval-incident-drills-4",
+      "eval-incident-drills-5"
+    ],
+    "split": "development",
+    "family": "incident-drills",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q121",
+    "user": "xq-support",
+    "question": "星桥：客户认为本期费用对不上，账单核对需要在几个工作日内完成？",
+    "expected": "answered",
+    "facts": [
+      "4 个工作日"
+    ],
+    "source_ids": [
+      "eval-billing-1"
+    ],
+    "split": "holdout",
+    "family": "billing",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q122",
+    "user": "xq-support",
+    "question": "星桥账单核对的差异容差是多少？",
+    "expected": "answered",
+    "facts": [
+      "3 澳元"
+    ],
+    "source_ids": [
+      "eval-billing-1"
+    ],
+    "split": "holdout",
+    "family": "billing",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q123",
+    "user": "xq-support",
+    "question": "星桥：客户付款到期之前，首次提醒提前多久发送？",
+    "expected": "answered",
+    "facts": [
+      "6 天"
+    ],
+    "source_ids": [
+      "eval-billing-2"
+    ],
+    "split": "holdout",
+    "family": "billing",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q124",
+    "user": "xq-support",
+    "question": "星桥付款提醒的提醒间隔是多少？",
+    "expected": "answered",
+    "facts": [
+      "48 小时"
+    ],
+    "source_ids": [
+      "eval-billing-2"
+    ],
+    "split": "holdout",
+    "family": "billing",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q125",
+    "user": "xq-support",
+    "question": "星桥：账单差异需要申请贷项，审核一般要求几个工作日？",
+    "expected": "answered",
+    "facts": [
+      "5 个工作日"
+    ],
+    "source_ids": [
+      "eval-billing-3"
+    ],
+    "split": "holdout",
+    "family": "billing",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q126",
+    "user": "xq-engineer",
+    "question": "星桥贷项申请的主管复核门槛是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "billing",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-billing-3"
+    ],
+    "hidden_facts": [
+      "700 澳元"
+    ]
+  },
+  {
+    "id": "Q127",
+    "user": "xq-support",
+    "question": "星桥：客户收到退款后，相关凭证应继续保存多久？",
+    "expected": "answered",
+    "facts": [
+      "540 天"
+    ],
+    "source_ids": [
+      "eval-billing-4"
+    ],
+    "split": "holdout",
+    "family": "billing",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q128",
+    "user": "xq-support",
+    "question": "星桥退款记录在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "billing",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q129",
+    "user": "xq-support",
+    "question": "星桥：客户希望改变结算周期，至少要提前多久申请？",
+    "expected": "answered",
+    "facts": [
+      "12 天"
+    ],
+    "source_ids": [
+      "eval-billing-5"
+    ],
+    "split": "holdout",
+    "family": "billing",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q130",
+    "user": "xq-support",
+    "question": "请对照星桥的退款记录和账期调整：前者的凭证保留期限、后者的年度调整次数分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "540 天",
+      "2 次"
+    ],
+    "source_ids": [
+      "eval-billing-4",
+      "eval-billing-5"
+    ],
+    "split": "holdout",
+    "family": "billing",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q131",
+    "user": "xq-support",
+    "question": "星桥：新供应商材料齐全后，准入审核的时限是多少？",
+    "expected": "answered",
+    "facts": [
+      "8 个工作日"
+    ],
+    "source_ids": [
+      "eval-procurement-1"
+    ],
+    "split": "holdout",
+    "family": "procurement",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q132",
+    "user": "xq-support",
+    "question": "星桥供应商准入的报价数量是多少？",
+    "expected": "answered",
+    "facts": [
+      "3 份"
+    ],
+    "source_ids": [
+      "eval-procurement-1"
+    ],
+    "split": "holdout",
+    "family": "procurement",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q133",
+    "user": "xq-support",
+    "question": "星桥：采购拿到报价后，这次询价有效多久？",
+    "expected": "answered",
+    "facts": [
+      "17 天"
+    ],
+    "source_ids": [
+      "eval-procurement-2"
+    ],
+    "split": "holdout",
+    "family": "procurement",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q134",
+    "user": "xq-support",
+    "question": "星桥采购询价的免比价门槛是多少？",
+    "expected": "answered",
+    "facts": [
+      "350 澳元"
+    ],
+    "source_ids": [
+      "eval-procurement-2"
+    ],
+    "split": "holdout",
+    "family": "procurement",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q135",
+    "user": "xq-support",
+    "question": "星桥：合同已经签好，应在多久内完成归档？",
+    "expected": "answered",
+    "facts": [
+      "4 个工作日"
+    ],
+    "source_ids": [
+      "eval-procurement-3"
+    ],
+    "split": "holdout",
+    "family": "procurement",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q136",
+    "user": "xq-engineer",
+    "question": "星桥合同归档的原件保留期限是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "procurement",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-procurement-3"
+    ],
+    "hidden_facts": [
+      "7 年"
+    ]
+  },
+  {
+    "id": "Q137",
+    "user": "xq-support",
+    "question": "星桥：采购货物送达后，要求在几个工作日内验收？",
+    "expected": "answered",
+    "facts": [
+      "6 个工作日"
+    ],
+    "source_ids": [
+      "eval-procurement-4"
+    ],
+    "split": "holdout",
+    "family": "procurement",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q138",
+    "user": "xq-support",
+    "question": "星桥验收登记在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "procurement",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q139",
+    "user": "xq-support",
+    "question": "星桥：发现采购物品不符合要求，多久以内要提出退货申请？",
+    "expected": "answered",
+    "facts": [
+      "11 天"
+    ],
+    "source_ids": [
+      "eval-procurement-5"
+    ],
+    "split": "holdout",
+    "family": "procurement",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q140",
+    "user": "xq-support",
+    "question": "请对照星桥的验收登记和采购退货：前者的验收时限、后者的退款跟踪间隔分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "6 个工作日",
+      "72 小时"
+    ],
+    "source_ids": [
+      "eval-procurement-4",
+      "eval-procurement-5"
+    ],
+    "split": "holdout",
+    "family": "procurement",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q141",
+    "user": "xq-support",
+    "question": "星桥：准备入职的人，材料需要在到岗前几个工作日提交？",
+    "expected": "answered",
+    "facts": [
+      "4 个工作日"
+    ],
+    "source_ids": [
+      "eval-onboarding-1"
+    ],
+    "split": "holdout",
+    "family": "onboarding",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q142",
+    "user": "xq-support",
+    "question": "星桥入职材料的补交期限是多少？",
+    "expected": "answered",
+    "facts": [
+      "6 天"
+    ],
+    "source_ids": [
+      "eval-onboarding-1"
+    ],
+    "split": "holdout",
+    "family": "onboarding",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q143",
+    "user": "xq-support",
+    "question": "星桥：新员工欢迎课程一共多长时间？",
+    "expected": "answered",
+    "facts": [
+      "95 分钟"
+    ],
+    "source_ids": [
+      "eval-onboarding-2"
+    ],
+    "split": "holdout",
+    "family": "onboarding",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q144",
+    "user": "xq-support",
+    "question": "星桥欢迎培训的完成时限是多少？",
+    "expected": "answered",
+    "facts": [
+      "8 个工作日"
+    ],
+    "source_ids": [
+      "eval-onboarding-2"
+    ],
+    "split": "holdout",
+    "family": "onboarding",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q145",
+    "user": "xq-support",
+    "question": "星桥：新同事入职后，多久内要安排好导师？",
+    "expected": "answered",
+    "facts": [
+      "2 个工作日"
+    ],
+    "source_ids": [
+      "eval-onboarding-3"
+    ],
+    "split": "holdout",
+    "family": "onboarding",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q146",
+    "user": "xq-engineer",
+    "question": "星桥导师安排的首次沟通时长是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "onboarding",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-onboarding-3"
+    ],
+    "hidden_facts": [
+      "35 分钟"
+    ]
+  },
+  {
+    "id": "Q147",
+    "user": "xq-support",
+    "question": "星桥：试用期间的第一轮反馈应该在什么时候进行？",
+    "expected": "answered",
+    "facts": [
+      "21 天"
+    ],
+    "source_ids": [
+      "eval-onboarding-4"
+    ],
+    "split": "holdout",
+    "family": "onboarding",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q148",
+    "user": "xq-support",
+    "question": "星桥试用反馈在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "onboarding",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q149",
+    "user": "xq-support",
+    "question": "星桥：入职所用的体检报告，从有效期限看能用多久？",
+    "expected": "answered",
+    "facts": [
+      "120 天"
+    ],
+    "source_ids": [
+      "eval-onboarding-5"
+    ],
+    "split": "holdout",
+    "family": "onboarding",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q150",
+    "user": "xq-support",
+    "question": "请对照星桥的试用反馈和入职体检：前者的首次反馈时间、后者的报销上限分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "21 天",
+      "210 澳元"
+    ],
+    "source_ids": [
+      "eval-onboarding-4",
+      "eval-onboarding-5"
+    ],
+    "split": "holdout",
+    "family": "onboarding",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q151",
+    "user": "xq-engineer",
+    "question": "星桥：员工领走设备后，资产登记应在多久内完成？",
+    "expected": "answered",
+    "facts": [
+      "2 个工作日"
+    ],
+    "source_ids": [
+      "eval-asset-lifecycle-1"
+    ],
+    "split": "holdout",
+    "family": "asset-lifecycle",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q152",
+    "user": "xq-engineer",
+    "question": "星桥设备领用的核对项目数是多少？",
+    "expected": "answered",
+    "facts": [
+      "8 项"
+    ],
+    "source_ids": [
+      "eval-asset-lifecycle-1"
+    ],
+    "split": "holdout",
+    "family": "asset-lifecycle",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q153",
+    "user": "xq-engineer",
+    "question": "星桥：设备送修之后，多长时间内要完成初步检查？",
+    "expected": "answered",
+    "facts": [
+      "6 小时"
+    ],
+    "source_ids": [
+      "eval-asset-lifecycle-2"
+    ],
+    "split": "holdout",
+    "family": "asset-lifecycle",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q154",
+    "user": "xq-engineer",
+    "question": "星桥设备维修的备用设备借期是多少？",
+    "expected": "answered",
+    "facts": [
+      "9 天"
+    ],
+    "source_ids": [
+      "eval-asset-lifecycle-2"
+    ],
+    "split": "holdout",
+    "family": "asset-lifecycle",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q155",
+    "user": "xq-engineer",
+    "question": "星桥：库存与实物要定期对账，资产盘点间隔是多久？",
+    "expected": "answered",
+    "facts": [
+      "180 天"
+    ],
+    "source_ids": [
+      "eval-asset-lifecycle-3"
+    ],
+    "split": "holdout",
+    "family": "asset-lifecycle",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q156",
+    "user": "xq-support",
+    "question": "星桥资产盘点的抽查比例是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "asset-lifecycle",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-asset-lifecycle-3"
+    ],
+    "hidden_facts": [
+      "25%"
+    ]
+  },
+  {
+    "id": "Q157",
+    "user": "xq-engineer",
+    "question": "星桥：电脑转给别人之前，需要验证数据擦除几次？",
+    "expected": "answered",
+    "facts": [
+      "2 次"
+    ],
+    "source_ids": [
+      "eval-asset-lifecycle-4"
+    ],
+    "split": "holdout",
+    "family": "asset-lifecycle",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q158",
+    "user": "xq-engineer",
+    "question": "星桥设备转让在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "asset-lifecycle",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q159",
+    "user": "xq-engineer",
+    "question": "星桥：设备报废所要求的使用年限门槛是多少？",
+    "expected": "answered",
+    "facts": [
+      "4 年"
+    ],
+    "source_ids": [
+      "eval-asset-lifecycle-5"
+    ],
+    "split": "holdout",
+    "family": "asset-lifecycle",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q160",
+    "user": "xq-engineer",
+    "question": "请对照星桥的设备转让和设备报废：前者的擦除验证次数、后者的凭证保留期限分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "2 次",
+      "3 年"
+    ],
+    "source_ids": [
+      "eval-asset-lifecycle-4",
+      "eval-asset-lifecycle-5"
+    ],
+    "split": "holdout",
+    "family": "asset-lifecycle",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q161",
+    "user": "xq-support",
+    "question": "星桥：临时到访人员的通行授权一次可以持续多久？",
+    "expected": "answered",
+    "facts": [
+      "7 小时"
+    ],
+    "source_ids": [
+      "eval-physical-security-1"
+    ],
+    "split": "holdout",
+    "family": "physical-security",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q162",
+    "user": "xq-support",
+    "question": "星桥访客登记的陪同人数上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "4 人"
+    ],
+    "source_ids": [
+      "eval-physical-security-1"
+    ],
+    "split": "holdout",
+    "family": "physical-security",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q163",
+    "user": "xq-support",
+    "question": "星桥：客户来公司开会，访客名单需要提前多久提交？",
+    "expected": "answered",
+    "facts": [
+      "16 小时"
+    ],
+    "source_ids": [
+      "eval-physical-security-2"
+    ],
+    "split": "holdout",
+    "family": "physical-security",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q164",
+    "user": "xq-support",
+    "question": "星桥会议访客的访客人数上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "12 人"
+    ],
+    "source_ids": [
+      "eval-physical-security-2"
+    ],
+    "split": "holdout",
+    "family": "physical-security",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q165",
+    "user": "xq-support",
+    "question": "星桥：员工发现门禁卡丢了，要在多久内报告？",
+    "expected": "answered",
+    "facts": [
+      "15 分钟"
+    ],
+    "source_ids": [
+      "eval-physical-security-3"
+    ],
+    "split": "holdout",
+    "family": "physical-security",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q166",
+    "user": "xq-engineer",
+    "question": "星桥门禁遗失的临时卡有效期是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "physical-security",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-physical-security-3"
+    ],
+    "hidden_facts": [
+      "24 小时"
+    ]
+  },
+  {
+    "id": "Q167",
+    "user": "xq-support",
+    "question": "星桥：机房现场检查按多长的间隔开展？",
+    "expected": "answered",
+    "facts": [
+      "3 小时"
+    ],
+    "source_ids": [
+      "eval-physical-security-4"
+    ],
+    "split": "holdout",
+    "family": "physical-security",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q168",
+    "user": "xq-support",
+    "question": "星桥机房巡检在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "physical-security",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q169",
+    "user": "xq-support",
+    "question": "星桥：申请借走存储介质时，需要几位人员审批？",
+    "expected": "answered",
+    "facts": [
+      "2 人"
+    ],
+    "source_ids": [
+      "eval-physical-security-5"
+    ],
+    "split": "holdout",
+    "family": "physical-security",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q170",
+    "user": "xq-support",
+    "question": "请对照星桥的机房巡检和存储介质：前者的巡检间隔、后者的归还时限分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "3 小时",
+      "5 个工作日"
+    ],
+    "source_ids": [
+      "eval-physical-security-4",
+      "eval-physical-security-5"
+    ],
+    "split": "holdout",
+    "family": "physical-security",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q171",
+    "user": "xq-support",
+    "question": "星桥：统一产品译名的词库，每隔多久发布一版？",
+    "expected": "answered",
+    "facts": [
+      "14 天"
+    ],
+    "source_ids": [
+      "eval-localization-1"
+    ],
+    "split": "holdout",
+    "family": "localization",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q172",
+    "user": "xq-support",
+    "question": "星桥术语词库的词条复核人数是多少？",
+    "expected": "answered",
+    "facts": [
+      "2 人"
+    ],
+    "source_ids": [
+      "eval-localization-1"
+    ],
+    "split": "holdout",
+    "family": "localization",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q173",
+    "user": "xq-support",
+    "question": "星桥：界面字符串送翻译时，一批最多有多少字？",
+    "expected": "answered",
+    "facts": [
+      "6000 字"
+    ],
+    "source_ids": [
+      "eval-localization-2"
+    ],
+    "split": "holdout",
+    "family": "localization",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q174",
+    "user": "xq-support",
+    "question": "星桥界面翻译的交付时限是多少？",
+    "expected": "answered",
+    "facts": [
+      "6 个工作日"
+    ],
+    "source_ids": [
+      "eval-localization-2"
+    ],
+    "split": "holdout",
+    "family": "localization",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q175",
+    "user": "xq-support",
+    "question": "星桥：语言质量抽查应覆盖多少比例的内容？",
+    "expected": "answered",
+    "facts": [
+      "18%"
+    ],
+    "source_ids": [
+      "eval-localization-3"
+    ],
+    "split": "holdout",
+    "family": "localization",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q176",
+    "user": "xq-engineer",
+    "question": "星桥语言校验的返修期限是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "localization",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-localization-3"
+    ],
+    "hidden_facts": [
+      "3 个工作日"
+    ]
+  },
+  {
+    "id": "Q177",
+    "user": "xq-support",
+    "question": "星桥：客服经常用的答复模板，多久审查一次？",
+    "expected": "answered",
+    "facts": [
+      "45 天"
+    ],
+    "source_ids": [
+      "eval-localization-4"
+    ],
+    "split": "holdout",
+    "family": "localization",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q178",
+    "user": "xq-support",
+    "question": "星桥客服模板在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "localization",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q179",
+    "user": "xq-support",
+    "question": "星桥：用户的日期显示规则变更后，缓存应在多久内更新？",
+    "expected": "answered",
+    "facts": [
+      "2 小时"
+    ],
+    "source_ids": [
+      "eval-localization-5"
+    ],
+    "split": "holdout",
+    "family": "localization",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q180",
+    "user": "xq-support",
+    "question": "请对照星桥的客服模板和日期格式：前者的模板审查周期、后者的支持区域数量分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "45 天",
+      "9 个"
+    ],
+    "source_ids": [
+      "eval-localization-4",
+      "eval-localization-5"
+    ],
+    "split": "holdout",
+    "family": "localization",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q181",
+    "user": "xq-support",
+    "question": "星桥：企业提交合作伙伴申请后，初审时限是多少？",
+    "expected": "answered",
+    "facts": [
+      "7 个工作日"
+    ],
+    "source_ids": [
+      "eval-partner-operations-1"
+    ],
+    "split": "holdout",
+    "family": "partner-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q182",
+    "user": "xq-support",
+    "question": "星桥伙伴申请的证明材料数量是多少？",
+    "expected": "answered",
+    "facts": [
+      "4 份"
+    ],
+    "source_ids": [
+      "eval-partner-operations-1"
+    ],
+    "split": "holdout",
+    "family": "partner-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q183",
+    "user": "xq-support",
+    "question": "星桥：想约一次与伙伴共同进行的产品演示，需要提前多久？",
+    "expected": "answered",
+    "facts": [
+      "9 个工作日"
+    ],
+    "source_ids": [
+      "eval-partner-operations-2"
+    ],
+    "split": "holdout",
+    "family": "partner-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q184",
+    "user": "xq-support",
+    "question": "星桥联合演示的演示时长是多少？",
+    "expected": "answered",
+    "facts": [
+      "50 分钟"
+    ],
+    "source_ids": [
+      "eval-partner-operations-2"
+    ],
+    "split": "holdout",
+    "family": "partner-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q185",
+    "user": "xq-support",
+    "question": "星桥：提供给合作伙伴试用的隔离环境，授权有效多少天？",
+    "expected": "answered",
+    "facts": [
+      "40 天"
+    ],
+    "source_ids": [
+      "eval-partner-operations-3"
+    ],
+    "split": "holdout",
+    "family": "partner-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q186",
+    "user": "xq-engineer",
+    "question": "星桥伙伴沙箱的延长次数是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "partner-operations",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-partner-operations-3"
+    ],
+    "hidden_facts": [
+      "1 次"
+    ]
+  },
+  {
+    "id": "Q187",
+    "user": "xq-support",
+    "question": "星桥：伙伴把销售线索交过来后，多长时间内要确认？",
+    "expected": "answered",
+    "facts": [
+      "20 小时"
+    ],
+    "source_ids": [
+      "eval-partner-operations-4"
+    ],
+    "split": "holdout",
+    "family": "partner-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q188",
+    "user": "xq-support",
+    "question": "星桥线索共享在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "partner-operations",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q189",
+    "user": "xq-support",
+    "question": "星桥：合作伙伴培训后的考试，达到多少分才算通过？",
+    "expected": "answered",
+    "facts": [
+      "85 分"
+    ],
+    "source_ids": [
+      "eval-partner-operations-5"
+    ],
+    "split": "holdout",
+    "family": "partner-operations",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q190",
+    "user": "xq-support",
+    "question": "请对照星桥的线索共享和伙伴培训：前者的确认时限、后者的补考间隔分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "20 小时",
+      "7 天"
+    ],
+    "source_ids": [
+      "eval-partner-operations-4",
+      "eval-partner-operations-5"
+    ],
+    "split": "holdout",
+    "family": "partner-operations",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q191",
+    "user": "xq-engineer",
+    "question": "星桥：产品需要新增埋点，事件注册审核的期限是多少？",
+    "expected": "answered",
+    "facts": [
+      "3 个工作日"
+    ],
+    "source_ids": [
+      "eval-product-analytics-1"
+    ],
+    "split": "holdout",
+    "family": "product-analytics",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q192",
+    "user": "xq-engineer",
+    "question": "星桥事件注册的字段数量上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "32 个"
+    ],
+    "source_ids": [
+      "eval-product-analytics-1"
+    ],
+    "split": "holdout",
+    "family": "product-analytics",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q193",
+    "user": "xq-engineer",
+    "question": "星桥：做转化漏斗时，一条漏斗最多可以包含几步？",
+    "expected": "answered",
+    "facts": [
+      "9 步"
+    ],
+    "source_ids": [
+      "eval-product-analytics-2"
+    ],
+    "split": "holdout",
+    "family": "product-analytics",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q194",
+    "user": "xq-engineer",
+    "question": "星桥漏斗报表的数据更新间隔是多少？",
+    "expected": "answered",
+    "facts": [
+      "2 小时"
+    ],
+    "source_ids": [
+      "eval-product-analytics-2"
+    ],
+    "split": "holdout",
+    "family": "product-analytics",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q195",
+    "user": "xq-engineer",
+    "question": "星桥：分析用户是否持续回来使用，留存观察周期有多长？",
+    "expected": "answered",
+    "facts": [
+      "35 天"
+    ],
+    "source_ids": [
+      "eval-product-analytics-3"
+    ],
+    "split": "holdout",
+    "family": "product-analytics",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q196",
+    "user": "xq-support",
+    "question": "星桥留存分析的最小样本量是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "product-analytics",
+    "kind": "permission",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    },
+    "hidden_source_ids": [
+      "eval-product-analytics-3"
+    ],
+    "hidden_facts": [
+      "150 人"
+    ]
+  },
+  {
+    "id": "Q197",
+    "user": "xq-engineer",
+    "question": "星桥：线上实验要划出一小部分用户，允许的最小分流比例是多少？",
+    "expected": "answered",
+    "facts": [
+      "4%"
+    ],
+    "source_ids": [
+      "eval-product-analytics-4"
+    ],
+    "split": "holdout",
+    "family": "product-analytics",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q198",
+    "user": "xq-engineer",
+    "question": "星桥实验分流在南极分部的专用补贴金额是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "source_ids": [],
+    "split": "holdout",
+    "family": "product-analytics",
+    "kind": "unanswerable",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q199",
+    "user": "xq-engineer",
+    "question": "星桥：报表指标定义确认后，需要保持口径冻结多久？",
+    "expected": "answered",
+    "facts": [
+      "21 天"
+    ],
+    "source_ids": [
+      "eval-product-analytics-5"
+    ],
+    "split": "holdout",
+    "family": "product-analytics",
+    "kind": "lookup",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q200",
+    "user": "xq-engineer",
+    "question": "请对照星桥的实验分流和指标口径：前者的最小分流比例、后者的变更提前通知分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "4%",
+      "5 个工作日"
+    ],
+    "source_ids": [
+      "eval-product-analytics-4",
+      "eval-product-analytics-5"
+    ],
+    "split": "holdout",
+    "family": "product-analytics",
+    "kind": "multi_document",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "rule-table + parsed-source validation pending"
+    }
+  },
+  {
+    "id": "Q201",
+    "user": "xq-support",
+    "question": "星桥证书续期提前量到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "30 天",
+      "60 天"
+    ],
+    "source_ids": [
+      "conflict-cert-renewal-a",
+      "conflict-cert-renewal-b"
+    ],
+    "split": "development",
+    "family": "conflict-cert-renewal",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q202",
+    "user": "xq-support",
+    "question": "星桥演练报告提交时限到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "3 个工作日",
+      "10 个工作日"
+    ],
+    "source_ids": [
+      "conflict-drill-report-a",
+      "conflict-drill-report-b"
+    ],
+    "split": "development",
+    "family": "conflict-drill-report",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q203",
+    "user": "xq-support",
+    "question": "星桥门禁卡补办周期到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "2 个工作日",
+      "5 个工作日"
+    ],
+    "source_ids": [
+      "conflict-badge-reissue-a",
+      "conflict-badge-reissue-b"
+    ],
+    "split": "development",
+    "family": "conflict-badge-reissue",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q204",
+    "user": "xq-support",
+    "question": "星桥会议室预订上限到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "4 小时",
+      "8 小时"
+    ],
+    "source_ids": [
+      "conflict-room-booking-a",
+      "conflict-room-booking-b"
+    ],
+    "split": "development",
+    "family": "conflict-room-booking",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q205",
+    "user": "xq-support",
+    "question": "星桥工位搬迁通知期到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "5 个工作日",
+      "2 个工作日"
+    ],
+    "source_ids": [
+      "conflict-desk-move-a",
+      "conflict-desk-move-b"
+    ],
+    "split": "development",
+    "family": "conflict-desk-move",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q206",
+    "user": "xq-support",
+    "question": "星桥培训学时要求到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "16 学时",
+      "40 学时"
+    ],
+    "source_ids": [
+      "conflict-training-hours-a",
+      "conflict-training-hours-b"
+    ],
+    "split": "development",
+    "family": "conflict-training-hours",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q207",
+    "user": "xq-support",
+    "question": "星桥图书借阅期限到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "14 天",
+      "30 天"
+    ],
+    "source_ids": [
+      "conflict-book-loan-a",
+      "conflict-book-loan-b"
+    ],
+    "split": "development",
+    "family": "conflict-book-loan",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q208",
+    "user": "xq-support",
+    "question": "星桥体检预约提前期到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "7 天",
+      "21 天"
+    ],
+    "source_ids": [
+      "conflict-medical-booking-a",
+      "conflict-medical-booking-b"
+    ],
+    "split": "development",
+    "family": "conflict-medical-booking",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q209",
+    "user": "xq-support",
+    "question": "星桥快递签收时限到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "24 小时",
+      "72 小时"
+    ],
+    "source_ids": [
+      "conflict-parcel-signoff-a",
+      "conflict-parcel-signoff-b"
+    ],
+    "split": "development",
+    "family": "conflict-parcel-signoff",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q210",
+    "user": "xq-support",
+    "question": "星桥发票开具时限到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "5 个工作日",
+      "15 个工作日"
+    ],
+    "source_ids": [
+      "conflict-invoice-issue-a",
+      "conflict-invoice-issue-b"
+    ],
+    "split": "development",
+    "family": "conflict-invoice-issue",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q211",
+    "user": "xq-support",
+    "question": "星桥班车发车间隔到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "20 分钟",
+      "45 分钟"
+    ],
+    "source_ids": [
+      "conflict-shuttle-headway-a",
+      "conflict-shuttle-headway-b"
+    ],
+    "split": "development",
+    "family": "conflict-shuttle-headway",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q212",
+    "user": "xq-support",
+    "question": "星桥团建经费上限到底是多少？两处说法一致吗？",
+    "expected": "conflict",
+    "facts": [
+      "300 澳元",
+      "800 澳元"
+    ],
+    "source_ids": [
+      "conflict-team-budget-a",
+      "conflict-team-budget-b"
+    ],
+    "split": "development",
+    "family": "conflict-team-budget",
+    "kind": "conflict",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored pair: same subject, same window, no precedence"
+    }
+  },
+  {
+    "id": "Q213",
+    "user": "xq-support",
+    "question": "星桥绿植养护频次的浇水频次和修剪频次分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "每周 2 次",
+      "每季度 1 次"
+    ],
+    "source_ids": [
+      "lookalike-plant-care"
+    ],
+    "split": "development",
+    "family": "lookalike-plant-care",
+    "kind": "conflict_lookalike",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored non-conflict pattern: metric"
+    }
+  },
+  {
+    "id": "Q214",
+    "user": "xq-support",
+    "question": "星桥急救箱检查周期的日常检查周期和药品更换周期分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "每月 1 次",
+      "每 6 个月"
+    ],
+    "source_ids": [
+      "lookalike-first-aid"
+    ],
+    "split": "development",
+    "family": "lookalike-first-aid",
+    "kind": "conflict_lookalike",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored non-conflict pattern: metric"
+    }
+  },
+  {
+    "id": "Q215",
+    "user": "xq-support",
+    "question": "星桥打印配额的每月黑白页数和每月彩色页数分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "500 页",
+      "80 页"
+    ],
+    "source_ids": [
+      "lookalike-print-quota"
+    ],
+    "split": "development",
+    "family": "lookalike-print-quota",
+    "kind": "conflict_lookalike",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored non-conflict pattern: metric"
+    }
+  },
+  {
+    "id": "Q216",
+    "user": "xq-support",
+    "question": "星桥部门负责人的停车位分配数量是多少？",
+    "expected": "answered",
+    "facts": [
+      "2 个"
+    ],
+    "source_ids": [
+      "lookalike-parking-slot"
+    ],
+    "split": "development",
+    "family": "lookalike-parking-slot",
+    "kind": "conflict_lookalike",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored non-conflict pattern: object"
+    }
+  },
+  {
+    "id": "Q217",
+    "user": "xq-support",
+    "question": "星桥现场岗的工服发放数量是多少？",
+    "expected": "answered",
+    "facts": [
+      "4 套"
+    ],
+    "source_ids": [
+      "lookalike-uniform-issue"
+    ],
+    "split": "development",
+    "family": "lookalike-uniform-issue",
+    "kind": "conflict_lookalike",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored non-conflict pattern: object"
+    }
+  },
+  {
+    "id": "Q218",
+    "user": "xq-support",
+    "question": "星桥长期员工的储物柜使用期限是多少？",
+    "expected": "answered",
+    "facts": [
+      "365 天"
+    ],
+    "source_ids": [
+      "lookalike-locker-term"
+    ],
+    "split": "development",
+    "family": "lookalike-locker-term",
+    "kind": "conflict_lookalike",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored non-conflict pattern: object"
+    }
+  },
+  {
+    "id": "Q219",
+    "user": "xq-support",
+    "question": "星桥现在的失物招领保管期是多久？",
+    "expected": "answered",
+    "facts": [
+      "90 天"
+    ],
+    "source_ids": [
+      "lookalike-lost-found"
+    ],
+    "split": "development",
+    "family": "lookalike-lost-found",
+    "kind": "conflict_lookalike",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored non-conflict pattern: version"
+    }
+  },
+  {
+    "id": "Q220",
+    "user": "xq-support",
+    "question": "星桥现在的会议纪要提交时限是多久？",
+    "expected": "answered",
+    "facts": [
+      "1 个工作日"
+    ],
+    "source_ids": [
+      "lookalike-minutes-due"
+    ],
+    "split": "development",
+    "family": "lookalike-minutes-due",
+    "kind": "conflict_lookalike",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored non-conflict pattern: version"
+    }
+  },
+  {
+    "id": "Q221",
+    "user": "xq-support",
+    "question": "星桥现在的纸质档案调阅时限是多久？",
+    "expected": "answered",
+    "facts": [
+      "2 个工作日"
+    ],
+    "source_ids": [
+      "lookalike-archive-request"
+    ],
+    "split": "development",
+    "family": "lookalike-archive-request",
+    "kind": "conflict_lookalike",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored non-conflict pattern: version"
+    }
+  },
+  {
+    "id": "Q222",
+    "user": "xq-support",
+    "question": "星桥客户经理的名片印制批量是多少？",
+    "expected": "answered",
+    "facts": [
+      "500 张"
+    ],
+    "source_ids": [
+      "cross-namecard-b"
+    ],
+    "split": "development",
+    "family": "cross-namecard",
+    "kind": "conflict_lookalike_cross",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored cross-document non-conflict: object"
+    }
+  },
+  {
+    "id": "Q223",
+    "user": "xq-support",
+    "question": "星桥特种作业岗位的年度体检项目数是多少？",
+    "expected": "answered",
+    "facts": [
+      "20 项"
+    ],
+    "source_ids": [
+      "cross-medical-items-b"
+    ],
+    "split": "development",
+    "family": "cross-medical-items",
+    "kind": "conflict_lookalike_cross",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored cross-document non-conflict: object"
+    }
+  },
+  {
+    "id": "Q224",
+    "user": "xq-support",
+    "question": "星桥郊区线路的班车站点数量是多少？",
+    "expected": "answered",
+    "facts": [
+      "3 个"
+    ],
+    "source_ids": [
+      "cross-shuttle-stops-b"
+    ],
+    "split": "development",
+    "family": "cross-shuttle-stops",
+    "kind": "conflict_lookalike_cross",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored cross-document non-conflict: object"
+    }
+  },
+  {
+    "id": "Q225",
+    "user": "xq-support",
+    "question": "星桥2026-09-01 起借出的雨伞的雨伞借用期限是多少？",
+    "expected": "answered",
+    "facts": [
+      "7 天"
+    ],
+    "source_ids": [
+      "cross-umbrella-loan-b"
+    ],
+    "split": "development",
+    "family": "cross-umbrella-loan",
+    "kind": "conflict_lookalike_cross",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored cross-document non-conflict: period"
+    }
+  },
+  {
+    "id": "Q226",
+    "user": "xq-support",
+    "question": "星桥2026-09-01 起的年度计划的消防演练频次是多少？",
+    "expected": "answered",
+    "facts": [
+      "每半年 1 次"
+    ],
+    "source_ids": [
+      "cross-fire-drill-b"
+    ],
+    "split": "development",
+    "family": "cross-fire-drill",
+    "kind": "conflict_lookalike_cross",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored cross-document non-conflict: period"
+    }
+  },
+  {
+    "id": "Q227",
+    "user": "xq-support",
+    "question": "星桥2026-09-01 起的空调温度设定是多少？",
+    "expected": "answered",
+    "facts": [
+      "26 摄氏度"
+    ],
+    "source_ids": [
+      "cross-aircon-setpoint-b"
+    ],
+    "split": "development",
+    "family": "cross-aircon-setpoint",
+    "kind": "conflict_lookalike_cross",
+    "review": {
+      "status": "requires_human_review",
+      "author": "Codex",
+      "source_check": "authored cross-document non-conflict: period"
+    }
+  }
+]

@@ -9,7 +9,8 @@ import os
 import httpx
 import fcntl
 
-from app.clients import Models
+from app.clients import DependencyError, Models
+from app.rerank import rerank
 from app.config import settings
 from app.evaluation import (
     aggregate,
@@ -25,6 +26,27 @@ from app.evaluation import (
 )
 
 RETRIEVAL_DEPTH = 50
+DEPENDENCY_ATTEMPTS = 6
+DEPENDENCY_BACKOFF = 10
+
+
+def await_dependencies(search, models, attempts=DEPENDENCY_ATTEMPTS):
+    """A local model server or search node can drop out mid-run; that is transient,
+    and losing hours of completed work to it is not acceptable. Only outages are
+    retried — every other failure still stops the run."""
+    for attempt in range(attempts):
+        try:
+            search.request("GET", "/_cluster/health")
+            models.embed(["健康检查"])
+            return True
+        except DependencyError as exc:
+            if attempt == attempts - 1:
+                print(f"Dependencies still unavailable after {attempts} attempts: {exc}", flush=True)
+                return False
+            delay = DEPENDENCY_BACKOFF * 2**attempt
+            print(f"Dependency unavailable ({exc}); retrying in {delay}s", flush=True)
+            time.sleep(delay)
+    return False
 
 
 def model_versions():
@@ -71,7 +93,7 @@ def run_config(directory, split, retrievers, generate, snapshot):
             "num_ctx": 8192,
             "num_predict": 700,
             "conflict_predict": 200,
-            "prompt": "grounded-v4-source-spans",
+            "prompt": "grounded-v5-conflict-gated",
         },
         "pipeline": {
             "parser": cfg.parser_version,
@@ -96,7 +118,13 @@ def load_questions(directory, split):
                 "user": "public-benchmark",
                 "question": item["question"],
                 "expected": "answered",
-                "facts": item.get("answer_facts", []),
+                # Upstream gold is free-form English prose. Normalised substring
+                # matching was built for short Chinese values and scores it near
+                # zero regardless of correctness, so literal matching is switched
+                # off here and the reference answer is kept for a future judge.
+                "facts": [],
+                "reference_answer": item.get("answer_facts", []),
+                "literal_matching": "not applicable: prose gold, needs a calibrated judge",
                 "source_ids": item["expected_doc_ids"],
                 "kind": item["question_type"],
                 "split": split,
@@ -132,6 +160,13 @@ def evaluate(question, user, manifest, search, models, chunk_map, retriever, gen
     if retriever == "dense":
         vector = models.embed([question["question"]])[0]
         hits = search.retrieve(vector, user.tenant_id, version_ids, RETRIEVAL_DEPTH)
+    elif retriever in {"hybrid", "hybrid_rerank"}:
+        vector = models.embed([question["question"]])[0]
+        hits = search.retrieve_hybrid(
+            question["question"], vector, user.tenant_id, version_ids, RETRIEVAL_DEPTH
+        )
+        if retriever == "hybrid_rerank":
+            hits = rerank(question["question"], hits, text_of=lambda h: chunk_map[h["chunk_id"]]["text"])
     else:
         hits = search.retrieve_bm25(question["question"], user.tenant_id, version_ids, RETRIEVAL_DEPTH)
     retrieval_seconds = time.monotonic() - started
@@ -181,7 +216,7 @@ def main():
     args = parser.parse_args()
     if args.split == "holdout":
         parser.error("Holdout remains sealed until the final S7 evaluation; use development or public")
-    if not set(args.retrievers.split(",")) <= {"bm25", "dense"}:
+    if not set(args.retrievers.split(",")) <= {"bm25", "dense", "hybrid", "hybrid_rerank"}:
         parser.error("Unknown retriever")
 
     retrievers = args.retrievers.split(",")
@@ -241,17 +276,33 @@ def main():
                 if question["id"] in completed:
                     continue
                 try:
-                    row = evaluate(
-                        question,
-                        users[question["user"]],
-                        manifest,
-                        search,
-                        models,
-                        chunk_map,
-                        retriever,
-                        args.generate,
-                        config_digest,
-                    )
+                    try:
+                        row = evaluate(
+                            question,
+                            users[question["user"]],
+                            manifest,
+                            search,
+                            models,
+                            chunk_map,
+                            retriever,
+                            args.generate,
+                            config_digest,
+                        )
+                    except DependencyError as outage:
+                        print(f"{retriever} {question['id']}: {outage}", flush=True)
+                        if not await_dependencies(search, models):
+                            raise
+                        row = evaluate(
+                            question,
+                            users[question["user"]],
+                            manifest,
+                            search,
+                            models,
+                            chunk_map,
+                            retriever,
+                            args.generate,
+                            config_digest,
+                        )
                 except Exception as exc:
                     summary["state"] = "interrupted"
                     summary["error"] = {

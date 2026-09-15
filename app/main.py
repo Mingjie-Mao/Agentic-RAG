@@ -69,6 +69,10 @@ class LoginBody(BaseModel):
 class QuestionBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
     question: str = Field(min_length=2, max_length=1000)
+    # The client may replay the user's own earlier questions so a follow-up can be
+    # completed into a searchable query. It only steers retrieval; every document is
+    # authorised again from scratch, so replayed text grants nothing.
+    history: list[str] = Field(default_factory=list, max_length=10)
 
 
 def user_info(user, db):
@@ -226,12 +230,14 @@ def get_document(document_id: str, user: Identity, db: DB):
 @app.get("/api/documents/{document_id}/processing")
 def processing_preview(document_id: str, user: Identity, db: DB):
     doc = require_document(db, user, document_id)
-    version = db.scalar(
+    history = db.scalars(
         select(DocumentVersion)
         .where(DocumentVersion.document_id == doc.id)
         .order_by(DocumentVersion.created_at.desc())
-        .limit(1)
-    )
+    ).all()
+    if not history:
+        raise HTTPException(404, "资料尚未生成任何版本")
+    version = history[0]
     chunks = db.scalars(
         select(Chunk).where(Chunk.version_id == version.id).order_by(Chunk.ordinal)
     ).all()
@@ -239,8 +245,30 @@ def processing_preview(document_id: str, user: Identity, db: DB):
         "document_id": doc.id,
         "title": doc.title,
         "version_id": version.id,
+        "active_version_id": doc.active_version_id,
         "status": version.status,
         "pipeline": version.pipeline,
+        # Which exact file and which processing configuration produced these chunks.
+        # One entry today; version replacement lands in S6 and reuses this shape.
+        "versions": [
+            {
+                "version_id": row.id,
+                "filename": row.filename,
+                "media_type": row.media_type,
+                "content_hash": row.content_hash,
+                "status": row.status,
+                "created_at": row.created_at.isoformat(),
+                "active": row.id == doc.active_version_id,
+                "chunks": db.scalar(
+                    select(func.count()).select_from(Chunk).where(Chunk.version_id == row.id)
+                ),
+                "parser": row.pipeline.get("parser"),
+                "chunking": f"{row.pipeline.get('chunking')} · {row.pipeline.get('chunk_chars')}字 / 重叠{row.pipeline.get('overlap')}字",
+                "embedding": row.pipeline.get("embedding_model"),
+                "timings": row.timings,
+            }
+            for row in history
+        ],
         "blocks": version.parsed_blocks,
         "chunks": [{"id": c.id, "text": c.text, "locator": c.locator} for c in chunks],
         "original_url": f"/api/versions/{version.id}/original",
@@ -306,7 +334,8 @@ def chat(body: QuestionBody, user: Identity, db: DB):
     question = body.question.strip()
     if len(question) < 2:
         raise HTTPException(422, "请输入至少两个字符的问题")
-    return answer_question(db, user, question)
+    history = [line.strip()[:1000] for line in body.history if line.strip()]
+    return answer_question(db, user, question, history)
 
 
 @app.get("/api/history")

@@ -18,53 +18,101 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "b02e74df-7d32-4ef7-aac2-fbec98ad9426",
+    "id": "add2428f-8e61-4089-8e43-081f0127afcc",
     "question": "工程组灰度发布验证口令是什么？",
     "status": "insufficient_evidence",
     "claims": [],
     "citations": [],
     "message": "在你有权访问的资料中，未找到足够依据。",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 29,
+        "searchable_documents": 29
+      },
+      "original_question": "工程组灰度发布验证口令是什么？",
+      "retrieval_query": "工程组灰度发布验证口令是什么？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 958,
+      "context_tokens_estimate": 906,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "rank": 1,
           "title": "SEV1 客户事故升级",
-          "score": 0.5082
+          "document_id": "seed-support-escalate",
+          "locator_label": "第 1–8 行",
+          "score": 0.5082,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
+        },
+        {
+          "chunk_id": "f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+          "rank": 2,
+          "title": "试点项目支持安排 B",
+          "document_id": "seed-pilot-b",
+          "locator_label": "第 1–8 行",
+          "score": 0.4687,
+          "bm25_rank": 3,
+          "dense_rank": 5,
+          "fusion_score": 0.031258,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
+        },
+        {
+          "chunk_id": "0597651a-e12e-552b-9ded-ef1fe1d7d51c",
+          "rank": 3,
+          "title": "试点项目支持安排 A",
+          "document_id": "seed-pilot-a",
+          "locator_label": "第 1–8 行",
+          "score": 0.4578,
+          "bm25_rank": 2,
+          "dense_rank": 11,
+          "fusion_score": 0.030214,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
         },
         {
           "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "rank": 4,
           "title": "Webhook 投递与签名",
-          "score": 0.4803
-        },
-        {
-          "chunk_id": "7ea8732a-57be-54b9-858c-fa251b66e285",
-          "title": "支持组交接清单",
-          "score": 0.4789
-        },
-        {
-          "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
-          "title": "支持响应等级表",
-          "score": 0.4758
+          "document_id": "seed-webhook",
+          "locator_label": "第 1–9 行",
+          "score": 0.4803,
+          "bm25_rank": null,
+          "dense_rank": 2,
+          "fusion_score": 0.016129,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 234.9,
-      "retrieval_ms": 50.4,
-      "generation_ms": 20579.8,
-      "total_ms": 20969
+      "embed_ms": 229.1,
+      "retrieval_ms": 131.1,
+      "generation_ms": 24813.3,
+      "total_ms": 25422.6
     },
     "usage": {
-      "prompt_tokens": 1091,
+      "prompt_tokens": 997,
       "completion_tokens": 18,
-      "model_duration_ms": 20534.2,
+      "model_duration_ms": 24769.2,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

@@ -1,0 +1,75 @@
+{
+  "config": {
+    "snapshot": "192bc89271af4b1f61d6766b9c369e3d5bea7362765736fa20e109812f318fce",
+    "dataset": "fixtures/s3-v2",
+    "dialogues": 40,
+    "retrieval_mode": "hybrid",
+    "depth": 50,
+    "groups": {
+      "A": "off",
+      "B": "rule",
+      "C": "llm",
+      "D": "llm_history"
+    },
+    "source_sha256": {
+      "app/rewrite.py": "487cfe120da02e409e56cda4a463dd4a0468180bc6bfa3306a8b2a8a6e60ccca",
+      "scripts/run_s5_dialogues.py": "1b77317f086e6b9383f4d72dd957b7ebd003815792bafac537586f1bb0e5e630"
+    },
+    "scope": "retrieval only; rewriting drives retrieval, generation is not run here",
+    "boundary": "only earlier question text crosses a turn; evidence never does"
+  },
+  "results": {
+    "A": {
+      "turns": 160,
+      "recall_at_5": 0.825,
+      "follow_up_recall_at_5": 0.65,
+      "opening_recall_at_5": 1.0,
+      "subject_recovered": 0.0,
+      "conditions_kept": 1.0,
+      "topic_shift_contaminated": 0.0,
+      "permission_violations": 0,
+      "rewrite_seconds_mean": 3.5945966374129055e-06,
+      "mode": "off",
+      "per_turn": "artifacts/s5-rewrite/group-A-off.jsonl"
+    },
+    "B": {
+      "turns": 160,
+      "recall_at_5": 0.9875,
+      "follow_up_recall_at_5": 0.975,
+      "opening_recall_at_5": 1.0,
+      "subject_recovered": 0.5,
+      "conditions_kept": 1.0,
+      "topic_shift_contaminated": 0.0,
+      "permission_violations": 0,
+      "rewrite_seconds_mean": 4.600494867190718e-06,
+      "mode": "rule",
+      "per_turn": "artifacts/s5-rewrite/group-B-rule.jsonl"
+    },
+    "C": {
+      "turns": 160,
+      "recall_at_5": 0.825,
+      "follow_up_recall_at_5": 0.65,
+      "opening_recall_at_5": 1.0,
+      "subject_recovered": 0.0,
+      "conditions_kept": 1.0,
+      "topic_shift_contaminated": 0.0,
+      "permission_violations": 0,
+      "rewrite_seconds_mean": 2.704968768224353,
+      "mode": "llm",
+      "per_turn": "artifacts/s5-rewrite/group-C-llm.jsonl"
+    },
+    "D": {
+      "turns": 160,
+      "recall_at_5": 0.94375,
+      "follow_up_recall_at_5": 0.9,
+      "opening_recall_at_5": 1.0,
+      "subject_recovered": 0.5375,
+      "conditions_kept": 0.65,
+      "topic_shift_contaminated": 0.025,
+      "permission_violations": 0,
+      "rewrite_seconds_mean": 4.5136874690157125,
+      "mode": "llm_history",
+      "per_turn": "artifacts/s5-rewrite/group-D-llm_history.jsonl"
+    }
+  }
+}

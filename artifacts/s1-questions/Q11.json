@@ -19,7 +19,7 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "7a4fe4a4-b9a9-4616-bf01-2e02fb7d35b0",
+    "id": "ceb7ad46-9006-42f4-8299-af01918260a0",
     "question": "确认 SEV1 事故后多久通知值班负责人？",
     "status": "answered",
     "claims": [
@@ -54,46 +54,94 @@
     ],
     "message": "",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 29,
+        "searchable_documents": 29
+      },
+      "original_question": "确认 SEV1 事故后多久通知值班负责人？",
+      "retrieval_query": "确认 SEV1 事故后多久通知值班负责人？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 842,
+      "context_tokens_estimate": 936,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "rank": 1,
           "title": "SEV1 客户事故升级",
-          "score": 0.7427
+          "document_id": "seed-support-escalate",
+          "locator_label": "第 1–8 行",
+          "score": 0.7427,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
         },
         {
           "chunk_id": "7ea8732a-57be-54b9-858c-fa251b66e285",
+          "rank": 2,
           "title": "支持组交接清单",
-          "score": 0.5482
+          "document_id": "seed-support-handoff",
+          "locator_label": "第 1–8 行",
+          "score": 0.5482,
+          "bm25_rank": 2,
+          "dense_rank": 2,
+          "fusion_score": 0.032258,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
-          "chunk_id": "0f6f4fb4-cceb-5975-9baa-27a70d154dca",
-          "title": "headings.docx",
-          "score": 0.5287
+          "chunk_id": "41b23f79-6b16-5432-b3e8-27af570f67f5",
+          "rank": 3,
+          "title": "年假申请说明",
+          "document_id": "seed-leave",
+          "locator_label": "第 1–8 行",
+          "score": 0.4738,
+          "bm25_rank": 3,
+          "dense_rank": 6,
+          "fusion_score": 0.031025,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
         },
         {
-          "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
-          "title": "支持响应等级表",
-          "score": 0.5177
+          "chunk_id": "ee8337d3-e459-5b80-92c8-9a7b287ddb10",
+          "rank": 4,
+          "title": "会议纪要归档约定",
+          "document_id": "seed-meeting",
+          "locator_label": "第 1–8 行",
+          "score": 0.4848,
+          "bm25_rank": 4,
+          "dense_rank": 5,
+          "fusion_score": 0.03101,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 296.1,
-      "retrieval_ms": 80.4,
-      "generation_ms": 25191.3,
-      "total_ms": 25630.9
+      "embed_ms": 300,
+      "retrieval_ms": 77.7,
+      "generation_ms": 23395.9,
+      "total_ms": 23867.9
     },
     "usage": {
-      "prompt_tokens": 944,
-      "completion_tokens": 59,
-      "model_duration_ms": 25151.9,
+      "prompt_tokens": 1000,
+      "completion_tokens": 60,
+      "model_duration_ms": 23359.7,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

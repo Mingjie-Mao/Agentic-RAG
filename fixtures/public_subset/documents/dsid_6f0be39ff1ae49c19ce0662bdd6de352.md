@@ -1,0 +1,21 @@
+wavefront-collective-scheduler-compact-kernel-selector
+
+Motivation: multi-GPU tensor-parallel workloads show sporadic tail latency spikes when collectives are scheduled naively at layer boundaries. This PR introduces a wavefront-style collective scheduler that groups nearby collective ops into a compact execution wave and a compact_kernel_selector that prefers smaller, lower-latency kernels for short-sequence invocations. The goal is to reduce communication stalls, improve KV cache prefetch alignment with collectives, and give the runtime a low-overhead heuristic to pick kernels that minimize per-token latency for short and mixed-length batches. Work items: - implement wavefront scheduler with layer-aware grouping and interleaved compute/comm launch windows - add compact_kernel_selector with device-query and sequence-length histogram input - introduce a KV-shard prompter that prefetches KV shards for upcoming wavefronts (heuristic-based) - NCCL launch param autotuner that records performance fingerprints and falls back to conservative settings on regression - unit + integration tests and perf-canary workload validation Checklist: [x] scheduler core implementation and unit tests [x] kernel selector + device query [x] KV prefetch heuristic + metrics hooks [x] NCCL autotuner prototype [x] perf benchmarks against baseline [x] documentation and release note entry Context and motivation: customers running TP-4/8 models reported 10-30% 95/99 latency regressions after a recent batching change; root cause was misaligned collective launches interleaving with KV cache fills. This PR aims to reduce that variance without sacrificing throughput on large continuous-batching workloads.
++// wavefront_scheduler: group nearby collectives into a compact launch window
++void WavefrontScheduler::schedule_layer_group(...) { /* heuristics */ }
++// choose compact kernels for short sequences to reduce per-token overhead
++KernelProfile select_compact_kernel(const DeviceCaps& d, int seq_len) { ... }
++// KV prompter triggers async prefetch for shards that next wavefront will need
++kv_prompter->prime_shards(predicted_shard_list);
+Marco Rivera (2025-11-18): Great direction. Two asks: (1) add a toggle to disable prefetch at runtime for memory-constrained nodes, (2) add a short writeup on how the NCCL autotuner decides to roll back parameters.
+Asha Patel (2025-11-19): Added runtime toggle `wavefront.kv_prefetch.enabled=false` and documented the autotuner rollback policy in nccl_autotuner.cpp comments.
+Riley Chen (2025-11-24): Found a flake in the canary when TP=8 and batch_size=1; looks like a race between the prompter and KV-commit. Please add a microlock around the shard-state transition.
+Asha Patel (2025-11-26): Added microlock and reworked the prompter to use versioned shard tokens. Re-ran canary, flake resolved.
+Devon Liu (2025-12-01): Approved after perf numbers look solid and tests are green. Left a suggestion to add a diagnostic metric for 'wavefront_gap_ms' to the console dashboards.
+CI Bot (2025-11-20): build failed (unit tests) — failing test: SchedulerTest.GroupingBoundaries — fixed by 2025-11-21 commit b2c4f7a.
+Introduce wavefront collective scheduler and compact kernel selection heuristics to reduce TP tail latency and stabilize continuous-batching workloads; opt-in KV-shard prefetching and NCCL autotuner. Expected impact: ~12% 99th latency reduction on mixed-length serving and up to 18% throughput improvement on short-sequence micro-batches.
+TP-4 mixed-length canary: 99p latency down 12% (from 210ms to 185ms)
+TP-8 short-seq micro-batch: throughput +18% (tokens/s), p95 latency stable
+Cont-batching steady-state: <2% throughput variance vs baseline, improved tail stability
+Feature gated: wavefront scheduling and kv_prefetch are off by default for existing clusters. Ops can enable via runtime flags or console toggles per pool. NCCL autotuner writes small fingerprint files to /var/lib/redwood/nccl-fingerprints; rotate/backup as part of cluster upgrades.
+Medium. Introduces new concurrency surface (prompter <-> shard state) and autotuner state. Thoroughly tested on perf canary; rollout recommended via canary then gradual percentage rollout with metrics watch (wavefront_gap_ms, kv_prefetch_bytes, nccl_fallback_count).

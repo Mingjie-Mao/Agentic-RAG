@@ -15,7 +15,7 @@ with SessionLocal() as db:
     for question in questions:
         data = json.loads(Path(f"artifacts/s1-questions/{question['id']}.json").read_text())
         result, checks = data["response"], data["checks"]
-        assert result["trace"]["prompt_version"] == "grounded-v4-source-spans", (
+        assert result["trace"]["prompt_version"] == "grounded-v5-conflict-gated", (
             "Mixed prompt versions; rerun older question artifacts"
         )
         user = db.get(User, question["user"])

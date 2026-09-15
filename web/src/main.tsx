@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import PdfEvidence, { type PdfLocator } from "./PdfEvidence";
 import { createRoot } from "react-dom/client";
 import {
   ArrowUp,
@@ -49,7 +50,7 @@ type Citation = {
   document_id: string;
   version_id: string;
   title: string;
-  locator: { label: string; page?: number };
+  locator: PdfLocator;
   text: string;
   original_url: string;
   preview_url: string;
@@ -63,9 +64,29 @@ type Result = {
   message: string;
   trace?: {
     method: string;
+    scope?: { readable_documents: number; searchable_documents: number };
+    original_question: string;
+    retrieval_query: string;
+    query_rewritten: boolean;
     embedding_model: string;
     generation_model: string;
-    candidates: { title: string; score: number }[];
+    top_k: number;
+    min_similarity: number;
+    context_token_budget: number;
+    context_tokens_estimate: number;
+    candidates: {
+      chunk_id: string;
+      rank: number;
+      title: string;
+      locator_label: string;
+      score: number;
+      bm25_rank: number | null;
+      dense_rank: number | null;
+      fusion_score: number | null;
+      admitted: boolean;
+      excluded_because: string | null;
+      evidence_id?: string;
+    }[];
     embed_ms: number;
     retrieval_ms: number;
     generation_ms: number;
@@ -97,7 +118,10 @@ async function api<T>(path: string, options: RequestInit = {}): Promise<T> {
       .catch(() => ({ detail: "服务暂时不可用" }));
     const detail =
       typeof body.detail === "string" ? body.detail : "请求内容不符合要求";
-    throw new Error(detail);
+    const failure = new Error(detail) as Error & { status?: number; retryable?: boolean };
+    failure.status = response.status;
+    failure.retryable = response.status === 503 || response.status === 504;
+    throw failure;
   }
   return response.json();
 }
@@ -111,6 +135,29 @@ const statusLabels: Record<string, string> = {
 const groupLabels: Record<string, string> = {
   engineering: "工程组",
   support: "支持组",
+};
+const answerStates: Record<string, string> = {
+  answered: "附原文依据",
+  conflict: "附原文依据",
+  access_changed: "权限已变化",
+  verification_failed: "引用未通过检查",
+  no_readable_documents: "没有可访问的资料",
+  documents_processing: "资料处理中",
+  insufficient_evidence: "依据不足",
+};
+const emptyStates: Record<string, { title: string; tone: string }> = {
+  no_readable_documents: { title: "还没有你能访问的资料", tone: "neutral" },
+  documents_processing: { title: "资料仍在处理", tone: "pending" },
+  verification_failed: { title: "答案未通过引用核对", tone: "warn" },
+};
+const methodLabels: Record<string, string> = {
+  dense: "向量检索",
+  bm25: "关键词检索",
+  hybrid: "混合检索（RRF 融合）",
+};
+const dropReasons: Record<string, string> = {
+  below_min_similarity: "否 · 低于相似度阈值",
+  context_budget_exhausted: "否 · 超出上下文预算",
 };
 const prompts = [
   "星桥标准套餐每分钟可以调用多少次 API？",
@@ -286,6 +333,9 @@ function EvidencePane({
         </span>
         <h3>{evidence.title}</h3>
         <p className="locator">{evidence.locator.label}</p>
+        {evidence.media_type === "application/pdf" && (
+          <PdfEvidence url={evidence.original_url} locator={evidence.locator} />
+        )}
         <a
           className="source-link"
           href={
@@ -324,15 +374,25 @@ function AnswerCard({
           <BookOpen size={17} />
         </span>
         知识助手
-        <span className="answer-status">
-          {["answered", "conflict"].includes(result.status)
-            ? "附原文依据"
-            : result.status === "access_changed"
-              ? "权限已变化"
-              : "依据不足"}
+        <span className="answer-status" data-testid="answer-status">
+          {answerStates[result.status] ?? "依据不足"}
         </span>
       </div>
       {result.status === "conflict" && <p className="conflict-notice">{result.message}</p>}
+      {emptyStates[result.status] && (
+        <div className={`empty-answer ${emptyStates[result.status].tone}`} data-testid="empty-answer">
+          <strong>{emptyStates[result.status].title}</strong>
+          <p>{result.message}</p>
+        </div>
+      )}
+      {result.trace?.scope && (
+        <p className="scope-note" data-testid="scope-note">
+          本次只检索了你有权查看的 {result.trace.scope.readable_documents} 份资料
+          {result.trace.scope.searchable_documents < result.trace.scope.readable_documents &&
+            `，其中 ${result.trace.scope.searchable_documents} 份已可检索`}
+          。
+        </p>
+      )}
       {result.claims.length ? (
         <div className="answer-prose">
           {result.claims.map((claim, index) => (
@@ -387,34 +447,96 @@ function AnswerCard({
             <span>{(result.trace.total_ms / 1000).toFixed(1)} 秒</span>
           </button>
           {trace && (
-            <div className="trace-panel">
+            <div className="trace-panel" data-testid="trace-panel">
+              <dl className="trace-query">
+                <div>
+                  <dt>原始问题</dt>
+                  <dd>{result.trace.original_question}</dd>
+                </div>
+                <div>
+                  <dt>实际检索问题</dt>
+                  <dd>
+                    {result.trace.retrieval_query}
+                    {!result.trace.query_rewritten && <em>（未改写）</em>}
+                  </dd>
+                </div>
+              </dl>
               <div className="trace-stats">
                 <span>
-                  向量检索 <b>{result.trace.retrieval_ms.toFixed(0)} ms</b>
+                  检索方式 <b data-testid="trace-method">{methodLabels[result.trace.method] ?? result.trace.method}</b>
+                </span>
+                <span>
+                  向量化 <b>{result.trace.embed_ms.toFixed(0)} ms</b>
+                </span>
+                <span>
+                  检索 <b>{result.trace.retrieval_ms.toFixed(0)} ms</b>
                 </span>
                 <span>
                   生成 <b>{(result.trace.generation_ms / 1000).toFixed(1)} s</b>
                 </span>
                 <span>
+                  上下文{" "}
+                  <b>
+                    {result.trace.context_tokens_estimate} / {result.trace.context_token_budget} token
+                  </b>
+                </span>
+                <span>
                   输入 / 输出{" "}
                   <b>
-                    {result.usage?.prompt_tokens ?? "—"} /{" "}
-                    {result.usage?.completion_tokens ?? "—"} token
+                    {result.usage?.prompt_tokens ?? "—"} / {result.usage?.completion_tokens ?? "—"} token
                   </b>
                 </span>
               </div>
               <p>
-                {result.trace.embedding_model} → {result.trace.generation_model}
+                {result.trace.embedding_model} → {result.trace.generation_model} · Top-K{" "}
+                {result.trace.top_k}
+                {result.trace.method === "dense" && ` · 相似度阈值 ${result.trace.min_similarity}`}
               </p>
-              <ol>
-                {result.trace.candidates.map((c, i) => (
-                  <li key={i}>
-                    <span>{c.title}</span>
-                    <code>{c.score.toFixed(3)}</code>
-                  </li>
-                ))}
-              </ol>
-              <small>分数表示向量相似度，不代表答案正确概率。</small>
+              <table className="trace-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>资料</th>
+                    <th>位置</th>
+                    {result.trace.method === "hybrid" && (
+                      <>
+                        <th>关键词名次</th>
+                        <th>向量名次</th>
+                      </>
+                    )}
+                    <th>分数</th>
+                    <th>是否作为证据</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {result.trace.candidates.map((c) => (
+                    <tr key={c.chunk_id} className={c.admitted ? "admitted" : "dropped"}>
+                      <td>{c.rank}</td>
+                      <td>{c.title}</td>
+                      <td>{c.locator_label}</td>
+                      {result.trace!.method === "hybrid" && (
+                        <>
+                          <td>{c.bm25_rank ?? "—"}</td>
+                          <td>{c.dense_rank ?? "—"}</td>
+                        </>
+                      )}
+                      <td>
+                        <code>{(c.fusion_score ?? c.score).toFixed(c.fusion_score ? 5 : 3)}</code>
+                      </td>
+                      <td>
+                        {c.admitted ? (
+                          <span className="tag-yes">是 · {c.evidence_id}</span>
+                        ) : (
+                          <span className="tag-no">{dropReasons[c.excluded_because ?? ""] ?? "否"}</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <small>
+                分数只反映检索排序，不代表答案正确概率。混合检索按名次融合，不比较两路的原始分数。
+              </small>
             </div>
           )}
         </>
@@ -520,10 +642,71 @@ function UploadDialog({
   );
 }
 
-type Processing = {title:string;status:string;pipeline:Record<string,unknown>;original_url:string;blocks:{text:string;locator:{label:string}}[];chunks:{id:string;text:string;locator:{label:string;token_count_estimate?:number}}[]};
+type Version = {
+  version_id: string;
+  filename: string;
+  media_type: string;
+  content_hash: string;
+  status: string;
+  created_at: string;
+  active: boolean;
+  chunks: number;
+  parser: string;
+  chunking: string;
+  embedding: string;
+};
+type Processing = {title:string;status:string;pipeline:Record<string,unknown>;original_url:string;versions:Version[];blocks:{text:string;locator:{label:string}}[];chunks:{id:string;text:string;locator:{label:string;token_count_estimate?:number}}[]};
+function VersionPanel({ versions }: { versions: Processing["versions"] }) {
+  return (
+    <section className="version-panel" data-testid="version-panel">
+      <h3>
+        版本与处理来源
+        <span>{versions.length === 1 ? "当前只有一个版本" : `共 ${versions.length} 个版本`}</span>
+      </h3>
+      {versions.map((v) => (
+        <dl className={v.active ? "version active" : "version"} key={v.version_id} data-version-id={v.version_id}>
+          <div>
+            <dt>状态</dt>
+            <dd>
+              {v.active ? <b className="tag-yes">当前生效</b> : <span className="tag-no">历史版本</span>}
+              {" · "}
+              {statusLabels[v.status] ?? v.status} · {v.chunks} 个分块
+            </dd>
+          </div>
+          <div>
+            <dt>原件</dt>
+            <dd>
+              {v.filename}
+              <br />
+              <code title="原件内容的 SHA-256">{v.content_hash.slice(0, 16)}…</code>
+            </dd>
+          </div>
+          <div>
+            <dt>解析</dt>
+            <dd>{v.parser}</dd>
+          </div>
+          <div>
+            <dt>分块</dt>
+            <dd>{v.chunking}</dd>
+          </div>
+          <div>
+            <dt>向量模型</dt>
+            <dd>{v.embedding}</dd>
+          </div>
+          <div>
+            <dt>入库时间</dt>
+            <dd>{new Date(v.created_at).toLocaleString()}</dd>
+          </div>
+        </dl>
+      ))}
+      <small>分块的原文位置绑定在上面这个版本上；更换处理配置会产生新版本，不会改写已有分块。</small>
+    </section>
+  );
+}
+
 function ProcessingDialog({data,onClose}:{data:Processing;onClose:()=>void}) {
   const [view,setView]=useState<'blocks'|'chunks'>('blocks');
-  return <div className="modal-backdrop"><section className="processing-modal" role="dialog" aria-label="解析与分块检查"><div className="modal-heading"><h2>{data.title}</h2><button className="icon-button" aria-label="关闭解析检查" onClick={onClose}><X size={20}/></button></div><p>处理状态：{statusLabels[data.status]??data.status} · <a href={data.original_url} target="_blank" rel="noreferrer">打开原件</a></p><div className="processing-tabs"><button className={view==='blocks'?'primary':'secondary'} onClick={()=>setView('blocks')}>解析结果（{data.blocks.length}）</button><button className={view==='chunks'?'primary':'secondary'} onClick={()=>setView('chunks')}>分块结果（{data.chunks.length}）</button></div>{data[view].map((item,i)=><article className="processing-block" key={i}><strong>{item.locator.label}</strong><pre>{item.text}</pre><details><summary>查看来源位置</summary><pre>{JSON.stringify(item.locator,null,2)}</pre></details></article>)}<details><summary>处理配置</summary><pre>{JSON.stringify(data.pipeline,null,2)}</pre></details></section></div>;
+  return <div className="modal-backdrop"><section className="processing-modal" role="dialog" aria-label="解析与分块检查"><div className="modal-heading"><h2>{data.title}</h2><button className="icon-button" aria-label="关闭解析检查" onClick={onClose}><X size={20}/></button></div><p>处理状态：{statusLabels[data.status]??data.status} · <a href={data.original_url} target="_blank" rel="noreferrer">打开原件</a></p><div className="processing-tabs"><button className={view==='blocks'?'primary':'secondary'} onClick={()=>setView('blocks')}>解析结果（{data.blocks.length}）</button><button className={view==='chunks'?'primary':'secondary'} onClick={()=>setView('chunks')}>分块结果（{data.chunks.length}）</button></div>{data[view].map((item,i)=><article className="processing-block" key={i}><strong>{item.locator.label}</strong><pre>{item.text}</pre><details><summary>查看来源位置</summary><pre>{JSON.stringify(item.locator,null,2)}</pre></details></article>)}<VersionPanel versions={data.versions}/><details><summary>原始处理配置</summary><pre>{JSON.stringify(data.pipeline,null,2)}</pre></details></section></div>;
 }
 
 function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
@@ -534,6 +717,8 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
   const [question, setQuestion] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [retryable, setRetryable] = useState(false);
+  const [lastQuestion, setLastQuestion] = useState("");
   const [evidence, setEvidence] = useState<Evidence | null>(null);
   const [upload, setUpload] = useState(false);
   const [processing,setProcessing]=useState<Processing|null>(null);
@@ -567,6 +752,8 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
     if (value.length < 2 || busy) return;
     setBusy(true);
     setError("");
+    setRetryable(false);
+    setLastQuestion(value);
     setTab("chat");
     setQuestion(value);
     try {
@@ -577,7 +764,14 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
       setResults((old) => [...old, result]);
       setQuestion("");
     } catch (e) {
-      setError((e as Error).message);
+      const failure = e as Error & { retryable?: boolean };
+      // A dependency outage is not the user's mistake; offer the same question again.
+      setError(
+        failure.retryable
+          ? `${failure.message}（依赖服务未就绪，问题未提交给模型）`
+          : failure.message,
+      );
+      setRetryable(Boolean(failure.retryable));
     } finally {
       setBusy(false);
     }
@@ -691,8 +885,19 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
           </div>
         </header>
         {error && (
-          <div className="error-banner" role="alert">
-            {error}
+          <div className="error-banner" role="alert" data-testid="error-banner">
+            <span className="retry-line">
+              {error}
+              {retryable && (
+                <button
+                  data-testid="retry-question"
+                  disabled={busy}
+                  onClick={() => ask(undefined, lastQuestion)}
+                >
+                  重试这个问题
+                </button>
+              )}
+            </span>
             <button
               className="icon-button"
               onClick={() => setError("")}

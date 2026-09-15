@@ -12,3 +12,4 @@ web/test-results/
 web/playwright-report/
 artifacts/local/
 .DS_Store
+web/tsconfig.tsbuildinfo

@@ -15,53 +15,101 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "ac676ecb-8b2d-4290-b336-ed031fb1e526",
+    "id": "a81cea44-1edd-4e3a-88fa-a36e31f45042",
     "question": "公司去火星出差的补贴是多少？",
     "status": "insufficient_evidence",
     "claims": [],
     "citations": [],
     "message": "在你有权访问的资料中，未找到足够依据。",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 29,
+        "searchable_documents": 29
+      },
+      "original_question": "公司去火星出差的补贴是多少？",
+      "retrieval_query": "公司去火星出差的补贴是多少？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 1017,
+      "context_tokens_estimate": 983,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "7a3f7dfc-67ad-5551-9403-7e536bcee73b",
+          "rank": 1,
           "title": "差旅标准 2025 旧版",
-          "score": 0.5171
+          "document_id": "seed-travel-2025",
+          "locator_label": "第 1–9 行",
+          "score": 0.5171,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
         },
         {
           "chunk_id": "57f732ca-2243-5599-9a7d-34dabd988e00",
+          "rank": 2,
           "title": "差旅标准 2026 生效版",
-          "score": 0.5142
+          "document_id": "seed-travel-2026",
+          "locator_label": "第 1 页",
+          "score": 0.5142,
+          "bm25_rank": 2,
+          "dense_rank": 2,
+          "fusion_score": 0.032258,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
-          "chunk_id": "41b23f79-6b16-5432-b3e8-27af570f67f5",
-          "title": "年假申请说明",
-          "score": 0.455
+          "chunk_id": "00926472-7111-5a05-8991-b0e066d277c3",
+          "rank": 3,
+          "title": "开票申请流程",
+          "document_id": "seed-invoice",
+          "locator_label": "第 1 页",
+          "score": 0.449,
+          "bm25_rank": 3,
+          "dense_rank": 5,
+          "fusion_score": 0.031258,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
         },
         {
           "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "rank": 4,
           "title": "套餐功能对照表",
-          "score": 0.4524
+          "document_id": "seed-plan-comparison",
+          "locator_label": "第 1–11 行",
+          "score": 0.4524,
+          "bm25_rank": 4,
+          "dense_rank": 4,
+          "fusion_score": 0.03125,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 241.4,
-      "retrieval_ms": 41.7,
-      "generation_ms": 26412.8,
-      "total_ms": 26781.9
+      "embed_ms": 325.9,
+      "retrieval_ms": 130.4,
+      "generation_ms": 26737.6,
+      "total_ms": 27265.9
     },
     "usage": {
-      "prompt_tokens": 1193,
+      "prompt_tokens": 1165,
       "completion_tokens": 18,
-      "model_duration_ms": 26375.6,
+      "model_duration_ms": 26696.5,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

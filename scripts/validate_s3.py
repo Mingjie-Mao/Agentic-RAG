@@ -1,5 +1,6 @@
 """Audit the frozen S3 gold: sources exist, facts are in the text, and ACL expectations hold."""
 
+import argparse
 import json
 from pathlib import Path
 from statistics import median
@@ -13,7 +14,11 @@ from app.evaluation import (
     verify_sources,
 )
 
-DATASET = "fixtures/s3"
+parser = argparse.ArgumentParser()
+parser.add_argument("--dataset", default="fixtures/s3")
+parser.add_argument("--out", default="artifacts/s3-validation.json")
+args = parser.parse_args()
+DATASET = args.dataset
 
 manifest = read_manifest(DATASET)
 verify_sources(manifest)
@@ -103,9 +108,7 @@ report["gold_review"] = {
     "independent_human_review": 0,
     "note": "Facts were located in their own source text by program; that is provenance, not human review.",
 }
-Path("artifacts/s3-validation.json").write_text(
-    json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-)
+Path(args.out).write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
 print(
     f"S3 gold audited: {len(questions)} questions, {len(manifest)} documents, snapshot {snapshot[:16]}"
 )

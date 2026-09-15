@@ -19,7 +19,7 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "89753dfb-9d71-4b90-b99e-f9791fbbc2a7",
+    "id": "39f92239-30cc-420e-8b11-f67c3974e87b",
     "question": "数据导出的下载链接有效期是多久？",
     "status": "answered",
     "claims": [
@@ -54,8 +54,20 @@
     ],
     "message": "",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 29,
+        "searchable_documents": 29
+      },
+      "original_question": "数据导出的下载链接有效期是多久？",
+      "retrieval_query": "数据导出的下载链接有效期是多久？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
@@ -66,34 +78,70 @@
       "candidates": [
         {
           "chunk_id": "50a00831-7a6a-5f51-bda1-86ca49664d18",
+          "rank": 1,
           "title": "数据导出注意事项",
-          "score": 0.8216
+          "document_id": "seed-export",
+          "locator_label": "第 1–8 行",
+          "score": 0.8216,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
         },
         {
           "chunk_id": "8ed52eef-363a-502f-a4b2-9396e71c1f54",
+          "rank": 2,
           "title": "业务数据保留规则",
-          "score": 0.5803
-        },
-        {
-          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
-          "title": "Webhook 投递与签名",
-          "score": 0.5338
+          "document_id": "seed-data-retention",
+          "locator_label": "第 1 页",
+          "score": 0.5803,
+          "bm25_rank": 2,
+          "dense_rank": 2,
+          "fusion_score": 0.032258,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
           "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "rank": 3,
           "title": "套餐功能对照表",
-          "score": 0.5332
+          "document_id": "seed-plan-comparison",
+          "locator_label": "第 1–11 行",
+          "score": 0.5332,
+          "bm25_rank": 3,
+          "dense_rank": 4,
+          "fusion_score": 0.031498,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
+        },
+        {
+          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "rank": 4,
+          "title": "Webhook 投递与签名",
+          "document_id": "seed-webhook",
+          "locator_label": "第 1–9 行",
+          "score": 0.5338,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "fusion_score": 0.015873,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 189.3,
-      "retrieval_ms": 43.1,
-      "generation_ms": 29833.5,
-      "total_ms": 30201.9
+      "embed_ms": 275.9,
+      "retrieval_ms": 95.7,
+      "generation_ms": 24437,
+      "total_ms": 24875.3
     },
     "usage": {
       "prompt_tokens": 1066,
       "completion_tokens": 50,
-      "model_duration_ms": 29802.5,
+      "model_duration_ms": 24404.2,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

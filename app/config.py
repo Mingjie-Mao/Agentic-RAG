@@ -27,7 +27,13 @@ class Settings(BaseSettings):
     model_timeout_seconds: float = 180
     chunk_strategy: str = "structure"
     parser_version: str = "docling-2.127-office-xml-v2"
-    retrieval_mode: str = "dense"
+    retrieval_mode: str = "hybrid"
+    rewrite_mode: str = "rule"
+    rerank_mode: str = "off"
+    rerank_model: str = "BAAI/bge-reranker-v2-m3"
+    rerank_candidates: int = 30
+    rerank_batch: int = 8
+    rerank_max_tokens: int = 512
     context_token_budget: int = 5000
 
 

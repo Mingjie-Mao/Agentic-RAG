@@ -19,12 +19,12 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "3ffc9a27-f033-400b-8a12-70175ae5042d",
+    "id": "cfff03a1-afd8-4994-bc56-d2341e694d88",
     "question": "连续 3 天年假应该提前多久申请？",
     "status": "answered",
     "claims": [
       {
-        "text": "连续 3 天年假应至少提前 5 个工作日提交申请。",
+        "text": "连续3天年假应至少提前5个工作日提交申请。",
         "evidence_ids": [
           "41b23f79-6b16-5432-b3e8-27af570f67f5"
         ],
@@ -54,46 +54,94 @@
     ],
     "message": "",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 29,
+        "searchable_documents": 29
+      },
+      "original_question": "连续 3 天年假应该提前多久申请？",
+      "retrieval_query": "连续 3 天年假应该提前多久申请？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 1012,
+      "context_tokens_estimate": 808,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "41b23f79-6b16-5432-b3e8-27af570f67f5",
+          "rank": 1,
           "title": "年假申请说明",
-          "score": 0.7669
+          "document_id": "seed-leave",
+          "locator_label": "第 1–8 行",
+          "score": 0.7669,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
         },
         {
-          "chunk_id": "57f732ca-2243-5599-9a7d-34dabd988e00",
-          "title": "差旅标准 2026 生效版",
-          "score": 0.539
+          "chunk_id": "454925a8-bae3-5783-a050-840482386fba",
+          "rank": 2,
+          "title": "入职设备申请",
+          "document_id": "seed-equipment",
+          "locator_label": "第 1–8 行",
+          "score": 0.4844,
+          "bm25_rank": 2,
+          "dense_rank": 7,
+          "fusion_score": 0.031054,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
-          "chunk_id": "7a3f7dfc-67ad-5551-9403-7e536bcee73b",
-          "title": "差旅标准 2025 旧版",
-          "score": 0.5366
+          "chunk_id": "d92352cf-292e-51c1-93c5-992ad7d10ba6",
+          "rank": 3,
+          "title": "headings.docx",
+          "document_id": "49ffe597-f8ad-4dc5-9d7d-d084106f5a27",
+          "locator_label": "段落 1",
+          "score": 0.4868,
+          "bm25_rank": 4,
+          "dense_rank": 6,
+          "fusion_score": 0.030777,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
         },
         {
-          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
-          "title": "SEV1 客户事故升级",
-          "score": 0.4954
+          "chunk_id": "00926472-7111-5a05-8991-b0e066d277c3",
+          "rank": 4,
+          "title": "开票申请流程",
+          "document_id": "seed-invoice",
+          "locator_label": "第 1 页",
+          "score": 0.4717,
+          "bm25_rank": 3,
+          "dense_rank": 9,
+          "fusion_score": 0.030366,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 204.7,
-      "retrieval_ms": 39.8,
-      "generation_ms": 30190.3,
-      "total_ms": 30491.2
+      "embed_ms": 192.7,
+      "retrieval_ms": 61.4,
+      "generation_ms": 20201.1,
+      "total_ms": 20509.5
     },
     "usage": {
-      "prompt_tokens": 1143,
-      "completion_tokens": 55,
-      "model_duration_ms": 30167,
+      "prompt_tokens": 862,
+      "completion_tokens": 51,
+      "model_duration_ms": 20177.9,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

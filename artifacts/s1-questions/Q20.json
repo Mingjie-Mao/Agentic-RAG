@@ -18,53 +18,101 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "2d5edba8-8f90-4198-80f9-0dc655bdcd1b",
+    "id": "652b02f9-2a78-406d-891c-6734f7d733c4",
     "question": "海川工作室的网关测试标记是什么？",
     "status": "insufficient_evidence",
     "claims": [],
     "citations": [],
     "message": "在你有权访问的资料中，未找到足够依据。",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 21,
+        "searchable_documents": 21
+      },
+      "original_question": "海川工作室的网关测试标记是什么？",
+      "retrieval_query": "海川工作室的网关测试标记是什么？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 907,
+      "context_tokens_estimate": 912,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "bfac905b-f34d-5792-992a-ed9f894f25dc",
+          "rank": 1,
           "title": "本地研发环境配置",
-          "score": 0.4791
+          "document_id": "seed-dev-environment",
+          "locator_label": "第 1–8 行",
+          "score": 0.4791,
+          "bm25_rank": 2,
+          "dense_rank": 1,
+          "fusion_score": 0.032522,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
         },
         {
           "chunk_id": "da3d04b3-8a44-514e-a37b-82decfaea8eb",
+          "rank": 2,
           "title": "灰度发布验证口令",
-          "score": 0.4672
+          "document_id": "seed-release-code",
+          "locator_label": "第 1–8 行",
+          "score": 0.4672,
+          "bm25_rank": 1,
+          "dense_rank": 2,
+          "fusion_score": 0.032522,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
-          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
-          "title": "Webhook 投递与签名",
-          "score": 0.4424
+          "chunk_id": "fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+          "rank": 3,
+          "title": "生产发布审批规则",
+          "document_id": "seed-deploy-review",
+          "locator_label": "第 1–8 行",
+          "score": 0.3628,
+          "bm25_rank": 4,
+          "dense_rank": 7,
+          "fusion_score": 0.03055,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
         },
         {
-          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
-          "title": "Python SDK 重试配置",
-          "score": 0.4192
+          "chunk_id": "454925a8-bae3-5783-a050-840482386fba",
+          "rank": 4,
+          "title": "入职设备申请",
+          "document_id": "seed-equipment",
+          "locator_label": "第 1–8 行",
+          "score": 0.3209,
+          "bm25_rank": 6,
+          "dense_rank": 10,
+          "fusion_score": 0.029437,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 396.7,
-      "retrieval_ms": 79,
-      "generation_ms": 22947.1,
-      "total_ms": 23479.3
+      "embed_ms": 359.4,
+      "retrieval_ms": 206.8,
+      "generation_ms": 27436.9,
+      "total_ms": 28156.3
     },
     "usage": {
-      "prompt_tokens": 1053,
+      "prompt_tokens": 997,
       "completion_tokens": 18,
-      "model_duration_ms": 22922.9,
+      "model_duration_ms": 27403.3,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

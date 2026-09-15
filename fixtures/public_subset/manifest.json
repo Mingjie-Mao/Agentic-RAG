@@ -330,6 +330,16 @@
     "upstream_filename": "github/dsid_3faebab9155948c6a9eaf18f91c23336__pr-1851-add-saturation-signal-queries.txt"
   },
   {
+    "id": "dsid_415b72b7d40a405e87b9671946e894d8",
+    "path": "fixtures/public_subset/documents/dsid_415b72b7d40a405e87b9671946e894d8.md",
+    "sha256": "8d814efe5165bd8af16789d3fcd78545a234aef1dd70941bc2ddf04d481ca883",
+    "title": "introduce-session-decorator-to-simplify-cross-sdk-streams-and-credential-rotation",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_415b72b7d40a405e87b9671946e894d8__pr-998901-introduce-session-decorator-to-simplify-cross-sdk-streams-and-credential-rotation-shim.txt"
+  },
+  {
     "id": "dsid_418c8dec934d446ba7757e15b41dc5a4",
     "path": "fixtures/public_subset/documents/dsid_418c8dec934d446ba7757e15b41dc5a4.md",
     "sha256": "9699e85db709dc3c74d98b968b8ebcd9ec652444485a75b585b25252a178e008",
@@ -338,6 +348,16 @@
     "groups": [],
     "tenant_public": true,
     "upstream_filename": "github/dsid_418c8dec934d446ba7757e15b41dc5a4__pr-702451-introduce-key-reconciliation-proxy-and-dryrun.txt"
+  },
+  {
+    "id": "dsid_426ca69578a84dd4af512e5a2782086e",
+    "path": "fixtures/public_subset/documents/dsid_426ca69578a84dd4af512e5a2782086e.md",
+    "sha256": "a989d3051ff7f360afca144802ad6c699ab24a0338a6e4a23bf5dd1674ad5864",
+    "title": "Introduce \"safelock\" fast-path gating + precision toggle and KV-eviction safety for runtime",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_426ca69578a84dd4af512e5a2782086e__pr-20311-safelock-fastpath-precision-toggle-kv-eviction.txt"
   },
   {
     "id": "dsid_43051eb11d6a49d5bf86ee8a15ab92da",
@@ -370,6 +390,26 @@
     "upstream_filename": "github/dsid_475fa0be533f4224a5b8f15710a4bbd1__pr-214567-oci-index-multi-registry-atomic-upgrades.txt"
   },
   {
+    "id": "dsid_47fa00c889fb4446b0481efea384a7ce",
+    "path": "fixtures/public_subset/documents/dsid_47fa00c889fb4446b0481efea384a7ce.md",
+    "sha256": "18007305de8dd729c8cee647a5f44e76d022b53240299428673baf54eee57b3a",
+    "title": "consolidate-sampled-context-anchors-and-cost-delta-annotations",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_47fa00c889fb4446b0481efea384a7ce__pr-314159-consolidate-sampled-context-anchors-and-cost-delta-annotations.txt"
+  },
+  {
+    "id": "dsid_49215834c17d4f0c98d4ad11f62f0c9a",
+    "path": "fixtures/public_subset/documents/dsid_49215834c17d4f0c98d4ad11f62f0c9a.md",
+    "sha256": "28c25ad0a6980b52e47cc661e6f790d7fcb15a98533137a128327e32e6d10436",
+    "title": "deferred-aggregation-telemetry-lattice-and-path-sampling",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_49215834c17d4f0c98d4ad11f62f0c9a__pr-75983-deferred-aggregation-telemetry-lattice-and-path-sampling.txt"
+  },
+  {
     "id": "dsid_49552539523b4860996b30a6f4cb5681",
     "path": "fixtures/public_subset/documents/dsid_49552539523b4860996b30a6f4cb5681.md",
     "sha256": "56494dbd297a79ccee0ced086273cb1af204c9f3712492a7a7b513f25b679074",
@@ -378,6 +418,26 @@
     "groups": [],
     "tenant_public": true,
     "upstream_filename": "github/dsid_49552539523b4860996b30a6f4cb5681__pr-721890-telemetry-zipper-and-responder-context-escort.txt"
+  },
+  {
+    "id": "dsid_49d64735870b48b79f1e6f2724f1e7e2",
+    "path": "fixtures/public_subset/documents/dsid_49d64735870b48b79f1e6f2724f1e7e2.md",
+    "sha256": "68f7fd88a1b4204f8ac09443a229f2684134290b8f729e6407b3ca64c527288a",
+    "title": "Reduce GPU workspace and peak memory via arena tuning, checkpointing, and scratch buffer refactor",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_49d64735870b48b79f1e6f2724f1e7e2__pr-19732-reduce-gpu-workspace-via-arena-checkpointing.txt"
+  },
+  {
+    "id": "dsid_514b8181941d47cb85e460c68e9d30a2",
+    "path": "fixtures/public_subset/documents/dsid_514b8181941d47cb85e460c68e9d30a2.md",
+    "sha256": "4c5037a91ac484f8d127fdc745e759f9e6445a6471ac65f8a319b1aecf0dfe32",
+    "title": "hackathon-2025-inference-ui-demo",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_514b8181941d47cb85e460c68e9d30a2__pr-421-hackathon-inference-ui-demo.txt"
   },
   {
     "id": "dsid_569ce2b5763d4ffeb5534766de327626",
@@ -480,6 +540,16 @@
     "upstream_filename": "github/dsid_6c58ddb8ecf543d89fca8352351dea29__pr-24930-openai-resp-v3-seed-metadata-reassembly-compat.txt"
   },
   {
+    "id": "dsid_6f0be39ff1ae49c19ce0662bdd6de352",
+    "path": "fixtures/public_subset/documents/dsid_6f0be39ff1ae49c19ce0662bdd6de352.md",
+    "sha256": "80684d5ffd5275628bc8444c85c8f6e3f9c3a4c13aff67f277df74e54188046c",
+    "title": "wavefront-collective-scheduler-compact-kernel-selector",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_6f0be39ff1ae49c19ce0662bdd6de352__pr-48215-wavefront-collective-scheduler-compact-kernel-selector.txt"
+  },
+  {
     "id": "dsid_6f3ffc39558d4464b1797711c1dc290b",
     "path": "fixtures/public_subset/documents/dsid_6f3ffc39558d4464b1797711c1dc290b.md",
     "sha256": "5822bb440e006183fdd23f44706806efe20ce5dd7bbb363a487a8e5a9750e1d3",
@@ -498,6 +568,26 @@
     "groups": [],
     "tenant_public": true,
     "upstream_filename": "github/dsid_702dbc6e9b554b4bb6a67b6f585a7ebf__pr-95360-introduce-tenant-audit-sampling-profiles-and-kms-residency-cohorting.txt"
+  },
+  {
+    "id": "dsid_707ad933d7fd447197439ed606abfb26",
+    "path": "fixtures/public_subset/documents/dsid_707ad933d7fd447197439ed606abfb26.md",
+    "sha256": "0de19cbb82c63b990b90dd5f045fac5aac01cd655b9223e27c983de0f0f8b953",
+    "title": "typed errors + ergonomic iterable reconnect API across SDKs",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_707ad933d7fd447197439ed606abfb26__pr-76428-typed-errors-iterable-reconnect-refactor-across-sdks.txt"
+  },
+  {
+    "id": "dsid_730ed8ee5fc84e0b9be761003b9a60d3",
+    "path": "fixtures/public_subset/documents/dsid_730ed8ee5fc84e0b9be761003b9a60d3.md",
+    "sha256": "d755f8f63db13e2f75e93a09f868781e625c27299e2d74638ac01d87f76f6d18",
+    "title": "Traffic escrow and rehearse proxy for staged promotes",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_730ed8ee5fc84e0b9be761003b9a60d3__pr-874321-traffic-escrow-and-rehearse-proxy-for-staged-promotes.txt"
   },
   {
     "id": "dsid_739c17e33cb84e66abf0a369179e33c2",
@@ -540,6 +630,16 @@
     "upstream_filename": "github/dsid_7764c4d15ed141ecbeaaecf606098288__pr-63918-kv-freelist-defragmenter-and-hotprefix-pin.txt"
   },
   {
+    "id": "dsid_7d7a89d91c3d4c1c854cc513e76316aa",
+    "path": "fixtures/public_subset/documents/dsid_7d7a89d91c3d4c1c854cc513e76316aa.md",
+    "sha256": "464dec30edcf8ecdda03167a2fe267be3684e8ec31669afc8a02b2b62f448cfd",
+    "title": "streaming-session-snapshot-client-ack-add-resume-token-openai-compat",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_7d7a89d91c3d4c1c854cc513e76316aa__pr-42739-session-snapshot-client-ack-stream-resume-openai-compat.txt"
+  },
+  {
     "id": "dsid_7fa3726d85884b5ea3043b326dc29480",
     "path": "fixtures/public_subset/documents/dsid_7fa3726d85884b5ea3043b326dc29480.md",
     "sha256": "c3e75829cf31dfaf501339f399846b817caf22fd2d06debb194da8942b7a12e5",
@@ -578,6 +678,26 @@
     "groups": [],
     "tenant_public": true,
     "upstream_filename": "github/dsid_86e1b82624c74b93acc84adab43c0e73__pr-144521-graceful-redistribution-proxy-with-telemetry-holdoff.txt"
+  },
+  {
+    "id": "dsid_8779ac72d6504759b701178632772f6c",
+    "path": "fixtures/public_subset/documents/dsid_8779ac72d6504759b701178632772f6c.md",
+    "sha256": "8f1d781093f09c0d41382b768fa97b38cb27df04a236b84262d7671a19a29922",
+    "title": "v1 OpenAI chat: response sculpting, stop coalescing, and streaming logprob envelope",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_8779ac72d6504759b701178632772f6c__pr-199842-openai-v1-chat-compat-response-sculpting-stop-coalesce.txt"
+  },
+  {
+    "id": "dsid_88b39d13bd584ef8b1422d76994808c7",
+    "path": "fixtures/public_subset/documents/dsid_88b39d13bd584ef8b1422d76994808c7.md",
+    "sha256": "bac93a5e6f6f6fca56ac713c198c9b071107cb62dd3526ae3325f7c49dcf688c",
+    "title": "Cross-SDK: unify streaming handshake, consumer ergonomics, and auth/retry semantics (Python/TS/Go)",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_88b39d13bd584ef8b1422d76994808c7__pr-95312-unify-handshake-consumer-ux-and-retry-bump.txt"
   },
   {
     "id": "dsid_8c86b858336940ce97419b1a4ca19553",
@@ -660,6 +780,16 @@
     "upstream_filename": "github/dsid_9a6a57dae6544ff0b115aa3a6f98bd40__pr-166201-client-contract-fallback-middleware-toolcall-headers.txt"
   },
   {
+    "id": "dsid_9ad34d10c60a4c88931642a247aeb063",
+    "path": "fixtures/public_subset/documents/dsid_9ad34d10c60a4c88931642a247aeb063.md",
+    "sha256": "188e90ed0ad4e2be56d7c59d015d0e08224d2d0bda792de1cad89cb1b93070be",
+    "title": "Introduce defaults-suggester: heuristic profiles for batching, cache TTLs and quantization presets",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_9ad34d10c60a4c88931642a247aeb063__pr-33219-defaults-suggester-batch-cache-qprofiles.txt"
+  },
+  {
     "id": "dsid_9cfe990667a145aba46ca72ffb6a1e3e",
     "path": "fixtures/public_subset/documents/dsid_9cfe990667a145aba46ca72ffb6a1e3e.md",
     "sha256": "b62780a8b85e563d10261bbb243c7ad4a171473460321f6f854a302d6e551abc",
@@ -678,6 +808,16 @@
     "groups": [],
     "tenant_public": true,
     "upstream_filename": "github/dsid_9d1624818a004c53b3b7020412275cc0__pr-49512-modernize-ci-build-plugins-migrate-bash-to-composite.txt"
+  },
+  {
+    "id": "dsid_a193f9b7483248ad86c52e684d98a760",
+    "path": "fixtures/public_subset/documents/dsid_a193f9b7483248ad86c52e684d98a760.md",
+    "sha256": "bc8d0d173aeacf7feb6b20940e16ad6a37862abc27fdd79d1b36e6b1d25db616",
+    "title": "dynamic-scratch-reuse-and-fanout-aware-kernel-selection-to-reduce-peak-gpu-workspace",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_a193f9b7483248ad86c52e684d98a760__pr-21807-dynamic-scratch-fanout-kernel-selection.txt"
   },
   {
     "id": "dsid_a4a9fdebd070475f9eb6b3473f3ec513",
@@ -800,6 +940,16 @@
     "upstream_filename": "github/dsid_aec878d7502a4625b38945b05b61952a__pr-63714-introduce-route-quarantine-and-adaptive-chunk-ack-window.txt"
   },
   {
+    "id": "dsid_b253f5cc715f4d47bdd578edd6f2f19e",
+    "path": "fixtures/public_subset/documents/dsid_b253f5cc715f4d47bdd578edd6f2f19e.md",
+    "sha256": "bb0accef5525e6a66ae9bac880fc03aa391075b884cd6c4342bce643f732b964",
+    "title": "tool-result-merge-policy-and-exponential-backoff-for-parallel-calls",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_b253f5cc715f4d47bdd578edd6f2f19e__pr-182450-tool-result-merging-and-backoff-wizardry.txt"
+  },
+  {
     "id": "dsid_b28fa151fc864b4c8efeba9723a58ae5",
     "path": "fixtures/public_subset/documents/dsid_b28fa151fc864b4c8efeba9723a58ae5.md",
     "sha256": "a8e0f263cec8a5f04346fa712a75410a04a38932ac0ebe93bb0d15264f693edd",
@@ -900,6 +1050,16 @@
     "upstream_filename": "github/dsid_c1501e447fe54c82bbdaf65535cc06f5__pr-54877-openai-bridge-forward-seed-annotations.txt"
   },
   {
+    "id": "dsid_c1a6a71323c04c1ba5445aadea340362",
+    "path": "fixtures/public_subset/documents/dsid_c1a6a71323c04c1ba5445aadea340362.md",
+    "sha256": "c7053ee4552a15971956a6e3b323ef8ecc488e2803be9682c6da96f511672dc4",
+    "title": "introduce-token-stage-cohorting-and-route-matrix-alerting",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_c1a6a71323c04c1ba5445aadea340362__pr-867001-introduce-token-stage-cohorting-and-route-matrix-alerting.txt"
+  },
+  {
     "id": "dsid_c5641d100b294dd3bd15f32df4ee9d52",
     "path": "fixtures/public_subset/documents/dsid_c5641d100b294dd3bd15f32df4ee9d52.md",
     "sha256": "b59ac6678ace67e4400b39c33278ba476f2704582e9e05909fe575d47ad5fd04",
@@ -928,6 +1088,26 @@
     "groups": [],
     "tenant_public": true,
     "upstream_filename": "github/dsid_c7860fdbc17a48b0b6c5f9a0c5e3d054__pr-176421-coalescing-invoker-grace-period-and-structured-output.txt"
+  },
+  {
+    "id": "dsid_c84c8581594e47d49e82d024a6da915d",
+    "path": "fixtures/public_subset/documents/dsid_c84c8581594e47d49e82d024a6da915d.md",
+    "sha256": "dcbdba06293fa88ffc2d8be3be992be2d2906fb0eba9572131bcaa72a726bcfe",
+    "title": "prepack-int8-weights-and-smoothquant-fuse-with-kernel-lane-allocator",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_c84c8581594e47d49e82d024a6da915d__pr-297345-weight-prepack-int8-smoothquant-allocator.txt"
+  },
+  {
+    "id": "dsid_caf02469a41c46cf8387713b83c628f3",
+    "path": "fixtures/public_subset/documents/dsid_caf02469a41c46cf8387713b83c628f3.md",
+    "sha256": "4fc241bf7ad1b2ef3f4e2c5a1041cf8c141fef199e75116946fbdac16e04b673",
+    "title": "adaptive-scratch-capacity-and-deferred-ckpt-scheduler-for-gpu-workspace-reduction",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_caf02469a41c46cf8387713b83c628f3__pr-23145-adaptive-scratch-and-deferred-ckpt-scheduler.txt"
   },
   {
     "id": "dsid_cbeb016c9dce4e6c96e7898e08e73eb8",
@@ -1118,6 +1298,16 @@
     "groups": [],
     "tenant_public": true,
     "upstream_filename": "github/dsid_ee143cb496554e6fa4fc09efe0567d89__pr-431921-add-per-call-auth-hooks-idempotent-stream-retry-operator.txt"
+  },
+  {
+    "id": "dsid_ee6c23c178dc428bbd71af6526c70251",
+    "path": "fixtures/public_subset/documents/dsid_ee6c23c178dc428bbd71af6526c70251.md",
+    "sha256": "bda567b6b82d1ff6689e9b73f1b8949c6014068bb4e77ce3d2881b89b8337d31",
+    "title": "Introduce stepped batching policy, quant-safety linter, and unit-econ smoke tests",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_ee6c23c178dc428bbd71af6526c70251__pr-45102-introduce-stepped-batcher-quant-linter-smoketests.txt"
   },
   {
     "id": "dsid_f08a425b0e944da09fed8540c8d54b7d",

@@ -2,6 +2,7 @@
 
 from io import BytesIO
 import hashlib
+import os
 import json
 from pathlib import Path
 import re
@@ -13,6 +14,8 @@ ROOT = Path("fixtures/public_subset")
 ROOT.mkdir(parents=True, exist_ok=True)
 COMMIT = "d36685e273713975ee20299bbf1ab64165575b3c"
 BASE = "https://github.com/onyx-dot-app/EnterpriseRAG-Bench/releases/download/v1.0.0/"
+SLICES = [f"github_slice_{n:04}.zip" for n in range(1, int(os.environ.get("RAG_BENCH_SLICES", "2")) + 1)]
+TARGET = int(os.environ.get("RAG_BENCH_QUESTIONS", "20"))
 documents = {}
 inputs = []
 with httpx.Client(timeout=120, follow_redirects=True, trust_env=False) as client:
@@ -21,7 +24,7 @@ with httpx.Client(timeout=120, follow_redirects=True, trust_env=False) as client
     )
     qbytes.raise_for_status()
     questions = [json.loads(line) for line in qbytes.text.splitlines() if line.strip()]
-    for name in ["github_slice_0001.zip", "github_slice_0002.zip"]:
+    for name in SLICES:
         response = client.get(BASE + name)
         response.raise_for_status()
         inputs.append({"url": BASE + name, "sha256": hashlib.sha256(response.content).hexdigest()})
@@ -46,12 +49,13 @@ eligible = [
     and set(q["source_types"]) == {"github"}
 ]
 selected = []
+scale = TARGET / 20
 for category, limit in [
-    ("basic", 8),
-    ("semantic", 6),
-    ("intra_document_reasoning", 2),
-    ("constrained", 2),
-    ("conflicting_info", 2),
+    ("basic", round(8 * scale)),
+    ("semantic", round(6 * scale)),
+    ("intra_document_reasoning", round(2 * scale)),
+    ("constrained", round(2 * scale)),
+    ("conflicting_info", round(2 * scale)),
 ]:
     selected.extend(
         sorted(
@@ -60,11 +64,12 @@ for category, limit in [
         )[:limit]
     )
 for q in sorted(eligible, key=lambda q: hashlib.sha256(q["question_id"].encode()).hexdigest()):
-    if len(selected) >= 20:
+    if len(selected) >= TARGET:
         break
     if q not in selected:
         selected.append(q)
-assert len(selected) == 20
+selected = selected[:TARGET]
+print(f"eligible={len(eligible)} selected={len(selected)} slices={len(SLICES)}")
 gold = {key for q in selected for key in q["expected_doc_ids"]}
 distractors = sorted(set(documents) - gold, key=lambda key: hashlib.sha256(key.encode()).hexdigest())[
     :100
@@ -101,7 +106,7 @@ for key in sorted(gold | set(distractors)):
             "gold_documents": sorted(gold),
             "distractors": distractors,
             "selection": "fixed SHA-256 order within categories; only GitHub questions whose complete gold is available",
-            "limitations": "one source only; 20 questions + 100 distractors, not the full benchmark; no official LLM-judge score claimed",
+            "limitations": f"one source only (github); {len(selected)} questions is every eligible question in the two published github slices, not the full benchmark; {len(distractors)} distractors; no official LLM-judge score claimed",
         },
         ensure_ascii=False,
         indent=2,

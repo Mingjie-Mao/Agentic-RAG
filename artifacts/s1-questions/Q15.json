@@ -20,7 +20,7 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "9f083f31-6e0a-4dcf-9d5a-97274a3fd81e",
+    "id": "c0c60bd1-1f4a-46c6-90ce-2e82345aa9d7",
     "question": "团队版支持多少成员，每日可以导出多少次？",
     "status": "answered",
     "claims": [
@@ -64,46 +64,94 @@
     ],
     "message": "",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 29,
+        "searchable_documents": 29
+      },
+      "original_question": "团队版支持多少成员，每日可以导出多少次？",
+      "retrieval_query": "团队版支持多少成员，每日可以导出多少次？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 909,
+      "context_tokens_estimate": 889,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "rank": 1,
           "title": "套餐功能对照表",
-          "score": 0.6869
-        },
-        {
-          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
-          "title": "文件上传接口手册",
-          "score": 0.561
-        },
-        {
-          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
-          "title": "API 调用配额说明",
-          "score": 0.5457
+          "document_id": "seed-plan-comparison",
+          "locator_label": "第 1–11 行",
+          "score": 0.6869,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
         },
         {
           "chunk_id": "50a00831-7a6a-5f51-bda1-86ca49664d18",
+          "rank": 2,
           "title": "数据导出注意事项",
-          "score": 0.5389
+          "document_id": "seed-export",
+          "locator_label": "第 1–8 行",
+          "score": 0.5389,
+          "bm25_rank": 2,
+          "dense_rank": 4,
+          "fusion_score": 0.031754,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
+        },
+        {
+          "chunk_id": "7ea8732a-57be-54b9-858c-fa251b66e285",
+          "rank": 3,
+          "title": "支持组交接清单",
+          "document_id": "seed-support-handoff",
+          "locator_label": "第 1–8 行",
+          "score": 0.5211,
+          "bm25_rank": 4,
+          "dense_rank": 5,
+          "fusion_score": 0.03101,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
+        },
+        {
+          "chunk_id": "f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+          "rank": 4,
+          "title": "试点项目支持安排 B",
+          "document_id": "seed-pilot-b",
+          "locator_label": "第 1–8 行",
+          "score": 0.5101,
+          "bm25_rank": 3,
+          "dense_rank": 7,
+          "fusion_score": 0.030798,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 421.7,
-      "retrieval_ms": 67.5,
-      "generation_ms": 35131.2,
-      "total_ms": 35751.1
+      "embed_ms": 278,
+      "retrieval_ms": 123.8,
+      "generation_ms": 27555.7,
+      "total_ms": 28047.6
     },
     "usage": {
-      "prompt_tokens": 1095,
+      "prompt_tokens": 1021,
       "completion_tokens": 74,
-      "model_duration_ms": 35097.4,
+      "model_duration_ms": 27522.7,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

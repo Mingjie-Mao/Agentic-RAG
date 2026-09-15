@@ -1,0 +1,11 @@
+{
+  "version": "s5-dialogues-v1",
+  "derived_from": "fixtures/s3-v2",
+  "snapshot": "192bc89271af4b1f61d6766b9c369e3d5bea7362765736fa20e109812f318fce",
+  "dialogues": 40,
+  "turns": 160,
+  "follow_up_turns": 80,
+  "split": "development only; no held-out family is used",
+  "purpose": "S5-E1: measure anaphora resolution, condition preservation and rewrite harm",
+  "review_state": "source-audited draft; independent human review not yet performed"
+}

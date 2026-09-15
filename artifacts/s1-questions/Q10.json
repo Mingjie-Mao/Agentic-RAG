@@ -19,7 +19,7 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "714baf54-dfc6-4185-b82e-2f791db85304",
+    "id": "babb94ad-2f8b-416f-aea9-97e611d091b5",
     "question": "P1 服务不可用工单要求多久首次响应？",
     "status": "answered",
     "claims": [
@@ -54,46 +54,94 @@
     ],
     "message": "",
     "trace": {
-      "method": "dense",
-      "prompt_version": "grounded-v4-source-spans",
+      "method": "hybrid",
+      "scope": {
+        "readable_documents": 29,
+        "searchable_documents": 29
+      },
+      "original_question": "P1 服务不可用工单要求多久首次响应？",
+      "retrieval_query": "P1 服务不可用工单要求多久首次响应？",
+      "query_rewritten": false,
+      "rewrite": {
+        "mode": "rule",
+        "rewritten": false,
+        "history_turns": 0
+      },
+      "prompt_version": "grounded-v5-conflict-gated",
       "top_k": 4,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 854,
+      "context_tokens_estimate": 968,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
           "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
+          "rank": 1,
           "title": "支持响应等级表",
-          "score": 0.7552
-        },
-        {
-          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
-          "title": "SEV1 客户事故升级",
-          "score": 0.5869
+          "document_id": "seed-support-sla",
+          "locator_label": "第 1–12 行",
+          "score": 0.7552,
+          "bm25_rank": 1,
+          "dense_rank": 1,
+          "fusion_score": 0.032787,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E1"
         },
         {
           "chunk_id": "f5401de6-c2c3-5d2a-a241-e1bc178a3a82",
+          "rank": 2,
           "title": "工单 218：重复回调",
-          "score": 0.5623
+          "document_id": "seed-ticket-218",
+          "locator_label": "第 1–9 行",
+          "score": 0.5623,
+          "bm25_rank": 2,
+          "dense_rank": 3,
+          "fusion_score": 0.032002,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E2"
         },
         {
-          "chunk_id": "0f6f4fb4-cceb-5975-9baa-27a70d154dca",
-          "title": "headings.docx",
-          "score": 0.543
+          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "rank": 3,
+          "title": "SEV1 客户事故升级",
+          "document_id": "seed-support-escalate",
+          "locator_label": "第 1–8 行",
+          "score": 0.5869,
+          "bm25_rank": 3,
+          "dense_rank": 2,
+          "fusion_score": 0.032002,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E3"
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "rank": 4,
+          "title": "API 调用配额说明",
+          "document_id": "seed-api-limits",
+          "locator_label": "第 1–9 行",
+          "score": 0.5399,
+          "bm25_rank": 6,
+          "dense_rank": 5,
+          "fusion_score": 0.030536,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E4"
         }
       ],
-      "embed_ms": 311.5,
-      "retrieval_ms": 43,
-      "generation_ms": 30351.4,
-      "total_ms": 30781.8
+      "embed_ms": 215.8,
+      "retrieval_ms": 55.7,
+      "generation_ms": 24884.5,
+      "total_ms": 25303.6
     },
     "usage": {
-      "prompt_tokens": 1007,
-      "completion_tokens": 50,
-      "model_duration_ms": 30317.2,
+      "prompt_tokens": 1163,
+      "completion_tokens": 51,
+      "model_duration_ms": 24848.5,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",

@@ -6,6 +6,7 @@ from fastapi import HTTPException
 from app.clients import Models, Search
 from app.config import settings
 from app.models import Answer
+from app.rewrite import rewrite_query
 from app.security import readable_documents, require_chunk
 
 
@@ -43,9 +44,19 @@ def validate_claims(generated, evidence):
     return checked, "answered"
 
 
-def answer_question(db, user, question):
+MESSAGES = {
+    "verification_failed": "模型的引用未通过检查，本次未返回答案。请调整问题后重试。",
+    "no_readable_documents": "你当前没有可访问的资料。上传资料，或请管理者把已有资料分享到你所在的组。",
+    "documents_processing": "你的资料还在处理中，全部处理完成后才能检索。可以在资料库查看进度。",
+}
+
+
+def answer_question(db, user, question, history=None):
     started = time.monotonic()
     cfg = settings()
+    # Rewriting produces a retrieval query and nothing else: it is not stored, never
+    # crosses a session, and never becomes evidence.
+    query, rewrite_trace = rewrite_query(question, history, mode=cfg.rewrite_mode)
     documents = readable_documents(db, user)
     versions = [d.active_version_id for d in documents if d.active_version_id]
     evidence, candidates, usage = [], [], {}
@@ -54,32 +65,44 @@ def answer_question(db, user, question):
     if versions:
         models = Models()
         t = time.monotonic()
-        vector = models.embed([question])[0] if cfg.retrieval_mode == "dense" else None
+        vector = models.embed([query])[0] if cfg.retrieval_mode != "bm25" else None
         embed_ms = (time.monotonic() - t) * 1000
         t = time.monotonic()
-        hits = (
-            Search().retrieve(vector, user.tenant_id, versions, cfg.top_k)
-            if vector is not None
-            else Search().retrieve_bm25(question, user.tenant_id, versions, cfg.top_k)
-        )
+        if cfg.retrieval_mode == "hybrid":
+            hits = Search().retrieve_hybrid(query, vector, user.tenant_id, versions, cfg.top_k)
+        elif vector is not None:
+            hits = Search().retrieve(vector, user.tenant_id, versions, cfg.top_k)
+        else:
+            hits = Search().retrieve_bm25(query, user.tenant_id, versions, cfg.top_k)
         retrieval_ms = (time.monotonic() - t) * 1000
-        for hit in hits:
-            chunk, version, document = require_chunk(db, user, hit["chunk_id"], active_only=True)
-            candidates.append(
-                {
-                    "chunk_id": chunk.id,
-                    "title": document.title,
-                    "score": round(hit.get("cosine_similarity", hit.get("score", 0)), 4),
-                }
-            )
-            if cfg.retrieval_mode == "dense" and hit["cosine_similarity"] < cfg.min_similarity:
-                continue
-            from app.chunking import token_count
+        from app.chunking import token_count
 
+        for rank, hit in enumerate(hits, 1):
+            chunk, version, document = require_chunk(db, user, hit["chunk_id"], active_only=True)
+            candidate = {
+                "chunk_id": chunk.id,
+                "rank": rank,
+                "title": document.title,
+                "document_id": document.id,
+                "locator_label": chunk.locator.get("label", ""),
+                "score": round(hit.get("cosine_similarity", hit.get("score", 0)), 4),
+                "bm25_rank": hit.get("bm25_rank"),
+                "dense_rank": hit.get("dense_rank"),
+                "fusion_score": round(hit["score"], 6) if cfg.retrieval_mode == "hybrid" else None,
+                "admitted": False,
+                "excluded_because": None,
+            }
+            candidates.append(candidate)
+            if cfg.retrieval_mode == "dense" and hit["cosine_similarity"] < cfg.min_similarity:
+                candidate["excluded_because"] = "below_min_similarity"
+                continue
             cost = token_count(chunk.text) + token_count(document.title) + 100
             if context_tokens + cost > cfg.context_token_budget:
+                candidate["excluded_because"] = "context_budget_exhausted"
                 continue
             context_tokens += cost
+            candidate["admitted"] = True
+            candidate["evidence_id"] = f"E{len(evidence) + 1}"
             evidence.append(
                 {
                     "id": f"E{len(evidence) + 1}",
@@ -104,8 +127,11 @@ def answer_question(db, user, question):
                 status = "conflict"
         else:
             claims, status = [], "insufficient_evidence"
+    elif not documents:
+        # Nothing readable at all is a different situation from "searched and found nothing".
+        claims, status = [], "no_readable_documents"
     else:
-        claims, status = [], "insufficient_evidence"
+        claims, status = [], "documents_processing"
     # No cached or historical content is provided to the model in this S1 path.
     for item in candidates:
         require_chunk(db, user, item["chunk_id"], active_only=True)
@@ -134,14 +160,18 @@ def answer_question(db, user, question):
             else ""
         )
         if claims
-        else (
-            "模型的引用未通过检查，本次未返回答案。请调整问题后重试。"
-            if status == "verification_failed"
-            else "在你有权访问的资料中，未找到足够依据。"
-        ),
+        else MESSAGES.get(status, "在你有权访问的资料中，未找到足够依据。"),
         "trace": {
             "method": cfg.retrieval_mode,
-            "prompt_version": "grounded-v4-source-spans",
+            "scope": {
+                "readable_documents": len(documents),
+                "searchable_documents": len(versions),
+            },
+            "original_question": question,
+            "retrieval_query": query,
+            "query_rewritten": rewrite_trace["rewritten"],
+            "rewrite": rewrite_trace,
+            "prompt_version": "grounded-v5-conflict-gated",
             "top_k": cfg.top_k,
             "min_similarity": cfg.min_similarity,
             "context_token_budget": cfg.context_token_budget,
