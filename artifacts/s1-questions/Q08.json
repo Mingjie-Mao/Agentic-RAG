@@ -1,0 +1,105 @@
+{
+  "question": {
+    "id": "Q08",
+    "user": "xq-support",
+    "question": "2026 年悉尼出差的酒店每晚报销上限是多少澳元？",
+    "expected": "answered",
+    "facts": [
+      "250"
+    ],
+    "sources": [
+      "travel-2026"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "05b0f5fe-13f4-4a49-9d9f-cca2789de4d5",
+    "question": "2026 年悉尼出差的酒店每晚报销上限是多少澳元？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "2026年悉尼出差的酒店每晚报销上限是250澳元。",
+        "evidence_ids": [
+          "57f732ca-2243-5599-9a7d-34dabd988e00"
+        ],
+        "quotes": [
+          "悉尼出差酒店住宿上限为每晚 250 澳元。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "57f732ca-2243-5599-9a7d-34dabd988e00",
+        "document_id": "seed-travel-2026",
+        "version_id": "71032446-4e4f-4af2-a799-78c574a15ed4",
+        "title": "差旅标准 2026 生效版",
+        "locator": {
+          "kind": "pdf",
+          "page": 1,
+          "label": "第 1 页",
+          "char_start": 0,
+          "char_end": 137
+        },
+        "text": "差旅标准 2026 生效版\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n适用期间\n本规则适用于 2026 年 1 月 1 日起发生的差旅，并替代 2025 年旧版。\n住宿标准\n悉尼出差酒店住宿上限为每晚 250 澳元。报销须在返程后 30 天内提交。",
+        "preview_url": "/api/evidence/57f732ca-2243-5599-9a7d-34dabd988e00",
+        "original_url": "/api/versions/71032446-4e4f-4af2-a799-78c574a15ed4/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "prompt_version": "grounded-v4-source-spans",
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000,
+      "context_tokens_estimate": 820,
+      "token_counter": "cl100k_base",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:7b-instruct",
+      "candidates": [
+        {
+          "chunk_id": "57f732ca-2243-5599-9a7d-34dabd988e00",
+          "title": "差旅标准 2026 生效版",
+          "score": 0.8003
+        },
+        {
+          "chunk_id": "7a3f7dfc-67ad-5551-9403-7e536bcee73b",
+          "title": "差旅标准 2025 旧版",
+          "score": 0.7833
+        },
+        {
+          "chunk_id": "a29a8489-2d6f-54ff-8171-882d8f7bf209",
+          "title": "formula-missing.xlsx",
+          "score": 0.5111
+        },
+        {
+          "chunk_id": "e096e4fe-53e3-534c-bcc7-a942a5e1c422",
+          "title": "formula-missing.xlsx",
+          "score": 0.4843
+        }
+      ],
+      "embed_ms": 202.5,
+      "retrieval_ms": 90,
+      "generation_ms": 24806.7,
+      "total_ms": 25135.7
+    },
+    "usage": {
+      "prompt_tokens": 1025,
+      "completion_tokens": 58,
+      "model_duration_ms": 24783.8,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama",
+      "answer_status": "answered",
+      "conflict_check": null
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

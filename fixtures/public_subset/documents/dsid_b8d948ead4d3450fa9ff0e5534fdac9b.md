@@ -1,0 +1,32 @@
+Tag eval outputs with experiment variant identifiers + publish compact score stream for Console
+
+Motivation: Route-level A/B testing in Console needs a quality signal per {route, experiment_id, variant_id}. Today, eval-harness produces per-run artifacts (full JSON + HTML reports) but those are not consistently attributable to a routing experiment variant, and they’re too heavy for Console ingestion. This PR (1) propagates experiment attribution fields into eval execution and output artifacts, and (2) publishes a compact score stream suitable for near-real-time aggregation and dashboarding.
+
+What’s included: (A) Variant tagging: add optional experiment context to eval runs, including experiment_id, variant_id, route_id, and a stable stickiness_key_hash (when provided), and persist these tags into (i) run metadata.json, (ii) per-prompt result rows, and (iii) summary.json. (B) Compact score stream: emit one record per {run_id, prompt_set_id, scorer_name} with normalized score, raw score, and minimal dimensions. This is designed to be ingested by Telemetry/Analytics and joined with experiment guardrails results without pulling full eval artifacts.
+
+Schema (score stream v1): Each record is JSONL with fields: event_type=eval_score_v1, emitted_at, run_id, eval_suite_id, prompt_set_id, scorer_name, score_value, score_value_normalized, normalization_version, sample_n, model_id, model_revision, region (if applicable), route_id (optional), experiment_id (optional), variant_id (optional), attribution_source (router|manual|unknown), and trace_id (optional). Notes: (1) experiment_id/variant_id are omitted (not null) when not available to reduce payload size and simplify downstream cardinality controls; (2) scorer_name is restricted to an allowlist configured in eval-harness to prevent uncontrolled dimensionality.
+
+Integration points: (1) CLI: new flags --experiment-id, --variant-id, --route-id, --attribution-source. (2) Runner API: EvalRunContext gains optional ExperimentAttribution. (3) Publishers: new ScoreStreamPublisher (default off) that can write to stdout (dev), file (integration tests), or the internal bus topic eval-score-stream-v1 (prod). The publisher is behind a config gate (EVAL_SCORE_STREAM_ENABLED) and can be enabled per environment.
+
+Safety/rollout: Backward compatible. Existing artifact formats remain valid; we only add new keys. The score stream publisher is disabled by default. Added guardrails to avoid emitting records when scorer output is missing/NaN. Added sampling controls for very large prompt sets: emit summary scores always; per-prompt scores remain only in artifacts, not in the stream.
+
+Testing: Added unit tests for attribution propagation, JSON schema validation tests for stream records, and an end-to-end fixture that runs a tiny suite and asserts that emitted JSONL contains correct experiment_id/variant_id. Also added a compatibility test to ensure older consumers parsing metadata.json don’t break.
+
+Follow-ups (not in this PR): (1) finalize Console-facing ‘quality’ metric mapping and thresholds (Applied ML + Product); (2) telemetry aggregation jobs (ENG-9027) to roll up score stream by {experiment_id, variant_id}; (3) documentation updates for customers/internal operators on how evals attach to experiments.
+
+Risk notes: Cardinality is controlled by keeping the stream to a small dimension set; do not add raw prompt text or user identifiers. stickiness_key_hash is salted and truncated to prevent correlation across customers while allowing debugging for a single run.
+Example emitted record (JSONL): {"event_type":"eval_score_v1","emitted_at":"2025-03-14T22:18:07Z","run_id":"run_01HQ...","eval_suite_id":"suite_chat_safety_v3","prompt_set_id":"ps_legal_summaries_20","scorer_name":"rubric_helpfulness","score_value":0.78,"score_value_normalized":0.78,"normalization_version":"helpfulness_v2","sample_n":200,"model_id":"llama-3.1-70b-instruct","model_revision":"2025-03-01","route_id":"rt_8f2d...","experiment_id":"exp_2c1a...","variant_id":"var_b","attribution_source":"router"}
+Dr. Maya Srinivasan: Can we confirm that scorer_name is stable and not user-controlled? We can’t let this explode dimensionally.
+Jonas Weber (author): Yes—added an allowlist in config (scorers.allowlisted_for_stream). Non-allowlisted scorers still appear in full artifacts but are skipped for the stream with a warning counter.
+Logan Wright: Please avoid emitting nulls for optional dimensions; our ingestion treats null vs missing differently and it can double series count.
+Jonas Weber (author): Updated serializer to omit experiment_id/variant_id/route_id when not present. Added a test asserting key omission.
+Caleb Johnson: We should include a schema_version field for forward compatibility (even if it’s v1).
+Jonas Weber (author): Added schema_version: "1" to each record and updated schema + tests.
+Selene Huang: For quality regression alerts we’ll need normalized score + normalization_version. Also need sample_n to interpret noise.
+Jonas Weber (author): Both included. Added doc comment on normalization_version semantics and how to bump it.
+Olivia Grant: Small nit: route_id should be the normalized route template, not raw path. Where does this come from?
+Jonas Weber (author): The harness takes route_id from the caller (router integration). Added a note in README: route_id must be normalized upstream per platform conventions; harness will not accept raw paths.
+Requested changes addressed: (1) scorer allowlist to limit dimensionality; (2) omit optional keys rather than emitting null; (3) add schema_version; (4) add README with producer contract + enablement; (5) add E2E test fixture.
+Internal: eval-harness can now tag eval outputs with experiment attribution and (optionally) emit a compact eval score stream (eval_score_v1) for Console quality-by-variant dashboards. Publisher is disabled by default and requires EVAL_SCORE_STREAM_ENABLED.
+1) Merge behind config gate (this PR). 2) Enable in staging for route experiments beta suites only (Applied ML). 3) Verify ingestion + aggregation with Telemetry (watch for cardinality + drop rate). 4) Enable in prod for selected suites; expand once Console results view consumes score stream.
+No prompt text, user identifiers, or customer content emitted in the stream. stickiness_key_hash (if provided) is salted per env and truncated. experiment_id/variant_id are Redwood-internal identifiers; downstream access controlled by existing analytics RBAC.

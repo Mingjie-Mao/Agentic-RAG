@@ -1,0 +1,97 @@
+{
+  "question": {
+    "id": "Q08",
+    "user": "xq-support",
+    "question": "2026 年悉尼出差的酒店每晚报销上限是多少澳元？",
+    "expected": "answered",
+    "facts": [
+      "250"
+    ],
+    "sources": [
+      "travel-2026"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "c997363d-0592-4f9b-a003-807b2e4fa682",
+    "question": "2026 年悉尼出差的酒店每晚报销上限是多少澳元？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "悉尼出差酒店住宿上限为每晚 250 澳元。",
+        "evidence_ids": [
+          "57f732ca-2243-5599-9a7d-34dabd988e00"
+        ],
+        "quotes": [
+          "悉尼出差酒店住宿上限为每晚 250 澳元。报销须在返程后 30 天内提交。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "57f732ca-2243-5599-9a7d-34dabd988e00",
+        "document_id": "seed-travel-2026",
+        "version_id": "71032446-4e4f-4af2-a799-78c574a15ed4",
+        "title": "差旅标准 2026 生效版",
+        "locator": {
+          "kind": "pdf",
+          "page": 1,
+          "label": "第 1 页",
+          "char_start": 0,
+          "char_end": 137
+        },
+        "text": "差旅标准 2026 生效版\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n适用期间\n本规则适用于 2026 年 1 月 1 日起发生的差旅，并替代 2025 年旧版。\n住宿标准\n悉尼出差酒店住宿上限为每晚 250 澳元。报销须在返程后 30 天内提交。",
+        "preview_url": "/api/evidence/57f732ca-2243-5599-9a7d-34dabd988e00",
+        "original_url": "/api/versions/71032446-4e4f-4af2-a799-78c574a15ed4/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "57f732ca-2243-5599-9a7d-34dabd988e00",
+          "title": "差旅标准 2026 生效版",
+          "score": 0.8003
+        },
+        {
+          "chunk_id": "7a3f7dfc-67ad-5551-9403-7e536bcee73b",
+          "title": "差旅标准 2025 旧版",
+          "score": 0.7833
+        },
+        {
+          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "title": "套餐功能对照表",
+          "score": 0.4445
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.4411
+        }
+      ],
+      "embed_ms": 159.4,
+      "retrieval_ms": 36.3,
+      "generation_ms": 23568.8,
+      "total_ms": 23837.5
+    },
+    "usage": {
+      "prompt_tokens": 2080,
+      "completion_tokens": 96,
+      "model_duration_ms": 23546.2,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

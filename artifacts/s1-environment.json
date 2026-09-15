@@ -1,0 +1,464 @@
+{
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.9",
+  "cpu": "Apple M4",
+  "host_memory_bytes": 34359738368,
+  "model_execution": "native macOS Metal",
+  "settings": {
+    "chunk_chars": 700,
+    "overlap": 100,
+    "top_k": 4,
+    "min_similarity": 0.35,
+    "index": "enterprise-rag-s1",
+    "embedding": "bge-m3:567m",
+    "chat": "qwen2.5:3b",
+    "prompt_version": "grounded-v3-paired-evidence"
+  },
+  "api_budget": {
+    "currency": "AUD",
+    "per_run": 0,
+    "total": 0,
+    "excludes": "hardware, electricity and download bandwidth"
+  },
+  "ollama_version": {
+    "version": "0.11.10"
+  },
+  "models": [
+    {
+      "name": "qwen2.5:3b",
+      "model": "qwen2.5:3b",
+      "modified_at": "2026-09-14T17:49:31+10:00",
+      "size": 1929912432,
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "bge-m3:567m",
+      "model": "bge-m3:567m",
+      "modified_at": "2026-09-14T17:48:56+10:00",
+      "size": 1157672605,
+      "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "bert",
+        "families": [
+          "bert"
+        ],
+        "parameter_size": "566.70M",
+        "quantization_level": "F16"
+      }
+    }
+  ],
+  "model_loaded_memory": {
+    "models": [
+      {
+        "name": "bge-m3:567m",
+        "model": "bge-m3:567m",
+        "size": 1772675072,
+        "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "bert",
+          "families": [
+            "bert"
+          ],
+          "parameter_size": "566.70M",
+          "quantization_level": "F16"
+        },
+        "expires_at": "2026-09-14T23:03:58.924485+10:00",
+        "size_vram": 1772675072,
+        "context_length": 4096
+      },
+      {
+        "name": "qwen2.5:3b",
+        "model": "qwen2.5:3b",
+        "size": 3135881216,
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-09-14T23:03:56.908525+10:00",
+        "size_vram": 3135881216,
+        "context_length": 8192
+      }
+    ]
+  },
+  "search_version": {
+    "distribution": "opensearch",
+    "number": "3.2.0",
+    "build_type": "tar",
+    "build_hash": "6adc0bf476e1624190564d7fbe4aba00ccf49ad8",
+    "build_date": "2025-08-12T03:54:07.457522696Z",
+    "build_snapshot": false,
+    "lucene_version": "10.2.2",
+    "minimum_wire_compatibility_version": "2.19.0",
+    "minimum_index_compatibility_version": "2.0.0"
+  },
+  "seed_ingestion": [
+    {
+      "document_id": "seed-upload-guide",
+      "timings": {
+        "parse_ms": 23.4,
+        "embedding_ms": 3748.0,
+        "total_ms": 3996.2,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-data-retention",
+      "timings": {
+        "parse_ms": 9.7,
+        "embedding_ms": 3601.6,
+        "total_ms": 4006.3,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-webhook",
+      "timings": {
+        "parse_ms": 4.8,
+        "embedding_ms": 3958.8,
+        "total_ms": 4999.7,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-token-errors",
+      "timings": {
+        "parse_ms": 3.5,
+        "embedding_ms": 3934.1,
+        "total_ms": 4028.9,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-travel-2025",
+      "timings": {
+        "parse_ms": 5.4,
+        "embedding_ms": 5946.2,
+        "total_ms": 7015.5,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-travel-2026",
+      "timings": {
+        "parse_ms": 31.9,
+        "embedding_ms": 5849.1,
+        "total_ms": 5994.4,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-leave",
+      "timings": {
+        "parse_ms": 3.4,
+        "embedding_ms": 5927.2,
+        "total_ms": 7023.0,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-equipment",
+      "timings": {
+        "parse_ms": 5.2,
+        "embedding_ms": 3743.5,
+        "total_ms": 4067.5,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-meeting",
+      "timings": {
+        "parse_ms": 3.4,
+        "embedding_ms": 5758.3,
+        "total_ms": 6014.4,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-support-escalate",
+      "timings": {
+        "parse_ms": 3.6,
+        "embedding_ms": 3649.5,
+        "total_ms": 3997.8,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-ticket-218",
+      "timings": {
+        "parse_ms": 6.0,
+        "embedding_ms": 3760.9,
+        "total_ms": 4009.3,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-support-handoff",
+      "timings": {
+        "parse_ms": 5.9,
+        "embedding_ms": 3891.1,
+        "total_ms": 5018.4,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-deploy-review",
+      "timings": {
+        "parse_ms": 4.2,
+        "embedding_ms": 3724.2,
+        "total_ms": 4000.5,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-rollback",
+      "timings": {
+        "parse_ms": 40.8,
+        "embedding_ms": 3723.2,
+        "total_ms": 4003.8,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-release-code",
+      "timings": {
+        "parse_ms": 5.1,
+        "embedding_ms": 3753.6,
+        "total_ms": 4006.0,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-api-limits",
+      "timings": {
+        "parse_ms": 7.3,
+        "embedding_ms": 10751.7,
+        "total_ms": 11425.4,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-sdk-retry",
+      "timings": {
+        "parse_ms": 5.5,
+        "embedding_ms": 6335.6,
+        "total_ms": 7009.4,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-sso-session",
+      "timings": {
+        "parse_ms": 3.1,
+        "embedding_ms": 3637.7,
+        "total_ms": 4021.6,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-support-sla",
+      "timings": {
+        "parse_ms": 6.3,
+        "embedding_ms": 3887.1,
+        "total_ms": 5028.3,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-db-backup",
+      "timings": {
+        "parse_ms": 6.1,
+        "embedding_ms": 5763.9,
+        "total_ms": 6007.6,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-dev-environment",
+      "timings": {
+        "parse_ms": 6.2,
+        "embedding_ms": 3778.0,
+        "total_ms": 4042.1,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-incident-092",
+      "timings": {
+        "parse_ms": 2.8,
+        "embedding_ms": 3756.0,
+        "total_ms": 4022.2,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-invoice",
+      "timings": {
+        "parse_ms": 18.7,
+        "embedding_ms": 6102.1,
+        "total_ms": 7011.5,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-plan-comparison",
+      "timings": {
+        "parse_ms": 6.0,
+        "embedding_ms": 3807.7,
+        "total_ms": 4002.1,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-export",
+      "timings": {
+        "parse_ms": 5.9,
+        "embedding_ms": 3869.9,
+        "total_ms": 4000.2,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-pilot-a",
+      "timings": {
+        "parse_ms": 3.5,
+        "embedding_ms": 3648.8,
+        "total_ms": 4022.2,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-pilot-b",
+      "timings": {
+        "parse_ms": 4.8,
+        "embedding_ms": 3780.1,
+        "total_ms": 4003.8,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-hc-gateway",
+      "timings": {
+        "parse_ms": 5.0,
+        "embedding_ms": 3778.9,
+        "total_ms": 4006.7,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-hc-retention",
+      "timings": {
+        "parse_ms": 8.4,
+        "embedding_ms": 3591.7,
+        "total_ms": 4012.4,
+        "chunks": 1,
+        "pages": 1
+      }
+    },
+    {
+      "document_id": "seed-hc-support",
+      "timings": {
+        "parse_ms": 5.6,
+        "embedding_ms": 4923.7,
+        "total_ms": 6063.0,
+        "chunks": 1,
+        "pages": 1
+      }
+    }
+  ],
+  "source_sha256": {
+    "app/worker.py": "8e570a60dfcf8002120ab2d5f4b32ddf83a1147906f91f99461ee9099a61ef07",
+    "app/ingestion.py": "4f446fb61d670cd70345820df356e720ba2e7b0c2933a0cdc5cb2a303f563d32",
+    "app/db.py": "2abb8e780941f681d9d4a7dce40f3e77e9cba62a040671bf092507c7b27ec437",
+    "app/config.py": "05a97527b010f5711eeb969bbf8ecd1820018846201c76ba25d99189f78f393e",
+    "app/parsing.py": "a53552870c3a0a79fde25f4dbbefc0e2c9fd0ae693cb1002d67754693e76e70f",
+    "app/models.py": "90d3f3e029dbd4ef17a5f1c9739058b9b1c181b36538c179af0908f84cd63e83",
+    "app/security.py": "5f9a5e33014f3683ebce98b4e7b7de60697fc2269a8726cb4f99681107db749d",
+    "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/clients.py": "3818c639dde7f5655f3e71f7c26e4eb95a76410502fef7cdda49c468140e2003",
+    "app/main.py": "8528af50b5cadda4809625660d04e3d8c068746de4bab651035daf8ebc7f92cb",
+    "app/qa.py": "4a67829eb2e98a745a5a2004ef8bdaa626cfa2ff27ad158a7aa13a7a23fa04f9",
+    "scripts/check_restart.py": "7b5cb157996114ee2e865a1c4aa033fe62991ef934d9c365dde54c7da49f4c71",
+    "scripts/run.py": "0d6b50eb7b50d5cde463401d2a0f69eed2743a4550ff97a5a32d30f6e39db613",
+    "scripts/summarize_s1.py": "8bceba987e805d946a934bb4ee6b79f7034091c0df397c9a3cabaa4419198831",
+    "scripts/validate_s0.py": "d606e637b47229ad40cd27e58b34a326b8953e9fb4c26ca659f98e1980df2171",
+    "scripts/seed.py": "ea9543214677e4cda8aaf8bcf2042454f75106e8700892038a85fec79cfa9fe6",
+    "scripts/setup_models.py": "cd5429b36ebdf67d45436e1e9082c55d538b82cb4da770c38e401bf455c6de8f",
+    "scripts/build_fixtures.py": "56cddffa6eba7e367f5ade2c25a0f35e4236bc3033aaa2294e72fbbc22d20515",
+    "tests/test_core.py": "71a7a82fe72de79f7c61c633b6b0c26e743c63fb178d0eb13028dc0373f03b90",
+    "tests/test_integration.py": "7a95ed6f607c39cac6bfd869889775907a3619f7f7e759d8c58f19a4cca519f3",
+    "migrations/env.py": "c6c325e366dbaa25e1f1f2a2c4016c4d63d784561402fdd9a429b0f5b79b43bd",
+    "migrations/versions/0001_initial.py": "17f5e31df63dad18b46574a6737fd13e11773975f02c66e77c693da095b1ba14",
+    "web/src/main.tsx": "5008458aa54f6b3dca42c905fd65626c78e63e835f67bc2d7045a3ffc77ea066",
+    "web/src/style.css": "5e1c3dee4240aa43b8c4c6cad53505d48a013fb1711c32daf088bafc72ec652c",
+    "web/tests/global-setup.ts": "959676fdf5a7e33b9c31af5605f709deb0adc92f83680e7f63cbbe5460764dcb",
+    "web/tests/s1.spec.ts": "6401484e3e8e6554b67ab7cc89b8759fdd3deb33e6df5dc67e856477f4739468"
+  },
+  "first_probe": {
+    "docker_cpu_http_status": 503,
+    "docker_cpu_elapsed_seconds": 186.48,
+    "model_timeout_seconds": 180,
+    "metal_cold_http_status": 200,
+    "metal_cold_elapsed_seconds": 75.63
+  },
+  "container_memory_sample": {
+    "postgres_mib": 29.9,
+    "opensearch_gib": 1.169,
+    "kind": "post-restart sample, not peak"
+  },
+  "restart_processes": {
+    "supervisor": 81523,
+    "children": {
+      "worker": 81524,
+      "api": 81525
+    }
+  }
+}

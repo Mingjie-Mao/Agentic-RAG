@@ -1,0 +1,106 @@
+{
+  "question": {
+    "id": "Q09",
+    "user": "xq-support",
+    "question": "连续 3 天年假应该提前多久申请？",
+    "expected": "answered",
+    "facts": [
+      "5"
+    ],
+    "sources": [
+      "leave"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "3ffc9a27-f033-400b-8a12-70175ae5042d",
+    "question": "连续 3 天年假应该提前多久申请？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "连续 3 天年假应至少提前 5 个工作日提交申请。",
+        "evidence_ids": [
+          "41b23f79-6b16-5432-b3e8-27af570f67f5"
+        ],
+        "quotes": [
+          "连续 3 天及以上的年假，应至少提前 5 个工作日提交申请。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "41b23f79-6b16-5432-b3e8-27af570f67f5",
+        "document_id": "seed-leave",
+        "version_id": "e8c48df7-7df5-4a1f-87d9-181b4492865a",
+        "title": "年假申请说明",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–8 行",
+          "char_start": 0,
+          "char_end": 134,
+          "line_start": 1,
+          "line_end": 8
+        },
+        "text": "# 年假申请说明\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 申请流程\n连续 3 天及以上的年假，应至少提前 5 个工作日提交申请。直属负责人审批后生效。\n未满 3 天的年假，至少提前 1 个工作日申请。紧急情况联系负责人单独处理。\n",
+        "preview_url": "/api/evidence/41b23f79-6b16-5432-b3e8-27af570f67f5",
+        "original_url": "/api/versions/e8c48df7-7df5-4a1f-87d9-181b4492865a/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "prompt_version": "grounded-v4-source-spans",
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000,
+      "context_tokens_estimate": 1012,
+      "token_counter": "cl100k_base",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:7b-instruct",
+      "candidates": [
+        {
+          "chunk_id": "41b23f79-6b16-5432-b3e8-27af570f67f5",
+          "title": "年假申请说明",
+          "score": 0.7669
+        },
+        {
+          "chunk_id": "57f732ca-2243-5599-9a7d-34dabd988e00",
+          "title": "差旅标准 2026 生效版",
+          "score": 0.539
+        },
+        {
+          "chunk_id": "7a3f7dfc-67ad-5551-9403-7e536bcee73b",
+          "title": "差旅标准 2025 旧版",
+          "score": 0.5366
+        },
+        {
+          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "title": "SEV1 客户事故升级",
+          "score": 0.4954
+        }
+      ],
+      "embed_ms": 204.7,
+      "retrieval_ms": 39.8,
+      "generation_ms": 30190.3,
+      "total_ms": 30491.2
+    },
+    "usage": {
+      "prompt_tokens": 1143,
+      "completion_tokens": 55,
+      "model_duration_ms": 30167,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama",
+      "answer_status": "answered",
+      "conflict_check": null
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

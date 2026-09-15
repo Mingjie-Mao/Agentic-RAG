@@ -1,0 +1,15 @@
+{
+  "scenario": "E08",
+  "passed": true,
+  "seed_documents": 30,
+  "checks": [
+    "seed file SHA-256",
+    "version and chunk identities",
+    "ready state",
+    "login session",
+    "answer payload",
+    "authenticated PDF original",
+    "persisted search vector and filtered retrieval"
+  ],
+  "answer_id": "3be8079f-636d-4b3d-8f56-028b6b9a0ef7"
+}

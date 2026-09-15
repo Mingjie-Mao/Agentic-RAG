@@ -1,0 +1,120 @@
+{
+  "question": {
+    "id": "Q06",
+    "user": "xq-support",
+    "question": "错误 E401 表示什么，应该怎么处理？",
+    "expected": "answered",
+    "facts": [
+      "过期",
+      "刷新"
+    ],
+    "sources": [
+      "token-errors"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "ab566e16-0f4a-4487-9e69-dcd87524ba98",
+    "question": "错误 E401 表示什么，应该怎么处理？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "错误 E401 表示访问令牌已过期。",
+        "evidence_ids": [
+          "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c"
+        ],
+        "quotes": [
+          "错误 E401 表示访问令牌已过期。"
+        ]
+      },
+      {
+        "text": "处理方法是先调用刷新接口获取新令牌，再重试原始请求。若刷新令牌也失效，必须重新登录。不得把访问令牌记录到业务日志。",
+        "evidence_ids": [
+          "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
+          "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
+          "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c"
+        ],
+        "quotes": [
+          "先调用刷新接口获取新令牌，再重试原始请求。",
+          "若刷新令牌也失效，必须重新登录。",
+          "不得把访问令牌记录到业务日志。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
+        "document_id": "seed-token-errors",
+        "version_id": "7e28bc22-d726-4f5e-afa0-857e60df4d8c",
+        "title": "认证错误 E401 排查",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–8 行",
+          "char_start": 0,
+          "char_end": 134,
+          "line_start": 1,
+          "line_end": 8
+        },
+        "text": "# 认证错误 E401 排查\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## E401 含义\n错误 E401 表示访问令牌已过期。先调用刷新接口获取新令牌，再重试原始请求。\n若刷新令牌也失效，必须重新登录。不得把访问令牌记录到业务日志。\n",
+        "preview_url": "/api/evidence/7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
+        "original_url": "/api/versions/7e28bc22-d726-4f5e-afa0-857e60df4d8c/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "prompt_version": "grounded-v4-source-spans",
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000,
+      "context_tokens_estimate": 969,
+      "token_counter": "cl100k_base",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:7b-instruct",
+      "candidates": [
+        {
+          "chunk_id": "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
+          "title": "认证错误 E401 排查",
+          "score": 0.6847
+        },
+        {
+          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "title": "SEV1 客户事故升级",
+          "score": 0.5256
+        },
+        {
+          "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
+          "title": "支持响应等级表",
+          "score": 0.4926
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.4913
+        }
+      ],
+      "embed_ms": 205.1,
+      "retrieval_ms": 37.8,
+      "generation_ms": 36039.3,
+      "total_ms": 36314.6
+    },
+    "usage": {
+      "prompt_tokens": 1145,
+      "completion_tokens": 121,
+      "model_duration_ms": 36018.2,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama",
+      "answer_status": "answered",
+      "conflict_check": null
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

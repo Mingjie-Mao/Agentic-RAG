@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=78"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "enterprise-rag"
+version = "0.1.0"
+description = "Enterprise document retrieval with permission-scoped evidence"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "fastapi==0.116.1", "uvicorn==0.35.0", "pydantic-settings==2.14.0",
+  "sqlalchemy==2.0.43", "alembic==1.16.5", "psycopg[binary]==3.2.10",
+  "httpx==0.28.1", "python-multipart==0.0.20", "pypdf==6.0.0",
+  "argon2-cffi==25.1.0",
+  "docling==2.127.0", "python-docx==1.2.0", "openpyxl==3.1.5", "tiktoken==0.14.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.2", "reportlab==4.4.3", "ruff==0.13.0"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: requires the real PostgreSQL, OpenSearch and Ollama services"]
+
+[tool.ruff]
+line-length = 105
+target-version = "py312"

@@ -1,0 +1,43 @@
+{
+  "dataset_version": "s0-v1",
+  "provenance": "本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。",
+  "tenants": [{"id":"xingqiao","name":"星桥软件"},{"id":"haichuan","name":"海川工作室"}],
+  "users": [
+    {"id":"xq-admin","tenant_id":"xingqiao","username":"admin@xingqiao.demo","display_name":"林然 · 管理者","role":"admin","groups":["engineering","support"]},
+    {"id":"xq-engineer","tenant_id":"xingqiao","username":"engineer@xingqiao.demo","display_name":"陈墨 · 工程","role":"member","groups":["engineering"]},
+    {"id":"xq-support","tenant_id":"xingqiao","username":"support@xingqiao.demo","display_name":"周雨 · 支持","role":"member","groups":["support"]},
+    {"id":"hc-admin","tenant_id":"haichuan","username":"admin@haichuan.demo","display_name":"许青 · 海川管理员","role":"admin","groups":["engineering","support"]}
+  ],
+  "documents": [
+    {"id":"api-limits","title":"API 调用配额说明","family":"api","public":true,"format":"md","body":"## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n## 重试规则\n收到 429 后，应按 Retry-After 响应头等待，不应立即连续重试。"},
+    {"id":"sdk-retry","title":"Python SDK 重试配置","family":"sdk","public":true,"format":"md","body":"## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。"},
+    {"id":"upload-guide","title":"文件上传接口手册","family":"files","public":true,"format":"pdf","body":"文件上传规则\n星桥产品的文件上传接口单个文件上限为 20 MB。支持 PDF、Markdown 和 CSV。\n批量上传每批最多 10 个文件。这里描述的是虚构产品接口，不是本演示系统的上传限制。"},
+    {"id":"data-retention","title":"业务数据保留规则","family":"retention","public":true,"format":"pdf","body":"日志与数据保留\n星桥标准套餐的业务事件日志保留 90 天，到期自动删除。\n审计日志保留 180 天。客户可在合同中约定更长的保留周期。"},
+    {"id":"webhook","title":"Webhook 投递与签名","family":"webhook","public":true,"format":"md","body":"## 失败投递\nWebhook 投递失败后最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。\n## 签名\n使用 HMAC-SHA256 校验 X-Starbridge-Signature，时间戳超过 5 分钟应拒收。"},
+    {"id":"token-errors","title":"认证错误 E401 排查","family":"auth","public":true,"format":"md","body":"## E401 含义\n错误 E401 表示访问令牌已过期。先调用刷新接口获取新令牌，再重试原始请求。\n若刷新令牌也失效，必须重新登录。不得把访问令牌记录到业务日志。"},
+    {"id":"sso-session","title":"单点登录会话规则","family":"auth","public":true,"format":"md","body":"## 会话时限\n星桥单点登录会话连续 30 分钟无操作后失效。重新访问需要经过身份提供方认证。\n管理者强制退出用户时，服务端同时撤销该用户所有活动会话。"},
+    {"id":"travel-2025","title":"差旅标准 2025 旧版","family":"travel","public":true,"format":"md","effective_from":"2025-01-01","effective_to":"2025-12-31","body":"## 适用期间\n本规则仅适用于 2025 年发生的差旅。2026 年差旅应查阅新版标准。\n## 住宿\n悉尼出差酒店住宿上限为每晚 200 澳元。报销须在返程后 30 天内提交。"},
+    {"id":"travel-2026","title":"差旅标准 2026 生效版","family":"travel","public":true,"format":"pdf","effective_from":"2026-01-01","body":"适用期间\n本规则适用于 2026 年 1 月 1 日起发生的差旅，并替代 2025 年旧版。\n住宿标准\n悉尼出差酒店住宿上限为每晚 250 澳元。报销须在返程后 30 天内提交。"},
+    {"id":"leave","title":"年假申请说明","family":"people","public":true,"format":"md","body":"## 申请流程\n连续 3 天及以上的年假，应至少提前 5 个工作日提交申请。直属负责人审批后生效。\n未满 3 天的年假，至少提前 1 个工作日申请。紧急情况联系负责人单独处理。"},
+    {"id":"equipment","title":"入职设备申请","family":"people","public":true,"format":"md","body":"## 设备申请\n新员工可以申请一台笔记本电脑和一台显示器。入职设备申请由 IT 支持组在 3 个工作日内处理。\n申请需要注明姓名、部门和工位位置，不需要提交个人身份证照片。"},
+    {"id":"meeting","title":"会议纪要归档约定","family":"collaboration","public":true,"format":"md","body":"## 归档时间\n项目会议纪要须在会后 24 小时内归档。纪要应包含结论、负责人和截止日期。\n包含客户私密信息的纪要仅向项目成员开放。"},
+    {"id":"support-sla","title":"支持响应等级表","family":"support","groups":["support"],"format":"md","body":"## 工单首响\n| 等级 | 首次响应时间 |\n| --- | --- |\n| P1 服务不可用 | 15 分钟 |\n| P2 功能受限 | 2 小时 |\n| P3 一般咨询 | 1 个工作日 |\n首次响应不等于问题解决。支持组需要在工单中持续同步处理进度。"},
+    {"id":"support-escalate","title":"SEV1 客户事故升级","family":"support","groups":["support"],"format":"md","body":"## 升级要求\n支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。\n事故期间每 30 分钟向客户同步一次状态，不得承诺未经工程组确认的恢复时间。"},
+    {"id":"ticket-218","title":"工单 218：重复回调","family":"webhook","groups":["support"],"format":"md","body":"## 问题记录\n客户收到相同 event_id 的重复回调。根因是客户端在响应超时后没有做幂等处理。\n## 已确认方案\n按 event_id 建立去重表，并保留去重记录 7 天。处理成功后返回 HTTP 200。"},
+    {"id":"support-handoff","title":"支持组交接清单","family":"support","groups":["support"],"format":"md","body":"## 值班交接\n支持组每日 18:00 完成交接，交接内容包括未解决工单、事故状态与已承诺的回访时间。\n交接人和接班人需在交接单共同确认。"},
+    {"id":"deploy-review","title":"生产发布审批规则","family":"release","groups":["engineering"],"format":"md","body":"## 发布前置条件\n生产发布需要 2 名工程师完成代码审查，并由当班发布负责人批准。\n发布窗口为工作日 10:00 至 16:00。紧急修复需先关联事故工单。"},
+    {"id":"rollback","title":"发布回滚操作手册","family":"release","groups":["engineering"],"format":"pdf","body":"回滚触发\n发布后错误率连续 5 分钟超过百分之二，应启动回滚。\n回滚使用上一稳定版本镜像，保留当前事故日志，并通知支持值班人员。"},
+    {"id":"db-backup","title":"数据库备份与恢复目标","family":"recovery","groups":["engineering"],"format":"md","body":"## 恢复目标\n生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。\n每天进行一次全量备份，事务日志每 5 分钟归档一次。每月执行恢复演练。"},
+    {"id":"release-code","title":"灰度发布验证口令","family":"release-private","groups":["engineering"],"format":"md","body":"## 演示用验证数据\n工程组灰度发布验证口令为 ORCHID-7319。该值是公开仓库中的虚构测试标记，不是任何真实凭据。\n本资料仅向工程组开放，用于验证支持组无法通过问答或原文接口读取。"},
+    {"id":"dev-environment","title":"本地研发环境配置","family":"development","groups":["engineering"],"format":"md","body":"## 开发服务端口\n星桥开发网关使用 8088 端口，调试面板使用 9088 端口。\n本地数据库需使用独立测试账号，不得连接生产库。"},
+    {"id":"incident-092","title":"事故 092：索引延迟复盘","family":"recovery","groups":["engineering"],"format":"md","body":"## 原因\n事故 092 的索引延迟由单个超大文件占用解析队列导致。\n## 改进\n限制单任务最大文件大小，将耗时解析拆到独立 worker，并记录任务租约和重试次数。"},
+    {"id":"invoice","title":"开票申请流程","family":"billing","public":true,"format":"pdf","body":"发票申请\n星桥财务在收到完整开票资料后 5 个工作日内发送电子发票。\n必需资料包括合同号、公司名称和开票邮箱。退款问题需要单独提交工单。"},
+    {"id":"plan-comparison","title":"套餐功能对照表","family":"plans","public":true,"format":"md","body":"## 套餐功能\n| 套餐 | 成员人数 | 每日导出次数 |\n| --- | --- | --- |\n| 标准版 | 20 | 5 |\n| 团队版 | 100 | 30 |\n团队版包含优先支持，具体响应时间以合同为准。"},
+    {"id":"export","title":"数据导出注意事项","family":"files","public":true,"format":"md","body":"## 下载有效期\n数据导出的下载链接有效期为 24 小时。链接到期后必须重新发起导出。\n导出权限随用户角色变化而撤销，不能将下载链接转发给无权访问者。"},
+    {"id":"pilot-a","title":"试点项目支持安排 A","family":"pilot-conflict","groups":["support"],"format":"md","body":"## 试点安排\n2026 年 9 月试点项目的支持时间为工作日 09:00 至 18:00。\n本文件由试点协调组发布，未注明与其他支持安排的优先关系。"},
+    {"id":"pilot-b","title":"试点项目支持安排 B","family":"pilot-conflict","groups":["support"],"format":"md","body":"## 试点安排\n2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。\n本文件由客户成功组发布，未注明与其他支持安排的优先关系。"},
+    {"id":"hc-gateway","tenant":"haichuan","title":"海川网关开发配置","family":"hc-development","groups":["engineering"],"format":"md","body":"## 开发端口\n海川工作室的开发网关使用 7077 端口。此配置仅适用于海川，不适用于星桥软件。\n测试标记为 CORAL-4826，不是真实凭据。"},
+    {"id":"hc-retention","tenant":"haichuan","title":"海川日志保留规则","family":"hc-retention","public":true,"format":"pdf","body":"日志规则\n海川工作室的业务日志保留 45 天。日志仅限本租户成员查阅。\n日志配置与星桥软件无关。"},
+    {"id":"hc-support","tenant":"haichuan","title":"海川支持值班时间","family":"hc-support","public":true,"format":"md","body":"## 值班时间\n海川支持值班时间为工作日 10:00 至 17:00。\n紧急事件使用本租户自己的工单系统，不进入星桥支持队列。"}
+  ]
+}

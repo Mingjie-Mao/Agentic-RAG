@@ -1,0 +1,229 @@
+[
+  {
+    "path": "fixtures/s2/headings.md",
+    "format": "md",
+    "sha256": "85e0cf95f88b736ac8f6fc9f0c6b4e7e655f4379071713ac7e39971278129858",
+    "facts": [
+      "800"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/table.md",
+    "format": "md",
+    "sha256": "020690e91306bc766e1741dba1af82acfbf275649ac62fdd680b56ef859e0e5a",
+    "facts": [
+      "40"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/code.md",
+    "format": "md",
+    "sha256": "147042fa3796b3552ff06ee7d88c1ceb07ecc8923dd45750be933ad963f184f9",
+    "facts": [
+      "retry_limit = 7"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/long.md",
+    "format": "md",
+    "sha256": "72c09bc1bf258f55d676ba81e1837ba806d782b97576ce13b21fd7490353a9d1",
+    "facts": [
+      "不得丢失"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/empty.md",
+    "format": "md",
+    "sha256": "2106c36011520fe73876d45bfb9ef8bf7b2e9f4362096a320376d8ee9b27ef12",
+    "facts": [],
+    "expect_error": true,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/binary.md",
+    "format": "md",
+    "sha256": "ea5dbf9596d187e9500f23e9a680109475341cf4e81f7e043f7d97152c10772f",
+    "facts": [],
+    "expect_error": true,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/text.pdf",
+    "format": "pdf",
+    "sha256": "49ddd1a08594b3e89660ed83d6a2d57eab60f0dbad6c213db153805171e90f41",
+    "facts": [
+      "45"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/pages.pdf",
+    "format": "pdf",
+    "sha256": "16619e2a05a54b1dfede729044e0bd0de6b9a047a20477c2012718c5d68b1058",
+    "facts": [
+      "ALPHA-19",
+      "73"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/multipage-table.pdf",
+    "format": "pdf",
+    "sha256": "76a9c789ce21ceb60b19741309f696131b10a656ed5b265c2e6bbdea1b4ea24a",
+    "facts": [
+      "51",
+      "104"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/no-text.pdf",
+    "format": "pdf",
+    "sha256": "96346729766fcd7c1f8baceb0c64620caca7cc0b9c5b08668bf5b6b5a495c166",
+    "facts": [],
+    "expect_error": true,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/broken.pdf",
+    "format": "pdf",
+    "sha256": "d6b7a83124961a3203f30f412730249215757992f2d85cd45dbb4a171ddf8d6a",
+    "facts": [],
+    "expect_error": true,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/encrypted.pdf",
+    "format": "pdf",
+    "sha256": "d381e802747da955b6b5a86c680ed19dec15f254b5db128bfb93357bde8a6a31",
+    "facts": [],
+    "expect_error": true,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/headings.docx",
+    "format": "docx",
+    "sha256": "dd58dc11378ba75ec2df9c53cfc1311595ab50682ef5ede9a7ae368d28346397",
+    "facts": [
+      "4"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/table.docx",
+    "format": "docx",
+    "sha256": "658cbcb5b45d35cdba60682b62ba4ca97055f228c7b069e181cb541dc8e88cff",
+    "facts": [
+      "35"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/long.docx",
+    "format": "docx",
+    "sha256": "fd70616f99b4551f959e861b91a126046071f513b6d50929db2ce3f495a222b6",
+    "facts": [],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/empty.docx",
+    "format": "docx",
+    "sha256": "9a27e57e541c580a29769ef53f57fa81ed431f74d7fa61093c59f1822bf32e46",
+    "facts": [],
+    "expect_error": true,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/broken.docx",
+    "format": "docx",
+    "sha256": "d63c0569621665f24e64c069b5ac0dee136d5eb5211b2a3f07d1740c1278062a",
+    "facts": [],
+    "expect_error": true,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/mixed.docx",
+    "format": "docx",
+    "sha256": "82b16261d9d956df3b97fef1137aee53c5902a271f782929bc8df6beeff71fad",
+    "facts": [
+      "E419",
+      "8"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/units.xlsx",
+    "format": "xlsx",
+    "sha256": "f60dc151b8f477d1aa29b982b3da19caaf9d31ee1ea628ed637c9fc76730ea35",
+    "facts": [
+      "27",
+      "130"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/merged.xlsx",
+    "format": "xlsx",
+    "sha256": "5b98d8303fdb7dc5e12125281c78aedf3a57fff34585096ca78e7bf54b680a2a",
+    "facts": [
+      "27",
+      "130"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/formula-missing.xlsx",
+    "format": "xlsx",
+    "sha256": "38c0b0c772eb8adb3e2cd535675db5ee2df10e99248de03a4e50ed5543053abd",
+    "facts": [
+      "27",
+      "130"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/formula-cached.xlsx",
+    "format": "xlsx",
+    "sha256": "a89f66a8641a93f6515889d8009adc906caa66ef4083a2b5d9c4346591eff7cb",
+    "facts": [
+      "27",
+      "130"
+    ],
+    "expect_error": false,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/empty.xlsx",
+    "format": "xlsx",
+    "sha256": "681564d379a7a07788ed6de06a172c2cd10a9e414a1cb68f07e1af93f930784c",
+    "facts": [],
+    "expect_error": true,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  },
+  {
+    "path": "fixtures/s2/broken.xlsx",
+    "format": "xlsx",
+    "sha256": "f526795c95399cea27c055c842c3d6ab018ed0fa4f66f701c28ab22dec28237b",
+    "facts": [],
+    "expect_error": true,
+    "provenance": "自建格式回归；不进入问答质量基准"
+  }
+]

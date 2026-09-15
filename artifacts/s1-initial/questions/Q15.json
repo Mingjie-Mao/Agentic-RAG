@@ -1,0 +1,71 @@
+{
+  "question": {
+    "id": "Q15",
+    "user": "xq-support",
+    "question": "团队版支持多少成员，每日可以导出多少次？",
+    "expected": "answered",
+    "facts": [
+      "100",
+      "30"
+    ],
+    "sources": [
+      "plan-comparison"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": false,
+    "expected_facts": false,
+    "expected_sources": false,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "26993053-43de-4771-b406-8669a604b276",
+    "question": "团队版支持多少成员，每日可以导出多少次？",
+    "status": "verification_failed",
+    "claims": [],
+    "citations": [],
+    "message": "模型的引用未通过检查，本次未返回答案。请调整问题后重试。",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "title": "套餐功能对照表",
+          "score": 0.6869
+        },
+        {
+          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+          "title": "文件上传接口手册",
+          "score": 0.561
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.5457
+        },
+        {
+          "chunk_id": "50a00831-7a6a-5f51-bda1-86ca49664d18",
+          "title": "数据导出注意事项",
+          "score": 0.5389
+        }
+      ],
+      "embed_ms": 206.9,
+      "retrieval_ms": 34.7,
+      "generation_ms": 31656.1,
+      "total_ms": 31946.5
+    },
+    "usage": {
+      "prompt_tokens": 1925,
+      "completion_tokens": 195,
+      "model_duration_ms": 31633.1,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

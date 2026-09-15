@@ -1,0 +1,2195 @@
+{
+  "checks": [
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-api-limits"
+      ],
+      "hidden_documents": [],
+      "id": "Q01",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-sdk-retry"
+      ],
+      "hidden_documents": [],
+      "id": "Q02",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "seed-upload-guide"
+      ],
+      "hidden_documents": [],
+      "id": "Q03",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-data-retention"
+      ],
+      "hidden_documents": [],
+      "id": "Q04",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-webhook"
+      ],
+      "hidden_documents": [],
+      "id": "Q05",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "seed-token-errors"
+      ],
+      "hidden_documents": [],
+      "id": "Q06",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-sso-session"
+      ],
+      "hidden_documents": [],
+      "id": "Q07",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-travel-2026"
+      ],
+      "hidden_documents": [],
+      "id": "Q08",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-leave"
+      ],
+      "hidden_documents": [],
+      "id": "Q09",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-support-sla"
+      ],
+      "hidden_documents": [],
+      "id": "Q10",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-support-escalate"
+      ],
+      "hidden_documents": [],
+      "id": "Q11",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-deploy-review"
+      ],
+      "hidden_documents": [],
+      "id": "Q12",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "seed-db-backup"
+      ],
+      "hidden_documents": [],
+      "id": "Q13",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-export"
+      ],
+      "hidden_documents": [],
+      "id": "Q14",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "seed-plan-comparison"
+      ],
+      "hidden_documents": [],
+      "id": "Q15",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "conflict",
+      "facts_located": 4,
+      "gold_documents": [
+        "seed-pilot-a",
+        "seed-pilot-b"
+      ],
+      "hidden_documents": [],
+      "id": "Q16",
+      "kind": "conflict",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q17",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q18",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "seed-hc-retention"
+      ],
+      "hidden_documents": [],
+      "id": "Q19",
+      "kind": "lookup",
+      "readable_documents": 3
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q20",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-batch-api-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q021",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-batch-api-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q022",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-batch-api-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q023",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-batch-api-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q024",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-batch-api-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q025",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-batch-api-3"
+      ],
+      "id": "Q026",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-batch-api-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q027",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q028",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-batch-api-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q029",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-batch-api-4",
+        "eval-batch-api-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q030",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-observability-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q031",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-observability-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q032",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-observability-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q033",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-observability-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q034",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-observability-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q035",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-observability-3"
+      ],
+      "id": "Q036",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-observability-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q037",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q038",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-observability-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q039",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-observability-4",
+        "eval-observability-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q040",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-deployment-controls-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q041",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-deployment-controls-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q042",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-deployment-controls-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q043",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-deployment-controls-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q044",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-deployment-controls-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q045",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-deployment-controls-3"
+      ],
+      "id": "Q046",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-deployment-controls-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q047",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q048",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-deployment-controls-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q049",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-deployment-controls-4",
+        "eval-deployment-controls-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q050",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-support-workflow-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q051",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-support-workflow-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q052",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-support-workflow-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q053",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-support-workflow-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q054",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-support-workflow-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q055",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-support-workflow-3"
+      ],
+      "id": "Q056",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-support-workflow-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q057",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q058",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-support-workflow-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q059",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-support-workflow-4",
+        "eval-support-workflow-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q060",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-workspace-config-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q061",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-workspace-config-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q062",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-workspace-config-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q063",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-workspace-config-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q064",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-workspace-config-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q065",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-workspace-config-3"
+      ],
+      "id": "Q066",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-workspace-config-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q067",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q068",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-workspace-config-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q069",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-workspace-config-4",
+        "eval-workspace-config-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q070",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-data-export-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q071",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-data-export-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q072",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-data-export-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q073",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-data-export-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q074",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-data-export-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q075",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-data-export-3"
+      ],
+      "id": "Q076",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-data-export-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q077",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q078",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-data-export-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q079",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-data-export-4",
+        "eval-data-export-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q080",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-developer-tools-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q081",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-developer-tools-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q082",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-developer-tools-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q083",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-developer-tools-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q084",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-developer-tools-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q085",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-developer-tools-3"
+      ],
+      "id": "Q086",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-developer-tools-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q087",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q088",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-developer-tools-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q089",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-developer-tools-4",
+        "eval-developer-tools-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q090",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-service-catalog-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q091",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-service-catalog-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q092",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-service-catalog-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q093",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-service-catalog-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q094",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-service-catalog-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q095",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-service-catalog-3"
+      ],
+      "id": "Q096",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-service-catalog-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q097",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q098",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-service-catalog-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q099",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-service-catalog-4",
+        "eval-service-catalog-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q100",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-access-operations-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q101",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-access-operations-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q102",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-access-operations-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q103",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-access-operations-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q104",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-access-operations-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q105",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-access-operations-3"
+      ],
+      "id": "Q106",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-access-operations-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q107",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q108",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-access-operations-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q109",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-access-operations-4",
+        "eval-access-operations-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q110",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-incident-drills-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q111",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-incident-drills-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q112",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-incident-drills-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q113",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-incident-drills-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q114",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-incident-drills-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q115",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-incident-drills-3"
+      ],
+      "id": "Q116",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-incident-drills-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q117",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q118",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-incident-drills-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q119",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-incident-drills-4",
+        "eval-incident-drills-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q120",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-billing-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q121",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-billing-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q122",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-billing-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q123",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-billing-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q124",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-billing-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q125",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-billing-3"
+      ],
+      "id": "Q126",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-billing-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q127",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q128",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-billing-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q129",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-billing-4",
+        "eval-billing-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q130",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-procurement-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q131",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-procurement-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q132",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-procurement-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q133",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-procurement-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q134",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-procurement-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q135",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-procurement-3"
+      ],
+      "id": "Q136",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-procurement-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q137",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q138",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-procurement-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q139",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-procurement-4",
+        "eval-procurement-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q140",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-onboarding-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q141",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-onboarding-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q142",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-onboarding-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q143",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-onboarding-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q144",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-onboarding-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q145",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-onboarding-3"
+      ],
+      "id": "Q146",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-onboarding-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q147",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q148",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-onboarding-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q149",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-onboarding-4",
+        "eval-onboarding-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q150",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-asset-lifecycle-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q151",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-asset-lifecycle-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q152",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-asset-lifecycle-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q153",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-asset-lifecycle-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q154",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-asset-lifecycle-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q155",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-asset-lifecycle-3"
+      ],
+      "id": "Q156",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-asset-lifecycle-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q157",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q158",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-asset-lifecycle-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q159",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-asset-lifecycle-4",
+        "eval-asset-lifecycle-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q160",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-physical-security-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q161",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-physical-security-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q162",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-physical-security-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q163",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-physical-security-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q164",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-physical-security-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q165",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-physical-security-3"
+      ],
+      "id": "Q166",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-physical-security-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q167",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q168",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-physical-security-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q169",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-physical-security-4",
+        "eval-physical-security-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q170",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-localization-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q171",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-localization-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q172",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-localization-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q173",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-localization-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q174",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-localization-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q175",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-localization-3"
+      ],
+      "id": "Q176",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-localization-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q177",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q178",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-localization-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q179",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-localization-4",
+        "eval-localization-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q180",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-partner-operations-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q181",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-partner-operations-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q182",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-partner-operations-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q183",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-partner-operations-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q184",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-partner-operations-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q185",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-partner-operations-3"
+      ],
+      "id": "Q186",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-partner-operations-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q187",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q188",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-partner-operations-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q189",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-partner-operations-4",
+        "eval-partner-operations-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q190",
+      "kind": "multi_document",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-product-analytics-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q191",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-product-analytics-1"
+      ],
+      "hidden_documents": [],
+      "id": "Q192",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-product-analytics-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q193",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-product-analytics-2"
+      ],
+      "hidden_documents": [],
+      "id": "Q194",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-product-analytics-3"
+      ],
+      "hidden_documents": [],
+      "id": "Q195",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [
+        "eval-product-analytics-3"
+      ],
+      "id": "Q196",
+      "kind": "permission",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-product-analytics-4"
+      ],
+      "hidden_documents": [],
+      "id": "Q197",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "insufficient_evidence",
+      "facts_located": 0,
+      "gold_documents": [],
+      "hidden_documents": [],
+      "id": "Q198",
+      "kind": "unanswerable",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 1,
+      "gold_documents": [
+        "eval-product-analytics-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q199",
+      "kind": "lookup",
+      "readable_documents": 102
+    },
+    {
+      "expected_status": "answered",
+      "facts_located": 2,
+      "gold_documents": [
+        "eval-product-analytics-4",
+        "eval-product-analytics-5"
+      ],
+      "hidden_documents": [],
+      "id": "Q200",
+      "kind": "multi_document",
+      "readable_documents": 102
+    }
+  ],
+  "documents": 120,
+  "gold_review": {
+    "independent_human_review": 0,
+    "machine_audited": 200,
+    "note": "Facts were located in their own source text by program; that is provenance, not human review."
+  },
+  "questions": 200,
+  "review_state": "source-auditable draft; independent human review not yet performed",
+  "snapshot": "30a4085a60c1d199d0332b18105364b839dd15bbae3343b9496ffc0c9a37aeb4",
+  "split": {
+    "development": 120,
+    "holdout": 80,
+    "shared_families": 0
+  }
+}

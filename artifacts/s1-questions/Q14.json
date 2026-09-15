@@ -1,0 +1,106 @@
+{
+  "question": {
+    "id": "Q14",
+    "user": "xq-support",
+    "question": "数据导出的下载链接有效期是多久？",
+    "expected": "answered",
+    "facts": [
+      "24"
+    ],
+    "sources": [
+      "export"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "89753dfb-9d71-4b90-b99e-f9791fbbc2a7",
+    "question": "数据导出的下载链接有效期是多久？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "数据导出的下载链接有效期为24小时。",
+        "evidence_ids": [
+          "50a00831-7a6a-5f51-bda1-86ca49664d18"
+        ],
+        "quotes": [
+          "数据导出的下载链接有效期为 24 小时。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "50a00831-7a6a-5f51-bda1-86ca49664d18",
+        "document_id": "seed-export",
+        "version_id": "7f38c3a1-21d0-4eaf-9c68-30dc684b3d37",
+        "title": "数据导出注意事项",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–8 行",
+          "char_start": 0,
+          "char_end": 123,
+          "line_start": 1,
+          "line_end": 8
+        },
+        "text": "# 数据导出注意事项\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 下载有效期\n数据导出的下载链接有效期为 24 小时。链接到期后必须重新发起导出。\n导出权限随用户角色变化而撤销，不能将下载链接转发给无权访问者。\n",
+        "preview_url": "/api/evidence/50a00831-7a6a-5f51-bda1-86ca49664d18",
+        "original_url": "/api/versions/7f38c3a1-21d0-4eaf-9c68-30dc684b3d37/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "prompt_version": "grounded-v4-source-spans",
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000,
+      "context_tokens_estimate": 912,
+      "token_counter": "cl100k_base",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:7b-instruct",
+      "candidates": [
+        {
+          "chunk_id": "50a00831-7a6a-5f51-bda1-86ca49664d18",
+          "title": "数据导出注意事项",
+          "score": 0.8216
+        },
+        {
+          "chunk_id": "8ed52eef-363a-502f-a4b2-9396e71c1f54",
+          "title": "业务数据保留规则",
+          "score": 0.5803
+        },
+        {
+          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "title": "Webhook 投递与签名",
+          "score": 0.5338
+        },
+        {
+          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "title": "套餐功能对照表",
+          "score": 0.5332
+        }
+      ],
+      "embed_ms": 189.3,
+      "retrieval_ms": 43.1,
+      "generation_ms": 29833.5,
+      "total_ms": 30201.9
+    },
+    "usage": {
+      "prompt_tokens": 1066,
+      "completion_tokens": 50,
+      "model_duration_ms": 29802.5,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama",
+      "answer_status": "answered",
+      "conflict_check": null
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

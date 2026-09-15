@@ -1,0 +1,278 @@
+{
+  "run_id": "s1-metal-paired-evidence-v3",
+  "data": "s0-dev-v1",
+  "scope": "20 authored development questions; keyword/source/status checks, not held-out quality or human entailment scoring",
+  "questions": 20,
+  "passed": 17,
+  "candidate_acl_and_citation_identity_checks": "passed",
+  "latency_seconds": {
+    "p50": 22.8,
+    "p95_nearest_rank": 38.06,
+    "min": 9.78,
+    "max": 39.79
+  },
+  "model_api_cost_aud": 0,
+  "rows": [
+    {
+      "id": "Q01",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 22.58
+    },
+    {
+      "id": "Q02",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 35.53
+    },
+    {
+      "id": "Q03",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 21.94
+    },
+    {
+      "id": "Q04",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 21.16
+    },
+    {
+      "id": "Q05",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 38.06
+    },
+    {
+      "id": "Q06",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 33.13
+    },
+    {
+      "id": "Q07",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 23.48
+    },
+    {
+      "id": "Q08",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 24.51
+    },
+    {
+      "id": "Q09",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 23.01
+    },
+    {
+      "id": "Q10",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 25.7
+    },
+    {
+      "id": "Q11",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 21.35
+    },
+    {
+      "id": "Q12",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 20.24
+    },
+    {
+      "id": "Q13",
+      "status": "insufficient_evidence",
+      "passed": false,
+      "checks": {
+        "http_ok": true,
+        "status_ok": false,
+        "expected_facts": false,
+        "expected_sources": false,
+        "no_forbidden_marker": true
+      },
+      "seconds": 29.72
+    },
+    {
+      "id": "Q14",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 20.17
+    },
+    {
+      "id": "Q15",
+      "status": "verification_failed",
+      "passed": false,
+      "checks": {
+        "http_ok": true,
+        "status_ok": false,
+        "expected_facts": false,
+        "expected_sources": false,
+        "no_forbidden_marker": true
+      },
+      "seconds": 39.79
+    },
+    {
+      "id": "Q16",
+      "status": "answered",
+      "passed": false,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": false,
+        "expected_sources": false,
+        "no_forbidden_marker": true,
+        "explicit_conflict": false
+      },
+      "seconds": 35.17
+    },
+    {
+      "id": "Q17",
+      "status": "insufficient_evidence",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 10.49
+    },
+    {
+      "id": "Q18",
+      "status": "insufficient_evidence",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 10.59
+    },
+    {
+      "id": "Q19",
+      "status": "answered",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 20.44
+    },
+    {
+      "id": "Q20",
+      "status": "insufficient_evidence",
+      "passed": true,
+      "checks": {
+        "http_ok": true,
+        "status_ok": true,
+        "expected_facts": true,
+        "expected_sources": true,
+        "no_forbidden_marker": true
+      },
+      "seconds": 9.78
+    }
+  ]
+}

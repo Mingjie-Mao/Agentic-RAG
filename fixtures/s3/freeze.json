@@ -1,0 +1,21 @@
+{
+  "files": {
+    "manifest.json": "25d763d71db255ff9560e374cee28f160bb214c0f33fd687f39806dec168fb0a",
+    "questions.json": "92b08ac2317379291b5a09938af5d12be99a8e0c1f3354a99feb10dcf13abffa",
+    "split.json": "56b17ff4ab04d5a16fcd727c6622a61c39a450ac1ccdd1d3f3e9ffe777f4039b"
+  },
+  "models": {
+    "embedding": {
+      "name": "bge-m3:567m",
+      "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab"
+    },
+    "generation": {
+      "name": "qwen2.5:7b-instruct",
+      "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+    }
+  },
+  "created_at": "2026-09-15T03:59:20.399029+00:00",
+  "status": "frozen_for_development_evaluation",
+  "human_review": "pending; freeze records immutable inputs, not approval of gold quality",
+  "holdout": "not run; source-only audit permitted, no tuning on held-out answers"
+}

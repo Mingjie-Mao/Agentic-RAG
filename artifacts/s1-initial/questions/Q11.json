@@ -1,0 +1,98 @@
+{
+  "question": {
+    "id": "Q11",
+    "user": "xq-support",
+    "question": "确认 SEV1 事故后多久通知值班负责人？",
+    "expected": "answered",
+    "facts": [
+      "10"
+    ],
+    "sources": [
+      "support-escalate"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "1d3f792b-3b4d-42be-9d0f-837dddaa1b68",
+    "question": "确认 SEV1 事故后多久通知值班负责人？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。",
+        "evidence_ids": [
+          "f971902d-d665-5cc7-9fa1-3455c61d3c93"
+        ],
+        "quotes": [
+          "支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+        "document_id": "seed-support-escalate",
+        "version_id": "100263dc-44ee-4e21-b25e-b9d86a52ff8e",
+        "title": "SEV1 客户事故升级",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–8 行",
+          "char_start": 0,
+          "char_end": 133,
+          "line_start": 1,
+          "line_end": 8
+        },
+        "text": "# SEV1 客户事故升级\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 升级要求\n支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。\n事故期间每 30 分钟向客户同步一次状态，不得承诺未经工程组确认的恢复时间。\n",
+        "preview_url": "/api/evidence/f971902d-d665-5cc7-9fa1-3455c61d3c93",
+        "original_url": "/api/versions/100263dc-44ee-4e21-b25e-b9d86a52ff8e/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "title": "SEV1 客户事故升级",
+          "score": 0.7427
+        },
+        {
+          "chunk_id": "7ea8732a-57be-54b9-858c-fa251b66e285",
+          "title": "支持组交接清单",
+          "score": 0.5482
+        },
+        {
+          "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
+          "title": "支持响应等级表",
+          "score": 0.5177
+        },
+        {
+          "chunk_id": "ee8337d3-e459-5b80-92c8-9a7b287ddb10",
+          "title": "会议纪要归档约定",
+          "score": 0.4848
+        }
+      ],
+      "embed_ms": 579.1,
+      "retrieval_ms": 41.7,
+      "generation_ms": 50100.1,
+      "total_ms": 50765.6
+    },
+    "usage": {
+      "prompt_tokens": 1958,
+      "completion_tokens": 93,
+      "model_duration_ms": 50079.4,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

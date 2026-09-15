@@ -1,0 +1,66 @@
+{
+  "question": {
+    "id": "Q17",
+    "user": "xq-support",
+    "question": "公司去火星出差的补贴是多少？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "sources": []
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "78cfcbc0-126f-4802-b3a2-76e98f1c9259",
+    "question": "公司去火星出差的补贴是多少？",
+    "status": "insufficient_evidence",
+    "claims": [],
+    "citations": [],
+    "message": "在你有权访问的资料中，未找到足够依据。",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "7a3f7dfc-67ad-5551-9403-7e536bcee73b",
+          "title": "差旅标准 2025 旧版",
+          "score": 0.5171
+        },
+        {
+          "chunk_id": "57f732ca-2243-5599-9a7d-34dabd988e00",
+          "title": "差旅标准 2026 生效版",
+          "score": 0.5142
+        },
+        {
+          "chunk_id": "41b23f79-6b16-5432-b3e8-27af570f67f5",
+          "title": "年假申请说明",
+          "score": 0.455
+        },
+        {
+          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "title": "套餐功能对照表",
+          "score": 0.4524
+        }
+      ],
+      "embed_ms": 164,
+      "retrieval_ms": 35.5,
+      "generation_ms": 25311.3,
+      "total_ms": 25552.2
+    },
+    "usage": {
+      "prompt_tokens": 2043,
+      "completion_tokens": 105,
+      "model_duration_ms": 25288.9,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

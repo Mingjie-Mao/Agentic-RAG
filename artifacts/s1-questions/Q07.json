@@ -1,0 +1,106 @@
+{
+  "question": {
+    "id": "Q07",
+    "user": "xq-support",
+    "question": "单点登录会话多久无操作会失效？",
+    "expected": "answered",
+    "facts": [
+      "30"
+    ],
+    "sources": [
+      "sso-session"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "8345a858-fd0d-449a-a17e-c5f0a953130d",
+    "question": "单点登录会话多久无操作会失效？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "星桥单点登录会话连续30分钟无操作后失效。",
+        "evidence_ids": [
+          "723730e0-bb63-539b-b6d1-862f43f4fa00"
+        ],
+        "quotes": [
+          "星桥单点登录会话连续 30 分钟无操作后失效。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "723730e0-bb63-539b-b6d1-862f43f4fa00",
+        "document_id": "seed-sso-session",
+        "version_id": "fee7e905-c58b-4b00-a46a-471d19c781f3",
+        "title": "单点登录会话规则",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–8 行",
+          "char_start": 0,
+          "char_end": 124,
+          "line_start": 1,
+          "line_end": 8
+        },
+        "text": "# 单点登录会话规则\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 会话时限\n星桥单点登录会话连续 30 分钟无操作后失效。重新访问需要经过身份提供方认证。\n管理者强制退出用户时，服务端同时撤销该用户所有活动会话。\n",
+        "preview_url": "/api/evidence/723730e0-bb63-539b-b6d1-862f43f4fa00",
+        "original_url": "/api/versions/fee7e905-c58b-4b00-a46a-471d19c781f3/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "prompt_version": "grounded-v4-source-spans",
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000,
+      "context_tokens_estimate": 934,
+      "token_counter": "cl100k_base",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:7b-instruct",
+      "candidates": [
+        {
+          "chunk_id": "723730e0-bb63-539b-b6d1-862f43f4fa00",
+          "title": "单点登录会话规则",
+          "score": 0.771
+        },
+        {
+          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "title": "Webhook 投递与签名",
+          "score": 0.5565
+        },
+        {
+          "chunk_id": "8ed52eef-363a-502f-a4b2-9396e71c1f54",
+          "title": "业务数据保留规则",
+          "score": 0.5504
+        },
+        {
+          "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
+          "title": "支持响应等级表",
+          "score": 0.5476
+        }
+      ],
+      "embed_ms": 182.5,
+      "retrieval_ms": 36.5,
+      "generation_ms": 24858.3,
+      "total_ms": 25113.4
+    },
+    "usage": {
+      "prompt_tokens": 1109,
+      "completion_tokens": 53,
+      "model_duration_ms": 24835.5,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama",
+      "answer_status": "answered",
+      "conflict_check": null
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

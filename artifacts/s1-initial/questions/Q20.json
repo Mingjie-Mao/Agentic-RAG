@@ -1,0 +1,97 @@
+{
+  "question": {
+    "id": "Q20",
+    "user": "xq-engineer",
+    "question": "海川工作室的网关测试标记是什么？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "sources": [],
+    "forbidden": [
+      "CORAL-4826"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": false,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "9985d812-35ab-4db0-943f-84c8453c1494",
+    "question": "海川工作室的网关测试标记是什么？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "星桥开发网关使用 8088 端口",
+        "evidence_ids": [
+          "bfac905b-f34d-5792-992a-ed9f894f25dc"
+        ],
+        "quotes": [
+          "星桥开发网关使用 8088 端口，调试面板使用 9088 端口。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "bfac905b-f34d-5792-992a-ed9f894f25dc",
+        "document_id": "seed-dev-environment",
+        "version_id": "74c192e1-b30a-4aab-9f3c-c6721b124a6d",
+        "title": "本地研发环境配置",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–8 行",
+          "char_start": 0,
+          "char_end": 114,
+          "line_start": 1,
+          "line_end": 8
+        },
+        "text": "# 本地研发环境配置\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 开发服务端口\n星桥开发网关使用 8088 端口，调试面板使用 9088 端口。\n本地数据库需使用独立测试账号，不得连接生产库。\n",
+        "preview_url": "/api/evidence/bfac905b-f34d-5792-992a-ed9f894f25dc",
+        "original_url": "/api/versions/74c192e1-b30a-4aab-9f3c-c6721b124a6d/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "bfac905b-f34d-5792-992a-ed9f894f25dc",
+          "title": "本地研发环境配置",
+          "score": 0.4791
+        },
+        {
+          "chunk_id": "da3d04b3-8a44-514e-a37b-82decfaea8eb",
+          "title": "灰度发布验证口令",
+          "score": 0.4672
+        },
+        {
+          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "title": "Webhook 投递与签名",
+          "score": 0.4424
+        },
+        {
+          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "title": "Python SDK 重试配置",
+          "score": 0.4192
+        }
+      ],
+      "embed_ms": 183,
+      "retrieval_ms": 37.2,
+      "generation_ms": 23118.3,
+      "total_ms": 23375.2
+    },
+    "usage": {
+      "prompt_tokens": 1942,
+      "completion_tokens": 93,
+      "model_duration_ms": 23094.4,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

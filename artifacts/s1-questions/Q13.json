@@ -1,0 +1,116 @@
+{
+  "question": {
+    "id": "Q13",
+    "user": "xq-engineer",
+    "question": "生产数据库的 RPO 和 RTO 分别是多少？",
+    "expected": "answered",
+    "facts": [
+      "15",
+      "60"
+    ],
+    "sources": [
+      "db-backup"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "12fa50d8-51c7-45ff-8b07-0d46718870d4",
+    "question": "生产数据库的 RPO 和 RTO 分别是多少？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "生产数据库的 RPO 是 15 分钟。",
+        "evidence_ids": [
+          "55b4f36e-afed-5285-83e0-a1aa3909ee5a"
+        ],
+        "quotes": [
+          "生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。"
+        ]
+      },
+      {
+        "text": "生产数据库的 RTO 是 60 分钟。",
+        "evidence_ids": [
+          "55b4f36e-afed-5285-83e0-a1aa3909ee5a"
+        ],
+        "quotes": [
+          "生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "55b4f36e-afed-5285-83e0-a1aa3909ee5a",
+        "document_id": "seed-db-backup",
+        "version_id": "37fcd15c-dddd-48cb-9e30-be15b21865dc",
+        "title": "数据库备份与恢复目标",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–8 行",
+          "char_start": 0,
+          "char_end": 136,
+          "line_start": 1,
+          "line_end": 8
+        },
+        "text": "# 数据库备份与恢复目标\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 恢复目标\n生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。\n每天进行一次全量备份，事务日志每 5 分钟归档一次。每月执行恢复演练。\n",
+        "preview_url": "/api/evidence/55b4f36e-afed-5285-83e0-a1aa3909ee5a",
+        "original_url": "/api/versions/37fcd15c-dddd-48cb-9e30-be15b21865dc/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "prompt_version": "grounded-v4-source-spans",
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000,
+      "context_tokens_estimate": 914,
+      "token_counter": "cl100k_base",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:7b-instruct",
+      "candidates": [
+        {
+          "chunk_id": "55b4f36e-afed-5285-83e0-a1aa3909ee5a",
+          "title": "数据库备份与恢复目标",
+          "score": 0.6794
+        },
+        {
+          "chunk_id": "fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+          "title": "生产发布审批规则",
+          "score": 0.4645
+        },
+        {
+          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "title": "套餐功能对照表",
+          "score": 0.4616
+        },
+        {
+          "chunk_id": "bfac905b-f34d-5792-992a-ed9f894f25dc",
+          "title": "本地研发环境配置",
+          "score": 0.4582
+        }
+      ],
+      "embed_ms": 162.5,
+      "retrieval_ms": 42.4,
+      "generation_ms": 28038.1,
+      "total_ms": 28271.1
+    },
+    "usage": {
+      "prompt_tokens": 1041,
+      "completion_tokens": 81,
+      "model_duration_ms": 28017.3,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama",
+      "answer_status": "answered",
+      "conflict_check": null
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

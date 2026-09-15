@@ -1,0 +1,112 @@
+{
+  "id": "8d5fef5a-88b9-491b-a235-e4799e313be1",
+  "question": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+  "status": "conflict",
+  "claims": [
+    {
+      "text": "2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。",
+      "evidence_ids": [
+        "f38120ec-caf5-5ed2-a2e4-e42846bc7b72"
+      ],
+      "quotes": [
+        "2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。"
+      ]
+    },
+    {
+      "text": "2026 年 9 月试点项目的支持时间是工作日 09:00 至 18:00。",
+      "evidence_ids": [
+        "0597651a-e12e-552b-9ded-ef1fe1d7d51c"
+      ],
+      "quotes": [
+        "2026 年 9 月试点项目的支持时间为工作日 09:00 至 18:00。"
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "chunk_id": "f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+      "document_id": "seed-pilot-b",
+      "version_id": "70c02c93-9e1f-47b4-aa0d-d7497b46fec0",
+      "title": "试点项目支持安排 B",
+      "locator": {
+        "kind": "markdown",
+        "label": "第 1–8 行",
+        "char_start": 0,
+        "char_end": 124,
+        "line_start": 1,
+        "line_end": 8
+      },
+      "text": "# 试点项目支持安排 B\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 试点安排\n2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。\n本文件由客户成功组发布，未注明与其他支持安排的优先关系。\n",
+      "preview_url": "/api/evidence/f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+      "original_url": "/api/versions/70c02c93-9e1f-47b4-aa0d-d7497b46fec0/original"
+    },
+    {
+      "chunk_id": "0597651a-e12e-552b-9ded-ef1fe1d7d51c",
+      "document_id": "seed-pilot-a",
+      "version_id": "66f7acf0-7d99-4dab-801c-5a5497ebe3d4",
+      "title": "试点项目支持安排 A",
+      "locator": {
+        "kind": "markdown",
+        "label": "第 1–8 行",
+        "char_start": 0,
+        "char_end": 125,
+        "line_start": 1,
+        "line_end": 8
+      },
+      "text": "# 试点项目支持安排 A\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 试点安排\n2026 年 9 月试点项目的支持时间为工作日 09:00 至 18:00。\n本文件由试点协调组发布，未注明与其他支持安排的优先关系。\n",
+      "preview_url": "/api/evidence/0597651a-e12e-552b-9ded-ef1fe1d7d51c",
+      "original_url": "/api/versions/66f7acf0-7d99-4dab-801c-5a5497ebe3d4/original"
+    }
+  ],
+  "message": "资料存在冲突，以下规定无法同时成立；在确认适用关系前不能只采用其中一份。",
+  "trace": {
+    "method": "dense",
+    "prompt_version": "grounded-v4-source-spans",
+    "top_k": 4,
+    "min_similarity": 0.35,
+    "context_token_budget": 5000,
+    "context_tokens_estimate": 886,
+    "token_counter": "cl100k_base",
+    "embedding_model": "bge-m3:567m",
+    "generation_model": "qwen2.5:7b-instruct",
+    "candidates": [
+      {
+        "chunk_id": "f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+        "title": "试点项目支持安排 B",
+        "score": 0.7482
+      },
+      {
+        "chunk_id": "0597651a-e12e-552b-9ded-ef1fe1d7d51c",
+        "title": "试点项目支持安排 A",
+        "score": 0.7389
+      },
+      {
+        "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+        "title": "API 调用配额说明",
+        "score": 0.4573
+      },
+      {
+        "chunk_id": "7ea8732a-57be-54b9-858c-fa251b66e285",
+        "title": "支持组交接清单",
+        "score": 0.4528
+      }
+    ],
+    "embed_ms": 223.4,
+    "retrieval_ms": 39.9,
+    "generation_ms": 32583.1,
+    "total_ms": 33056.3
+  },
+  "usage": {
+    "prompt_tokens": 1469,
+    "completion_tokens": 147,
+    "model_duration_ms": 32540.7,
+    "api_cost": 0,
+    "currency": "AUD",
+    "execution": "local_ollama",
+    "answer_status": "conflict",
+    "conflict_check": {
+      "conflict": true,
+      "reason": "两个文档描述了不同时间段的支持安排，且没有说明优先级关系。"
+    }
+  }
+}

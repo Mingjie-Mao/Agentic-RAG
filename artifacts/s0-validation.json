@@ -1,0 +1,378 @@
+{
+  "stage": "S0",
+  "documents": 30,
+  "questions": 20,
+  "engineering_scenarios": 10,
+  "tenants": 2,
+  "source_hash_acl_and_fact_checks": "passed",
+  "gold_type": "development_only_source_level_not_frozen_test",
+  "questions_with_locations": [
+    {
+      "question_id": "Q01",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "api-limits",
+          "path": "fixtures/documents/api-limits.md",
+          "sha256": "5fadc05465d1178f32f1928996d5ee7d4c909a8a22e2626c2c9c9a449507c110",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 9
+          },
+          "text": "# API 调用配额说明\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n## 重试规则\n收到 429 后，应按 Retry-After 响应头等待，不应立即连续重试。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q02",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "sdk-retry",
+          "path": "fixtures/documents/sdk-retry.md",
+          "sha256": "4fe1c53445ae3742d97206bbde752e9bff7a519703e7bab060949ef6fbd6736a",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# Python SDK 重试配置\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q03",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "upload-guide",
+          "path": "fixtures/documents/upload-guide.pdf",
+          "sha256": "39e0ab0a0752c3fb9dfe8cac3e7982c705fd3944df62223125aefc42bdc686ef",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "pdf",
+            "page": 1,
+            "label": "第 1 页"
+          },
+          "text": "文件上传接口手册\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n文件上传规则\n星桥产品的文件上传接口单个文件上限为 20 MB。支持 PDF、Markdown 和 CSV。\n批量上传每批最多 10 个文件。这里描述的是虚构产品接口，不是本演示系统的上传限制。"
+        }
+      ]
+    },
+    {
+      "question_id": "Q04",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "data-retention",
+          "path": "fixtures/documents/data-retention.pdf",
+          "sha256": "d11138f03ab3dd4de6f9ba9b1dc1d4b88c8d220e8773d4bef609c8b3204b6639",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "pdf",
+            "page": 1,
+            "label": "第 1 页"
+          },
+          "text": "业务数据保留规则\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n日志与数据保留\n星桥标准套餐的业务事件日志保留 90 天，到期自动删除。\n审计日志保留 180 天。客户可在合同中约定更长的保留周期。"
+        }
+      ]
+    },
+    {
+      "question_id": "Q05",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "webhook",
+          "path": "fixtures/documents/webhook.md",
+          "sha256": "6f23ba9d31378d10997d33fa91ac152668240aa0f6f5d1de5403f047e0041e19",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 9
+          },
+          "text": "# Webhook 投递与签名\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 失败投递\nWebhook 投递失败后最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。\n## 签名\n使用 HMAC-SHA256 校验 X-Starbridge-Signature，时间戳超过 5 分钟应拒收。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q06",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "token-errors",
+          "path": "fixtures/documents/token-errors.md",
+          "sha256": "b927d8d9b44b6b1b06703d47ffb03ef5bdbff2a4bef4a2267d5969a030e55b53",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 认证错误 E401 排查\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## E401 含义\n错误 E401 表示访问令牌已过期。先调用刷新接口获取新令牌，再重试原始请求。\n若刷新令牌也失效，必须重新登录。不得把访问令牌记录到业务日志。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q07",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "sso-session",
+          "path": "fixtures/documents/sso-session.md",
+          "sha256": "e72291a4b1acce357f8ee84efb0752050f6172a005379e5705941b88bd08a6af",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 单点登录会话规则\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 会话时限\n星桥单点登录会话连续 30 分钟无操作后失效。重新访问需要经过身份提供方认证。\n管理者强制退出用户时，服务端同时撤销该用户所有活动会话。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q08",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "travel-2026",
+          "path": "fixtures/documents/travel-2026.pdf",
+          "sha256": "4a44665fa844196548ba657fafdc4075825ee633aec19717d7df288ee96f505c",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "pdf",
+            "page": 1,
+            "label": "第 1 页"
+          },
+          "text": "差旅标准 2026 生效版\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n适用期间\n本规则适用于 2026 年 1 月 1 日起发生的差旅，并替代 2025 年旧版。\n住宿标准\n悉尼出差酒店住宿上限为每晚 250 澳元。报销须在返程后 30 天内提交。"
+        }
+      ]
+    },
+    {
+      "question_id": "Q09",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "leave",
+          "path": "fixtures/documents/leave.md",
+          "sha256": "fdd2164903d4bcbadc7083144dd432d1a85f4652d2eb88732c72f2541cd74d43",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 年假申请说明\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 申请流程\n连续 3 天及以上的年假，应至少提前 5 个工作日提交申请。直属负责人审批后生效。\n未满 3 天的年假，至少提前 1 个工作日申请。紧急情况联系负责人单独处理。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q10",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "support-sla",
+          "path": "fixtures/documents/support-sla.md",
+          "sha256": "a3dc32b753d9f0cfa246a1d722b8997e9d0aab5b488dea1aa1c6b9a950b3733f",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 12
+          },
+          "text": "# 支持响应等级表\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 工单首响\n| 等级 | 首次响应时间 |\n| --- | --- |\n| P1 服务不可用 | 15 分钟 |\n| P2 功能受限 | 2 小时 |\n| P3 一般咨询 | 1 个工作日 |\n首次响应不等于问题解决。支持组需要在工单中持续同步处理进度。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q11",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "support-escalate",
+          "path": "fixtures/documents/support-escalate.md",
+          "sha256": "6e73189de5bfb77bc325276006ec14cace1b4f67882a1923d7b4c55710795989",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# SEV1 客户事故升级\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 升级要求\n支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。\n事故期间每 30 分钟向客户同步一次状态，不得承诺未经工程组确认的恢复时间。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q12",
+      "user_id": "xq-engineer",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "deploy-review",
+          "path": "fixtures/documents/deploy-review.md",
+          "sha256": "f68d8c70a774dc5bc8332d86db881aa26807d9375c5cb93151b0b11c6874751a",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 生产发布审批规则\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 发布前置条件\n生产发布需要 2 名工程师完成代码审查，并由当班发布负责人批准。\n发布窗口为工作日 10:00 至 16:00。紧急修复需先关联事故工单。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q13",
+      "user_id": "xq-engineer",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "db-backup",
+          "path": "fixtures/documents/db-backup.md",
+          "sha256": "210bf399268a2f9fe55bf41409df838e60e22fb09192bf32441a138b3b3dc88e",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 数据库备份与恢复目标\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 恢复目标\n生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。\n每天进行一次全量备份，事务日志每 5 分钟归档一次。每月执行恢复演练。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q14",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "export",
+          "path": "fixtures/documents/export.md",
+          "sha256": "921c2e56844aaf154285d671d8dc15d45affbd383f8d27d41b2f967733238e75",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 数据导出注意事项\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 下载有效期\n数据导出的下载链接有效期为 24 小时。链接到期后必须重新发起导出。\n导出权限随用户角色变化而撤销，不能将下载链接转发给无权访问者。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q15",
+      "user_id": "xq-support",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "plan-comparison",
+          "path": "fixtures/documents/plan-comparison.md",
+          "sha256": "1e17e8a127bcd21a4fb0b5fb70f3513da5f274eb6c5e1fb466a010e6269a00b1",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 11
+          },
+          "text": "# 套餐功能对照表\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 套餐功能\n| 套餐 | 成员人数 | 每日导出次数 |\n| --- | --- | --- |\n| 标准版 | 20 | 5 |\n| 团队版 | 100 | 30 |\n团队版包含优先支持，具体响应时间以合同为准。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q16",
+      "user_id": "xq-support",
+      "expected": "conflict",
+      "source_locations": [
+        {
+          "source_key": "pilot-a",
+          "path": "fixtures/documents/pilot-a.md",
+          "sha256": "e9919a2acc76eae50cccc2f323adb7a8d273d1e814d53470c755ac1153056647",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 试点项目支持安排 A\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 试点安排\n2026 年 9 月试点项目的支持时间为工作日 09:00 至 18:00。\n本文件由试点协调组发布，未注明与其他支持安排的优先关系。\n"
+        },
+        {
+          "source_key": "pilot-b",
+          "path": "fixtures/documents/pilot-b.md",
+          "sha256": "d5692f29a3fd2e2a1a15257177dd88b870e7ca4f3f62472ccd8a5ad490ae0624",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "markdown",
+            "label": "原文",
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 试点项目支持安排 B\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 试点安排\n2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。\n本文件由客户成功组发布，未注明与其他支持安排的优先关系。\n"
+        }
+      ]
+    },
+    {
+      "question_id": "Q17",
+      "user_id": "xq-support",
+      "expected": "insufficient_evidence",
+      "source_locations": []
+    },
+    {
+      "question_id": "Q18",
+      "user_id": "xq-support",
+      "expected": "insufficient_evidence",
+      "source_locations": []
+    },
+    {
+      "question_id": "Q19",
+      "user_id": "hc-admin",
+      "expected": "answered",
+      "source_locations": [
+        {
+          "source_key": "hc-retention",
+          "path": "fixtures/documents/hc-retention.pdf",
+          "sha256": "341c35a4926231fa1b377c0ccde80c4691c8255d3813cb344e5f8f5d34274d0b",
+          "version": "s0-v1",
+          "locator": {
+            "kind": "pdf",
+            "page": 1,
+            "label": "第 1 页"
+          },
+          "text": "海川日志保留规则\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n日志规则\n海川工作室的业务日志保留 45 天。日志仅限本租户成员查阅。\n日志配置与星桥软件无关。"
+        }
+      ]
+    },
+    {
+      "question_id": "Q20",
+      "user_id": "xq-engineer",
+      "expected": "insufficient_evidence",
+      "source_locations": []
+    }
+  ]
+}

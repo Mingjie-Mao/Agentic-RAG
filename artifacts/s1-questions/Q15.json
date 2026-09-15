@@ -1,0 +1,116 @@
+{
+  "question": {
+    "id": "Q15",
+    "user": "xq-support",
+    "question": "团队版支持多少成员，每日可以导出多少次？",
+    "expected": "answered",
+    "facts": [
+      "100",
+      "30"
+    ],
+    "sources": [
+      "plan-comparison"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "9f083f31-6e0a-4dcf-9d5a-97274a3fd81e",
+    "question": "团队版支持多少成员，每日可以导出多少次？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "团队版支持100名成员。",
+        "evidence_ids": [
+          "06cb6061-6c94-53a2-b021-0de800be11f9"
+        ],
+        "quotes": [
+          "| 团队版 | 100 | 30 |"
+        ]
+      },
+      {
+        "text": "每日可以导出30次。",
+        "evidence_ids": [
+          "06cb6061-6c94-53a2-b021-0de800be11f9"
+        ],
+        "quotes": [
+          "| 团队版 | 100 | 30 |"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+        "document_id": "seed-plan-comparison",
+        "version_id": "5dd768db-0e57-41b1-b9fd-ae5c0ea4e980",
+        "title": "套餐功能对照表",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–11 行",
+          "char_start": 0,
+          "char_end": 156,
+          "line_start": 1,
+          "line_end": 11
+        },
+        "text": "# 套餐功能对照表\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 套餐功能\n| 套餐 | 成员人数 | 每日导出次数 |\n| --- | --- | --- |\n| 标准版 | 20 | 5 |\n| 团队版 | 100 | 30 |\n团队版包含优先支持，具体响应时间以合同为准。\n",
+        "preview_url": "/api/evidence/06cb6061-6c94-53a2-b021-0de800be11f9",
+        "original_url": "/api/versions/5dd768db-0e57-41b1-b9fd-ae5c0ea4e980/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "prompt_version": "grounded-v4-source-spans",
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000,
+      "context_tokens_estimate": 909,
+      "token_counter": "cl100k_base",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:7b-instruct",
+      "candidates": [
+        {
+          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "title": "套餐功能对照表",
+          "score": 0.6869
+        },
+        {
+          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+          "title": "文件上传接口手册",
+          "score": 0.561
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.5457
+        },
+        {
+          "chunk_id": "50a00831-7a6a-5f51-bda1-86ca49664d18",
+          "title": "数据导出注意事项",
+          "score": 0.5389
+        }
+      ],
+      "embed_ms": 421.7,
+      "retrieval_ms": 67.5,
+      "generation_ms": 35131.2,
+      "total_ms": 35751.1
+    },
+    "usage": {
+      "prompt_tokens": 1095,
+      "completion_tokens": 74,
+      "model_duration_ms": 35097.4,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama",
+      "answer_status": "answered",
+      "conflict_check": null
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

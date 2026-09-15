@@ -1,0 +1,77 @@
+{
+  "question": {
+    "id": "Q20",
+    "user": "xq-engineer",
+    "question": "海川工作室的网关测试标记是什么？",
+    "expected": "insufficient_evidence",
+    "facts": [],
+    "sources": [],
+    "forbidden": [
+      "CORAL-4826"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "2d5edba8-8f90-4198-80f9-0dc655bdcd1b",
+    "question": "海川工作室的网关测试标记是什么？",
+    "status": "insufficient_evidence",
+    "claims": [],
+    "citations": [],
+    "message": "在你有权访问的资料中，未找到足够依据。",
+    "trace": {
+      "method": "dense",
+      "prompt_version": "grounded-v4-source-spans",
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000,
+      "context_tokens_estimate": 907,
+      "token_counter": "cl100k_base",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:7b-instruct",
+      "candidates": [
+        {
+          "chunk_id": "bfac905b-f34d-5792-992a-ed9f894f25dc",
+          "title": "本地研发环境配置",
+          "score": 0.4791
+        },
+        {
+          "chunk_id": "da3d04b3-8a44-514e-a37b-82decfaea8eb",
+          "title": "灰度发布验证口令",
+          "score": 0.4672
+        },
+        {
+          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "title": "Webhook 投递与签名",
+          "score": 0.4424
+        },
+        {
+          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "title": "Python SDK 重试配置",
+          "score": 0.4192
+        }
+      ],
+      "embed_ms": 396.7,
+      "retrieval_ms": 79,
+      "generation_ms": 22947.1,
+      "total_ms": 23479.3
+    },
+    "usage": {
+      "prompt_tokens": 1053,
+      "completion_tokens": 18,
+      "model_duration_ms": 22922.9,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama",
+      "answer_status": "insufficient_evidence",
+      "conflict_check": null
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

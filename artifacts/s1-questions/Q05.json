@@ -1,0 +1,106 @@
+{
+  "question": {
+    "id": "Q05",
+    "user": "xq-support",
+    "question": "Webhook 投递失败最多重试几次？",
+    "expected": "answered",
+    "facts": [
+      "5"
+    ],
+    "sources": [
+      "webhook"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "2769e75b-4d1d-4dd8-9a35-dfb3fa6eb8ba",
+    "question": "Webhook 投递失败最多重试几次？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "Webhook 投递失败最多重试5次。",
+        "evidence_ids": [
+          "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac"
+        ],
+        "quotes": [
+          "Webhook 投递失败后最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+        "document_id": "seed-webhook",
+        "version_id": "37dfc0a9-502e-43db-9b78-3fcc265b2c26",
+        "title": "Webhook 投递与签名",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–9 行",
+          "char_start": 0,
+          "char_end": 167,
+          "line_start": 1,
+          "line_end": 9
+        },
+        "text": "# Webhook 投递与签名\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 失败投递\nWebhook 投递失败后最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。\n## 签名\n使用 HMAC-SHA256 校验 X-Starbridge-Signature，时间戳超过 5 分钟应拒收。\n",
+        "preview_url": "/api/evidence/9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+        "original_url": "/api/versions/37dfc0a9-502e-43db-9b78-3fcc265b2c26/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "prompt_version": "grounded-v4-source-spans",
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000,
+      "context_tokens_estimate": 923,
+      "token_counter": "cl100k_base",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:7b-instruct",
+      "candidates": [
+        {
+          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "title": "Webhook 投递与签名",
+          "score": 0.7831
+        },
+        {
+          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "title": "Python SDK 重试配置",
+          "score": 0.6386
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.5718
+        },
+        {
+          "chunk_id": "f5401de6-c2c3-5d2a-a241-e1bc178a3a82",
+          "title": "工单 218：重复回调",
+          "score": 0.552
+        }
+      ],
+      "embed_ms": 201.2,
+      "retrieval_ms": 53.2,
+      "generation_ms": 24272.5,
+      "total_ms": 24562.2
+    },
+    "usage": {
+      "prompt_tokens": 1139,
+      "completion_tokens": 49,
+      "model_duration_ms": 24250.8,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama",
+      "answer_status": "answered",
+      "conflict_check": null
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

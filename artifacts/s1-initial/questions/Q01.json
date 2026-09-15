@@ -1,0 +1,98 @@
+{
+  "question": {
+    "id": "Q01",
+    "user": "xq-support",
+    "question": "星桥标准套餐每分钟可以调用多少次 API？",
+    "expected": "answered",
+    "facts": [
+      "120"
+    ],
+    "sources": [
+      "api-limits"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "2d55493e-f799-41b6-8403-87e14ff05f62",
+    "question": "星桥标准套餐每分钟可以调用多少次 API？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "星桥标准套餐每分钟最多允许 120 次请求。",
+        "evidence_ids": [
+          "760f26e1-9b50-5330-a781-98790fd66c78"
+        ],
+        "quotes": [
+          "星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+        "document_id": "seed-api-limits",
+        "version_id": "b3766bb2-8bf9-4df0-b3b7-1a1acc961987",
+        "title": "API 调用配额说明",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–9 行",
+          "char_start": 0,
+          "char_end": 149,
+          "line_start": 1,
+          "line_end": 9
+        },
+        "text": "# API 调用配额说明\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n## 重试规则\n收到 429 后，应按 Retry-After 响应头等待，不应立即连续重试。\n",
+        "preview_url": "/api/evidence/760f26e1-9b50-5330-a781-98790fd66c78",
+        "original_url": "/api/versions/b3766bb2-8bf9-4df0-b3b7-1a1acc961987/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.8123
+        },
+        {
+          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "title": "Python SDK 重试配置",
+          "score": 0.6221
+        },
+        {
+          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+          "title": "文件上传接口手册",
+          "score": 0.6187
+        },
+        {
+          "chunk_id": "723730e0-bb63-539b-b6d1-862f43f4fa00",
+          "title": "单点登录会话规则",
+          "score": 0.6064
+        }
+      ],
+      "embed_ms": 197.1,
+      "retrieval_ms": 39.5,
+      "generation_ms": 6999.4,
+      "total_ms": 7273.5
+    },
+    "usage": {
+      "prompt_tokens": 1921,
+      "completion_tokens": 96,
+      "model_duration_ms": 6978.1,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

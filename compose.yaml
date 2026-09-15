@@ -1,0 +1,42 @@
+name: enterprise-rag
+services:
+  postgres:
+    image: postgres:16.10-alpine
+    environment:
+      POSTGRES_USER: rag
+      POSTGRES_PASSWORD: rag-local-only
+      POSTGRES_DB: rag
+    ports: ["127.0.0.1:55436:5432"]
+    volumes: ["postgres-data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rag -d rag"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  opensearch:
+    image: opensearchproject/opensearch:3.2.0
+    environment:
+      discovery.type: single-node
+      DISABLE_INSTALL_DEMO_CONFIG: "true"
+      DISABLE_SECURITY_PLUGIN: "true"
+      OPENSEARCH_JAVA_OPTS: -Xms768m -Xmx768m
+    ports: ["127.0.0.1:19200:9200"]
+    volumes: ["search-data:/usr/share/opensearch/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:9200/_cluster/health >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+  ollama:
+    profiles: ["cpu"]
+    image: ollama/ollama:0.11.10
+    environment:
+      OLLAMA_HOST: 0.0.0.0:11434
+      OLLAMA_NUM_PARALLEL: "1"
+      OLLAMA_MAX_LOADED_MODELS: "2"
+    ports: ["127.0.0.1:11436:11434"]
+    volumes: ["model-data:/root/.ollama"]
+volumes:
+  postgres-data:
+  search-data:
+  model-data:

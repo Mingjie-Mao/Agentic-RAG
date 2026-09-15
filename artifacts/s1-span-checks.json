@@ -1,0 +1,334 @@
+[
+  {
+    "question": {
+      "id": "Q13",
+      "user": "xq-engineer",
+      "question": "生产数据库的 RPO 和 RTO 分别是多少？",
+      "expected": "answered",
+      "facts": [
+        "15",
+        "60"
+      ],
+      "sources": [
+        "db-backup"
+      ]
+    },
+    "response": {
+      "id": "ffea24b2-08bb-4aa1-a4cd-34abbe3441fb",
+      "question": "生产数据库的 RPO 和 RTO 分别是多少？",
+      "status": "answered",
+      "claims": [
+        {
+          "text": "生产数据库的 RPO 是 15 分钟。",
+          "evidence_ids": [
+            "55b4f36e-afed-5285-83e0-a1aa3909ee5a"
+          ],
+          "quotes": [
+            "生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。"
+          ]
+        },
+        {
+          "text": "生产数据库的 RTO 是 60 分钟。",
+          "evidence_ids": [
+            "55b4f36e-afed-5285-83e0-a1aa3909ee5a"
+          ],
+          "quotes": [
+            "生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。"
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "55b4f36e-afed-5285-83e0-a1aa3909ee5a",
+          "document_id": "seed-db-backup",
+          "version_id": "37fcd15c-dddd-48cb-9e30-be15b21865dc",
+          "title": "数据库备份与恢复目标",
+          "locator": {
+            "kind": "markdown",
+            "label": "第 1–8 行",
+            "char_start": 0,
+            "char_end": 136,
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 数据库备份与恢复目标\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 恢复目标\n生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。\n每天进行一次全量备份，事务日志每 5 分钟归档一次。每月执行恢复演练。\n",
+          "preview_url": "/api/evidence/55b4f36e-afed-5285-83e0-a1aa3909ee5a",
+          "original_url": "/api/versions/37fcd15c-dddd-48cb-9e30-be15b21865dc/original"
+        }
+      ],
+      "message": "",
+      "trace": {
+        "method": "dense",
+        "prompt_version": "grounded-v4-source-spans",
+        "top_k": 4,
+        "min_similarity": 0.35,
+        "embedding_model": "bge-m3:567m",
+        "generation_model": "qwen2.5:7b-instruct",
+        "candidates": [
+          {
+            "chunk_id": "55b4f36e-afed-5285-83e0-a1aa3909ee5a",
+            "title": "数据库备份与恢复目标",
+            "score": 0.6794
+          },
+          {
+            "chunk_id": "fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+            "title": "生产发布审批规则",
+            "score": 0.4645
+          },
+          {
+            "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+            "title": "套餐功能对照表",
+            "score": 0.4616
+          },
+          {
+            "chunk_id": "bfac905b-f34d-5792-992a-ed9f894f25dc",
+            "title": "本地研发环境配置",
+            "score": 0.4582
+          }
+        ],
+        "embed_ms": 421.5,
+        "retrieval_ms": 51.7,
+        "generation_ms": 25722.8,
+        "total_ms": 26236.9
+      },
+      "usage": {
+        "prompt_tokens": 1041,
+        "completion_tokens": 81,
+        "model_duration_ms": 25701.3,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered"
+      }
+    },
+    "passed": true
+  },
+  {
+    "question": {
+      "id": "Q15",
+      "user": "xq-support",
+      "question": "团队版支持多少成员，每日可以导出多少次？",
+      "expected": "answered",
+      "facts": [
+        "100",
+        "30"
+      ],
+      "sources": [
+        "plan-comparison"
+      ]
+    },
+    "response": {
+      "id": "ba4f6148-86c1-42c2-95cb-0dfb7c9572fc",
+      "question": "团队版支持多少成员，每日可以导出多少次？",
+      "status": "answered",
+      "claims": [
+        {
+          "text": "团队版支持100名成员。",
+          "evidence_ids": [
+            "06cb6061-6c94-53a2-b021-0de800be11f9"
+          ],
+          "quotes": [
+            "| 团队版 | 100 | 30 |"
+          ]
+        },
+        {
+          "text": "每日可以导出30次。",
+          "evidence_ids": [
+            "06cb6061-6c94-53a2-b021-0de800be11f9"
+          ],
+          "quotes": [
+            "| 团队版 | 100 | 30 |"
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "document_id": "seed-plan-comparison",
+          "version_id": "5dd768db-0e57-41b1-b9fd-ae5c0ea4e980",
+          "title": "套餐功能对照表",
+          "locator": {
+            "kind": "markdown",
+            "label": "第 1–11 行",
+            "char_start": 0,
+            "char_end": 156,
+            "line_start": 1,
+            "line_end": 11
+          },
+          "text": "# 套餐功能对照表\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 套餐功能\n| 套餐 | 成员人数 | 每日导出次数 |\n| --- | --- | --- |\n| 标准版 | 20 | 5 |\n| 团队版 | 100 | 30 |\n团队版包含优先支持，具体响应时间以合同为准。\n",
+          "preview_url": "/api/evidence/06cb6061-6c94-53a2-b021-0de800be11f9",
+          "original_url": "/api/versions/5dd768db-0e57-41b1-b9fd-ae5c0ea4e980/original"
+        }
+      ],
+      "message": "",
+      "trace": {
+        "method": "dense",
+        "prompt_version": "grounded-v4-source-spans",
+        "top_k": 4,
+        "min_similarity": 0.35,
+        "embedding_model": "bge-m3:567m",
+        "generation_model": "qwen2.5:7b-instruct",
+        "candidates": [
+          {
+            "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+            "title": "套餐功能对照表",
+            "score": 0.6869
+          },
+          {
+            "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+            "title": "文件上传接口手册",
+            "score": 0.561
+          },
+          {
+            "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+            "title": "API 调用配额说明",
+            "score": 0.5457
+          },
+          {
+            "chunk_id": "50a00831-7a6a-5f51-bda1-86ca49664d18",
+            "title": "数据导出注意事项",
+            "score": 0.5389
+          }
+        ],
+        "embed_ms": 177.6,
+        "retrieval_ms": 44.6,
+        "generation_ms": 25691.3,
+        "total_ms": 25939.7
+      },
+      "usage": {
+        "prompt_tokens": 1095,
+        "completion_tokens": 74,
+        "model_duration_ms": 25670.5,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered"
+      }
+    },
+    "passed": true
+  },
+  {
+    "question": {
+      "id": "Q16",
+      "user": "xq-support",
+      "question": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+      "expected": "conflict",
+      "facts": [
+        "09:00",
+        "18:00",
+        "08:00",
+        "20:00"
+      ],
+      "sources": [
+        "pilot-a",
+        "pilot-b"
+      ]
+    },
+    "response": {
+      "id": "7da48e43-933d-438c-8091-26a8fd7d71ed",
+      "question": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+      "status": "answered",
+      "claims": [
+        {
+          "text": "2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。",
+          "evidence_ids": [
+            "f38120ec-caf5-5ed2-a2e4-e42846bc7b72"
+          ],
+          "quotes": [
+            "2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。"
+          ]
+        },
+        {
+          "text": "2026 年 9 月试点项目的支持时间是工作日 09:00 至 18:00。",
+          "evidence_ids": [
+            "0597651a-e12e-552b-9ded-ef1fe1d7d51c"
+          ],
+          "quotes": [
+            "2026 年 9 月试点项目的支持时间为工作日 09:00 至 18:00。"
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+          "document_id": "seed-pilot-b",
+          "version_id": "70c02c93-9e1f-47b4-aa0d-d7497b46fec0",
+          "title": "试点项目支持安排 B",
+          "locator": {
+            "kind": "markdown",
+            "label": "第 1–8 行",
+            "char_start": 0,
+            "char_end": 124,
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 试点项目支持安排 B\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 试点安排\n2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。\n本文件由客户成功组发布，未注明与其他支持安排的优先关系。\n",
+          "preview_url": "/api/evidence/f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+          "original_url": "/api/versions/70c02c93-9e1f-47b4-aa0d-d7497b46fec0/original"
+        },
+        {
+          "chunk_id": "0597651a-e12e-552b-9ded-ef1fe1d7d51c",
+          "document_id": "seed-pilot-a",
+          "version_id": "66f7acf0-7d99-4dab-801c-5a5497ebe3d4",
+          "title": "试点项目支持安排 A",
+          "locator": {
+            "kind": "markdown",
+            "label": "第 1–8 行",
+            "char_start": 0,
+            "char_end": 125,
+            "line_start": 1,
+            "line_end": 8
+          },
+          "text": "# 试点项目支持安排 A\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 试点安排\n2026 年 9 月试点项目的支持时间为工作日 09:00 至 18:00。\n本文件由试点协调组发布，未注明与其他支持安排的优先关系。\n",
+          "preview_url": "/api/evidence/0597651a-e12e-552b-9ded-ef1fe1d7d51c",
+          "original_url": "/api/versions/66f7acf0-7d99-4dab-801c-5a5497ebe3d4/original"
+        }
+      ],
+      "message": "",
+      "trace": {
+        "method": "dense",
+        "prompt_version": "grounded-v4-source-spans",
+        "top_k": 4,
+        "min_similarity": 0.35,
+        "embedding_model": "bge-m3:567m",
+        "generation_model": "qwen2.5:7b-instruct",
+        "candidates": [
+          {
+            "chunk_id": "f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+            "title": "试点项目支持安排 B",
+            "score": 0.7482
+          },
+          {
+            "chunk_id": "0597651a-e12e-552b-9ded-ef1fe1d7d51c",
+            "title": "试点项目支持安排 A",
+            "score": 0.7389
+          },
+          {
+            "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+            "title": "API 调用配额说明",
+            "score": 0.4573
+          },
+          {
+            "chunk_id": "7ea8732a-57be-54b9-858c-fa251b66e285",
+            "title": "支持组交接清单",
+            "score": 0.4528
+          }
+        ],
+        "embed_ms": 184.2,
+        "retrieval_ms": 72.0,
+        "generation_ms": 31283.6,
+        "total_ms": 31565.8
+      },
+      "usage": {
+        "prompt_tokens": 1007,
+        "completion_tokens": 119,
+        "model_duration_ms": 31262.7,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered"
+      }
+    },
+    "passed": true
+  }
+]

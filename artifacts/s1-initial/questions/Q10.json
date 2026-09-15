@@ -1,0 +1,98 @@
+{
+  "question": {
+    "id": "Q10",
+    "user": "xq-support",
+    "question": "P1 服务不可用工单要求多久首次响应？",
+    "expected": "answered",
+    "facts": [
+      "15"
+    ],
+    "sources": [
+      "support-sla"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "4feaac92-4579-4f98-939a-401b856b5795",
+    "question": "P1 服务不可用工单要求多久首次响应？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "P1 服务不可用工单要求首次响应时间为15分钟。",
+        "evidence_ids": [
+          "53d6b5e7-e463-5658-8741-d62689411389"
+        ],
+        "quotes": [
+          "P1 服务不可用 | 15 分钟 |\n"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
+        "document_id": "seed-support-sla",
+        "version_id": "070746f2-7b7e-488d-9c94-ecd51063195d",
+        "title": "支持响应等级表",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–12 行",
+          "char_start": 0,
+          "char_end": 176,
+          "line_start": 1,
+          "line_end": 12
+        },
+        "text": "# 支持响应等级表\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 工单首响\n| 等级 | 首次响应时间 |\n| --- | --- |\n| P1 服务不可用 | 15 分钟 |\n| P2 功能受限 | 2 小时 |\n| P3 一般咨询 | 1 个工作日 |\n首次响应不等于问题解决。支持组需要在工单中持续同步处理进度。\n",
+        "preview_url": "/api/evidence/53d6b5e7-e463-5658-8741-d62689411389",
+        "original_url": "/api/versions/070746f2-7b7e-488d-9c94-ecd51063195d/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
+          "title": "支持响应等级表",
+          "score": 0.7552
+        },
+        {
+          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "title": "SEV1 客户事故升级",
+          "score": 0.5869
+        },
+        {
+          "chunk_id": "f5401de6-c2c3-5d2a-a241-e1bc178a3a82",
+          "title": "工单 218：重复回调",
+          "score": 0.5623
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.5399
+        }
+      ],
+      "embed_ms": 229.5,
+      "retrieval_ms": 41.6,
+      "generation_ms": 20891.1,
+      "total_ms": 21196.9
+    },
+    "usage": {
+      "prompt_tokens": 2025,
+      "completion_tokens": 78,
+      "model_duration_ms": 20869.2,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

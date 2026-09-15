@@ -1,0 +1,71 @@
+{
+  "question": {
+    "id": "Q06",
+    "user": "xq-support",
+    "question": "错误 E401 表示什么，应该怎么处理？",
+    "expected": "answered",
+    "facts": [
+      "过期",
+      "刷新"
+    ],
+    "sources": [
+      "token-errors"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": false,
+    "expected_facts": false,
+    "expected_sources": false,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "27a5085a-83c6-46d8-baa0-896d3bc852a7",
+    "question": "错误 E401 表示什么，应该怎么处理？",
+    "status": "verification_failed",
+    "claims": [],
+    "citations": [],
+    "message": "模型的引用未通过检查，本次未返回答案。请调整问题后重试。",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
+          "title": "认证错误 E401 排查",
+          "score": 0.6847
+        },
+        {
+          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "title": "SEV1 客户事故升级",
+          "score": 0.5256
+        },
+        {
+          "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
+          "title": "支持响应等级表",
+          "score": 0.4926
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.4913
+        }
+      ],
+      "embed_ms": 195.2,
+      "retrieval_ms": 44.8,
+      "generation_ms": 25471.4,
+      "total_ms": 25746.1
+    },
+    "usage": {
+      "prompt_tokens": 2001,
+      "completion_tokens": 135,
+      "model_duration_ms": 25450,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

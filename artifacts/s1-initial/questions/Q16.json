@@ -1,0 +1,102 @@
+{
+  "question": {
+    "id": "Q16",
+    "user": "xq-support",
+    "question": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+    "expected": "conflict",
+    "facts": [
+      "09:00",
+      "18:00",
+      "08:00",
+      "20:00"
+    ],
+    "sources": [
+      "pilot-a",
+      "pilot-b"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": false,
+    "expected_sources": false,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "e377fa86-5621-4e83-871b-6e2e67ea84bb",
+    "question": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。",
+        "evidence_ids": [
+          "f38120ec-caf5-5ed2-a2e4-e42846bc7b72"
+        ],
+        "quotes": [
+          "2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+        "document_id": "seed-pilot-b",
+        "version_id": "70c02c93-9e1f-47b4-aa0d-d7497b46fec0",
+        "title": "试点项目支持安排 B",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–8 行",
+          "char_start": 0,
+          "char_end": 124,
+          "line_start": 1,
+          "line_end": 8
+        },
+        "text": "# 试点项目支持安排 B\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 试点安排\n2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。\n本文件由客户成功组发布，未注明与其他支持安排的优先关系。\n",
+        "preview_url": "/api/evidence/f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+        "original_url": "/api/versions/70c02c93-9e1f-47b4-aa0d-d7497b46fec0/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+          "title": "试点项目支持安排 B",
+          "score": 0.7482
+        },
+        {
+          "chunk_id": "0597651a-e12e-552b-9ded-ef1fe1d7d51c",
+          "title": "试点项目支持安排 A",
+          "score": 0.7389
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.4573
+        },
+        {
+          "chunk_id": "7ea8732a-57be-54b9-858c-fa251b66e285",
+          "title": "支持组交接清单",
+          "score": 0.4528
+        }
+      ],
+      "embed_ms": 208.3,
+      "retrieval_ms": 36.3,
+      "generation_ms": 24839.8,
+      "total_ms": 25122.5
+    },
+    "usage": {
+      "prompt_tokens": 1945,
+      "completion_tokens": 109,
+      "model_duration_ms": 24818.6,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

@@ -1,0 +1,98 @@
+{
+  "question": {
+    "id": "Q02",
+    "user": "xq-support",
+    "question": "Python SDK 默认最多重试几次？",
+    "expected": "answered",
+    "facts": [
+      "3"
+    ],
+    "sources": [
+      "sdk-retry"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "fbc61929-336d-4d98-9de1-25d8e82a0b5f",
+    "question": "Python SDK 默认最多重试几次？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "星桥 Python SDK 默认最多重试 3 次。",
+        "evidence_ids": [
+          "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6"
+        ],
+        "quotes": [
+          "星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+        "document_id": "seed-sdk-retry",
+        "version_id": "b56c40f7-1409-4822-bec6-9558f775380f",
+        "title": "Python SDK 重试配置",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–8 行",
+          "char_start": 0,
+          "char_end": 154,
+          "line_start": 1,
+          "line_end": 8
+        },
+        "text": "# Python SDK 重试配置\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n",
+        "preview_url": "/api/evidence/ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+        "original_url": "/api/versions/b56c40f7-1409-4822-bec6-9558f775380f/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "title": "Python SDK 重试配置",
+          "score": 0.7905
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.5749
+        },
+        {
+          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "title": "Webhook 投递与签名",
+          "score": 0.5666
+        },
+        {
+          "chunk_id": "f5401de6-c2c3-5d2a-a241-e1bc178a3a82",
+          "title": "工单 218：重复回调",
+          "score": 0.5255
+        }
+      ],
+      "embed_ms": 159.6,
+      "retrieval_ms": 38.8,
+      "generation_ms": 20169.7,
+      "total_ms": 20405.1
+    },
+    "usage": {
+      "prompt_tokens": 2000,
+      "completion_tokens": 99,
+      "model_duration_ms": 20148.4,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

@@ -1,0 +1,341 @@
+[
+  {
+    "question_id": "qst_0001",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What are the default size limits for file uploads and total request size for the new multipart upload support on the OpenAI-compatible API endpoints?",
+    "expected_doc_ids": [
+      "dsid_ae068ee4aa9640159427cd941bef0238"
+    ],
+    "gold_answer": "The default limits are 10 MiB per file (max_file_size) and 50 MiB total per request (max_total_request_size) for multipart uploads on the OpenAI-compatible endpoints.",
+    "answer_facts": [
+      "The default per file upload size limit (max_file_size) for multipart uploads on OpenAI-compatible endpoints is 10 MiB.",
+      "The default total request size limit (max_total_request_size) for multipart uploads on OpenAI-compatible endpoints is 50 MiB."
+    ]
+  },
+  {
+    "question_id": "qst_0161",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In the OpenAI compatibility adapter update for Redwood deployments, what priority order does the normalizer use to resolve conflicting tool selection hints?",
+    "expected_doc_ids": [
+      "dsid_2fb08b7571444bdf894607549642498f"
+    ],
+    "gold_answer": "When tool selection signals conflict, the normalizer resolves them in this order: (1) the explicit_invocation field, (2) the highest-confidence tool_choice, then (3) a deterministic fallback to the first available tool whose schema matches.",
+    "answer_facts": [
+      "When tool selection signals conflict, the normalizer prioritizes the explicit_invocation field first.",
+      "If explicit_invocation does not resolve the conflict, the normalizer uses the highest-confidence tool_choice next.",
+      "If the conflict is still unresolved, the normalizer deterministically falls back to the first available tool whose schema matches."
+    ]
+  },
+  {
+    "question_id": "qst_0125",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the formula used by the new autoscaling approach that combines a high-percentile request rate with request variability to compute effective demand, including the default weights?",
+    "expected_doc_ids": [
+      "dsid_302783937bc849ecb7ef7323233d1efe"
+    ],
+    "gold_answer": "Effective demand is computed as: effective_demand = alpha * p95_rate + beta * sqrt(variance), with default weights alpha = 1.0 and beta = 0.5.",
+    "answer_facts": [
+      "Effective demand is computed as effective_demand = alpha * p95_rate + beta * sqrt(variance).",
+      "The default weight alpha is 1.0.",
+      "The default weight beta is 0.5."
+    ]
+  },
+  {
+    "question_id": "qst_0147",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the planned cutoff date when the old model capability format may stop being accepted for new writes?",
+    "expected_doc_ids": [
+      "dsid_cc9fd576760d4a058a896155657eff06"
+    ],
+    "gold_answer": "The planned cutoff date is 2026-06-01, after which the legacy capability format (legacy_capabilities / capability_schema.v1) may be removed for new write operations.",
+    "answer_facts": [
+      "The planned cutoff date is 2026-06-01.",
+      "After 2026-06-01, the legacy capability format (legacy_capabilities / capability_schema.v1) may be removed for new write operations."
+    ]
+  },
+  {
+    "question_id": "qst_0068",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the default wait time used by the new tool-call batching invoker, and how does it differ between hosted and dedicated tiers?",
+    "expected_doc_ids": [
+      "dsid_c7860fdbc17a48b0b6c5f9a0c5e3d054"
+    ],
+    "gold_answer": "The coalescing invoker uses a short grace-window wait time before dispatching tool calls: 10ms by default for Dedicated tier and 5ms by default for Hosted tier.",
+    "answer_facts": [
+      "The new tool-call batching invoker uses a short grace-window wait time before dispatching tool calls.",
+      "The default wait time is 10 ms for the Dedicated tier.",
+      "The default wait time is 5 ms for the Hosted tier."
+    ]
+  },
+  {
+    "question_id": "qst_0146",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What change was introduced to reduce tail latency in a paged key value cache by defragmenting free space during frees and keeping frequently used key prefixes from being evicted?",
+    "expected_doc_ids": [
+      "dsid_7764c4d15ed141ecbeaaecf606098288"
+    ],
+    "gold_answer": "It introduced an opportunistic KV freelist defragmenter that compacts/coalesces adjacent free pages inline on the free path (with larger coalesces deferred to background) along with a bounded hot-prefix selective pinning policy that keeps the top-N frequently accessed key prefixes resident using LRU eviction.",
+    "answer_facts": [
+      "The change introduced an opportunistic KV freelist defragmenter.",
+      "The freelist defragmenter compacts or coalesces adjacent free pages inline on the free path.",
+      "Larger free-page coalesces are deferred to a background process.",
+      "The change also introduced a bounded hot-prefix selective pinning policy.",
+      "The pinning policy keeps the top-N most frequently accessed key prefixes resident to prevent their eviction under LRU eviction."
+    ]
+  },
+  {
+    "question_id": "qst_0140",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the minimum cache time-to-live safeguard that was added to the new automated policy recommendation service to prevent cold-start issues after deploys?",
+    "expected_doc_ids": [
+      "dsid_aa532b5a3c634229b9a068654b945c6c"
+    ],
+    "gold_answer": "A minimum cache TTL safeguard of 100ms (safety_floor_min_ttl=100ms) was added to help avoid cold-start storms after deploys.",
+    "answer_facts": [
+      "The new automated policy recommendation service added a minimum cache TTL safeguard of 100ms (safety_floor_min_ttl=100ms).",
+      "The minimum cache TTL safeguard was added to help avoid cold-start issues after deploys."
+    ]
+  },
+  {
+    "question_id": "qst_0020",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In the recent update to the chat completions compatibility adapter, how does the parameter normalizer handle a client sending max_tokens as null compared to leaving it out entirely?",
+    "expected_doc_ids": [
+      "dsid_1c53affffb4f477ca476bec3138b60eb"
+    ],
+    "gold_answer": "The normalizer treats an explicit `max_tokens: null` as \"unset,\" so it falls back to the model defaults. Leaving `max_tokens` out entirely likewise results in using the model defaults, rather than interpreting null as 0.",
+    "answer_facts": [
+      "The parameter normalizer treats an explicit max_tokens: null as unset and falls back to the model defaults.",
+      "Leaving max_tokens out entirely also results in using the model defaults.",
+      "The normalizer does not interpret max_tokens: null as 0."
+    ]
+  },
+  {
+    "question_id": "qst_0178",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In the recent change that made low bit math safer for inference, what is the default pass rate used to decide when a machine is allowed to step down from the safest numeric mode?",
+    "expected_doc_ids": [
+      "dsid_22a7e9af2760474dbdf611c2c21cd231"
+    ],
+    "gold_answer": "The default pass-rate threshold is 0.92 (i.e., 92% of the microbenchmark runs must pass) before a node is allowed to step down from the safest precision.",
+    "answer_facts": [
+      "The default pass-rate threshold is 0.92.",
+      "A node is allowed to step down from the safest precision only if at least 92% of the microbenchmark runs pass."
+    ]
+  },
+  {
+    "question_id": "qst_0189",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In our offline installer release process, how do we expose per-component supply chain provenance so an operator can see which build system and commit produced each piece and optionally enforce that missing or bad attestations fail the index step?",
+    "expected_doc_ids": [
+      "dsid_5d54f5f89bbc48a5b06b8dead39729b3"
+    ],
+    "gold_answer": "We extend the private-installer release index (schema v2) to include an per-artifact `origins` block that records the source repo, build system/job ID, build commit, and optional SBOM/cosign references, populated by the indexer querying an origin-mapper service and cross-referencing artifact digests to upstream build metadata. The indexer verifies cosign signatures on the origin blobs and records the verification result, and operators can make failed/missing origin verification a hard failure by running the indexer with `--enforce-origin-verification`.",
+    "answer_facts": [
+      "The private-installer release index schema v2 is extended to include a per-artifact origins block.",
+      "Each per-artifact origins block records the source repository, build system or job ID, and build commit that produced the artifact, and can also include optional SBOM and cosign references.",
+      "The indexer populates the origins block by querying an origin-mapper service and cross-referencing artifact digests to upstream build metadata.",
+      "The indexer verifies cosign signatures on the origin blobs and records the verification result in the index.",
+      "Operators can make missing or failed origin verification a hard failure by running the indexer with --enforce-origin-verification."
+    ]
+  },
+  {
+    "question_id": "qst_0243",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In our GPU inference service that merges many request streams, what change was made to cut worst case latency spikes that happened when the attention memory footprint abruptly shifted during batch formation, while keeping median latency nearly flat?",
+    "expected_doc_ids": [
+      "dsid_908e8464927742829dcdfe0c6165299b"
+    ],
+    "gold_answer": "They added a KV-cache-aware scheduling hint and a jitter-resilient continuous-batching policy: requests are tagged with estimated KV working-set deltas so the scheduler avoids coalescing batches that trigger abrupt KV footprint jumps/evictions, and the batcher uses small adaptive hold windows to align jittery streams without materially increasing median latency.",
+    "answer_facts": [
+      "A KV-cache-aware scheduling hint was added.",
+      "Requests are tagged with estimated KV working-set delta so the scheduler avoids forming batches that would cause abrupt KV footprint jumps or evictions.",
+      "A jitter-resilient continuous-batching policy was added that uses small adaptive hold windows to align jittery streams without materially increasing median latency."
+    ]
+  },
+  {
+    "question_id": "qst_0207",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In the recent observability change for tool invocation tracking, what is the staged rollout schedule and the temporary kill switch name used to gate it?",
+    "expected_doc_ids": [
+      "dsid_1653d1ed11a1403ca8e44bef03a610a9"
+    ],
+    "gold_answer": "It's gated behind the experiment flag \"obs.route_tags_tool_calls\" and rolls out as three days in canary, then staged to 25% of traffic, then to full rollout assuming no regressions.",
+    "answer_facts": [
+      "The change is gated behind the experiment flag obs.route_tags_tool_calls.",
+      "The staged rollout schedule is three days in canary, then staged to 25% of traffic, then full rollout assuming no regressions."
+    ]
+  },
+  {
+    "question_id": "qst_0290",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In the service that lets clients discover which language models are available, where is the advisory 0 to 100 score documented that helps automatic selection based on feature match between our capability names and an OpenAI style interface?",
+    "expected_doc_ids": [
+      "dsid_1b7a5d6230f84eb0a38a97da0e0ce05c"
+    ],
+    "gold_answer": "The advisory 0-100 \"compatibility_score\" is documented in the expanded docstring for the compatibility mapping, and the release notes point to `docs/api/model-catalog.md` for examples of the field in the model catalog API.",
+    "answer_facts": [
+      "The advisory 0 to 100 compatibility_score is documented in the expanded docstring for the compatibility mapping.",
+      "The release notes point to docs/api/model-catalog.md for examples of the compatibility_score field in the model catalog API."
+    ]
+  },
+  {
+    "question_id": "qst_0261",
+    "question_type": "semantic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In our model serving runtime, what is the new approach that chooses between two attention implementations at execution time to cut tail latency on mixed prompt lengths and avoid costly cache page swapping on very long contexts?",
+    "expected_doc_ids": [
+      "dsid_fa1c733deb77445da7bc55dc472d233d"
+    ],
+    "gold_answer": "It's the neon-orchestrated hybrid attention path: a runtime kernel tiler that dynamically chooses between a lightweight FlashAttention-style fast path for dense short sequences and a neon-prefetch tiled microkernel for long or odd-length contexts, combined with lazy-KV streaming to fetch KV slabs on demand instead of doing expensive full-KV page swaps.",
+    "answer_facts": [
+      "The new approach is the neon-orchestrated hybrid attention path.",
+      "It uses a runtime kernel tiler that dynamically chooses between two attention implementations at execution time.",
+      "For dense short sequences it uses a lightweight FlashAttention-style fast path.",
+      "For long or odd-length contexts it uses a neon-prefetch tiled microkernel.",
+      "It uses lazy-KV streaming to fetch KV slabs on demand instead of doing expensive full-KV cache page swaps."
+    ]
+  },
+  {
+    "question_id": "qst_0339",
+    "question_type": "intra_document_reasoning",
+    "source_types": [
+      "github"
+    ],
+    "question": "For the Usage Insights reconciliation drift alert, what drift percentage and time window trigger warn vs page, and which severity level includes workspace_id in the alert labels?",
+    "expected_doc_ids": [
+      "dsid_81208556437644a0a4dedf168baf81b5"
+    ],
+    "gold_answer": "The reconciliation drift alert warns when the absolute drift exceeds 0.5% for 2 hours, and pages when it exceeds 1.0% for 1 hour. The warn-level alert includes workspace_id in its labels, while the page-level alert does not.",
+    "answer_facts": [
+      "The reconciliation drift alert warns when the absolute drift exceeds 0.5% for 2 hours.",
+      "The reconciliation drift alert pages when the absolute drift exceeds 1.0% for 1 hour.",
+      "The warn-level reconciliation drift alert includes workspace_id in its labels.",
+      "The page-level reconciliation drift alert does not include workspace_id in its labels."
+    ]
+  },
+  {
+    "question_id": "qst_0322",
+    "question_type": "intra_document_reasoning",
+    "source_types": [
+      "github"
+    ],
+    "question": "What config flag controls enabling the bandwidth-aware fanout planner for TP allreduce on heterogeneous link clusters, and what other new components are called out in the release notes as helping reduce comm and compute stalls?",
+    "expected_doc_ids": [
+      "dsid_bab6aba4c06e41e9ae46b9355f644a7a"
+    ],
+    "gold_answer": "The bandwidth-aware fanout planner is controlled by the config flag \"runtime.bandwidth_fanout.enabled\". The release notes also call out KV-shard coalescing, a small stride-optimized memcpy kernel, and stream mapping as new components that help reduce communication/computation stalls.",
+    "answer_facts": [
+      "The bandwidth-aware fanout planner is controlled by the config flag runtime.bandwidth_fanout.enabled.",
+      "The release notes call out KV-shard coalescing, a small stride-optimized memcpy kernel, and stream mapping as new components that help reduce communication and computation stalls."
+    ]
+  },
+  {
+    "question_id": "qst_0097",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "In the OpenAI Responses v3 compatibility work, how are overly large user-provided seeds handled to keep determinism, and where is the original seed stored for auditing?",
+    "expected_doc_ids": [
+      "dsid_6c58ddb8ecf543d89fca8352351dea29"
+    ],
+    "gold_answer": "If a user-provided seed exceeds 64 bits, it is normalized by hashing it down with siphash64 (siphash64) to produce a deterministic 64-bit seed. The original unmodified seed is preserved for auditing in `compat_metadata.seed_raw`.",
+    "answer_facts": [
+      "If a user-provided seed exceeds 64 bits, it is normalized by hashing it down with siphash64 to produce a deterministic 64-bit seed.",
+      "The original unmodified seed is preserved for auditing in compat_metadata.seed_raw."
+    ]
+  },
+  {
+    "question_id": "qst_0127",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the phased rollout plan for the change that smooths dedicated autoscaling signals and adds an advisory gateway-to-controller backpressure mechanism?",
+    "expected_doc_ids": [
+      "dsid_dc9df99fcfd64f5f89791781b699610c"
+    ],
+    "gold_answer": "The rollout is staged: (1) ship feature-gated off by default, (2) enable on Canary Dedicated clusters for 48 hours, (3) enable for opt-in customers via a console toggle, and (4) turn it on by default after two weeks of stable metrics.",
+    "answer_facts": [
+      "The rollout is staged in four phases",
+      "Phase 1 ships the change feature-gated and off by default",
+      "Phase 2 enables the change on Canary Dedicated clusters for 48 hours",
+      "Phase 3 enables the change for opt-in customers via a console toggle",
+      "Phase 4 turns the change on by default after two weeks of stable metrics"
+    ]
+  },
+  {
+    "question_id": "qst_0167",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What configuration option was added to let repositories explicitly allow Docker-in-Docker during the staged rollout of the new GitHub composite action CI setup?",
+    "expected_doc_ids": [
+      "dsid_9d1624818a004c53b3b7020412275cc0"
+    ],
+    "gold_answer": "They added an opt-out configuration flag in `.github/ci-config.yml` called `allow_dind` (set it to `true`) to explicitly allow Docker-in-Docker during the rollout.",
+    "answer_facts": [
+      "A configuration flag named allow_dind was added in .github/ci-config.yml to let repositories explicitly allow Docker-in-Docker during the staged rollout of the new GitHub composite action CI setup.",
+      "Setting allow_dind to true explicitly allows Docker-in-Docker during the rollout."
+    ]
+  },
+  {
+    "question_id": "qst_0002",
+    "question_type": "basic",
+    "source_types": [
+      "github"
+    ],
+    "question": "What is the name of the new metric added so SRE can track when server-side streaming sessions get finalized due to hitting the time limit?",
+    "expected_doc_ids": [
+      "dsid_9550250a59e74f1bbd5612480b2e7100"
+    ],
+    "gold_answer": "The new metric is `stream.timebox_finalized` (with labels for route and model).",
+    "answer_facts": [
+      "The new metric added is named stream.timebox_finalized",
+      "The metric stream.timebox_finalized includes labels for route and model"
+    ]
+  }
+]

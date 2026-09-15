@@ -1,0 +1,92 @@
+{
+  "question": {
+    "id": "Q19",
+    "user": "hc-admin",
+    "question": "海川工作室业务日志保留多久？",
+    "expected": "answered",
+    "facts": [
+      "45"
+    ],
+    "sources": [
+      "hc-retention"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "382cc44b-528d-42de-8472-1add384fb60d",
+    "question": "海川工作室业务日志保留多久？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "海川工作室业务日志保留45天。",
+        "evidence_ids": [
+          "a827ed7c-7c5a-5c60-9d9f-608643bfeb77"
+        ],
+        "quotes": [
+          "日志规则\n海川工作室的业务日志保留 45 天。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "a827ed7c-7c5a-5c60-9d9f-608643bfeb77",
+        "document_id": "seed-hc-retention",
+        "version_id": "af9e8e15-1f74-495c-9c71-1e3dd89b4209",
+        "title": "海川日志保留规则",
+        "locator": {
+          "kind": "pdf",
+          "page": 1,
+          "label": "第 1 页",
+          "char_start": 0,
+          "char_end": 91
+        },
+        "text": "海川日志保留规则\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n日志规则\n海川工作室的业务日志保留 45 天。日志仅限本租户成员查阅。\n日志配置与星桥软件无关。",
+        "preview_url": "/api/evidence/a827ed7c-7c5a-5c60-9d9f-608643bfeb77",
+        "original_url": "/api/versions/af9e8e15-1f74-495c-9c71-1e3dd89b4209/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "a827ed7c-7c5a-5c60-9d9f-608643bfeb77",
+          "title": "海川日志保留规则",
+          "score": 0.7484
+        },
+        {
+          "chunk_id": "99fe804d-ea09-5b26-8c32-c54ebdd50367",
+          "title": "海川支持值班时间",
+          "score": 0.5126
+        },
+        {
+          "chunk_id": "7f41c133-59eb-5508-b15c-694fccc95254",
+          "title": "海川网关开发配置",
+          "score": 0.4687
+        }
+      ],
+      "embed_ms": 153.9,
+      "retrieval_ms": 36.1,
+      "generation_ms": 16622.8,
+      "total_ms": 16845.2
+    },
+    "usage": {
+      "prompt_tokens": 1456,
+      "completion_tokens": 80,
+      "model_duration_ms": 16601.8,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

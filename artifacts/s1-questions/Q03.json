@@ -1,0 +1,106 @@
+{
+  "question": {
+    "id": "Q03",
+    "user": "xq-support",
+    "question": "星桥产品上传接口单个文件的大小上限是多少？",
+    "expected": "answered",
+    "facts": [
+      "20",
+      "MB"
+    ],
+    "sources": [
+      "upload-guide"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "a9338d0f-db91-4d82-9f64-5b06bb2344e5",
+    "question": "星桥产品上传接口单个文件的大小上限是多少？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "星桥产品的文件上传接口单个文件上限为20 MB。",
+        "evidence_ids": [
+          "5d43f246-232e-50fe-b546-419d3730d121"
+        ],
+        "quotes": [
+          "星桥产品的文件上传接口单个文件上限为 20 MB。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+        "document_id": "seed-upload-guide",
+        "version_id": "70e847f0-517e-420c-bbf6-4cbaa5ea782e",
+        "title": "文件上传接口手册",
+        "locator": {
+          "kind": "pdf",
+          "page": 1,
+          "label": "第 1 页",
+          "char_start": 0,
+          "char_end": 140
+        },
+        "text": "文件上传接口手册\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n文件上传规则\n星桥产品的文件上传接口单个文件上限为 20 MB。支持 PDF、Markdown 和 CSV。\n批量上传每批最多 10 个文件。这里描述的是虚构产品接口，不是本演示系统的上传限制。",
+        "preview_url": "/api/evidence/5d43f246-232e-50fe-b546-419d3730d121",
+        "original_url": "/api/versions/70e847f0-517e-420c-bbf6-4cbaa5ea782e/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "prompt_version": "grounded-v4-source-spans",
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000,
+      "context_tokens_estimate": 889,
+      "token_counter": "cl100k_base",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:7b-instruct",
+      "candidates": [
+        {
+          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+          "title": "文件上传接口手册",
+          "score": 0.8556
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.6636
+        },
+        {
+          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "title": "Python SDK 重试配置",
+          "score": 0.562
+        },
+        {
+          "chunk_id": "8ed52eef-363a-502f-a4b2-9396e71c1f54",
+          "title": "业务数据保留规则",
+          "score": 0.5446
+        }
+      ],
+      "embed_ms": 190.5,
+      "retrieval_ms": 31.6,
+      "generation_ms": 23348.3,
+      "total_ms": 23604.8
+    },
+    "usage": {
+      "prompt_tokens": 1072,
+      "completion_tokens": 52,
+      "model_duration_ms": 23325.9,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama",
+      "answer_status": "answered",
+      "conflict_check": null
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

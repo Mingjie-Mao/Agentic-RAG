@@ -1,0 +1,1011 @@
+{
+  "config": {
+    "argv": [
+      "/usr/local/bin/node",
+      "/Users/mingjie/Desktop/Enterprise-RAG/web/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/Users/mingjie/Desktop/Enterprise-RAG/web/playwright.config.ts",
+    "rootDir": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../artifacts/s1-browser-tests.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "s1.spec.ts",
+      "file": "s1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Q01 星桥标准套餐每分钟可以调用多少次 API？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8545,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:15:30.388Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "问答与证据",
+                      "contentType": "image/png",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q01-星桥标准套餐每分钟可以调用多少次-API？/attachments/问答与证据-c982ed2bded202a185f9b0f97e1f547ab79dae82.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-dcb256ecb72e1168c230",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q02 Python SDK 默认最多重试几次？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21038,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:15:42.685Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-a952d3b5aafa98800de8",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q03 星桥产品上传接口单个文件的大小上限是多少？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23839,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:16:03.731Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-aea250b1700ea47b2d39",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q04 标准套餐的业务事件日志保留多久？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22184,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:16:27.577Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-474e7d8c154cc91277db",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q05 Webhook 投递失败最多重试几次？",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 52879,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30",
+                    "location": {
+                      "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                      "column": 30,
+                      "line": 37
+                    },
+                    "snippet": "  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if (q.expected === 'answered') {\n  40 |       expect(checks.expected_facts).toBeTruthy();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                        "column": 30,
+                        "line": 37
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n\n  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if (q.expected === 'answered') {\n  40 |       expect(checks.expected_facts).toBeTruthy();\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:16:49.770Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q05-Webhook-投递失败最多重试几次？/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q05-Webhook-投递失败最多重试几次？/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q05-Webhook-投递失败最多重试几次？/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                    "column": 30,
+                    "line": 37
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-964dc83e28560d848af2",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q06 错误 E401 表示什么，应该怎么处理？",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 26340,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30",
+                    "location": {
+                      "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                      "column": 30,
+                      "line": 37
+                    },
+                    "snippet": "  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if (q.expected === 'answered') {\n  40 |       expect(checks.expected_facts).toBeTruthy();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                        "column": 30,
+                        "line": 37
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n\n  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if (q.expected === 'answered') {\n  40 |       expect(checks.expected_facts).toBeTruthy();\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:17:43.268Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q06-错误-E401-表示什么，应该怎么处理？/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q06-错误-E401-表示什么，应该怎么处理？/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q06-错误-E401-表示什么，应该怎么处理？/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                    "column": 30,
+                    "line": 37
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-d6b9cfaf203cbb6c0ff6",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q07 单点登录会话多久无操作会失效？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20836,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:18:10.224Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-39bfe133cf3cb4064bdd",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q08 2026 年悉尼出差的酒店每晚报销上限是多少澳元？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24539,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:18:31.188Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "问答与证据",
+                      "contentType": "image/png",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q08-2026-年悉尼出差的酒店每晚报销上限是多少澳元？/attachments/问答与证据-9c6342eedb97a707c47448375af956ae7d8b5e96.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-ba761615ad53cd190708",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q09 连续 3 天年假应该提前多久申请？",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 27521,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30",
+                    "location": {
+                      "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                      "column": 30,
+                      "line": 37
+                    },
+                    "snippet": "  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if (q.expected === 'answered') {\n  40 |       expect(checks.expected_facts).toBeTruthy();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                        "column": 30,
+                        "line": 37
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n\n  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if (q.expected === 'answered') {\n  40 |       expect(checks.expected_facts).toBeTruthy();\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:18:55.735Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q09-连续-3-天年假应该提前多久申请？/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q09-连续-3-天年假应该提前多久申请？/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q09-连续-3-天年假应该提前多久申请？/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                    "column": 30,
+                    "line": 37
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-b7f25da29f97bc89a826",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q10 P1 服务不可用工单要求多久首次响应？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22092,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:19:23.768Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-7a303c11461dd8c832cb",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q11 确认 SEV1 事故后多久通知值班负责人？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 51646,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:19:45.999Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-790c80b3ba2524bfc7fe",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q12 生产发布需要几名工程师完成代码审查？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21951,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:20:37.653Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-79671cfbcffec0d3e285",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q13 生产数据库的 RPO 和 RTO 分别是多少？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27802,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:20:59.612Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-c061408221d54e683a6f",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q14 数据导出的下载链接有效期是多久？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23146,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:21:27.422Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-985492f89515c096480f",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q15 团队版支持多少成员，每日可以导出多少次？",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 32614,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30",
+                    "location": {
+                      "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                      "column": 30,
+                      "line": 37
+                    },
+                    "snippet": "  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if (q.expected === 'answered') {\n  40 |       expect(checks.expected_facts).toBeTruthy();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                        "column": 30,
+                        "line": 37
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n\n  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if (q.expected === 'answered') {\n  40 |       expect(checks.expected_facts).toBeTruthy();\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:21:50.575Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q15-团队版支持多少成员，每日可以导出多少次？/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q15-团队版支持多少成员，每日可以导出多少次？/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q15-团队版支持多少成员，每日可以导出多少次？/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                    "column": 30,
+                    "line": 37
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-ee09df110d321b36d612",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q16 2026 年 9 月试点项目到底在哪些时段提供支持？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25787,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:22:23.773Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-14f688fb3e625a987da6",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q17 公司去火星出差的补贴是多少？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26203,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:22:49.708Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-eb9cf5e628e7d041e3bf",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q18 工程组灰度发布验证口令是什么？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17685,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:23:15.919Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-cd22ffb3f52cf90eea6f",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q19 海川工作室业务日志保留多久？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17398,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:23:33.612Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-2f5d8559e5e463d2bd3c",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "Q20 海川工作室的网关测试标记是什么？",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 23964,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30",
+                    "location": {
+                      "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                      "column": 30,
+                      "line": 37
+                    },
+                    "snippet": "  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if (q.expected === 'answered') {\n  40 |       expect(checks.expected_facts).toBeTruthy();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                        "column": 30,
+                        "line": 37
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n\n  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if (q.expected === 'answered') {\n  40 |       expect(checks.expected_facts).toBeTruthy();\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:23:51.018Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q20-海川工作室的网关测试标记是什么？/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q20-海川工作室的网关测试标记是什么？/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q20-海川工作室的网关测试标记是什么？/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
+                    "column": 30,
+                    "line": 37
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-c7b2f39e2f04b248dd69",
+          "file": "s1.spec.ts",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "title": "网页上传、处理状态与私有范围",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5482,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T08:24:15.540Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "66752a930eb7803ac33c-13464210375db982c7b7",
+          "file": "s1.spec.ts",
+          "line": 65,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-14T08:15:30.026Z",
+    "duration": 531178.515,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

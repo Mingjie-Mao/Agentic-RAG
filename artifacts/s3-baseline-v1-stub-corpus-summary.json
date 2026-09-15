@@ -1,0 +1,472 @@
+{
+  "config": {
+    "snapshot": "d97fe33bd70fef069fb295b913320663dd2e9b9b1f4a8a1730552ffb057a9bc3",
+    "dataset": "fixtures/s3",
+    "split": "development",
+    "retrievers": [
+      "bm25",
+      "dense"
+    ],
+    "generated": false,
+    "retrieval_depth": 50,
+    "dataset_sha256": {
+      "manifest.json": "25d763d71db255ff9560e374cee28f160bb214c0f33fd687f39806dec168fb0a",
+      "questions.json": "92b08ac2317379291b5a09938af5d12be99a8e0c1f3354a99feb10dcf13abffa",
+      "split.json": "56b17ff4ab04d5a16fcd727c6622a61c39a450ac1ccdd1d3f3e9ffe777f4039b"
+    },
+    "source_sha256": {
+      "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/chunking.py": "1d1c9166fc299789bb866f4fa1c2840a856545a77bea9dacb6fdea26084d9dc4",
+      "app/clients.py": "c816dbc335caec166c65108322ba163412f4206c3a63d8a93d1f41e44bdc644c",
+      "app/config.py": "7f1950a98bcc991aa7df9e772c578b7e817d3ad4bc6638ccf4fed3608db5f10a",
+      "app/db.py": "2abb8e780941f681d9d4a7dce40f3e77e9cba62a040671bf092507c7b27ec437",
+      "app/evaluation.py": "32b3b24104269c5e94806f674afea570b7d496b1381afac9a948cc88a12d7560",
+      "app/ingestion.py": "1a7aaa41b35fad44ec555790ff1ede1f2f565f432dbf3730b245eb8cf4835e05",
+      "app/main.py": "a4754034aeb98375dfcc5ec97ec186e447df2fbe2a194d43da68fc38b3b47ea6",
+      "app/models.py": "0a09bd6523b8484ae478579c5d1c8e6a76ac148f996898c730747031e6e5f4a9",
+      "app/office_parsing.py": "1024cf7268876da02cbd5a5be9f4c15cf5c9939ede020eeda88cfb566d5d545a",
+      "app/parsing.py": "5b2bcdce56775c6102c62639b041891676493d38c240178a3586012842db7fba",
+      "app/pdf_parsing.py": "201cb8df76edadab58c740946f067642348e7bfeb59e6055073af1866eda7ad0",
+      "app/qa.py": "4f1cdba544ffbd7cd6f40bcae9339f4f469ac1cfa2373c6d86a4af964d1191fb",
+      "app/security.py": "5f9a5e33014f3683ebce98b4e7b7de60697fc2269a8726cb4f99681107db749d",
+      "app/worker.py": "8e570a60dfcf8002120ab2d5f4b32ddf83a1147906f91f99461ee9099a61ef07",
+      "scripts/run_s3_baseline.py": "b7248d7bac2424653e33dc0c18fe59286af897d07549355f8de697ee22f69b26"
+    },
+    "models": {
+      "embedding": {
+        "name": "bge-m3:567m",
+        "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab"
+      },
+      "generation": {
+        "name": "qwen2.5:7b-instruct",
+        "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+      }
+    },
+    "generation": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 8192,
+      "num_predict": 700,
+      "conflict_predict": 200,
+      "prompt": "grounded-v4-source-spans"
+    },
+    "pipeline": {
+      "parser": "docling-2.127-office-xml-v2",
+      "chunking": "structure",
+      "chunk_chars": 700,
+      "chunk_overlap": 100,
+      "top_k": 4,
+      "min_similarity": 0.35,
+      "context_token_budget": 5000
+    },
+    "evidence_admission": "Top 4 chunks within 5000 estimated tokens, without score cutoff for either retriever; production dense cutoff is not used.",
+    "metric_definition": "Document ranking deduplicated from first 50 retrieved chunks; document Recall@5/10, MRR@10, binary nDCG@10. Gold-free queries excluded from retrieval metric denominators.",
+    "question_ids": [
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04",
+      "Q05",
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q11",
+      "Q12",
+      "Q13",
+      "Q14",
+      "Q15",
+      "Q16",
+      "Q17",
+      "Q18",
+      "Q19",
+      "Q20",
+      "Q021",
+      "Q022",
+      "Q023",
+      "Q024",
+      "Q025",
+      "Q026",
+      "Q027",
+      "Q028",
+      "Q029",
+      "Q030",
+      "Q031",
+      "Q032",
+      "Q033",
+      "Q034",
+      "Q035",
+      "Q036",
+      "Q037",
+      "Q038",
+      "Q039",
+      "Q040",
+      "Q041",
+      "Q042",
+      "Q043",
+      "Q044",
+      "Q045",
+      "Q046",
+      "Q047",
+      "Q048",
+      "Q049",
+      "Q050",
+      "Q051",
+      "Q052",
+      "Q053",
+      "Q054",
+      "Q055",
+      "Q056",
+      "Q057",
+      "Q058",
+      "Q059",
+      "Q060",
+      "Q061",
+      "Q062",
+      "Q063",
+      "Q064",
+      "Q065",
+      "Q066",
+      "Q067",
+      "Q068",
+      "Q069",
+      "Q070",
+      "Q071",
+      "Q072",
+      "Q073",
+      "Q074",
+      "Q075",
+      "Q076",
+      "Q077",
+      "Q078",
+      "Q079",
+      "Q080",
+      "Q081",
+      "Q082",
+      "Q083",
+      "Q084",
+      "Q085",
+      "Q086",
+      "Q087",
+      "Q088",
+      "Q089",
+      "Q090",
+      "Q091",
+      "Q092",
+      "Q093",
+      "Q094",
+      "Q095",
+      "Q096",
+      "Q097",
+      "Q098",
+      "Q099",
+      "Q100",
+      "Q101",
+      "Q102",
+      "Q103",
+      "Q104",
+      "Q105",
+      "Q106",
+      "Q107",
+      "Q108",
+      "Q109",
+      "Q110",
+      "Q111",
+      "Q112",
+      "Q113",
+      "Q114",
+      "Q115",
+      "Q116",
+      "Q117",
+      "Q118",
+      "Q119",
+      "Q120"
+    ]
+  },
+  "chunks": 791,
+  "documents": 120,
+  "results": {
+    "bm25": {
+      "queries": 120,
+      "recall_at_5": {
+        "mean": 1.0,
+        "n": 97
+      },
+      "recall_at_10": {
+        "mean": 1.0,
+        "n": 97
+      },
+      "mrr": {
+        "mean": 0.9948453608247423,
+        "n": 97
+      },
+      "ndcg_at_10": {
+        "mean": 0.9961951520986747,
+        "n": 97
+      },
+      "permission_violations": 0,
+      "hidden_source_leaks": 0,
+      "retrieval_seconds_p95": 0.18405212508514524,
+      "failure_classes": {
+        "no_retrieval_gold": 23,
+        "retrieval_ok": 97
+      },
+      "by_kind": {
+        "conflict": {
+          "queries": 1,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "permission_violations": 0,
+          "hidden_source_leaks": 0,
+          "retrieval_seconds_p95": 0.1204102081246674
+        },
+        "lookup": {
+          "queries": 86,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 86
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 86
+          },
+          "mrr": {
+            "mean": 0.9941860465116279,
+            "n": 86
+          },
+          "ndcg_at_10": {
+            "mean": 0.9957084855066448,
+            "n": 86
+          },
+          "permission_violations": 0,
+          "hidden_source_leaks": 0,
+          "retrieval_seconds_p95": 0.17684041615575552
+        },
+        "multi_document": {
+          "queries": 10,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "permission_violations": 0,
+          "hidden_source_leaks": 0,
+          "retrieval_seconds_p95": 0.15648391703143716
+        },
+        "permission": {
+          "queries": 10,
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "permission_violations": 0,
+          "hidden_source_leaks": 0,
+          "retrieval_seconds_p95": 0.18405212508514524
+        },
+        "unanswerable": {
+          "queries": 13,
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "permission_violations": 0,
+          "hidden_source_leaks": 0,
+          "retrieval_seconds_p95": 0.20590187516063452
+        }
+      },
+      "per_question": "artifacts/s3-baseline/development-bm25-retrieval.jsonl"
+    },
+    "dense": {
+      "queries": 120,
+      "recall_at_5": {
+        "mean": 0.8298969072164949,
+        "n": 97
+      },
+      "recall_at_10": {
+        "mean": 0.8762886597938144,
+        "n": 97
+      },
+      "mrr": {
+        "mean": 0.8442776767064214,
+        "n": 97
+      },
+      "ndcg_at_10": {
+        "mean": 0.8367046208455882,
+        "n": 97
+      },
+      "permission_violations": 0,
+      "hidden_source_leaks": 0,
+      "retrieval_seconds_p95": 0.9067351249977946,
+      "failure_classes": {
+        "no_retrieval_gold": 23,
+        "retrieval_miss": 14,
+        "retrieval_ok": 83
+      },
+      "by_kind": {
+        "conflict": {
+          "queries": 1,
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "permission_violations": 0,
+          "hidden_source_leaks": 0,
+          "retrieval_seconds_p95": 0.20154245803132653
+        },
+        "lookup": {
+          "queries": 86,
+          "recall_at_5": {
+            "mean": 0.8372093023255814,
+            "n": 86
+          },
+          "recall_at_10": {
+            "mean": 0.8837209302325582,
+            "n": 86
+          },
+          "mrr": {
+            "mean": 0.824359705122359,
+            "n": 86
+          },
+          "ndcg_at_10": {
+            "mean": 0.8367033027003302,
+            "n": 86
+          },
+          "permission_violations": 0,
+          "hidden_source_leaks": 0,
+          "retrieval_seconds_p95": 0.9415116254240274
+        },
+        "multi_document": {
+          "queries": 10,
+          "recall_at_5": {
+            "mean": 0.75,
+            "n": 10
+          },
+          "recall_at_10": {
+            "mean": 0.8,
+            "n": 10
+          },
+          "mrr": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "ndcg_at_10": {
+            "mean": 0.8203864189793644,
+            "n": 10
+          },
+          "permission_violations": 0,
+          "hidden_source_leaks": 0,
+          "retrieval_seconds_p95": 0.896826250012964
+        },
+        "permission": {
+          "queries": 10,
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "permission_violations": 0,
+          "hidden_source_leaks": 0,
+          "retrieval_seconds_p95": 0.7617019577883184
+        },
+        "unanswerable": {
+          "queries": 13,
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "permission_violations": 0,
+          "hidden_source_leaks": 0,
+          "retrieval_seconds_p95": 0.7355952090583742
+        }
+      },
+      "per_question": "artifacts/s3-baseline/development-dense-retrieval.jsonl"
+    }
+  },
+  "state": "complete",
+  "digest": "f6512db1137a312e905ab6d0b93e83d8568d311b09d8ffb17800a6e05ac50876"
+}

@@ -1,0 +1,98 @@
+{
+  "question": {
+    "id": "Q12",
+    "user": "xq-engineer",
+    "question": "生产发布需要几名工程师完成代码审查？",
+    "expected": "answered",
+    "facts": [
+      "2"
+    ],
+    "sources": [
+      "deploy-review"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": true,
+    "expected_facts": true,
+    "expected_sources": true,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "262457d3-867e-4447-8cc9-5f8e1c5f1369",
+    "question": "生产发布需要几名工程师完成代码审查？",
+    "status": "answered",
+    "claims": [
+      {
+        "text": "生产发布需要 2 名工程师完成代码审查",
+        "evidence_ids": [
+          "fac33079-a4b2-5285-8dab-1cfb3fbb5b48"
+        ],
+        "quotes": [
+          "生产发布需要 2 名工程师完成代码审查，并由当班发布负责人批准。"
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "chunk_id": "fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+        "document_id": "seed-deploy-review",
+        "version_id": "5a57503b-194e-4480-ae3a-78fd8b5f0d4d",
+        "title": "生产发布审批规则",
+        "locator": {
+          "kind": "markdown",
+          "label": "第 1–8 行",
+          "char_start": 0,
+          "char_end": 127,
+          "line_start": 1,
+          "line_end": 8
+        },
+        "text": "# 生产发布审批规则\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 发布前置条件\n生产发布需要 2 名工程师完成代码审查，并由当班发布负责人批准。\n发布窗口为工作日 10:00 至 16:00。紧急修复需先关联事故工单。\n",
+        "preview_url": "/api/evidence/fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+        "original_url": "/api/versions/5a57503b-194e-4480-ae3a-78fd8b5f0d4d/original"
+      }
+    ],
+    "message": "",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+          "title": "生产发布审批规则",
+          "score": 0.7391
+        },
+        {
+          "chunk_id": "49a2b4e8-d0e1-5ea4-b8f8-acbcb5dcf95a",
+          "title": "发布回滚操作手册",
+          "score": 0.5162
+        },
+        {
+          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "title": "Python SDK 重试配置",
+          "score": 0.5028
+        },
+        {
+          "chunk_id": "454925a8-bae3-5783-a050-840482386fba",
+          "title": "入职设备申请",
+          "score": 0.4913
+        }
+      ],
+      "embed_ms": 169.7,
+      "retrieval_ms": 53.6,
+      "generation_ms": 21120.8,
+      "total_ms": 21380.8
+    },
+    "usage": {
+      "prompt_tokens": 1872,
+      "completion_tokens": 78,
+      "model_duration_ms": 21098.6,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

@@ -1,0 +1,28 @@
+{
+  "version":"s0-v1",
+  "authorization":{
+    "identity":"服务端登录会话确定 user_id 与 tenant_id，客户端不能指定身份",
+    "read":"同租户且未删除，并满足 admin、owner、tenant_public、read_groups 交集之一",
+    "write":"同租户且未删除，并且是 admin 或 owner",
+    "upload":"活动用户可上传私有资料或分享到自己所属组；仅 admin 可发布租户公共资料",
+    "history":"仅创建答案的用户可读取，且全部证据依赖仍可访问",
+    "group_memberships":"固定种子账号；S1 不提供用户管理界面"
+  },
+  "identity_chain":["document_id","immutable version_id + sha256","version-specific chunk_id","original locator"],
+  "development_families":["api","sdk","files","retention","webhook","auth","travel","people","collaboration","support","release","recovery","release-private","development","plans","pilot-conflict","hc-development","hc-retention","hc-support"],
+  "reserved_future_holdout_families":["billing","future-procurement","future-product-analytics"],
+  "split_policy":"同一文档家族、版本与近重复资料不跨开发/留出题。S0 没有最终测试题；预留主题不得用于调参。",
+  "budget":{"currency":"AUD","model_api_per_run":0,"model_api_total":0,"execution":"local only","large_paid_runs":false},
+  "engineering_scenarios":[
+    {"id":"E01","case":"未登录访问文档、问答、原文和历史","expect":"401"},
+    {"id":"E02","case":"支持组查询工程组口令","expect":"候选、生成证据和答案都不包含受限标记"},
+    {"id":"E03","case":"星桥账号访问海川文档及原文 ID","expect":"404，不泄露标题"},
+    {"id":"E04","case":"请求正文伪造 user_id 或 tenant_id","expect":"拒绝字段；身份仅由会话决定"},
+    {"id":"E05","case":"另一账号读取别人答案 ID","expect":"404"},
+    {"id":"E06","case":"损坏 PDF 上传","expect":"显示失败原因，不发布空文档"},
+    {"id":"E07","case":"模型或搜索服务不可用","expect":"503，不伪装为回答或无答案"},
+    {"id":"E08","case":"API/worker 重启后读取原件和历史","expect":"持久数据与引用仍可用"},
+    {"id":"E09","case":"资料删除或授权改变后打开旧引用/历史","expect":"引用拒读、历史隐藏；完整撤权机制在 S6 加固"},
+    {"id":"E10","case":"任务处理失败后重试或中断恢复","expect":"只有成功索引后才发布；完整版本替换在 S6 完成"}
+  ]
+}

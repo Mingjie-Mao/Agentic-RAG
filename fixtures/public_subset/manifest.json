@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "dsid_015325e6452843019f81a5f85b3be220",
+    "path": "fixtures/public_subset/documents/dsid_015325e6452843019f81a5f85b3be220.md",
+    "sha256": "d68fb94dd1f72471fb1066fe0b3b2aadf552e5697fd90dac9c271be5d4778401",
+    "title": "atomic release staging, Helm preflight hooks, and compressed release manifests for safer private-installer rollouts",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_015325e6452843019f81a5f85b3be220__pr-33817-atomic-release-staging-helm-preflight-manifests.txt"
+  },
+  {
+    "id": "dsid_05699788713b43bf9019a6d01006be78",
+    "path": "fixtures/public_subset/documents/dsid_05699788713b43bf9019a6d01006be78.md",
+    "sha256": "4b35498857144d5ae81034451d387454dc79a9c692d95928e70f707e063d2138",
+    "title": "Introduce cohort fingerprinting and concise release-note drafter",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_05699788713b43bf9019a6d01006be78__pr-176483-introduce-cohort-fingerprint-and-concise-release-drafter.txt"
+  },
+  {
+    "id": "dsid_0575dc65a9264358a0f9961455b34e92",
+    "path": "fixtures/public_subset/documents/dsid_0575dc65a9264358a0f9961455b34e92.md",
+    "sha256": "41e21e5e9542b609f6215c3f8431b0194671575f3a2d0f1a566af9af15b2a729",
+    "title": "Introduce connection-shelter orchestrator and deferred-circuit-unwind hotpatch",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_0575dc65a9264358a0f9961455b34e92__pr-989898-introduce-connection-shelter-deferred-circuit-unwind-hotpatch.txt"
+  },
+  {
+    "id": "dsid_07689b47d4db4d5a8fdbace02490abff",
+    "path": "fixtures/public_subset/documents/dsid_07689b47d4db4d5a8fdbace02490abff.md",
+    "sha256": "564e7abd45868c999068c583b4a82f36a638c5c0e0e4ef8792b9ea820aabb848",
+    "title": "Add Private observability smoke-test harness (kind + Helm) and gate on core signals",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_07689b47d4db4d5a8fdbace02490abff__pr-18544-add-private-observability-smoke-test-harness.txt"
+  },
+  {
+    "id": "dsid_0a248e594b64464a8d7443a5134d7184",
+    "path": "fixtures/public_subset/documents/dsid_0a248e594b64464a8d7443a5134d7184.md",
+    "sha256": "941010f5c237f4c3cb8782b2dc654fbf8cd6c0cbc3b6d9b83e02505c44abad42",
+    "title": "Add RAG-guided assertion harness and CI runner quickstart",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_0a248e594b64464a8d7443a5134d7184__pr-211358-add-rag-assertion-harness-quickstart.txt"
+  },
+  {
+    "id": "dsid_0cd51eeb3c3648a08b461097d6fec2e1",
+    "path": "fixtures/public_subset/documents/dsid_0cd51eeb3c3648a08b461097d6fec2e1.md",
+    "sha256": "59cfb8f64a6cedc507f7a27a2fc873a9574d8bcb6b22e4766ae2d9e5682331d1",
+    "title": "Add CLI command to dump effective runtime config after hardware profile selection + overrides",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_0cd51eeb3c3648a08b461097d6fec2e1__pr-22066-add-cli-tool-to-dump-effective-runtime-config.txt"
+  },
+  {
+    "id": "dsid_14ba48193f11412cbb2b3d25af339ef8",
+    "path": "fixtures/public_subset/documents/dsid_14ba48193f11412cbb2b3d25af339ef8.md",
+    "sha256": "d724aec18c665cde58c11d4c62f2d93e44cd02ede186fc8fbf754c9644af80a3",
+    "title": "Hybrid coldstart emulator with KV-cache priming reporter and epochal tail sampler",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_14ba48193f11412cbb2b3d25af339ef8__pr-63920-hybrid-coldstart-emulator-with-kvcache-priming-reporter.txt"
+  },
+  {
+    "id": "dsid_1653d1ed11a1403ca8e44bef03a610a9",
+    "path": "fixtures/public_subset/documents/dsid_1653d1ed11a1403ca8e44bef03a610a9.md",
+    "sha256": "30bc36f880e65dc0a3cfb2c31a387508f313656a26e67f9158c71de628eebfb4",
+    "title": "per-route function-call telemetry and JSONL output tagging",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_1653d1ed11a1403ca8e44bef03a610a9__pr-84923-per-route-function-call-telemetry-and-jsonl-output-tags.txt"
+  },
+  {
+    "id": "dsid_1872b4a10b2e40cab14efe1ba6e76e33",
+    "path": "fixtures/public_subset/documents/dsid_1872b4a10b2e40cab14efe1ba6e76e33.md",
+    "sha256": "94dd03e7fe333775a5e1b7c305d658234ed9fa50cc65db07205a41d279ec4088",
+    "title": "response-format gating and toolcall-safety layer to stabilize streaming and OpenAI-compat",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_1872b4a10b2e40cab14efe1ba6e76e33__pr-97713-response-format-gating-toolcall-safety.txt"
+  },
+  {
+    "id": "dsid_1aad7cdfb13647d487bf0cdc54935aa9",
+    "path": "fixtures/public_subset/documents/dsid_1aad7cdfb13647d487bf0cdc54935aa9.md",
+    "sha256": "d927e6674b6a5b09b6e285863b77a126cf3644cda1126b2e80d64c5373801d8d",
+    "title": "Add intake lease (onboard lock) and 'changeframe' release composer for concise changelogs",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_1aad7cdfb13647d487bf0cdc54935aa9__pr-688771-add-onboard-lease-and-changeframe-release-weaver.txt"
+  },
+  {
+    "id": "dsid_1b7a5d6230f84eb0a38a97da0e0ce05c",
+    "path": "fixtures/public_subset/documents/dsid_1b7a5d6230f84eb0a38a97da0e0ce05c.md",
+    "sha256": "cdc9d4c2a92fb4af7beb7c64b12f8dfc1091d3fb227fc553600f28917a640f96",
+    "title": "Enrich model listing endpoints with runtime hints, pricing/limits and OpenAI-compat shim",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_1b7a5d6230f84eb0a38a97da0e0ce05c__pr-63789-enrich-model-endpoints-with-runtime-hints-and-openai-shim.txt"
+  },
+  {
+    "id": "dsid_1c53affffb4f477ca476bec3138b60eb",
+    "path": "fixtures/public_subset/documents/dsid_1c53affffb4f477ca476bec3138b60eb.md",
+    "sha256": "0f0aa915319c34cc6c73f226a24e3bb61d3dfe5b25177df5f782dfe6f53a1e2e",
+    "title": "chat v1: parameter normalizer, role aliasing, stop dedupe and streaming backpressure improvements for /v1/chat.completions parity",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_1c53affffb4f477ca476bec3138b60eb__pr-96123-chat-v1-param-normalizer-role-alias-stop-dedupe-stream-backpressure.txt"
+  },
+  {
+    "id": "dsid_1d931f87aee44cb9b2d116807488dae3",
+    "path": "fixtures/public_subset/documents/dsid_1d931f87aee44cb9b2d116807488dae3.md",
+    "sha256": "9331fdb4e81d60ad5449ffab968e2543dc6cebfa65b4fe4c9f22bc4e12f50f6c",
+    "title": "introduce-journey-replayer-cli-with-session-serializer-and-offline-probe-harness",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_1d931f87aee44cb9b2d116807488dae3__pr-654321-lightweight-journey-replayer-offline-probe-cli.txt"
+  },
+  {
+    "id": "dsid_1dbd45b2ff1045869c0e3e6f36d920c3",
+    "path": "fixtures/public_subset/documents/dsid_1dbd45b2ff1045869c0e3e6f36d920c3.md",
+    "sha256": "71882e10aada182be5072c8b6d2d963fa96602eca46b44c229185ad278834b27",
+    "title": "Add spotless CI bootloader and dependency whitelist heuristics",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_1dbd45b2ff1045869c0e3e6f36d920c3__pr-209827-add-spotless-ci-bootloader-and-dep-whitelist-heuristics.txt"
+  },
+  {
+    "id": "dsid_1ff5491e7f474c1e926210f9953ef5bc",
+    "path": "fixtures/public_subset/documents/dsid_1ff5491e7f474c1e926210f9953ef5bc.md",
+    "sha256": "38346bad1025494e39406184f2f3631121e03c83b2e67ca45853a25c2018f36e",
+    "title": "Add onboard previewer for impact statements and compact diff bundles",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_1ff5491e7f474c1e926210f9953ef5bc__pr-19504-add-previewer-for-onboard-impact-statements-and-compact-diff-bundles.txt"
+  },
+  {
+    "id": "dsid_22922d795e0f4cab8f14bdbf8f913039",
+    "path": "fixtures/public_subset/documents/dsid_22922d795e0f4cab8f14bdbf8f913039.md",
+    "sha256": "17021c759873243665125992923a30c15b51f7460d891968e37338f52c547e74",
+    "title": "add context handoff regression gate and paired-window eval CI hook",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_22922d795e0f4cab8f14bdbf8f913039__pr-452212-context-handoff-eval-gate.txt"
+  },
+  {
+    "id": "dsid_22a7e9af2760474dbdf611c2c21cd231",
+    "path": "fixtures/public_subset/documents/dsid_22a7e9af2760474dbdf611c2c21cd231.md",
+    "sha256": "98af90f24d13fca69c2404501a501dd5740a49a0d978a319a01e46a4808bba73",
+    "title": "introduce-kernel-stability-thresholds-and-precision-annealing-with-kv-sync-guard",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_22a7e9af2760474dbdf611c2c21cd231__pr-39751-kernel-stability-thresholds-precision-annealing-kv-sync-guard.txt"
+  },
+  {
+    "id": "dsid_2814374655384ef5b8f267e933469e8f",
+    "path": "fixtures/public_subset/documents/dsid_2814374655384ef5b8f267e933469e8f.md",
+    "sha256": "8dc0870c17db0f9244177c4c70a4606243c0465d664b69d6d4fd7b5896465423",
+    "title": "Add invocation-skeleton metrics and log-context bridging for long-tail investigations",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_2814374655384ef5b8f267e933469e8f__pr-997777-invocation-skeleton-log-context-bridge.txt"
+  },
+  {
+    "id": "dsid_2af0dbe9438f4d2a97e4710bc33a84e6",
+    "path": "fixtures/public_subset/documents/dsid_2af0dbe9438f4d2a97e4710bc33a84e6.md",
+    "sha256": "ac79b8d9b1f003a7d7dc8eb2ce9bfefb340aeea1f5963855dbe2adffd18102c9",
+    "title": "Micro-tile cascade attention with rotary hybrid-fuse and adaptive KV throttling",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_2af0dbe9438f4d2a97e4710bc33a84e6__pr-61890-microtile-cascade-attn-rotary-hybrid-fuse.txt"
+  },
+  {
+    "id": "dsid_2f64d7dbd1724fe3a62d13a77eedfbf7",
+    "path": "fixtures/public_subset/documents/dsid_2f64d7dbd1724fe3a62d13a77eedfbf7.md",
+    "sha256": "e1911cc10f9a88b0d30bc940beb12af4730066342aa98b663fce4a85edba5f45",
+    "title": "behavioral alert sandbox and autotriage hypothesis engine",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_2f64d7dbd1724fe3a62d13a77eedfbf7__pr-880123-behavioral-alert-sandbox-and-autotriage-hypothesis-engine.txt"
+  },
+  {
+    "id": "dsid_2fb08b7571444bdf894607549642498f",
+    "path": "fixtures/public_subset/documents/dsid_2fb08b7571444bdf894607549642498f.md",
+    "sha256": "a5219e156586b3da6d19be41bfa9aa5f3945c83012ef4f044aed816d71a494eb",
+    "title": "Normalize OpenAI invocation envelope, clarify tool-selection signals, and add stream-resilient framing",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_2fb08b7571444bdf894607549642498f__pr-246829-openai-invoke-envelope-normalizer.txt"
+  },
+  {
+    "id": "dsid_302783937bc849ecb7ef7323233d1efe",
+    "path": "fixtures/public_subset/documents/dsid_302783937bc849ecb7ef7323233d1efe.md",
+    "sha256": "a40bb36a727edf80cdff778c19999eeaf2f846d385bf248d71e194b640c0cc74",
+    "title": "variance-aware-autoscaler-and-intermittent-surge-fairness",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_302783937bc849ecb7ef7323233d1efe__pr-182345-variance-aware-autoscaler-intermittent-surge-fairness.txt"
+  },
+  {
+    "id": "dsid_326edf2428504d158342fe19dec33eff",
+    "path": "fixtures/public_subset/documents/dsid_326edf2428504d158342fe19dec33eff.md",
+    "sha256": "57cfd41d8a02b7fe3e189154ad94b8515a1610fe14b1c63fd0c708f40a16e75d",
+    "title": "Adaptive warm-pool sizing and cluster budget apportioner",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_326edf2428504d158342fe19dec33eff__pr-79324-adaptive-warm-pool-sizing-and-cluster-budget-apportioner.txt"
+  },
+  {
+    "id": "dsid_350c8f433f324224af80d66981753af3",
+    "path": "fixtures/public_subset/documents/dsid_350c8f433f324224af80d66981753af3.md",
+    "sha256": "be614f0c5c4c762106a451d5ca59a2c4f689c71ec2f2af0ae27eb0bb9b5b46a7",
+    "title": "introduce-adaptive-observability-sampler-and-token-phase-tracing",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_350c8f433f324224af80d66981753af3__pr-523197-adaptive-observability-sampler-token-phase-tracing.txt"
+  },
+  {
+    "id": "dsid_35905700a9404362ac2e5cb04feecce2",
+    "path": "fixtures/public_subset/documents/dsid_35905700a9404362ac2e5cb04feecce2.md",
+    "sha256": "02785f80a7473aaf0058208de15c02a3cc38b28e6f44105aa73495246f820ab4",
+    "title": "Traffic-gate cascade and deferred rollback protocol for staged lifecycles",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_35905700a9404362ac2e5cb04feecce2__pr-1107824-traffic-gate-cascade-and-deferred-rollback-protocol.txt"
+  },
+  {
+    "id": "dsid_364b35d714a44a6b9b98a93dcfab4be5",
+    "path": "fixtures/public_subset/documents/dsid_364b35d714a44a6b9b98a93dcfab4be5.md",
+    "sha256": "6a475876ce9f6618842bbfca04c17778153182b7d8279b25608679467600d9e9",
+    "title": "Unify credential contracts, add concrete streaming examples, and sync SDK versions",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_364b35d714a44a6b9b98a93dcfab4be5__pr-864321-unify-cred-contracts-add-concrete-stream-examples-version-sync.txt"
+  },
+  {
+    "id": "dsid_378ac277dfa744c8acd16b30af9e364e",
+    "path": "fixtures/public_subset/documents/dsid_378ac277dfa744c8acd16b30af9e364e.md",
+    "sha256": "7ca3c2234080f7d400d6096236a2d18f247c4f6e027af668a9652b38effc7c9a",
+    "title": "Emit rollout auto-action audit events to event stream (pause/rollback/suppress)",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_378ac277dfa744c8acd16b30af9e364e__pr-28435-add-rollout-audit-events-to-event-stream.txt"
+  },
+  {
+    "id": "dsid_38de78b5db2c4e69a827447798002e0b",
+    "path": "fixtures/public_subset/documents/dsid_38de78b5db2c4e69a827447798002e0b.md",
+    "sha256": "4ed11d0a66469e1d572a15d852553450cb2e4a3281b4ff643f1ffc78e82e24e6",
+    "title": "snapshot-curator-and-playbook-stub-generator",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_38de78b5db2c4e69a827447798002e0b__pr-628817-snapshot-curator-and-playbook-stub-generator.txt"
+  },
+  {
+    "id": "dsid_3b1bfbad46ce488f9ff30328d5ba3e53",
+    "path": "fixtures/public_subset/documents/dsid_3b1bfbad46ce488f9ff30328d5ba3e53.md",
+    "sha256": "f663fd3482a5db8d719026fffefd710165235849313f47ad2e567d3c39ae22f8",
+    "title": "Introduce compact footprint estimator and sparse changelog drafter",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_3b1bfbad46ce488f9ff30328d5ba3e53__pr-521334-introduce-footprint-estimator-and-sparse-changelog-drafter.txt"
+  },
+  {
+    "id": "dsid_3d130aecc79c47f8bed314bec8900ae6",
+    "path": "fixtures/public_subset/documents/dsid_3d130aecc79c47f8bed314bec8900ae6.md",
+    "sha256": "9855ba42d94882ba084d300b2a985dbf95e7d1839c090ccc51c47ec4a0d1a590",
+    "title": "Introduce SessionFacade and idiomatic SDK adapters (Python/TS/Go)",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_3d130aecc79c47f8bed314bec8900ae6__pr-913577-introduce-session-facade-and-idiomatic-sdk-adapters.txt"
+  },
+  {
+    "id": "dsid_3f3a11bc9edb4ecd9e668bfb679a9a79",
+    "path": "fixtures/public_subset/documents/dsid_3f3a11bc9edb4ecd9e668bfb679a9a79.md",
+    "sha256": "f364daa4e0c1e21b287840daa45099a8a97e4ae91c5778afe319c0c8913707e5",
+    "title": "Hotfix: close authz bypass on streaming chat route (deny-by-default + regression test)",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_3f3a11bc9edb4ecd9e668bfb679a9a79__pr-28391-hotfix-permission-check-bypass-on-streaming-route.txt"
+  },
+  {
+    "id": "dsid_3f94e0d83d184bffb553eadda89762f9",
+    "path": "fixtures/public_subset/documents/dsid_3f94e0d83d184bffb553eadda89762f9.md",
+    "sha256": "7b25cf6433c2885c7b7f8a0e5b51bf0bb6f5c7e30c4a9b695798f419fa55aa04",
+    "title": "Introduce windowed traffic-shift detector and successive-degradation rollout guard",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_3f94e0d83d184bffb553eadda89762f9__pr-147901-introduce-windowed-traffic-shift-detector-successive-degradation-guard.txt"
+  },
+  {
+    "id": "dsid_3faebab9155948c6a9eaf18f91c23336",
+    "path": "fixtures/public_subset/documents/dsid_3faebab9155948c6a9eaf18f91c23336.md",
+    "sha256": "65744695a7daeb46b8afc50fc49fd3251057e58faf46984ef4da5d06d757c3ec",
+    "title": "Add saturation signal queries (GPU/queue/KV cache) to incident context payload",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_3faebab9155948c6a9eaf18f91c23336__pr-1851-add-saturation-signal-queries.txt"
+  },
+  {
+    "id": "dsid_418c8dec934d446ba7757e15b41dc5a4",
+    "path": "fixtures/public_subset/documents/dsid_418c8dec934d446ba7757e15b41dc5a4.md",
+    "sha256": "9699e85db709dc3c74d98b968b8ebcd9ec652444485a75b585b25252a178e008",
+    "title": "Introduce key-reconciliation-proxy and rotation dry-run mode for HSM-backed KMS",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_418c8dec934d446ba7757e15b41dc5a4__pr-702451-introduce-key-reconciliation-proxy-and-dryrun.txt"
+  },
+  {
+    "id": "dsid_43051eb11d6a49d5bf86ee8a15ab92da",
+    "path": "fixtures/public_subset/documents/dsid_43051eb11d6a49d5bf86ee8a15ab92da.md",
+    "sha256": "bfb62cbeb63ea886edc270c6a05b52d10a07dcfa9b7a46c6eae48bf687fdd680",
+    "title": "Prevent offline bundle downgrade using signed manifest version + local install state",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_43051eb11d6a49d5bf86ee8a15ab92da__pr-24902-prevent-downgrade-with-signed-manifest-version.txt"
+  },
+  {
+    "id": "dsid_47244ec5f0a7444ba70f4a6908cc0dc3",
+    "path": "fixtures/public_subset/documents/dsid_47244ec5f0a7444ba70f4a6908cc0dc3.md",
+    "sha256": "359f7df4ab7d6f899e50d88624d6a52f50f7314eb65e5a7210acf02ad1daa648",
+    "title": "runtime: integrate FP8 attention kernel behind feature flag",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_47244ec5f0a7444ba70f4a6908cc0dc3__pr-19827-fp8-attention-kernel-integration-behind-flag.txt"
+  },
+  {
+    "id": "dsid_475fa0be533f4224a5b8f15710a4bbd1",
+    "path": "fixtures/public_subset/documents/dsid_475fa0be533f4224a5b8f15710a4bbd1.md",
+    "sha256": "2435aef0570f926ad21d5a3159d316bf12f3bab5513a83b9bc9eb56e778b4844",
+    "title": "rework airgap OCI index to support multi-registry catalog + atomic upgrade preflight",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_475fa0be533f4224a5b8f15710a4bbd1__pr-214567-oci-index-multi-registry-atomic-upgrades.txt"
+  },
+  {
+    "id": "dsid_49552539523b4860996b30a6f4cb5681",
+    "path": "fixtures/public_subset/documents/dsid_49552539523b4860996b30a6f4cb5681.md",
+    "sha256": "56494dbd297a79ccee0ced086273cb1af204c9f3712492a7a7b513f25b679074",
+    "title": "Telemetry zipper and responder-context escort for safer handoffs",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_49552539523b4860996b30a6f4cb5681__pr-721890-telemetry-zipper-and-responder-context-escort.txt"
+  },
+  {
+    "id": "dsid_569ce2b5763d4ffeb5534766de327626",
+    "path": "fixtures/public_subset/documents/dsid_569ce2b5763d4ffeb5534766de327626.md",
+    "sha256": "6fbceff9e776eabcf18008e47b2b08e6cd77ce13078e91b756465ef0f324173b",
+    "title": "Add Splunk HEC export target (batching, retry/backoff, delivery metrics)",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_569ce2b5763d4ffeb5534766de327626__pr-851-add-splunk-hec-export-target.txt"
+  },
+  {
+    "id": "dsid_5886e16b97e94532a21a117d9357e171",
+    "path": "fixtures/public_subset/documents/dsid_5886e16b97e94532a21a117d9357e171.md",
+    "sha256": "c500b0a102a3fb6cb1b6d8399cab2dd35e84b83543a839c7a8869232546780cf",
+    "title": "Introduce tenant KMS delegation chaperone and audit plumb for region-bound key flows",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_5886e16b97e94532a21a117d9357e171__pr-382717-tenant-kms-delegation-chaperone-audit-plumb.txt"
+  },
+  {
+    "id": "dsid_598e12ef1c434e198d65d63492cd0c98",
+    "path": "fixtures/public_subset/documents/dsid_598e12ef1c434e198d65d63492cd0c98.md",
+    "sha256": "9e07199b7439ef11d8572211dc71db3b81e20bece7547b6bcfc929db99f3184c",
+    "title": "Introduce RAG step replayer authoring sandbox with streamed probes and telemetry harness",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_598e12ef1c434e198d65d63492cd0c98__pr-999990-introduce-rag-step-replayer-sandbox-telemetry-harness.txt"
+  },
+  {
+    "id": "dsid_5b3278541a824fc7a21d24dc2d7bd5ba",
+    "path": "fixtures/public_subset/documents/dsid_5b3278541a824fc7a21d24dc2d7bd5ba.md",
+    "sha256": "a8878c6d4cbff132583e8bb915132cca387d8d9127e4538a6b724bfd0778ddab",
+    "title": "Policy engine: deterministic failover signal hierarchy evaluation + config schema",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_5b3278541a824fc7a21d24dc2d7bd5ba__pr-19812-policy-engine-signal-priority.txt"
+  },
+  {
+    "id": "dsid_5ccebd61ccd84ca7b392013d3277002f",
+    "path": "fixtures/public_subset/documents/dsid_5ccebd61ccd84ca7b392013d3277002f.md",
+    "sha256": "1000db2303c341cccc34a9ebe3563386d771694d9319936caa955bb17acb908b",
+    "title": "Add hardware-timestamp tracepoints and synthetic-replay microbench for kernel latency and tile occupancy",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_5ccebd61ccd84ca7b392013d3277002f__pr-42834-add-hw-timestamp-tracepoints-and-replay-microbench.txt"
+  },
+  {
+    "id": "dsid_5d54f5f89bbc48a5b06b8dead39729b3",
+    "path": "fixtures/public_subset/documents/dsid_5d54f5f89bbc48a5b06b8dead39729b3.md",
+    "sha256": "791230b156e226aa5ac6a90d818903d4ae44693754fe2106a8839259f0e72f7f",
+    "title": "aggregate artifact origins into release index for private-installer",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_5d54f5f89bbc48a5b06b8dead39729b3__pr-87103-aggregate-artifact-origins-release-index-private-installer.txt"
+  },
+  {
+    "id": "dsid_5f5b4ea17bf94e12aa9b431b8f574a86",
+    "path": "fixtures/public_subset/documents/dsid_5f5b4ea17bf94e12aa9b431b8f574a86.md",
+    "sha256": "89a2fb5ef86e0b0779d871665d3d101421479036aaf7e35d97091173e01b5440",
+    "title": "Minimize lint boot time and introduce dependency stitcher",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_5f5b4ea17bf94e12aa9b431b8f574a86__pr-357159-minimize-lint-boot-time-and-introduce-dep-stitcher.txt"
+  },
+  {
+    "id": "dsid_614e6767c64a48a5b083042f33dd34cd",
+    "path": "fixtures/public_subset/documents/dsid_614e6767c64a48a5b083042f33dd34cd.md",
+    "sha256": "e6a6908d37fbe2b89c60c5c8fac4783ecc4d0a965eb92b3cabc9cd22738d3036",
+    "title": "Rate-limited reservation stitcher and FairBank tenancy allocator",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_614e6767c64a48a5b083042f33dd34cd__pr-153210-rate-limited-reservation-stitcher-fairbank-allocator.txt"
+  },
+  {
+    "id": "dsid_66982edae27b4b39baa9135727cc8f27",
+    "path": "fixtures/public_subset/documents/dsid_66982edae27b4b39baa9135727cc8f27.md",
+    "sha256": "4eee4ed9fb55b58970d00f1f000c6e80e9fdd32602fae3f0ae2d0dcb54a0496d",
+    "title": "add adaptive outlier suppression to canary evaluator",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_66982edae27b4b39baa9135727cc8f27__pr-456789-add-adaptive-outlier-suppression-to-canary-evaluator.txt"
+  },
+  {
+    "id": "dsid_6c58ddb8ecf543d89fca8352351dea29",
+    "path": "fixtures/public_subset/documents/dsid_6c58ddb8ecf543d89fca8352351dea29.md",
+    "sha256": "5d375de8f419d90d92ee3563270b0bcb92cd58a4f9f90fcdcc56be614fc14e6c",
+    "title": "openai-compat: responses-v3 deterministic-seed routing + metadata passthrough and streaming reassembly",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_6c58ddb8ecf543d89fca8352351dea29__pr-24930-openai-resp-v3-seed-metadata-reassembly-compat.txt"
+  },
+  {
+    "id": "dsid_6f3ffc39558d4464b1797711c1dc290b",
+    "path": "fixtures/public_subset/documents/dsid_6f3ffc39558d4464b1797711c1dc290b.md",
+    "sha256": "5822bb440e006183fdd23f44706806efe20ce5dd7bbb363a487a8e5a9750e1d3",
+    "title": "Dynamic decommit gradient and fair-headroom allocator",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_6f3ffc39558d4464b1797711c1dc290b__pr-701999-dynamic-decommit-gradient-and-fairheadroom-allocator.txt"
+  },
+  {
+    "id": "dsid_702dbc6e9b554b4bb6a67b6f585a7ebf",
+    "path": "fixtures/public_subset/documents/dsid_702dbc6e9b554b4bb6a67b6f585a7ebf.md",
+    "sha256": "ab4c4d04f4838cf93786f7063c781f2a49c8575d0e8d694ebecd7428a287cc41",
+    "title": "Introduce tenant audit-sampling profiles and KMS residency cohorting",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_702dbc6e9b554b4bb6a67b6f585a7ebf__pr-95360-introduce-tenant-audit-sampling-profiles-and-kms-residency-cohorting.txt"
+  },
+  {
+    "id": "dsid_739c17e33cb84e66abf0a369179e33c2",
+    "path": "fixtures/public_subset/documents/dsid_739c17e33cb84e66abf0a369179e33c2.md",
+    "sha256": "65c5153e342d9939269a8db08c94826185005eb1a8551b5a1fc1d14f8b734d0a",
+    "title": "Add tenant snapshot coordinator and staged rollback gatekeeper",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_739c17e33cb84e66abf0a369179e33c2__pr-397412-add-tenant-snapshot-coordinator-and-rollback-gatekeeper.txt"
+  },
+  {
+    "id": "dsid_74f1a3dd9818464287fd05961a1b7dd5",
+    "path": "fixtures/public_subset/documents/dsid_74f1a3dd9818464287fd05961a1b7dd5.md",
+    "sha256": "79b52797aaf908a85745e7549d9b0c9176d60b9cfcc41774a1eb39bdffa11ab1",
+    "title": "CI: add tflint + checkov gates; pin Terraform/AWS provider versions for reproducible builds",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_74f1a3dd9818464287fd05961a1b7dd5__pr-18503-add-tflint-checkov-and-provider-version-pinning.txt"
+  },
+  {
+    "id": "dsid_768996b491df4424bb4187f80ec5903b",
+    "path": "fixtures/public_subset/documents/dsid_768996b491df4424bb4187f80ec5903b.md",
+    "sha256": "440bbb1fec57a7815691f041113aeb08895227b7bf8775139bd164330100f556",
+    "title": "SLO Grace Period Manager and Ephemeral Warmup Hotfix",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_768996b491df4424bb4187f80ec5903b__pr-159301-slo-grace-period-manager-ephemeral-warmup-hotfix.txt"
+  },
+  {
+    "id": "dsid_7764c4d15ed141ecbeaaecf606098288",
+    "path": "fixtures/public_subset/documents/dsid_7764c4d15ed141ecbeaaecf606098288.md",
+    "sha256": "9296b3b21e5b13b878a2c3e625fb4dcf78113a108f177036529eabe4460c7c66",
+    "title": "introduce KV freelist defragmenter and selective hot-prefix pinning",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_7764c4d15ed141ecbeaaecf606098288__pr-63918-kv-freelist-defragmenter-and-hotprefix-pin.txt"
+  },
+  {
+    "id": "dsid_7fa3726d85884b5ea3043b326dc29480",
+    "path": "fixtures/public_subset/documents/dsid_7fa3726d85884b5ea3043b326dc29480.md",
+    "sha256": "c3e75829cf31dfaf501339f399846b817caf22fd2d06debb194da8942b7a12e5",
+    "title": "Add sequenced rollback orchestrator and terraform plan signer",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_7fa3726d85884b5ea3043b326dc29480__pr-407223-add-sequenced-rollback-orchestrator-and-terraform-plan-signer.txt"
+  },
+  {
+    "id": "dsid_81208556437644a0a4dedf168baf81b5",
+    "path": "fixtures/public_subset/documents/dsid_81208556437644a0a4dedf168baf81b5.md",
+    "sha256": "a854d06cdcc69ca6a0a943ddaf354d4a11ab31736fb2fca1e67b3f87492a83fd",
+    "title": "Add Usage Insights freshness/quality dashboard + alerts (lag + reconciliation drift)",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_81208556437644a0a4dedf168baf81b5__pr-311-add-dashboard-usage-insights-freshness.txt"
+  },
+  {
+    "id": "dsid_85f719f74ad1498db55f9d8a0020f48b",
+    "path": "fixtures/public_subset/documents/dsid_85f719f74ad1498db55f9d8a0020f48b.md",
+    "sha256": "37d85748288803d370c67b78b9c3c25d76e1a34a0b43e3dc16712dd88e3815ca",
+    "title": "Introduce intent-aware release outline and rollback telemetry pipeline",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_85f719f74ad1498db55f9d8a0020f48b__pr-407123-intent-aware-release-outline-and-rollback-telemetry.txt"
+  },
+  {
+    "id": "dsid_86e1b82624c74b93acc84adab43c0e73",
+    "path": "fixtures/public_subset/documents/dsid_86e1b82624c74b93acc84adab43c0e73.md",
+    "sha256": "e497adc319e161e556f9e2d60365a616c166dca0d78e4bbb0d21118b14f29001",
+    "title": "graceful-redistribution-proxy-with-telemetry-led-holdoff",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_86e1b82624c74b93acc84adab43c0e73__pr-144521-graceful-redistribution-proxy-with-telemetry-holdoff.txt"
+  },
+  {
+    "id": "dsid_8c86b858336940ce97419b1a4ca19553",
+    "path": "fixtures/public_subset/documents/dsid_8c86b858336940ce97419b1a4ca19553.md",
+    "sha256": "d402b2fd40090ca63fefd7f14e3ccd08bb57b371313b33373a06de90976d9d4e",
+    "title": "Emit structured audit log events for Optimization Config lifecycle (create/validate/apply/promote/rollback) + schema updates",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_8c86b858336940ce97419b1a4ca19553__pr-19941-add-audit-log-events-for-config-changes.txt"
+  },
+  {
+    "id": "dsid_908e8464927742829dcdfe0c6165299b",
+    "path": "fixtures/public_subset/documents/dsid_908e8464927742829dcdfe0c6165299b.md",
+    "sha256": "c970dbfb240b91789986969182ab578b5114c18f6336f436f21e1134ade10520",
+    "title": "dynamic per-channel requant + KV-aware jitter-resilient continuous-batching",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_908e8464927742829dcdfe0c6165299b__pr-763210-dynamic-perchannel-requant-kv-jitter-batcher.txt"
+  },
+  {
+    "id": "dsid_93e064876e8e41f8be91296d641c087f",
+    "path": "fixtures/public_subset/documents/dsid_93e064876e8e41f8be91296d641c087f.md",
+    "sha256": "0937018e85ff921c19410869ba7668a6b7366a197eb4ae05b974ed023270fca1",
+    "title": "Autotuned throttle + prefetch coordinator to reduce streaming first-byte latency",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_93e064876e8e41f8be91296d641c087f__pr-34122-autotuned-throttle-prefetch-coordinator-for-streaming-ttfb.txt"
+  },
+  {
+    "id": "dsid_94370c1d847a4964b0b99c90c4ae5d32",
+    "path": "fixtures/public_subset/documents/dsid_94370c1d847a4964b0b99c90c4ae5d32.md",
+    "sha256": "fde90cb004aacf7636cd1f39d332585cf452d233ae6f7efd82183cc7b3b727b8",
+    "title": "Introduce Thriftline Policy Compiler and Adaptive Cost Routes",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_94370c1d847a4964b0b99c90c4ae5d32__pr-246802-thriftline-policy-compiler.txt"
+  },
+  {
+    "id": "dsid_9550250a59e74f1bbd5612480b2e7100",
+    "path": "fixtures/public_subset/documents/dsid_9550250a59e74f1bbd5612480b2e7100.md",
+    "sha256": "5b3d9f9c021c8f0c5128292b6a91f3bfd28221c2d2bea29d482c85ad20a40167",
+    "title": "introduce-server-timebox-and-idempotent-cancel-fallbacks-for-streaming-compat",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_9550250a59e74f1bbd5612480b2e7100__pr-129874-timebox-abort-idempotency-resume-openai-compat.txt"
+  },
+  {
+    "id": "dsid_95ebdefdf9574df0992d49c9057a7a2c",
+    "path": "fixtures/public_subset/documents/dsid_95ebdefdf9574df0992d49c9057a7a2c.md",
+    "sha256": "ff7085c0cd0e533be96f622ed2609b6785a39d4f4dce3d7bd404b92291f545fd",
+    "title": "Add onboard slice runbook, deterministic profile anchors, and automated release subscriptions",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_95ebdefdf9574df0992d49c9057a7a2c__pr-945678-add-onboard-slice-runbook-and-release-subscriptions.txt"
+  },
+  {
+    "id": "dsid_97a7018815404c87a95a88fe037a308e",
+    "path": "fixtures/public_subset/documents/dsid_97a7018815404c87a95a88fe037a308e.md",
+    "sha256": "af8ebfef28558ba59df56ae4446be4685ff694bc6f29102c7021413266834217",
+    "title": "introduce-stationarity-aware-canary-guard",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_97a7018815404c87a95a88fe037a308e__pr-550123-introduce-stationarity-aware-canary-guard.txt"
+  },
+  {
+    "id": "dsid_9a6a57dae6544ff0b115aa3a6f98bd40",
+    "path": "fixtures/public_subset/documents/dsid_9a6a57dae6544ff0b115aa3a6f98bd40.md",
+    "sha256": "42aba1a155b66b6af7ddfb777cb623d19552411aa7d92c054c9eda845bd6c954",
+    "title": "introduce-client-contract-fallback-middleware-for-toolcall-headers-and-stream-fallback",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_9a6a57dae6544ff0b115aa3a6f98bd40__pr-166201-client-contract-fallback-middleware-toolcall-headers.txt"
+  },
+  {
+    "id": "dsid_9cfe990667a145aba46ca72ffb6a1e3e",
+    "path": "fixtures/public_subset/documents/dsid_9cfe990667a145aba46ca72ffb6a1e3e.md",
+    "sha256": "b62780a8b85e563d10261bbb243c7ad4a171473460321f6f854a302d6e551abc",
+    "title": "Ephemeral KMS affinity and audit sanitization pipeline",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_9cfe990667a145aba46ca72ffb6a1e3e__pr-73421-ephemeral-kms-affinity-and-audit-sanitizer.txt"
+  },
+  {
+    "id": "dsid_9d1624818a004c53b3b7020412275cc0",
+    "path": "fixtures/public_subset/documents/dsid_9d1624818a004c53b3b7020412275cc0.md",
+    "sha256": "acdc23fd3e60904f82012e1ad966d91e99932448a5a23464f74fcbe2ff0b2b4c",
+    "title": "Modernize CI by replacing legacy bash pipelines with composite actions and plugin hooks",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_9d1624818a004c53b3b7020412275cc0__pr-49512-modernize-ci-build-plugins-migrate-bash-to-composite.txt"
+  },
+  {
+    "id": "dsid_a4a9fdebd070475f9eb6b3473f3ec513",
+    "path": "fixtures/public_subset/documents/dsid_a4a9fdebd070475f9eb6b3473f3ec513.md",
+    "sha256": "3fe10de5dae03d0656f93cbebc829e87da55a46be7e53b615fa266698f29dea8",
+    "title": "Introduce lint-bridge and minimal toolchain curator to reduce presubmit duplication",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_a4a9fdebd070475f9eb6b3473f3ec513__pr-270001-introduce-lint-bridge-and-toolchain-curator.txt"
+  },
+  {
+    "id": "dsid_a4b54c7996954e11be7d5f360cbe85d5",
+    "path": "fixtures/public_subset/documents/dsid_a4b54c7996954e11be7d5f360cbe85d5.md",
+    "sha256": "21343a353a77f2d6b0787262150fde0dc7786c812a4d2eeeb5d6467ee7286275",
+    "title": "Streamed per-invocation cost rollups and alert-fuzz controller to reduce noisy long-tail alerts",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_a4b54c7996954e11be7d5f360cbe85d5__pr-210987-streamed-cost-rollups-and-alert-fuzz-controller.txt"
+  },
+  {
+    "id": "dsid_a692a33de52246d894ef51aaf3132d65",
+    "path": "fixtures/public_subset/documents/dsid_a692a33de52246d894ef51aaf3132d65.md",
+    "sha256": "4afbf0458860d188be07c16652cfa2135e8113a43854977cce5d132a11fa584b",
+    "title": "Epoched fanout controller with stepwise commit and resumeable rollback",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_a692a33de52246d894ef51aaf3132d65__pr-76421-epoched-fanout-controller-with-stepwise-commit-and-rollback.txt"
+  },
+  {
+    "id": "dsid_a80fefecbb0f44b6938a966b2e79c7b0",
+    "path": "fixtures/public_subset/documents/dsid_a80fefecbb0f44b6938a966b2e79c7b0.md",
+    "sha256": "6b946f3f11583e6ab1e851bd60fb3a94ef62f82e388b1062102230cbf50c8aaf",
+    "title": "Add intermittent-sampler sweep runner and opportunistic cache auditor",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_a80fefecbb0f44b6938a966b2e79c7b0__pr-99345-intermittent-sampler-sweep-runner-and-opportunistic-cache-auditor.txt"
+  },
+  {
+    "id": "dsid_a80ffd791bf445bcba5941fb0ae26d2a",
+    "path": "fixtures/public_subset/documents/dsid_a80ffd791bf445bcba5941fb0ae26d2a.md",
+    "sha256": "b0428e76aba42fe8b82b20ac9d836adc6407522db57d85f6ce3175517c6220bf",
+    "title": "introduce-route-auth-hint-header-and-compat-adapter-for-proxied-streaming-tool-calls",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_a80ffd791bf445bcba5941fb0ae26d2a__pr-80321-surface-route-auth-hints-for-proxied-tools.txt"
+  },
+  {
+    "id": "dsid_aa532b5a3c634229b9a068654b945c6c",
+    "path": "fixtures/public_subset/documents/dsid_aa532b5a3c634229b9a068654b945c6c.md",
+    "sha256": "4eaf6827e510c4f0481d5997e732b354505e8e69ec4487ee32802905167b2203",
+    "title": "Introduce Batch-Cache Policy Synthesizer for automated batching, cache TTLs, and quant profiles",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_aa532b5a3c634229b9a068654b945c6c__pr-49924-batch-cache-policy-synthesizer.txt"
+  },
+  {
+    "id": "dsid_ab6cc1587c2c491fb4a402f2c6a8342a",
+    "path": "fixtures/public_subset/documents/dsid_ab6cc1587c2c491fb4a402f2c6a8342a.md",
+    "sha256": "fe91597f0d618f2840db581a4a066a4f991aae33466426b36da5ff0c5d402828",
+    "title": "Continuation-token resume and inflight-abort coordination; tool idempotency and structured-output safety for OpenAI compatibility",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_ab6cc1587c2c491fb4a402f2c6a8342a__pr-64321-continuation-token-resume-inflight-abort-and-tool-idempotency-openai-compat.txt"
+  },
+  {
+    "id": "dsid_abb691a6a6214c81a6e291fe0b3a52c7",
+    "path": "fixtures/public_subset/documents/dsid_abb691a6a6214c81a6e291fe0b3a52c7.md",
+    "sha256": "e96d833787a1d6802eb6787d012f4a49898b560e7c4298cc07bae185ccc06c67",
+    "title": "Instrument token lifecycle events, collapse span-dependency graph, and add SLO slope detector with Token Sankey dashboard",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_abb691a6a6214c81a6e291fe0b3a52c7__pr-589328-instrument-token-lifecycle-span-dependency-and-slo-slope-detector.txt"
+  },
+  {
+    "id": "dsid_ac86f4f5757344a7ba6fc782ce470348",
+    "path": "fixtures/public_subset/documents/dsid_ac86f4f5757344a7ba6fc782ce470348.md",
+    "sha256": "1ddc8e8a4472067a2eff6a2b88054af4a0d7cf1eb32d7c0e6c2a5811240ae6d9",
+    "title": "Add multi-dimension token telemetry and alert coalescer (log contextualizer + dashboard)",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_ac86f4f5757344a7ba6fc782ce470348__pr-215999-add-multi-dim-token-telemetry-and-alert-coalescer.txt"
+  },
+  {
+    "id": "dsid_addb37b7e2894550969c3c8dedbafa23",
+    "path": "fixtures/public_subset/documents/dsid_addb37b7e2894550969c3c8dedbafa23.md",
+    "sha256": "f0e026e2a7a16ac1dc9421518a0f9d98a44095d305b49f2593aa4cb534e3ddaf",
+    "title": "introduce-sessionized-token-heatmaps-and-adaptive-alert-calibration",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_addb37b7e2894550969c3c8dedbafa23__pr-205312-introduce-sessionized-token-heatmaps-and-adaptive-alert-calib.txt"
+  },
+  {
+    "id": "dsid_ae068ee4aa9640159427cd941bef0238",
+    "path": "fixtures/public_subset/documents/dsid_ae068ee4aa9640159427cd941bef0238.md",
+    "sha256": "051a49be5c50f0115235461a7c7657c2a7b4fa19210ca2aedcd0f6ed89ec4d78",
+    "title": "add multipart/form-data handling, strict content-type validation, and payload limit enforcement for API tool/file inputs",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_ae068ee4aa9640159427cd941bef0238__pr-18421-multipart-file-validation-limits.txt"
+  },
+  {
+    "id": "dsid_aec878d7502a4625b38945b05b61952a",
+    "path": "fixtures/public_subset/documents/dsid_aec878d7502a4625b38945b05b61952a.md",
+    "sha256": "d67fb0c63c9ef7b6aaadbd5bda727d6bd0d4f50239a20ce3cc77c54bd7d6bfc5",
+    "title": "Introduce route-level size quarantine and adaptive chunk-ack window to stabilize streaming toolcalls",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_aec878d7502a4625b38945b05b61952a__pr-63714-introduce-route-quarantine-and-adaptive-chunk-ack-window.txt"
+  },
+  {
+    "id": "dsid_b28fa151fc864b4c8efeba9723a58ae5",
+    "path": "fixtures/public_subset/documents/dsid_b28fa151fc864b4c8efeba9723a58ae5.md",
+    "sha256": "a8e0f263cec8a5f04346fa712a75410a04a38932ac0ebe93bb0d15264f693edd",
+    "title": "Phase-synced prober and traffic-decoupling rollout guard",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_b28fa151fc864b4c8efeba9723a58ae5__pr-511007-phase-synced-prober-traffic-decoupling-guard.txt"
+  },
+  {
+    "id": "dsid_b3e0e530ae3b43aa9789b9cdb681511e",
+    "path": "fixtures/public_subset/documents/dsid_b3e0e530ae3b43aa9789b9cdb681511e.md",
+    "sha256": "81cf0916d46f40d96402201433f0bdc5fb20094b2d38b7a35520633efca91a03",
+    "title": "Add RBACv2 explainability service, audit correlator, and KMS consent cache",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_b3e0e530ae3b43aa9789b9cdb681511e__pr-523679-add-rbacv2-explainability-audit-correlator-and-kms-consent-cache.txt"
+  },
+  {
+    "id": "dsid_b6086e04a8bd4a66b5d804773895cd0c",
+    "path": "fixtures/public_subset/documents/dsid_b6086e04a8bd4a66b5d804773895cd0c.md",
+    "sha256": "c6c4682ef738503a1a53f948f39468908f183bb254082b2897db7c743a77455a",
+    "title": "Introduce miniRAG CLI sandbox with capture probes and typesafe tool stubs",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_b6086e04a8bd4a66b5d804773895cd0c__pr-271891-introduce-minirag-cli-sandbox.txt"
+  },
+  {
+    "id": "dsid_b661eb81eecb46cba7f510b1e0a58120",
+    "path": "fixtures/public_subset/documents/dsid_b661eb81eecb46cba7f510b1e0a58120.md",
+    "sha256": "fe0eb094cb5ea20e687398b7b10d1fb7b87a34e3d0d7166ebbcdf8e93dad681e",
+    "title": "Introduce compliance-hardened RBAC translator and KMS evidence proxy",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_b661eb81eecb46cba7f510b1e0a58120__pr-44899-introduce-compliance-hardened-rbac-translator-and-kms-evidence-proxy.txt"
+  },
+  {
+    "id": "dsid_b8d948ead4d3450fa9ff0e5534fdac9b",
+    "path": "fixtures/public_subset/documents/dsid_b8d948ead4d3450fa9ff0e5534fdac9b.md",
+    "sha256": "d87825fbbb87d30f6a5c99c16c44ef4b1710c5501e15ded6845144099303adef",
+    "title": "Tag eval outputs with experiment variant identifiers + publish compact score stream for Console",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_b8d948ead4d3450fa9ff0e5534fdac9b__pr-812-experiment-variant-tagging-in-eval-output.txt"
+  },
+  {
+    "id": "dsid_ba3bb443354b444c87d39c0d451ac01e",
+    "path": "fixtures/public_subset/documents/dsid_ba3bb443354b444c87d39c0d451ac01e.md",
+    "sha256": "bfdc225ff77f376789cfd3422c57d90f96ceef1520232ac9b9e0706e408f7731",
+    "title": "introduce heatmap-driven warmup orchestrator and quant-sampler",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_ba3bb443354b444c87d39c0d451ac01e__pr-300123-heatmap-warmup-orchestrator-quant-sampler.txt"
+  },
+  {
+    "id": "dsid_bab6aba4c06e41e9ae46b9355f644a7a",
+    "path": "fixtures/public_subset/documents/dsid_bab6aba4c06e41e9ae46b9355f644a7a.md",
+    "sha256": "98277b005a3aa66cc77171e2769c7fd63740e10559b74c750e08440d90a751db",
+    "title": "Heterogeneous-bandwidth-aware allreduce fanout with KV-shard coalescing and comm/compute overlap",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_bab6aba4c06e41e9ae46b9355f644a7a__pr-128765-hetero-bandwidth-allreduce-kv-coalesce.txt"
+  },
+  {
+    "id": "dsid_bb4c34ab4ae047b9a813ead4bd87268f",
+    "path": "fixtures/public_subset/documents/dsid_bb4c34ab4ae047b9a813ead4bd87268f.md",
+    "sha256": "e335a6d2f957daac0b3c6bdf790a0940cf0d698ed7331a29c79965cc6eb52de2",
+    "title": "add init and rollback hooks, values schema, and templating for private installer helm chart",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_bb4c34ab4ae047b9a813ead4bd87268f__pr-22071-add-init-and-rollback-hooks-values-schema-for-private-installer.txt"
+  },
+  {
+    "id": "dsid_bd577bdd324b450bb396c2ea1d23eb44",
+    "path": "fixtures/public_subset/documents/dsid_bd577bdd324b450bb396c2ea1d23eb44.md",
+    "sha256": "becd0e95b168c79896c35259b99027ea5c9caad23e744f7759f8aaeadc8e0128",
+    "title": "introduce-session-lease-and-deterministic-retry-profiles-typed-asyncstream-py-sdk",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_bd577bdd324b450bb396c2ea1d23eb44__pr-381207-introduce-session-lease-and-deterministic-retry-profiles-typed-asyncstream-py-sdk.txt"
+  },
+  {
+    "id": "dsid_c1501e447fe54c82bbdaf65535cc06f5",
+    "path": "fixtures/public_subset/documents/dsid_c1501e447fe54c82bbdaf65535cc06f5.md",
+    "sha256": "7c949e4f15dcfcea7b280f3cee0a0801ad788df698472d73e99065e2414c3ef9",
+    "title": "openai-bridge-forward-client-rng-hints-and-annotation-headers-for-responses-vnext",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_c1501e447fe54c82bbdaf65535cc06f5__pr-54877-openai-bridge-forward-seed-annotations.txt"
+  },
+  {
+    "id": "dsid_c5641d100b294dd3bd15f32df4ee9d52",
+    "path": "fixtures/public_subset/documents/dsid_c5641d100b294dd3bd15f32df4ee9d52.md",
+    "sha256": "b59ac6678ace67e4400b39c33278ba476f2704582e9e05909fe575d47ad5fd04",
+    "title": "Automate attestation + notarization for private-installer Helm/Terraform releases",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_c5641d100b294dd3bd15f32df4ee9d52__pr-24781-automate-attest-notarize-private-installer-releases.txt"
+  },
+  {
+    "id": "dsid_c6255a6b671e42f9a5d61160abc9352a",
+    "path": "fixtures/public_subset/documents/dsid_c6255a6b671e42f9a5d61160abc9352a.md",
+    "sha256": "66d216824bd1411d037ef7ab654b3314fdcac37390422523e545399eb8b147da",
+    "title": "introduce-kernel-backpressure-span-linker-and-batch-cost-attribution",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_c6255a6b671e42f9a5d61160abc9352a__pr-903212-kernel-backpressure-batch-cost-attribution.txt"
+  },
+  {
+    "id": "dsid_c7860fdbc17a48b0b6c5f9a0c5e3d054",
+    "path": "fixtures/public_subset/documents/dsid_c7860fdbc17a48b0b6c5f9a0c5e3d054.md",
+    "sha256": "f6f7ff9f00e08817feb9faf2da66b3c08490d1f1e3d26b9100cbc8b4a162f292",
+    "title": "Coalescing Invoker: grace-period batching, deterministic injection, and structured-output streaming compatibility",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_c7860fdbc17a48b0b6c5f9a0c5e3d054__pr-176421-coalescing-invoker-grace-period-and-structured-output.txt"
+  },
+  {
+    "id": "dsid_cbeb016c9dce4e6c96e7898e08e73eb8",
+    "path": "fixtures/public_subset/documents/dsid_cbeb016c9dce4e6c96e7898e08e73eb8.md",
+    "sha256": "768bc725ca725bab7b9cfe1ee3793f7ad0b427968ee5f67f35b4b8c9135e3ab6",
+    "title": "SSE gap-healer: mid-event rescue and ordering preservation for interleaved frames",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_cbeb016c9dce4e6c96e7898e08e73eb8__pr-1400450-sse-gap-healer-order-preserve-and-mid-event-rescue.txt"
+  },
+  {
+    "id": "dsid_cc9fd576760d4a058a896155657eff06",
+    "path": "fixtures/public_subset/documents/dsid_cc9fd576760d4a058a896155657eff06.md",
+    "sha256": "161d3ffb5ef824a50ad7b18e876585a3176bb61360627264f1fd54c38b664fad",
+    "title": "Deprecate legacy capability schema; add runtime hint headers, function-call credits, and streaming degradation policy",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_cc9fd576760d4a058a896155657eff06__pr-91734-deprecate-old-capability-schema-add-runtime-hints-and-function-call-credits.txt"
+  },
+  {
+    "id": "dsid_ce16698bab404d7eb5b6621e9b4f2818",
+    "path": "fixtures/public_subset/documents/dsid_ce16698bab404d7eb5b6621e9b4f2818.md",
+    "sha256": "7ece8c34442e803f232585af204c36bdd1ea7ec763bfc53f0951de1166c5efef",
+    "title": "Cost‑Smarts: telemetry-driven prefill scheduler and quantization hint adapter",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_ce16698bab404d7eb5b6621e9b4f2818__pr-100321-cost-smarts-prefill-scheduler-telemetry-adapter.txt"
+  },
+  {
+    "id": "dsid_d0fadaa5e7964efea426d5d8e4c0f1d6",
+    "path": "fixtures/public_subset/documents/dsid_d0fadaa5e7964efea426d5d8e4c0f1d6.md",
+    "sha256": "bea670c777c5de4753b7869ea6bc34f74cdc4112c774a54587499b7474fc962d",
+    "title": "Introduce sparse invocation lattice and cohorted cost-blame resolver",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_d0fadaa5e7964efea426d5d8e4c0f1d6__pr-110707-introduce-sparse-invocation-lattice-and-cost-blame-resolver.txt"
+  },
+  {
+    "id": "dsid_d9464f9aeb44447fa203d9754a9baff4",
+    "path": "fixtures/public_subset/documents/dsid_d9464f9aeb44447fa203d9754a9baff4.md",
+    "sha256": "83f4db24fe834db8e62d084feb2247276f183706fbf62b1802f8f196a05ce156",
+    "title": "Introduce cascade-moderator: probe-driven soft-stop and tenant taper to prevent KV-miss cascades",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_d9464f9aeb44447fa203d9754a9baff4__pr-944001-cascade-moderator-soft-stop-and-probe-detector.txt"
+  },
+  {
+    "id": "dsid_dab194d3190245e9986ab64dd6f49245",
+    "path": "fixtures/public_subset/documents/dsid_dab194d3190245e9986ab64dd6f49245.md",
+    "sha256": "3cba9ee8e25474681954fb55a3185e8fe94ff7d993bdb5e5d28297818634f190",
+    "title": "Introduce traffic-modal sampler and fallback lease for robust canaries",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_dab194d3190245e9986ab64dd6f49245__pr-617420-introduce-traffic-modal-sampler-and-fallback-lease.txt"
+  },
+  {
+    "id": "dsid_dc6d425563f542ba8b91761aaacc23c8",
+    "path": "fixtures/public_subset/documents/dsid_dc6d425563f542ba8b91761aaacc23c8.md",
+    "sha256": "2503b1934c10a33e002fc7ebb3dc4be345c7482160674ced3c5a99158811e008",
+    "title": "catalog: introduce compatibility matrix + queryable pricing/limits filters for model-list API and OpenAI-compat harmonization",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_dc6d425563f542ba8b91761aaacc23c8__pr-38641-catalog-compatibility-matrix-queryable-pricing.txt"
+  },
+  {
+    "id": "dsid_dc9df99fcfd64f5f89791781b699610c",
+    "path": "fixtures/public_subset/documents/dsid_dc9df99fcfd64f5f89791781b699610c.md",
+    "sha256": "64b7a74a0df51c46075fb20e7a3edbc669f91f31edf7c83c23876b89878522d3",
+    "title": "Smoother autoscaler signal and gateway backpressure for dedicated pools",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_dc9df99fcfd64f5f89791781b699610c__pr-33457-smoother-autoscaler-signal-and-gateway-backpressure.txt"
+  },
+  {
+    "id": "dsid_dcc222d588b041988aa98a087f26efa3",
+    "path": "fixtures/public_subset/documents/dsid_dcc222d588b041988aa98a087f26efa3.md",
+    "sha256": "ddcc95e853a59171e8f5ca1aa4f943c9d64f5edfac08afec75eedb472ec06aad",
+    "title": "SLA gradient autoscaler and burst fidelity mapper",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_dcc222d588b041988aa98a087f26efa3__pr-1800513-sla-gradient-autoscaler-and-burst-fidelity-mapper.txt"
+  },
+  {
+    "id": "dsid_e04c15e5cbdd43a194c61367382a6f71",
+    "path": "fixtures/public_subset/documents/dsid_e04c15e5cbdd43a194c61367382a6f71.md",
+    "sha256": "7e225b71432943c3fae7240876caab8dc1229a3c45eb8aafef595a7e226f4c5b",
+    "title": "Introduce token lifecycle retention mapper and tiered alert funnel",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_e04c15e5cbdd43a194c61367382a6f71__pr-768890-token-lifecycle-retention-mapper-and-tiered-alert-funnel.txt"
+  },
+  {
+    "id": "dsid_e1079aadc56847e9876ca62eeffcf4a6",
+    "path": "fixtures/public_subset/documents/dsid_e1079aadc56847e9876ca62eeffcf4a6.md",
+    "sha256": "998f0f3e4c7590767c50c76d1a9c5627d592efac0026e4f3b001f22b1834bec4",
+    "title": "Connection snapshot + staged traffic wash orchestrator for regional soft-recoveries",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_e1079aadc56847e9876ca62eeffcf4a6__pr-152231-connection-snapshot-traffic-wash-orchestrator.txt"
+  },
+  {
+    "id": "dsid_e2a98867642347cfbfd47b767ba963ab",
+    "path": "fixtures/public_subset/documents/dsid_e2a98867642347cfbfd47b767ba963ab.md",
+    "sha256": "9a0e40f33ac786635e9c408759f0ecab2e39a2433fceb99813eea4e1e13d9974",
+    "title": "credential-stager-and-async-stream-helpers-python-sdk",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_e2a98867642347cfbfd47b767ba963ab__pr-558321-credential-stager-and-async-stream-helpers.txt"
+  },
+  {
+    "id": "dsid_e2adc1809a1b49beb2888220b41ae174",
+    "path": "fixtures/public_subset/documents/dsid_e2adc1809a1b49beb2888220b41ae174.md",
+    "sha256": "20a78481efab5776daa9b42595d884bd2ae544068d6925d3e8432680c3181bf5",
+    "title": "Add automated Postgres Raft recovery playbooks and Terraform rollback steps",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_e2adc1809a1b49beb2888220b41ae174__pr-67214-automated-postgres-raft-recovery-playbooks-terraform-steps.txt"
+  },
+  {
+    "id": "dsid_e312adaae3704086836e044447c4ca9a",
+    "path": "fixtures/public_subset/documents/dsid_e312adaae3704086836e044447c4ca9a.md",
+    "sha256": "6f88122ecf097eb423b1c867da9759e84d4db2dc58acc6390536ad3d25b3c8ec",
+    "title": "instrument-token-phase-breakdown-and-slo-attenuation",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_e312adaae3704086836e044447c4ca9a__pr-120841-instrument-token-phase-breakdown-and-slo-attenuation.txt"
+  },
+  {
+    "id": "dsid_e420c9806b8c44ee932f0c15307227fc",
+    "path": "fixtures/public_subset/documents/dsid_e420c9806b8c44ee932f0c15307227fc.md",
+    "sha256": "c31c185ae0789b1df2cec052b35375e22b0e76867993f41a85997fff2e24b392",
+    "title": "Graceful DR activation with operatorless switchover (Terraform + Helm)",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_e420c9806b8c44ee932f0c15307227fc__pr-74590-graceful-dr-activation-operatorless-switchover-terraform-helm.txt"
+  },
+  {
+    "id": "dsid_e7ccf4c1324d42578211abce40d00540",
+    "path": "fixtures/public_subset/documents/dsid_e7ccf4c1324d42578211abce40d00540.md",
+    "sha256": "780ffe3fc4acd96e0d76a5e8320ec1f07c6a634e4693eebf126de8c0eeaac3b6",
+    "title": "Contextual Autodiag Prober and Safe-Guarded Runbook Suggestor",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_e7ccf4c1324d42578211abce40d00540__pr-743210-contextual-autodiag-prober-and-safety-guarded-suggestor.txt"
+  },
+  {
+    "id": "dsid_ebd3fcf2380e4ae39e5b71ad39d88c84",
+    "path": "fixtures/public_subset/documents/dsid_ebd3fcf2380e4ae39e5b71ad39d88c84.md",
+    "sha256": "262b6602788d70acbf4c63dfea605568558de95ea99df44354fd0a6c173dbbe6",
+    "title": "Implement residency-proofing admission webhook and KMS usage boundary",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_ebd3fcf2380e4ae39e5b71ad39d88c84__pr-834560-implement-residency-proofing-webhook-and-kms-usage-boundary.txt"
+  },
+  {
+    "id": "dsid_edef4900019a45b8bc1aa6be367052e0",
+    "path": "fixtures/public_subset/documents/dsid_edef4900019a45b8bc1aa6be367052e0.md",
+    "sha256": "6a43da0c999703ae04eb40161fa0a30bd03752d957d332b450d9e4f73e4dc507",
+    "title": "operator credential bakeoff: add KMS provenance proxy and RBACv2 residency sentinel",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_edef4900019a45b8bc1aa6be367052e0__pr-238014-operator-credential-bakeoff-kms-provenance-residency-sentinel.txt"
+  },
+  {
+    "id": "dsid_ee143cb496554e6fa4fc09efe0567d89",
+    "path": "fixtures/public_subset/documents/dsid_ee143cb496554e6fa4fc09efe0567d89.md",
+    "sha256": "c4de0bc05221c8994ebc537ba5cd6e084257ebdf827ba757b06ca8c80da790b5",
+    "title": "Add per-call auth hooks and idempotent stream retry operator",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_ee143cb496554e6fa4fc09efe0567d89__pr-431921-add-per-call-auth-hooks-idempotent-stream-retry-operator.txt"
+  },
+  {
+    "id": "dsid_f08a425b0e944da09fed8540c8d54b7d",
+    "path": "fixtures/public_subset/documents/dsid_f08a425b0e944da09fed8540c8d54b7d.md",
+    "sha256": "fc4472d005b8a6710e212799133739dc228c81667069fb330d4d6dacc2ea1012",
+    "title": "spatial-failover-hedge-prevent-double-evictions-and-slo-race",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_f08a425b0e944da09fed8540c8d54b7d__pr-224468-spatial-failover-hedge-double-eviction-slo-racefix.txt"
+  },
+  {
+    "id": "dsid_f3d9826f7c8b43a1afd4c044a1b5339d",
+    "path": "fixtures/public_subset/documents/dsid_f3d9826f7c8b43a1afd4c044a1b5339d.md",
+    "sha256": "da5b996f4eac132eb0ad6daef48e2b0b9884115dde0a40b33f30dbca58fb4ae1",
+    "title": "Introduce KV deflation path, spill circuit breaker and tenant pacing to reduce fragmentation-related OOMs",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_f3d9826f7c8b43a1afd4c044a1b5339d__pr-827560-kv-deflation-spill-circuit-breaker-and-tenant-pacing.txt"
+  },
+  {
+    "id": "dsid_f5819344dee748c296883adf11d74347",
+    "path": "fixtures/public_subset/documents/dsid_f5819344dee748c296883adf11d74347.md",
+    "sha256": "66e6362eb446b36fae1de8d17b6b39c09d5bbb5f1c9165d096da5e8e4b8c41d2",
+    "title": "Soft-lock tokens and eviction-hinting for paged KV block allocator",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_f5819344dee748c296883adf11d74347__pr-82921-softlock-eviction-hinting-kv-block-allocator.txt"
+  },
+  {
+    "id": "dsid_fa1c733deb77445da7bc55dc472d233d",
+    "path": "fixtures/public_subset/documents/dsid_fa1c733deb77445da7bc55dc472d233d.md",
+    "sha256": "cbb87b17814ade8c068065ce5307a921fb8b6161e5d7fc67ac93d21b0cdbd750",
+    "title": "Neon-orchestrated attention: hybrid Flash + kernel tiler with lazy-KV streaming",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_fa1c733deb77445da7bc55dc472d233d__pr-75012-neon-orchestrated-attn-hybrid-flash-lazykv-tiler.txt"
+  },
+  {
+    "id": "dsid_fd439a20d01949d7891e3672910bf7a0",
+    "path": "fixtures/public_subset/documents/dsid_fd439a20d01949d7891e3672910bf7a0.md",
+    "sha256": "1d74d6bc960855be8d4d18da4e9c15f7d0d3ba27421801b32d093678fd66180c",
+    "title": "Introduce token-flow-regulator to co-schedule kernels and KV admission for smoother prefill bursts",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_fd439a20d01949d7891e3672910bf7a0__pr-300145-token-flow-regulator-kernel-co-schedule-kv-admission.txt"
+  },
+  {
+    "id": "dsid_fd5ba40a86794b528055450c7946a710",
+    "path": "fixtures/public_subset/documents/dsid_fd5ba40a86794b528055450c7946a710.md",
+    "sha256": "95c77878e8c9b334f20a3732d1c1496855209f5b34cc7bdaf0f27b24e96787b9",
+    "title": "introduce-tenant-scoped-signature-header-and-stream-resilience-adapter",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_fd5ba40a86794b528055450c7946a710__pr-106789-introduce-tenant-scoped-signature-header-and-stream-resilience-adapter.txt"
+  },
+  {
+    "id": "dsid_fe61ad877917426682847a8b1fe6a889",
+    "path": "fixtures/public_subset/documents/dsid_fe61ad877917426682847a8b1fe6a889.md",
+    "sha256": "0b6dab21944fbf415dea329f74742a23d7366f43fb26ae8564e8b3d15a528dc4",
+    "title": "Add dependency rollback actuator and lightweight build adapter to stabilize presubmit",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_fe61ad877917426682847a8b1fe6a889__pr-352718-introduce-dep-rollback-and-lightweight-build-adapter.txt"
+  },
+  {
+    "id": "dsid_fe6296a0b68348e28561d8b030dfcdbe",
+    "path": "fixtures/public_subset/documents/dsid_fe6296a0b68348e28561d8b030dfcdbe.md",
+    "sha256": "3a87ee14d108ad290009b9c3a92ead0bc668480e204fbe9480aeabd3060fc57b",
+    "title": "quantized-path-orchestrator: unify INT8/FP8 smoothquant + dequant-fusion scheduling",
+    "tenant_id": "public-benchmark",
+    "groups": [],
+    "tenant_public": true,
+    "upstream_filename": "github/dsid_fe6296a0b68348e28561d8b030dfcdbe__pr-90711-quantized-path-orchestrator-int8-fp8-harmonization.txt"
+  }
+]

@@ -1,0 +1,70 @@
+{
+  "question": {
+    "id": "Q05",
+    "user": "xq-support",
+    "question": "Webhook 投递失败最多重试几次？",
+    "expected": "answered",
+    "facts": [
+      "5"
+    ],
+    "sources": [
+      "webhook"
+    ]
+  },
+  "checks": {
+    "http_ok": true,
+    "status_ok": false,
+    "expected_facts": false,
+    "expected_sources": false,
+    "no_forbidden_marker": true
+  },
+  "response": {
+    "id": "d35c88b9-3ba4-4394-8b07-db69891f0ed3",
+    "question": "Webhook 投递失败最多重试几次？",
+    "status": "verification_failed",
+    "claims": [],
+    "citations": [],
+    "message": "模型的引用未通过检查，本次未返回答案。请调整问题后重试。",
+    "trace": {
+      "method": "dense",
+      "embedding_model": "bge-m3:567m",
+      "generation_model": "qwen2.5:3b",
+      "candidates": [
+        {
+          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "title": "Webhook 投递与签名",
+          "score": 0.7831
+        },
+        {
+          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "title": "Python SDK 重试配置",
+          "score": 0.6386
+        },
+        {
+          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "title": "API 调用配额说明",
+          "score": 0.5718
+        },
+        {
+          "chunk_id": "f5401de6-c2c3-5d2a-a241-e1bc178a3a82",
+          "title": "工单 218：重复回调",
+          "score": 0.552
+        }
+      ],
+      "embed_ms": 167.6,
+      "retrieval_ms": 40,
+      "generation_ms": 51898.9,
+      "total_ms": 52148.3
+    },
+    "usage": {
+      "prompt_tokens": 2003,
+      "completion_tokens": 425,
+      "model_duration_ms": 51875.6,
+      "api_cost": 0,
+      "currency": "AUD",
+      "execution": "local_ollama"
+    }
+  },
+  "model_execution": "real_local_ollama",
+  "interface": "chromium_browser"
+}

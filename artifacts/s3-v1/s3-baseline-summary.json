@@ -1,0 +1,334 @@
+{
+  "chunks": 265,
+  "config": {
+    "asymmetry": "Dense drops hits below min_similarity before generation; BM25 has no score cutoff, so the two configurations differ on abstention. Recorded, not corrected, in S3.",
+    "dataset": "fixtures/s3",
+    "dataset_sha256": {
+      "manifest.json": "e865c49d6fe9ece0289dd97ea932499bd0e89cf01bb7c5166e5f66a6e50823a5",
+      "questions.json": "490c7b304f3a8b329b8948f7799e6ffe7c3a7f565e3ae5f16256672c3ed4c042",
+      "split.json": "c146747500079f3daebcac421a521c724c1c362829ed4748df212f9108a06644"
+    },
+    "generated": false,
+    "models": {
+      "embedding": "bge-m3:567m",
+      "generation": "qwen2.5:7b-instruct"
+    },
+    "pipeline": {
+      "chunk_chars": 700,
+      "chunk_overlap": 100,
+      "chunking": "structure",
+      "context_token_budget": 5000,
+      "min_similarity": 0.35,
+      "parser": "docling-2.127-office-xml-v2",
+      "top_k": 4
+    },
+    "retrieval_depth": 30,
+    "retrievers": [
+      "bm25",
+      "dense"
+    ],
+    "snapshot": "30a4085a60c1d199d0332b18105364b839dd15bbae3343b9496ffc0c9a37aeb4",
+    "source_sha256": {
+      "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/chunking.py": "1d1c9166fc299789bb866f4fa1c2840a856545a77bea9dacb6fdea26084d9dc4",
+      "app/clients.py": "c816dbc335caec166c65108322ba163412f4206c3a63d8a93d1f41e44bdc644c",
+      "app/config.py": "7f1950a98bcc991aa7df9e772c578b7e817d3ad4bc6638ccf4fed3608db5f10a",
+      "app/db.py": "2abb8e780941f681d9d4a7dce40f3e77e9cba62a040671bf092507c7b27ec437",
+      "app/evaluation.py": "ca188d6fc585b8a93a35e68ee0e259df5698fa7cfc8535b1ce1c80a9dc6cfc8a",
+      "app/ingestion.py": "1a7aaa41b35fad44ec555790ff1ede1f2f565f432dbf3730b245eb8cf4835e05",
+      "app/main.py": "a4754034aeb98375dfcc5ec97ec186e447df2fbe2a194d43da68fc38b3b47ea6",
+      "app/models.py": "0a09bd6523b8484ae478579c5d1c8e6a76ac148f996898c730747031e6e5f4a9",
+      "app/office_parsing.py": "1024cf7268876da02cbd5a5be9f4c15cf5c9939ede020eeda88cfb566d5d545a",
+      "app/parsing.py": "5b2bcdce56775c6102c62639b041891676493d38c240178a3586012842db7fba",
+      "app/pdf_parsing.py": "201cb8df76edadab58c740946f067642348e7bfeb59e6055073af1866eda7ad0",
+      "app/qa.py": "4f1cdba544ffbd7cd6f40bcae9339f4f469ac1cfa2373c6d86a4af964d1191fb",
+      "app/security.py": "5f9a5e33014f3683ebce98b4e7b7de60697fc2269a8726cb4f99681107db749d",
+      "app/worker.py": "8e570a60dfcf8002120ab2d5f4b32ddf83a1147906f91f99461ee9099a61ef07",
+      "scripts/run_s3_baseline.py": "9fd992d934aca25d422e60571392b43cc05d8d2c239fdbe896be1321ef434cac"
+    },
+    "split": "development"
+  },
+  "digest": "f6512db1137a312e905ab6d0b93e83d8568d311b09d8ffb17800a6e05ac50876",
+  "documents": 120,
+  "results": {
+    "bm25": {
+      "by_kind": {
+        "conflict": {
+          "hidden_source_leaks": 0,
+          "mrr": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "permission_violations": 0,
+          "queries": 1,
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "retrieval_seconds_p95": 0.1204102081246674
+        },
+        "lookup": {
+          "hidden_source_leaks": 0,
+          "mrr": {
+            "mean": 0.9941860465116279,
+            "n": 86
+          },
+          "ndcg_at_10": {
+            "mean": 0.9957084855066448,
+            "n": 86
+          },
+          "permission_violations": 0,
+          "queries": 86,
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 86
+          },
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 86
+          },
+          "retrieval_seconds_p95": 0.17684041615575552
+        },
+        "multi_document": {
+          "hidden_source_leaks": 0,
+          "mrr": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "permission_violations": 0,
+          "queries": 10,
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "retrieval_seconds_p95": 0.15648391703143716
+        },
+        "permission": {
+          "hidden_source_leaks": 0,
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "permission_violations": 0,
+          "queries": 10,
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "retrieval_seconds_p95": 0.18405212508514524
+        },
+        "unanswerable": {
+          "hidden_source_leaks": 0,
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "permission_violations": 0,
+          "queries": 13,
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "retrieval_seconds_p95": 0.20590187516063452
+        }
+      },
+      "failure_classes": {
+        "no_retrieval_gold": 23,
+        "retrieval_ok": 97
+      },
+      "hidden_source_leaks": 0,
+      "mrr": {
+        "mean": 0.9948453608247423,
+        "n": 97
+      },
+      "ndcg_at_10": {
+        "mean": 0.9961951520986747,
+        "n": 97
+      },
+      "per_question": "artifacts/s3-baseline/development-bm25-retrieval.jsonl",
+      "permission_violations": 0,
+      "queries": 120,
+      "recall_at_10": {
+        "mean": 1.0,
+        "n": 97
+      },
+      "recall_at_5": {
+        "mean": 1.0,
+        "n": 97
+      },
+      "retrieval_seconds_p95": 0.18405212508514524
+    },
+    "dense": {
+      "by_kind": {
+        "conflict": {
+          "hidden_source_leaks": 0,
+          "mrr": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "ndcg_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "permission_violations": 0,
+          "queries": 1,
+          "recall_at_10": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "recall_at_5": {
+            "mean": 1.0,
+            "n": 1
+          },
+          "retrieval_seconds_p95": 0.20154245803132653
+        },
+        "lookup": {
+          "hidden_source_leaks": 0,
+          "mrr": {
+            "mean": 0.824359705122359,
+            "n": 86
+          },
+          "ndcg_at_10": {
+            "mean": 0.8367033027003302,
+            "n": 86
+          },
+          "permission_violations": 0,
+          "queries": 86,
+          "recall_at_10": {
+            "mean": 0.8837209302325582,
+            "n": 86
+          },
+          "recall_at_5": {
+            "mean": 0.8372093023255814,
+            "n": 86
+          },
+          "retrieval_seconds_p95": 0.9415116254240274
+        },
+        "multi_document": {
+          "hidden_source_leaks": 0,
+          "mrr": {
+            "mean": 1.0,
+            "n": 10
+          },
+          "ndcg_at_10": {
+            "mean": 0.8203864189793644,
+            "n": 10
+          },
+          "permission_violations": 0,
+          "queries": 10,
+          "recall_at_10": {
+            "mean": 0.8,
+            "n": 10
+          },
+          "recall_at_5": {
+            "mean": 0.75,
+            "n": 10
+          },
+          "retrieval_seconds_p95": 0.896826250012964
+        },
+        "permission": {
+          "hidden_source_leaks": 0,
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "permission_violations": 0,
+          "queries": 10,
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "retrieval_seconds_p95": 0.7617019577883184
+        },
+        "unanswerable": {
+          "hidden_source_leaks": 0,
+          "mrr": {
+            "mean": null,
+            "n": 0
+          },
+          "ndcg_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "permission_violations": 0,
+          "queries": 13,
+          "recall_at_10": {
+            "mean": null,
+            "n": 0
+          },
+          "recall_at_5": {
+            "mean": null,
+            "n": 0
+          },
+          "retrieval_seconds_p95": 0.7355952090583742
+        }
+      },
+      "failure_classes": {
+        "no_retrieval_gold": 23,
+        "retrieval_miss": 14,
+        "retrieval_ok": 83
+      },
+      "hidden_source_leaks": 0,
+      "mrr": {
+        "mean": 0.8442776767064214,
+        "n": 97
+      },
+      "ndcg_at_10": {
+        "mean": 0.8367046208455882,
+        "n": 97
+      },
+      "per_question": "artifacts/s3-baseline/development-dense-retrieval.jsonl",
+      "permission_violations": 0,
+      "queries": 120,
+      "recall_at_10": {
+        "mean": 0.8762886597938144,
+        "n": 97
+      },
+      "recall_at_5": {
+        "mean": 0.8298969072164949,
+        "n": 97
+      },
+      "retrieval_seconds_p95": 0.9067351249977946
+    }
+  }
+}
