@@ -12,7 +12,7 @@ import re
 import subprocess
 import sys
 
-DOCS = ["README.md", "README_zh.md"]
+DOCS = ["README.md", "PROJECT_REPORT.md"]
 problems = []
 
 
@@ -59,12 +59,15 @@ def main():
         for account in sorted(set(re.findall(r"`([a-z]+@[a-z]+\.demo)`", text))):
             if account not in accounts:
                 problems.append(f"{doc}: 演示账号 {account} 不在 fixtures/catalog.json 中")
-        for claimed in re.findall(r"(\d+)(?: unit and logic checks|\s*项单元与逻辑检查)", text):
+        for claimed in re.findall(r"(\d+)\s*项(?:单元与逻辑)?检查", text):
             if tests is not None and int(claimed) != tests:
                 problems.append(f"{doc}: 声称 {claimed} 项测试，实际收集 {tests} 项")
-        for label, value in expected.items():
-            if value is not None and f"{value:.3f}" not in text:
-                problems.append(f"{doc}: 缺少或不匹配 {label} = {value:.3f}")
+    # Headline figures must appear in the README, so "written but stale" and
+    # "measured but never written down" both fail rather than pass silently.
+    readme = Path("README.md").read_text()
+    for label, value in expected.items():
+        if value is not None and f"{value:.3f}" not in readme:
+            problems.append(f"README.md: 缺少或不匹配 {label} = {value:.3f}")
 
     config = Path("app/config.py").read_text()
     for setting, doc_claim in [
@@ -79,7 +82,7 @@ def main():
         for item in problems:
             print("  -", item)
         sys.exit(1)
-    print(f"README 一致性检查通过：命令、路径、账号、测试数（{tests}）与关键指标均与仓库一致")
+    print(f"文档一致性检查通过：命令、路径、账号、测试数（{tests}）与关键指标均与仓库一致")
 
 
 if __name__ == "__main__":

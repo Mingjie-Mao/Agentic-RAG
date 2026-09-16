@@ -1,305 +1,166 @@
-<p align="left">
-  <a href="./README.md"><img src="https://img.shields.io/badge/ENGLISH-2563EB?style=for-the-badge&labelColor=2563EB" alt="English"></a>
-  <a href="./README_zh.md"><img src="https://img.shields.io/badge/中文-4B5563?style=for-the-badge&labelColor=4B5563" alt="中文"></a>
-</p>
-
 # Enterprise-RAG
 
-A retrieval-augmented question answering system for internal company knowledge, built so that every
-claim about its quality can be reproduced from a frozen evaluation set rather than taken on trust.
+面向企业内部知识库的**权限感知 RAG 系统**。
 
-Most open-source RAG projects compete on feature breadth. This one competes on whether the numbers
-hold up: retrieval and generation are measured separately, permission filtering is asserted on every
-run, and results that turned out to be unsound are recorded as such instead of being quietly dropped.
+支持 PDF、DOCX、XLSX 和 Markdown。系统只检索当前用户有权访问的资料，基于原文证据回答，并返回可定位到原文的引用——PDF 到页和坐标，DOCX 到标题和段落，XLSX 到工作表和单元格。证据不足时拒答，两份资料冲突时报告冲突，不猜测。
 
-> **Status:** all eight stages of the first release are complete. Single-node deployment for a
-> small team. Throughput and latency figures below describe one Apple M4 host, not a production SLA.
+> 面向单机、小团队场景。下文所有结果均来自冻结的评测集，可复现；性能数字来自一台 Apple M4 主机，不是生产环境的服务等级承诺。
 
-## What it does
+## 核心能力
 
-An employee asks a question in Chinese or English. The system retrieves passages from the documents
-that employee is allowed to read, answers only from that evidence, and returns citations that open
-the original file at the exact page, paragraph or cell the answer came from. When the evidence is
-insufficient, or two policies contradict each other, it says so instead of guessing.
+- **权限进检索，不做事后过滤**。授权范围是检索查询的一部分，BM25 与向量两路共用同一集合；返回答案前再校验一次。迄今全部评测中越权命中与隐藏文档泄漏均为 **0**。
+- **引用可核验**。模型只选择带编号的证据片段，服务端取回真实原文、校验版本与权限后才组装引用。**校验不通过的答案不会被修复，而是判定失败不返回。**
+- **版本更新不留空窗**。新版本完成索引并确认可搜索后才切换生效；解析或索引失败只会退化成"什么都没变"。旧版本保留，供审计引用了它的历史回答。
+- **撤权立即生效**。决定可见性的是业务库而不是搜索索引，撤权提交后的下一个请求即被拒绝，不等待索引清理。
+- **冲突需要证据**。只有模型交出分属两份不同文档的两段矛盾原文，系统才报告冲突。
+- **评测可复现**。语料、模型摘要与输入哈希冻结；开发集与留出集分离，留出集在命令行层面封存。
 
-- **Grounded answers.** The model selects numbered source spans; the server resolves each span back
-  to stored text and re-authorises it before the answer is returned. An answer whose citations fail
-  verification is withheld, not repaired.
-- **Permission-aware retrieval.** Access control is applied inside the query, not after it. Across
-  every evaluation run to date there have been zero out-of-scope hits and zero hidden-document leaks.
-- **Revocation takes effect immediately.** The database decides visibility, not the index: the
-  request after a revoke is already refused through every route — listing, detail, parse preview,
-  citation, original file download and the readability probe — with no refresh and no waiting.
-- **Replacement never leaves a gap.** A new version is indexed and confirmed searchable before it
-  becomes active, so a failed or slow reprocess degrades to "nothing changed" rather than to an
-  empty document. Superseded versions stay on disk so older answers can still be audited.
-- **Document fidelity.** PDF, DOCX, XLSX and Markdown are parsed into one structure that keeps
-  heading paths, real page numbers, layout coordinates and cell ranges. A spreadsheet formula with no
-  cached value is reported as missing rather than treated as a computed number.
-- **Reproducible evaluation.** A frozen corpus, ground truth bound to source locations, and a runner
-  whose checkpoints are keyed to a configuration digest, so results from one snapshot can never be
-  silently reused for another.
+## 实测结果
 
-## Measured results
+### 自建开发集 · 147 题
 
-All figures come from the frozen development split and can be re-run with the commands below.
-Held-out questions have never been executed or inspected.
+| 检索配置 | Recall@5 | MRR@10 | 回答正确率 |
+| --- | ---: | ---: | ---: |
+| BM25 | **0.984** | **0.927** | 84.4% |
+| 向量检索 | 0.903 | 0.840 | 85.0% |
+| **混合检索（默认）** | 0.935 | 0.900 | **89.1%** |
 
-### Retrieval — s3-v2 development split, 147 questions
+混合检索的检索指标低于 BM25，端到端回答正确率却更高，因此默认采用。差异未达统计显著（McNemar 精确检验 p = 0.19），所以准确的说法是**实测最优**，不是已证明更优。
 
-| Configuration | Recall@5 | Recall@10 | MRR@10 | nDCG@10 | Retrieval p95 |
-| --- | --- | --- | --- | --- | --- |
-| BM25 (CJK analyzer) | **0.984** | **0.992** | **0.927** | **0.944** | 0.04 s |
-| Dense (BGE-M3, 1024-d) | 0.903 | 0.935 | 0.840 | 0.861 | 0.23 s |
-| Hybrid (reciprocal rank fusion) | 0.935 | 0.976 | 0.900 | 0.918 | 0.26 s |
+### 冻结留出集 · 80 题（只运行一次）
 
-Denominator is the 124 questions that carry document-level ground truth; unanswerable and
-permission-probe questions are excluded from retrieval metrics.
+验收门槛在留出集被执行**之前**已写定并落盘。
 
-Hybrid ranks below BM25 on every retrieval metric, because reciprocal rank fusion pulls the stronger
-run toward the weaker one when one path dominates. **It is still the default**, because retrieval
-metrics turned out to mispredict end-to-end quality — see below.
+| 指标 | 门槛 | 实测 |
+| --- | ---: | ---: |
+| 回答状态正确率 | ≥ 80% | **90.0%** |
+| 字面事实覆盖 | ≥ 80% | **81.9%** |
+| 越权命中 | 0 | **0** |
+| 隐藏文档泄漏 | 0 | **0** |
+| 引用身份校验 | 全通过 | **100%** |
 
-### End to end — s3-v2 development split, 147 questions, prompt `grounded-v5-conflict-gated`
+留出集比它从未参与过的开发集**高 0.9 个百分点**，没有观察到开发集过拟合。
 
-| Configuration | Correct answer state | Literal fact coverage | Conflict recall | Conflict precision | Out-of-scope hits |
-| --- | --- | --- | --- | --- | --- |
-| BM25 | 84.4% | 84.6% | 10/13 = 77% | 10/10 = 100% | 0 |
-| Dense | 85.0% | 82.1% | 9/13 = 69% | 9/9 = 100% | 0 |
-| **Hybrid (default)** | **89.1%** | **89.1%** | **11/13 = 85%** | 11/11 = 100% | 0 |
+### 冲突检测
 
-Hybrid retrieval achieved the best observed end-to-end accuracy (89.1%), although the improvement
-over BM25 was not statistically significant on the current evaluation set (McNemar exact test,
-p = 0.19, 147 paired questions). It is the default because it is best or tied on every measured
-dimension and worse on none; the claim made here is "best observed", not "proven better".
+在 13 道真冲突和 15 道易误判反例（不同指标 / 不同适用对象 / 新旧版本 / 跨文档数值不同但不矛盾）上：
 
-**Document-level retrieval metrics mispredicted end-to-end quality.** Hybrid has the lowest Recall@5
-of the three yet the highest answer accuracy. With an evidence budget of four passages, what decides
-the outcome is which four slots get filled, not whether the gold document appears in the top ten.
-Fusion promotes passages both runs agree on, so the budget is spent on consensus evidence.
+| 指标 | 结果 |
+| --- | ---: |
+| 召回率 | **85%** |
+| 精确率 | **100%** |
+| 反例误报 | **0** |
 
-Fact coverage is normalised string matching, not human-judged correctness. Semantic correctness,
-faithfulness and citation entailment are **not yet measured**.
+修复前的精确率是 4.2%——24 次冲突报告里只有 1 次为真。
 
-### Held-out acceptance — 80 questions, run once
+### 外部基准 · 39 题
 
-Targets were written down and committed **before** the held-out split was ever executed
-(`artifacts/s7-frozen-targets.json`), and the runner refuses `--split holdout` without an explicit
-final-acceptance flag and that frozen file.
+公开企业 RAG 基准的固定子集（英文语料 + 100 份干扰文档）：
 
-| Metric | Target | Measured |
-| --- | --- | --- |
-| Correct answer state | ≥ 0.800 | **0.900** |
-| Literal fact coverage | ≥ 0.800 | 0.819 |
-| Out-of-scope hits | 0 | **0** |
-| Hidden-document leaks | 0 | **0** |
-| Citation identity | all valid | all valid |
+| 检索配置 | Recall@5 | 回答正确率 |
+| --- | ---: | ---: |
+| BM25 | 0.897 | 84.6% |
+| 向量检索 | 0.897 | 74.4% |
+| **混合检索** | **0.974** | 84.6% |
 
-The held-out split scored **0.9 points above** the development split it was never part of, so there
-is no sign of having tuned to development. Its failures are also cleaner: eight over-abstentions,
-one citation check, five missing facts — and zero false conflicts, zero answers where a refusal was
-required.
+混合检索在外部数据上的检索优势明显，与内部数据上的排序相反——说明 BM25 在自建语料上的领先来自那批资料的专有名词特征，不能推广。
 
-What this does not establish: the questions come from different topic families of the same authored
-corpus, so it tests "does this hold on unseen topics", not "does this hold at another company".
-Semantic correctness, faithfulness and citation entailment remain unmeasured.
+完整实验、显著性检验、重排与多轮改写对照、失败分析见 [`PROJECT_REPORT.md`](./PROJECT_REPORT.md)。
 
-### Reranking — implemented, and switched off
-
-A `bge-reranker-v2-m3` cross-encoder rescores the top 30 fused candidates. It lifts retrieval
-clearly — Recall@5 0.935 → 0.968, MRR 0.900 → 0.935 — and end to end it does almost nothing:
-89.1% → 90.5% correct answer state, McNemar p = 0.79 on 147 paired questions.
-
-It stays off, under the same rule that put hybrid retrieval on: adopt what is best or tied on every
-measured dimension and worse on none. Reranking fails that test — conflict precision drops from
-100% to 92.3% and median latency rises 22% — so a 0.79 p-value does not buy it a default.
-
-Worth recording: reranking moved the retrieval metrics a lot and end-to-end quality barely at all,
-while fusion did the opposite. **Retrieval metrics and answer quality are not monotonically related
-here**, which is why both are measured rather than one used as a proxy for the other.
-
-### External validity — public benchmark subset, 39 questions
-
-EnterpriseRAG-Bench v1.0.0, every question in the two published GitHub slices whose gold documents
-are complete, plus 100 distractors. English documents, a different distribution from the authored
-Chinese corpus.
-
-| Configuration | Recall@5 | Correct answer state |
-| --- | --- | --- |
-| BM25 | 0.897 | 33/39 = 84.6% |
-| Dense | 0.897 | 29/39 = 74.4% |
-| **Hybrid (default)** | **0.974** | 33/39 = 84.6% |
-
-**Hybrid's retrieval advantage is larger here than on the authored corpus**, the opposite of its
-last-place retrieval ranking there. That supports the reading that BM25's lead on the authored corpus
-comes from its distinctive noun phrases rather than from any general property of lexical search.
-
-Literal fact coverage is **not applicable** on this dataset and is reported as such rather than as a
-number: upstream gold is prose, the answers paraphrase it correctly, and substring matching built for
-short Chinese values scores that near zero regardless of correctness.
-
-This subset measures external validity, not statistical power. Its questions come from a different
-population and are never pooled into the significance test above.
-
-### Multi-turn follow-ups — 40 dialogues, 160 turns
-
-A follow-up like "and the request timeout?" carries no subject, so single-turn retrieval fails it.
-Four groups were compared on retrieval, since rewriting exists to change what is retrieved.
-
-| Group | Overall R@5 | Follow-up R@5 | Anaphora R@5 | Condition fidelity | Topic-shift contamination | Rewrite latency |
-| --- | --- | --- | --- | --- | --- | --- |
-| A — no rewriting | 0.825 | 0.650 | 0.150 | 100% | 0% | 0 s |
-| **B — prepend previous question (adopted)** | **0.988** | **0.975** | **0.900** | **100%** | **0%** | **0 s** |
-| C — LLM rewrite, no history | 0.825 | 0.650 | 0.150 | 100% | 0% | 2.70 s |
-| D — LLM rewrite + last 3 turns | 0.944 | 0.900 | 0.850 | 95% | 2.5% | 4.51 s |
-
-**All of the benefit comes from the history, none from using a model to rewrite.** Group C is
-identical to A on every metric, because without history there is nothing to resolve the ellipsis
-against. A rule that costs no model call and no latency beat the LLM rewrite outright, and the LLM
-variant failed two hard gates: it dropped a stated value in one case and rewrote a genuinely new
-question back into the previous subject in another.
-
-With empty history the rule is the identity function, so every single-turn result above stands
-unchanged.
-
-### Failure attribution
-
-Of 86 failures in the pre-fix baseline, **6 (7%) were retrieval misses and 80 (93%) occurred after
-the correct sources had already been retrieved.** This is why work went into answer-state logic
-before recall optimisation.
-
-### A defect this evaluation caught
-
-The conflict detector was a second model call whose boolean verdict overwrote the answer state with
-no evidence required. It fired on 24 of 120 questions while only one was a genuine conflict —
-**4.2% precision**. It was gated to require two mutually contradictory span IDs from two different
-documents; precision reached 100% and the correct-state rate rose by roughly 19 points.
-
-Recall could not be measured at the time: the frozen v1 set contained a single conflict question. The
-v2 set added 12 authored conflicts and 15 near-miss negatives — different metrics, different
-subjects, superseded versions, and pairs that disagree across documents without contradicting each
-other. On that set the gated detector reaches **85% recall at 100% precision**, and none of the 15
-negatives is misreported.
-
-## Architecture
+## 系统结构
 
 ```text
-Ingest   upload → authorise → store immutable original → parse → chunk → embed
-         → write pending index → verify searchable → promote active version
+资料入库
 
-Query    identify user → retrieve within permitted version set → fuse → re-check
-         version and grant → assemble evidence → generate → verify citations
-         → re-authorise → return answer with source locations
+上传 → 鉴权 → 保存不可变原件 → 解析 → 分块 → 向量化
+    → 写入待发布索引 → 确认可搜索 → 切换活动版本
+
+
+问答
+
+识别身份 → 按权限检索 → BM25 + 向量 → RRF 融合
+       → 复查版本与授权 → 组织证据 → 生成
+       → 校验引用 → 再次鉴权 → 返回答案与原文位置
 ```
 
-| Layer | Choice | Reason |
-| --- | --- | --- |
-| API | Python, FastAPI, Pydantic | Explicit schemas; evaluation reuses the same retrieval code |
-| Business store | PostgreSQL, SQLAlchemy, Alembic | Identity, grants, versions, jobs, answer provenance |
-| Search | OpenSearch — BM25 and vector in one backend | One chunk ID space, one filter, one update path |
-| Parsing | Docling, with openpyxl for cell-level anchors | Reuse a maintained parser; own the structure and provenance |
-| Embedding | BGE-M3 (`bge-m3:567m`), dense output only | Reproducible, adequate for Chinese and English identifiers |
-| Generation | Qwen2.5 7B Instruct via Ollama on Metal | Fixed seed and temperature so runs are comparable |
-| Jobs | PostgreSQL job table with leases and retries | No message broker in the first release |
-| Frontend | React, TypeScript, PDF.js | Document state, evidence drawer, retrieval inspector |
-
-## Quickstart
-
-Requires Docker, Node.js 22.12+, Python 3.13 and `uv`. First run downloads models and needs several
-GB of disk.
-
-```bash
-make setup && make infra && make models && make migrate && make seed && make web && make run
-```
-
-Open `http://127.0.0.1:8000`. Demo accounts are listed on the sign-in page; the password comes from
-`RAG_DEMO_PASSWORD` in `.env`. All seeded content is fictional.
-
-| Account | Scope |
+| 层次 | 技术 |
 | --- | --- |
-| `admin@xingqiao.demo` | Tenant administrator |
-| `engineer@xingqiao.demo` | Engineering group |
-| `support@xingqiao.demo` | Support group |
-| `admin@haichuan.demo` | Second tenant, for isolation checks |
+| 接口 | FastAPI · Pydantic |
+| 业务库 | PostgreSQL · SQLAlchemy · Alembic |
+| 检索 | OpenSearch · BM25 · 向量 · RRF 融合 |
+| 解析 | Docling · openpyxl |
+| 向量模型 | BGE-M3（1024 维） |
+| 生成模型 | Qwen2.5 7B Instruct · Ollama |
+| 前端 | React · TypeScript · PDF.js |
 
-## The five-minute demo, as a test
+## 快速开始
 
-`web/tests/demo.spec.ts` performs the demo against the released build and asserts what each beat is
-supposed to show: a PDF becomes searchable and reports its parser and active version; an answer
-opens its citation on the right page with the span highlighted; the inspector names the retrieval
-method, both per-path ranks, and which candidates actually reached the model; a reader from another
-group cannot see the document at all; and a question with no basis is refused rather than guessed.
-
-A recording proves a demo happened once. This runs every time, cleans up after itself, and has been
-executed twice in a row from the same state. Screenshots and the per-beat record land in
-`artifacts/s8-demo/`.
-
-## Reproducing the evaluation
+需要 Docker、Node.js 22.12+、Python 3.13 与 `uv`。首次运行要下载模型，占用数 GB 磁盘。
 
 ```bash
-make test              # 89 unit and logic checks (integration ones need a flag)
-make integration       # real database, permission and job-recovery checks
-make s3-validate       # audit ground truth against parsed source text
-make s3-freeze         # pin input hashes and model digests
-make s3-retrieval      # BM25 / Dense / Hybrid retrieval metrics
-make s3-generate       # end-to-end answers, citations and failure classes
+make setup
+make infra
+make models
+make migrate
+make seed
+make web
+make run
 ```
 
-Four guarantees are enforced by the harness rather than by convention:
+打开 `http://127.0.0.1:8000`。登录页列出演示账号，密码取自 `.env` 的 `RAG_DEMO_PASSWORD`。
 
-1. Ground truth reaches scoring only — never retrieval, prompts, rewriting or caches.
-2. `--split holdout` is refused outright until the final evaluation.
-3. Checkpoint rows carry a configuration digest; resuming across snapshots fails loudly. This caught
-   a run that silently reused results from a superseded corpus and reported identical metrics.
-4. New evaluation material may not discuss a subject the existing corpus already answers. Adding a
-   second opinion on a settled subject turns previously correct ground truth into a lie.
+| 账号 | 范围 |
+| --- | --- |
+| `admin@xingqiao.demo` | 租户管理者 |
+| `engineer@xingqiao.demo` | 工程组 |
+| `support@xingqiao.demo` | 支持组 |
+| `admin@haichuan.demo` | 第二个租户，用于隔离性检查 |
 
-## Verified and not verified
+所有种子资料、题目与公司名称均为本项目自建的虚构内容。
 
-Treating these two lists as one is the most common way RAG benchmarks mislead, so they stay separate.
+## 演示
 
-**Verified with artefacts in `artifacts/`**
+**没有演示视频。** 演示做成了可执行走查：`web/tests/demo.spec.ts` 对着当前版本真实操作五个环节，并断言每一步应当展示的内容——
 
-- Four document formats parse with checkable structure and source locations; 54 checks, 0 skipped.
-- Twenty development questions pass a single complete browser run, 23/23 including upload and format
-  checks.
-- Citation identity: every returned citation resolves to stored text, version and location.
-- Permission filtering: zero out-of-scope hits and zero hidden-document leaks across all runs.
-- Restart recovery: files, grants, versions, chunks and vectors survive a full stack restart.
+1. 上传含标题与表格的 PDF，确认变为可检索并显示解析器与生效版本
+2. 提问并点开引用，PDF 打开对应页面并画出高亮框
+3. 打开检索调试页，显示检索方式、两路名次、以及哪些候选真正进入了模型
+4. 换一个组的账号，私有资料完全不可见（详情接口返回 404）
+5. 问一个没有依据的问题，明确拒答且引用为空
 
-**Not verified**
+录像只能证明演示发生过一次；走查每次都跑，结束时清理自己上传的资料，已从同一状态连续执行两次。截图与逐拍记录在 `artifacts/s8-demo/`。
 
-- Semantic correctness, faithfulness and citation entailment — only literal matching so far.
-- Public benchmark subset — adapter ready, never executed.
-- Held-out split — 80 questions, never run, never inspected.
-- Independent human review of ground truth — recorded as **0**. Programmatic auditing proves a fact
-  appears in its own source; it does not prove the question or its answer is well posed.
+```bash
+npm --prefix web run test:e2e
+```
 
-## Limitations
+## 评测
 
-1. Scanned PDFs and PPTX are not supported; a PDF with no text layer fails loudly rather than
-   indexing empty content.
-2. Hybrid retrieval is the default on an observed, not statistically significant, advantage. The
-   public benchmark subset has been run and agrees; the held-out split remains sealed until final
-   acceptance and is the intended tie-breaker for significance.
-3. In-page PDF highlighting covers the whole corpus: the 33 documents ingested by the older parser
-   were reprocessed into new versions, which took 45 seconds and promoted all 33.
-4. No working memory and no long-term memory. `/api/chat` stays stateless; a client may replay the
-   user's own earlier questions, which complete a follow-up into a searchable query and nothing else
-   — the permitted document set is always recomputed for the current user, and replayed text grants
-   no access. Stored answer history is an audit record and never returns to the model.
-5. Conflict detection is measured at 85% recall and 100% precision on 13 conflicts and 15 negatives.
-   Three conflicts are still missed, and the sample is small.
-6. Single-host demo deployment. Rate limiting, TLS, multi-node operation and concurrency headroom
-   are out of scope. Backup and restore is exercised: a drill dumps the database and originals,
-   rebuilds the search index from the restored rows, compares every original by hash, and then runs
-   a real question, because matching counts alone would not show the restored system works.
+```bash
+make test           # 单元与逻辑检查，末尾核对文档与实现是否一致
+make integration    # 真实数据库、权限与任务恢复
+make s3-validate    # 审计金标：事实能否在其自身来源中定位
+make s3-freeze      # 冻结输入哈希与模型摘要
+make s3-retrieval   # 三路检索指标
+make s3-generate    # 端到端答案、引用与失败分类
+```
 
-## Project documentation
+备份恢复演练（导出 → 恢复 → 从恢复的行重建索引 → 比对原件哈希 → 实跑一次问答）：
 
-[`PROJECT_PLAN.md`](./PROJECT_PLAN.md) is the single source of truth: scope, stage status, technical
-decisions, experiment results, failure samples and reproduction steps all live there. Machine
-artefacts under `artifacts/` are execution evidence, not a second set of documentation.
+```bash
+.venv/bin/python scripts/backup_restore.py drill
+```
 
-All sample documents, questions and company names in this repository are fictional and authored for
-this project. They do not represent any real organisation or policy.
+实验产物保存在 `artifacts/`。
+
+## 已知限制
+
+- 不支持需要 OCR 的扫描件与 PPTX；没有文字层的 PDF 会显式失败，不会被静默索引成空文档
+- **语义正确性、忠实度与引用蕴含尚未测量**，目前只有归一化字面匹配
+- **金标的独立人工复核记为 0**：程序能证明事实出现在指定来源，证明不了问题设计与金标解读都合理
+- 全部语料为自建虚构内容；留出集验证的是"同一分布下换一批主题"，不是"换一家公司"
+- 冲突集 13 正例 + 15 难负例、外部子集 39 题，规模适合验证系统行为，不足以支撑广泛统计结论
+- 不实现工作记忆与长期记忆，`/api/chat` 保持无状态
+- 单机演示部署，未覆盖多机、TLS 终止、限流与高并发容量规划
+
+完整设计、实验方法、失败案例与技术结论：[`PROJECT_REPORT.md`](./PROJECT_REPORT.md)
