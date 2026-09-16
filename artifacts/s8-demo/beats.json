@@ -1,0 +1,25 @@
+{
+  "document_id": "f3a015ea-b7cb-472a-9ef9-557fe0c53957",
+  "beat1": {
+    "chunks": 4,
+    "parser": "docling-2.127-office-xml-v2"
+  },
+  "beat2": {
+    "status": "answered",
+    "citations": 1
+  },
+  "beat3": {
+    "method": "hybrid",
+    "candidates": 4,
+    "admitted": 4,
+    "total_ms": 16702.3
+  },
+  "beat4": {
+    "private_document_visible_to_other_group": false,
+    "detail_status": 404
+  },
+  "beat5": {
+    "status": "insufficient_evidence",
+    "citations": 0
+  }
+}

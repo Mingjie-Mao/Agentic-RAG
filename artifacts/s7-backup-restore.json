@@ -1,0 +1,19 @@
+{
+  "backup": {
+    "sql_bytes": 764605,
+    "files_bytes": 25447,
+    "documents": 55,
+    "chunks": 129,
+    "seconds": 0.5
+  },
+  "restore_seconds": 0.5,
+  "reindexed_chunks": 75,
+  "verify": {
+    "identical": true,
+    "differences": [],
+    "documents": 55,
+    "chunks": 129,
+    "originals_verified": 70,
+    "indexed_chunks": 75
+  }
+}

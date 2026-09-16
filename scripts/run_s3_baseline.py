@@ -213,9 +213,22 @@ def main():
     parser.add_argument("--generate", action="store_true")
     parser.add_argument("--limit", type=int)
     parser.add_argument("--out", default="artifacts/s3-baseline")
+    parser.add_argument("--final-acceptance", action="store_true")
     args = parser.parse_args()
     if args.split == "holdout":
-        parser.error("Holdout remains sealed until the final S7 evaluation; use development or public")
+        # Sealed on purpose. Unsealing needs a deliberate flag and frozen targets,
+        # because the held-out answers can only be looked at once.
+        if not args.final_acceptance:
+            parser.error(
+                "Holdout is sealed. The final S7 run needs --final-acceptance, and it may only "
+                "happen after artifacts/s7-frozen-targets.json exists."
+            )
+        targets = Path("artifacts/s7-frozen-targets.json")
+        if not targets.exists():
+            parser.error("Freeze the acceptance targets before looking at held-out answers")
+        print(
+            f"留出集最终验收：目标已于 {json.loads(targets.read_text())['frozen_at']} 冻结", flush=True
+        )
     if not set(args.retrievers.split(",")) <= {"bm25", "dense", "hybrid", "hybrid_rerank"}:
         parser.error("Unknown retriever")
 

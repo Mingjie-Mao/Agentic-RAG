@@ -12,8 +12,8 @@ Most open-source RAG projects compete on feature breadth. This one competes on w
 hold up: retrieval and generation are measured separately, permission filtering is asserted on every
 run, and results that turned out to be unsound are recorded as such instead of being quietly dropped.
 
-> **Status:** stages S0–S6 complete, S7–S8 not started. Single-node deployment for a small team.
-> Throughput and latency figures below describe one Apple M4 host, not a production SLA.
+> **Status:** all eight stages of the first release are complete. Single-node deployment for a
+> small team. Throughput and latency figures below describe one Apple M4 host, not a production SLA.
 
 ## What it does
 
@@ -80,6 +80,29 @@ Fusion promotes passages both runs agree on, so the budget is spent on consensus
 
 Fact coverage is normalised string matching, not human-judged correctness. Semantic correctness,
 faithfulness and citation entailment are **not yet measured**.
+
+### Held-out acceptance — 80 questions, run once
+
+Targets were written down and committed **before** the held-out split was ever executed
+(`artifacts/s7-frozen-targets.json`), and the runner refuses `--split holdout` without an explicit
+final-acceptance flag and that frozen file.
+
+| Metric | Target | Measured |
+| --- | --- | --- |
+| Correct answer state | ≥ 0.800 | **0.900** |
+| Literal fact coverage | ≥ 0.800 | 0.819 |
+| Out-of-scope hits | 0 | **0** |
+| Hidden-document leaks | 0 | **0** |
+| Citation identity | all valid | all valid |
+
+The held-out split scored **0.9 points above** the development split it was never part of, so there
+is no sign of having tuned to development. Its failures are also cleaner: eight over-abstentions,
+one citation check, five missing facts — and zero false conflicts, zero answers where a refusal was
+required.
+
+What this does not establish: the questions come from different topic families of the same authored
+corpus, so it tests "does this hold on unseen topics", not "does this hold at another company".
+Semantic correctness, faithfulness and citation entailment remain unmeasured.
 
 ### Reranking — implemented, and switched off
 
@@ -199,10 +222,22 @@ Open `http://127.0.0.1:8000`. Demo accounts are listed on the sign-in page; the 
 | `support@xingqiao.demo` | Support group |
 | `admin@haichuan.demo` | Second tenant, for isolation checks |
 
+## The five-minute demo, as a test
+
+`web/tests/demo.spec.ts` performs the demo against the released build and asserts what each beat is
+supposed to show: a PDF becomes searchable and reports its parser and active version; an answer
+opens its citation on the right page with the span highlighted; the inspector names the retrieval
+method, both per-path ranks, and which candidates actually reached the model; a reader from another
+group cannot see the document at all; and a question with no basis is refused rather than guessed.
+
+A recording proves a demo happened once. This runs every time, cleans up after itself, and has been
+executed twice in a row from the same state. Screenshots and the per-beat record land in
+`artifacts/s8-demo/`.
+
 ## Reproducing the evaluation
 
 ```bash
-make test              # 88 unit and logic checks (integration ones need a flag)
+make test              # 89 unit and logic checks (integration ones need a flag)
 make integration       # real database, permission and job-recovery checks
 make s3-validate       # audit ground truth against parsed source text
 make s3-freeze         # pin input hashes and model digests
@@ -255,8 +290,10 @@ Treating these two lists as one is the most common way RAG benchmarks mislead, s
    no access. Stored answer history is an audit record and never returns to the model.
 5. Conflict detection is measured at 85% recall and 100% precision on 13 conflicts and 15 negatives.
    Three conflicts are still missed, and the sample is small.
-6. Single-host demo deployment. Rate limiting, backups, TLS, multi-node operation and concurrency
-   headroom are out of scope for this release.
+6. Single-host demo deployment. Rate limiting, TLS, multi-node operation and concurrency headroom
+   are out of scope. Backup and restore is exercised: a drill dumps the database and originals,
+   rebuilds the search index from the restored rows, compares every original by hash, and then runs
+   a real question, because matching counts alone would not show the restored system works.
 
 ## Project documentation
 

@@ -452,3 +452,45 @@ def test_replayed_history_cannot_widen_the_searchable_scope(monkeypatch):
     assert "海川" in seen["query"] and seen["versions"] == ["v"]
     assert result["trace"]["retrieval_query"] != result["trace"]["original_question"]
     assert result["status"] == "insufficient_evidence"
+
+
+def test_request_log_carries_numbers_but_never_text():
+    """Logs outlive access grants, so they must not become a second copy of the corpus.
+
+    Questions are excluded along with evidence: a question routinely contains the very
+    value the asker was not entitled to learn.
+    """
+    from app.observability import answer_record
+
+    secret = "生产数据库恢复点目标 RPO 为 15 分钟"
+    question = "海川工作室的机密配额是多少？"
+    payload = {
+        "id": "answer-1",
+        "question": question,
+        "status": "answered",
+        "claims": [{"text": secret, "evidence_ids": ["c1"], "quotes": [secret]}],
+        "citations": [{"chunk_id": "c1", "document_id": "d1", "title": "备份规则", "text": secret}],
+        "message": "",
+        "trace": {
+            "method": "hybrid",
+            "prompt_version": "grounded-v5-conflict-gated",
+            "original_question": question,
+            "retrieval_query": question,
+            "query_rewritten": False,
+            "embed_ms": 12.0,
+            "retrieval_ms": 30.0,
+            "generation_ms": 900.0,
+            "total_ms": 942.0,
+            "context_tokens_estimate": 512,
+            "candidates": [{"chunk_id": "c1", "title": "备份规则", "score": 0.9}],
+        },
+        "usage": {"prompt_tokens": 800, "completion_tokens": 40, "api_cost": 0, "currency": "AUD"},
+    }
+    record = json.dumps(answer_record(payload), ensure_ascii=False)
+
+    for forbidden in [secret, question, "备份规则", "RPO", "海川"]:
+        assert forbidden not in record, f"日志中出现了不应记录的内容：{forbidden}"
+    # What operating the system actually needs is all present.
+    for required in ["hybrid", "generation_ms", "prompt_tokens", "api_cost", "c1"]:
+        assert required in record
+    assert json.loads(record)["citations"] == 1

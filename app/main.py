@@ -18,6 +18,7 @@ from app.lifecycle import add_version, purge, readable_chunk, set_access, soft_d
 from app.ingestion import queue_document
 from app.models import Answer, Chunk, DocumentVersion, Job, LoginSession, Tenant, User
 from app.qa import answer_question, visible_answer
+from app.observability import Timer, answer_record, log_request, request_id
 from app.security import (
     COOKIE,
     authenticate,
@@ -39,6 +40,24 @@ async def lifespan(_):
 app = FastAPI(title="Enterprise-RAG", version="0.1.0", lifespan=lifespan)
 DB = Annotated[Session, Depends(get_db)]
 Identity = Annotated[User, Depends(current_user)]
+
+
+@app.middleware("http")
+async def trace_request(request: Request, call_next):
+    """Stamp every request so one answer can be followed through the logs."""
+    identifier = request.headers.get("X-Request-Id") or request_id()
+    request.state.request_id = identifier
+    with Timer() as timer:
+        response = await call_next(request)
+    response.headers["X-Request-Id"] = identifier
+    log_request(
+        request_id=identifier,
+        route=request.url.path,
+        method=request.method,
+        status_code=response.status_code,
+        duration_ms=timer.ms,
+    )
+    return response
 
 
 @app.middleware("http")
@@ -379,12 +398,22 @@ def original(version_id: str, user: Identity, db: DB):
 
 
 @app.post("/api/chat")
-def chat(body: QuestionBody, user: Identity, db: DB):
+def chat(body: QuestionBody, user: Identity, db: DB, request: Request):
     question = body.question.strip()
     if len(question) < 2:
         raise HTTPException(422, "请输入至少两个字符的问题")
     history = [line.strip()[:1000] for line in body.history if line.strip()]
-    return answer_question(db, user, question, history)
+    payload = answer_question(db, user, question, history)
+    # Costs and stage timings are recorded; the question and the evidence are not.
+    log_request(
+        request_id=getattr(request.state, "request_id", None),
+        route="/api/chat",
+        tenant_id=user.tenant_id,
+        user_id=user.id,
+        answer_id=payload.get("id"),
+        **answer_record(payload),
+    )
+    return payload
 
 
 @app.get("/api/history")
