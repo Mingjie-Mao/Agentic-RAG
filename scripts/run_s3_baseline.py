@@ -275,8 +275,23 @@ def main():
         path = out / f"{args.split}-{retriever}{'-generated' if args.generate else '-retrieval'}.jsonl"
         rows = []
         if path.exists():
-            for line in path.read_text().splitlines():
-                rows.append(json.loads(line))
+            # A killed process can leave a half-written final line. Reading it as gold
+            # would either crash the resume or, worse, silently drop a question that
+            # then never gets re-run. Truncate it deliberately and say so.
+            lines = path.read_text().splitlines()
+            truncated = 0
+            for number, line in enumerate(lines, 1):
+                try:
+                    rows.append(json.loads(line))
+                except json.JSONDecodeError:
+                    assert number == len(lines), (
+                        f"{path} line {number} is unreadable but is not the last line; "
+                        "this is corruption in the middle of the file, not an interrupted write"
+                    )
+                    truncated = 1
+            if truncated:
+                path.write_text("".join(canonical(row) + "\n" for row in rows))
+                print(f"{path}: 丢弃 1 行写入中断的记录，该题将重跑", flush=True)
         stale = [row["id"] for row in rows if row.get("config_digest") != config_digest]
         assert not stale, (
             f"{len(stale)} checkpoint rows in {path} came from a different configuration "
@@ -356,7 +371,19 @@ def main():
         }
         totals["per_question"] = str(path)
         summary["results"][retriever] = totals
+    # A run is only complete when every requested question produced a row.
+    expected = {q["id"] for q in questions}
+    for retriever in retrievers:
+        path = out / f"{args.split}-{retriever}{'-generated' if args.generate else '-retrieval'}.jsonl"
+        produced = {json.loads(line)["id"] for line in path.read_text().splitlines()}
+        missing = expected - produced
+        assert not missing, (
+            f"{retriever}: {len(missing)} 道题没有结果（例如 {sorted(missing)[:3]}），"
+            "结果集合不完整，不能标记为 complete"
+        )
+        assert len(produced) == len(expected), f"{retriever}: 结果数与题数不一致"
     summary["state"] = "complete"
+    summary["completeness"] = {"questions": len(expected), "retrievers": retrievers}
     summary.pop("error", None)
     summary["digest"] = digest(summary["results"])
     summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n")

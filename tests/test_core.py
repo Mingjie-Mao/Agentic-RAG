@@ -494,3 +494,23 @@ def test_request_log_carries_numbers_but_never_text():
     for required in ["hybrid", "generation_ms", "prompt_tokens", "api_cost", "c1"]:
         assert required in record
     assert json.loads(record)["citations"] == 1
+
+
+def test_outage_reports_the_stage_so_the_reader_is_not_told_a_guess():
+    """ "The model never saw this" and "the model may have answered" differ for the
+    reader: one makes retrying free, the other does not. Only the server knows which."""
+    from app.clients import DependencyError, Search
+
+    with pytest.raises(DependencyError) as retrieval:
+        Search("i").request("GET", "/nowhere", json={})
+    assert retrieval.value.stage == "retrieval"
+
+    def dead(self, path, body):
+        raise DependencyError("本地模型暂时不可用", stage="generation")
+
+    with pytest.raises(DependencyError) as generation:
+        dead(None, "/api/chat", {})
+    assert generation.value.stage == "generation"
+
+    # An unannotated failure must not claim the model was never reached.
+    assert DependencyError("x").stage == "unknown"

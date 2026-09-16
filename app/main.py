@@ -78,7 +78,12 @@ async def browser_boundary(request: Request, call_next):
 
 @app.exception_handler(DependencyError)
 async def dependency_error(_, exc):
-    return JSONResponse({"detail": str(exc)}, status_code=503)
+    # The stage decides what the reader may safely be told about retrying.
+    stage = getattr(exc, "stage", "unknown")
+    return JSONResponse(
+        {"detail": str(exc), "stage": stage, "model_reached": stage == "generation"},
+        status_code=503,
+    )
 
 
 class LoginBody(BaseModel):

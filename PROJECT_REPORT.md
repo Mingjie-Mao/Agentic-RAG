@@ -1,6 +1,6 @@
 # Enterprise-RAG · 项目报告
 
-本文记录系统设计、实验方法、失败案例与技术结论。项目概要与主要指标见 [`README.md`](./README.md)。
+本文记录系统设计、实验方法、失败案例与技术结论。项目概要与主要指标见 [`README.md`](./README.md)，在线展示页见 <https://enterprise-rag.x2337445.workers.dev>。
 
 ---
 

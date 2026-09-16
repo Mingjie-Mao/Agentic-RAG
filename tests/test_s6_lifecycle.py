@@ -5,6 +5,7 @@ no longer see something, no entry point may return it — regardless of what the
 index still contains.
 """
 
+import json
 import os
 import time
 
@@ -21,8 +22,8 @@ pytestmark = pytest.mark.skipif(
     os.getenv("RAG_RUN_INTEGRATION") != "1", reason="requires isolated local demo services"
 )
 HEADERS = {"X-Requested-With": "EnterpriseRAG"}
-SAMPLE = b"# \xe4\xb8\xb4\xe6\x97\xb6\xe8\xa7\x84\xe5\xae\x9a\n\n\xe4\xb8\xb4\xe6\x97\xb6\xe9\x85\x8d\xe9\xa2\x9d\xe4\xb8\xba 77 \xe6\xac\xa1\xe3\x80\x82\n"
-REVISED = b"# \xe4\xb8\xb4\xe6\x97\xb6\xe8\xa7\x84\xe5\xae\x9a\n\n\xe4\xb8\xb4\xe6\x97\xb6\xe9\x85\x8d\xe9\xa2\x9d\xe4\xb8\xba 88 \xe6\xac\xa1\xe3\x80\x82\n"
+SAMPLE = "# 鹊桥临时通道规定\n\n鹊桥临时通道的单日调用上限为 77 次。\n鹊桥临时通道仅在演练期间开放。\n".encode()
+REVISED = "# 鹊桥临时通道规定\n\n鹊桥临时通道的单日调用上限为 88 次。\n鹊桥临时通道仅在演练期间开放。\n".encode()
 
 
 def login(username):
@@ -85,10 +86,15 @@ def chunk_of(document_id):
         return document.active_version_id, chunk.id
 
 
-def every_read_entry(client, document_id, version_id, chunk_id):
-    """Every route through which stored content can surface."""
+def every_read_entry(client, document_id, version_id, chunk_id, answer_id=None):
+    """Every route through which stored content can surface.
+
+    History and the retrieval trace are included because they are the easiest to
+    overlook and the most revealing: history stores the claims and citations of a past
+    answer, and the trace stores the titles of every candidate that was considered.
+    """
     listed = client.get("/api/documents").json()
-    return {
+    entries = {
         "list": any(d["id"] == document_id for d in listed),
         "detail": client.get(f"/api/documents/{document_id}").status_code == 200,
         "processing": client.get(f"/api/documents/{document_id}/processing").status_code == 200,
@@ -96,12 +102,59 @@ def every_read_entry(client, document_id, version_id, chunk_id):
         "original": client.get(f"/api/versions/{version_id}/original").status_code == 200,
         "readable_probe": client.get(f"/api/access/chunks/{chunk_id}").json()["readable"],
     }
+    if answer_id:
+        history = client.get("/api/history").json()
+        record = next((row for row in history if row["id"] == answer_id), None)
+        entries["history_list"] = record is not None
+        # A hidden answer must not leak through its citations or its trace candidates.
+        entries["history_citations"] = bool(record and record.get("citations"))
+        entries["history_trace"] = bool(record and (record.get("trace") or {}).get("candidates"))
+        single = client.get(f"/api/history/{answer_id}")
+        entries["history_detail"] = single.status_code == 200 and bool(single.json().get("citations"))
+    return entries
+
+
+def ask_about(client, question):
+    response = client.post("/api/chat", json={"question": question})
+    assert response.status_code == 200, response.text
+    return response.json()
 
 
 def test_private_document_is_invisible_to_another_group_everywhere(uploaded, owner, outsider):
     version_id, chunk_id = chunk_of(uploaded)
     assert all(every_read_entry(owner, uploaded, version_id, chunk_id).values())
     assert not any(every_read_entry(outsider, uploaded, version_id, chunk_id).values())
+
+
+def test_losing_access_hides_the_past_answer_its_citations_and_its_trace(uploaded, owner, admin):
+    """An answer is only as private as the weakest route back to its evidence."""
+    version_id, chunk_id = chunk_of(uploaded)
+    admin.patch(
+        f"/api/documents/{uploaded}/access",
+        json={"groups": ["support", "engineering"], "tenant_public": False},
+    )
+    engineer = login("engineer@xingqiao.demo")
+    try:
+        answer = ask_about(engineer, "鹊桥临时通道的单日调用上限是多少？")
+        assert any(c["document_id"] == uploaded for c in answer["citations"]), answer["status"]
+        opened = every_read_entry(engineer, uploaded, version_id, chunk_id, answer["id"])
+        assert opened["history_citations"] and opened["history_trace"]
+
+        admin.patch(
+            f"/api/documents/{uploaded}/access",
+            json={"groups": ["support"], "tenant_public": False},
+        )
+        closed = every_read_entry(engineer, uploaded, version_id, chunk_id, answer["id"])
+        # The record may remain as a tombstone — it is the reader's own past action —
+        # but it must reveal nothing, including the question, which names the subject.
+        assert not any(value for key, value in closed.items() if key != "history_list")
+        tombstone = engineer.get(f"/api/history/{answer['id']}").json()
+        assert tombstone["status"] == "access_changed"
+        assert tombstone["claims"] == [] and tombstone["citations"] == []
+        assert "鹊桥临时通道" not in json.dumps(tombstone, ensure_ascii=False)
+        assert "trace" not in tombstone
+    finally:
+        engineer.__exit__(None, None, None)
 
 
 def test_revoking_access_closes_every_entry_without_waiting_for_the_index(

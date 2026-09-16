@@ -1,0 +1,202 @@
+{
+  "commit": "a3176121",
+  "default": {
+    "retrieval_mode": "hybrid",
+    "rewrite_mode": "rule",
+    "rerank_mode": "off",
+    "top_k": 4,
+    "context_token_budget": 5000,
+    "embedding": "bge-m3:567m",
+    "generation": "qwen2.5:7b-instruct",
+    "prompt": "grounded-v5-conflict-gated"
+  },
+  "retrieval": {
+    "bm25": {
+      "recall_at_5": 0.9839,
+      "recall_at_10": 0.9919,
+      "mrr": 0.9274,
+      "ndcg_at_10": 0.9436
+    },
+    "dense": {
+      "recall_at_5": 0.9032,
+      "recall_at_10": 0.9355,
+      "mrr": 0.8395,
+      "ndcg_at_10": 0.8611
+    },
+    "hybrid": {
+      "recall_at_5": 0.9355,
+      "recall_at_10": 0.9758,
+      "mrr": 0.9003,
+      "ndcg_at_10": 0.9185
+    },
+    "hybrid_rerank": {
+      "recall_at_5": 0.9677,
+      "recall_at_10": 0.9758,
+      "mrr": 0.9351,
+      "ndcg_at_10": 0.9446
+    }
+  },
+  "dev": {
+    "bm25": {
+      "questions": 147,
+      "status_correct": 0.8435,
+      "literal_fact_coverage": 0.8462,
+      "conflict_recall": "10/13",
+      "conflict_precision": "10/10",
+      "permission_violations": 0,
+      "hidden_source_leaks": 0,
+      "citation_identity_all_valid": true,
+      "median_seconds": 18.1,
+      "p95_seconds": 40.1
+    },
+    "dense": {
+      "questions": 147,
+      "status_correct": 0.8503,
+      "literal_fact_coverage": 0.8205,
+      "conflict_recall": "9/13",
+      "conflict_precision": "9/9",
+      "permission_violations": 0,
+      "hidden_source_leaks": 0,
+      "citation_identity_all_valid": true,
+      "median_seconds": 26.8,
+      "p95_seconds": 59.8
+    },
+    "hybrid": {
+      "questions": 147,
+      "status_correct": 0.8912,
+      "literal_fact_coverage": 0.891,
+      "conflict_recall": "11/13",
+      "conflict_precision": "11/11",
+      "permission_violations": 0,
+      "hidden_source_leaks": 0,
+      "citation_identity_all_valid": true,
+      "median_seconds": 24.5,
+      "p95_seconds": 45.7
+    },
+    "hybrid_rerank": {
+      "questions": 147,
+      "status_correct": 0.9048,
+      "literal_fact_coverage": 0.9167,
+      "conflict_recall": "12/13",
+      "conflict_precision": "12/13",
+      "permission_violations": 0,
+      "hidden_source_leaks": 0,
+      "citation_identity_all_valid": true,
+      "median_seconds": 30.0,
+      "p95_seconds": 47.4
+    }
+  },
+  "holdout": {
+    "targets": {
+      "status_correct_min": 0.8,
+      "literal_fact_coverage_min": 0.8,
+      "permission_violations_max": 0,
+      "hidden_source_leaks_max": 0,
+      "citation_identity_valid": "必须全部通过",
+      "tolerated_drop_vs_development": 0.09,
+      "reasoning": "开发集 89.1%，允许最多 9 个百分点的回落到 80%：留出题从未被看过，且开发集参与过选型。低于 80% 视为过拟合开发集，必须记录而不是调参。"
+    },
+    "measured": {
+      "questions": 80,
+      "status_correct": 0.9,
+      "literal_fact_coverage": 0.8194,
+      "conflict_recall": null,
+      "conflict_precision": null,
+      "permission_violations": 0,
+      "hidden_source_leaks": 0,
+      "citation_identity_all_valid": true,
+      "median_seconds": 24.6,
+      "p95_seconds": 42.7
+    },
+    "run_once": true
+  },
+  "public": {
+    "retrieval": {
+      "bm25": {
+        "recall_at_5": 0.8974,
+        "recall_at_10": 0.9744,
+        "mrr": 0.8447,
+        "ndcg_at_10": 0.8751
+      },
+      "dense": {
+        "recall_at_5": 0.8974,
+        "recall_at_10": 0.9487,
+        "mrr": 0.845,
+        "ndcg_at_10": 0.8696
+      },
+      "hybrid": {
+        "recall_at_5": 0.9744,
+        "recall_at_10": 0.9744,
+        "mrr": 0.847,
+        "ndcg_at_10": 0.8796
+      }
+    },
+    "end_to_end": {
+      "bm25": {
+        "questions": 39,
+        "status_correct": 0.8462,
+        "literal_fact_coverage": 0.0079,
+        "conflict_recall": null,
+        "conflict_precision": null,
+        "permission_violations": 0,
+        "hidden_source_leaks": 0,
+        "citation_identity_all_valid": true,
+        "median_seconds": 21.4,
+        "p95_seconds": 40.9
+      },
+      "dense": {
+        "questions": 39,
+        "status_correct": 0.7436,
+        "literal_fact_coverage": 0.0,
+        "conflict_recall": null,
+        "conflict_precision": null,
+        "permission_violations": 0,
+        "hidden_source_leaks": 0,
+        "citation_identity_all_valid": true,
+        "median_seconds": 18.1,
+        "p95_seconds": 37.9
+      },
+      "hybrid": {
+        "questions": 39,
+        "status_correct": 0.8462,
+        "literal_fact_coverage": 0.0079,
+        "conflict_recall": null,
+        "conflict_precision": null,
+        "permission_violations": 0,
+        "hidden_source_leaks": 0,
+        "citation_identity_all_valid": true,
+        "median_seconds": 19.1,
+        "p95_seconds": 41.1
+      }
+    },
+    "literal_matching": "not applicable: upstream gold is prose"
+  },
+  "rewrite": {
+    "A": {
+      "mode": "off",
+      "follow_up_recall_at_5": 0.65,
+      "topic_shift_contaminated": 0.0
+    },
+    "B": {
+      "mode": "rule",
+      "follow_up_recall_at_5": 0.975,
+      "topic_shift_contaminated": 0.0
+    },
+    "C": {
+      "mode": "llm",
+      "follow_up_recall_at_5": 0.65,
+      "topic_shift_contaminated": 0.0
+    },
+    "D": {
+      "mode": "llm_history",
+      "follow_up_recall_at_5": 0.9,
+      "topic_shift_contaminated": 0.025
+    }
+  },
+  "not_measured": [
+    "语义正确性、忠实度、引用蕴含：目前只有归一化字面匹配",
+    "金标独立人工复核：记为 0",
+    "并发与峰值负载：单进程单机，未做压测",
+    "真实企业语料：全部资料为本项目自建虚构内容"
+  ]
+}

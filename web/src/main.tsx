@@ -118,9 +118,16 @@ async function api<T>(path: string, options: RequestInit = {}): Promise<T> {
       .catch(() => ({ detail: "服务暂时不可用" }));
     const detail =
       typeof body.detail === "string" ? body.detail : "请求内容不符合要求";
-    const failure = new Error(detail) as Error & { status?: number; retryable?: boolean };
+    const failure = new Error(detail) as Error & {
+      status?: number;
+      retryable?: boolean;
+      stage?: string;
+      modelReached?: boolean;
+    };
     failure.status = response.status;
     failure.retryable = response.status === 503 || response.status === 504;
+    failure.stage = typeof body.stage === "string" ? body.stage : undefined;
+    failure.modelReached = body.model_reached === true;
     throw failure;
   }
   return response.json();
@@ -150,6 +157,12 @@ const emptyStates: Record<string, { title: string; tone: string }> = {
   documents_processing: { title: "资料仍在处理", tone: "pending" },
   verification_failed: { title: "答案未通过引用核对", tone: "warn" },
 };
+function outageNote(failure: { stage?: string; modelReached?: boolean }) {
+  if (failure.modelReached) return "（生成已开始，本次结果未知；重试会重新生成一次）";
+  if (failure.stage === "retrieval" || failure.stage === "embedding")
+    return "（失败发生在检索阶段，问题未提交给模型）";
+  return "（本次结果未知，可以重试）";
+}
 const methodLabels: Record<string, string> = {
   dense: "向量检索",
   bm25: "关键词检索",
@@ -764,12 +777,16 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
       setResults((old) => [...old, result]);
       setQuestion("");
     } catch (e) {
-      const failure = e as Error & { retryable?: boolean };
-      // A dependency outage is not the user's mistake; offer the same question again.
+      const failure = e as Error & {
+        retryable?: boolean;
+        stage?: string;
+        modelReached?: boolean;
+      };
+      // Only say the model was never reached when the server actually knows that.
+      // Once generation has started, the outcome of this request is unknown, and
+      // claiming otherwise would tell the reader that retrying is free when it is not.
       setError(
-        failure.retryable
-          ? `${failure.message}（依赖服务未就绪，问题未提交给模型）`
-          : failure.message,
+        failure.retryable ? `${failure.message}${outageNote(failure)}` : failure.message,
       );
       setRetryable(Boolean(failure.retryable));
     } finally {

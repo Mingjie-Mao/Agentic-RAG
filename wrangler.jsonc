@@ -1,0 +1,7 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "enterprise-rag",
+  "compatibility_date": "2026-09-15",
+  "assets": { "directory": "site" },
+  "observability": { "enabled": true }
+}

@@ -10,6 +10,14 @@ from app.config import settings
 
 
 class DependencyError(RuntimeError):
+    """A dependency was unavailable. `stage` records how far the request got, because
+    "the model never saw this" and "the model may have already answered" are different
+    facts for the reader, and only the server knows which one happened."""
+
+    def __init__(self, message, stage="unknown"):
+        super().__init__(message)
+        self.stage = stage
+
     pass
 
 
@@ -89,9 +97,9 @@ class Models:
         )
         vectors = result.get("embeddings", [])
         if len(vectors) != len(texts) or any(len(v) != cfg.embed_dimension for v in vectors):
-            raise DependencyError("向量模型返回的维度不符合索引配置")
+            raise DependencyError("向量模型返回的维度不符合索引配置", stage="embedding")
         if any(not all(math.isfinite(x) for x in v) for v in vectors):
-            raise DependencyError("向量模型返回无效数值")
+            raise DependencyError("向量模型返回无效数值", stage="embedding")
         return vectors
 
     def generate(self, question: str, evidence: list[dict]) -> tuple[GeneratedAnswer, dict]:
@@ -206,7 +214,7 @@ class Models:
                 ],
             )
         except (ValueError, KeyError, TypeError) as exc:
-            raise DependencyError("模型未返回有效的带引用答案，请重试") from exc
+            raise DependencyError("模型未返回有效的带引用答案，请重试", stage="generation") from exc
         return parsed, {
             "prompt_tokens": result.get("prompt_eval_count"),
             "completion_tokens": result.get("eval_count"),
@@ -229,7 +237,9 @@ class Models:
             response.raise_for_status()
             return response.json()
         except (httpx.HTTPError, ValueError) as exc:
-            raise DependencyError("本地模型暂时不可用，请检查模型服务与模型下载状态") from exc
+            raise DependencyError(
+                "本地模型暂时不可用，请检查模型服务与模型下载状态", stage="generation"
+            ) from exc
 
 
 class Search:
@@ -244,7 +254,7 @@ class Search:
             response.raise_for_status()
             return response.json()
         except (httpx.HTTPError, ValueError) as exc:
-            raise DependencyError("检索服务暂时不可用") from exc
+            raise DependencyError("检索服务暂时不可用", stage="retrieval") from exc
 
     def ensure_index(self):
         cfg = settings()
@@ -252,7 +262,7 @@ class Search:
         if existing.status_code == 200:
             mapping = existing.json()[self.index]["mappings"]
             if mapping["properties"]["embedding"]["dimension"] != cfg.embed_dimension:
-                raise DependencyError("索引与向量模型维度不一致，请建立新索引")
+                raise DependencyError("索引与向量模型维度不一致，请建立新索引", stage="retrieval")
             if "text" not in mapping["properties"]:
                 self.request(
                     "PUT",
@@ -266,7 +276,7 @@ class Search:
                 )
             return
         if existing.status_code != 404:
-            raise DependencyError("无法检查检索索引")
+            raise DependencyError("无法检查检索索引", stage="retrieval")
         self.request(
             "PUT",
             f"/{self.index}",
@@ -312,7 +322,7 @@ class Search:
             headers={"Content-Type": "application/x-ndjson"},
         )
         if result.get("errors"):
-            raise DependencyError("部分分块写入索引失败，文档尚未发布")
+            raise DependencyError("部分分块写入索引失败，文档尚未发布", stage="indexing")
 
     def retrieve(self, vector, tenant_id, version_ids, top_k):
         if not version_ids:
