@@ -14,6 +14,7 @@ from sqlalchemy.orm import Session
 from app.clients import DependencyError
 from app.config import settings
 from app.db import get_db
+from app.lifecycle import add_version, purge, readable_chunk, set_access, soft_delete
 from app.ingestion import queue_document
 from app.models import Answer, Chunk, DocumentVersion, Job, LoginSession, Tenant, User
 from app.qa import answer_question, visible_answer
@@ -25,6 +26,7 @@ from app.security import (
     readable_documents,
     require_chunk,
     require_document,
+    validate_grant,
 )
 
 
@@ -64,6 +66,12 @@ class LoginBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
     username: str = Field(min_length=1, max_length=100)
     password: str = Field(min_length=1, max_length=200)
+
+
+class AccessBody(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    groups: list[str] = Field(default_factory=list, max_length=10)
+    tenant_public: bool = False
 
 
 class QuestionBody(BaseModel):
@@ -201,13 +209,7 @@ def upload_document(
             raise ValueError
     except ValueError:
         raise HTTPException(422, "groups 必须是字符串数组")
-    valid_groups = {"engineering", "support"}
-    if not set(group_list) <= valid_groups or (
-        user.role != "admin" and not set(group_list) <= set(user.groups)
-    ):
-        raise HTTPException(403, "不能向该部门分享资料")
-    if tenant_public and user.role != "admin":
-        raise HTTPException(403, "只有管理者可发布租户公共资料")
+    group_list = validate_grant(user, group_list, tenant_public)
     filename = Path(file.filename or "file.md").name
     if len(filename) > 200 or re.search(r"[\x00-\x1f]", filename):
         raise HTTPException(422, "文件名不合法")
@@ -273,6 +275,53 @@ def processing_preview(document_id: str, user: Identity, db: DB):
         "chunks": [{"id": c.id, "text": c.text, "locator": c.locator} for c in chunks],
         "original_url": f"/api/versions/{version.id}/original",
     }
+
+
+@app.post("/api/documents/{document_id}/versions", status_code=202)
+def replace_version(
+    document_id: str, user: Identity, db: DB, file: UploadFile = File(...), title: str = Form("")
+):
+    """Queue a replacement. The active version keeps serving until this one publishes."""
+    data = file.file.read()
+    try:
+        document, version, _ = add_version(db, user, document_id, file.filename or "", data)
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
+    if title.strip():
+        document.title = title.strip()
+        db.commit()
+    return {
+        "id": document.id,
+        "version_id": version.id,
+        "active_version_id": document.active_version_id,
+        "status": version.status,
+        "note": "新版本索引完成并确认可搜索后才会生效；在此之前旧版本继续可用",
+    }
+
+
+@app.patch("/api/documents/{document_id}/access")
+def change_access(document_id: str, body: AccessBody, user: Identity, db: DB):
+    groups = validate_grant(user, body.groups, body.tenant_public)
+    document = set_access(db, user, document_id, groups, body.tenant_public)
+    return document_info(db, document)
+
+
+@app.delete("/api/documents/{document_id}")
+def remove_document(document_id: str, user: Identity, db: DB):
+    """Commit the deletion first; index and file cleanup follow and may fail safely."""
+    _, versions, storage_keys = soft_delete(db, user, document_id)
+    cleanup = purge(versions, storage_keys)
+    return {"id": document_id, "deleted": True, "versions": len(versions), "cleanup": cleanup}
+
+
+@app.get("/api/access/chunks/{chunk_id}")
+def chunk_readable(chunk_id: str, user: Identity, db: DB):
+    """Whether this user may read this chunk right now.
+
+    Exists so that anything derived from this corpus elsewhere can be revoked when a
+    reader loses access, without that system needing to model permissions itself.
+    """
+    return readable_chunk(db, user, chunk_id)
 
 
 @app.post("/api/documents/{document_id}/retry")

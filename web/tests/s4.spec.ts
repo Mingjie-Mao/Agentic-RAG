@@ -178,3 +178,46 @@ test('S4 文档页：版本身份与处理来源可核对', async ({ page }) => 
   expect(active[0].chunks).toBe(detail.chunks.length);
   await page.screenshot({ path: '../artifacts/s4-version-panel.png', fullPage: true });
 });
+
+// After S6 reprocessing, the seeded demo corpus carries layout coordinates too, so a
+// citation from a seeded PDF must highlight rather than fall back to "no coordinates".
+test('S6 种子资料重新处理后：引用可在页内高亮', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('select[aria-label="账号"]').selectOption('support@xingqiao.demo');
+  await page.getByRole('button', { name: '登录工作空间' }).click();
+
+  await expect(page.getByLabel('输入问题')).toBeVisible();
+  const pending = page.waitForResponse(
+    (r) => r.url().endsWith('/api/chat') && r.request().method() === 'POST',
+    { timeout: 220_000 },
+  );
+  await page.getByLabel('输入问题').fill('星桥产品上传接口单个文件的大小上限是多少？');
+  await page.getByLabel('发送问题', { exact: true }).click();
+  const result = await (await pending).json();
+  const index = result.citations.findIndex((c: any) => c.document_id === 'seed-upload-guide');
+  expect(index, '答案应引用那份种子 PDF').toBeGreaterThanOrEqual(0);
+
+  const card = page.getByTestId('answer-card').last();
+  await card.locator('.citation-card').nth(index).click();
+  const viewer = page.getByTestId('pdf-evidence');
+  await expect(viewer).toBeVisible({ timeout: 60000 });
+  await expect(page.getByTestId('pdf-mark').first()).toBeVisible({ timeout: 30000 });
+  expect(await page.getByTestId('pdf-mark').count()).toBeGreaterThan(0);
+
+  // A highlight over a blank page is not evidence. Chinese PDFs need CMap data, and
+  // without it pdf.js renders nothing while still reporting a successful render, so
+  // assert that the canvas actually has ink on it.
+  const inked = await page.evaluate(() => {
+    const canvas = document.querySelector('[data-testid="pdf-evidence"] canvas') as HTMLCanvasElement;
+    const context = canvas.getContext('2d')!;
+    const { data } = context.getImageData(0, 0, canvas.width, canvas.height);
+    let dark = 0;
+    for (let i = 0; i < data.length; i += 4) {
+      if (data[i] < 200 && data[i + 1] < 200 && data[i + 2] < 200) dark += 1;
+    }
+    return dark / (data.length / 4);
+  });
+  expect(inked, 'PDF 页面必须渲染出实际内容，而不是一张白页').toBeGreaterThan(0.001);
+
+  await page.screenshot({ path: '../artifacts/s6-seed-highlight.png', fullPage: true });
+});

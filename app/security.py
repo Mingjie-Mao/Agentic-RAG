@@ -51,6 +51,21 @@ def current_user(request: Request, db: Session = Depends(get_db)) -> User:
     return user
 
 
+TENANT_GROUPS = ("engineering", "support")
+
+
+def validate_grant(user: User, groups, tenant_public: bool):
+    """One rule for who may be granted what, shared by upload and access change."""
+    groups = list(groups)
+    if not set(groups) <= set(TENANT_GROUPS):
+        raise HTTPException(422, f"未知的组，可用：{list(TENANT_GROUPS)}")
+    if user.role != "admin" and not set(groups) <= set(user.groups):
+        raise HTTPException(403, "不能向你不属于的组分享资料")
+    if tenant_public and user.role != "admin":
+        raise HTTPException(403, "只有管理者可以共享给整个组织")
+    return groups
+
+
 def can_read(user: User, document: Document) -> bool:
     return bool(
         user.active

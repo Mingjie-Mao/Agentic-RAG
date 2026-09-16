@@ -58,7 +58,15 @@ export default function PdfEvidence({
     setRects([]);
     (async () => {
       try {
-        task = pdfjs.getDocument({ url, withCredentials: true });
+        // Chinese PDFs embed CID fonts; without the CMap and standard-font tables
+        // the page renders blank while still reporting success.
+        task = pdfjs.getDocument({
+          url,
+          withCredentials: true,
+          cMapUrl: "/cmaps/",
+          cMapPacked: true,
+          standardFontDataUrl: "/standard_fonts/",
+        });
         const doc = await task.promise;
         if (cancelled) return;
         setPages(doc.numPages);

@@ -1,0 +1,374 @@
+{
+  "target_parser": "docling-2.127-office-xml-v2",
+  "stale_documents": 33,
+  "documents": [
+    {
+      "id": "seed-upload-guide",
+      "title": "文件上传接口手册",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-data-retention",
+      "title": "业务数据保留规则",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-webhook",
+      "title": "Webhook 投递与签名",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-token-errors",
+      "title": "认证错误 E401 排查",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-sso-session",
+      "title": "单点登录会话规则",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-travel-2025",
+      "title": "差旅标准 2025 旧版",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-travel-2026",
+      "title": "差旅标准 2026 生效版",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-leave",
+      "title": "年假申请说明",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-equipment",
+      "title": "入职设备申请",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-support-escalate",
+      "title": "SEV1 客户事故升级",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-ticket-218",
+      "title": "工单 218：重复回调",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-support-handoff",
+      "title": "支持组交接清单",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-deploy-review",
+      "title": "生产发布审批规则",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-rollback",
+      "title": "发布回滚操作手册",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-db-backup",
+      "title": "数据库备份与恢复目标",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-release-code",
+      "title": "灰度发布验证口令",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-dev-environment",
+      "title": "本地研发环境配置",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-api-limits",
+      "title": "API 调用配额说明",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-invoice",
+      "title": "开票申请流程",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-plan-comparison",
+      "title": "套餐功能对照表",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-export",
+      "title": "数据导出注意事项",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-pilot-a",
+      "title": "试点项目支持安排 A",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-pilot-b",
+      "title": "试点项目支持安排 B",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-hc-gateway",
+      "title": "海川网关开发配置",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-hc-retention",
+      "title": "海川日志保留规则",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-hc-support",
+      "title": "海川支持值班时间",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-sdk-retry",
+      "title": "Python SDK 重试配置",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-meeting",
+      "title": "会议纪要归档约定",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-incident-092",
+      "title": "事故 092：索引延迟复盘",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "c4c39fde-90f4-46cb-a66c-d8875375da9b",
+      "title": "网页验收记录.md",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "f119c7dc-683f-48ac-9327-2641b27362c7",
+      "title": "网页验收记录.md",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "51ffcc85-f59a-44ae-87a9-b2cd4b37991a",
+      "title": "网页验收记录.md",
+      "from_parser": "pypdf6+utf8-v1"
+    },
+    {
+      "id": "seed-support-sla",
+      "title": "支持响应等级表",
+      "from_parser": "pypdf6+utf8-v1"
+    }
+  ],
+  "queued": [
+    {
+      "document_id": "seed-upload-guide",
+      "old": "70e847f0-517e-420c-bbf6-4cbaa5ea782e",
+      "new": "715a3724-f8f6-40d2-bcd4-ee9f4bbc799d",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-data-retention",
+      "old": "806059a1-6d90-488e-a945-99ec77becc68",
+      "new": "a6d48489-c3ef-493c-9779-981f4a7ddc15",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-webhook",
+      "old": "37dfc0a9-502e-43db-9b78-3fcc265b2c26",
+      "new": "0172fe6e-352a-4c8f-add8-a3d6887374e9",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-token-errors",
+      "old": "7e28bc22-d726-4f5e-afa0-857e60df4d8c",
+      "new": "a028618d-281a-48f3-9021-95e22ffb5f70",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-sso-session",
+      "old": "fee7e905-c58b-4b00-a46a-471d19c781f3",
+      "new": "b03473fc-da43-4a9b-933b-fd629f6063e2",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-travel-2025",
+      "old": "a5001928-60f0-4546-b3fb-1a96328bfb47",
+      "new": "9cf628f2-6743-48dc-8888-0c7d8c69fec5",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-travel-2026",
+      "old": "71032446-4e4f-4af2-a799-78c574a15ed4",
+      "new": "fad37674-eab4-48e6-874d-a336bc1819f8",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-leave",
+      "old": "e8c48df7-7df5-4a1f-87d9-181b4492865a",
+      "new": "464ca6de-6715-49b1-a12f-9cd0c60ccdf1",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-equipment",
+      "old": "db282379-e24c-4fd5-921e-3a2a9e876b32",
+      "new": "57ce338b-105d-46a7-8773-6912c2487e40",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-support-escalate",
+      "old": "100263dc-44ee-4e21-b25e-b9d86a52ff8e",
+      "new": "2a084d96-ec3c-46e2-aaa8-47011c2b28d6",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-ticket-218",
+      "old": "c52e8a3f-9df9-4c3c-8f3d-f6db14d1b97e",
+      "new": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-support-handoff",
+      "old": "5bc22450-c7e4-47ea-8423-2330b2bf9253",
+      "new": "1d2b6515-5ae9-4029-98f8-54837a03abea",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-deploy-review",
+      "old": "5a57503b-194e-4480-ae3a-78fd8b5f0d4d",
+      "new": "8364aa5b-1c0b-46a0-843f-1f8c0dfa6803",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-rollback",
+      "old": "b36ff039-6589-4d55-822e-6c414d614407",
+      "new": "ff4dd1ae-0a3b-41ad-bfae-4b69dea897c6",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-db-backup",
+      "old": "37fcd15c-dddd-48cb-9e30-be15b21865dc",
+      "new": "352c191c-a12e-40f9-b144-39375a7fb786",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-release-code",
+      "old": "c161e122-b54c-40f8-a1f4-a57b50cf4bb6",
+      "new": "3a86d916-16b7-4c80-ba00-2a3680581605",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-dev-environment",
+      "old": "74c192e1-b30a-4aab-9f3c-c6721b124a6d",
+      "new": "36913658-b8b5-4623-a235-f6d6a03bbcb5",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-api-limits",
+      "old": "b3766bb2-8bf9-4df0-b3b7-1a1acc961987",
+      "new": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-invoice",
+      "old": "3b992e97-9992-484f-be6d-3c8afc465273",
+      "new": "26dd06e1-50a0-4522-b39d-e319b0ec3932",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-plan-comparison",
+      "old": "5dd768db-0e57-41b1-b9fd-ae5c0ea4e980",
+      "new": "1ca1cf19-54f9-4f2f-9ddf-464842567770",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-export",
+      "old": "7f38c3a1-21d0-4eaf-9c68-30dc684b3d37",
+      "new": "b45d148e-e3d9-43eb-8ed5-a6980bc3a960",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-pilot-a",
+      "old": "66f7acf0-7d99-4dab-801c-5a5497ebe3d4",
+      "new": "e982752a-7d65-4db9-9288-987975e73599",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-pilot-b",
+      "old": "70c02c93-9e1f-47b4-aa0d-d7497b46fec0",
+      "new": "b2938188-f872-44d5-bd39-7b1d206e2b35",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-hc-gateway",
+      "old": "edf4c4a6-2eea-4480-a19b-884ea1339e0c",
+      "new": "3a1593ec-6885-4447-86e5-7dc4b7bbf3f2",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-hc-retention",
+      "old": "af9e8e15-1f74-495c-9c71-1e3dd89b4209",
+      "new": "547238a0-5fd7-41b2-be3e-d97d9e6ea024",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-hc-support",
+      "old": "ea17c821-7ff5-44b4-8612-ba0c0d85bacf",
+      "new": "951243ad-b6d1-4db4-acc8-3998179a27b8",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-sdk-retry",
+      "old": "b56c40f7-1409-4822-bec6-9558f775380f",
+      "new": "6b6b4da8-a812-4cc0-9cd8-a4724390c467",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-meeting",
+      "old": "7ff482fe-1c75-4eaa-809a-b43525f1dd19",
+      "new": "39555391-bc00-4c1a-8b5f-c4ce47f6644f",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-incident-092",
+      "old": "31c10658-49ce-4599-90af-ee75310a1367",
+      "new": "bac388fd-6b73-4eb6-877f-edd4a16f2901",
+      "promoted": true
+    },
+    {
+      "document_id": "c4c39fde-90f4-46cb-a66c-d8875375da9b",
+      "old": "c73ac1ec-1b5d-4b81-b43f-6780689911d5",
+      "new": "2c2ad123-0cab-44db-9e2e-3649c4a0dd3e",
+      "promoted": true
+    },
+    {
+      "document_id": "f119c7dc-683f-48ac-9327-2641b27362c7",
+      "old": "cae31322-2a8b-428f-83ec-7ecf3cc6b6b9",
+      "new": "9dd339d4-ddf5-426e-88bf-bcde590a8c87",
+      "promoted": true
+    },
+    {
+      "document_id": "51ffcc85-f59a-44ae-87a9-b2cd4b37991a",
+      "old": "a9f39f08-780c-405c-a5a7-7bad7d95319b",
+      "new": "9fe87a42-a3e4-4cd2-8a6d-d72b175e17e4",
+      "promoted": true
+    },
+    {
+      "document_id": "seed-support-sla",
+      "old": "070746f2-7b7e-488d-9c94-ecd51063195d",
+      "new": "b346d2ca-95e3-4f30-8b9b-0a9ce03dd613",
+      "promoted": true
+    }
+  ],
+  "promoted": 33,
+  "still_stale": 0,
+  "seconds": 45.0
+}

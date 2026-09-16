@@ -15,6 +15,68 @@ from app.parsing import parse_document, split_passages
 from app.security import can_write
 
 
+MEDIA_TYPES = {
+    ".md": "text/markdown",
+    ".pdf": "application/pdf",
+    ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+}
+
+
+def accept_upload(filename, data):
+    """Reject what cannot be parsed before anything is written to disk."""
+    media_type = MEDIA_TYPES.get(Path(filename).suffix.lower())
+    if not media_type:
+        raise ValueError("支持 .md、文本型 .pdf、.docx 和 .xlsx")
+    if not data or len(data) > settings().max_upload_bytes:
+        raise ValueError("文件不能为空，且不能超过 10 MB")
+    return media_type
+
+
+def current_pipeline():
+    cfg = settings()
+    return {
+        "parser": cfg.parser_version,
+        "chunking": cfg.chunk_strategy,
+        "chunk_chars": cfg.chunk_chars,
+        "overlap": cfg.chunk_overlap,
+        "embedding_model": cfg.embed_model,
+        "embedding_dimension": cfg.embed_dimension,
+        "token_counter": "cl100k_base (estimate, not generation tokenizer)",
+    }
+
+
+def build_version(db, document, user, filename, data):
+    """Add a queued version to an existing document without touching the active one."""
+    media_type = accept_upload(filename, data)
+    version_id = uid()
+    storage = settings().storage_dir.resolve()
+    storage.mkdir(parents=True, exist_ok=True)
+    storage_key = version_id + Path(filename).suffix.lower()
+    path = storage / storage_key
+    version = DocumentVersion(
+        id=version_id,
+        document_id=document.id,
+        filename=Path(filename).name,
+        media_type=media_type,
+        content_hash=hashlib.sha256(data).hexdigest(),
+        storage_key=storage_key,
+        pipeline=current_pipeline(),
+    )
+    job = Job(version_id=version_id, actor_id=user.id)
+    try:
+        path.write_bytes(data)
+        path.chmod(0o600)
+        db.add(version)
+        db.flush()
+        db.add(job)
+        db.flush()
+    except Exception:
+        path.unlink(missing_ok=True)
+        raise
+    return version, job
+
+
 def queue_document(
     db, user, filename, data, title, groups, tenant_public, metadata=None, document_id=None
 ):

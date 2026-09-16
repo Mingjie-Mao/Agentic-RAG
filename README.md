@@ -12,7 +12,7 @@ Most open-source RAG projects compete on feature breadth. This one competes on w
 hold up: retrieval and generation are measured separately, permission filtering is asserted on every
 run, and results that turned out to be unsound are recorded as such instead of being quietly dropped.
 
-> **Status:** stages S0–S5 complete, S6–S8 not started. Single-node deployment for a small team.
+> **Status:** stages S0–S6 complete, S7–S8 not started. Single-node deployment for a small team.
 > Throughput and latency figures below describe one Apple M4 host, not a production SLA.
 
 ## What it does
@@ -27,6 +27,12 @@ insufficient, or two policies contradict each other, it says so instead of guess
   verification is withheld, not repaired.
 - **Permission-aware retrieval.** Access control is applied inside the query, not after it. Across
   every evaluation run to date there have been zero out-of-scope hits and zero hidden-document leaks.
+- **Revocation takes effect immediately.** The database decides visibility, not the index: the
+  request after a revoke is already refused through every route — listing, detail, parse preview,
+  citation, original file download and the readability probe — with no refresh and no waiting.
+- **Replacement never leaves a gap.** A new version is indexed and confirmed searchable before it
+  becomes active, so a failed or slow reprocess degrades to "nothing changed" rather than to an
+  empty document. Superseded versions stay on disk so older answers can still be audited.
 - **Document fidelity.** PDF, DOCX, XLSX and Markdown are parsed into one structure that keeps
   heading paths, real page numbers, layout coordinates and cell ranges. A spreadsheet formula with no
   cached value is reported as missing rather than treated as a computed number.
@@ -196,7 +202,7 @@ Open `http://127.0.0.1:8000`. Demo accounts are listed on the sign-in page; the 
 ## Reproducing the evaluation
 
 ```bash
-make test              # 82 unit and logic checks (17 need integration or layout flags)
+make test              # 88 unit and logic checks (integration ones need a flag)
 make integration       # real database, permission and job-recovery checks
 make s3-validate       # audit ground truth against parsed source text
 make s3-freeze         # pin input hashes and model digests
@@ -241,8 +247,8 @@ Treating these two lists as one is the most common way RAG benchmarks mislead, s
 2. Hybrid retrieval is the default on an observed, not statistically significant, advantage. The
    public benchmark subset has been run and agrees; the held-out split remains sealed until final
    acceptance and is the intended tie-breaker for significance.
-3. In-page PDF highlighting applies to documents ingested by the current parser. The thirty seed
-   documents predate it and will be reprocessed as part of version replacement.
+3. In-page PDF highlighting covers the whole corpus: the 33 documents ingested by the older parser
+   were reprocessed into new versions, which took 45 seconds and promoted all 33.
 4. No working memory and no long-term memory. `/api/chat` stays stateless; a client may replay the
    user's own earlier questions, which complete a follow-up into a searchable query and nothing else
    — the permitted document set is always recomputed for the current user, and replayed text grants
