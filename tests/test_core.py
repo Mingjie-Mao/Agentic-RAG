@@ -514,3 +514,58 @@ def test_outage_reports_the_stage_so_the_reader_is_not_told_a_guess():
 
     # An unannotated failure must not claim the model was never reached.
     assert DependencyError("x").stage == "unknown"
+
+
+def test_shadow_scores_are_recorded_and_never_withhold_an_answer():
+    """Calibration put three scorers inside overlapping confidence intervals on 34
+    cases, so none of them has earned the right to refuse. They record only."""
+    from app.qa import shadow_scores
+
+    evidence = [{"text": "星桥批量导入的每批记录上限为 240 条。"}]
+    claims = [{"text": "每批记录上限为 240 条。"}]
+    on_topic = shadow_scores("星桥批量导入每批记录上限是多少？", evidence, claims)
+    off_topic = shadow_scores(
+        "星桥恢复抽查的检查间隔是多少？",
+        [{"text": "班车发车间隔为 20 分钟。"}],
+        [{"text": "班车发车间隔为 20 分钟。"}],
+    )
+    assert on_topic["relevance"] > off_topic["relevance"]
+    assert on_topic["mode"] == off_topic["mode"] == "shadow"
+    assert "no answer is withheld" in on_topic["action"]
+    assert len(on_topic["claim_support"]) == len(claims)
+
+
+def test_shadow_scoring_cannot_change_the_answer(monkeypatch):
+    """The property that matters is not the score but that nothing depends on it."""
+    from app import qa
+
+    doc = SimpleNamespace(active_version_id="v", id="d", title="备份规则", metadata_json={})
+    chunk = SimpleNamespace(id="c", text="生产数据库恢复点目标 RPO 为 15 分钟。", locator={})
+    version = SimpleNamespace(id="v")
+
+    class FakeModels:
+        def embed(self, _):
+            return [[0.0]]
+
+        def generate(self, *args):
+            return GeneratedAnswer(
+                answerable=True,
+                claims=[Claim(text="RPO 为 15 分钟。", evidence_ids=["E1"], quotes=[chunk.text])],
+            ), {}
+
+    class FakeSearch:
+        def retrieve_hybrid(self, *args, **kwargs):
+            return [{"chunk_id": "c", "score": 0.03}]
+
+    monkeypatch.setattr(qa, "Models", FakeModels)
+    monkeypatch.setattr(qa, "Search", FakeSearch)
+    monkeypatch.setattr(qa, "readable_documents", lambda *a: [doc])
+    monkeypatch.setattr(qa, "require_chunk", lambda *a, **k: (chunk, version, doc))
+    monkeypatch.setattr(qa, "Answer", lambda **kw: SimpleNamespace(id="a", **kw))
+    db = SimpleNamespace(add=lambda row: None, commit=lambda: None)
+
+    # An off-topic question scores low, and the answer is returned regardless.
+    result = qa.answer_question(db, SimpleNamespace(id="u", tenant_id="t"), "火星补贴是多少？")
+    assert result["status"] == "answered"
+    assert result["claims"], "影子评分不得拦下任何回答"
+    assert result["trace"]["shadow_scores"]["relevance"] < 0.3

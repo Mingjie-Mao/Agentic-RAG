@@ -44,6 +44,41 @@ def validate_claims(generated, evidence):
     return checked, "answered"
 
 
+_CJK = re.compile(r"[\u4e00-\u9fff]+")
+
+
+def _bigrams(text):
+    joined = "".join(_CJK.findall(text or ""))
+    return {joined[i : i + 2] for i in range(max(0, len(joined) - 1))}
+
+
+def shadow_scores(question, evidence, claims):
+    """Record relevance and entailment without acting on them.
+
+    Calibration on 34 machine-labelled cases put the rule, embedding and cross-encoder
+    scorers within overlapping confidence intervals, so none of them has earned the
+    right to withhold an answer. Recording them now means a later decision can be made
+    on production traffic rather than on 34 cases.
+    """
+    material = "\n".join(item["text"] for item in evidence[:4])
+    question_grams = _bigrams(question)
+    relevance = (
+        len(question_grams & _bigrams(material)) / len(question_grams) if question_grams else None
+    )
+    supported = []
+    for claim in claims:
+        grams = _bigrams(claim["text"])
+        supported.append(round(len(grams & _bigrams(material)) / len(grams), 4) if grams else None)
+    return {
+        "relevance": round(relevance, 4) if relevance is not None else None,
+        "claim_support": supported,
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json",
+    }
+
+
 MESSAGES = {
     "verification_failed": "模型的引用未通过检查，本次未返回答案。请调整问题后重试。",
     "no_readable_documents": "你当前没有可访问的资料。上传资料，或请管理者把已有资料分享到你所在的组。",
@@ -171,6 +206,7 @@ def answer_question(db, user, question, history=None):
             "retrieval_query": query,
             "query_rewritten": rewrite_trace["rewritten"],
             "rewrite": rewrite_trace,
+            "shadow_scores": shadow_scores(question, evidence, claims) if evidence else None,
             "prompt_version": "grounded-v5-conflict-gated",
             "top_k": cfg.top_k,
             "min_similarity": cfg.min_similarity,

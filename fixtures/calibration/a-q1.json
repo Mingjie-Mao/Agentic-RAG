@@ -1,0 +1,1993 @@
+{
+  "meta": {
+    "version": "a-q1-calibration-v1",
+    "purpose": "Calibrate relevance and entailment scorers; never used as their test set",
+    "cases": 34,
+    "strata": {
+      "答非所问": 4,
+      "该答却拒答": 6,
+      "引用非金标文档": 4,
+      "冲突": 5,
+      "不可答": 5,
+      "改写型提问命中": 5,
+      "正常命中": 5
+    },
+    "shortfall": {
+      "答非所问": {
+        "wanted": 6,
+        "available": 4
+      }
+    },
+    "labels_present": 34,
+    "review_status": "machine_proposed",
+    "independent_human_review": 0,
+    "caveat": "标签由模型提议并逐例写明理由，不是人工复核。用于校准评分器的相对能力；凡依赖这些标签得出的结论，其上限就是这批标签本身的质量。"
+  },
+  "cases": [
+    {
+      "case_id": "bm25-Q086",
+      "stratum": "答非所问",
+      "configuration": "bm25",
+      "question_id": "Q086",
+      "question": "星桥CI 构建的失败重跑次数是多少？",
+      "question_kind": "permission",
+      "expected_status": "insufficient_evidence",
+      "actual_status": "answered",
+      "gold_source_ids": [],
+      "hidden_source_ids": [
+        "eval-developer-tools-3"
+      ],
+      "claims": [
+        "星桥CI构建的失败重跑次数是1次。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-partner-operations-3",
+          "chunk_id": "1015b660-2293-5f7f-b98f-6ea821f5888d",
+          "locator": "段落 4",
+          "text": "参数与单位\n本节只规定星桥软件的伙伴沙箱，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n伙伴沙箱：有效期为 40 天；延长次数为 1 次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录有效期时，应同时写清伙伴沙箱的对象和计量单位；记录延长次数时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "eval-partner-operations-3",
+          "chunk_id": "84180203-f94d-56b4-98a3-2726e166fb0b",
+          "is_gold": false,
+          "text": "复核记录\n本页负责人负责伙伴沙箱的解释与变更登记。修订需要标明新生效日期和受影响对象；本页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；有效期是否满足；延长次数是否满足；原始编号能否找到；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度。"
+        },
+        {
+          "document_id": "eval-partner-operations-3",
+          "chunk_id": "1015b660-2293-5f7f-b98f-6ea821f5888d",
+          "is_gold": false,
+          "text": "参数与单位\n本节只规定星桥软件的伙伴沙箱，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n伙伴沙箱：有效期为 40 天；延长次数为 1 次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录有效期时，应同时写清伙伴沙箱的对象和计量单位；记录延长次数时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。"
+        },
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "0a8583d8-b062-5244-a1d8-f0a70d1b375e",
+          "is_gold": false,
+          "text": "检查材料时，注意区分实际导出通知记录、界面展示和口头说明。若实际记录与本页数值 不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。\n本页负责人负责导出通知的解释与变更登记。修订需要标明新生效日期和受影响对象；本 页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；链接有效期是否满足；提醒次数是否满足；原始编号能否找到 ；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度 。"
+        },
+        {
+          "document_id": "eval-observability-2",
+          "chunk_id": "127ad05f-79ce-5853-bb0c-9eee14c6ab76",
+          "is_gold": false,
+          "text": "核对依据\n本节只规定星桥软件的告警抑制，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n告警抑制：静默窗口为 12 分钟；连续触发次数为 4 次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录静默窗口时，应同时写清告警抑制的对象和计量单位；记录连续触发次数时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。"
+        }
+      ],
+      "label": {
+        "relevance": "no",
+        "entailment": "no",
+        "note": "问 CI 构建失败重跑次数，材料讲伙伴沙箱；结论的数字在材料中找不到依据",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q096",
+      "stratum": "答非所问",
+      "configuration": "bm25",
+      "question_id": "Q096",
+      "question": "星桥客户演练的演练时长是多少？",
+      "question_kind": "permission",
+      "expected_status": "insufficient_evidence",
+      "actual_status": "answered",
+      "gold_source_ids": [],
+      "hidden_source_ids": [
+        "eval-service-catalog-3"
+      ],
+      "claims": [
+        "星桥客户演练的演练时长为3个工作日。",
+        "星桥客户演练的演练时长为10个工作日。"
+      ],
+      "evidence": [
+        {
+          "document_id": "conflict-drill-report-b",
+          "chunk_id": "e6d1e26e-fde7-506a-a90b-853ee952367f",
+          "locator": "段落 1",
+          "text": "演练报告提交时限规定（运维团队版）（2026-09 版）\n本页规定星桥软件的演练报告提交时限，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n演练报告提交时限的提交时限为 10 个工作日。\n本页由运维团队维护。除本页外，演练报告提交时限规定（支持团队版）也在对外说明演练报告提交时限；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录提交时限时保留原始单位，不折算成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "conflict-drill-report-a",
+          "chunk_id": "8fecd5c3-5b79-5582-acc4-7d0add66d629",
+          "locator": "第 1 页",
+          "text": "演练报告提交时限规定（支持团队版）（2026-09 版）\n本页规定星桥软件的演练报告提交时限，自 2026 年 9 月 1\n日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n演练报告提交时限的提交时限为 3 个工作日。\n本页由支持团队维护。除本页外，演练报告提交时限规定（运维团队版）也在对外说明演 练报告提交时限；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责 人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录提交时限时保留原始单位，不折算 成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "conflict-drill-report-b",
+          "chunk_id": "e6d1e26e-fde7-506a-a90b-853ee952367f",
+          "is_gold": false,
+          "text": "演练报告提交时限规定（运维团队版）（2026-09 版）\n本页规定星桥软件的演练报告提交时限，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n演练报告提交时限的提交时限为 10 个工作日。\n本页由运维团队维护。除本页外，演练报告提交时限规定（支持团队版）也在对外说明演练报告提交时限；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录提交时限时保留原始单位，不折算成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "conflict-drill-report-a",
+          "chunk_id": "8fecd5c3-5b79-5582-acc4-7d0add66d629",
+          "is_gold": false,
+          "text": "演练报告提交时限规定（支持团队版）（2026-09 版）\n本页规定星桥软件的演练报告提交时限，自 2026 年 9 月 1\n日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n演练报告提交时限的提交时限为 3 个工作日。\n本页由支持团队维护。除本页外，演练报告提交时限规定（运维团队版）也在对外说明演 练报告提交时限；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责 人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录提交时限时保留原始单位，不折算 成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "eval-incident-drills-1",
+          "chunk_id": "56adc525-6735-5f1d-8301-95c7b29f7aa4",
+          "is_gold": false,
+          "text": "星桥故障演练执行手册（2026-09）"
+        },
+        {
+          "document_id": "eval-incident-drills-1",
+          "chunk_id": "6286b3ee-9cd9-5664-b5df-45535dcea925",
+          "is_gold": false,
+          "text": "适用规则\n本节只规定星桥软件的故障演练，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。 故障演练：演练频率为 28 天；最长影响时间为 3\n分钟。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录演练频率时，应同时写清故障演练的对象和计量单位；记录最长影响时间时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。\n执行步骤\n发起故障演练前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对演练频率对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果故障演练依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对最长影响时间对应的条件，并保存实际结果与原始记录的关联。异常不能只写 '失败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。"
+        }
+      ],
+      "label": {
+        "relevance": "no",
+        "entailment": "no",
+        "note": "问演练时长，材料是演练报告提交时限；共享“演练”二字但不是同一事项",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q116",
+      "stratum": "答非所问",
+      "configuration": "bm25",
+      "question_id": "Q116",
+      "question": "星桥恢复抽查的检查间隔是多少？",
+      "question_kind": "permission",
+      "expected_status": "insufficient_evidence",
+      "actual_status": "answered",
+      "gold_source_ids": [],
+      "hidden_source_ids": [
+        "eval-incident-drills-3"
+      ],
+      "claims": [
+        "班车发车间隔为20分钟。",
+        "班车发车间隔为45分钟。"
+      ],
+      "evidence": [
+        {
+          "document_id": "conflict-shuttle-headway-a",
+          "chunk_id": "34840751-f1d3-5315-a1b6-f2863e4846d5",
+          "locator": "段落 1",
+          "text": "班车发车间隔规定（支持团队版）（2026-09 版）\n本页规定星桥软件的班车发车间隔，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n班车发车间隔的发车间隔为 20 分钟。\n本页由支持团队维护。除本页外，班车发车间隔规定（运维团队版）也在对外说明班车发车间隔；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录发车间隔时保留原始单位，不折算成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "conflict-shuttle-headway-b",
+          "chunk_id": "04ecec26-711d-5862-bda5-4221fe6237db",
+          "locator": "规定 · A2:C2",
+          "text": "表头：事项 | 约束 | 规定\nA2: 班车发车间隔\nB2: 发车间隔\nC2: 45 分钟"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "conflict-shuttle-headway-a",
+          "chunk_id": "34840751-f1d3-5315-a1b6-f2863e4846d5",
+          "is_gold": false,
+          "text": "班车发车间隔规定（支持团队版）（2026-09 版）\n本页规定星桥软件的班车发车间隔，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n班车发车间隔的发车间隔为 20 分钟。\n本页由支持团队维护。除本页外，班车发车间隔规定（运维团队版）也在对外说明班车发车间隔；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录发车间隔时保留原始单位，不折算成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "conflict-shuttle-headway-b",
+          "chunk_id": "6ed92dbb-6274-510d-a4b4-3f1e9f3bb8c1",
+          "is_gold": false,
+          "text": "A1: 事项\nB1: 约束\nC1: 规定"
+        },
+        {
+          "document_id": "conflict-shuttle-headway-b",
+          "chunk_id": "04ecec26-711d-5862-bda5-4221fe6237db",
+          "is_gold": false,
+          "text": "表头：事项 | 约束 | 规定\nA2: 班车发车间隔\nB2: 发车间隔\nC2: 45 分钟"
+        },
+        {
+          "document_id": "conflict-shuttle-headway-b",
+          "chunk_id": "592affcb-ac9d-50a6-8593-48f31cc2c280",
+          "is_gold": false,
+          "text": "A1: 段落"
+        }
+      ],
+      "label": {
+        "relevance": "no",
+        "entailment": "no",
+        "note": "问恢复抽查间隔，材料是班车发车间隔；结论连主语都换了",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "hybrid-Q066",
+      "stratum": "答非所问",
+      "configuration": "hybrid",
+      "question_id": "Q066",
+      "question": "星桥通知摘要的摘要事件上限是多少？",
+      "question_kind": "permission",
+      "expected_status": "insufficient_evidence",
+      "actual_status": "answered",
+      "gold_source_ids": [],
+      "hidden_source_ids": [
+        "eval-workspace-config-3"
+      ],
+      "claims": [
+        "星桥通知摘要的摘要事件上限为32个字段。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-product-analytics-1",
+          "chunk_id": "f45c0ad8-985c-5417-9dc1-2048335bd108",
+          "locator": "第 1 页",
+          "text": "适用规则\n本节只规定星桥软件的事件注册，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n事件注册：审核时限为 3 个工作日；字段数量上限为 32\n个。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录审核时限时，应同时写清事件注册的对象和计量单位；记录字段数量上限时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。"
+        },
+        {
+          "document_id": "eval-product-analytics-1",
+          "chunk_id": "817df5fe-8a3b-58f9-9f5c-6da3c5769c70",
+          "locator": "第 1 页",
+          "text": "星桥事件注册执行手册（2026-09）"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "seed-upload-guide",
+          "chunk_id": "c011628c-90bc-59ce-8a4a-eb2ee03d0f56",
+          "is_gold": false,
+          "text": "文件上传规则\n星桥产品的文件上传接口单个文件上限为 20 MB。支持 PDF、Markdown 和 CSV。\n批量上传每批最多 10 个文件。这里描述的是虚构产品接口，不是本演示系统的上传限制。"
+        },
+        {
+          "document_id": "eval-product-analytics-1",
+          "chunk_id": "f45c0ad8-985c-5417-9dc1-2048335bd108",
+          "is_gold": false,
+          "text": "适用规则\n本节只规定星桥软件的事件注册，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n事件注册：审核时限为 3 个工作日；字段数量上限为 32\n个。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录审核时限时，应同时写清事件注册的对象和计量单位；记录字段数量上限时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。"
+        },
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "ad7fe134-fca8-510a-b578-f7e556559e5b",
+          "is_gold": false,
+          "text": "星桥导出通知交接记录（2026-09）\n交接背景\n客户收到导出通知后很久才打开链接。先确认文件是否仍在临时保留期内，再决定重新生 成；提醒消息和下载授权分别检查，转发通知不会自动增加权限。\n当前执行口径\n本节只规定星桥软件的导出通知，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n导出通知：链接有效期为 30 小时；提醒次数为 2\n次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录链接有效期时，应同时写清导出通知的对象和计量单位；记录提醒次数时同样保留单 位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也 不能互换。\n下一班需要检查\n发起导出通知前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对链接有效期对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果导出通知依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对提醒次数对应的条件，并保存实际结果与原始记录的关联。异常不能只写'失 败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n未完成事项和确认\n超出导出通知的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        },
+        {
+          "document_id": "eval-product-analytics-1",
+          "chunk_id": "817df5fe-8a3b-58f9-9f5c-6da3c5769c70",
+          "is_gold": false,
+          "text": "星桥事件注册执行手册（2026-09）"
+        }
+      ],
+      "label": {
+        "relevance": "no",
+        "entailment": "no",
+        "note": "问通知摘要事件上限，材料是事件注册；数字与问题事项无关",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q021",
+      "stratum": "该答却拒答",
+      "configuration": "bm25",
+      "question_id": "Q021",
+      "question": "星桥：客户一次推送整批订单，每个请求最多可以放多少条记录？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [
+        "eval-batch-api-1"
+      ],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "eval-batch-api-1",
+          "chunk_id": "e32d3ca0-0d3d-5568-a7dc-9d3d95ab0f76",
+          "is_gold": true,
+          "text": "## 常见问题\n\n\n客户把整月订单一次推送后收到 413，拆文件后仍然失败。排查发现限制针对解析后的记录数量，不是压缩包体积。重放前先核对已接收批次，避免把网络超时当成整批失败。\n\n"
+        },
+        {
+          "document_id": "seed-sdk-retry",
+          "chunk_id": "3de72f31-1824-5a8a-a897-8e93d33f1f85",
+          "is_gold": false,
+          "text": "## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n"
+        },
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "371fac71-6057-50bb-a762-268e6ac29303",
+          "is_gold": false,
+          "text": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n"
+        },
+        {
+          "document_id": "eval-service-catalog-5",
+          "chunk_id": "f8075313-f0a1-5fd3-b413-d3e8f5785488",
+          "is_gold": false,
+          "text": "表头：环节 | 说明\nA2: 交接背景\nB2: 旧服务停止写入后仍有客户读取历史记录。负责人区分停止接入、只读和最终下线几个状态，公告要写清迁移入口；停止写入不意味着可以立即删除历史内容。"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": null,
+        "note": "金标材料明确讲每批记录上限，足以回答；系统误拒",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q023",
+      "stratum": "该答却拒答",
+      "configuration": "bm25",
+      "question_id": "Q023",
+      "question": "星桥：提交后台作业后，客户端隔多久查一次执行进度？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [
+        "eval-batch-api-2"
+      ],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "eval-batch-api-2",
+          "chunk_id": "ac83816f-8fc8-52f6-9acc-eb414b3573ed",
+          "is_gold": true,
+          "text": "工单现象\n任务已接收却一直没有结果，调用方误把排队状态当成失败并重复提交。支持人员需要先 保存任务编号，再区分等待、执行、完成和失败；客户端断开不会自动取消服务端任务。"
+        },
+        {
+          "document_id": "seed-sdk-retry",
+          "chunk_id": "3de72f31-1824-5a8a-a897-8e93d33f1f85",
+          "is_gold": false,
+          "text": "## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n"
+        },
+        {
+          "document_id": "cross-medical-items-b",
+          "chunk_id": "61b011c2-6925-5a54-aef7-8c2f6009631f",
+          "is_gold": false,
+          "text": "特种作业岗位年度体检项目数说明（2026-09 版）\n本页只规定特种作业岗位的年度体检项目数，不涉及其他对象。\n特种作业岗位的年度体检项目数为 20 项。\n普通岗位的年度体检项目数另有规定，数值不同是因为适用对象不同，两页并不矛盾，不 需要裁决。\n引用本页数值时必须同时写明适用对象是特种作业岗位，不得脱离对象单独引用。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "lookalike-minutes-due",
+          "chunk_id": "828dc32f-a651-55cd-9643-f3611986a261",
+          "is_gold": false,
+          "text": "A1: 事项\nB1: 约束\nC1: 规定"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": null,
+        "note": "金标材料含状态轮询间隔，足以回答；系统误拒",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q027",
+      "stratum": "该答却拒答",
+      "configuration": "bm25",
+      "question_id": "Q027",
+      "question": "星桥：调用方和服务端的时钟最多可以相差多久才不影响验签？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [
+        "eval-batch-api-4"
+      ],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "eval-batch-api-2",
+          "chunk_id": "ac83816f-8fc8-52f6-9acc-eb414b3573ed",
+          "is_gold": false,
+          "text": "工单现象\n任务已接收却一直没有结果，调用方误把排队状态当成失败并重复提交。支持人员需要先 保存任务编号，再区分等待、执行、完成和失败；客户端断开不会自动取消服务端任务。"
+        },
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "371fac71-6057-50bb-a762-268e6ac29303",
+          "is_gold": false,
+          "text": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n"
+        },
+        {
+          "document_id": "seed-sdk-retry",
+          "chunk_id": "3de72f31-1824-5a8a-a897-8e93d33f1f85",
+          "is_gold": false,
+          "text": "## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n"
+        },
+        {
+          "document_id": "eval-batch-api-4",
+          "chunk_id": "f581586c-a82e-50da-94b6-137fe33024c0",
+          "is_gold": true,
+          "text": "表头：环节 | 说明\nA2: 为什么需要单独核对\nB2: 同一请求在开发机能通过，在代理后却验签失败。先比对实际发送的原始正文和签名正文，再检查时钟；转义、字段重排和换行变化都可能改变摘要。"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": null,
+        "note": "金标材料含时间戳偏差，即问题所指的时钟差；系统误拒",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q029",
+      "stratum": "该答却拒答",
+      "configuration": "bm25",
+      "question_id": "Q029",
+      "question": "星桥：一批文件同时送来，后台最多能一起处理几个？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [
+        "eval-batch-api-5"
+      ],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "seed-upload-guide",
+          "chunk_id": "3b5de8c1-1e2e-5d8d-8d87-87febaf865ca",
+          "is_gold": false,
+          "text": "文件上传接口手册\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。"
+        },
+        {
+          "document_id": "seed-upload-guide",
+          "chunk_id": "c011628c-90bc-59ce-8a4a-eb2ee03d0f56",
+          "is_gold": false,
+          "text": "文件上传规则\n星桥产品的文件上传接口单个文件上限为 20 MB。支持 PDF、Markdown 和 CSV。\n批量上传每批最多 10 个文件。这里描述的是虚构产品接口，不是本演示系统的上传限制。"
+        },
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "371fac71-6057-50bb-a762-268e6ac29303",
+          "is_gold": false,
+          "text": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n"
+        },
+        {
+          "document_id": "seed-sdk-retry",
+          "chunk_id": "3de72f31-1824-5a8a-a897-8e93d33f1f85",
+          "is_gold": false,
+          "text": "## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": null,
+        "note": "金标材料含并行任务上限，足以回答；系统误拒",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q033",
+      "stratum": "该答却拒答",
+      "configuration": "bm25",
+      "question_id": "Q033",
+      "question": "星桥：同一故障重复发通知，暂时不再提醒的窗口有多长？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [
+        "eval-observability-2"
+      ],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "eval-support-workflow-2",
+          "chunk_id": "e9871da1-c15d-5551-9e07-4c0c8893eb0b",
+          "is_gold": false,
+          "text": "## 工单现象\n\n\n工单已经关闭，客户再次回复同一故障。回访人员保留原结单时间与联系记录，判断是未解决还是新问题；没接通电话不能写成客户确认恢复。\n\n"
+        },
+        {
+          "document_id": "eval-billing-2",
+          "chunk_id": "b4da5e24-7e1b-5ecb-8c7e-70274ee7f7d5",
+          "is_gold": false,
+          "text": "表头：环节 | 说明\nA8: 核对依据\nB8: 记录首次提醒提前量时，应同时写清付款提醒的对象和计量单位；记录提醒间隔时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。"
+        },
+        {
+          "document_id": "eval-incident-drills-1",
+          "chunk_id": "56adc525-6735-5f1d-8301-95c7b29f7aa4",
+          "is_gold": false,
+          "text": "星桥故障演练执行手册（2026-09）"
+        },
+        {
+          "document_id": "eval-incident-drills-1",
+          "chunk_id": "6286b3ee-9cd9-5664-b5df-45535dcea925",
+          "is_gold": false,
+          "text": "适用规则\n本节只规定星桥软件的故障演练，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。 故障演练：演练频率为 28 天；最长影响时间为 3\n分钟。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录演练频率时，应同时写清故障演练的对象和计量单位；记录最长影响时间时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。\n执行步骤\n发起故障演练前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对演练频率对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果故障演练依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对最长影响时间对应的条件，并保存实际结果与原始记录的关联。异常不能只写 '失败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": null,
+        "note": "金标材料含告警静默窗口，足以回答；系统误拒",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q035",
+      "stratum": "该答却拒答",
+      "configuration": "bm25",
+      "question_id": "Q035",
+      "question": "星桥：不是每个请求都保存调用链，默认保留的比例是多少？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [
+        "eval-observability-3"
+      ],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "eval-observability-3",
+          "chunk_id": "5431049c-e500-5ce2-aa92-a77543601b5a",
+          "is_gold": true,
+          "text": "表头：环节 | 说明\nA12: 复核记录\nB12: 验收清单：对象是否正确；默认采样比例是否满足；慢请求阈值是否满足；原始编号能否找到；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。"
+        },
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "7128ed66-737b-500e-a85f-7db12ed80309",
+          "is_gold": false,
+          "text": "# API 调用配额说明\n\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n"
+        },
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "371fac71-6057-50bb-a762-268e6ac29303",
+          "is_gold": false,
+          "text": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n"
+        },
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "202d6fd8-aed2-52f9-9f39-e4d099b752f4",
+          "is_gold": false,
+          "text": "## 重试规则\n收到 429 后，应按 Retry-After 响应头等待，不应立即连续重试。\n"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": null,
+        "note": "金标材料含默认采样比例，足以回答；系统误拒",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q14",
+      "stratum": "引用非金标文档",
+      "configuration": "bm25",
+      "question_id": "Q14",
+      "question": "数据导出的下载链接有效期是多久？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "seed-export"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "数据导出的下载链接有效期为30小时。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "ad7fe134-fca8-510a-b578-f7e556559e5b",
+          "locator": "第 1 页",
+          "text": "星桥导出通知交接记录（2026-09）\n交接背景\n客户收到导出通知后很久才打开链接。先确认文件是否仍在临时保留期内，再决定重新生 成；提醒消息和下载授权分别检查，转发通知不会自动增加权限。\n当前执行口径\n本节只规定星桥软件的导出通知，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n导出通知：链接有效期为 30 小时；提醒次数为 2\n次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录链接有效期时，应同时写清导出通知的对象和计量单位；记录提醒次数时同样保留单 位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也 不能互换。\n下一班需要检查\n发起导出通知前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对链接有效期对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果导出通知依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对提醒次数对应的条件，并保存实际结果与原始记录的关联。异常不能只写'失 败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n未完成事项和确认\n超出导出通知的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        },
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "0a8583d8-b062-5244-a1d8-f0a70d1b375e",
+          "locator": "第 1 页",
+          "text": "检查材料时，注意区分实际导出通知记录、界面展示和口头说明。若实际记录与本页数值 不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。\n本页负责人负责导出通知的解释与变更登记。修订需要标明新生效日期和受影响对象；本 页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；链接有效期是否满足；提醒次数是否满足；原始编号能否找到 ；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度 。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "seed-export",
+          "chunk_id": "22051645-30c0-5dd1-894f-605f28f7064b",
+          "is_gold": true,
+          "text": "## 下载有效期\n数据导出的下载链接有效期为 24 小时。链接到期后必须重新发起导出。\n导出权限随用户角色变化而撤销，不能将下载链接转发给无权访问者。\n"
+        },
+        {
+          "document_id": "seed-export",
+          "chunk_id": "c5ab7c8b-1ec2-5cf7-9898-1197916839ee",
+          "is_gold": true,
+          "text": "# 数据导出注意事项\n\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n"
+        },
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "ad7fe134-fca8-510a-b578-f7e556559e5b",
+          "is_gold": false,
+          "text": "星桥导出通知交接记录（2026-09）\n交接背景\n客户收到导出通知后很久才打开链接。先确认文件是否仍在临时保留期内，再决定重新生 成；提醒消息和下载授权分别检查，转发通知不会自动增加权限。\n当前执行口径\n本节只规定星桥软件的导出通知，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n导出通知：链接有效期为 30 小时；提醒次数为 2\n次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录链接有效期时，应同时写清导出通知的对象和计量单位；记录提醒次数时同样保留单 位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也 不能互换。\n下一班需要检查\n发起导出通知前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对链接有效期对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果导出通知依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对提醒次数对应的条件，并保存实际结果与原始记录的关联。异常不能只写'失 败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n未完成事项和确认\n超出导出通知的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        },
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "0a8583d8-b062-5244-a1d8-f0a70d1b375e",
+          "is_gold": false,
+          "text": "检查材料时，注意区分实际导出通知记录、界面展示和口头说明。若实际记录与本页数值 不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。\n本页负责人负责导出通知的解释与变更登记。修订需要标明新生效日期和受影响对象；本 页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；链接有效期是否满足；提醒次数是否满足；原始编号能否找到 ；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度 。"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "材料确实给出下载链接有效期，结论被支持；金标只是标了另一份同样含该值的文档",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "hybrid-Q045",
+      "stratum": "引用非金标文档",
+      "configuration": "hybrid",
+      "question_id": "Q045",
+      "question": "星桥：想在维护时段做改动，至少要提前多久提交申请？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "eval-deployment-controls-3"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "想在维护时段做改动，至少要提前36小时提交申请。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-service-catalog-4",
+          "chunk_id": "c1ca78c8-7fec-5e4b-82c6-4127ef5589a3",
+          "locator": "段落 4",
+          "text": "维护公告按什么规则执行\n本节只规定星桥软件的维护公告，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n维护公告：提前发布时长为 36 小时；提醒间隔为 12 小时。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录提前发布时长时，应同时写清维护公告的对象和计量单位；记录提醒间隔时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "eval-service-catalog-4",
+          "chunk_id": "c1ca78c8-7fec-5e4b-82c6-4127ef5589a3",
+          "is_gold": false,
+          "text": "维护公告按什么规则执行\n本节只规定星桥软件的维护公告，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n维护公告：提前发布时长为 36 小时；提醒间隔为 12 小时。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录提前发布时长时，应同时写清维护公告的对象和计量单位；记录提醒间隔时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。"
+        },
+        {
+          "document_id": "eval-service-catalog-4",
+          "chunk_id": "1db8cafc-e0dc-538a-a46d-ce01c3f1a3a6",
+          "is_gold": false,
+          "text": "星桥维护公告操作问答（2026-09）"
+        },
+        {
+          "document_id": "conflict-medical-booking-b",
+          "chunk_id": "6492d7df-81de-5fc1-b217-7d5c3d0f8a41",
+          "is_gold": false,
+          "text": "# 体检预约提前期规定（运维团队版）（2026-09 版）\n\n\n本页规定星桥软件的体检预约提前期，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n\n\n体检预约提前期的提前期为 21 天。\n\n\n本页由运维团队维护。除本页外，体检预约提前期规定（支持团队版）也在对外说明体检预约提前期；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n\n\n本页未设置失效日期，也不声明优先于其他文件。记录提前期时保留原始单位，不折算成其他计时口径。\n\n\n来源：本项目自建虚构业务资料，不代表真实企业。\n"
+        },
+        {
+          "document_id": "eval-deployment-controls-3",
+          "chunk_id": "adc91b15-2de4-51dc-b785-817593a155d9",
+          "is_gold": true,
+          "text": "## 参数与单位\n\n\n本节只规定星桥软件的变更窗口，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n\n\n变更窗口：提前申请时间为 6 小时；窗口长度为 90 分钟。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n\n\n记录提前申请时间时，应同时写清变更窗口的对象和计量单位；记录窗口长度时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。\n\n"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "维护公告材料含提前提交时限，结论被支持",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "hybrid-Q081",
+      "stratum": "引用非金标文档",
+      "configuration": "hybrid",
+      "question_id": "Q081",
+      "question": "星桥：申请一次隔离联调环境，最多能连续用多久？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "eval-developer-tools-1"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "星桥隔离联调环境的申请最多能连续用7个工作日。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-partner-operations-1",
+          "chunk_id": "d3cb9008-0b5b-5306-b7f1-687d39727b2a",
+          "locator": "第 3 行起",
+          "text": "## 适用规则\n\n\n本节只规定星桥软件的伙伴申请，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n\n\n伙伴申请：初审时限为 7 个工作日；证明材料数量为 4 份。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n\n\n记录初审时限时，应同时写清伙伴申请的对象和计量单位；记录证明材料数量时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。\n\n"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "eval-partner-operations-1",
+          "chunk_id": "d3cb9008-0b5b-5306-b7f1-687d39727b2a",
+          "is_gold": false,
+          "text": "## 适用规则\n\n\n本节只规定星桥软件的伙伴申请，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n\n\n伙伴申请：初审时限为 7 个工作日；证明材料数量为 4 份。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n\n\n记录初审时限时，应同时写清伙伴申请的对象和计量单位；记录证明材料数量时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。\n\n"
+        },
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "371fac71-6057-50bb-a762-268e6ac29303",
+          "is_gold": false,
+          "text": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n"
+        },
+        {
+          "document_id": "eval-observability-5",
+          "chunk_id": "bd3d75c3-d2db-5933-be79-85447bdc4075",
+          "is_gold": false,
+          "text": "星桥日志检索交接记录（2026-09）\n交接背景\n查跨周故障时查询被拒绝，工程师准备放大时间范围重试。应按连续时间段拆分，并保持 时区与边界一致；查询结果受数量限制时要继续翻页而不是宣布没有更多日志。\n当前执行口径\n本节只规定星桥软件的日志检索，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。 日志检索：查询跨度为 14 天；单次结果上限为 600\n条。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录查询跨度时，应同时写清日志检索的对象和计量单位；记录单次结果上限时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。\n下一班需要检查\n发起日志检索前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对查询跨度对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果日志检索依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对单次结果上限对应的条件，并保存实际结果与原始记录的关联。异常不能只写 '失败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n未完成事项和确认\n超出日志检索的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        },
+        {
+          "document_id": "eval-observability-2",
+          "chunk_id": "127ad05f-79ce-5853-bb0c-9eee14c6ab76",
+          "is_gold": false,
+          "text": "核对依据\n本节只规定星桥软件的告警抑制，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n告警抑制：静默窗口为 12 分钟；连续触发次数为 4 次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录静默窗口时，应同时写清告警抑制的对象和计量单位；记录连续触发次数时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "伙伴申请材料含连续使用上限，结论被支持",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "hybrid-Q227",
+      "stratum": "引用非金标文档",
+      "configuration": "hybrid",
+      "question_id": "Q227",
+      "question": "星桥2026-09-01 起的空调温度设定是多少？",
+      "question_kind": "conflict_lookalike_cross",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "cross-aircon-setpoint-b"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "星桥2026-09-01起的空调温度设定为24℃。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-deployment-controls-5",
+          "chunk_id": "fdb83793-1ea4-5580-bb17-900dde77706c",
+          "locator": "段落 1",
+          "text": "星桥配置开关交接记录（2026-09）"
+        },
+        {
+          "document_id": "eval-service-catalog-4",
+          "chunk_id": "1db8cafc-e0dc-538a-a46d-ce01c3f1a3a6",
+          "locator": "段落 1",
+          "text": "星桥维护公告操作问答（2026-09）"
+        },
+        {
+          "document_id": "eval-procurement-4",
+          "chunk_id": "c8bc68b5-38a5-5040-a6c8-4f11476358a2",
+          "locator": "段落 1",
+          "text": "星桥验收登记操作问答（2026-09）"
+        },
+        {
+          "document_id": "eval-incident-drills-4",
+          "chunk_id": "03f295d3-16fb-5a2d-b31a-3ea22cd7d821",
+          "locator": "第 1 行起",
+          "text": "# 星桥应急联络操作问答（2026-09）\n\n"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "eval-deployment-controls-5",
+          "chunk_id": "fdb83793-1ea4-5580-bb17-900dde77706c",
+          "is_gold": false,
+          "text": "星桥配置开关交接记录（2026-09）"
+        },
+        {
+          "document_id": "eval-service-catalog-4",
+          "chunk_id": "1db8cafc-e0dc-538a-a46d-ce01c3f1a3a6",
+          "is_gold": false,
+          "text": "星桥维护公告操作问答（2026-09）"
+        },
+        {
+          "document_id": "eval-procurement-4",
+          "chunk_id": "c8bc68b5-38a5-5040-a6c8-4f11476358a2",
+          "is_gold": false,
+          "text": "星桥验收登记操作问答（2026-09）"
+        },
+        {
+          "document_id": "eval-incident-drills-4",
+          "chunk_id": "03f295d3-16fb-5a2d-b31a-3ea22cd7d821",
+          "is_gold": false,
+          "text": "# 星桥应急联络操作问答（2026-09）\n\n"
+        }
+      ],
+      "label": {
+        "relevance": "no",
+        "entailment": "no",
+        "note": "问空调温度设定，材料是配置开关与维护公告；24℃ 在材料中无依据",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q16",
+      "stratum": "冲突",
+      "configuration": "bm25",
+      "question_id": "Q16",
+      "question": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+      "question_kind": "conflict",
+      "expected_status": "conflict",
+      "actual_status": "conflict",
+      "gold_source_ids": [
+        "seed-pilot-a",
+        "seed-pilot-b"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "2026 年 9 月试点项目的支持时间为工作日 09:00 至 18:00。",
+        "2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。"
+      ],
+      "evidence": [
+        {
+          "document_id": "seed-pilot-a",
+          "chunk_id": "5d0beb32-793c-5973-9b4a-5548980efee2",
+          "locator": "第 5 行起",
+          "text": "## 试点安排\n2026 年 9 月试点项目的支持时间为工作日 09:00 至 18:00。\n本文件由试点协调组发布，未注明与其他支持安排的优先关系。\n"
+        },
+        {
+          "document_id": "seed-pilot-b",
+          "chunk_id": "58e3fe0c-dfb2-517a-8570-7ae0b4c1805d",
+          "locator": "第 5 行起",
+          "text": "## 试点安排\n2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。\n本文件由客户成功组发布，未注明与其他支持安排的优先关系。\n"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "seed-pilot-a",
+          "chunk_id": "bb2db8c3-5c6a-588a-b73a-b610c675a252",
+          "is_gold": true,
+          "text": "# 试点项目支持安排 A\n\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n"
+        },
+        {
+          "document_id": "seed-pilot-a",
+          "chunk_id": "5d0beb32-793c-5973-9b4a-5548980efee2",
+          "is_gold": true,
+          "text": "## 试点安排\n2026 年 9 月试点项目的支持时间为工作日 09:00 至 18:00。\n本文件由试点协调组发布，未注明与其他支持安排的优先关系。\n"
+        },
+        {
+          "document_id": "seed-pilot-b",
+          "chunk_id": "24989f75-dc12-5bdf-9eb1-2de6a8e6c856",
+          "is_gold": true,
+          "text": "# 试点项目支持安排 B\n\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n"
+        },
+        {
+          "document_id": "seed-pilot-b",
+          "chunk_id": "58e3fe0c-dfb2-517a-8570-7ae0b4c1805d",
+          "is_gold": true,
+          "text": "## 试点安排\n2026 年 9 月试点项目的支持时间为每日 08:00 至 20:00。\n本文件由客户成功组发布，未注明与其他支持安排的优先关系。\n"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "两份试点安排都直接回答支持时段，结论逐句可在来源中找到",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q201",
+      "stratum": "冲突",
+      "configuration": "bm25",
+      "question_id": "Q201",
+      "question": "星桥证书续期提前量到底是多少？两处说法一致吗？",
+      "question_kind": "conflict",
+      "expected_status": "conflict",
+      "actual_status": "conflict",
+      "gold_source_ids": [
+        "conflict-cert-renewal-a",
+        "conflict-cert-renewal-b"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "证书续期提前量为30天。",
+        "证书续期提前量为60天。"
+      ],
+      "evidence": [
+        {
+          "document_id": "conflict-cert-renewal-a",
+          "chunk_id": "897cbbee-e1c3-58f4-9342-14574f2ee823",
+          "locator": "第 1 行起",
+          "text": "# 证书续期提前量规定（支持团队版）（2026-09 版）\n\n\n本页规定星桥软件的证书续期提前量，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n\n\n证书续期提前量的提前量为 30 天。\n\n\n本页由支持团队维护。除本页外，证书续期提前量规定（运维团队版）也在对外说明证书续期提前量；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n\n\n本页未设置失效日期，也不声明优先于其他文件。记录提前量时保留原始单位，不折算成其他计时口径。\n\n\n来源：本项目自建虚构业务资料，不代表真实企业。\n"
+        },
+        {
+          "document_id": "conflict-cert-renewal-b",
+          "chunk_id": "b5146e34-49b4-5af1-a8b1-c90990d9a590",
+          "locator": "第 1 页",
+          "text": "证书续期提前量规定（运维团队版）（2026-09 版） 本页规定星桥软件的证书续期提前量，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。 证书续期提前量的提前量为 60 天。\n本页由运维团队维护。除本页外，证书续期提前量规定（支持团队版）也在对外说明证书 续期提前量；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁 决。\n本页未设置失效日期，也不声明优先于其他文件。记录提前量时保留原始单位，不折算成 其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "conflict-cert-renewal-a",
+          "chunk_id": "897cbbee-e1c3-58f4-9342-14574f2ee823",
+          "is_gold": true,
+          "text": "# 证书续期提前量规定（支持团队版）（2026-09 版）\n\n\n本页规定星桥软件的证书续期提前量，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n\n\n证书续期提前量的提前量为 30 天。\n\n\n本页由支持团队维护。除本页外，证书续期提前量规定（运维团队版）也在对外说明证书续期提前量；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n\n\n本页未设置失效日期，也不声明优先于其他文件。记录提前量时保留原始单位，不折算成其他计时口径。\n\n\n来源：本项目自建虚构业务资料，不代表真实企业。\n"
+        },
+        {
+          "document_id": "conflict-cert-renewal-b",
+          "chunk_id": "b5146e34-49b4-5af1-a8b1-c90990d9a590",
+          "is_gold": true,
+          "text": "证书续期提前量规定（运维团队版）（2026-09 版） 本页规定星桥软件的证书续期提前量，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。 证书续期提前量的提前量为 60 天。\n本页由运维团队维护。除本页外，证书续期提前量规定（支持团队版）也在对外说明证书 续期提前量；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁 决。\n本页未设置失效日期，也不声明优先于其他文件。记录提前量时保留原始单位，不折算成 其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "conflict-medical-booking-a",
+          "chunk_id": "c058d17c-6b69-5564-8fd8-533e081ca0cd",
+          "is_gold": false,
+          "text": "表头：段落\nA5: 本页由支持团队维护。除本页外，体检预约提前期规定（运维团队版）也在对外说明体检预约提前期；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。"
+        },
+        {
+          "document_id": "eval-service-catalog-5",
+          "chunk_id": "08e0c4e0-1501-506b-967c-add24c83605a",
+          "is_gold": false,
+          "text": "表头：事项 | 约束 | 规定\nA2: 下线服务\nB2: 通知提前量\nC2: 45 天"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "两份证书续期规定都相关，结论被其来源支持",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q202",
+      "stratum": "冲突",
+      "configuration": "bm25",
+      "question_id": "Q202",
+      "question": "星桥演练报告提交时限到底是多少？两处说法一致吗？",
+      "question_kind": "conflict",
+      "expected_status": "conflict",
+      "actual_status": "conflict",
+      "gold_source_ids": [
+        "conflict-drill-report-a",
+        "conflict-drill-report-b"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "演练报告提交时限为3个工作日。",
+        "演练报告提交时限为10个工作日。"
+      ],
+      "evidence": [
+        {
+          "document_id": "conflict-drill-report-a",
+          "chunk_id": "8fecd5c3-5b79-5582-acc4-7d0add66d629",
+          "locator": "第 1 页",
+          "text": "演练报告提交时限规定（支持团队版）（2026-09 版）\n本页规定星桥软件的演练报告提交时限，自 2026 年 9 月 1\n日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n演练报告提交时限的提交时限为 3 个工作日。\n本页由支持团队维护。除本页外，演练报告提交时限规定（运维团队版）也在对外说明演 练报告提交时限；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责 人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录提交时限时保留原始单位，不折算 成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "conflict-drill-report-b",
+          "chunk_id": "e6d1e26e-fde7-506a-a90b-853ee952367f",
+          "locator": "段落 1",
+          "text": "演练报告提交时限规定（运维团队版）（2026-09 版）\n本页规定星桥软件的演练报告提交时限，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n演练报告提交时限的提交时限为 10 个工作日。\n本页由运维团队维护。除本页外，演练报告提交时限规定（支持团队版）也在对外说明演练报告提交时限；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录提交时限时保留原始单位，不折算成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "conflict-drill-report-a",
+          "chunk_id": "8fecd5c3-5b79-5582-acc4-7d0add66d629",
+          "is_gold": true,
+          "text": "演练报告提交时限规定（支持团队版）（2026-09 版）\n本页规定星桥软件的演练报告提交时限，自 2026 年 9 月 1\n日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n演练报告提交时限的提交时限为 3 个工作日。\n本页由支持团队维护。除本页外，演练报告提交时限规定（运维团队版）也在对外说明演 练报告提交时限；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责 人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录提交时限时保留原始单位，不折算 成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "conflict-drill-report-b",
+          "chunk_id": "e6d1e26e-fde7-506a-a90b-853ee952367f",
+          "is_gold": true,
+          "text": "演练报告提交时限规定（运维团队版）（2026-09 版）\n本页规定星桥软件的演练报告提交时限，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n演练报告提交时限的提交时限为 10 个工作日。\n本页由运维团队维护。除本页外，演练报告提交时限规定（支持团队版）也在对外说明演练报告提交时限；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录提交时限时保留原始单位，不折算成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "lookalike-minutes-due",
+          "chunk_id": "828dc32f-a651-55cd-9643-f3611986a261",
+          "is_gold": false,
+          "text": "A1: 事项\nB1: 约束\nC1: 规定"
+        },
+        {
+          "document_id": "lookalike-minutes-due",
+          "chunk_id": "da4fd6a8-e23d-5d7c-adf8-8d70eb78696e",
+          "is_gold": false,
+          "text": "表头：事项 | 约束 | 规定\nA2: 会议纪要提交时限\nB2: 2026-08-31 之前\nC2: 3 个工作日"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "两份演练报告提交时限规定都相关，结论被支持",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q203",
+      "stratum": "冲突",
+      "configuration": "bm25",
+      "question_id": "Q203",
+      "question": "星桥门禁卡补办周期到底是多少？两处说法一致吗？",
+      "question_kind": "conflict",
+      "expected_status": "conflict",
+      "actual_status": "conflict",
+      "gold_source_ids": [
+        "conflict-badge-reissue-a",
+        "conflict-badge-reissue-b"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "星桥门禁卡补办周期为2个工作日。",
+        "星桥门禁卡补办周期为5个工作日。"
+      ],
+      "evidence": [
+        {
+          "document_id": "conflict-badge-reissue-a",
+          "chunk_id": "881251b0-7133-5bf6-ac84-98a992a65d99",
+          "locator": "段落 1",
+          "text": "门禁卡补办周期规定（支持团队版）（2026-09 版）\n本页规定星桥软件的门禁卡补办周期，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n门禁卡补办周期的补办周期为 2 个工作日。\n本页由支持团队维护。除本页外，门禁卡补办周期规定（运维团队版）也在对外说明门禁卡补办周期；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录补办周期时保留原始单位，不折算成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "conflict-badge-reissue-b",
+          "chunk_id": "a5b64115-6dfa-519b-8405-9bde4a52899f",
+          "locator": "规定 · A2:C2",
+          "text": "表头：事项 | 约束 | 规定\nA2: 门禁卡补办周期\nB2: 补办周期\nC2: 5 个工作日"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "conflict-badge-reissue-a",
+          "chunk_id": "881251b0-7133-5bf6-ac84-98a992a65d99",
+          "is_gold": true,
+          "text": "门禁卡补办周期规定（支持团队版）（2026-09 版）\n本页规定星桥软件的门禁卡补办周期，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n门禁卡补办周期的补办周期为 2 个工作日。\n本页由支持团队维护。除本页外，门禁卡补办周期规定（运维团队版）也在对外说明门禁卡补办周期；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n本页未设置失效日期，也不声明优先于其他文件。记录补办周期时保留原始单位，不折算成其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "conflict-badge-reissue-b",
+          "chunk_id": "73859c5a-d2a5-547a-88c9-1ea5d22a329e",
+          "is_gold": true,
+          "text": "A1: 事项\nB1: 约束\nC1: 规定"
+        },
+        {
+          "document_id": "conflict-badge-reissue-b",
+          "chunk_id": "a5b64115-6dfa-519b-8405-9bde4a52899f",
+          "is_gold": true,
+          "text": "表头：事项 | 约束 | 规定\nA2: 门禁卡补办周期\nB2: 补办周期\nC2: 5 个工作日"
+        },
+        {
+          "document_id": "conflict-badge-reissue-b",
+          "chunk_id": "b9fd1861-339c-55e6-aaf1-f1b87bb2c049",
+          "is_gold": true,
+          "text": "A1: 段落"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "两份门禁卡补办周期规定都相关，结论被支持",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q205",
+      "stratum": "冲突",
+      "configuration": "bm25",
+      "question_id": "Q205",
+      "question": "星桥工位搬迁通知期到底是多少？两处说法一致吗？",
+      "question_kind": "conflict",
+      "expected_status": "conflict",
+      "actual_status": "conflict",
+      "gold_source_ids": [
+        "conflict-desk-move-a",
+        "conflict-desk-move-b"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "星桥工位搬迁通知期的通知期为5个工作日。",
+        "星桥工位搬迁通知期的通知期为2个工作日。"
+      ],
+      "evidence": [
+        {
+          "document_id": "conflict-desk-move-a",
+          "chunk_id": "36f2216a-a1d7-585b-8c71-02f4307cd030",
+          "locator": "第 1 行起",
+          "text": "# 工位搬迁通知期规定（支持团队版）（2026-09 版）\n\n\n本页规定星桥软件的工位搬迁通知期，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n\n\n工位搬迁通知期的通知期为 5 个工作日。\n\n\n本页由支持团队维护。除本页外，工位搬迁通知期规定（运维团队版）也在对外说明工位搬迁通知期；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n\n\n本页未设置失效日期，也不声明优先于其他文件。记录通知期时保留原始单位，不折算成其他计时口径。\n\n\n来源：本项目自建虚构业务资料，不代表真实企业。\n"
+        },
+        {
+          "document_id": "conflict-desk-move-b",
+          "chunk_id": "837d8a4a-a289-5359-bd0c-e61a2836dbb6",
+          "locator": "第 1 页",
+          "text": "工位搬迁通知期规定（运维团队版）（2026-09 版）\n本页规定星桥软件的工位搬迁通知期，自 2026 年 9 月 1\n日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n工位搬迁通知期的通知期为 2 个工作日。\n本页由运维团队维护。除本页外，工位搬迁通知期规定（支持团队版）也在对外说明工位 搬迁通知期；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁 决。\n本页未设置失效日期，也不声明优先于其他文件。记录通知期时保留原始单位，不折算成 其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "conflict-desk-move-a",
+          "chunk_id": "36f2216a-a1d7-585b-8c71-02f4307cd030",
+          "is_gold": true,
+          "text": "# 工位搬迁通知期规定（支持团队版）（2026-09 版）\n\n\n本页规定星桥软件的工位搬迁通知期，自 2026 年 9 月 1 日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n\n\n工位搬迁通知期的通知期为 5 个工作日。\n\n\n本页由支持团队维护。除本页外，工位搬迁通知期规定（运维团队版）也在对外说明工位搬迁通知期；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁决。\n\n\n本页未设置失效日期，也不声明优先于其他文件。记录通知期时保留原始单位，不折算成其他计时口径。\n\n\n来源：本项目自建虚构业务资料，不代表真实企业。\n"
+        },
+        {
+          "document_id": "conflict-desk-move-b",
+          "chunk_id": "837d8a4a-a289-5359-bd0c-e61a2836dbb6",
+          "is_gold": true,
+          "text": "工位搬迁通知期规定（运维团队版）（2026-09 版）\n本页规定星桥软件的工位搬迁通知期，自 2026 年 9 月 1\n日起执行，适用于全部客户与全部环境，没有地区或套餐差别。\n工位搬迁通知期的通知期为 2 个工作日。\n本页由运维团队维护。除本页外，工位搬迁通知期规定（支持团队版）也在对外说明工位 搬迁通知期；两处口径不一致时不得自行选择其中一方，应保留两份来源并交由负责人裁 决。\n本页未设置失效日期，也不声明优先于其他文件。记录通知期时保留原始单位，不折算成 其他计时口径。\n来源：本项目自建虚构业务资料，不代表真实企业。"
+        },
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "ad7fe134-fca8-510a-b578-f7e556559e5b",
+          "is_gold": false,
+          "text": "星桥导出通知交接记录（2026-09）\n交接背景\n客户收到导出通知后很久才打开链接。先确认文件是否仍在临时保留期内，再决定重新生 成；提醒消息和下载授权分别检查，转发通知不会自动增加权限。\n当前执行口径\n本节只规定星桥软件的导出通知，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n导出通知：链接有效期为 30 小时；提醒次数为 2\n次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录链接有效期时，应同时写清导出通知的对象和计量单位；记录提醒次数时同样保留单 位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也 不能互换。\n下一班需要检查\n发起导出通知前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对链接有效期对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果导出通知依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对提醒次数对应的条件，并保存实际结果与原始记录的关联。异常不能只写'失 败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n未完成事项和确认\n超出导出通知的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        },
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "0a8583d8-b062-5244-a1d8-f0a70d1b375e",
+          "is_gold": false,
+          "text": "检查材料时，注意区分实际导出通知记录、界面展示和口头说明。若实际记录与本页数值 不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。\n本页负责人负责导出通知的解释与变更登记。修订需要标明新生效日期和受影响对象；本 页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；链接有效期是否满足；提醒次数是否满足；原始编号能否找到 ；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度 。"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "两份工位搬迁通知期规定都相关，结论被支持",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q028",
+      "stratum": "不可答",
+      "configuration": "bm25",
+      "question_id": "Q028",
+      "question": "星桥接口签名在南极分部的专用补贴金额是多少？",
+      "question_kind": "unanswerable",
+      "expected_status": "insufficient_evidence",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "eval-batch-api-4",
+          "chunk_id": "5d3caa61-3a1a-5356-ac93-0975ee9673ba",
+          "is_gold": false,
+          "text": "A1: 事项\nB1: 约束\nC1: 规定"
+        },
+        {
+          "document_id": "eval-batch-api-4",
+          "chunk_id": "1a0a8e18-12eb-55cd-856e-dce6f1ddbdca",
+          "is_gold": false,
+          "text": "表头：事项 | 约束 | 规定\nA2: 接口签名\nB2: 时间戳偏差\nC2: 120 秒"
+        },
+        {
+          "document_id": "eval-batch-api-4",
+          "chunk_id": "30ff5684-4f71-514d-9fd7-0a6e3b03dd72",
+          "is_gold": false,
+          "text": "表头：事项 | 约束 | 规定\nA3: 接口签名\nB3: 随机串长度\nC3: 24 位"
+        },
+        {
+          "document_id": "eval-batch-api-4",
+          "chunk_id": "3b547236-c900-52e8-976d-1240e86060d2",
+          "is_gold": false,
+          "text": "表头：事项 | 约束 | 规定\nA4: 适用范围\nB4: 组织与生效日\nC4: 星桥软件，2026-09-01"
+        }
+      ],
+      "label": {
+        "relevance": "no",
+        "entailment": null,
+        "note": "材料讲接口签名参数，与南极分部补贴无关；正确拒答",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q038",
+      "stratum": "不可答",
+      "configuration": "bm25",
+      "question_id": "Q038",
+      "question": "星桥错误面板在南极分部的专用补贴金额是多少？",
+      "question_kind": "unanswerable",
+      "expected_status": "insufficient_evidence",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "eval-observability-4",
+          "chunk_id": "8a0d0538-c22b-5c2a-9c45-ad2cbea9896d",
+          "is_gold": false,
+          "text": "# 星桥错误面板操作问答（2026-09）\n\n"
+        },
+        {
+          "document_id": "eval-observability-4",
+          "chunk_id": "33f8c5c7-91cc-5ab0-803b-df27182a611e",
+          "is_gold": false,
+          "text": "## 为什么需要单独核对\n\n\n客户看到错误总数上升但列表内容没变。总量统计与明细列表来自不同聚合过程，先核对筛选时间和刷新时间；导出的统计不能用当前可见的列表行数反推。\n\n"
+        },
+        {
+          "document_id": "eval-observability-4",
+          "chunk_id": "096b1f4a-f364-5b27-a348-064c1db369bb",
+          "is_gold": false,
+          "text": "## 错误面板按什么规则执行\n\n\n本节只规定星桥软件的错误面板，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n\n\n错误面板：刷新周期为 45 秒；显示记录上限为 180 条。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n\n\n记录刷新周期时，应同时写清错误面板的对象和计量单位；记录显示记录上限时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。\n\n"
+        },
+        {
+          "document_id": "eval-observability-4",
+          "chunk_id": "de14cb02-089f-503d-9d05-162c6c6c4ec3",
+          "is_gold": false,
+          "text": "## 实际操作怎么记录\n\n\n发起错误面板前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记录是否已经处理过，再核对刷新周期对应的限制；重复提交不能绕过这项限制。\n\n\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果错误面板依赖其他团队，写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n\n\n收尾时核对显示记录上限对应的条件，并保存实际结果与原始记录的关联。异常不能只写“失败”或“已解决”，需要列出已确认的现象、做过的操作和仍未解决的问题。\n\n"
+        }
+      ],
+      "label": {
+        "relevance": "no",
+        "entailment": null,
+        "note": "材料讲错误面板，与补贴无关；正确拒答",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q048",
+      "stratum": "不可答",
+      "configuration": "bm25",
+      "question_id": "Q048",
+      "question": "星桥数据库变更在南极分部的专用补贴金额是多少？",
+      "question_kind": "unanswerable",
+      "expected_status": "insufficient_evidence",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "eval-deployment-controls-4",
+          "chunk_id": "0785ba19-fdbf-54f7-9e71-46b511d9d607",
+          "is_gold": false,
+          "text": "星桥数据库变更操作问答（2026-09）\n为什么需要单独核对\n数据库迁移等待锁，业务连接逐渐堆积。执行人先确认锁持有者和迁移事务状态，不盲目 再次提交同一脚本；备份完成的提示还需要对应可验证的恢复记录。\n数据库变更按什么规则执行\n本节只规定星桥软件的数据库变更，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。 数据库变更：迁移锁时限为 40 秒；回滚备份保留为 14\n天。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录迁移锁时限时，应同时写清数据库变更的对象和计量单位；记录回滚备份保留时同样 保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量 上限也不能互换。\n实际操作怎么记录\n发起数据库变更前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前 记录是否已经处理过，再核对迁移锁时限对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果数据库变更依赖其他团队 ，写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对回滚备份保留对应的条件，并保存实际结果与原始记录的关联。异常不能只写 '失败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n遇到例外怎么办\n超出数据库变更的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束 条件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        },
+        {
+          "document_id": "eval-deployment-controls-4",
+          "chunk_id": "06ba1c63-8db7-556a-b63b-81aa726cddc2",
+          "is_gold": false,
+          "text": "检查材料时，注意区分实际数据库变更记录、界面展示和口头说明。若实际记录与本页数 值不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。\n本页负责人负责数据库变更的解释与变更登记。修订需要标明新生效日期和受影响对象； 本页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；迁移锁时限是否满足；回滚备份保留是否满足；原始编号能否 找到；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度 。"
+        },
+        {
+          "document_id": "seed-db-backup",
+          "chunk_id": "1d463d45-6fec-53f1-a252-1a08dfc198dc",
+          "is_gold": false,
+          "text": "# 数据库备份与恢复目标\n\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n"
+        },
+        {
+          "document_id": "seed-db-backup",
+          "chunk_id": "752e4b7c-07e5-54ea-954f-e678e5932e13",
+          "is_gold": false,
+          "text": "## 恢复目标\n生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。\n每天进行一次全量备份，事务日志每 5 分钟归档一次。每月执行恢复演练。\n"
+        }
+      ],
+      "label": {
+        "relevance": "no",
+        "entailment": null,
+        "note": "材料讲数据库变更，与补贴无关；正确拒答",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q058",
+      "stratum": "不可答",
+      "configuration": "bm25",
+      "question_id": "Q058",
+      "question": "星桥知识纠错在南极分部的专用补贴金额是多少？",
+      "question_kind": "unanswerable",
+      "expected_status": "insufficient_evidence",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "eval-support-workflow-4",
+          "chunk_id": "9f2f43b5-725c-517a-905b-87f9be224c60",
+          "is_gold": false,
+          "text": "实际操作怎么记录\n发起知识纠错前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记录是否已经处理过，再核对事实复核时限对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果知识纠错依赖其他团队，写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对复核人数对应的条件，并保存实际结果与原始记录的关联。异常不能只写“失败”或“已解决”，需要列出已确认的现象、做过的操作和仍未解决的问题。"
+        },
+        {
+          "document_id": "eval-support-workflow-4",
+          "chunk_id": "a2b805e7-f215-5c79-91cc-19c25cc880ab",
+          "is_gold": false,
+          "text": "遇到例外怎么办\n超出知识纠错的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。\n检查材料时，注意区分实际知识纠错记录、界面展示和口头说明。若实际记录与本页数值不一致，保留双方来源并交由负责人核对，不能删掉差异后填写“符合”。\n本页负责人负责知识纠错的解释与变更登记。修订需要标明新生效日期和受影响对象；本页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；事实复核时限是否满足；复核人数是否满足；原始编号能否找到；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度。"
+        },
+        {
+          "document_id": "eval-support-workflow-4",
+          "chunk_id": "77759336-58de-577e-bec7-e9f4cf0d4672",
+          "is_gold": false,
+          "text": "星桥知识纠错操作问答（2026-09）"
+        },
+        {
+          "document_id": "eval-support-workflow-4",
+          "chunk_id": "0a7a060e-278d-54fc-9817-1392e13ab186",
+          "is_gold": false,
+          "text": "为什么需要单独核对\n知识条目与实际产品行为不符，支持人员提交修订建议。复核必须同时查看原文、当前版本和复现材料；措辞变得顺畅不能代替事实验证，争议未解决时暂缓发布。"
+        }
+      ],
+      "label": {
+        "relevance": "no",
+        "entailment": null,
+        "note": "材料讲知识纠错流程，与补贴无关；正确拒答",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q068",
+      "stratum": "不可答",
+      "configuration": "bm25",
+      "question_id": "Q068",
+      "question": "星桥团队归档在南极分部的专用补贴金额是多少？",
+      "question_kind": "unanswerable",
+      "expected_status": "insufficient_evidence",
+      "actual_status": "insufficient_evidence",
+      "gold_source_ids": [],
+      "hidden_source_ids": [],
+      "claims": [],
+      "evidence": [],
+      "retrieved": [
+        {
+          "document_id": "eval-workspace-config-4",
+          "chunk_id": "e2e8ce0d-b1ba-58aa-8039-7afd7cf4ea94",
+          "is_gold": false,
+          "text": "A1: 事项\nB1: 约束\nC1: 规定"
+        },
+        {
+          "document_id": "eval-workspace-config-4",
+          "chunk_id": "f8643105-0849-5cb8-ae49-88002870a94d",
+          "is_gold": false,
+          "text": "表头：事项 | 约束 | 规定\nA2: 团队归档\nB2: 归档冷静期\nC2: 10 天"
+        },
+        {
+          "document_id": "eval-workspace-config-4",
+          "chunk_id": "a95c2e41-ee7d-5805-b389-a38c45338680",
+          "is_gold": false,
+          "text": "表头：事项 | 约束 | 规定\nA3: 团队归档\nB3: 恢复处理时限\nC3: 6 小时"
+        },
+        {
+          "document_id": "eval-workspace-config-4",
+          "chunk_id": "8c64533f-31e5-5f23-8780-75c4b46fb6e3",
+          "is_gold": false,
+          "text": "表头：事项 | 约束 | 规定\nA4: 适用范围\nB4: 组织与生效日\nC4: 星桥软件，2026-09-01"
+        }
+      ],
+      "label": {
+        "relevance": "no",
+        "entailment": null,
+        "note": "材料讲团队归档，与补贴无关；正确拒答",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q01",
+      "stratum": "改写型提问命中",
+      "configuration": "bm25",
+      "question_id": "Q01",
+      "question": "星桥标准套餐每分钟可以调用多少次 API？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "seed-api-limits"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "星桥标准套餐每分钟最多允许120次请求。"
+      ],
+      "evidence": [
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "371fac71-6057-50bb-a762-268e6ac29303",
+          "locator": "第 5 行起",
+          "text": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "371fac71-6057-50bb-a762-268e6ac29303",
+          "is_gold": true,
+          "text": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n"
+        },
+        {
+          "document_id": "seed-data-retention",
+          "chunk_id": "3c3877f2-d656-53d6-89c0-e62595d7284c",
+          "is_gold": false,
+          "text": "日志与数据保留\n星桥标准套餐的业务事件日志保留 90 天，到期自动删除。\n审计日志保留 180 天。客户可在合同中约定更长的保留周期。"
+        },
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "7128ed66-737b-500e-a85f-7db12ed80309",
+          "is_gold": true,
+          "text": "# API 调用配额说明\n\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n"
+        },
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "202d6fd8-aed2-52f9-9f39-e4d099b752f4",
+          "is_gold": true,
+          "text": "## 重试规则\n收到 429 后，应按 Retry-After 响应头等待，不应立即连续重试。\n"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "问题措辞与材料不同但指同一事项，结论的数值在所引材料中逐字可查",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q02",
+      "stratum": "改写型提问命中",
+      "configuration": "bm25",
+      "question_id": "Q02",
+      "question": "Python SDK 默认最多重试几次？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "seed-sdk-retry"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "Python SDK 默认最多重试3次。"
+      ],
+      "evidence": [
+        {
+          "document_id": "seed-sdk-retry",
+          "chunk_id": "3de72f31-1824-5a8a-a897-8e93d33f1f85",
+          "locator": "第 5 行起",
+          "text": "## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "seed-sdk-retry",
+          "chunk_id": "3de72f31-1824-5a8a-a897-8e93d33f1f85",
+          "is_gold": true,
+          "text": "## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n"
+        },
+        {
+          "document_id": "seed-sdk-retry",
+          "chunk_id": "d56c571b-8776-52f2-8f06-b00f1e333a17",
+          "is_gold": true,
+          "text": "# Python SDK 重试配置\n\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n"
+        },
+        {
+          "document_id": "seed-webhook",
+          "chunk_id": "91b0e435-58a5-5752-bde0-07830f86ca37",
+          "is_gold": false,
+          "text": "## 失败投递\nWebhook 投递失败后最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。\n"
+        },
+        {
+          "document_id": "seed-api-limits",
+          "chunk_id": "202d6fd8-aed2-52f9-9f39-e4d099b752f4",
+          "is_gold": false,
+          "text": "## 重试规则\n收到 429 后，应按 Retry-After 响应头等待，不应立即连续重试。\n"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "问题措辞与材料不同但指同一事项，结论的数值在所引材料中逐字可查",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q022",
+      "stratum": "改写型提问命中",
+      "configuration": "bm25",
+      "question_id": "Q022",
+      "question": "星桥批量导入的请求超时是多少？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "eval-batch-api-1"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "星桥批量导入的请求超时为35秒。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-batch-api-1",
+          "chunk_id": "8ba7ca08-f790-587e-b874-016a8040bd18",
+          "locator": "第 3 行起",
+          "text": "## 适用规则\n\n\n本节只规定星桥软件的批量导入，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n\n\n批量导入：每批记录上限为 240 条；请求超时为 35 秒。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n\n\n记录每批记录上限时，应同时写清批量导入的对象和计量单位；记录请求超时时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。\n\n"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "eval-batch-api-1",
+          "chunk_id": "983fe911-1715-5a94-8551-837665201714",
+          "is_gold": true,
+          "text": "# 星桥批量导入执行手册（2026-09）\n\n"
+        },
+        {
+          "document_id": "eval-batch-api-1",
+          "chunk_id": "8ba7ca08-f790-587e-b874-016a8040bd18",
+          "is_gold": true,
+          "text": "## 适用规则\n\n\n本节只规定星桥软件的批量导入，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n\n\n批量导入：每批记录上限为 240 条；请求超时为 35 秒。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n\n\n记录每批记录上限时，应同时写清批量导入的对象和计量单位；记录请求超时时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。\n\n"
+        },
+        {
+          "document_id": "eval-batch-api-1",
+          "chunk_id": "de21bd9a-c14b-55ed-be5d-18b5764315b4",
+          "is_gold": true,
+          "text": "## 执行步骤\n\n\n发起批量导入前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记录是否已经处理过，再核对每批记录上限对应的限制；重复提交不能绕过这项限制。\n\n\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果批量导入依赖其他团队，写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n\n\n收尾时核对请求超时对应的条件，并保存实际结果与原始记录的关联。异常不能只写“失败”或“已解决”，需要列出已确认的现象、做过的操作和仍未解决的问题。\n\n"
+        },
+        {
+          "document_id": "eval-batch-api-1",
+          "chunk_id": "e32d3ca0-0d3d-5568-a7dc-9d3d95ab0f76",
+          "is_gold": true,
+          "text": "## 常见问题\n\n\n客户把整月订单一次推送后收到 413，拆文件后仍然失败。排查发现限制针对解析后的记录数量，不是压缩包体积。重放前先核对已接收批次，避免把网络超时当成整批失败。\n\n"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "问题措辞与材料不同但指同一事项，结论的数值在所引材料中逐字可查",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q024",
+      "stratum": "改写型提问命中",
+      "configuration": "bm25",
+      "question_id": "Q024",
+      "question": "星桥异步任务的结果保留是多少？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "eval-batch-api-2"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "星桥异步任务的结果保留为36小时。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-batch-api-2",
+          "chunk_id": "a435f3f1-5636-5330-9098-31ccecf23401",
+          "locator": "第 1 页",
+          "text": "核对依据\n本节只规定星桥软件的异步任务，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n异步任务：状态轮询间隔为 6 秒；结果保留为 36\n小时。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录状态轮询间隔时，应同时写清异步任务的对象和计量单位；记录结果保留时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "eval-batch-api-2",
+          "chunk_id": "887cd36b-6a2a-5038-80c8-e10a071cf173",
+          "is_gold": true,
+          "text": "处理记录\n发起异步任务前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对状态轮询间隔对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果异步任务依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对结果保留对应的条件，并保存实际结果与原始记录的关联。异常不能只写'失 败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。"
+        },
+        {
+          "document_id": "eval-batch-api-2",
+          "chunk_id": "a435f3f1-5636-5330-9098-31ccecf23401",
+          "is_gold": true,
+          "text": "核对依据\n本节只规定星桥软件的异步任务，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n异步任务：状态轮询间隔为 6 秒；结果保留为 36\n小时。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录状态轮询间隔时，应同时写清异步任务的对象和计量单位；记录结果保留时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。"
+        },
+        {
+          "document_id": "eval-batch-api-2",
+          "chunk_id": "b82b9101-e14b-52f9-bde5-171f3b59da19",
+          "is_gold": true,
+          "text": "结单条件\n超出异步任务的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。\n检查材料时，注意区分实际异步任务记录、界面展示和口头说明。若实际记录与本页数值 不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。\n本页负责人负责异步任务的解释与变更登记。修订需要标明新生效日期和受影响对象；本 页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；状态轮询间隔是否满足；结果保留是否满足；原始编号能否找 到；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度 。"
+        },
+        {
+          "document_id": "eval-batch-api-2",
+          "chunk_id": "811b02d8-c778-59e7-97ff-bfbd131e0af9",
+          "is_gold": true,
+          "text": "星桥异步任务支持工单复盘（2026-09）"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "问题措辞与材料不同但指同一事项，结论的数值在所引材料中逐字可查",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q025",
+      "stratum": "改写型提问命中",
+      "configuration": "bm25",
+      "question_id": "Q025",
+      "question": "星桥：从队列里领取待处理消息时，一次取多少条？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "eval-batch-api-3"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "星桥消息队列从队列里领取待处理消息时，一次取80条。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-batch-api-3",
+          "chunk_id": "3de5a86f-f554-5bea-bbab-21bda910a035",
+          "locator": "段落 4",
+          "text": "参数与单位\n本节只规定星桥软件的消息队列，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n消息队列：消费批次为 80 条；可见性超时为 75 秒。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录消费批次时，应同时写清消息队列的对象和计量单位；记录可见性超时时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "eval-batch-api-3",
+          "chunk_id": "48b9bb87-27cf-52b0-af65-1bce73889c35",
+          "is_gold": true,
+          "text": "检查目的\n消费者在业务处理结束前被重启，消息重新出现。交接记录要同时写业务事务和确认消息的时间，不能用队列里看不到消息来证明数据库已经提交。"
+        },
+        {
+          "document_id": "eval-batch-api-3",
+          "chunk_id": "905720bd-396a-5782-9c5d-7abfc72b723e",
+          "is_gold": true,
+          "text": "星桥消息队列配置检查表（2026-09）"
+        },
+        {
+          "document_id": "eval-batch-api-3",
+          "chunk_id": "3de5a86f-f554-5bea-bbab-21bda910a035",
+          "is_gold": true,
+          "text": "参数与单位\n本节只规定星桥软件的消息队列，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n消息队列：消费批次为 80 条；可见性超时为 75 秒。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录消费批次时，应同时写清消息队列的对象和计量单位；记录可见性超时时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。"
+        },
+        {
+          "document_id": "eval-batch-api-3",
+          "chunk_id": "ff9295aa-d1f7-5f89-ad90-22450d36efab",
+          "is_gold": true,
+          "text": "逐项检查\n发起消息队列前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记录是否已经处理过，再核对消费批次对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果消息队列依赖其他团队，写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对可见性超时对应的条件，并保存实际结果与原始记录的关联。异常不能只写“失败”或“已解决”，需要列出已确认的现象、做过的操作和仍未解决的问题。\n超出消息队列的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。\n检查材料时，注意区分实际消息队列记录、界面展示和口头说明。若实际记录与本页数值不一致，保留双方来源并交由负责人核对，不能删掉差异后填写“符合”。"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "问题措辞与材料不同但指同一事项，结论的数值在所引材料中逐字可查",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q039",
+      "stratum": "正常命中",
+      "configuration": "bm25",
+      "question_id": "Q039",
+      "question": "星桥：排查历史故障时，一次搜索最多能跨多少天的日志？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "eval-observability-5"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "一次搜索最多能跨14天的日志。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-observability-5",
+          "chunk_id": "bd3d75c3-d2db-5933-be79-85447bdc4075",
+          "locator": "第 1 页",
+          "text": "星桥日志检索交接记录（2026-09）\n交接背景\n查跨周故障时查询被拒绝，工程师准备放大时间范围重试。应按连续时间段拆分，并保持 时区与边界一致；查询结果受数量限制时要继续翻页而不是宣布没有更多日志。\n当前执行口径\n本节只规定星桥软件的日志检索，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。 日志检索：查询跨度为 14 天；单次结果上限为 600\n条。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录查询跨度时，应同时写清日志检索的对象和计量单位；记录单次结果上限时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。\n下一班需要检查\n发起日志检索前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对查询跨度对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果日志检索依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对单次结果上限对应的条件，并保存实际结果与原始记录的关联。异常不能只写 '失败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n未完成事项和确认\n超出日志检索的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "seed-token-errors",
+          "chunk_id": "0f911564-7419-5a06-95a4-087058123d43",
+          "is_gold": false,
+          "text": "# 认证错误 E401 排查\n\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n"
+        },
+        {
+          "document_id": "seed-token-errors",
+          "chunk_id": "2fab3aa8-afeb-51ad-8bac-073956e271be",
+          "is_gold": false,
+          "text": "## E401 含义\n错误 E401 表示访问令牌已过期。先调用刷新接口获取新令牌，再重试原始请求。\n若刷新令牌也失效，必须重新登录。不得把访问令牌记录到业务日志。\n"
+        },
+        {
+          "document_id": "eval-observability-5",
+          "chunk_id": "bd3d75c3-d2db-5933-be79-85447bdc4075",
+          "is_gold": true,
+          "text": "星桥日志检索交接记录（2026-09）\n交接背景\n查跨周故障时查询被拒绝，工程师准备放大时间范围重试。应按连续时间段拆分，并保持 时区与边界一致；查询结果受数量限制时要继续翻页而不是宣布没有更多日志。\n当前执行口径\n本节只规定星桥软件的日志检索，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。 日志检索：查询跨度为 14 天；单次结果上限为 600\n条。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录查询跨度时，应同时写清日志检索的对象和计量单位；记录单次结果上限时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。\n下一班需要检查\n发起日志检索前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对查询跨度对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果日志检索依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对单次结果上限对应的条件，并保存实际结果与原始记录的关联。异常不能只写 '失败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n未完成事项和确认\n超出日志检索的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        },
+        {
+          "document_id": "eval-observability-5",
+          "chunk_id": "c64a11b0-e599-59c2-a13a-4de1218efa24",
+          "is_gold": true,
+          "text": "检查材料时，注意区分实际日志检索记录、界面展示和口头说明。若实际记录与本页数值 不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。\n本页负责人负责日志检索的解释与变更登记。修订需要标明新生效日期和受影响对象；本 页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；查询跨度是否满足；单次结果上限是否满足；原始编号能否找 到；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度 。"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "问题措辞与材料不同但指同一事项，结论的数值在所引材料中逐字可查",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q047",
+      "stratum": "正常命中",
+      "configuration": "bm25",
+      "question_id": "Q047",
+      "question": "星桥：执行数据库结构迁移，等待迁移锁的时限是多少？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "eval-deployment-controls-4"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "星桥数据库结构迁移等待锁的时限是40秒。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-deployment-controls-4",
+          "chunk_id": "0785ba19-fdbf-54f7-9e71-46b511d9d607",
+          "locator": "第 1 页",
+          "text": "星桥数据库变更操作问答（2026-09）\n为什么需要单独核对\n数据库迁移等待锁，业务连接逐渐堆积。执行人先确认锁持有者和迁移事务状态，不盲目 再次提交同一脚本；备份完成的提示还需要对应可验证的恢复记录。\n数据库变更按什么规则执行\n本节只规定星桥软件的数据库变更，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。 数据库变更：迁移锁时限为 40 秒；回滚备份保留为 14\n天。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录迁移锁时限时，应同时写清数据库变更的对象和计量单位；记录回滚备份保留时同样 保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量 上限也不能互换。\n实际操作怎么记录\n发起数据库变更前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前 记录是否已经处理过，再核对迁移锁时限对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果数据库变更依赖其他团队 ，写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对回滚备份保留对应的条件，并保存实际结果与原始记录的关联。异常不能只写 '失败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n遇到例外怎么办\n超出数据库变更的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束 条件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "eval-deployment-controls-4",
+          "chunk_id": "0785ba19-fdbf-54f7-9e71-46b511d9d607",
+          "is_gold": true,
+          "text": "星桥数据库变更操作问答（2026-09）\n为什么需要单独核对\n数据库迁移等待锁，业务连接逐渐堆积。执行人先确认锁持有者和迁移事务状态，不盲目 再次提交同一脚本；备份完成的提示还需要对应可验证的恢复记录。\n数据库变更按什么规则执行\n本节只规定星桥软件的数据库变更，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。 数据库变更：迁移锁时限为 40 秒；回滚备份保留为 14\n天。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录迁移锁时限时，应同时写清数据库变更的对象和计量单位；记录回滚备份保留时同样 保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量 上限也不能互换。\n实际操作怎么记录\n发起数据库变更前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前 记录是否已经处理过，再核对迁移锁时限对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果数据库变更依赖其他团队 ，写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对回滚备份保留对应的条件，并保存实际结果与原始记录的关联。异常不能只写 '失败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n遇到例外怎么办\n超出数据库变更的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束 条件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        },
+        {
+          "document_id": "eval-deployment-controls-4",
+          "chunk_id": "06ba1c63-8db7-556a-b63b-81aa726cddc2",
+          "is_gold": true,
+          "text": "检查材料时，注意区分实际数据库变更记录、界面展示和口头说明。若实际记录与本页数 值不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。\n本页负责人负责数据库变更的解释与变更登记。修订需要标明新生效日期和受影响对象； 本页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；迁移锁时限是否满足；回滚备份保留是否满足；原始编号能否 找到；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度 。"
+        },
+        {
+          "document_id": "seed-db-backup",
+          "chunk_id": "1d463d45-6fec-53f1-a252-1a08dfc198dc",
+          "is_gold": false,
+          "text": "# 数据库备份与恢复目标\n\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n"
+        },
+        {
+          "document_id": "seed-db-backup",
+          "chunk_id": "752e4b7c-07e5-54ea-954f-e678e5932e13",
+          "is_gold": false,
+          "text": "## 恢复目标\n生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。\n每天进行一次全量备份，事务日志每 5 分钟归档一次。每月执行恢复演练。\n"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "问题措辞与材料不同但指同一事项，结论的数值在所引材料中逐字可查",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q077",
+      "stratum": "正常命中",
+      "configuration": "bm25",
+      "question_id": "Q077",
+      "question": "星桥：只同步上次以来新产生的数据，增量时间窗口是多少？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "eval-data-export-4"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "增量时间窗口是8小时。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-data-export-4",
+          "chunk_id": "aab4f37a-8ec5-5b72-a03d-a8572544400d",
+          "locator": "第 7 行起",
+          "text": "## 增量导出按什么规则执行\n\n\n本节只规定星桥软件的增量导出，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n\n\n增量导出：增量窗口为 8 小时；水位重试次数为 4 次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n\n\n记录增量窗口时，应同时写清增量导出的对象和计量单位；记录水位重试次数时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。\n\n"
+        },
+        {
+          "document_id": "eval-data-export-4",
+          "chunk_id": "a201aa0c-0c39-5de6-990e-3ab7b129f01b",
+          "locator": "第 23 行起",
+          "text": "## 遇到例外怎么办\n\n\n超出增量导出的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。\n\n\n检查材料时，注意区分实际增量导出记录、界面展示和口头说明。若实际记录与本页数值不一致，保留双方来源并交由负责人核对，不能删掉差异后填写“符合”。\n\n\n本页负责人负责增量导出的解释与变更登记。修订需要标明新生效日期和受影响对象；本页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n\n\n验收清单：对象是否正确；增量窗口是否满足；水位重试次数是否满足；原始编号能否找到；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n\n\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度。\n"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "eval-data-export-4",
+          "chunk_id": "aab4f37a-8ec5-5b72-a03d-a8572544400d",
+          "is_gold": true,
+          "text": "## 增量导出按什么规则执行\n\n\n本节只规定星桥软件的增量导出，适用时间从 2026 年 9 月 1 日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n\n\n增量导出：增量窗口为 8 小时；水位重试次数为 4 次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n\n\n记录增量窗口时，应同时写清增量导出的对象和计量单位；记录水位重试次数时同样保留单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也不能互换。\n\n"
+        },
+        {
+          "document_id": "eval-data-export-4",
+          "chunk_id": "a201aa0c-0c39-5de6-990e-3ab7b129f01b",
+          "is_gold": true,
+          "text": "## 遇到例外怎么办\n\n\n超出增量导出的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。\n\n\n检查材料时，注意区分实际增量导出记录、界面展示和口头说明。若实际记录与本页数值不一致，保留双方来源并交由负责人核对，不能删掉差异后填写“符合”。\n\n\n本页负责人负责增量导出的解释与变更登记。修订需要标明新生效日期和受影响对象；本页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n\n\n验收清单：对象是否正确；增量窗口是否满足；水位重试次数是否满足；原始编号能否找到；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n\n\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度。\n"
+        },
+        {
+          "document_id": "eval-deployment-controls-3",
+          "chunk_id": "f0e48805-fabb-5c6a-ab16-da054471f444",
+          "is_gold": false,
+          "text": "## 检查目的\n\n\n临时变更申请刚提交就准备执行。值班人先确认审批和变更窗口是否都已满足，再检查依赖方是否有人值守；审批通过不等于可以在任意时间开始。\n\n"
+        },
+        {
+          "document_id": "eval-data-export-4",
+          "chunk_id": "7561e493-e819-57a7-9f3b-ef357366ddc3",
+          "is_gold": true,
+          "text": "# 星桥增量导出操作问答（2026-09）\n\n"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "问题措辞与材料不同但指同一事项，结论的数值在所引材料中逐字可查",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q079",
+      "stratum": "正常命中",
+      "configuration": "bm25",
+      "question_id": "Q079",
+      "question": "星桥：导出完成的提醒里，下载链接能用多久？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "eval-data-export-5"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "数据导出的下载链接有效期为30小时。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "ad7fe134-fca8-510a-b578-f7e556559e5b",
+          "locator": "第 1 页",
+          "text": "星桥导出通知交接记录（2026-09）\n交接背景\n客户收到导出通知后很久才打开链接。先确认文件是否仍在临时保留期内，再决定重新生 成；提醒消息和下载授权分别检查，转发通知不会自动增加权限。\n当前执行口径\n本节只规定星桥软件的导出通知，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n导出通知：链接有效期为 30 小时；提醒次数为 2\n次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录链接有效期时，应同时写清导出通知的对象和计量单位；记录提醒次数时同样保留单 位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也 不能互换。\n下一班需要检查\n发起导出通知前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对链接有效期对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果导出通知依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对提醒次数对应的条件，并保存实际结果与原始记录的关联。异常不能只写'失 败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n未完成事项和确认\n超出导出通知的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        },
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "0a8583d8-b062-5244-a1d8-f0a70d1b375e",
+          "locator": "第 1 页",
+          "text": "检查材料时，注意区分实际导出通知记录、界面展示和口头说明。若实际记录与本页数值 不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。\n本页负责人负责导出通知的解释与变更登记。修订需要标明新生效日期和受影响对象；本 页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；链接有效期是否满足；提醒次数是否满足；原始编号能否找到 ；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度 。"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "seed-export",
+          "chunk_id": "22051645-30c0-5dd1-894f-605f28f7064b",
+          "is_gold": false,
+          "text": "## 下载有效期\n数据导出的下载链接有效期为 24 小时。链接到期后必须重新发起导出。\n导出权限随用户角色变化而撤销，不能将下载链接转发给无权访问者。\n"
+        },
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "ad7fe134-fca8-510a-b578-f7e556559e5b",
+          "is_gold": true,
+          "text": "星桥导出通知交接记录（2026-09）\n交接背景\n客户收到导出通知后很久才打开链接。先确认文件是否仍在临时保留期内，再决定重新生 成；提醒消息和下载授权分别检查，转发通知不会自动增加权限。\n当前执行口径\n本节只规定星桥软件的导出通知，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n导出通知：链接有效期为 30 小时；提醒次数为 2\n次。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录链接有效期时，应同时写清导出通知的对象和计量单位；记录提醒次数时同样保留单 位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限也 不能互换。\n下一班需要检查\n发起导出通知前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对链接有效期对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果导出通知依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对提醒次数对应的条件，并保存实际结果与原始记录的关联。异常不能只写'失 败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n未完成事项和确认\n超出导出通知的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。"
+        },
+        {
+          "document_id": "eval-data-export-5",
+          "chunk_id": "0a8583d8-b062-5244-a1d8-f0a70d1b375e",
+          "is_gold": true,
+          "text": "检查材料时，注意区分实际导出通知记录、界面展示和口头说明。若实际记录与本页数值 不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。\n本页负责人负责导出通知的解释与变更登记。修订需要标明新生效日期和受影响对象；本 页不提供旧版本的数值，也不代表未列出的特殊地区已经获得例外。\n验收清单：对象是否正确；链接有效期是否满足；提醒次数是否满足；原始编号能否找到 ；异常是否有人跟进。验收人应查看记录本身，而不是只读结论。\n来源：本项目自建虚构业务资料，用于测试检索、证据与访问权限；不代表真实企业制度 。"
+        },
+        {
+          "document_id": "seed-export",
+          "chunk_id": "c5ab7c8b-1ec2-5cf7-9898-1197916839ee",
+          "is_gold": false,
+          "text": "# 数据导出注意事项\n\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "问题措辞与材料不同但指同一事项，结论的数值在所引材料中逐字可查",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    },
+    {
+      "case_id": "bm25-Q095",
+      "stratum": "正常命中",
+      "configuration": "bm25",
+      "question_id": "Q095",
+      "question": "星桥：客户想预约一次应急演练，需要提前几个工作日？",
+      "question_kind": "lookup",
+      "expected_status": "answered",
+      "actual_status": "answered",
+      "gold_source_ids": [
+        "eval-service-catalog-3"
+      ],
+      "hidden_source_ids": [],
+      "claims": [
+        "客户想预约一次应急演练，需要提前5个工作日。"
+      ],
+      "evidence": [
+        {
+          "document_id": "eval-service-catalog-3",
+          "chunk_id": "7a64d7a1-f82d-55e4-be06-154d49776276",
+          "locator": "第 1 页",
+          "text": "参数与单位\n本节只规定星桥软件的客户演练，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n客户演练：提前预约时间为 5 个工作日；演练时长为 75\n分钟。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录提前预约时间时，应同时写清客户演练的对象和计量单位；记录演练时长时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。"
+        },
+        {
+          "document_id": "eval-service-catalog-3",
+          "chunk_id": "4d64d3bf-c119-5755-b8f8-b52eac489f5e",
+          "locator": "第 1 页",
+          "text": "星桥客户演练配置检查表（2026-09）"
+        }
+      ],
+      "retrieved": [
+        {
+          "document_id": "eval-service-catalog-3",
+          "chunk_id": "7a64d7a1-f82d-55e4-be06-154d49776276",
+          "is_gold": true,
+          "text": "参数与单位\n本节只规定星桥软件的客户演练，适用时间从 2026 年 9 月 1\n日开始。其他公司的同名服务，以及没有明确生效日期的讨论记录，不适用这里的数值。\n客户演练：提前预约时间为 5 个工作日；演练时长为 75\n分钟。两个数值分别约束各自事项，不相加，也不能用其中一个替代另一个。\n记录提前预约时间时，应同时写清客户演练的对象和计量单位；记录演练时长时同样保留 单位。对工作日、自然日、小时和分钟不得自行换算成另一种计时口径。比例与数量上限 也不能互换。"
+        },
+        {
+          "document_id": "eval-service-catalog-3",
+          "chunk_id": "4d64d3bf-c119-5755-b8f8-b52eac489f5e",
+          "is_gold": true,
+          "text": "星桥客户演练配置检查表（2026-09）"
+        },
+        {
+          "document_id": "eval-service-catalog-3",
+          "chunk_id": "7674e9e6-739f-5f4b-adbb-d318a5a896fb",
+          "is_gold": true,
+          "text": "检查目的\n客户希望在正式环境演练故障。预约前写清目标、影响范围、回退条件与双方联系人；演 练结束要恢复配置，不能把演练中得到的临时授权当成常驻权限。"
+        },
+        {
+          "document_id": "eval-service-catalog-3",
+          "chunk_id": "6619342a-cdfc-5a9b-b0af-02900825d49d",
+          "is_gold": true,
+          "text": "逐项检查\n发起客户演练前，先确定组织、环境和处理对象，保存原始请求或申请编号。检查当前记 录是否已经处理过，再核对提前预约时间对应的限制；重复提交不能绕过这项限制。\n执行中分别记录开始、等待、处理结束和确认结果的时间。如果客户演练依赖其他团队， 写清等待对象和最后一次确认情况，不把发送通知当作对方已完成。\n收尾时核对演练时长对应的条件，并保存实际结果与原始记录的关联。异常不能只写'失 败'或'已解决'，需要列出已确认的现象、做过的操作和仍未解决的问题。\n超出客户演练的规定范围时，提交例外申请，写明业务影响、所需范围、负责人及结束条 件。没有确认前仍按本页规则执行；个别申请获批不能修改其他任务的默认设置。\n检查材料时，注意区分实际客户演练记录、界面展示和口头说明。若实际记录与本页数值 不一致，保留双方来源并交由负责人核对，不能删掉差异后填写'符合'。"
+        }
+      ],
+      "label": {
+        "relevance": "yes",
+        "entailment": "yes",
+        "note": "问题措辞与材料不同但指同一事项，结论的数值在所引材料中逐字可查",
+        "reviewer": "Claude",
+        "review_kind": "machine_proposed"
+      }
+    }
+  ]
+}
