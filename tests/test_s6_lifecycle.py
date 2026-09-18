@@ -21,7 +21,7 @@ from app.models import Chunk, Document, DocumentVersion
 pytestmark = pytest.mark.skipif(
     os.getenv("RAG_RUN_INTEGRATION") != "1", reason="requires isolated local demo services"
 )
-HEADERS = {"X-Requested-With": "EnterpriseRAG"}
+HEADERS = {"X-Requested-With": "AgenticRAG"}
 SAMPLE = "# 鹊桥临时通道规定\n\n鹊桥临时通道的单日调用上限为 77 次。\n鹊桥临时通道仅在演练期间开放。\n".encode()
 REVISED = "# 鹊桥临时通道规定\n\n鹊桥临时通道的单日调用上限为 88 次。\n鹊桥临时通道仅在演练期间开放。\n".encode()
 

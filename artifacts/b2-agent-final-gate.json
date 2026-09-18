@@ -1,0 +1,307 @@
+{
+  "benchmark": "agent-b2-v1",
+  "task_sha256": "e7632ac1a8dd59f5235569d92f1bb0f7d695228d3c74ab0d7bd0d46e6b786f13",
+  "arms": [
+    "rag",
+    "workflow"
+  ],
+  "results": {
+    "rag": [
+      {
+        "category": "fact",
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "20": true,
+          "MB": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 1,
+        "latency_ms": 21825.2,
+        "usage": {
+          "prompt_tokens": 1323,
+          "completion_tokens": 52,
+          "model_duration_ms": 21331.4,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "星桥产品上传接口单个文件上限是多少"
+          ]
+        },
+        "task_id": "A06",
+        "run_id": null,
+        "steps": 1
+      },
+      {
+        "category": "compound",
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "超大文件": true,
+          "独立 worker": false,
+          "租约": false
+        },
+        "forbidden_present": {},
+        "correct": false,
+        "citation_count": 1,
+        "latency_ms": 20622.1,
+        "usage": {
+          "prompt_tokens": 1209,
+          "completion_tokens": 76,
+          "model_duration_ms": 20187.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "事故 092 的原因",
+            "两项改进措施是什么"
+          ]
+        },
+        "task_id": "A22",
+        "run_id": null,
+        "steps": 1
+      },
+      {
+        "category": "conflict",
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 29991.1,
+        "usage": {
+          "prompt_tokens": 1594,
+          "completion_tokens": 108,
+          "model_duration_ms": 29537.3,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "conflict",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个支持时段虽然不同，但不构成冲突，因为它们属于不同的试点项目A和B。",
+            "accepted": true,
+            "accepted_by": "schedule_rule",
+            "rule_pair": [
+              "E1:S2",
+              "E2:S2"
+            ]
+          },
+          "acceptance_items": [
+            "试点安排 A 和 B 的支持时段是否一致"
+          ]
+        },
+        "task_id": "A24",
+        "run_id": null,
+        "steps": 1
+      }
+    ],
+    "workflow": [
+      {
+        "category": "fact",
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "20": true,
+          "MB": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 1,
+        "latency_ms": 18904.1,
+        "usage": {
+          "prompt_tokens": 1347,
+          "completion_tokens": 52,
+          "model_duration_ms": 18453.4,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "星桥产品上传接口单个文件上限是多少"
+          ]
+        },
+        "task_id": "A06",
+        "run_id": "230105f3-dd0d-4716-ac5b-edb5c4a7a734",
+        "steps": 2
+      },
+      {
+        "category": "compound",
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "超大文件": true,
+          "独立 worker": false,
+          "租约": false
+        },
+        "forbidden_present": {},
+        "correct": false,
+        "citation_count": 1,
+        "latency_ms": 20748.8,
+        "usage": {
+          "prompt_tokens": 1232,
+          "completion_tokens": 74,
+          "model_duration_ms": 20285.8,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "事故 092 的原因",
+            "两项改进措施是什么"
+          ]
+        },
+        "task_id": "A22",
+        "run_id": "c20691f2-4693-4a20-b91d-f7994e6e5670",
+        "steps": 2
+      },
+      {
+        "category": "conflict",
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 33116.8,
+        "usage": {
+          "prompt_tokens": 1618,
+          "completion_tokens": 108,
+          "model_duration_ms": 32598.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "conflict",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个支持时段虽然不同，但不构成冲突，因为它们属于不同的试点项目A和B。",
+            "accepted": true,
+            "accepted_by": "schedule_rule",
+            "rule_pair": [
+              "E1:S2",
+              "E2:S2"
+            ]
+          },
+          "acceptance_items": [
+            "试点安排 A 和 B 的支持时段是否一致"
+          ]
+        },
+        "task_id": "A24",
+        "run_id": "26a4a231-e94b-4fca-a8f5-4b2a11e34dc8",
+        "steps": 2
+      }
+    ]
+  },
+  "summary": {
+    "rag": {
+      "tasks": 3,
+      "correct": 2,
+      "accuracy": 0.667,
+      "median_latency_ms": 21825.2,
+      "total_latency_ms": 72438.4,
+      "mean_steps": 1,
+      "forbidden_leaks": 0
+    },
+    "workflow": {
+      "tasks": 3,
+      "correct": 2,
+      "accuracy": 0.667,
+      "median_latency_ms": 20748.8,
+      "total_latency_ms": 72769.7,
+      "mean_steps": 2,
+      "forbidden_leaks": 0
+    }
+  },
+  "by_category": {
+    "rag": {
+      "compound": {
+        "tasks": 1,
+        "correct": 0,
+        "accuracy": 0.0,
+        "median_latency_ms": 20622.1,
+        "total_latency_ms": 20622.1,
+        "mean_steps": 1,
+        "forbidden_leaks": 0
+      },
+      "conflict": {
+        "tasks": 1,
+        "correct": 1,
+        "accuracy": 1.0,
+        "median_latency_ms": 29991.1,
+        "total_latency_ms": 29991.1,
+        "mean_steps": 1,
+        "forbidden_leaks": 0
+      },
+      "fact": {
+        "tasks": 1,
+        "correct": 1,
+        "accuracy": 1.0,
+        "median_latency_ms": 21825.2,
+        "total_latency_ms": 21825.2,
+        "mean_steps": 1,
+        "forbidden_leaks": 0
+      }
+    },
+    "workflow": {
+      "compound": {
+        "tasks": 1,
+        "correct": 0,
+        "accuracy": 0.0,
+        "median_latency_ms": 20748.8,
+        "total_latency_ms": 20748.8,
+        "mean_steps": 2,
+        "forbidden_leaks": 0
+      },
+      "conflict": {
+        "tasks": 1,
+        "correct": 1,
+        "accuracy": 1.0,
+        "median_latency_ms": 33116.8,
+        "total_latency_ms": 33116.8,
+        "mean_steps": 2,
+        "forbidden_leaks": 0
+      },
+      "fact": {
+        "tasks": 1,
+        "correct": 1,
+        "accuracy": 1.0,
+        "median_latency_ms": 18904.1,
+        "total_latency_ms": 18904.1,
+        "mean_steps": 2,
+        "forbidden_leaks": 0
+      }
+    }
+  },
+  "completed_tasks": 3,
+  "requested_tasks": 3,
+  "note": "开发基准，不是独立留出集；本地 Ollama 的 api_cost 为 0。"
+}

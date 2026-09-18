@@ -19,14 +19,14 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "95641120-5386-42c5-bdb1-9286a1adb198",
+    "id": "8c952dce-88c1-4509-9f95-ef17793a482d",
     "question": "生产发布需要几名工程师完成代码审查？",
     "status": "answered",
     "claims": [
       {
         "text": "生产发布需要2名工程师完成代码审查。",
         "evidence_ids": [
-          "fac33079-a4b2-5285-8dab-1cfb3fbb5b48"
+          "50fc0d07-5b5e-5813-a570-73319421dcea"
         ],
         "quotes": [
           "生产发布需要 2 名工程师完成代码审查，并由当班发布负责人批准。"
@@ -35,21 +35,49 @@
     ],
     "citations": [
       {
-        "chunk_id": "fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+        "chunk_id": "50fc0d07-5b5e-5813-a570-73319421dcea",
         "document_id": "seed-deploy-review",
-        "version_id": "5a57503b-194e-4480-ae3a-78fd8b5f0d4d",
+        "version_id": "8364aa5b-1c0b-46a0-843f-1f8c0dfa6803",
         "title": "生产发布审批规则",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–8 行",
+          "block_type": "paragraph",
+          "heading_path": [
+            "生产发布审批规则",
+            "发布前置条件"
+          ],
+          "source_char_start": 47,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 80,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "paragraph",
+                "heading_path": [
+                  "生产发布审批规则",
+                  "发布前置条件"
+                ],
+                "source_char_start": 47,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 80
+            }
+          ],
           "char_start": 0,
-          "char_end": 127,
-          "line_start": 1,
-          "line_end": 8
+          "char_end": 80,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 72,
+          "token_counter": "cl100k_base"
         },
-        "text": "# 生产发布审批规则\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 发布前置条件\n生产发布需要 2 名工程师完成代码审查，并由当班发布负责人批准。\n发布窗口为工作日 10:00 至 16:00。紧急修复需先关联事故工单。\n",
-        "preview_url": "/api/evidence/fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
-        "original_url": "/api/versions/5a57503b-194e-4480-ae3a-78fd8b5f0d4d/original"
+        "text": "## 发布前置条件\n生产发布需要 2 名工程师完成代码审查，并由当班发布负责人批准。\n发布窗口为工作日 10:00 至 16:00。紧急修复需先关联事故工单。\n",
+        "preview_url": "/api/evidence/50fc0d07-5b5e-5813-a570-73319421dcea",
+        "original_url": "/api/versions/8364aa5b-1c0b-46a0-843f-1f8c0dfa6803/original"
       }
     ],
     "message": "",
@@ -67,22 +95,33 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.875,
+        "claim_support": [
+          1
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 915,
+      "context_tokens_estimate": 715,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+          "chunk_id": "50fc0d07-5b5e-5813-a570-73319421dcea",
           "rank": 1,
           "title": "生产发布审批规则",
           "document_id": "seed-deploy-review",
-          "locator_label": "第 1–8 行",
-          "score": 0.7391,
+          "version_id": "8364aa5b-1c0b-46a0-843f-1f8c0dfa6803",
+          "locator_label": "第 5 行起",
+          "score": 0.7607,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -91,62 +130,96 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "49a2b4e8-d0e1-5ea4-b8f8-acbcb5dcf95a",
+          "chunk_id": "62ea37ae-2fb7-5680-a213-b1a85bf81da9",
           "rank": 2,
-          "title": "发布回滚操作手册",
-          "document_id": "seed-rollback",
-          "locator_label": "第 1 页",
-          "score": 0.5162,
-          "bm25_rank": 3,
+          "title": "生产发布审批规则",
+          "document_id": "seed-deploy-review",
+          "version_id": "8364aa5b-1c0b-46a0-843f-1f8c0dfa6803",
+          "locator_label": "第 1 行起",
+          "score": 0.5519,
+          "bm25_rank": 2,
           "dense_rank": 2,
-          "fusion_score": 0.032002,
+          "fusion_score": 0.032258,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "0ad15903-d64f-5a19-b978-824ce15d6c22",
+          "rank": 3,
+          "title": "灰度发布验证口令",
+          "document_id": "seed-release-code",
+          "version_id": "3a86d916-16b7-4c80-ba00-2a3680581605",
+          "locator_label": "第 5 行起",
+          "score": 0.4798,
+          "bm25_rank": 3,
+          "dense_rank": 6,
+          "fusion_score": 0.031025,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "454925a8-bae3-5783-a050-840482386fba",
-          "rank": 3,
-          "title": "入职设备申请",
-          "document_id": "seed-equipment",
-          "locator_label": "第 1–8 行",
-          "score": 0.4913,
-          "bm25_rank": 4,
+          "chunk_id": "d39946c2-460c-55c5-9ba9-d32ed2c3d581",
+          "rank": 4,
+          "title": "发布回滚操作手册",
+          "document_id": "seed-rollback",
+          "version_id": "ff4dd1ae-0a3b-41ad-bfae-4b69dea897c6",
+          "locator_label": "第 1 页",
+          "score": 0.4857,
+          "bm25_rank": 6,
           "dense_rank": 4,
-          "fusion_score": 0.03125,
+          "fusion_score": 0.030777,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "da3d04b3-8a44-514e-a37b-82decfaea8eb",
-          "rank": 4,
-          "title": "灰度发布验证口令",
-          "document_id": "seed-release-code",
-          "locator_label": "第 1–8 行",
-          "score": 0.4773,
-          "bm25_rank": 2,
-          "dense_rank": 8,
-          "fusion_score": 0.030835,
+          "chunk_id": "285eb9ed-8893-5bc2-b448-d5d4a879d107",
+          "rank": 5,
+          "title": "本地研发环境配置",
+          "document_id": "seed-dev-environment",
+          "version_id": "36913658-b8b5-4623-a235-f6d6a03bbcb5",
+          "locator_label": "第 5 行起",
+          "score": 0.486,
+          "bm25_rank": 8,
+          "dense_rank": 3,
+          "fusion_score": 0.030579,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "4b4ca097-d49b-5072-85aa-106331b63c74",
+          "rank": 6,
+          "title": "灰度发布验证口令",
+          "document_id": "seed-release-code",
+          "version_id": "3a86d916-16b7-4c80-ba00-2a3680581605",
+          "locator_label": "第 1 行起",
+          "score": 0.4716,
+          "bm25_rank": 4,
+          "dense_rank": 8,
+          "fusion_score": 0.030331,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
         }
       ],
-      "embed_ms": 267.4,
-      "retrieval_ms": 88.4,
-      "generation_ms": 22466.5,
-      "total_ms": 22959.7
+      "embed_ms": 209.1,
+      "retrieval_ms": 54,
+      "generation_ms": 17283.3,
+      "total_ms": 17596.3
     },
     "usage": {
-      "prompt_tokens": 991,
-      "completion_tokens": 48,
-      "model_duration_ms": 22414.4,
+      "prompt_tokens": 989,
+      "completion_tokens": 47,
+      "model_duration_ms": 17263,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "生产发布需要几名工程师完成代码审查"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

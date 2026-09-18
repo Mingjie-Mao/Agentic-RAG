@@ -19,14 +19,14 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "60f58e07-5e9d-489e-b181-f314d6df5c65",
+    "id": "4afd5582-95ab-4d97-87fa-f6537ace2d42",
     "question": "Webhook 投递失败最多重试几次？",
     "status": "answered",
     "claims": [
       {
         "text": "Webhook 投递失败后最多重试 5 次。",
         "evidence_ids": [
-          "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac"
+          "5002f2fa-97f7-51f8-b30e-27b7dd099d1c"
         ],
         "quotes": [
           "Webhook 投递失败后最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。"
@@ -35,29 +35,57 @@
     ],
     "citations": [
       {
-        "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+        "chunk_id": "5002f2fa-97f7-51f8-b30e-27b7dd099d1c",
         "document_id": "seed-webhook",
-        "version_id": "37dfc0a9-502e-43db-9b78-3fcc265b2c26",
+        "version_id": "0172fe6e-352a-4c8f-add8-a3d6887374e9",
         "title": "Webhook 投递与签名",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–9 行",
+          "block_type": "paragraph",
+          "heading_path": [
+            "Webhook 投递与签名",
+            "失败投递"
+          ],
+          "source_char_start": 52,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 53,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "paragraph",
+                "heading_path": [
+                  "Webhook 投递与签名",
+                  "失败投递"
+                ],
+                "source_char_start": 52,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 53
+            }
+          ],
           "char_start": 0,
-          "char_end": 167,
-          "line_start": 1,
-          "line_end": 9
+          "char_end": 53,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 49,
+          "token_counter": "cl100k_base"
         },
-        "text": "# Webhook 投递与签名\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 失败投递\nWebhook 投递失败后最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。\n## 签名\n使用 HMAC-SHA256 校验 X-Starbridge-Signature，时间戳超过 5 分钟应拒收。\n",
-        "preview_url": "/api/evidence/9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
-        "original_url": "/api/versions/37dfc0a9-502e-43db-9b78-3fcc265b2c26/original"
+        "text": "## 失败投递\nWebhook 投递失败后最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。\n",
+        "preview_url": "/api/evidence/5002f2fa-97f7-51f8-b30e-27b7dd099d1c",
+        "original_url": "/api/versions/0172fe6e-352a-4c8f-add8-a3d6887374e9/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "Webhook 投递失败最多重试几次？",
       "retrieval_query": "Webhook 投递失败最多重试几次？",
@@ -67,22 +95,33 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.6667,
+        "claim_support": [
+          1
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 908,
+      "context_tokens_estimate": 776,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "chunk_id": "5002f2fa-97f7-51f8-b30e-27b7dd099d1c",
           "rank": 1,
           "title": "Webhook 投递与签名",
           "document_id": "seed-webhook",
-          "locator_label": "第 1–9 行",
-          "score": 0.7831,
+          "version_id": "0172fe6e-352a-4c8f-add8-a3d6887374e9",
+          "locator_label": "第 5 行起",
+          "score": 0.8223,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -91,62 +130,97 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "chunk_id": "53dc8779-5b93-5a5a-b714-d4b096b2780f",
           "rank": 2,
+          "title": "Webhook 投递与签名",
+          "document_id": "seed-webhook",
+          "version_id": "0172fe6e-352a-4c8f-add8-a3d6887374e9",
+          "locator_label": "第 1 行起",
+          "score": 0.5509,
+          "bm25_rank": 2,
+          "dense_rank": 4,
+          "fusion_score": 0.031754,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "d33304ad-5549-5300-9b40-ffc59ff0a632",
+          "rank": 3,
           "title": "Python SDK 重试配置",
           "document_id": "seed-sdk-retry",
-          "locator_label": "第 1–8 行",
-          "score": 0.6386,
-          "bm25_rank": 2,
+          "version_id": "6b6b4da8-a812-4cc0-9cd8-a4724390c467",
+          "locator_label": "第 5 行起",
+          "score": 0.6701,
+          "bm25_rank": 4,
           "dense_rank": 2,
-          "fusion_score": 0.032258,
+          "fusion_score": 0.031754,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
-          "rank": 3,
+          "chunk_id": "a602fdd2-c91e-57fb-8a8f-cc754cd8930c",
+          "rank": 4,
           "title": "API 调用配额说明",
           "document_id": "seed-api-limits",
-          "locator_label": "第 1–9 行",
-          "score": 0.5718,
-          "bm25_rank": 3,
+          "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+          "locator_label": "第 7 行起",
+          "score": 0.6157,
+          "bm25_rank": 6,
           "dense_rank": 3,
-          "fusion_score": 0.031746,
+          "fusion_score": 0.031025,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
-          "rank": 4,
-          "title": "文件上传接口手册",
-          "document_id": "seed-upload-guide",
-          "locator_label": "第 1 页",
-          "score": 0.4676,
-          "bm25_rank": 4,
-          "dense_rank": 14,
-          "fusion_score": 0.029139,
+          "chunk_id": "7db82bc4-eb70-55b4-953e-07afaee3d174",
+          "rank": 5,
+          "title": "Webhook 投递与签名",
+          "document_id": "seed-webhook",
+          "version_id": "0172fe6e-352a-4c8f-add8-a3d6887374e9",
+          "locator_label": "第 7 行起",
+          "score": 0.5186,
+          "bm25_rank": 3,
+          "dense_rank": 8,
+          "fusion_score": 0.030579,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "0f37d546-103a-53ff-8e24-02c7d06e6f5e",
+          "rank": 6,
+          "title": "API 调用配额说明",
+          "document_id": "seed-api-limits",
+          "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+          "locator_label": "第 5 行起",
+          "score": 0.5344,
+          "bm25_rank": 7,
+          "dense_rank": 7,
+          "fusion_score": 0.029851,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E5"
         }
       ],
-      "embed_ms": 213.1,
-      "retrieval_ms": 62,
-      "generation_ms": 22975.3,
-      "total_ms": 23291.7
+      "embed_ms": 240,
+      "retrieval_ms": 71.2,
+      "generation_ms": 19665.3,
+      "total_ms": 20016.2
     },
     "usage": {
-      "prompt_tokens": 1103,
+      "prompt_tokens": 1060,
       "completion_tokens": 53,
-      "model_duration_ms": 22953,
+      "model_duration_ms": 19644.3,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "Webhook 投递失败最多重试几次"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

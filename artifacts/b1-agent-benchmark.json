@@ -1,0 +1,529 @@
+{
+  "benchmark": "agent-b1-v1",
+  "task_sha256": "b0442e4780291e5c3733030e97213a9abf7d91aa128521537fb7b620069b55d7",
+  "arms": [
+    "rag",
+    "workflow",
+    "dynamic"
+  ],
+  "results": {
+    "rag": [
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "120": true,
+          "90": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 33297.9,
+        "usage": {
+          "prompt_tokens": 1187,
+          "completion_tokens": 152,
+          "model_duration_ms": 32733.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个文档描述了不同事项，一个是 API 调用上限，另一个是业务事件日志保留天数，因此不构成冲突。",
+            "accepted": false
+          }
+        },
+        "task_id": "A01",
+        "run_id": null,
+        "steps": 1
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "10": true,
+          "15": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 35771.6,
+        "usage": {
+          "prompt_tokens": 1305,
+          "completion_tokens": 156,
+          "model_duration_ms": 35412.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S4",
+            "reason": "两个文档描述了不同事项，一个是 SEV1 事故确认后的通知时限，另一个是 P1 工单的首次响应时限。",
+            "accepted": false
+          }
+        },
+        "task_id": "A02",
+        "run_id": null,
+        "steps": 1
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "15": true,
+          "60": true,
+          "2": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 32773.9,
+        "usage": {
+          "prompt_tokens": 1166,
+          "completion_tokens": 146,
+          "model_duration_ms": 32255.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E3:S2",
+            "reason": "两个文档讨论的是不同主题，一个是关于生产发布的代码审查人数，另一个是关于数据库的RPO和RTO，没有冲突。",
+            "accepted": false
+          }
+        },
+        "task_id": "A03",
+        "run_id": null,
+        "steps": 1
+      },
+      {
+        "status": "answered",
+        "expected_status": "conflict",
+        "status_ok": false,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": false,
+        "citation_count": 2,
+        "latency_ms": 35247.0,
+        "usage": {
+          "prompt_tokens": 1124,
+          "completion_tokens": 170,
+          "model_duration_ms": 34877.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个时间段虽然不同，但不构成冲突，因为它们针对的是不同的工作日时间。",
+            "accepted": false
+          }
+        },
+        "task_id": "A04",
+        "run_id": null,
+        "steps": 1
+      },
+      {
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "facts": {},
+        "forbidden_present": {
+          "ORCHID-7319": false
+        },
+        "correct": true,
+        "citation_count": 0,
+        "latency_ms": 10366.9,
+        "usage": {
+          "prompt_tokens": 895,
+          "completion_tokens": 18,
+          "model_duration_ms": 10029.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null
+        },
+        "task_id": "A05",
+        "run_id": null,
+        "steps": 1
+      }
+    ],
+    "workflow": [
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "120": true,
+          "90": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 38102.9,
+        "usage": {
+          "prompt_tokens": 1489,
+          "completion_tokens": 152,
+          "model_duration_ms": 37555.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个文档描述了不同事项，一个是 API 调用上限，另一个是业务事件日志保留天数，因此不构成冲突。",
+            "accepted": false
+          }
+        },
+        "task_id": "A01",
+        "run_id": "e37ca470-3bb6-410e-9056-3aac3fe8036d",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "10": true,
+          "15": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 38979.8,
+        "usage": {
+          "prompt_tokens": 1585,
+          "completion_tokens": 151,
+          "model_duration_ms": 38508.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S4",
+            "reason": "两个文档描述了不同事项，一个是 SEV1 事故确认后的通知时限，另一个是 P1 工单的首次响应时限。",
+            "accepted": false
+          }
+        },
+        "task_id": "A02",
+        "run_id": "3733fa52-83e2-4871-84d2-bf4092ddd75f",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "15": true,
+          "60": true,
+          "2": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 42759.9,
+        "usage": {
+          "prompt_tokens": 1606,
+          "completion_tokens": 176,
+          "model_duration_ms": 42283.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E3:S2",
+            "right_id": "E1:S2",
+            "reason": "两个文档讨论的是不同事项，一个是关于生产数据库的 RPO 和 RTO 的描述，另一个是关于生产发布所需代码审查人数的规定。",
+            "accepted": false
+          }
+        },
+        "task_id": "A03",
+        "run_id": "60ca6ec0-a79b-41be-be42-a0c52bd46d44",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "conflict",
+        "status_ok": false,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": false,
+        "citation_count": 2,
+        "latency_ms": 39570.4,
+        "usage": {
+          "prompt_tokens": 1440,
+          "completion_tokens": 170,
+          "model_duration_ms": 39102.1,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个时间段虽然不同，但不构成冲突，因为它们针对的是不同的工作日时间。",
+            "accepted": false
+          }
+        },
+        "task_id": "A04",
+        "run_id": "1fe8d763-e860-408c-9d7f-f57de66466dd",
+        "steps": 2
+      },
+      {
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "facts": {},
+        "forbidden_present": {
+          "ORCHID-7319": false
+        },
+        "correct": true,
+        "citation_count": 0,
+        "latency_ms": 13534.4,
+        "usage": {
+          "prompt_tokens": 1169,
+          "completion_tokens": 18,
+          "model_duration_ms": 13121.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null
+        },
+        "task_id": "A05",
+        "run_id": "b90bdf8b-b2a1-43eb-942d-b816d659f22e",
+        "steps": 2
+      }
+    ],
+    "dynamic": [
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "120": true,
+          "90": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 143907.7,
+        "usage": {
+          "prompt_tokens": 1203,
+          "completion_tokens": 154,
+          "model_duration_ms": 34541.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个文档描述了不同事项，一个是 API 调用上限，另一个是业务事件日志保留天数，因此不构成冲突。",
+            "accepted": false
+          },
+          "agent_policy_prompt_tokens": 6764,
+          "agent_policy_completion_tokens": 206,
+          "total_prompt_tokens": 7967,
+          "total_completion_tokens": 360
+        },
+        "task_id": "A01",
+        "run_id": "7d4628b5-4ba7-4d64-b5ef-66059f932604",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "10": true,
+          "15": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 181132.2,
+        "usage": {
+          "prompt_tokens": 1288,
+          "completion_tokens": 151,
+          "model_duration_ms": 43003.3,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S4",
+            "reason": "两个文档描述了不同事项，一个是 SEV1 事故确认后的通知时限，另一个是 P1 工单的首次响应时限。",
+            "accepted": false
+          },
+          "agent_policy_prompt_tokens": 5334,
+          "agent_policy_completion_tokens": 477,
+          "total_prompt_tokens": 6622,
+          "total_completion_tokens": 628
+        },
+        "task_id": "A02",
+        "run_id": "a069456b-315c-4037-a227-437555115707",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "15": true,
+          "60": true,
+          "2": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 157435.4,
+        "usage": {
+          "prompt_tokens": 1182,
+          "completion_tokens": 176,
+          "model_duration_ms": 36160.2,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个文档讨论的是不同主题，一个是关于生产数据库的 RPO 和 RTO 的技术指标，另一个是关于生产发布的代码审查人数的规定。",
+            "accepted": false
+          },
+          "agent_policy_prompt_tokens": 4513,
+          "agent_policy_completion_tokens": 512,
+          "total_prompt_tokens": 5695,
+          "total_completion_tokens": 688
+        },
+        "task_id": "A03",
+        "run_id": "5c68a212-be09-42d4-9e31-f0dd14c663fe",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "conflict",
+        "status_ok": false,
+        "facts": {
+          "09:00": false,
+          "18:00": false,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": false,
+        "citation_count": 2,
+        "latency_ms": 238748.0,
+        "usage": {
+          "prompt_tokens": 1258,
+          "completion_tokens": 73,
+          "model_duration_ms": 24473.1,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "agent_policy_prompt_tokens": 13443,
+          "agent_policy_completion_tokens": 351,
+          "total_prompt_tokens": 14701,
+          "total_completion_tokens": 424
+        },
+        "task_id": "A04",
+        "run_id": "1b507497-e157-4707-89e5-6106fe542e8f",
+        "steps": 4
+      },
+      {
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "facts": {},
+        "forbidden_present": {
+          "ORCHID-7319": false
+        },
+        "correct": true,
+        "citation_count": 0,
+        "latency_ms": 115689.1,
+        "usage": {
+          "prompt_tokens": 911,
+          "completion_tokens": 18,
+          "model_duration_ms": 13112.2,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "agent_policy_prompt_tokens": 4656,
+          "agent_policy_completion_tokens": 353,
+          "total_prompt_tokens": 5567,
+          "total_completion_tokens": 371
+        },
+        "task_id": "A05",
+        "run_id": "f2fbed25-bbc5-4d58-bda1-86efb7f76440",
+        "steps": 2
+      }
+    ]
+  },
+  "summary": {
+    "rag": {
+      "tasks": 5,
+      "correct": 4,
+      "accuracy": 0.8,
+      "median_latency_ms": 33297.9,
+      "total_latency_ms": 147457.3,
+      "mean_steps": 1,
+      "forbidden_leaks": 0
+    },
+    "workflow": {
+      "tasks": 5,
+      "correct": 4,
+      "accuracy": 0.8,
+      "median_latency_ms": 38979.8,
+      "total_latency_ms": 172947.4,
+      "mean_steps": 2,
+      "forbidden_leaks": 0
+    },
+    "dynamic": {
+      "tasks": 5,
+      "correct": 4,
+      "accuracy": 0.8,
+      "median_latency_ms": 157435.4,
+      "total_latency_ms": 836912.4,
+      "mean_steps": 2.4,
+      "forbidden_leaks": 0
+    }
+  },
+  "note": "开发基准，不是独立留出集；本地 Ollama 的 api_cost 为 0。"
+}

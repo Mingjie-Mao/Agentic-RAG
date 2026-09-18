@@ -1,0 +1,74 @@
+{
+  "benchmark": "agent-b2-v1",
+  "task_sha256": "e7632ac1a8dd59f5235569d92f1bb0f7d695228d3c74ab0d7bd0d46e6b786f13",
+  "arms": [
+    "dynamic"
+  ],
+  "results": {
+    "dynamic": [
+      {
+        "category": "compound",
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "超大文件": true,
+          "独立 worker": true,
+          "租约": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 304040.1,
+        "usage": {
+          "prompt_tokens": 1624,
+          "completion_tokens": 103,
+          "model_duration_ms": 31608.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "事故 092 的原因",
+            "两项改进措施是什么"
+          ],
+          "agent_policy_prompt_tokens": 12979,
+          "agent_policy_completion_tokens": 951,
+          "total_prompt_tokens": 14603,
+          "total_completion_tokens": 1054
+        },
+        "task_id": "A22",
+        "run_id": "14a53036-7412-4798-a944-0c6a5171ad1b",
+        "steps": 6
+      }
+    ]
+  },
+  "summary": {
+    "dynamic": {
+      "tasks": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "median_latency_ms": 304040.1,
+      "total_latency_ms": 304040.1,
+      "mean_steps": 6,
+      "forbidden_leaks": 0
+    }
+  },
+  "by_category": {
+    "dynamic": {
+      "compound": {
+        "tasks": 1,
+        "correct": 1,
+        "accuracy": 1.0,
+        "median_latency_ms": 304040.1,
+        "total_latency_ms": 304040.1,
+        "mean_steps": 6,
+        "forbidden_leaks": 0
+      }
+    }
+  },
+  "completed_tasks": 1,
+  "requested_tasks": 1,
+  "note": "开发基准，不是独立留出集；本地 Ollama 的 api_cost 为 0。"
+}

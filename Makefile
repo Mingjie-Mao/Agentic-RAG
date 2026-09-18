@@ -1,7 +1,8 @@
 PY := .venv/bin/python
 
 .PHONY: setup infra models models-cpu migrate seed web run test integration browser \
-	s3-retrieval s3-generate s3-public s3-freeze s3-validate s5-dialogues rerank-model check-docs
+	s3-retrieval s3-generate s3-public s3-freeze s3-validate s5-dialogues rerank-model \
+	check-docs agent-benchmark trial-reset
 
 setup:
 	uv venv --python 3.13 --allow-existing
@@ -36,7 +37,7 @@ run:
 	$(PY) scripts/run.py
 
 test:
-	.venv/bin/ruff check app scripts tests migrations
+	.venv/bin/ruff check app agent scripts tests migrations
 	.venv/bin/pytest -q
 	$(PY) scripts/check_docs.py
 
@@ -69,3 +70,9 @@ rerank-model:
 
 check-docs:
 	$(PY) scripts/check_docs.py
+
+agent-benchmark:
+	$(PY) scripts/run_agent_benchmark.py
+
+trial-reset:
+	$(PY) scripts/reset_trial.py

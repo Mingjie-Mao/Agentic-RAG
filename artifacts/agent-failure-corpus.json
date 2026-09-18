@@ -1,0 +1,379 @@
+{
+  "corpus": "agent-observed-failures-v1",
+  "scope": "actual local benchmark runs over the synthetic Agent task suite",
+  "summary": {
+    "unique_failures": 17,
+    "unresolved": 0,
+    "resolved": 17,
+    "by_type": {
+      "conflict_miss": 5,
+      "false_answer": 1,
+      "false_refusal": 2,
+      "incomplete_answer": 9
+    }
+  },
+  "training_gate": {
+    "decision": "do_not_train",
+    "reason": "too few unresolved failures; observed failures were fixed by deterministic system changes",
+    "minimum_unique_adjudicated_failures": 50,
+    "minimum_failure_types": 3,
+    "requires_frozen_unseen_evaluation": true
+  },
+  "failures": [
+    {
+      "task_id": "A04",
+      "arm": "dynamic",
+      "category": "conflict",
+      "goal": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+      "failure_type": "conflict_miss",
+      "observed_status": "answered",
+      "expected_status": "conflict",
+      "missing_facts": [
+        "09:00",
+        "18:00"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b1-agent-benchmark.json",
+        "artifacts/b1-agent-conflict-gate.json"
+      ],
+      "occurrences": 2,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-dynamic-hard.json"
+    },
+    {
+      "task_id": "A04",
+      "arm": "rag",
+      "category": "conflict",
+      "goal": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+      "failure_type": "conflict_miss",
+      "observed_status": "answered",
+      "expected_status": "conflict",
+      "missing_facts": [],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b1-agent-benchmark.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A04",
+      "arm": "workflow",
+      "category": "conflict",
+      "goal": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+      "failure_type": "conflict_miss",
+      "observed_status": "answered",
+      "expected_status": "conflict",
+      "missing_facts": [],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b1-agent-benchmark.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A06",
+      "arm": "rag",
+      "category": "fact",
+      "goal": "星桥产品上传接口单个文件上限是多少？",
+      "failure_type": "false_refusal",
+      "observed_status": "insufficient_evidence",
+      "expected_status": "answered",
+      "missing_facts": [
+        "20",
+        "MB"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-benchmark-rag-workflow.json",
+        "artifacts/b2-agent-regression-gate.json"
+      ],
+      "occurrences": 2,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A08",
+      "arm": "rag",
+      "category": "fact",
+      "goal": "Webhook 投递失败后最多重试几次？",
+      "failure_type": "false_refusal",
+      "observed_status": "insufficient_evidence",
+      "expected_status": "answered",
+      "missing_facts": [
+        "5"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-benchmark-rag-workflow.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A18",
+      "arm": "rag",
+      "category": "compound",
+      "goal": "发布后满足什么持续时间和错误率条件应启动回滚？",
+      "failure_type": "incomplete_answer",
+      "observed_status": "answered",
+      "expected_status": "answered",
+      "missing_facts": [
+        "2"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-benchmark-rag-workflow.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A18",
+      "arm": "workflow",
+      "category": "compound",
+      "goal": "发布后满足什么持续时间和错误率条件应启动回滚？",
+      "failure_type": "incomplete_answer",
+      "observed_status": "answered",
+      "expected_status": "answered",
+      "missing_facts": [
+        "2"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-benchmark-rag-workflow.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A22",
+      "arm": "dynamic",
+      "category": "compound",
+      "goal": "事故 092 的原因和两项改进措施是什么？",
+      "failure_type": "incomplete_answer",
+      "observed_status": "answered",
+      "expected_status": "answered",
+      "missing_facts": [
+        "独立 worker",
+        "租约"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-dynamic-hard.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-dynamic-a22-final.json"
+    },
+    {
+      "task_id": "A22",
+      "arm": "rag",
+      "category": "compound",
+      "goal": "事故 092 的原因和两项改进措施是什么？",
+      "failure_type": "incomplete_answer",
+      "observed_status": "answered",
+      "expected_status": "answered",
+      "missing_facts": [
+        "独立 worker",
+        "租约"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-benchmark-rag-workflow.json",
+        "artifacts/b2-agent-regression-gate.json",
+        "artifacts/b2-agent-final-gate.json"
+      ],
+      "occurrences": 3,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A22",
+      "arm": "workflow",
+      "category": "compound",
+      "goal": "事故 092 的原因和两项改进措施是什么？",
+      "failure_type": "incomplete_answer",
+      "observed_status": "answered",
+      "expected_status": "answered",
+      "missing_facts": [
+        "独立 worker",
+        "租约"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-final-gate.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A24",
+      "arm": "rag",
+      "category": "conflict",
+      "goal": "试点安排 A 和 B 的支持时段是否一致？",
+      "failure_type": "conflict_miss",
+      "observed_status": "insufficient_evidence",
+      "expected_status": "conflict",
+      "missing_facts": [
+        "09:00",
+        "18:00",
+        "08:00",
+        "20:00"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-benchmark-rag-workflow.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A24",
+      "arm": "rag",
+      "category": "conflict",
+      "goal": "试点安排 A 和 B 的支持时段是否一致？",
+      "failure_type": "incomplete_answer",
+      "observed_status": "conflict",
+      "expected_status": "conflict",
+      "missing_facts": [
+        "09:00",
+        "18:00",
+        "08:00",
+        "20:00"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-regression-gate.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A24",
+      "arm": "workflow",
+      "category": "conflict",
+      "goal": "试点安排 A 和 B 的支持时段是否一致？",
+      "failure_type": "conflict_miss",
+      "observed_status": "insufficient_evidence",
+      "expected_status": "conflict",
+      "missing_facts": [
+        "09:00",
+        "18:00",
+        "08:00",
+        "20:00"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-benchmark-rag-workflow.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A24",
+      "arm": "workflow",
+      "category": "conflict",
+      "goal": "试点安排 A 和 B 的支持时段是否一致？",
+      "failure_type": "incomplete_answer",
+      "observed_status": "conflict",
+      "expected_status": "conflict",
+      "missing_facts": [
+        "09:00",
+        "18:00",
+        "08:00",
+        "20:00"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-regression-gate.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A26",
+      "arm": "memory_on",
+      "category": "tenant",
+      "goal": "海川工作室的网关测试标记是什么？",
+      "failure_type": "false_answer",
+      "observed_status": "answered",
+      "expected_status": "insufficient_evidence",
+      "missing_facts": [],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/memory-ab-v1.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/memory-ab-a26-foreign-tenant.json"
+    },
+    {
+      "task_id": "A30",
+      "arm": "rag",
+      "category": "compound",
+      "goal": "生产数据库 RPO、RTO，以及触发发布回滚的持续时间和错误率分别是多少？",
+      "failure_type": "incomplete_answer",
+      "observed_status": "answered",
+      "expected_status": "answered",
+      "missing_facts": [
+        "2"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-benchmark-rag-workflow.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    },
+    {
+      "task_id": "A30",
+      "arm": "workflow",
+      "category": "compound",
+      "goal": "生产数据库 RPO、RTO，以及触发发布回滚的持续时间和错误率分别是多少？",
+      "failure_type": "incomplete_answer",
+      "observed_status": "answered",
+      "expected_status": "answered",
+      "missing_facts": [
+        "2"
+      ],
+      "leaked_forbidden": [],
+      "execution_error": null,
+      "source_files": [
+        "artifacts/b2-agent-benchmark-rag-workflow.json"
+      ],
+      "occurrences": 1,
+      "resolved": true,
+      "resolved_in": "artifacts/b2-agent-benchmark-final.json"
+    }
+  ]
+}

@@ -102,7 +102,7 @@ test('S4 检索调试页：候选、准入与阶段耗时', async ({ page }) => 
   await expect(panel.locator('.trace-table tbody tr.admitted')).toHaveCount(admitted.length);
   const dropped = result.trace.candidates.filter((c: any) => !c.admitted);
   for (const candidate of dropped) {
-    expect(['below_min_similarity', 'context_budget_exhausted']).toContain(
+    expect(['below_min_similarity', 'context_budget_exhausted', 'boilerplate_only']).toContain(
       candidate.excluded_because,
     );
   }

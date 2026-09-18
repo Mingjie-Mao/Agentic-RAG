@@ -3,9 +3,9 @@ requires = ["setuptools>=78"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "enterprise-rag"
+name = "agentic-rag"
 version = "0.1.0"
-description = "Enterprise document retrieval with permission-scoped evidence"
+description = "Agentic enterprise retrieval with permission-scoped evidence"
 requires-python = ">=3.12,<3.14"
 dependencies = [
   "fastapi==0.116.1", "uvicorn==0.35.0", "pydantic-settings==2.14.0",
@@ -19,7 +19,7 @@ dependencies = [
 dev = ["pytest==8.4.2", "reportlab==4.4.3", "ruff==0.13.0"]
 
 [tool.setuptools.packages.find]
-include = ["app*"]
+include = ["app*", "agent*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

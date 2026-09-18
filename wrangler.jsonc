@@ -1,5 +1,5 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "enterprise-rag",
+  "name": "agentic-rag",
   "pages_build_output_dir": "site"
 }

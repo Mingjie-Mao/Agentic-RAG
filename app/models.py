@@ -1,7 +1,7 @@
 import uuid
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, JSON, String, Text, UniqueConstraint
+from sqlalchemy import Boolean, Date, DateTime, ForeignKey, Integer, JSON, String, Text, UniqueConstraint
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -104,4 +104,72 @@ class Answer(Base):
     question: Mapped[str] = mapped_column(Text)
     payload: Mapped[dict] = mapped_column(JSON)
     evidence_chunk_ids: Mapped[list] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+
+
+class AgentTask(Base):
+    __tablename__ = "agent_tasks"
+    id: Mapped[str] = mapped_column(String(64), primary_key=True, default=uid)
+    tenant_id: Mapped[str] = mapped_column(ForeignKey("tenants.id"), index=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
+    goal: Mapped[str] = mapped_column(Text)
+    input: Mapped[dict] = mapped_column(JSON, default=dict)
+    mode: Mapped[str] = mapped_column(String(20), default="workflow")
+    status: Mapped[str] = mapped_column(String(20), default="queued", index=True)
+    step_no: Mapped[int] = mapped_column(Integer, default=0)
+    max_steps: Mapped[int] = mapped_column(Integer, default=6)
+    state_version: Mapped[int] = mapped_column(Integer, default=1)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    lease_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    lease_token: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    result: Mapped[dict] = mapped_column(JSON, default=dict)
+    error: Mapped[str | None] = mapped_column(Text, nullable=True)
+    evidence_chunk_ids: Mapped[list] = mapped_column(JSON, default=list)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+
+
+class AgentEvent(Base):
+    __tablename__ = "agent_events"
+    __table_args__ = (UniqueConstraint("task_id", "sequence"),)
+    id: Mapped[str] = mapped_column(String(64), primary_key=True, default=uid)
+    task_id: Mapped[str] = mapped_column(ForeignKey("agent_tasks.id"), index=True)
+    sequence: Mapped[int] = mapped_column(Integer)
+    event_type: Mapped[str] = mapped_column(String(30))
+    tool_name: Mapped[str | None] = mapped_column(String(50), nullable=True)
+    payload: Mapped[dict] = mapped_column(JSON, default=dict)
+    evidence_chunk_ids: Mapped[list] = mapped_column(JSON, default=list)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+
+
+class ToolExecution(Base):
+    __tablename__ = "tool_executions"
+    __table_args__ = (UniqueConstraint("task_id", "request_hash"),)
+    id: Mapped[str] = mapped_column(String(64), primary_key=True, default=uid)
+    task_id: Mapped[str] = mapped_column(ForeignKey("agent_tasks.id"), index=True)
+    tool_name: Mapped[str] = mapped_column(String(50))
+    request_hash: Mapped[str] = mapped_column(String(64))
+    status: Mapped[str] = mapped_column(String(20), default="running")
+    arguments: Mapped[dict] = mapped_column(JSON, default=dict)
+    result: Mapped[dict] = mapped_column(JSON, default=dict)
+    evidence_chunk_ids: Mapped[list] = mapped_column(JSON, default=list)
+    error: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class TrialRequest(Base):
+    """One pre-reserved public-trial model request.
+
+    The unique slot makes the daily limit resistant to concurrent requests without
+    keeping a process-local counter.
+    """
+
+    __tablename__ = "trial_requests"
+    __table_args__ = (UniqueConstraint("user_id", "usage_date", "slot"),)
+    id: Mapped[str] = mapped_column(String(64), primary_key=True, default=uid)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
+    usage_date: Mapped[date] = mapped_column(Date, index=True)
+    slot: Mapped[int] = mapped_column(Integer)
+    kind: Mapped[str] = mapped_column(String(20))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)

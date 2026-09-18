@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Enterprise-RAG · 权限感知的企业知识问答</title>
-<meta name="description" content="权限感知 RAG 系统：引用可核验、撤权立即生效、评测可复现。展示页含实测结果与界面截图。">
+<title>Agentic-RAG · 权限感知 RAG 与知识 Agent</title>
+<meta name="description" content="权限感知 RAG 与可审计知识 Agent：引用可核验、撤权立即生效、任务轨迹可追踪。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
@@ -66,6 +66,15 @@
   .shot img{width:100%;display:block;border:1px solid var(--line);border-radius:6px}
   .note{border-left:3px solid var(--flag);background:var(--surface);padding:14px 16px;border-radius:0 8px 8px 0;margin-top:18px}
   .note p{margin:0;font-size:.9rem}
+  .flow{display:grid;grid-template-columns:repeat(7,auto);align-items:center;gap:8px;margin-top:20px;overflow-x:auto;padding-bottom:4px}
+  .flow-node{min-width:105px;padding:12px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);text-align:center;font-size:.8rem;color:var(--ink-2)}
+  .flow-node b{display:block;color:var(--ink);margin-bottom:2px}
+  .flow-arrow{font-family:var(--mono);color:var(--accent);text-align:center}
+  .agent-status{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+  .agent-status span{font-family:var(--mono);font-size:.72rem;padding:5px 9px;border:1px solid var(--line-strong);border-radius:99px;background:var(--surface)}
+  .agent-status .done{color:var(--accent);border-color:var(--accent)}
+  .tool-list{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+  .tool-list code{padding:5px 8px}
   ul{margin:0;padding-left:1.15em}
   li{margin-bottom:7px;color:var(--ink-2);font-size:.92rem}
   code{font-family:var(--mono);font-size:.85em;background:var(--surface-2);border:1px solid var(--line);padding:1px 5px;border-radius:3px;color:var(--ink)}
@@ -78,13 +87,13 @@
 <div class="wrap">
 
 <header>
-  <p class="kicker">Enterprise-RAG · 项目展示</p>
-  <h1>企业知识问答，每一句回答都能回到原文那一行</h1>
-  <p class="lead">一个<b>权限感知</b>的检索增强问答系统。只检索当前用户有权访问的资料，只依据原文作答，引用能定位到 PDF 的页与坐标、Word 的段落、Excel 的单元格。<b>依据不足时拒答，两份资料矛盾时报告冲突，不猜测。</b></p>
+  <p class="kicker">Agentic-RAG · RAG → Knowledge Agent</p>
+  <h1>从可核验的企业问答，演化到可审计的知识 Agent</h1>
+  <p class="lead">底层是通过冻结留出集验收的<b>权限感知 RAG</b>；上层 Agent 通过七个受控工具分步查证，并持久化任务、事件与工具轨迹。所有内容读取都重新鉴权，最终回答仍必须回到原文。<b>依据不足时拒答，撤权后已有结果隐藏。</b></p>
   <div class="links">
-    <a class="primary" href="https://github.com/Mingjie-Mao/Enterprise-RAG">源码仓库</a>
-    <a href="https://github.com/Mingjie-Mao/Enterprise-RAG/blob/main/PROJECT_REPORT.md">技术报告</a>
-    <a href="https://github.com/Mingjie-Mao/Enterprise-RAG#快速开始">本地运行</a>
+    <a class="primary" href="https://github.com/Mingjie-Mao/Agentic-RAG">源码仓库</a>
+    <a href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md">技术报告</a>
+    <a href="https://github.com/Mingjie-Mao/Agentic-RAG#快速开始">本地运行</a>
   </div>
 </header>
 
@@ -92,7 +101,7 @@
   <div><dt>留出集正确率</dt><dd id="s-holdout">—</dd></div>
   <div><dt>越权命中</dt><dd id="s-viol">—</dd></div>
   <div><dt>冲突精确率</dt><dd id="s-conf">—</dd></div>
-  <div><dt>自动化检查</dt><dd>88 项</dd></div>
+  <div><dt>自动化检查</dt><dd>100 项</dd></div>
   <div><dt>发布版本</dt><dd id="s-commit">—</dd></div>
 </dl>
 
@@ -120,9 +129,31 @@
 </section>
 
 <section>
+  <p class="eyebrow">Knowledge Agent · Phase B</p>
+  <h2>异步 Agent 已接入记忆；30 题开发回归全部通过</h2>
+  <p>创建任务在约 32 ms 内返回 queued，worker 用数据库租约执行。动态模式由本地 7B 模型在白名单中选择动作；访客试用固定走低成本路径。短期记忆用于追问改写，工作记忆保存任务轨迹，长期记忆跨会话复用角色与偏好；三者都不能绕过文档权限或充当企业事实证据。</p>
+  <p>长期记忆 30 题成对 A/B：关闭 30/30，开启 29/30，差异不显著（p=1.0）；开启后中位延迟增加 6.0 秒、平均 prompt 增加 428 token。唯一变化暴露了外租户误归属，加入检索前租户预检后定向开／关均通过。因此当前只把长期记忆用于偏好与上下文，不宣称事实正确率收益。</p>
+  <div class="agent-status">
+    <span class="done">✓ 七个受控工具</span><span class="done">✓ 异步 worker + 租约</span><span class="done">✓ 三层记忆</span><span class="done">✓ 固定 workflow</span><span class="done">✓ 动态 policy</span><span class="done">✓ 只读限额试用</span><span class="done">✓ 配对 benchmark</span>
+  </div>
+  <div class="flow" aria-label="Agent 执行架构">
+    <div class="flow-node"><b>Task</b>目标与预算</div><div class="flow-arrow">→</div>
+    <div class="flow-node"><b>Policy</b>workflow / dynamic</div><div class="flow-arrow">→</div>
+    <div class="flow-node"><b>Tool Gateway</b>Schema + ACL</div><div class="flow-arrow">→</div>
+    <div class="flow-node"><b>RAG Core</b>检索与版本</div>
+  </div>
+  <div class="tool-list" id="agent-tools"></div>
+  <div class="scroller"><table>
+    <thead><tr><th>策略与数据集</th><th>正确</th><th>中位延迟</th><th>平均步骤</th><th>禁区泄漏</th></tr></thead>
+    <tbody id="t-agent"></tbody>
+  </table></div>
+  <div class="note"><p><b id="agent-decision">—</b> B2 任务参与了本轮修复，因此 100% 只表示开发回归通过；动态行来自修复前的 5 题小集合，分母不同。</p></div>
+</section>
+
+<section>
   <p class="eyebrow">实测结果</p>
   <h2>所有数字都来自冻结的评测集</h2>
-  <p>下面每个数字都由脚本从运行产物中读回生成，不手工填写。开发集参与过选型，留出集<b>只运行一次</b>，验收门槛在运行之前就已写定。</p>
+  <p>下面每组数字都有仓库内的原始运行产物。开发集参与过选型，留出集<b>只运行一次</b>，验收门槛在运行之前就已写定。</p>
 
   <h3 style="margin-top:22px">自建开发集 · 147 题</h3>
   <div class="scroller"><table>
@@ -182,7 +213,7 @@
 
 <footer>
   <p>全部示例资料、题目与公司名称均为本项目自建的虚构内容，不代表任何真实机构或制度。</p>
-  <p>本页数据由 <code>artifacts/s8-release-summary.json</code> 生成 · 发布版本 <span id="f-commit">—</span> · <a href="https://github.com/Mingjie-Mao/Enterprise-RAG">github.com/Mingjie-Mao/Enterprise-RAG</a></p>
+  <p>RAG 数据：<code>artifacts/s8-release-summary.json</code> · Agent 数据：<code>artifacts/b2-agent-benchmark-final.json</code> · 发布版本 <span id="f-commit">—</span> · <a href="https://github.com/Mingjie-Mao/Agentic-RAG">github.com/Mingjie-Mao/Agentic-RAG</a></p>
 </footer>
 
 </div>
@@ -240,6 +271,17 @@ fetch("data.json").then(r => r.json()).then(d => {
     "<li>不支持需要 OCR 的扫描件与 PPTX；没有文字层的 PDF 会显式失败，不会被静默索引成空文档</li>");
   limits.insertAdjacentHTML("beforeend",
     "<li>留出集验证的是「同一分布下换一批主题」，不是「换一家公司」</li>");
+  d.agent.not_completed.forEach(line => limits.insertAdjacentHTML("beforeend", `<li>Agent：${line}</li>`));
+
+  const tools = document.getElementById("agent-tools");
+  d.agent.tools.forEach(name => tools.insertAdjacentHTML("beforeend", `<code>${name}</code>`));
+  const agent = document.getElementById("t-agent");
+  const b = d.agent.benchmark;
+  agent.insertAdjacentHTML("beforeend", `<tr><td class="name">单次 RAG · B2 开发回归</td><td class="num">${Math.round(b.rag_accuracy*b.tasks)}/${b.tasks}</td><td class="num">${b.rag_median_seconds.toFixed(1)} s</td><td class="num">1.0</td><td class="num">${b.forbidden_leaks}</td></tr>`);
+  agent.insertAdjacentHTML("beforeend", `<tr><td class="name">固定工作流 · B2 开发回归</td><td class="num">${Math.round(b.workflow_accuracy*b.tasks)}/${b.tasks}</td><td class="num">${b.workflow_median_seconds.toFixed(1)} s</td><td class="num">2.0</td><td class="num">${b.forbidden_leaks}</td></tr>`);
+  const dl = b.dynamic_legacy;
+  agent.insertAdjacentHTML("beforeend", `<tr><td class="name">动态 Agent · B1 首轮</td><td class="num">${Math.round(dl.accuracy*dl.tasks)}/${dl.tasks}</td><td class="num">${dl.median_seconds.toFixed(1)} s</td><td class="num">${dl.mean_steps.toFixed(1)}</td><td class="num">${dl.forbidden_leaks}</td></tr>`);
+  document.getElementById("agent-decision").textContent = b.decision;
 
   const shots = document.getElementById("shots");
   SHOTS.forEach(([file, what], i) => shots.insertAdjacentHTML("beforeend",

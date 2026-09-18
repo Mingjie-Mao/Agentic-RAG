@@ -19,14 +19,14 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "39f92239-30cc-420e-8b11-f67c3974e87b",
+    "id": "f04bcd37-b495-48eb-8aea-e2e431190b43",
     "question": "数据导出的下载链接有效期是多久？",
     "status": "answered",
     "claims": [
       {
         "text": "数据导出的下载链接有效期为24小时。",
         "evidence_ids": [
-          "50a00831-7a6a-5f51-bda1-86ca49664d18"
+          "5a77eafb-1c0f-5c28-a135-b04176ff1caf"
         ],
         "quotes": [
           "数据导出的下载链接有效期为 24 小时。"
@@ -35,29 +35,57 @@
     ],
     "citations": [
       {
-        "chunk_id": "50a00831-7a6a-5f51-bda1-86ca49664d18",
+        "chunk_id": "5a77eafb-1c0f-5c28-a135-b04176ff1caf",
         "document_id": "seed-export",
-        "version_id": "7f38c3a1-21d0-4eaf-9c68-30dc684b3d37",
+        "version_id": "b45d148e-e3d9-43eb-8ed5-a6980bc3a960",
         "title": "数据导出注意事项",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–8 行",
+          "block_type": "paragraph",
+          "heading_path": [
+            "数据导出注意事项",
+            "下载有效期"
+          ],
+          "source_char_start": 47,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 76,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "paragraph",
+                "heading_path": [
+                  "数据导出注意事项",
+                  "下载有效期"
+                ],
+                "source_char_start": 47,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 76
+            }
+          ],
           "char_start": 0,
-          "char_end": 123,
-          "line_start": 1,
-          "line_end": 8
+          "char_end": 76,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 63,
+          "token_counter": "cl100k_base"
         },
-        "text": "# 数据导出注意事项\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 下载有效期\n数据导出的下载链接有效期为 24 小时。链接到期后必须重新发起导出。\n导出权限随用户角色变化而撤销，不能将下载链接转发给无权访问者。\n",
-        "preview_url": "/api/evidence/50a00831-7a6a-5f51-bda1-86ca49664d18",
-        "original_url": "/api/versions/7f38c3a1-21d0-4eaf-9c68-30dc684b3d37/original"
+        "text": "## 下载有效期\n数据导出的下载链接有效期为 24 小时。链接到期后必须重新发起导出。\n导出权限随用户角色变化而撤销，不能将下载链接转发给无权访问者。\n",
+        "preview_url": "/api/evidence/5a77eafb-1c0f-5c28-a135-b04176ff1caf",
+        "original_url": "/api/versions/b45d148e-e3d9-43eb-8ed5-a6980bc3a960/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "数据导出的下载链接有效期是多久？",
       "retrieval_query": "数据导出的下载链接有效期是多久？",
@@ -67,22 +95,33 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.7857,
+        "claim_support": [
+          1
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 912,
+      "context_tokens_estimate": 688,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "50a00831-7a6a-5f51-bda1-86ca49664d18",
+          "chunk_id": "5a77eafb-1c0f-5c28-a135-b04176ff1caf",
           "rank": 1,
           "title": "数据导出注意事项",
           "document_id": "seed-export",
-          "locator_label": "第 1–8 行",
-          "score": 0.8216,
+          "version_id": "b45d148e-e3d9-43eb-8ed5-a6980bc3a960",
+          "locator_label": "第 5 行起",
+          "score": 0.831,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -91,62 +130,96 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "8ed52eef-363a-502f-a4b2-9396e71c1f54",
+          "chunk_id": "7a4950f2-7c9a-505f-9858-8f89770547eb",
           "rank": 2,
+          "title": "数据导出注意事项",
+          "document_id": "seed-export",
+          "version_id": "b45d148e-e3d9-43eb-8ed5-a6980bc3a960",
+          "locator_label": "第 1 行起",
+          "score": 0.5395,
+          "bm25_rank": 2,
+          "dense_rank": 3,
+          "fusion_score": 0.032002,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "1ba61fb6-c9ff-53a1-b08f-fb04344bb691",
+          "rank": 3,
           "title": "业务数据保留规则",
           "document_id": "seed-data-retention",
+          "version_id": "a6d48489-c3ef-493c-9779-981f4a7ddc15",
           "locator_label": "第 1 页",
-          "score": 0.5803,
-          "bm25_rank": 2,
+          "score": 0.5573,
+          "bm25_rank": 4,
           "dense_rank": 2,
-          "fusion_score": 0.032258,
+          "fusion_score": 0.031754,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
-          "rank": 3,
+          "chunk_id": "bea18c8a-88f5-53a3-a869-f81a130f5eb3",
+          "rank": 4,
           "title": "套餐功能对照表",
           "document_id": "seed-plan-comparison",
-          "locator_label": "第 1–11 行",
-          "score": 0.5332,
-          "bm25_rank": 3,
+          "version_id": "1ca1cf19-54f9-4f2f-9ddf-464842567770",
+          "locator_label": "第 5 行起",
+          "score": 0.5257,
+          "bm25_rank": 5,
           "dense_rank": 4,
-          "fusion_score": 0.031498,
+          "fusion_score": 0.03101,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
-          "rank": 4,
-          "title": "Webhook 投递与签名",
-          "document_id": "seed-webhook",
-          "locator_label": "第 1–9 行",
-          "score": 0.5338,
+          "chunk_id": "59344e09-7f0d-56f6-8b0b-f9685c91b1e7",
+          "rank": 5,
+          "title": "业务数据保留规则",
+          "document_id": "seed-data-retention",
+          "version_id": "a6d48489-c3ef-493c-9779-981f4a7ddc15",
+          "locator_label": "第 1 页",
+          "score": 0.4722,
+          "bm25_rank": 3,
+          "dense_rank": 18,
+          "fusion_score": 0.028694,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "9407bdbe-2d57-5977-ace9-7660b17b8d63",
+          "rank": 6,
+          "title": "工单 218：重复回调",
+          "document_id": "seed-ticket-218",
+          "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+          "locator_label": "第 7 行起",
+          "score": 0.5236,
           "bm25_rank": null,
-          "dense_rank": 3,
-          "fusion_score": 0.015873,
+          "dense_rank": 5,
+          "fusion_score": 0.015385,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
         }
       ],
-      "embed_ms": 275.9,
-      "retrieval_ms": 95.7,
-      "generation_ms": 24437,
-      "total_ms": 24875.3
+      "embed_ms": 193.3,
+      "retrieval_ms": 89,
+      "generation_ms": 18950.1,
+      "total_ms": 19279.5
     },
     "usage": {
-      "prompt_tokens": 1066,
-      "completion_tokens": 50,
-      "model_duration_ms": 24404.2,
+      "prompt_tokens": 1031,
+      "completion_tokens": 49,
+      "model_duration_ms": 18925.2,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "数据导出的下载链接有效期是多久"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

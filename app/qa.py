@@ -7,6 +7,7 @@ from app.clients import Models, Search
 from app.config import settings
 from app.models import Answer
 from app.rewrite import rewrite_query
+from app.retrieval import retrieve_authorized
 from app.security import readable_documents, require_chunk
 
 
@@ -92,67 +93,26 @@ def answer_question(db, user, question, history=None):
     # Rewriting produces a retrieval query and nothing else: it is not stored, never
     # crosses a session, and never becomes evidence.
     query, rewrite_trace = rewrite_query(question, history, mode=cfg.rewrite_mode)
-    documents = readable_documents(db, user)
-    versions = [d.active_version_id for d in documents if d.active_version_id]
-    evidence, candidates, usage = [], [], {}
-    embed_ms = retrieval_ms = generation_ms = 0
-    context_tokens = 0
-    if versions:
-        models = Models()
-        t = time.monotonic()
-        vector = models.embed([query])[0] if cfg.retrieval_mode != "bm25" else None
-        embed_ms = (time.monotonic() - t) * 1000
-        t = time.monotonic()
-        if cfg.retrieval_mode == "hybrid":
-            hits = Search().retrieve_hybrid(query, vector, user.tenant_id, versions, cfg.top_k)
-        elif vector is not None:
-            hits = Search().retrieve(vector, user.tenant_id, versions, cfg.top_k)
-        else:
-            hits = Search().retrieve_bm25(query, user.tenant_id, versions, cfg.top_k)
-        retrieval_ms = (time.monotonic() - t) * 1000
-        from app.chunking import token_count
-
-        for rank, hit in enumerate(hits, 1):
-            chunk, version, document = require_chunk(db, user, hit["chunk_id"], active_only=True)
-            candidate = {
-                "chunk_id": chunk.id,
-                "rank": rank,
-                "title": document.title,
-                "document_id": document.id,
-                "locator_label": chunk.locator.get("label", ""),
-                "score": round(hit.get("cosine_similarity", hit.get("score", 0)), 4),
-                "bm25_rank": hit.get("bm25_rank"),
-                "dense_rank": hit.get("dense_rank"),
-                "fusion_score": round(hit["score"], 6) if cfg.retrieval_mode == "hybrid" else None,
-                "admitted": False,
-                "excluded_because": None,
-            }
-            candidates.append(candidate)
-            if cfg.retrieval_mode == "dense" and hit["cosine_similarity"] < cfg.min_similarity:
-                candidate["excluded_because"] = "below_min_similarity"
-                continue
-            cost = token_count(chunk.text) + token_count(document.title) + 100
-            if context_tokens + cost > cfg.context_token_budget:
-                candidate["excluded_because"] = "context_budget_exhausted"
-                continue
-            context_tokens += cost
-            candidate["admitted"] = True
-            candidate["evidence_id"] = f"E{len(evidence) + 1}"
-            evidence.append(
-                {
-                    "id": f"E{len(evidence) + 1}",
-                    "chunk_id": chunk.id,
-                    "document_id": document.id,
-                    "version_id": version.id,
-                    "title": document.title,
-                    "text": chunk.text,
-                    "locator": chunk.locator,
-                    "metadata": document.metadata_json,
-                }
-            )
-        # Recheck all evidence immediately before the model receives it.
-        for item in evidence:
-            require_chunk(db, user, item["chunk_id"], active_only=True)
+    models = Models()
+    # Short fact questions are especially vulnerable to one off-topic chunk occupying
+    # a quarter of the context. Six candidates fixed observed misses while the token
+    # budget still provides the hard upper bound; longer questions keep the frozen default.
+    retrieval_top_k = 6 if len(question) <= 30 else cfg.top_k
+    found = retrieve_authorized(
+        db,
+        user,
+        query,
+        cfg=cfg,
+        models=models,
+        search=Search(),
+        readable_documents_fn=readable_documents,
+        require_chunk_fn=require_chunk,
+        top_k=retrieval_top_k,
+    )
+    evidence, candidates, usage = found.evidence, found.candidates, {}
+    embed_ms, retrieval_ms, generation_ms = found.embed_ms, found.retrieval_ms, 0
+    context_tokens = found.context_tokens
+    if found.searchable_documents:
         if evidence:
             t = time.monotonic()
             generated, usage = models.generate(question, evidence)
@@ -162,7 +122,7 @@ def answer_question(db, user, question, history=None):
                 status = "conflict"
         else:
             claims, status = [], "insufficient_evidence"
-    elif not documents:
+    elif not found.readable_documents:
         # Nothing readable at all is a different situation from "searched and found nothing".
         claims, status = [], "no_readable_documents"
     else:
@@ -199,8 +159,8 @@ def answer_question(db, user, question, history=None):
         "trace": {
             "method": cfg.retrieval_mode,
             "scope": {
-                "readable_documents": len(documents),
-                "searchable_documents": len(versions),
+                "readable_documents": found.readable_documents,
+                "searchable_documents": found.searchable_documents,
             },
             "original_question": question,
             "retrieval_query": query,
@@ -208,7 +168,7 @@ def answer_question(db, user, question, history=None):
             "rewrite": rewrite_trace,
             "shadow_scores": shadow_scores(question, evidence, claims) if evidence else None,
             "prompt_version": "grounded-v5-conflict-gated",
-            "top_k": cfg.top_k,
+            "top_k": retrieval_top_k,
             "min_similarity": cfg.min_similarity,
             "context_token_budget": cfg.context_token_budget,
             "context_tokens_estimate": context_tokens,

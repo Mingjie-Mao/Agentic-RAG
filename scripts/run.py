@@ -55,7 +55,7 @@ try:
     start(
         [sys.executable, "-m", "uvicorn", "app.main:app", "--host", "127.0.0.1", "--port", "8000"], "api"
     )
-    print("Enterprise-RAG: http://127.0.0.1:8000 | logs: .runtime/*.log | Ctrl-C to stop", flush=True)
+    print("Agentic-RAG: http://127.0.0.1:8000 | logs: .runtime/*.log | Ctrl-C to stop", flush=True)
     while not stopping:
         if any(child.poll() is not None for child in children):
             raise RuntimeError("A service stopped unexpectedly. Inspect .runtime/*.log")

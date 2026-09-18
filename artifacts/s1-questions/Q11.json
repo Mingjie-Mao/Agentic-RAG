@@ -19,14 +19,14 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "ceb7ad46-9006-42f4-8299-af01918260a0",
+    "id": "f09c6904-69d4-40c2-953c-f3d51ed60d37",
     "question": "确认 SEV1 事故后多久通知值班负责人？",
     "status": "answered",
     "claims": [
       {
         "text": "支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。",
         "evidence_ids": [
-          "f971902d-d665-5cc7-9fa1-3455c61d3c93"
+          "157fd048-ca31-5fd1-b7c6-0ba2bf57f460"
         ],
         "quotes": [
           "支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。"
@@ -35,29 +35,57 @@
     ],
     "citations": [
       {
-        "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+        "chunk_id": "157fd048-ca31-5fd1-b7c6-0ba2bf57f460",
         "document_id": "seed-support-escalate",
-        "version_id": "100263dc-44ee-4e21-b25e-b9d86a52ff8e",
+        "version_id": "2a084d96-ec3c-46e2-aaa8-47011c2b28d6",
         "title": "SEV1 客户事故升级",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–8 行",
+          "block_type": "paragraph",
+          "heading_path": [
+            "SEV1 客户事故升级",
+            "升级要求"
+          ],
+          "source_char_start": 50,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 83,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "paragraph",
+                "heading_path": [
+                  "SEV1 客户事故升级",
+                  "升级要求"
+                ],
+                "source_char_start": 50,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 83
+            }
+          ],
           "char_start": 0,
-          "char_end": 133,
-          "line_start": 1,
-          "line_end": 8
+          "char_end": 83,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 79,
+          "token_counter": "cl100k_base"
         },
-        "text": "# SEV1 客户事故升级\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 升级要求\n支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。\n事故期间每 30 分钟向客户同步一次状态，不得承诺未经工程组确认的恢复时间。\n",
-        "preview_url": "/api/evidence/f971902d-d665-5cc7-9fa1-3455c61d3c93",
-        "original_url": "/api/versions/100263dc-44ee-4e21-b25e-b9d86a52ff8e/original"
+        "text": "## 升级要求\n支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。\n事故期间每 30 分钟向客户同步一次状态，不得承诺未经工程组确认的恢复时间。\n",
+        "preview_url": "/api/evidence/157fd048-ca31-5fd1-b7c6-0ba2bf57f460",
+        "original_url": "/api/versions/2a084d96-ec3c-46e2-aaa8-47011c2b28d6/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "确认 SEV1 事故后多久通知值班负责人？",
       "retrieval_query": "确认 SEV1 事故后多久通知值班负责人？",
@@ -67,22 +95,33 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.7692,
+        "claim_support": [
+          1
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 936,
+      "context_tokens_estimate": 898,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "chunk_id": "157fd048-ca31-5fd1-b7c6-0ba2bf57f460",
           "rank": 1,
           "title": "SEV1 客户事故升级",
           "document_id": "seed-support-escalate",
-          "locator_label": "第 1–8 行",
-          "score": 0.7427,
+          "version_id": "2a084d96-ec3c-46e2-aaa8-47011c2b28d6",
+          "locator_label": "第 5 行起",
+          "score": 0.8012,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -91,62 +130,97 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "7ea8732a-57be-54b9-858c-fa251b66e285",
+          "chunk_id": "75c1f9ea-ad1d-5b5d-bf35-9578c2dc0f5e",
           "rank": 2,
           "title": "支持组交接清单",
           "document_id": "seed-support-handoff",
-          "locator_label": "第 1–8 行",
-          "score": 0.5482,
-          "bm25_rank": 2,
+          "version_id": "1d2b6515-5ae9-4029-98f8-54837a03abea",
+          "locator_label": "第 5 行起",
+          "score": 0.5751,
+          "bm25_rank": 3,
           "dense_rank": 2,
-          "fusion_score": 0.032258,
+          "fusion_score": 0.032002,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "41b23f79-6b16-5432-b3e8-27af570f67f5",
+          "chunk_id": "df6de4bf-ab9f-5e52-815c-3d03e03fdf78",
           "rank": 3,
+          "title": "SEV1 客户事故升级",
+          "document_id": "seed-support-escalate",
+          "version_id": "2a084d96-ec3c-46e2-aaa8-47011c2b28d6",
+          "locator_label": "第 1 行起",
+          "score": 0.5232,
+          "bm25_rank": 2,
+          "dense_rank": 4,
+          "fusion_score": 0.031754,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "d2d28b23-369b-5c12-8ccc-ebba888eec24",
+          "rank": 4,
           "title": "年假申请说明",
           "document_id": "seed-leave",
-          "locator_label": "第 1–8 行",
-          "score": 0.4738,
-          "bm25_rank": 3,
-          "dense_rank": 6,
-          "fusion_score": 0.031025,
+          "version_id": "464ca6de-6715-49b1-a12f-9cd0c60ccdf1",
+          "locator_label": "第 5 行起",
+          "score": 0.4827,
+          "bm25_rank": 4,
+          "dense_rank": 7,
+          "fusion_score": 0.03055,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "ee8337d3-e459-5b80-92c8-9a7b287ddb10",
-          "rank": 4,
+          "chunk_id": "cfc5b599-65d9-5be5-9031-d36ebb4daf02",
+          "rank": 5,
           "title": "会议纪要归档约定",
           "document_id": "seed-meeting",
-          "locator_label": "第 1–8 行",
-          "score": 0.4848,
-          "bm25_rank": 4,
-          "dense_rank": 5,
-          "fusion_score": 0.03101,
+          "version_id": "39555391-bc00-4c1a-8b5f-c4ce47f6644f",
+          "locator_label": "第 5 行起",
+          "score": 0.4829,
+          "bm25_rank": 5,
+          "dense_rank": 6,
+          "fusion_score": 0.030536,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "9407bdbe-2d57-5977-ace9-7660b17b8d63",
+          "rank": 6,
+          "title": "工单 218：重复回调",
+          "document_id": "seed-ticket-218",
+          "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+          "locator_label": "第 7 行起",
+          "score": 0.4673,
+          "bm25_rank": 6,
+          "dense_rank": 9,
+          "fusion_score": 0.029644,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E5"
         }
       ],
-      "embed_ms": 300,
-      "retrieval_ms": 77.7,
-      "generation_ms": 23395.9,
-      "total_ms": 23867.9
+      "embed_ms": 214.4,
+      "retrieval_ms": 61.8,
+      "generation_ms": 22107.1,
+      "total_ms": 22425.1
     },
     "usage": {
-      "prompt_tokens": 1000,
-      "completion_tokens": 60,
-      "model_duration_ms": 23359.7,
+      "prompt_tokens": 1167,
+      "completion_tokens": 59,
+      "model_duration_ms": 22086.5,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "确认 SEV1 事故后多久通知值班负责人"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

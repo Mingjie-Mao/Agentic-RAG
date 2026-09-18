@@ -1,0 +1,125 @@
+{
+  "benchmark": "agent-b2-v1",
+  "task_sha256": "e7632ac1a8dd59f5235569d92f1bb0f7d695228d3c74ab0d7bd0d46e6b786f13",
+  "arms": [
+    "rag",
+    "workflow"
+  ],
+  "results": {
+    "rag": [
+      {
+        "category": "compound",
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "超大文件": true,
+          "独立 worker": true,
+          "租约": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 28074.5,
+        "usage": {
+          "prompt_tokens": 1206,
+          "completion_tokens": 110,
+          "model_duration_ms": 27505.9,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "事故 092 的原因",
+            "两项改进措施是什么"
+          ]
+        },
+        "task_id": "A22",
+        "run_id": null,
+        "steps": 1
+      }
+    ],
+    "workflow": [
+      {
+        "category": "compound",
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "超大文件": true,
+          "独立 worker": true,
+          "租约": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 23698.8,
+        "usage": {
+          "prompt_tokens": 1229,
+          "completion_tokens": 103,
+          "model_duration_ms": 23217.9,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "事故 092 的原因",
+            "两项改进措施是什么"
+          ]
+        },
+        "task_id": "A22",
+        "run_id": "31f63d7f-c570-405e-b1e1-60efe336488f",
+        "steps": 2
+      }
+    ]
+  },
+  "summary": {
+    "rag": {
+      "tasks": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "median_latency_ms": 28074.5,
+      "total_latency_ms": 28074.5,
+      "mean_steps": 1,
+      "forbidden_leaks": 0
+    },
+    "workflow": {
+      "tasks": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "median_latency_ms": 23698.8,
+      "total_latency_ms": 23698.8,
+      "mean_steps": 2,
+      "forbidden_leaks": 0
+    }
+  },
+  "by_category": {
+    "rag": {
+      "compound": {
+        "tasks": 1,
+        "correct": 1,
+        "accuracy": 1.0,
+        "median_latency_ms": 28074.5,
+        "total_latency_ms": 28074.5,
+        "mean_steps": 1,
+        "forbidden_leaks": 0
+      }
+    },
+    "workflow": {
+      "compound": {
+        "tasks": 1,
+        "correct": 1,
+        "accuracy": 1.0,
+        "median_latency_ms": 23698.8,
+        "total_latency_ms": 23698.8,
+        "mean_steps": 2,
+        "forbidden_leaks": 0
+      }
+    }
+  },
+  "completed_tasks": 1,
+  "requested_tasks": 1,
+  "note": "开发基准，不是独立留出集；本地 Ollama 的 api_cost 为 0。"
+}

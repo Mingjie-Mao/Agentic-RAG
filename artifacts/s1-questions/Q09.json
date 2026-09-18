@@ -19,14 +19,14 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "cfff03a1-afd8-4994-bc56-d2341e694d88",
+    "id": "f65932cc-4171-4b46-b1e4-d668872ee7b1",
     "question": "连续 3 天年假应该提前多久申请？",
     "status": "answered",
     "claims": [
       {
-        "text": "连续3天年假应至少提前5个工作日提交申请。",
+        "text": "连续 3 天及以上的年假，应至少提前 5 个工作日提交申请。",
         "evidence_ids": [
-          "41b23f79-6b16-5432-b3e8-27af570f67f5"
+          "d2d28b23-369b-5c12-8ccc-ebba888eec24"
         ],
         "quotes": [
           "连续 3 天及以上的年假，应至少提前 5 个工作日提交申请。"
@@ -35,29 +35,57 @@
     ],
     "citations": [
       {
-        "chunk_id": "41b23f79-6b16-5432-b3e8-27af570f67f5",
+        "chunk_id": "d2d28b23-369b-5c12-8ccc-ebba888eec24",
         "document_id": "seed-leave",
-        "version_id": "e8c48df7-7df5-4a1f-87d9-181b4492865a",
+        "version_id": "464ca6de-6715-49b1-a12f-9cd0c60ccdf1",
         "title": "年假申请说明",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–8 行",
+          "block_type": "paragraph",
+          "heading_path": [
+            "年假申请说明",
+            "申请流程"
+          ],
+          "source_char_start": 45,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 89,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "paragraph",
+                "heading_path": [
+                  "年假申请说明",
+                  "申请流程"
+                ],
+                "source_char_start": 45,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 89
+            }
+          ],
           "char_start": 0,
-          "char_end": 134,
-          "line_start": 1,
-          "line_end": 8
+          "char_end": 89,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 98,
+          "token_counter": "cl100k_base"
         },
-        "text": "# 年假申请说明\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 申请流程\n连续 3 天及以上的年假，应至少提前 5 个工作日提交申请。直属负责人审批后生效。\n未满 3 天的年假，至少提前 1 个工作日申请。紧急情况联系负责人单独处理。\n",
-        "preview_url": "/api/evidence/41b23f79-6b16-5432-b3e8-27af570f67f5",
-        "original_url": "/api/versions/e8c48df7-7df5-4a1f-87d9-181b4492865a/original"
+        "text": "## 申请流程\n连续 3 天及以上的年假，应至少提前 5 个工作日提交申请。直属负责人审批后生效。\n未满 3 天的年假，至少提前 1 个工作日申请。紧急情况联系负责人单独处理。\n",
+        "preview_url": "/api/evidence/d2d28b23-369b-5c12-8ccc-ebba888eec24",
+        "original_url": "/api/versions/464ca6de-6715-49b1-a12f-9cd0c60ccdf1/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "连续 3 天年假应该提前多久申请？",
       "retrieval_query": "连续 3 天年假应该提前多久申请？",
@@ -67,22 +95,33 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.5,
+        "claim_support": [
+          1
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 808,
+      "context_tokens_estimate": 677,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "41b23f79-6b16-5432-b3e8-27af570f67f5",
+          "chunk_id": "d2d28b23-369b-5c12-8ccc-ebba888eec24",
           "rank": 1,
           "title": "年假申请说明",
           "document_id": "seed-leave",
-          "locator_label": "第 1–8 行",
-          "score": 0.7669,
+          "version_id": "464ca6de-6715-49b1-a12f-9cd0c60ccdf1",
+          "locator_label": "第 5 行起",
+          "score": 0.801,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -91,62 +130,96 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "454925a8-bae3-5783-a050-840482386fba",
+          "chunk_id": "ccebe0fa-d8ec-5aba-99de-2c917a731447",
           "rank": 2,
+          "title": "年假申请说明",
+          "document_id": "seed-leave",
+          "version_id": "464ca6de-6715-49b1-a12f-9cd0c60ccdf1",
+          "locator_label": "第 1 行起",
+          "score": 0.5658,
+          "bm25_rank": 2,
+          "dense_rank": 2,
+          "fusion_score": 0.032258,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "ae6369fc-a77e-561b-834e-b8b6e45e1a45",
+          "rank": 3,
           "title": "入职设备申请",
           "document_id": "seed-equipment",
-          "locator_label": "第 1–8 行",
-          "score": 0.4844,
-          "bm25_rank": 2,
-          "dense_rank": 7,
-          "fusion_score": 0.031054,
+          "version_id": "57ce338b-105d-46a7-8773-6912c2487e40",
+          "locator_label": "第 5 行起",
+          "score": 0.4905,
+          "bm25_rank": 4,
+          "dense_rank": 9,
+          "fusion_score": 0.030118,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "d92352cf-292e-51c1-93c5-992ad7d10ba6",
-          "rank": 3,
-          "title": "headings.docx",
-          "document_id": "49ffe597-f8ad-4dc5-9d7d-d084106f5a27",
-          "locator_label": "段落 1",
-          "score": 0.4868,
-          "bm25_rank": 4,
-          "dense_rank": 6,
-          "fusion_score": 0.030777,
+          "chunk_id": "4423415b-b084-5112-bcea-3f7e981bfa7c",
+          "rank": 4,
+          "title": "开票申请流程",
+          "document_id": "seed-invoice",
+          "version_id": "26dd06e1-50a0-4522-b39d-e319b0ec3932",
+          "locator_label": "第 1 页",
+          "score": 0.4788,
+          "bm25_rank": 6,
+          "dense_rank": 12,
+          "fusion_score": 0.02904,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "00926472-7111-5a05-8991-b0e066d277c3",
-          "rank": 4,
-          "title": "开票申请流程",
-          "document_id": "seed-invoice",
-          "locator_label": "第 1 页",
-          "score": 0.4717,
-          "bm25_rank": 3,
-          "dense_rank": 9,
-          "fusion_score": 0.030366,
+          "chunk_id": "14a022ae-2a38-5b67-bcc4-86a4d89c94d2",
+          "rank": 5,
+          "title": "headings.docx",
+          "document_id": "c08f3a67-60fa-4c74-8137-da8dd7845d31",
+          "version_id": "914d262d-9e1b-42cb-836a-9b2bd3d54ecb",
+          "locator_label": "段落 1",
+          "score": 0.4868,
+          "bm25_rank": 8,
+          "dense_rank": 10,
+          "fusion_score": 0.028992,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "c657802b-0026-5ed2-96a1-6c412eed8eee",
+          "rank": 6,
+          "title": "开票申请流程",
+          "document_id": "seed-invoice",
+          "version_id": "26dd06e1-50a0-4522-b39d-e319b0ec3932",
+          "locator_label": "第 1 页",
+          "score": 0.4148,
+          "bm25_rank": 5,
+          "dense_rank": 23,
+          "fusion_score": 0.027433,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
         }
       ],
-      "embed_ms": 192.7,
-      "retrieval_ms": 61.4,
-      "generation_ms": 20201.1,
-      "total_ms": 20509.5
+      "embed_ms": 211,
+      "retrieval_ms": 68.2,
+      "generation_ms": 18411.4,
+      "total_ms": 18735.9
     },
     "usage": {
-      "prompt_tokens": 862,
-      "completion_tokens": 51,
-      "model_duration_ms": 20177.9,
+      "prompt_tokens": 937,
+      "completion_tokens": 57,
+      "model_duration_ms": 18390.5,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "连续 3 天年假应该提前多久申请"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

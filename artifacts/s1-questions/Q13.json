@@ -20,23 +20,14 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "d939ceff-d260-47a5-97df-6430c6b63843",
+    "id": "67c12320-c1d7-4b1d-af73-7cf171855381",
     "question": "生产数据库的 RPO 和 RTO 分别是多少？",
     "status": "answered",
     "claims": [
       {
-        "text": "生产数据库的 RPO 是 15 分钟。",
+        "text": "生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。",
         "evidence_ids": [
-          "55b4f36e-afed-5285-83e0-a1aa3909ee5a"
-        ],
-        "quotes": [
-          "生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。"
-        ]
-      },
-      {
-        "text": "生产数据库的 RTO 是 60 分钟。",
-        "evidence_ids": [
-          "55b4f36e-afed-5285-83e0-a1aa3909ee5a"
+          "d59a9134-134a-5df7-9344-4d8bbcd93158"
         ],
         "quotes": [
           "生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。"
@@ -45,21 +36,49 @@
     ],
     "citations": [
       {
-        "chunk_id": "55b4f36e-afed-5285-83e0-a1aa3909ee5a",
+        "chunk_id": "d59a9134-134a-5df7-9344-4d8bbcd93158",
         "document_id": "seed-db-backup",
-        "version_id": "37fcd15c-dddd-48cb-9e30-be15b21865dc",
+        "version_id": "352c191c-a12e-40f9-b144-39375a7fb786",
         "title": "数据库备份与恢复目标",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–8 行",
+          "block_type": "paragraph",
+          "heading_path": [
+            "数据库备份与恢复目标",
+            "恢复目标"
+          ],
+          "source_char_start": 49,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 87,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "paragraph",
+                "heading_path": [
+                  "数据库备份与恢复目标",
+                  "恢复目标"
+                ],
+                "source_char_start": 49,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 87
+            }
+          ],
           "char_start": 0,
-          "char_end": 136,
-          "line_start": 1,
-          "line_end": 8
+          "char_end": 87,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 78,
+          "token_counter": "cl100k_base"
         },
-        "text": "# 数据库备份与恢复目标\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 恢复目标\n生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。\n每天进行一次全量备份，事务日志每 5 分钟归档一次。每月执行恢复演练。\n",
-        "preview_url": "/api/evidence/55b4f36e-afed-5285-83e0-a1aa3909ee5a",
-        "original_url": "/api/versions/37fcd15c-dddd-48cb-9e30-be15b21865dc/original"
+        "text": "## 恢复目标\n生产数据库恢复点目标 RPO 为 15 分钟，恢复时间目标 RTO 为 60 分钟。\n每天进行一次全量备份，事务日志每 5 分钟归档一次。每月执行恢复演练。\n",
+        "preview_url": "/api/evidence/d59a9134-134a-5df7-9344-4d8bbcd93158",
+        "original_url": "/api/versions/352c191c-a12e-40f9-b144-39375a7fb786/original"
       }
     ],
     "message": "",
@@ -77,22 +96,33 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.3636,
+        "claim_support": [
+          1
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 888,
+      "context_tokens_estimate": 1085,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "55b4f36e-afed-5285-83e0-a1aa3909ee5a",
+          "chunk_id": "d59a9134-134a-5df7-9344-4d8bbcd93158",
           "rank": 1,
           "title": "数据库备份与恢复目标",
           "document_id": "seed-db-backup",
-          "locator_label": "第 1–8 行",
-          "score": 0.6794,
+          "version_id": "352c191c-a12e-40f9-b144-39375a7fb786",
+          "locator_label": "第 5 行起",
+          "score": 0.6878,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -101,62 +131,267 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "fac33079-a4b2-5285-8dab-1cfb3fbb5b48",
+          "chunk_id": "50fc0d07-5b5e-5813-a570-73319421dcea",
           "rank": 2,
           "title": "生产发布审批规则",
           "document_id": "seed-deploy-review",
-          "locator_label": "第 1–8 行",
-          "score": 0.4645,
-          "bm25_rank": 3,
+          "version_id": "8364aa5b-1c0b-46a0-843f-1f8c0dfa6803",
+          "locator_label": "第 5 行起",
+          "score": 0.4715,
+          "bm25_rank": 5,
           "dense_rank": 2,
-          "fusion_score": 0.032002,
+          "fusion_score": 0.031514,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "bfac905b-f34d-5792-992a-ed9f894f25dc",
+          "chunk_id": "285eb9ed-8893-5bc2-b448-d5d4a879d107",
           "rank": 3,
           "title": "本地研发环境配置",
           "document_id": "seed-dev-environment",
-          "locator_label": "第 1–8 行",
-          "score": 0.4582,
-          "bm25_rank": 2,
+          "version_id": "36913658-b8b5-4623-a235-f6d6a03bbcb5",
+          "locator_label": "第 5 行起",
+          "score": 0.4501,
+          "bm25_rank": 3,
           "dense_rank": 4,
-          "fusion_score": 0.031754,
+          "fusion_score": 0.031498,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+          "chunk_id": "353ed098-52ee-521a-94ab-15a4ddee14a6",
           "rank": 4,
-          "title": "文件上传接口手册",
-          "document_id": "seed-upload-guide",
-          "locator_label": "第 1 页",
-          "score": 0.4252,
-          "bm25_rank": 6,
+          "title": "数据库备份与恢复目标",
+          "document_id": "seed-db-backup",
+          "version_id": "352c191c-a12e-40f9-b144-39375a7fb786",
+          "locator_label": "第 1 行起",
+          "score": 0.426,
+          "bm25_rank": 2,
           "dense_rank": 7,
-          "fusion_score": 0.030077,
+          "fusion_score": 0.031054,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "62ea37ae-2fb7-5680-a213-b1a85bf81da9",
+          "rank": 5,
+          "title": "生产发布审批规则",
+          "document_id": "seed-deploy-review",
+          "version_id": "8364aa5b-1c0b-46a0-843f-1f8c0dfa6803",
+          "locator_label": "第 1 行起",
+          "score": 0.4447,
+          "bm25_rank": 4,
+          "dense_rank": 5,
+          "fusion_score": 0.03101,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "59344e09-7f0d-56f6-8b0b-f9685c91b1e7",
+          "rank": 6,
+          "title": "业务数据保留规则",
+          "document_id": "seed-data-retention",
+          "version_id": "a6d48489-c3ef-493c-9779-981f4a7ddc15",
+          "locator_label": "第 1 页",
+          "score": 0.4238,
+          "bm25_rank": 6,
+          "dense_rank": 9,
+          "fusion_score": 0.029644,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "0ad15903-d64f-5a19-b978-824ce15d6c22",
+          "rank": 7,
+          "title": "灰度发布验证口令",
+          "document_id": "seed-release-code",
+          "version_id": "3a86d916-16b7-4c80-ba00-2a3680581605",
+          "locator_label": "第 5 行起",
+          "score": 0.4251,
+          "bm25_rank": 11,
+          "dense_rank": 8,
+          "fusion_score": 0.02879,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "7a4950f2-7c9a-505f-9858-8f89770547eb",
+          "rank": 8,
+          "title": "数据导出注意事项",
+          "document_id": "seed-export",
+          "version_id": "b45d148e-e3d9-43eb-8ed5-a6980bc3a960",
+          "locator_label": "第 1 行起",
+          "score": 0.4201,
+          "bm25_rank": 8,
+          "dense_rank": 11,
+          "fusion_score": 0.02879,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "7874b95b-b5b8-5de8-b57a-42b17c8def02",
+          "rank": 9,
+          "title": "文件上传接口手册",
+          "document_id": "seed-upload-guide",
+          "version_id": "715a3724-f8f6-40d2-bcd4-ee9f4bbc799d",
+          "locator_label": "第 1 页",
+          "score": 0.4116,
+          "bm25_rank": 10,
+          "dense_rank": 13,
+          "fusion_score": 0.027984,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E5"
+        },
+        {
+          "chunk_id": "1ba61fb6-c9ff-53a1-b08f-fb04344bb691",
+          "rank": 10,
+          "title": "业务数据保留规则",
+          "document_id": "seed-data-retention",
+          "version_id": "a6d48489-c3ef-493c-9779-981f4a7ddc15",
+          "locator_label": "第 1 页",
+          "score": 0.3721,
+          "bm25_rank": 7,
+          "dense_rank": 29,
+          "fusion_score": 0.026161,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E6"
+        },
+        {
+          "chunk_id": "5a77eafb-1c0f-5c28-a135-b04176ff1caf",
+          "rank": 11,
+          "title": "数据导出注意事项",
+          "document_id": "seed-export",
+          "version_id": "b45d148e-e3d9-43eb-8ed5-a6980bc3a960",
+          "locator_label": "第 5 行起",
+          "score": 0.3351,
+          "bm25_rank": 9,
+          "dense_rank": 39,
+          "fusion_score": 0.024594,
+          "admitted": false,
+          "excluded_because": "top_k_full"
+        },
+        {
+          "chunk_id": "bea18c8a-88f5-53a3-a869-f81a130f5eb3",
+          "rank": 12,
+          "title": "套餐功能对照表",
+          "document_id": "seed-plan-comparison",
+          "version_id": "1ca1cf19-54f9-4f2f-9ddf-464842567770",
+          "locator_label": "第 5 行起",
+          "score": 0.4524,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "fusion_score": 0.015873,
+          "admitted": false,
+          "excluded_because": "top_k_full"
+        },
+        {
+          "chunk_id": "d39946c2-460c-55c5-9ba9-d32ed2c3d581",
+          "rank": 13,
+          "title": "发布回滚操作手册",
+          "document_id": "seed-rollback",
+          "version_id": "ff4dd1ae-0a3b-41ad-bfae-4b69dea897c6",
+          "locator_label": "第 1 页",
+          "score": 0.4394,
+          "bm25_rank": null,
+          "dense_rank": 6,
+          "fusion_score": 0.015152,
+          "admitted": false,
+          "excluded_because": "top_k_full"
+        },
+        {
+          "chunk_id": "b43c6777-5f77-50b4-b1f7-e10f01a46fc0",
+          "rank": 14,
+          "title": "事故 092：索引延迟复盘",
+          "document_id": "seed-incident-092",
+          "version_id": "bac388fd-6b73-4eb6-877f-edd4a16f2901",
+          "locator_label": "第 1 行起",
+          "score": 0.4219,
+          "bm25_rank": null,
+          "dense_rank": 10,
+          "fusion_score": 0.014286,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "ccb7e0f5-b792-5440-b4b0-8625a1034ee5",
+          "rank": 15,
+          "title": "发布回滚操作手册",
+          "document_id": "seed-rollback",
+          "version_id": "ff4dd1ae-0a3b-41ad-bfae-4b69dea897c6",
+          "locator_label": "第 1 页",
+          "score": 0.4158,
+          "bm25_rank": null,
+          "dense_rank": 12,
+          "fusion_score": 0.013889,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "d33304ad-5549-5300-9b40-ffc59ff0a632",
+          "rank": 16,
+          "title": "Python SDK 重试配置",
+          "document_id": "seed-sdk-retry",
+          "version_id": "6b6b4da8-a812-4cc0-9cd8-a4724390c467",
+          "locator_label": "第 5 行起",
+          "score": 0.4059,
+          "bm25_rank": null,
+          "dense_rank": 14,
+          "fusion_score": 0.013514,
+          "admitted": false,
+          "excluded_because": "top_k_full"
+        },
+        {
+          "chunk_id": "0f8c199d-3d70-53bb-a386-fc76d850148b",
+          "rank": 17,
+          "title": "本地研发环境配置",
+          "document_id": "seed-dev-environment",
+          "version_id": "36913658-b8b5-4623-a235-f6d6a03bbcb5",
+          "locator_label": "第 1 行起",
+          "score": 0.4036,
+          "bm25_rank": null,
+          "dense_rank": 15,
+          "fusion_score": 0.013333,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "0f37d546-103a-53ff-8e24-02c7d06e6f5e",
+          "rank": 18,
+          "title": "API 调用配额说明",
+          "document_id": "seed-api-limits",
+          "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+          "locator_label": "第 5 行起",
+          "score": 0.4021,
+          "bm25_rank": null,
+          "dense_rank": 16,
+          "fusion_score": 0.013158,
+          "admitted": false,
+          "excluded_because": "top_k_full"
         }
       ],
-      "embed_ms": 349.2,
-      "retrieval_ms": 116.7,
-      "generation_ms": 28767.7,
-      "total_ms": 29305.7
+      "embed_ms": 205.6,
+      "retrieval_ms": 69.1,
+      "generation_ms": 26401.7,
+      "total_ms": 26763.8
     },
     "usage": {
-      "prompt_tokens": 1008,
-      "completion_tokens": 81,
-      "model_duration_ms": 28731.1,
+      "prompt_tokens": 1399,
+      "completion_tokens": 65,
+      "model_duration_ms": 26381,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "生产数据库的 RPO",
+        "RTO 分别是多少"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

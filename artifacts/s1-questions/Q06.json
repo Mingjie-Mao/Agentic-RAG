@@ -20,24 +20,24 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "9af91dbd-a806-4479-93d6-ac3a0940ed45",
+    "id": "0645162b-fa59-414d-be5b-f6b59a139dbd",
     "question": "错误 E401 表示什么，应该怎么处理？",
     "status": "answered",
     "claims": [
       {
         "text": "错误 E401 表示访问令牌已过期。",
         "evidence_ids": [
-          "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c"
+          "7d9b4368-0162-518b-926f-a1a4e0d0f10c"
         ],
         "quotes": [
           "错误 E401 表示访问令牌已过期。"
         ]
       },
       {
-        "text": "处理方法是先调用刷新接口获取新令牌，再重试原始请求。若刷新令牌也失效，必须重新登录。",
+        "text": "应该先调用刷新接口获取新令牌，再重试原始请求。若刷新令牌也失效，必须重新登录。",
         "evidence_ids": [
-          "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
-          "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c"
+          "7d9b4368-0162-518b-926f-a1a4e0d0f10c",
+          "7d9b4368-0162-518b-926f-a1a4e0d0f10c"
         ],
         "quotes": [
           "先调用刷新接口获取新令牌，再重试原始请求。",
@@ -47,29 +47,57 @@
     ],
     "citations": [
       {
-        "chunk_id": "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
+        "chunk_id": "7d9b4368-0162-518b-926f-a1a4e0d0f10c",
         "document_id": "seed-token-errors",
-        "version_id": "7e28bc22-d726-4f5e-afa0-857e60df4d8c",
+        "version_id": "a028618d-281a-48f3-9021-95e22ffb5f70",
         "title": "认证错误 E401 排查",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–8 行",
+          "block_type": "paragraph",
+          "heading_path": [
+            "认证错误 E401 排查",
+            "E401 含义"
+          ],
+          "source_char_start": 51,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 83,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "paragraph",
+                "heading_path": [
+                  "认证错误 E401 排查",
+                  "E401 含义"
+                ],
+                "source_char_start": 51,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 83
+            }
+          ],
           "char_start": 0,
-          "char_end": 134,
-          "line_start": 1,
-          "line_end": 8
+          "char_end": 83,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 81,
+          "token_counter": "cl100k_base"
         },
-        "text": "# 认证错误 E401 排查\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## E401 含义\n错误 E401 表示访问令牌已过期。先调用刷新接口获取新令牌，再重试原始请求。\n若刷新令牌也失效，必须重新登录。不得把访问令牌记录到业务日志。\n",
-        "preview_url": "/api/evidence/7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
-        "original_url": "/api/versions/7e28bc22-d726-4f5e-afa0-857e60df4d8c/original"
+        "text": "## E401 含义\n错误 E401 表示访问令牌已过期。先调用刷新接口获取新令牌，再重试原始请求。\n若刷新令牌也失效，必须重新登录。不得把访问令牌记录到业务日志。\n",
+        "preview_url": "/api/evidence/7d9b4368-0162-518b-926f-a1a4e0d0f10c",
+        "original_url": "/api/versions/a028618d-281a-48f3-9021-95e22ffb5f70/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "错误 E401 表示什么，应该怎么处理？",
       "retrieval_query": "错误 E401 表示什么，应该怎么处理？",
@@ -79,86 +107,133 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.3636,
+        "claim_support": [
+          1,
+          0.9355
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 962,
+      "context_tokens_estimate": 905,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
+          "chunk_id": "7d9b4368-0162-518b-926f-a1a4e0d0f10c",
           "rank": 1,
           "title": "认证错误 E401 排查",
           "document_id": "seed-token-errors",
-          "locator_label": "第 1–8 行",
-          "score": 0.6847,
-          "bm25_rank": 1,
+          "version_id": "a028618d-281a-48f3-9021-95e22ffb5f70",
+          "locator_label": "第 5 行起",
+          "score": 0.6987,
+          "bm25_rank": 2,
           "dense_rank": 1,
-          "fusion_score": 0.032787,
+          "fusion_score": 0.032522,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
+          "chunk_id": "e5b688a7-1ae7-5f40-9e13-3e528c30b0d5",
           "rank": 2,
-          "title": "支持响应等级表",
-          "document_id": "seed-support-sla",
-          "locator_label": "第 1–12 行",
-          "score": 0.4926,
-          "bm25_rank": 5,
-          "dense_rank": 3,
+          "title": "认证错误 E401 排查",
+          "document_id": "seed-token-errors",
+          "version_id": "a028618d-281a-48f3-9021-95e22ffb5f70",
+          "locator_label": "第 1 行起",
+          "score": 0.6245,
+          "bm25_rank": 1,
+          "dense_rank": 2,
+          "fusion_score": 0.032522,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "9407bdbe-2d57-5977-ace9-7660b17b8d63",
+          "rank": 3,
+          "title": "工单 218：重复回调",
+          "document_id": "seed-ticket-218",
+          "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+          "locator_label": "第 7 行起",
+          "score": 0.494,
+          "bm25_rank": 3,
+          "dense_rank": 5,
           "fusion_score": 0.031258,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "f5401de6-c2c3-5d2a-a241-e1bc178a3a82",
-          "rank": 3,
+          "chunk_id": "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
+          "rank": 4,
           "title": "工单 218：重复回调",
           "document_id": "seed-ticket-218",
-          "locator_label": "第 1–9 行",
-          "score": 0.4597,
-          "bm25_rank": 2,
-          "dense_rank": 13,
-          "fusion_score": 0.029828,
+          "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+          "locator_label": "第 5 行起",
+          "score": 0.4859,
+          "bm25_rank": 4,
+          "dense_rank": 7,
+          "fusion_score": 0.03055,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "454925a8-bae3-5783-a050-840482386fba",
-          "rank": 4,
-          "title": "入职设备申请",
-          "document_id": "seed-equipment",
-          "locator_label": "第 1–8 行",
-          "score": 0.4068,
-          "bm25_rank": 4,
-          "dense_rank": 23,
-          "fusion_score": 0.027673,
+          "chunk_id": "299da41f-e575-5bf7-9a23-34b2f76d9a03",
+          "rank": 5,
+          "title": "支持响应等级表",
+          "document_id": "seed-support-sla",
+          "version_id": "b346d2ca-95e3-4f30-8b9b-0a9ce03dd613",
+          "locator_label": "第 5 行起",
+          "score": 0.4928,
+          "bm25_rank": 6,
+          "dense_rank": 6,
+          "fusion_score": 0.030303,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "d2d28b23-369b-5c12-8ccc-ebba888eec24",
+          "rank": 6,
+          "title": "年假申请说明",
+          "document_id": "seed-leave",
+          "version_id": "464ca6de-6715-49b1-a12f-9cd0c60ccdf1",
+          "locator_label": "第 5 行起",
+          "score": 0.3992,
+          "bm25_rank": 5,
+          "dense_rank": 46,
+          "fusion_score": 0.024819,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E5"
         }
       ],
-      "embed_ms": 218.9,
-      "retrieval_ms": 64.6,
-      "generation_ms": 34503.3,
-      "total_ms": 34853.4
+      "embed_ms": 203.2,
+      "retrieval_ms": 59.3,
+      "generation_ms": 31408.3,
+      "total_ms": 31712.5
     },
     "usage": {
-      "prompt_tokens": 1164,
-      "completion_tokens": 105,
-      "model_duration_ms": 34479,
+      "prompt_tokens": 1270,
+      "completion_tokens": 103,
+      "model_duration_ms": 31387.2,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "错误 E401 表示什么，应该怎么处理"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

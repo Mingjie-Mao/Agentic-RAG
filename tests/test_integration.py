@@ -16,7 +16,7 @@ from app.models import Answer, Chunk, Document, DocumentVersion, Job, User, now
 pytestmark = pytest.mark.skipif(
     os.getenv("RAG_RUN_INTEGRATION") != "1", reason="requires isolated local demo services"
 )
-HEADERS = {"X-Requested-With": "EnterpriseRAG"}
+HEADERS = {"X-Requested-With": "AgenticRAG"}
 
 
 @pytest.fixture

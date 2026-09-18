@@ -19,14 +19,14 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "98563e86-1eff-45e0-a780-ba228d6bd353",
+    "id": "8215f3d1-fdd0-4bb1-859d-2f8ccd1ce6e6",
     "question": "星桥标准套餐每分钟可以调用多少次 API？",
     "status": "answered",
     "claims": [
       {
-        "text": "星桥标准套餐每分钟可以调用120次API。",
+        "text": "星桥标准套餐每分钟最多允许120次请求。",
         "evidence_ids": [
-          "760f26e1-9b50-5330-a781-98790fd66c78"
+          "0f37d546-103a-53ff-8e24-02c7d06e6f5e"
         ],
         "quotes": [
           "星桥 API 标准套餐每分钟最多允许 120 次请求。"
@@ -35,29 +35,57 @@
     ],
     "citations": [
       {
-        "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+        "chunk_id": "0f37d546-103a-53ff-8e24-02c7d06e6f5e",
         "document_id": "seed-api-limits",
-        "version_id": "b3766bb2-8bf9-4df0-b3b7-1a1acc961987",
+        "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
         "title": "API 调用配额说明",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–9 行",
+          "block_type": "paragraph",
+          "heading_path": [
+            "API 调用配额说明",
+            "标准套餐"
+          ],
+          "source_char_start": 49,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 52,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "paragraph",
+                "heading_path": [
+                  "API 调用配额说明",
+                  "标准套餐"
+                ],
+                "source_char_start": 49,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 52
+            }
+          ],
           "char_start": 0,
-          "char_end": 149,
-          "line_start": 1,
-          "line_end": 9
+          "char_end": 52,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 48,
+          "token_counter": "cl100k_base"
         },
-        "text": "# API 调用配额说明\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n## 重试规则\n收到 429 后，应按 Retry-After 响应头等待，不应立即连续重试。\n",
-        "preview_url": "/api/evidence/760f26e1-9b50-5330-a781-98790fd66c78",
-        "original_url": "/api/versions/b3766bb2-8bf9-4df0-b3b7-1a1acc961987/original"
+        "text": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n",
+        "preview_url": "/api/evidence/0f37d546-103a-53ff-8e24-02c7d06e6f5e",
+        "original_url": "/api/versions/6d6bcbe5-4896-4bb5-afe2-3beccc535498/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "星桥标准套餐每分钟可以调用多少次 API？",
       "retrieval_query": "星桥标准套餐每分钟可以调用多少次 API？",
@@ -67,22 +95,33 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.6,
+        "claim_support": [
+          1
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 915,
+      "context_tokens_estimate": 876,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "chunk_id": "0f37d546-103a-53ff-8e24-02c7d06e6f5e",
           "rank": 1,
           "title": "API 调用配额说明",
           "document_id": "seed-api-limits",
-          "locator_label": "第 1–9 行",
-          "score": 0.8123,
+          "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+          "locator_label": "第 5 行起",
+          "score": 0.84,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -91,12 +130,13 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "8ed52eef-363a-502f-a4b2-9396e71c1f54",
+          "chunk_id": "1ba61fb6-c9ff-53a1-b08f-fb04344bb691",
           "rank": 2,
           "title": "业务数据保留规则",
           "document_id": "seed-data-retention",
+          "version_id": "a6d48489-c3ef-493c-9779-981f4a7ddc15",
           "locator_label": "第 1 页",
-          "score": 0.5678,
+          "score": 0.5852,
           "bm25_rank": 2,
           "dense_rank": 5,
           "fusion_score": 0.031514,
@@ -105,48 +145,82 @@
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
+          "chunk_id": "8e636be1-8898-5de3-a45f-f0bb75ec4907",
           "rank": 3,
-          "title": "Python SDK 重试配置",
-          "document_id": "seed-sdk-retry",
-          "locator_label": "第 1–8 行",
-          "score": 0.6221,
+          "title": "API 调用配额说明",
+          "document_id": "seed-api-limits",
+          "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+          "locator_label": "第 1 行起",
+          "score": 0.4821,
+          "bm25_rank": 3,
+          "dense_rank": 9,
+          "fusion_score": 0.030366,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "bea18c8a-88f5-53a3-a869-f81a130f5eb3",
+          "rank": 4,
+          "title": "套餐功能对照表",
+          "document_id": "seed-plan-comparison",
+          "version_id": "1ca1cf19-54f9-4f2f-9ddf-464842567770",
+          "locator_label": "第 5 行起",
+          "score": 0.584,
           "bm25_rank": 6,
-          "dense_rank": 2,
-          "fusion_score": 0.031281,
+          "dense_rank": 6,
+          "fusion_score": 0.030303,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
-          "rank": 4,
-          "title": "套餐功能对照表",
-          "document_id": "seed-plan-comparison",
-          "locator_label": "第 1–11 行",
-          "score": 0.5657,
-          "bm25_rank": 3,
-          "dense_rank": 6,
-          "fusion_score": 0.031025,
+          "chunk_id": "d33304ad-5549-5300-9b40-ffc59ff0a632",
+          "rank": 5,
+          "title": "Python SDK 重试配置",
+          "document_id": "seed-sdk-retry",
+          "version_id": "6b6b4da8-a812-4cc0-9cd8-a4724390c467",
+          "locator_label": "第 5 行起",
+          "score": 0.6463,
+          "bm25_rank": 13,
+          "dense_rank": 2,
+          "fusion_score": 0.029828,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "d84f4c3a-01be-546d-b8fe-a4125b32ba6a",
+          "rank": 6,
+          "title": "单点登录会话规则",
+          "document_id": "seed-sso-session",
+          "version_id": "b03473fc-da43-4a9b-933b-fd629f6063e2",
+          "locator_label": "第 5 行起",
+          "score": 0.6115,
+          "bm25_rank": 14,
+          "dense_rank": 4,
+          "fusion_score": 0.029139,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E5"
         }
       ],
-      "embed_ms": 489.4,
-      "retrieval_ms": 70.7,
-      "generation_ms": 9200.3,
-      "total_ms": 9855.4
+      "embed_ms": 207.4,
+      "retrieval_ms": 53.6,
+      "generation_ms": 25908.5,
+      "total_ms": 26218.1
     },
     "usage": {
-      "prompt_tokens": 1105,
-      "completion_tokens": 53,
-      "model_duration_ms": 9166.7,
+      "prompt_tokens": 1235,
+      "completion_tokens": 51,
+      "model_duration_ms": 25886.8,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "星桥标准套餐每分钟可以调用多少次 API"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

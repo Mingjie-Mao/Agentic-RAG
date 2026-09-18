@@ -10,7 +10,7 @@
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
-    "globalSetup": null,
+    "globalSetup": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/global-setup.ts",
     "globalTeardown": null,
     "globalTimeout": 0,
     "grep": {},
@@ -65,14 +65,14 @@
   },
   "suites": [
     {
-      "title": "s1.spec.ts",
-      "file": "s1.spec.ts",
+      "title": "agent.spec.ts",
+      "file": "agent.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Q01 星桥标准套餐每分钟可以调用多少次 API？",
-          "ok": false,
+          "title": "Agent 页面公开执行模式、工具边界与可审计轨迹",
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -85,63 +85,113 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 512,
-                  "error": {
-                    "message": "Error: locator.selectOption: Error: Element is not a <select> element\nCall log:\n\u001b[2m  - waiting for getByLabel('账号', { exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input value=\"\" aria-label=\"账号\"/>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    - waiting for element to be visible and enabled\u001b[22m\n",
-                    "stack": "Error: locator.selectOption: Error: Element is not a <select> element\nCall log:\n\u001b[2m  - waiting for getByLabel('账号', { exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input value=\"\" aria-label=\"账号\"/>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    - waiting for element to be visible and enabled\u001b[22m\n\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:16:47",
-                    "location": {
-                      "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                      "column": 47,
-                      "line": 16
-                    },
-                    "snippet": "  14 |     await page.goto('/');\n  15 |     const account = accounts.find((a: any) => a.id === q.user);\n> 16 |     await page.getByLabel('账号', {exact:true}).selectOption(account.username);\n     |                                               ^\n  17 |     await page.getByRole('button', {name: '登录工作空间'}).click();\n  18 |     await expect(page.getByLabel('输入问题')).toBeVisible();\n  19 |     const responsePromise = page.waitForResponse(r => r.url().endsWith('/api/chat') && r.request().method() === 'POST', {timeout: 220_000});"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                        "column": 47,
-                        "line": 16
-                      },
-                      "message": "Error: locator.selectOption: Error: Element is not a <select> element\nCall log:\n\u001b[2m  - waiting for getByLabel('账号', { exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input value=\"\" aria-label=\"账号\"/>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    - waiting for element to be visible and enabled\u001b[22m\n\n\n  14 |     await page.goto('/');\n  15 |     const account = accounts.find((a: any) => a.id === q.user);\n> 16 |     await page.getByLabel('账号', {exact:true}).selectOption(account.username);\n     |                                               ^\n  17 |     await page.getByRole('button', {name: '登录工作空间'}).click();\n  18 |     await expect(page.getByLabel('输入问题')).toBeVisible();\n  19 |     const responsePromise = page.waitForResponse(r => r.url().endsWith('/api/chat') && r.request().method() === 'POST', {timeout: 220_000});\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:16:47"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 530,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:31:54.163Z",
+                  "startTime": "2026-09-18T03:54:14.261Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "00574607846d83245288-55779f08c943787b13db",
+          "file": "agent.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "demo.spec.ts",
+      "file": "demo.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "浏览器回归：上传、证据、检索过程、权限、边界",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 45927,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-18T03:54:14.944Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05384557491ebd602dd7-936a12dcbdecf4369ffd",
+          "file": "demo.spec.ts",
+          "line": 20,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "s1.spec.ts",
+      "file": "s1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Q01 星桥标准套餐每分钟可以调用多少次 API？",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27654,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-18T03:55:00.892Z",
                   "annotations": [],
                   "attachments": [
                     {
-                      "name": "screenshot",
+                      "name": "问答与证据",
                       "contentType": "image/png",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q01-星桥标准套餐每分钟可以调用多少次-API？/test-failed-1.png"
-                    },
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q01-星桥标准套餐每分钟可以调用多少次-API？/error-context.md"
-                    },
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q01-星桥标准套餐每分钟可以调用多少次-API？/trace.zip"
+                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q01-星桥标准套餐每分钟可以调用多少次-API？/attachments/问答与证据-c982ed2bded202a185f9b0f97e1f547ab79dae82.png"
                     }
-                  ],
-                  "errorLocation": {
-                    "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                    "column": 47,
-                    "line": 16
-                  }
+                  ]
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "66752a930eb7803ac33c-dcb256ecb72e1168c230",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -157,15 +207,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 36821,
+                  "duration": 24722,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:31:55.394Z",
+                  "startTime": "2026-09-18T03:55:28.554Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -175,7 +225,7 @@
           ],
           "id": "66752a930eb7803ac33c-a952d3b5aafa98800de8",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -191,15 +241,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 23195,
+                  "duration": 22882,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:32:32.377Z",
+                  "startTime": "2026-09-18T03:55:53.284Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -209,7 +259,7 @@
           ],
           "id": "66752a930eb7803ac33c-aea250b1700ea47b2d39",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -225,15 +275,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 22905,
+                  "duration": 20614,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:32:55.586Z",
+                  "startTime": "2026-09-18T03:56:16.174Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -243,7 +293,7 @@
           ],
           "id": "66752a930eb7803ac33c-474e7d8c154cc91277db",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -259,15 +309,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 39575,
+                  "duration": 21382,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:33:18.503Z",
+                  "startTime": "2026-09-18T03:56:36.796Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -277,7 +327,7 @@
           ],
           "id": "66752a930eb7803ac33c-964dc83e28560d848af2",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -293,15 +343,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 34667,
+                  "duration": 33056,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:33:58.087Z",
+                  "startTime": "2026-09-18T03:56:58.185Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -311,7 +361,7 @@
           ],
           "id": "66752a930eb7803ac33c-d6b9cfaf203cbb6c0ff6",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -327,15 +377,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 24481,
+                  "duration": 24040,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:34:32.765Z",
+                  "startTime": "2026-09-18T03:57:31.249Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -345,7 +395,7 @@
           ],
           "id": "66752a930eb7803ac33c-39bfe133cf3cb4064bdd",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -361,15 +411,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 26292,
+                  "duration": 23626,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:34:57.255Z",
+                  "startTime": "2026-09-18T03:57:55.297Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -385,7 +435,7 @@
           ],
           "id": "66752a930eb7803ac33c-ba761615ad53cd190708",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -401,15 +451,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 24546,
+                  "duration": 20105,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:35:23.558Z",
+                  "startTime": "2026-09-18T03:58:18.931Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -419,7 +469,7 @@
           ],
           "id": "66752a930eb7803ac33c-b7f25da29f97bc89a826",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -435,15 +485,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 27201,
+                  "duration": 23004,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:35:48.114Z",
+                  "startTime": "2026-09-18T03:58:39.044Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -453,7 +503,7 @@
           ],
           "id": "66752a930eb7803ac33c-7a303c11461dd8c832cb",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -469,15 +519,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 23215,
+                  "duration": 23746,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:36:15.323Z",
+                  "startTime": "2026-09-18T03:59:02.056Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -487,7 +537,7 @@
           ],
           "id": "66752a930eb7803ac33c-790c80b3ba2524bfc7fe",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -503,15 +553,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 21312,
+                  "duration": 18955,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:36:38.549Z",
+                  "startTime": "2026-09-18T03:59:25.809Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -521,12 +571,12 @@
           ],
           "id": "66752a930eb7803ac33c-79671cfbcffec0d3e285",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
           "title": "Q13 生产数据库的 RPO 和 RTO 分别是多少？",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -537,65 +587,25 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 30840,
-                  "error": {
-                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30",
-                    "location": {
-                      "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                      "column": 30,
-                      "line": 37
-                    },
-                    "snippet": "  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if(q.expected === 'conflict') {\n  40 |       expect(checks.expected_facts).toBeTruthy();"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                        "column": 30,
-                        "line": 37
-                      },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n\n  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if(q.expected === 'conflict') {\n  40 |       expect(checks.expected_facts).toBeTruthy();\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 28128,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:36:59.873Z",
+                  "startTime": "2026-09-18T03:59:44.772Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q13-生产数据库的-RPO-和-RTO-分别是多少？/test-failed-1.png"
-                    },
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q13-生产数据库的-RPO-和-RTO-分别是多少？/error-context.md"
-                    },
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q13-生产数据库的-RPO-和-RTO-分别是多少？/trace.zip"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                    "column": 30,
-                    "line": 37
-                  }
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "66752a930eb7803ac33c-c061408221d54e683a6f",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -611,15 +621,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 21866,
+                  "duration": 20593,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:37:31.613Z",
+                  "startTime": "2026-09-18T04:00:12.908Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -629,12 +639,12 @@
           ],
           "id": "66752a930eb7803ac33c-985492f89515c096480f",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
           "title": "Q15 团队版支持多少成员，每日可以导出多少次？",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -645,70 +655,30 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 40789,
-                  "error": {
-                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30",
-                    "location": {
-                      "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                      "column": 30,
-                      "line": 37
-                    },
-                    "snippet": "  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if(q.expected === 'conflict') {\n  40 |       expect(checks.expected_facts).toBeTruthy();"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                        "column": 30,
-                        "line": 37
-                      },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n\n  35 |     const card = page.getByTestId('answer-card').last();\n  36 |     await expect(card).toBeVisible();\n> 37 |     expect(checks.status_ok).toBeTruthy();\n     |                              ^\n  38 |     expect(checks.no_forbidden_marker).toBeTruthy();\n  39 |     if(q.expected === 'conflict') {\n  40 |       expect(checks.expected_facts).toBeTruthy();\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:37:30"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 26249,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:37:53.641Z",
+                  "startTime": "2026-09-18T04:00:33.511Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q15-团队版支持多少成员，每日可以导出多少次？/test-failed-1.png"
-                    },
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q15-团队版支持多少成员，每日可以导出多少次？/error-context.md"
-                    },
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q15-团队版支持多少成员，每日可以导出多少次？/trace.zip"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                    "column": 30,
-                    "line": 37
-                  }
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "66752a930eb7803ac33c-ee09df110d321b36d612",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
           "title": "Q16 2026 年 9 月试点项目到底在哪些时段提供支持？",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -719,65 +689,25 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 3,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 36194,
-                  "error": {
-                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:40:37",
-                    "location": {
-                      "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                      "column": 37,
-                      "line": 40
-                    },
-                    "snippet": "  38 |       http_ok: response.status() === 200,\n  39 |       status_ok:\n> 40 |         q.expected === \"conflict\"\n     |                                  ^\n  41 |           ? result.status === \"answered\"\n  42 |           : result.status === q.expected,\n  43 |       expected_facts: q.facts.every((fact: string) => text.includes(fact)),"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                        "column": 37,
-                        "line": 40
-                      },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n\n  38 |       http_ok: response.status() === 200,\n  39 |       status_ok:\n> 40 |         q.expected === \"conflict\"\n     |                                  ^\n  41 |           ? result.status === \"answered\"\n  42 |           : result.status === q.expected,\n  43 |       expected_facts: q.facts.every((fact: string) => text.includes(fact)),\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:40:37"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 47677,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:38:35.141Z",
+                  "startTime": "2026-09-18T04:00:59.768Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q16-2026-年-9-月试点项目到底在哪些时段提供支持？/test-failed-1.png"
-                    },
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q16-2026-年-9-月试点项目到底在哪些时段提供支持？/error-context.md"
-                    },
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q16-2026-年-9-月试点项目到底在哪些时段提供支持？/trace.zip"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                    "column": 37,
-                    "line": 40
-                  }
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "66752a930eb7803ac33c-14f688fb3e625a987da6",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -793,15 +723,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 4,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 12135,
+                  "duration": 16927,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:39:12.277Z",
+                  "startTime": "2026-09-18T04:01:47.452Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -811,7 +741,7 @@
           ],
           "id": "66752a930eb7803ac33c-eb9cf5e628e7d041e3bf",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -827,15 +757,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 4,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 12280,
+                  "duration": 12512,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:39:24.584Z",
+                  "startTime": "2026-09-18T04:02:04.387Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -845,7 +775,7 @@
           ],
           "id": "66752a930eb7803ac33c-cd22ffb3f52cf90eea6f",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -861,15 +791,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 4,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 21190,
+                  "duration": 16993,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:39:36.875Z",
+                  "startTime": "2026-09-18T04:02:16.906Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -879,12 +809,12 @@
           ],
           "id": "66752a930eb7803ac33c-2f5d8559e5e463d2bd3c",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
           "title": "Q20 海川工作室的网关测试标记是什么？",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -895,65 +825,25 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 4,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 471,
-                  "error": {
-                    "message": "Error: locator.selectOption: Error: Element is not a <select> element\nCall log:\n\u001b[2m  - waiting for getByLabel('账号', { exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input value=\"\" aria-label=\"账号\"/>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    - waiting for element to be visible and enabled\u001b[22m\n",
-                    "stack": "Error: locator.selectOption: Error: Element is not a <select> element\nCall log:\n\u001b[2m  - waiting for getByLabel('账号', { exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input value=\"\" aria-label=\"账号\"/>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    - waiting for element to be visible and enabled\u001b[22m\n\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:16:47",
-                    "location": {
-                      "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                      "column": 47,
-                      "line": 16
-                    },
-                    "snippet": "  14 | for (const q of questions) {\n  15 |   test(`${q.id} ${q.question}`, async ({ page }, testInfo) => {\n> 16 |     const errors: string[] = [];\n     |                                 ^\n  17 |     page.on(\"pageerror\", (e) => errors.push(e.message));\n  18 |     await page.goto(\"/\");\n  19 |     const account = accounts.find((a: any) => a.id === q.user);"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                        "column": 47,
-                        "line": 16
-                      },
-                      "message": "Error: locator.selectOption: Error: Element is not a <select> element\nCall log:\n\u001b[2m  - waiting for getByLabel('账号', { exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input value=\"\" aria-label=\"账号\"/>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    - waiting for element to be visible and enabled\u001b[22m\n\n\n  14 | for (const q of questions) {\n  15 |   test(`${q.id} ${q.question}`, async ({ page }, testInfo) => {\n> 16 |     const errors: string[] = [];\n     |                                 ^\n  17 |     page.on(\"pageerror\", (e) => errors.push(e.message));\n  18 |     await page.goto(\"/\");\n  19 |     const account = accounts.find((a: any) => a.id === q.user);\n    at /Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts:16:47"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 22119,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:39:58.076Z",
+                  "startTime": "2026-09-18T04:02:33.906Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q20-海川工作室的网关测试标记是什么？/test-failed-1.png"
-                    },
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q20-海川工作室的网关测试标记是什么？/error-context.md"
-                    },
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "/Users/mingjie/Desktop/Enterprise-RAG/web/test-results/s1-Q20-海川工作室的网关测试标记是什么？/trace.zip"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "/Users/mingjie/Desktop/Enterprise-RAG/web/tests/s1.spec.ts",
-                    "column": 47,
-                    "line": 16
-                  }
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "66752a930eb7803ac33c-c7b2f39e2f04b248dd69",
           "file": "s1.spec.ts",
-          "line": 11,
+          "line": 15,
           "column": 3
         },
         {
@@ -969,15 +859,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 5,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 968,
+                  "duration": 5974,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-09-14T12:39:59.109Z",
+                  "startTime": "2026-09-18T04:02:56.036Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -987,7 +877,227 @@
           ],
           "id": "66752a930eb7803ac33c-13464210375db982c7b7",
           "file": "s1.spec.ts",
-          "line": 70,
+          "line": 114,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "s2.spec.ts",
+      "file": "s2.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S2 上传、原文位置、分块和重复识别：headings.docx",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1039,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-18T04:03:02.024Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "932cead5d44b669cd957-ee4e52dd99edd1fe2952",
+          "file": "s2.spec.ts",
+          "line": 5,
+          "column": 3
+        },
+        {
+          "title": "S2 上传、原文位置、分块和重复识别：formula-missing.xlsx",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1022,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-18T04:03:03.069Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "932cead5d44b669cd957-59742a58f97f22e0bd05",
+          "file": "s2.spec.ts",
+          "line": 5,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "s4.spec.ts",
+      "file": "s4.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S4 PDF 证据：打开对应页并按解析坐标高亮",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 62974,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-18T04:03:04.105Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "883b506721050f993064-060d28ad55cb7ce432c1",
+          "file": "s4.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "S4 检索调试页：候选、准入与阶段耗时",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23274,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-18T04:04:07.085Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "883b506721050f993064-83cdb86b9e3e0abc5bc2",
+          "file": "s4.spec.ts",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "S4 文档页：版本身份与处理来源可核对",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 780,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-18T04:04:30.367Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "883b506721050f993064-00b57ccf64ee7b663217",
+          "file": "s4.spec.ts",
+          "line": 148,
+          "column": 1
+        },
+        {
+          "title": "S6 种子资料重新处理后：引用可在页内高亮",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22492,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-18T04:04:31.155Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "883b506721050f993064-26d93200eec668a0e8e3",
+          "file": "s4.spec.ts",
+          "line": 184,
           "column": 1
         }
       ]
@@ -995,11 +1105,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-09-14T12:31:53.731Z",
-    "duration": 486577.323,
-    "expected": 16,
+    "startTime": "2026-09-18T03:54:13.849Z",
+    "duration": 640085.939,
+    "expected": 29,
     "skipped": 0,
-    "unexpected": 5,
+    "unexpected": 0,
     "flaky": 0
   }
 }

@@ -19,44 +19,135 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "0a833c12-d45b-4eb0-aadf-f6882c0c7742",
+    "id": "91c79e89-db36-486c-9cbc-b70dda92b473",
     "question": "2026 年悉尼出差的酒店每晚报销上限是多少澳元？",
     "status": "answered",
     "claims": [
       {
         "text": "2026年悉尼出差的酒店每晚报销上限是250澳元。",
         "evidence_ids": [
-          "57f732ca-2243-5599-9a7d-34dabd988e00"
+          "324562f2-23c0-51a0-9d2c-8508d5bcc380"
         ],
         "quotes": [
-          "悉尼出差酒店住宿上限为每晚 250 澳元。"
+          "悉尼出差酒店住宿上限为每晚 250 澳元。"
         ]
       }
     ],
     "citations": [
       {
-        "chunk_id": "57f732ca-2243-5599-9a7d-34dabd988e00",
+        "chunk_id": "324562f2-23c0-51a0-9d2c-8508d5bcc380",
         "document_id": "seed-travel-2026",
-        "version_id": "71032446-4e4f-4af2-a799-78c574a15ed4",
+        "version_id": "fad37674-eab4-48e6-874d-a336bc1819f8",
         "title": "差旅标准 2026 生效版",
         "locator": {
           "kind": "pdf",
           "page": 1,
+          "block_type": "section_header",
+          "heading_path": [
+            "住宿标准"
+          ],
+          "provenance": [
+            {
+              "page": 1,
+              "bbox": {
+                "l": 78,
+                "t": 654.9968,
+                "r": 122,
+                "b": 643.9682614361702,
+                "coord_origin": "BOTTOMLEFT"
+              },
+              "charspan": [
+                0,
+                4
+              ]
+            }
+          ],
+          "item_ref": "#/texts/4",
           "label": "第 1 页",
+          "kind_for_source": "pdf",
+          "sources": [
+            {
+              "start": 0,
+              "end": 4,
+              "locator": {
+                "kind": "pdf",
+                "page": 1,
+                "block_type": "section_header",
+                "heading_path": [
+                  "住宿标准"
+                ],
+                "provenance": [
+                  {
+                    "page": 1,
+                    "bbox": {
+                      "l": 78,
+                      "t": 654.9968,
+                      "r": 122,
+                      "b": 643.9682614361702,
+                      "coord_origin": "BOTTOMLEFT"
+                    },
+                    "charspan": [
+                      0,
+                      4
+                    ]
+                  }
+                ],
+                "item_ref": "#/texts/4",
+                "label": "第 1 页"
+              },
+              "overlap_start": 0,
+              "overlap_end": 4
+            },
+            {
+              "start": 5,
+              "end": 42,
+              "locator": {
+                "kind": "pdf",
+                "page": 1,
+                "block_type": "text",
+                "heading_path": [
+                  "住宿标准"
+                ],
+                "provenance": [
+                  {
+                    "page": 1,
+                    "bbox": {
+                      "l": 78,
+                      "t": 630.9968,
+                      "r": 420.5179999999999,
+                      "b": 619.9682614361702,
+                      "coord_origin": "BOTTOMLEFT"
+                    },
+                    "charspan": [
+                      0,
+                      37
+                    ]
+                  }
+                ],
+                "item_ref": "#/texts/5",
+                "label": "第 1 页"
+              },
+              "overlap_start": 0,
+              "overlap_end": 37
+            }
+          ],
           "char_start": 0,
-          "char_end": 137
+          "char_end": 42,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 54,
+          "token_counter": "cl100k_base"
         },
-        "text": "差旅标准 2026 生效版\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n适用期间\n本规则适用于 2026 年 1 月 1 日起发生的差旅，并替代 2025 年旧版。\n住宿标准\n悉尼出差酒店住宿上限为每晚 250 澳元。报销须在返程后 30 天内提交。",
-        "preview_url": "/api/evidence/57f732ca-2243-5599-9a7d-34dabd988e00",
-        "original_url": "/api/versions/71032446-4e4f-4af2-a799-78c574a15ed4/original"
+        "text": "住宿标准\n悉尼出差酒店住宿上限为每晚 250 澳元。报销须在返程后 30 天内提交。",
+        "preview_url": "/api/evidence/324562f2-23c0-51a0-9d2c-8508d5bcc380",
+        "original_url": "/api/versions/fad37674-eab4-48e6-874d-a336bc1819f8/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "2026 年悉尼出差的酒店每晚报销上限是多少澳元？",
       "retrieval_query": "2026 年悉尼出差的酒店每晚报销上限是多少澳元？",
@@ -66,22 +157,33 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.4444,
+        "claim_support": [
+          0.5
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 820,
+      "context_tokens_estimate": 785,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "57f732ca-2243-5599-9a7d-34dabd988e00",
+          "chunk_id": "705bd30a-7818-59bb-8dc0-d93747744337",
           "rank": 1,
-          "title": "差旅标准 2026 生效版",
-          "document_id": "seed-travel-2026",
-          "locator_label": "第 1 页",
-          "score": 0.8003,
+          "title": "差旅标准 2025 旧版",
+          "document_id": "seed-travel-2025",
+          "version_id": "9cf628f2-6743-48dc-8888-0c7d8c69fec5",
+          "locator_label": "第 7 行起",
+          "score": 0.8146,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -90,12 +192,13 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "7a3f7dfc-67ad-5551-9403-7e536bcee73b",
+          "chunk_id": "324562f2-23c0-51a0-9d2c-8508d5bcc380",
           "rank": 2,
-          "title": "差旅标准 2025 旧版",
-          "document_id": "seed-travel-2025",
-          "locator_label": "第 1–9 行",
-          "score": 0.7833,
+          "title": "差旅标准 2026 生效版",
+          "document_id": "seed-travel-2026",
+          "version_id": "fad37674-eab4-48e6-874d-a336bc1819f8",
+          "locator_label": "第 1 页",
+          "score": 0.8064,
           "bm25_rank": 2,
           "dense_rank": 2,
           "fusion_score": 0.032258,
@@ -104,48 +207,82 @@
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "a29a8489-2d6f-54ff-8171-882d8f7bf209",
+          "chunk_id": "1f236c77-63fb-5d22-a451-fecc33defdec",
           "rank": 3,
-          "title": "formula-missing.xlsx",
-          "document_id": "cb290445-6850-45d0-8ec4-d01cbc42edfa",
-          "locator_label": "费用规则 · A1:D1",
-          "score": 0.5111,
-          "bm25_rank": 3,
+          "title": "差旅标准 2025 旧版",
+          "document_id": "seed-travel-2025",
+          "version_id": "9cf628f2-6743-48dc-8888-0c7d8c69fec5",
+          "locator_label": "第 5 行起",
+          "score": 0.5603,
+          "bm25_rank": 5,
           "dense_rank": 3,
-          "fusion_score": 0.031746,
+          "fusion_score": 0.031258,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "e096e4fe-53e3-534c-bcc7-a942a5e1c422",
+          "chunk_id": "53e5a8a9-f783-56e9-835b-76e7326266d0",
           "rank": 4,
-          "title": "formula-missing.xlsx",
-          "document_id": "cb290445-6850-45d0-8ec4-d01cbc42edfa",
-          "locator_label": "费用规则 · A2:D2",
-          "score": 0.4843,
+          "title": "差旅标准 2026 生效版",
+          "document_id": "seed-travel-2026",
+          "version_id": "fad37674-eab4-48e6-874d-a336bc1819f8",
+          "locator_label": "第 1 页",
+          "score": 0.554,
           "bm25_rank": 4,
           "dense_rank": 4,
           "fusion_score": 0.03125,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "531e2369-4e37-5214-bb51-37843b912664",
+          "rank": 5,
+          "title": "差旅标准 2026 生效版",
+          "document_id": "seed-travel-2026",
+          "version_id": "fad37674-eab4-48e6-874d-a336bc1819f8",
+          "locator_label": "第 1 页",
+          "score": 0.4923,
+          "bm25_rank": 3,
+          "dense_rank": 6,
+          "fusion_score": 0.031025,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "00a89e71-c021-55f2-bbc6-55cbce072804",
+          "rank": 6,
+          "title": "formula-missing.xlsx",
+          "document_id": "8fa8d384-4ffc-48ad-bd46-d31381281844",
+          "version_id": "987bdbe5-90f7-4689-bd03-842729f8e977",
+          "locator_label": "费用规则 · A1:D1",
+          "score": 0.5111,
+          "bm25_rank": 8,
+          "dense_rank": 5,
+          "fusion_score": 0.03009,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E5"
         }
       ],
-      "embed_ms": 211.3,
-      "retrieval_ms": 53.8,
-      "generation_ms": 24929.1,
-      "total_ms": 25284.4
+      "embed_ms": 234.6,
+      "retrieval_ms": 58.9,
+      "generation_ms": 21812.6,
+      "total_ms": 22146.4
     },
     "usage": {
-      "prompt_tokens": 1025,
-      "completion_tokens": 58,
-      "model_duration_ms": 24890.8,
+      "prompt_tokens": 1126,
+      "completion_tokens": 57,
+      "model_duration_ms": 21791.1,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "2026 年悉尼出差的酒店每晚报销上限是多少澳元"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

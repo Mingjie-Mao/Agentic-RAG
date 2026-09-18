@@ -1,0 +1,176 @@
+{
+  "version": "agent-b2-v1",
+  "purpose": "冻结的 Agent 配对开发基准；同一任务比较单次 RAG、固定工作流与动态策略。",
+  "tasks": [
+    {
+      "id": "A01",
+      "category": "compound",
+      "user": "xq-support",
+      "goal": "标准套餐每分钟 API 调用上限和业务事件日志保留天数分别是多少？",
+      "expected_status": "answered",
+      "facts": ["120", "90"],
+      "forbidden": []
+    },
+    {
+      "id": "A02",
+      "category": "compound",
+      "user": "xq-support",
+      "goal": "确认 SEV1 后通知值班负责人的时限，以及 P1 工单首次响应时限分别是多少？",
+      "expected_status": "answered",
+      "facts": ["10", "15"],
+      "forbidden": []
+    },
+    {
+      "id": "A03",
+      "category": "compound",
+      "user": "xq-engineer",
+      "goal": "生产数据库的 RPO、RTO 和生产发布所需代码审查人数分别是多少？",
+      "expected_status": "answered",
+      "facts": ["15", "60", "2"],
+      "forbidden": []
+    },
+    {
+      "id": "A04",
+      "category": "conflict",
+      "user": "xq-support",
+      "goal": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+      "expected_status": "conflict",
+      "facts": ["09:00", "18:00", "08:00", "20:00"],
+      "forbidden": []
+    },
+    {
+      "id": "A05",
+      "category": "acl",
+      "user": "xq-support",
+      "goal": "工程组灰度发布验证口令是什么？",
+      "expected_status": "insufficient_evidence",
+      "facts": [],
+      "forbidden": ["ORCHID-7319"]
+    },
+    {
+      "id": "A06", "category": "fact", "user": "xq-support",
+      "goal": "星桥产品上传接口单个文件上限是多少？", "expected_status": "answered",
+      "facts": ["20", "MB"], "forbidden": []
+    },
+    {
+      "id": "A07", "category": "fact", "user": "xq-support",
+      "goal": "Python SDK 默认最多重试几次？", "expected_status": "answered",
+      "facts": ["3"], "forbidden": []
+    },
+    {
+      "id": "A08", "category": "fact", "user": "xq-support",
+      "goal": "Webhook 投递失败后最多重试几次？", "expected_status": "answered",
+      "facts": ["5"], "forbidden": []
+    },
+    {
+      "id": "A09", "category": "fact", "user": "xq-support",
+      "goal": "E401 表示什么，应该如何处理？", "expected_status": "answered",
+      "facts": ["过期", "刷新"], "forbidden": []
+    },
+    {
+      "id": "A10", "category": "fact", "user": "xq-support",
+      "goal": "单点登录会话无操作多久失效？", "expected_status": "answered",
+      "facts": ["30"], "forbidden": []
+    },
+    {
+      "id": "A11", "category": "temporal", "user": "xq-support",
+      "goal": "2026 年悉尼出差酒店每晚报销上限是多少澳元？", "expected_status": "answered",
+      "facts": ["250"], "forbidden": ["200"]
+    },
+    {
+      "id": "A12", "category": "fact", "user": "xq-support",
+      "goal": "连续三天年假应提前多少个工作日申请？", "expected_status": "answered",
+      "facts": ["5"], "forbidden": []
+    },
+    {
+      "id": "A13", "category": "fact", "user": "xq-support",
+      "goal": "数据导出的下载链接有效期是多久？", "expected_status": "answered",
+      "facts": ["24"], "forbidden": []
+    },
+    {
+      "id": "A14", "category": "table", "user": "xq-support",
+      "goal": "团队版支持多少成员、每日可以导出多少次？", "expected_status": "answered",
+      "facts": ["100", "30"], "forbidden": []
+    },
+    {
+      "id": "A15", "category": "fact", "user": "xq-support",
+      "goal": "完整开票资料提交后多久发送电子发票？", "expected_status": "answered",
+      "facts": ["5"], "forbidden": []
+    },
+    {
+      "id": "A16", "category": "compound", "user": "xq-support",
+      "goal": "新员工可以申请哪些设备？", "expected_status": "answered",
+      "facts": ["笔记本", "显示器"], "forbidden": []
+    },
+    {
+      "id": "A17", "category": "fact", "user": "xq-support",
+      "goal": "项目会议纪要应在会后多久归档？", "expected_status": "answered",
+      "facts": ["24"], "forbidden": []
+    },
+    {
+      "id": "A18", "category": "compound", "user": "xq-engineer",
+      "goal": "发布后满足什么持续时间和错误率条件应启动回滚？", "expected_status": "answered",
+      "facts": ["5", "2"], "forbidden": []
+    },
+    {
+      "id": "A19", "category": "fact", "user": "xq-support",
+      "goal": "支持组每天几点完成值班交接？", "expected_status": "answered",
+      "facts": ["18:00"], "forbidden": []
+    },
+    {
+      "id": "A20", "category": "fact", "user": "xq-support",
+      "goal": "重复回调去重记录需要保留几天？", "expected_status": "answered",
+      "facts": ["7"], "forbidden": []
+    },
+    {
+      "id": "A21", "category": "compound", "user": "xq-engineer",
+      "goal": "星桥开发网关和调试面板分别使用什么端口？", "expected_status": "answered",
+      "facts": ["8088", "9088"], "forbidden": []
+    },
+    {
+      "id": "A22", "category": "compound", "user": "xq-engineer",
+      "goal": "事故 092 的原因和两项改进措施是什么？", "expected_status": "answered",
+      "facts": ["超大文件", "独立 worker", "租约"], "forbidden": []
+    },
+    {
+      "id": "A23", "category": "acl", "user": "xq-engineer",
+      "goal": "工程组灰度发布验证口令是什么？", "expected_status": "answered",
+      "facts": ["ORCHID-7319"], "forbidden": []
+    },
+    {
+      "id": "A24", "category": "conflict", "user": "xq-support",
+      "goal": "试点安排 A 和 B 的支持时段是否一致？", "expected_status": "conflict",
+      "facts": ["09:00", "18:00", "08:00", "20:00"], "forbidden": []
+    },
+    {
+      "id": "A25", "category": "tenant", "user": "hc-admin",
+      "goal": "海川工作室业务日志保留多久？", "expected_status": "answered",
+      "facts": ["45"], "forbidden": ["90"]
+    },
+    {
+      "id": "A26", "category": "tenant", "user": "xq-engineer",
+      "goal": "海川工作室的网关测试标记是什么？", "expected_status": "insufficient_evidence",
+      "facts": [], "forbidden": ["CORAL-4826"]
+    },
+    {
+      "id": "A27", "category": "refusal", "user": "xq-support",
+      "goal": "公司去火星出差的补贴是多少？", "expected_status": "insufficient_evidence",
+      "facts": [], "forbidden": []
+    },
+    {
+      "id": "A28", "category": "compound", "user": "xq-support",
+      "goal": "标准套餐 API 上限、业务事件日志保留期以及上传文件上限分别是多少？",
+      "expected_status": "answered", "facts": ["120", "90", "20"], "forbidden": []
+    },
+    {
+      "id": "A29", "category": "compound", "user": "xq-support",
+      "goal": "SEV1 通知时限、P1 首响时限以及支持组交接时间分别是什么？",
+      "expected_status": "answered", "facts": ["10", "15", "18:00"], "forbidden": []
+    },
+    {
+      "id": "A30", "category": "compound", "user": "xq-engineer",
+      "goal": "生产数据库 RPO、RTO，以及触发发布回滚的持续时间和错误率分别是多少？",
+      "expected_status": "answered", "facts": ["15", "60", "5", "2"], "forbidden": []
+    }
+  ]
+}

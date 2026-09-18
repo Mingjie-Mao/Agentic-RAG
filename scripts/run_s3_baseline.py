@@ -128,7 +128,7 @@ def load_questions(directory, split):
                 "source_ids": item["expected_doc_ids"],
                 "kind": item["question_type"],
                 "split": split,
-                "review": {"status": "upstream_gold", "source": "EnterpriseRAG-Bench v1.0.0"},
+                "review": {"status": "upstream_gold", "source": "AgenticRAG-Bench v1.0.0"},
             }
             for item in raw
         ]
@@ -212,6 +212,7 @@ def main():
     parser.add_argument("--retrievers", default="bm25,dense")
     parser.add_argument("--generate", action="store_true")
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--ids", nargs="+", help="Run only these question ids")
     parser.add_argument("--out", default="artifacts/s3-baseline")
     parser.add_argument("--final-acceptance", action="store_true")
     args = parser.parse_args()
@@ -234,7 +235,14 @@ def main():
 
     retrievers = args.retrievers.split(",")
     manifest = read_manifest(args.dataset)
-    questions = load_questions(args.dataset, args.split)[: args.limit]
+    questions = load_questions(args.dataset, args.split)
+    if args.ids:
+        wanted = set(args.ids)
+        questions = [question for question in questions if question["id"] in wanted]
+        missing = wanted - {question["id"] for question in questions}
+        if missing:
+            parser.error(f"Unknown ids for {args.split}: {', '.join(sorted(missing))}")
+    questions = questions[: args.limit]
     assert questions, "No questions selected"
     snapshot, search, chunks, _ = prepare_index(args.dataset)
     chunk_map = {chunk["id"]: chunk for chunk in chunks}

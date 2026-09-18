@@ -1,0 +1,147 @@
+{
+  "benchmark": "agent-b1-v1",
+  "task_sha256": "b0442e4780291e5c3733030e97213a9abf7d91aa128521537fb7b620069b55d7",
+  "arms": [
+    "rag",
+    "workflow",
+    "dynamic"
+  ],
+  "results": {
+    "rag": [
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "120": true,
+          "90": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 38659.1,
+        "usage": {
+          "prompt_tokens": 1187,
+          "completion_tokens": 152,
+          "model_duration_ms": 36213.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个文档描述了不同事项，一个是 API 调用上限，另一个是业务事件日志保留天数，因此不构成冲突。",
+            "accepted": false
+          }
+        },
+        "task_id": "A01",
+        "run_id": null,
+        "steps": 1
+      }
+    ],
+    "workflow": [
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "120": true,
+          "90": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 35425.2,
+        "usage": {
+          "prompt_tokens": 1489,
+          "completion_tokens": 152,
+          "model_duration_ms": 34871.5,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个文档描述了不同事项，一个是 API 调用上限，另一个是业务事件日志保留天数，因此不构成冲突。",
+            "accepted": false
+          }
+        },
+        "task_id": "A01",
+        "run_id": "fe474004-8b91-4b35-b536-8ca2b0eb856b",
+        "steps": 2
+      }
+    ],
+    "dynamic": [
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "120": true,
+          "90": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 143631.4,
+        "usage": {
+          "prompt_tokens": 1203,
+          "completion_tokens": 154,
+          "model_duration_ms": 33683.8,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个文档描述了不同事项，一个是 API 调用上限，另一个是业务事件日志保留天数，因此不构成冲突。",
+            "accepted": false
+          },
+          "agent_policy_prompt_tokens": 6764,
+          "agent_policy_completion_tokens": 206,
+          "total_prompt_tokens": 7967,
+          "total_completion_tokens": 360
+        },
+        "task_id": "A01",
+        "run_id": "dc784e26-a5a4-4b28-aa2c-48f38e1af95e",
+        "steps": 2
+      }
+    ]
+  },
+  "summary": {
+    "rag": {
+      "tasks": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "median_latency_ms": 38659.1,
+      "total_latency_ms": 38659.1,
+      "mean_steps": 1,
+      "forbidden_leaks": 0
+    },
+    "workflow": {
+      "tasks": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "median_latency_ms": 35425.2,
+      "total_latency_ms": 35425.2,
+      "mean_steps": 2,
+      "forbidden_leaks": 0
+    },
+    "dynamic": {
+      "tasks": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "median_latency_ms": 143631.4,
+      "total_latency_ms": 143631.4,
+      "mean_steps": 2,
+      "forbidden_leaks": 0
+    }
+  },
+  "note": "开发基准，不是独立留出集；本地 Ollama 的 api_cost 为 0。"
+}

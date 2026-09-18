@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Literal
 import json
 import re
 
@@ -29,6 +29,16 @@ from app.security import (
     require_document,
     validate_grant,
 )
+from agent.controller import cancel_task, create_task, require_task, resume_task, task_payload
+from agent.memory_adapter import LongTermMemoryAdapter, MemoryUnavailable
+from app.models import AgentTask
+from app.trial import (
+    is_trial_user,
+    require_trial_read_only,
+    reserve_trial_request,
+    trial_status,
+    trial_usernames,
+)
 
 
 @asynccontextmanager
@@ -37,7 +47,7 @@ async def lifespan(_):
     yield
 
 
-app = FastAPI(title="Enterprise-RAG", version="0.1.0", lifespan=lifespan)
+app = FastAPI(title="Agentic-RAG", version="0.1.0", lifespan=lifespan)
 DB = Annotated[Session, Depends(get_db)]
 Identity = Annotated[User, Depends(current_user)]
 
@@ -63,7 +73,7 @@ async def trace_request(request: Request, call_next):
 @app.middleware("http")
 async def browser_boundary(request: Request, call_next):
     if request.method in {"POST", "PUT", "PATCH", "DELETE"}:
-        if request.headers.get("X-Requested-With") != "EnterpriseRAG":
+        if request.headers.get("X-Requested-With") != "AgenticRAG":
             return JSONResponse({"detail": "缺少请求校验头"}, status_code=403)
         origin = request.headers.get("origin")
         if origin and origin not in settings().allowed_origins:
@@ -107,6 +117,23 @@ class QuestionBody(BaseModel):
     history: list[str] = Field(default_factory=list, max_length=10)
 
 
+class AgentTaskBody(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    goal: str = Field(min_length=4, max_length=1500)
+    mode: Literal["auto", "workflow", "dynamic"] = "auto"
+    max_steps: int = Field(default=6, ge=2, le=8)
+    document_id: str | None = Field(default=None, max_length=64)
+    from_version_id: str | None = Field(default=None, max_length=64)
+    to_version_id: str | None = Field(default=None, max_length=64)
+    use_memory: bool = True
+
+
+class MemoryWriteBody(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    content: str = Field(min_length=4, max_length=2000)
+    session_id: str | None = Field(default=None, max_length=200)
+
+
 def user_info(user, db):
     tenant = db.get(Tenant, user.tenant_id)
     return {
@@ -117,6 +144,7 @@ def user_info(user, db):
         "tenant_id": tenant.id,
         "role": user.role,
         "groups": user.groups,
+        "trial": trial_status(db, user),
     }
 
 
@@ -124,7 +152,7 @@ def user_info(user, db):
 def health(db: DB):
     try:
         db.execute(text("SELECT 1"))
-        return {"status": "ok", "stage": "S2/S3"}
+        return {"status": "ok", "release": "agent-v1", "agent": "v1"}
     except Exception:
         return JSONResponse({"status": "unavailable"}, status_code=503)
 
@@ -133,10 +161,14 @@ def health(db: DB):
 def demo_accounts(db: DB):
     if not settings().demo_mode:
         raise HTTPException(404)
+    users = list(db.scalars(select(User).where(User.active.is_(True))))
+    if settings().trial_mode:
+        allowed = trial_usernames()
+        users = [user for user in users if user.username in allowed]
     return {
-        "accounts": [user_info(u, db) for u in db.scalars(select(User).where(User.active.is_(True)))],
+        "accounts": [user_info(u, db) for u in users],
         "password": settings().demo_password,
-        "notice": "本地虚构资料演示；示例账号仅用于开发，不可用于公网部署。",
+        "notice": "仅含虚构资料的临时试用环境；请勿上传或输入真实敏感数据。",
     }
 
 
@@ -174,13 +206,13 @@ def me(user: Identity, db: DB):
 @app.get("/api/system")
 def system_info(user: Identity):
     return {
-        "stage": "S2/S3",
-        "retrieval": "dense",
+        "stage": "Phase B · Agent MVP",
+        "retrieval": settings().retrieval_mode,
         "embedding_model": settings().embed_model,
         "generation_model": settings().chat_model,
         "formats": ["md", "pdf", "docx", "xlsx"],
         "api_cost": "0 AUD（本地模型）",
-        "max_upload_mb": 10,
+        "max_upload_mb": settings().max_upload_bytes // (1024 * 1024),
     }
 
 
@@ -227,6 +259,7 @@ def upload_document(
     groups: str = Form("[]"),
     tenant_public: bool = Form(False),
 ):
+    require_trial_read_only(user)
     try:
         group_list = json.loads(groups)
         if not isinstance(group_list, list) or any(not isinstance(g, str) for g in group_list):
@@ -306,6 +339,7 @@ def replace_version(
     document_id: str, user: Identity, db: DB, file: UploadFile = File(...), title: str = Form("")
 ):
     """Queue a replacement. The active version keeps serving until this one publishes."""
+    require_trial_read_only(user)
     data = file.file.read()
     try:
         document, version, _ = add_version(db, user, document_id, file.filename or "", data)
@@ -325,6 +359,7 @@ def replace_version(
 
 @app.patch("/api/documents/{document_id}/access")
 def change_access(document_id: str, body: AccessBody, user: Identity, db: DB):
+    require_trial_read_only(user)
     groups = validate_grant(user, body.groups, body.tenant_public)
     document = set_access(db, user, document_id, groups, body.tenant_public)
     return document_info(db, document)
@@ -333,6 +368,7 @@ def change_access(document_id: str, body: AccessBody, user: Identity, db: DB):
 @app.delete("/api/documents/{document_id}")
 def remove_document(document_id: str, user: Identity, db: DB):
     """Commit the deletion first; index and file cleanup follow and may fail safely."""
+    require_trial_read_only(user)
     _, versions, storage_keys = soft_delete(db, user, document_id)
     cleanup = purge(versions, storage_keys)
     return {"id": document_id, "deleted": True, "versions": len(versions), "cleanup": cleanup}
@@ -350,6 +386,7 @@ def chunk_readable(chunk_id: str, user: Identity, db: DB):
 
 @app.post("/api/documents/{document_id}/retry")
 def retry_document(document_id: str, user: Identity, db: DB):
+    require_trial_read_only(user)
     doc = require_document(db, user, document_id, write=True)
     version = db.scalar(
         select(DocumentVersion)
@@ -408,6 +445,7 @@ def chat(body: QuestionBody, user: Identity, db: DB, request: Request):
     if len(question) < 2:
         raise HTTPException(422, "请输入至少两个字符的问题")
     history = [line.strip()[:1000] for line in body.history if line.strip()]
+    reserve_trial_request(db, user, "chat")
     payload = answer_question(db, user, question, history)
     # Costs and stage timings are recorded; the question and the evidence are not.
     log_request(
@@ -419,6 +457,81 @@ def chat(body: QuestionBody, user: Identity, db: DB, request: Request):
         **answer_record(payload),
     )
     return payload
+
+
+@app.post("/api/agent/tasks", status_code=202)
+def start_agent_task(body: AgentTaskBody, user: Identity, db: DB):
+    """Run a bounded read-only knowledge task and retain its auditable trajectory."""
+    if is_trial_user(user) and body.mode == "dynamic":
+        raise HTTPException(403, "访客试用不开放高延迟动态模式，请使用自动路由")
+    reserve_trial_request(db, user, "agent")
+    task_input = {
+        key: value
+        for key, value in {
+            "document_id": body.document_id,
+            "from_version_id": body.from_version_id,
+            "to_version_id": body.to_version_id,
+            "use_memory": body.use_memory,
+        }.items()
+        if value is not None
+    }
+    requested_mode = body.mode
+    # Current benchmark shows no quality gain from free-form planning. Auto therefore
+    # selects the deterministic workflow; dynamic remains available as an experiment.
+    mode = "workflow" if requested_mode == "auto" else requested_mode
+    task_input["requested_mode"] = requested_mode
+    task = create_task(db, user, body.goal.strip(), mode, body.max_steps, task_input)
+    return task_payload(db, user, task)
+
+
+@app.get("/api/agent/tasks")
+def list_agent_tasks(user: Identity, db: DB):
+    rows = db.scalars(
+        select(AgentTask)
+        .where(AgentTask.user_id == user.id, AgentTask.tenant_id == user.tenant_id)
+        .order_by(AgentTask.created_at.desc())
+        .limit(30)
+    ).all()
+    return [task_payload(db, user, row) for row in rows]
+
+
+@app.get("/api/agent/tasks/{task_id}")
+def get_agent_task(task_id: str, user: Identity, db: DB):
+    return task_payload(db, user, require_task(db, user, task_id))
+
+
+@app.post("/api/agent/tasks/{task_id}/resume")
+def resume_agent_task(task_id: str, user: Identity, db: DB):
+    reserve_trial_request(db, user, "agent")
+    task = resume_task(db, user, task_id)
+    return task_payload(db, user, task)
+
+
+@app.post("/api/agent/memories")
+def write_agent_memory(body: MemoryWriteBody, request: Request, user: Identity):
+    """Explicit memory write; Agent execution never writes memories implicitly."""
+    require_trial_read_only(user)
+    try:
+        adapter = LongTermMemoryAdapter(user)
+        result = adapter.remember(
+            body.content.strip(),
+            body.session_id,
+            request.headers.get("Idempotency-Key") or request.state.request_id,
+        )
+        return {"status": "accepted", "memory": result}
+    except MemoryUnavailable as exc:
+        raise HTTPException(503, str(exc)) from exc
+
+
+@app.post("/api/agent/tasks/{task_id}/cancel")
+def cancel_agent_task(task_id: str, user: Identity, db: DB):
+    task = cancel_task(db, user, task_id)
+    return task_payload(db, user, task)
+
+
+@app.get("/api/trial/status")
+def get_trial_status(user: Identity, db: DB):
+    return trial_status(db, user)
 
 
 @app.get("/api/history")

@@ -1,0 +1,177 @@
+{
+  "benchmark": "agent-b2-v1",
+  "task_sha256": "e7632ac1a8dd59f5235569d92f1bb0f7d695228d3c74ab0d7bd0d46e6b786f13",
+  "arms": [
+    "dynamic"
+  ],
+  "results": {
+    "dynamic": [
+      {
+        "category": "conflict",
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 201231.9,
+        "usage": {
+          "prompt_tokens": 1099,
+          "completion_tokens": 157,
+          "model_duration_ms": 36195.4,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "conflict",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个时间段虽然不同，但不构成冲突，因为它们针对的是不同的工作日时间。",
+            "accepted": true,
+            "accepted_by": "schedule_rule",
+            "rule_pair": [
+              "E1:S2",
+              "E2:S2"
+            ]
+          },
+          "acceptance_items": [
+            "2026 年 9 月试点项目到底在哪些时段提供支持"
+          ],
+          "agent_policy_prompt_tokens": 9618,
+          "agent_policy_completion_tokens": 325,
+          "total_prompt_tokens": 10717,
+          "total_completion_tokens": 482
+        },
+        "task_id": "A04",
+        "run_id": "3f9137d6-1b5e-4de1-86c1-bfe7582d77d6",
+        "steps": 6
+      },
+      {
+        "category": "compound",
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "超大文件": true,
+          "独立 worker": false,
+          "租约": false
+        },
+        "forbidden_present": {},
+        "correct": false,
+        "citation_count": 1,
+        "latency_ms": 298631.2,
+        "usage": {
+          "prompt_tokens": 786,
+          "completion_tokens": 72,
+          "model_duration_ms": 17660.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "事故 092 的原因",
+            "两项改进措施是什么"
+          ],
+          "agent_policy_prompt_tokens": 12979,
+          "agent_policy_completion_tokens": 951,
+          "total_prompt_tokens": 13765,
+          "total_completion_tokens": 1023
+        },
+        "task_id": "A22",
+        "run_id": "81f4fc0a-bfa1-4240-a154-92b13b626274",
+        "steps": 5
+      },
+      {
+        "category": "conflict",
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 142323.8,
+        "usage": {
+          "prompt_tokens": 923,
+          "completion_tokens": 154,
+          "model_duration_ms": 29372.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "conflict",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个支持时段虽然不同，但不构成冲突，因为它们属于不同的试点项目A和B。",
+            "accepted": true,
+            "accepted_by": "schedule_rule",
+            "rule_pair": [
+              "E1:S2",
+              "E2:S2"
+            ]
+          },
+          "acceptance_items": [
+            "试点安排 A 和 B 的支持时段是否一致"
+          ],
+          "agent_policy_prompt_tokens": 5747,
+          "agent_policy_completion_tokens": 404,
+          "total_prompt_tokens": 6670,
+          "total_completion_tokens": 558
+        },
+        "task_id": "A24",
+        "run_id": "08012764-0562-4b22-a793-accb1c27f78a",
+        "steps": 6
+      }
+    ]
+  },
+  "summary": {
+    "dynamic": {
+      "tasks": 3,
+      "correct": 2,
+      "accuracy": 0.667,
+      "median_latency_ms": 201231.9,
+      "total_latency_ms": 642186.9,
+      "mean_steps": 5.67,
+      "forbidden_leaks": 0
+    }
+  },
+  "by_category": {
+    "dynamic": {
+      "compound": {
+        "tasks": 1,
+        "correct": 0,
+        "accuracy": 0.0,
+        "median_latency_ms": 298631.2,
+        "total_latency_ms": 298631.2,
+        "mean_steps": 5,
+        "forbidden_leaks": 0
+      },
+      "conflict": {
+        "tasks": 2,
+        "correct": 2,
+        "accuracy": 1.0,
+        "median_latency_ms": 171777.8,
+        "total_latency_ms": 343555.7,
+        "mean_steps": 6,
+        "forbidden_leaks": 0
+      }
+    }
+  },
+  "completed_tasks": 3,
+  "requested_tasks": 3,
+  "note": "开发基准，不是独立留出集；本地 Ollama 的 api_cost 为 0。"
+}

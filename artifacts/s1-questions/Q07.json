@@ -19,14 +19,14 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "9d9c176d-b9a3-47f7-b8dc-3a18616ddc07",
+    "id": "c16c436c-0165-4801-b834-28be993a9049",
     "question": "单点登录会话多久无操作会失效？",
     "status": "answered",
     "claims": [
       {
         "text": "星桥单点登录会话连续30分钟无操作后失效。",
         "evidence_ids": [
-          "723730e0-bb63-539b-b6d1-862f43f4fa00"
+          "d84f4c3a-01be-546d-b8fe-a4125b32ba6a"
         ],
         "quotes": [
           "星桥单点登录会话连续 30 分钟无操作后失效。"
@@ -35,29 +35,57 @@
     ],
     "citations": [
       {
-        "chunk_id": "723730e0-bb63-539b-b6d1-862f43f4fa00",
+        "chunk_id": "d84f4c3a-01be-546d-b8fe-a4125b32ba6a",
         "document_id": "seed-sso-session",
-        "version_id": "fee7e905-c58b-4b00-a46a-471d19c781f3",
+        "version_id": "b03473fc-da43-4a9b-933b-fd629f6063e2",
         "title": "单点登录会话规则",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–8 行",
+          "block_type": "paragraph",
+          "heading_path": [
+            "单点登录会话规则",
+            "会话时限"
+          ],
+          "source_char_start": 47,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 77,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "paragraph",
+                "heading_path": [
+                  "单点登录会话规则",
+                  "会话时限"
+                ],
+                "source_char_start": 47,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 77
+            }
+          ],
           "char_start": 0,
-          "char_end": 124,
-          "line_start": 1,
-          "line_end": 8
+          "char_end": 77,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 66,
+          "token_counter": "cl100k_base"
         },
-        "text": "# 单点登录会话规则\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 会话时限\n星桥单点登录会话连续 30 分钟无操作后失效。重新访问需要经过身份提供方认证。\n管理者强制退出用户时，服务端同时撤销该用户所有活动会话。\n",
-        "preview_url": "/api/evidence/723730e0-bb63-539b-b6d1-862f43f4fa00",
-        "original_url": "/api/versions/fee7e905-c58b-4b00-a46a-471d19c781f3/original"
+        "text": "## 会话时限\n星桥单点登录会话连续 30 分钟无操作后失效。重新访问需要经过身份提供方认证。\n管理者强制退出用户时，服务端同时撤销该用户所有活动会话。\n",
+        "preview_url": "/api/evidence/d84f4c3a-01be-546d-b8fe-a4125b32ba6a",
+        "original_url": "/api/versions/b03473fc-da43-4a9b-933b-fd629f6063e2/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "单点登录会话多久无操作会失效？",
       "retrieval_query": "单点登录会话多久无操作会失效？",
@@ -67,86 +95,132 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.6154,
+        "claim_support": [
+          1
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 908,
+      "context_tokens_estimate": 911,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "723730e0-bb63-539b-b6d1-862f43f4fa00",
+          "chunk_id": "a783d866-80a5-5eb5-9fa7-e3014c420b6b",
           "rank": 1,
           "title": "单点登录会话规则",
           "document_id": "seed-sso-session",
-          "locator_label": "第 1–8 行",
-          "score": 0.771,
+          "version_id": "b03473fc-da43-4a9b-933b-fd629f6063e2",
+          "locator_label": "第 1 行起",
+          "score": 0.6476,
           "bm25_rank": 1,
+          "dense_rank": 2,
+          "fusion_score": 0.032522,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "d84f4c3a-01be-546d-b8fe-a4125b32ba6a",
+          "rank": 2,
+          "title": "单点登录会话规则",
+          "document_id": "seed-sso-session",
+          "version_id": "b03473fc-da43-4a9b-933b-fd629f6063e2",
+          "locator_label": "第 5 行起",
+          "score": 0.7384,
+          "bm25_rank": 2,
           "dense_rank": 1,
-          "fusion_score": 0.032787,
+          "fusion_score": 0.032522,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "7b9eb7be-1eee-51f2-9b7d-31f4d10b414c",
-          "rank": 2,
+          "chunk_id": "7d9b4368-0162-518b-926f-a1a4e0d0f10c",
+          "rank": 3,
           "title": "认证错误 E401 排查",
           "document_id": "seed-token-errors",
-          "locator_label": "第 1–8 行",
-          "score": 0.5137,
-          "bm25_rank": 2,
-          "dense_rank": 8,
-          "fusion_score": 0.030835,
+          "version_id": "a028618d-281a-48f3-9021-95e22ffb5f70",
+          "locator_label": "第 5 行起",
+          "score": 0.5005,
+          "bm25_rank": 3,
+          "dense_rank": 10,
+          "fusion_score": 0.030159,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
-          "rank": 3,
-          "title": "Webhook 投递与签名",
-          "document_id": "seed-webhook",
-          "locator_label": "第 1–9 行",
-          "score": 0.5565,
-          "bm25_rank": null,
-          "dense_rank": 2,
-          "fusion_score": 0.016129,
-          "admitted": true,
-          "excluded_because": null,
-          "evidence_id": "E3"
-        },
-        {
-          "chunk_id": "8ed52eef-363a-502f-a4b2-9396e71c1f54",
+          "chunk_id": "299da41f-e575-5bf7-9a23-34b2f76d9a03",
           "rank": 4,
-          "title": "业务数据保留规则",
-          "document_id": "seed-data-retention",
-          "locator_label": "第 1 页",
-          "score": 0.5504,
+          "title": "支持响应等级表",
+          "document_id": "seed-support-sla",
+          "version_id": "b346d2ca-95e3-4f30-8b9b-0a9ce03dd613",
+          "locator_label": "第 5 行起",
+          "score": 0.5676,
           "bm25_rank": null,
           "dense_rank": 3,
           "fusion_score": 0.015873,
           "admitted": true,
           "excluded_because": null,
+          "evidence_id": "E3"
+        },
+        {
+          "chunk_id": "5002f2fa-97f7-51f8-b30e-27b7dd099d1c",
+          "rank": 5,
+          "title": "Webhook 投递与签名",
+          "document_id": "seed-webhook",
+          "version_id": "0172fe6e-352a-4c8f-add8-a3d6887374e9",
+          "locator_label": "第 5 行起",
+          "score": 0.5592,
+          "bm25_rank": null,
+          "dense_rank": 4,
+          "fusion_score": 0.015625,
+          "admitted": true,
+          "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "1ba61fb6-c9ff-53a1-b08f-fb04344bb691",
+          "rank": 6,
+          "title": "业务数据保留规则",
+          "document_id": "seed-data-retention",
+          "version_id": "a6d48489-c3ef-493c-9779-981f4a7ddc15",
+          "locator_label": "第 1 页",
+          "score": 0.5444,
+          "bm25_rank": null,
+          "dense_rank": 5,
+          "fusion_score": 0.015385,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E5"
         }
       ],
-      "embed_ms": 212.5,
-      "retrieval_ms": 62.1,
-      "generation_ms": 23228.2,
-      "total_ms": 23544.1
+      "embed_ms": 228.3,
+      "retrieval_ms": 58.2,
+      "generation_ms": 22369.2,
+      "total_ms": 22698.8
     },
     "usage": {
-      "prompt_tokens": 1056,
+      "prompt_tokens": 1266,
       "completion_tokens": 53,
-      "model_duration_ms": 23204.1,
+      "model_duration_ms": 22348.9,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "单点登录会话多久无操作会失效"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

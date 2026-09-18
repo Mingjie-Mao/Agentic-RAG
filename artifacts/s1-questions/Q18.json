@@ -18,7 +18,7 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "add2428f-8e61-4089-8e43-081f0127afcc",
+    "id": "a0b973dc-4c4b-49a1-a9ee-e807125d8e2a",
     "question": "工程组灰度发布验证口令是什么？",
     "status": "insufficient_evidence",
     "claims": [],
@@ -27,8 +27,8 @@
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "工程组灰度发布验证口令是什么？",
       "retrieval_query": "工程组灰度发布验证口令是什么？",
@@ -38,22 +38,31 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.2308,
+        "claim_support": [],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 906,
+      "context_tokens_estimate": 530,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "chunk_id": "157fd048-ca31-5fd1-b7c6-0ba2bf57f460",
           "rank": 1,
           "title": "SEV1 客户事故升级",
           "document_id": "seed-support-escalate",
-          "locator_label": "第 1–8 行",
-          "score": 0.5082,
+          "version_id": "2a084d96-ec3c-46e2-aaa8-47011c2b28d6",
+          "locator_label": "第 5 行起",
+          "score": 0.5192,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -62,62 +71,95 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+          "chunk_id": "1590a974-8df1-5b7d-a0e8-add002893a85",
           "rank": 2,
           "title": "试点项目支持安排 B",
           "document_id": "seed-pilot-b",
-          "locator_label": "第 1–8 行",
-          "score": 0.4687,
-          "bm25_rank": 3,
-          "dense_rank": 5,
-          "fusion_score": 0.031258,
+          "version_id": "b2938188-f872-44d5-bd39-7b1d206e2b35",
+          "locator_label": "第 5 行起",
+          "score": 0.4413,
+          "bm25_rank": 2,
+          "dense_rank": 23,
+          "fusion_score": 0.028177,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "0597651a-e12e-552b-9ded-ef1fe1d7d51c",
+          "chunk_id": "c4ce436d-96aa-594f-9d56-ee65f5fcdfd9",
           "rank": 3,
           "title": "试点项目支持安排 A",
           "document_id": "seed-pilot-a",
-          "locator_label": "第 1–8 行",
-          "score": 0.4578,
-          "bm25_rank": 2,
-          "dense_rank": 11,
-          "fusion_score": 0.030214,
+          "version_id": "e982752a-7d65-4db9-9288-987975e73599",
+          "locator_label": "第 5 行起",
+          "score": 0.4232,
+          "bm25_rank": 3,
+          "dense_rank": 29,
+          "fusion_score": 0.027109,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "9e8fa42e-5b56-51c8-bc31-1d229ecce0ac",
+          "chunk_id": "e5b688a7-1ae7-5f40-9e13-3e528c30b0d5",
           "rank": 4,
-          "title": "Webhook 投递与签名",
-          "document_id": "seed-webhook",
-          "locator_label": "第 1–9 行",
-          "score": 0.4803,
+          "title": "认证错误 E401 排查",
+          "document_id": "seed-token-errors",
+          "version_id": "a028618d-281a-48f3-9021-95e22ffb5f70",
+          "locator_label": "第 1 行起",
+          "score": 0.4852,
           "bm25_rank": null,
           "dense_rank": 2,
           "fusion_score": 0.016129,
-          "admitted": true,
-          "excluded_because": null,
-          "evidence_id": "E4"
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "895f3c21-18f3-57fd-b419-eba1fa48f4eb",
+          "rank": 5,
+          "title": "支持组交接清单",
+          "document_id": "seed-support-handoff",
+          "version_id": "1d2b6515-5ae9-4029-98f8-54837a03abea",
+          "locator_label": "第 1 行起",
+          "score": 0.4807,
+          "bm25_rank": null,
+          "dense_rank": 3,
+          "fusion_score": 0.015873,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "9745e269-8f9a-5b4a-809a-ede5f7974a50",
+          "rank": 6,
+          "title": "支持响应等级表",
+          "document_id": "seed-support-sla",
+          "version_id": "b346d2ca-95e3-4f30-8b9b-0a9ce03dd613",
+          "locator_label": "第 1 行起",
+          "score": 0.4776,
+          "bm25_rank": null,
+          "dense_rank": 4,
+          "fusion_score": 0.015625,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
         }
       ],
-      "embed_ms": 229.1,
-      "retrieval_ms": 131.1,
-      "generation_ms": 24813.3,
-      "total_ms": 25422.6
+      "embed_ms": 206,
+      "retrieval_ms": 52.9,
+      "generation_ms": 10970.5,
+      "total_ms": 11270.8
     },
     "usage": {
-      "prompt_tokens": 997,
+      "prompt_tokens": 810,
       "completion_tokens": 18,
-      "model_duration_ms": 24769.2,
+      "model_duration_ms": 10950.1,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "insufficient_evidence",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "工程组灰度发布验证口令是什么"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

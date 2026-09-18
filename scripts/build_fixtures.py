@@ -31,7 +31,7 @@ def main():
             for line in body.splitlines():
                 story.extend([Paragraph(escape(line.lstrip("# ")) or " ", style), Spacer(1, 5)])
             SimpleDocTemplate(
-                str(path), title=doc["title"], author="Enterprise-RAG synthetic fixture", invariant=1
+                str(path), title=doc["title"], author="Agentic-RAG synthetic fixture", invariant=1
             ).build(story)
         tenant = doc.get("tenant", "xingqiao")
         manifest.append(

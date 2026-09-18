@@ -1,5 +1,5 @@
 {
-  "document_id": "f3a015ea-b7cb-472a-9ef9-557fe0c53957",
+  "document_id": "dc486505-25ad-4968-afeb-2b35240f52dd",
   "beat1": {
     "chunks": 4,
     "parser": "docling-2.127-office-xml-v2"
@@ -10,9 +10,9 @@
   },
   "beat3": {
     "method": "hybrid",
-    "candidates": 4,
-    "admitted": 4,
-    "total_ms": 16702.3
+    "candidates": 6,
+    "admitted": 5,
+    "total_ms": 25219.9
   },
   "beat4": {
     "private_document_visible_to_other_group": false,

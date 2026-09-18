@@ -1,0 +1,36 @@
+{
+  "run_date": "2026-09-17 Australia/Sydney",
+  "purpose": "真实服务冒烟验证，不是 Agent benchmark，也不用于声明动态 Agent 优于固定工作流",
+  "configuration": {
+    "embedding": "bge-m3:567m",
+    "generation": "qwen2.5:7b-instruct",
+    "execution": "local_ollama",
+    "retrieval": "hybrid",
+    "api_cost_aud": 0
+  },
+  "workflow": {
+    "task_id": "d812118b-9c9c-429b-8ce3-44c52d2dc43a",
+    "goal": "生产数据库的恢复点目标 RPO 是多少？请给出原文依据。",
+    "status": "completed",
+    "tool_steps": 2,
+    "tools": ["search_documents", "retrieve_evidence"],
+    "answer_status": "answered",
+    "answer": "生产数据库恢复点目标 RPO 为 15 分钟。",
+    "citations": 1,
+    "wall_seconds": 23.1,
+    "generation_seconds": 22.4
+  },
+  "dynamic": {
+    "task_id": "8f30ac62-b977-440d-8dc8-829f638f78fd",
+    "goal": "客户发生 SEV1 事故时应该如何升级？请查证并引用依据。",
+    "status": "completed",
+    "tool_steps": 2,
+    "actions": ["search_documents", "retrieve_evidence", "final"],
+    "answer_status": "answered",
+    "facts": ["10 分钟内通知值班负责人", "每 30 分钟向客户同步状态"],
+    "citations": 1,
+    "wall_seconds": 111.3,
+    "final_generation_seconds": 19.8
+  },
+  "observation": "两个模式均返回通过服务端原文校验的引用。动态模式本次多花约 88 秒，后续必须在同任务 benchmark 上比较质量与成本。"
+}

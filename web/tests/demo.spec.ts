@@ -17,7 +17,7 @@ const beat = async (page: any, name: string) =>
 
 const TABLE_DOC = path.resolve('../fixtures/s2', 'multipage-table.pdf');
 
-test('五分钟演示：上传、证据、检索过程、权限、边界', async ({ page }) => {
+test('浏览器回归：上传、证据、检索过程、权限、边界', async ({ page }) => {
   test.setTimeout(600_000);
   const notes: Record<string, unknown> = {};
 
@@ -115,7 +115,7 @@ test('五分钟演示：上传、证据、检索过程、权限、边界', async
   // Leave nothing behind, so the next run starts from the same state. The CSRF header
   // is required for every mutating request, which is why it is set explicitly here.
   const removed = await page.request.delete(`/api/documents/${uploaded.id}`, {
-    headers: { 'X-Requested-With': 'EnterpriseRAG' },
+    headers: { 'X-Requested-With': 'AgenticRAG' },
   });
   expect(removed.status()).toBe(200);
   expect((await removed.json()).deleted).toBe(true);

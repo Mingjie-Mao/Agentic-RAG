@@ -19,36 +19,181 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "fb23a234-5c41-4969-ad77-e9f764310d62",
+    "id": "121eb97f-fce0-497a-9fc9-d64dafaeb1b8",
     "question": "海川工作室业务日志保留多久？",
     "status": "answered",
     "claims": [
       {
         "text": "海川工作室的业务日志保留45天。",
         "evidence_ids": [
-          "a827ed7c-7c5a-5c60-9d9f-608643bfeb77"
+          "ea827948-00ba-5474-86d5-25a23d52e318"
         ],
         "quotes": [
-          "海川工作室的业务日志保留 45 天。"
+          "海川工作室的业务日志保留 45 天。"
         ]
       }
     ],
     "citations": [
       {
-        "chunk_id": "a827ed7c-7c5a-5c60-9d9f-608643bfeb77",
+        "chunk_id": "ea827948-00ba-5474-86d5-25a23d52e318",
         "document_id": "seed-hc-retention",
-        "version_id": "af9e8e15-1f74-495c-9c71-1e3dd89b4209",
+        "version_id": "547238a0-5fd7-41b2-be3e-d97d9e6ea024",
         "title": "海川日志保留规则",
         "locator": {
           "kind": "pdf",
           "page": 1,
+          "block_type": "text",
+          "heading_path": [],
+          "provenance": [
+            {
+              "page": 1,
+              "bbox": {
+                "l": 78,
+                "t": 760.9968,
+                "r": 166,
+                "b": 749.9682614361702,
+                "coord_origin": "BOTTOMLEFT"
+              },
+              "charspan": [
+                0,
+                8
+              ]
+            }
+          ],
+          "item_ref": "#/texts/0",
           "label": "第 1 页",
+          "kind_for_source": "pdf",
+          "sources": [
+            {
+              "start": 0,
+              "end": 8,
+              "locator": {
+                "kind": "pdf",
+                "page": 1,
+                "block_type": "text",
+                "heading_path": [],
+                "provenance": [
+                  {
+                    "page": 1,
+                    "bbox": {
+                      "l": 78,
+                      "t": 760.9968,
+                      "r": 166,
+                      "b": 749.9682614361702,
+                      "coord_origin": "BOTTOMLEFT"
+                    },
+                    "charspan": [
+                      0,
+                      8
+                    ]
+                  }
+                ],
+                "item_ref": "#/texts/0",
+                "label": "第 1 页"
+              },
+              "overlap_start": 0,
+              "overlap_end": 8
+            },
+            {
+              "start": 9,
+              "end": 42,
+              "locator": {
+                "kind": "pdf",
+                "page": 1,
+                "block_type": "text",
+                "heading_path": [],
+                "provenance": [
+                  {
+                    "page": 1,
+                    "bbox": {
+                      "l": 78,
+                      "t": 731.9968,
+                      "r": 441,
+                      "b": 720.9682614361702,
+                      "coord_origin": "BOTTOMLEFT"
+                    },
+                    "charspan": [
+                      0,
+                      33
+                    ]
+                  }
+                ],
+                "item_ref": "#/texts/1",
+                "label": "第 1 页"
+              },
+              "overlap_start": 0,
+              "overlap_end": 33
+            },
+            {
+              "start": 43,
+              "end": 47,
+              "locator": {
+                "kind": "pdf",
+                "page": 1,
+                "block_type": "text",
+                "heading_path": [],
+                "provenance": [
+                  {
+                    "page": 1,
+                    "bbox": {
+                      "l": 78,
+                      "t": 702.9968,
+                      "r": 122,
+                      "b": 691.9682614361702,
+                      "coord_origin": "BOTTOMLEFT"
+                    },
+                    "charspan": [
+                      0,
+                      4
+                    ]
+                  }
+                ],
+                "item_ref": "#/texts/2",
+                "label": "第 1 页"
+              },
+              "overlap_start": 0,
+              "overlap_end": 4
+            },
+            {
+              "start": 48,
+              "end": 91,
+              "locator": {
+                "kind": "pdf",
+                "page": 1,
+                "block_type": "text",
+                "heading_path": [],
+                "provenance": [
+                  {
+                    "page": 1,
+                    "bbox": {
+                      "l": 78,
+                      "t": 678.9968,
+                      "r": 378.71799999999996,
+                      "b": 643.9682614361702,
+                      "coord_origin": "BOTTOMLEFT"
+                    },
+                    "charspan": [
+                      0,
+                      43
+                    ]
+                  }
+                ],
+                "item_ref": "#/texts/3",
+                "label": "第 1 页"
+              },
+              "overlap_start": 0,
+              "overlap_end": 43
+            }
+          ],
           "char_start": 0,
-          "char_end": 91
+          "char_end": 91,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 97,
+          "token_counter": "cl100k_base"
         },
-        "text": "海川日志保留规则\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n日志规则\n海川工作室的业务日志保留 45 天。日志仅限本租户成员查阅。\n日志配置与星桥软件无关。",
-        "preview_url": "/api/evidence/a827ed7c-7c5a-5c60-9d9f-608643bfeb77",
-        "original_url": "/api/versions/af9e8e15-1f74-495c-9c71-1e3dd89b4209/original"
+        "text": "海川日志保留规则\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n日志规则\n海川工作室的业务日志保留 45 天。日志仅限本租户成员查阅。 日志配置与星桥软件无关。",
+        "preview_url": "/api/evidence/ea827948-00ba-5474-86d5-25a23d52e318",
+        "original_url": "/api/versions/547238a0-5fd7-41b2-be3e-d97d9e6ea024/original"
       }
     ],
     "message": "",
@@ -66,20 +211,31 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.75,
+        "claim_support": [
+          1
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 644,
+      "context_tokens_estimate": 553,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "a827ed7c-7c5a-5c60-9d9f-608643bfeb77",
+          "chunk_id": "ea827948-00ba-5474-86d5-25a23d52e318",
           "rank": 1,
           "title": "海川日志保留规则",
           "document_id": "seed-hc-retention",
+          "version_id": "547238a0-5fd7-41b2-be3e-d97d9e6ea024",
           "locator_label": "第 1 页",
           "score": 0.7484,
           "bm25_rank": 1,
@@ -90,48 +246,81 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "7f41c133-59eb-5508-b15c-694fccc95254",
+          "chunk_id": "0636e8b8-6427-507b-ad0c-e35912c3d05e",
           "rank": 2,
           "title": "海川网关开发配置",
           "document_id": "seed-hc-gateway",
-          "locator_label": "第 1–8 行",
-          "score": 0.4687,
+          "version_id": "3a1593ec-6885-4447-86e5-7dc4b7bbf3f2",
+          "locator_label": "第 5 行起",
+          "score": 0.4826,
           "bm25_rank": 2,
-          "dense_rank": 3,
-          "fusion_score": 0.032002,
+          "dense_rank": 4,
+          "fusion_score": 0.031754,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "99fe804d-ea09-5b26-8c32-c54ebdd50367",
+          "chunk_id": "1de390c9-502d-5531-8d1b-e9f975aa4986",
           "rank": 3,
           "title": "海川支持值班时间",
           "document_id": "seed-hc-support",
-          "locator_label": "第 1–8 行",
-          "score": 0.5126,
-          "bm25_rank": 3,
+          "version_id": "951243ad-b6d1-4db4-acc8-3998179a27b8",
+          "locator_label": "第 1 行起",
+          "score": 0.5294,
+          "bm25_rank": 4,
           "dense_rank": 2,
-          "fusion_score": 0.032002,
+          "fusion_score": 0.031754,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "1d410020-d6de-57d1-bf8f-45710a148c56",
+          "rank": 4,
+          "title": "海川支持值班时间",
+          "document_id": "seed-hc-support",
+          "version_id": "951243ad-b6d1-4db4-acc8-3998179a27b8",
+          "locator_label": "第 5 行起",
+          "score": 0.5261,
+          "bm25_rank": 5,
+          "dense_rank": 3,
+          "fusion_score": 0.031258,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
+        },
+        {
+          "chunk_id": "a7761415-5cb5-5146-a458-b3f5f574fe33",
+          "rank": 5,
+          "title": "海川网关开发配置",
+          "document_id": "seed-hc-gateway",
+          "version_id": "3a1593ec-6885-4447-86e5-7dc4b7bbf3f2",
+          "locator_label": "第 1 行起",
+          "score": 0.4076,
+          "bm25_rank": 3,
+          "dense_rank": 5,
+          "fusion_score": 0.031258,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
         }
       ],
-      "embed_ms": 647.4,
-      "retrieval_ms": 190,
-      "generation_ms": 32355.6,
-      "total_ms": 33300.3
+      "embed_ms": 202.6,
+      "retrieval_ms": 51.2,
+      "generation_ms": 16048.6,
+      "total_ms": 16336
     },
     "usage": {
-      "prompt_tokens": 783,
-      "completion_tokens": 50,
-      "model_duration_ms": 32308.8,
+      "prompt_tokens": 863,
+      "completion_tokens": 49,
+      "model_duration_ms": 16027.1,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "海川工作室业务日志保留多久"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

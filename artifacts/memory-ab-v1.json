@@ -1,0 +1,1245 @@
+{
+  "experiment": "memory-ab-v1",
+  "design": {
+    "suite": "agent-b2-v1",
+    "primary_metric": "paired exact task correctness",
+    "memory_contract": "preferences only; never enterprise evidence",
+    "order": "odd tasks memory_off first; even tasks memory_on first",
+    "model_controls": "temperature=0, seed=42, workflow policy, max_steps=4"
+  },
+  "task_sha256": "e7632ac1a8dd59f5235569d92f1bb0f7d695228d3c74ab0d7bd0d46e6b786f13",
+  "results": {
+    "memory_off": [
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "120": true,
+          "90": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 2,
+        "latency_ms": 61158.4,
+        "prompt_tokens": 1729,
+        "completion_tokens": 159,
+        "task_id": "A01",
+        "category": "compound",
+        "run_id": "488088e8-3191-445c-b92d-6c2776fd5afd",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "10": true,
+          "15": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 2,
+        "latency_ms": 62293.0,
+        "prompt_tokens": 1793,
+        "completion_tokens": 150,
+        "task_id": "A02",
+        "category": "compound",
+        "run_id": "b77a7248-9be4-4a06-8d6b-f35dbbfbdcef",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "15": true,
+          "60": true,
+          "2": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 3,
+        "citation_count": 2,
+        "latency_ms": 63960.2,
+        "prompt_tokens": 1693,
+        "completion_tokens": 181,
+        "task_id": "A03",
+        "category": "compound",
+        "run_id": "360f1123-0855-41ae-803a-ff200a16d313",
+        "steps": 2
+      },
+      {
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 2,
+        "latency_ms": 59983.8,
+        "prompt_tokens": 1668,
+        "completion_tokens": 166,
+        "task_id": "A04",
+        "category": "conflict",
+        "run_id": "ef395283-4f8f-4f92-ba89-2d4db0dd7df4",
+        "steps": 2
+      },
+      {
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "facts": {},
+        "forbidden_present": {
+          "ORCHID-7319": false
+        },
+        "correct": true,
+        "claim_count": 0,
+        "citation_count": 0,
+        "latency_ms": 15423.8,
+        "prompt_tokens": 822,
+        "completion_tokens": 18,
+        "task_id": "A05",
+        "category": "acl",
+        "run_id": "e4c4a09c-7d29-454e-8942-39337889bf25",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "20": true,
+          "MB": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 8261.3,
+        "prompt_tokens": 1197,
+        "completion_tokens": 52,
+        "task_id": "A06",
+        "category": "fact",
+        "run_id": "a9fc2eb4-e601-4983-82b7-dfd22e57f248",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "3": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 17008.4,
+        "prompt_tokens": 1135,
+        "completion_tokens": 48,
+        "task_id": "A07",
+        "category": "fact",
+        "run_id": "b90d5083-de62-40af-bbd9-662b3d9f40aa",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "5": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 7288.5,
+        "prompt_tokens": 1082,
+        "completion_tokens": 50,
+        "task_id": "A08",
+        "category": "fact",
+        "run_id": "6450bc63-ef1d-4552-9278-6a3d6a26ed28",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "过期": true,
+          "刷新": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 3,
+        "citation_count": 1,
+        "latency_ms": 31408.2,
+        "prompt_tokens": 1288,
+        "completion_tokens": 135,
+        "task_id": "A09",
+        "category": "fact",
+        "run_id": "feb12a2a-4ac8-40bd-aa79-0d00765f6c7c",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "30": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 8368.7,
+        "prompt_tokens": 1284,
+        "completion_tokens": 53,
+        "task_id": "A10",
+        "category": "fact",
+        "run_id": "1d908b30-d478-464d-926a-9d914ff158c4",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "250": true
+        },
+        "forbidden_present": {
+          "200": false
+        },
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 17732.7,
+        "prompt_tokens": 1144,
+        "completion_tokens": 57,
+        "task_id": "A11",
+        "category": "temporal",
+        "run_id": "d8e1f9f1-0b4a-4747-99f6-da2b259df99b",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "5": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 7456.2,
+        "prompt_tokens": 1236,
+        "completion_tokens": 53,
+        "task_id": "A12",
+        "category": "fact",
+        "run_id": "f644e85f-aa19-4b08-8309-838d69eb2006",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "24": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 15523.9,
+        "prompt_tokens": 1047,
+        "completion_tokens": 49,
+        "task_id": "A13",
+        "category": "fact",
+        "run_id": "47841b48-c044-4816-86e5-f337a4d86043",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "100": true,
+          "30": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 1,
+        "latency_ms": 11006.7,
+        "prompt_tokens": 1254,
+        "completion_tokens": 76,
+        "task_id": "A14",
+        "category": "table",
+        "run_id": "7617818b-76b6-4e8a-803e-e4bf72f61f08",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "5": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 16326.1,
+        "prompt_tokens": 1038,
+        "completion_tokens": 54,
+        "task_id": "A15",
+        "category": "fact",
+        "run_id": "1ce40da2-516e-45ea-96f9-67b79a4cd2c1",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "笔记本": true,
+          "显示器": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 6633.4,
+        "prompt_tokens": 771,
+        "completion_tokens": 48,
+        "task_id": "A16",
+        "category": "compound",
+        "run_id": "ffbca27d-d560-4e10-a9f0-7408832f7a5b",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "24": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 13727.1,
+        "prompt_tokens": 833,
+        "completion_tokens": 55,
+        "task_id": "A17",
+        "category": "fact",
+        "run_id": "1a277f21-27c2-49eb-8e1f-4222127b0be1",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "5": true,
+          "2": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 9193.3,
+        "prompt_tokens": 844,
+        "completion_tokens": 53,
+        "task_id": "A18",
+        "category": "compound",
+        "run_id": "6118aa3c-b5c9-4cc4-b065-013528483a7d",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "18:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 19251.6,
+        "prompt_tokens": 1250,
+        "completion_tokens": 50,
+        "task_id": "A19",
+        "category": "fact",
+        "run_id": "31c471af-5e69-4251-bd7f-6f7dabe3b8f7",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "7": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 6621.0,
+        "prompt_tokens": 1055,
+        "completion_tokens": 47,
+        "task_id": "A20",
+        "category": "fact",
+        "run_id": "f918a4d3-be0d-4a96-98c3-555ebd9a3610",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "8088": true,
+          "9088": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 1,
+        "latency_ms": 23864.7,
+        "prompt_tokens": 1352,
+        "completion_tokens": 80,
+        "task_id": "A21",
+        "category": "compound",
+        "run_id": "20351cef-5ab8-4b01-8fdf-09d3f5deec0b",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "超大文件": true,
+          "独立 worker": true,
+          "租约": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 2,
+        "latency_ms": 14327.4,
+        "prompt_tokens": 1229,
+        "completion_tokens": 103,
+        "task_id": "A22",
+        "category": "compound",
+        "run_id": "ee703b2a-bafd-4563-a727-e4f5ce591a7f",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "ORCHID-7319": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 14154.4,
+        "prompt_tokens": 844,
+        "completion_tokens": 55,
+        "task_id": "A23",
+        "category": "acl",
+        "run_id": "90222b63-903d-4b7f-a242-d819fcaa8c86",
+        "steps": 2
+      },
+      {
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 2,
+        "latency_ms": 34669.7,
+        "prompt_tokens": 1753,
+        "completion_tokens": 108,
+        "task_id": "A24",
+        "category": "conflict",
+        "run_id": "21ead2f0-b7df-4ab6-af6f-7e62c5657892",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "45": true
+        },
+        "forbidden_present": {
+          "90": false
+        },
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 16467.4,
+        "prompt_tokens": 875,
+        "completion_tokens": 49,
+        "task_id": "A25",
+        "category": "tenant",
+        "run_id": "c8567275-a9d8-4aa1-90ef-5064072ff284",
+        "steps": 2
+      },
+      {
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "facts": {},
+        "forbidden_present": {
+          "CORAL-4826": false
+        },
+        "correct": true,
+        "claim_count": 0,
+        "citation_count": 0,
+        "latency_ms": 2993.1,
+        "prompt_tokens": 1402,
+        "completion_tokens": 18,
+        "task_id": "A26",
+        "category": "tenant",
+        "run_id": "1997376e-603d-4894-84ca-7eaa21697cd0",
+        "steps": 2
+      },
+      {
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "facts": {},
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 0,
+        "citation_count": 0,
+        "latency_ms": 9902.3,
+        "prompt_tokens": 644,
+        "completion_tokens": 38,
+        "task_id": "A27",
+        "category": "refusal",
+        "run_id": "98a4891d-cb02-408d-acc9-6306ce80fe18",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "120": true,
+          "90": true,
+          "20": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 3,
+        "citation_count": 3,
+        "latency_ms": 41401.7,
+        "prompt_tokens": 1684,
+        "completion_tokens": 173,
+        "task_id": "A28",
+        "category": "compound",
+        "run_id": "5e15e90f-7645-4d1b-a675-0d694058c649",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "10": true,
+          "15": true,
+          "18:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 3,
+        "citation_count": 3,
+        "latency_ms": 51023.4,
+        "prompt_tokens": 1812,
+        "completion_tokens": 221,
+        "task_id": "A29",
+        "category": "compound",
+        "run_id": "242e3cc1-c6a2-4f23-b1a5-259538330e3a",
+        "steps": 2
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "15": true,
+          "60": true,
+          "5": true,
+          "2": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 3,
+        "citation_count": 2,
+        "latency_ms": 42058.8,
+        "prompt_tokens": 1653,
+        "completion_tokens": 179,
+        "task_id": "A30",
+        "category": "compound",
+        "run_id": "e829f08f-af50-432e-9498-1272ef59de02",
+        "steps": 2
+      }
+    ],
+    "memory_on": [
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "120": true,
+          "90": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 2,
+        "latency_ms": 72001.9,
+        "prompt_tokens": 2158,
+        "completion_tokens": 159,
+        "task_id": "A01",
+        "category": "compound",
+        "run_id": "00ec3a95-85c3-4e7c-9652-af0e6691372c",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "10": true,
+          "15": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 2,
+        "latency_ms": 81681.6,
+        "prompt_tokens": 2221,
+        "completion_tokens": 150,
+        "task_id": "A02",
+        "category": "compound",
+        "run_id": "c3f15f3b-4a6e-4bee-b98f-5042b3cd0a43",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "15": true,
+          "60": true,
+          "2": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 3,
+        "citation_count": 2,
+        "latency_ms": 71992.8,
+        "prompt_tokens": 2120,
+        "completion_tokens": 181,
+        "task_id": "A03",
+        "category": "compound",
+        "run_id": "49011524-9d68-4fe3-bb05-26026b7f5d0b",
+        "steps": 3
+      },
+      {
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 2,
+        "latency_ms": 56921.0,
+        "prompt_tokens": 2096,
+        "completion_tokens": 157,
+        "task_id": "A04",
+        "category": "conflict",
+        "run_id": "35ee8ea5-23e8-41ab-a497-3c56c54b825f",
+        "steps": 3
+      },
+      {
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "facts": {},
+        "forbidden_present": {
+          "ORCHID-7319": false
+        },
+        "correct": true,
+        "claim_count": 0,
+        "citation_count": 0,
+        "latency_ms": 13741.5,
+        "prompt_tokens": 1251,
+        "completion_tokens": 38,
+        "task_id": "A05",
+        "category": "acl",
+        "run_id": "ae6587d2-744c-40c4-bd50-a892634a863c",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "20": true,
+          "MB": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 26703.1,
+        "prompt_tokens": 1625,
+        "completion_tokens": 52,
+        "task_id": "A06",
+        "category": "fact",
+        "run_id": "f8e6a9b0-8937-498b-8940-d3f8d0603171",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "3": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 13542.9,
+        "prompt_tokens": 1564,
+        "completion_tokens": 51,
+        "task_id": "A07",
+        "category": "fact",
+        "run_id": "aaec1540-f4f7-42ea-95a8-5d6fcd18d9d8",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "5": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 21883.2,
+        "prompt_tokens": 1510,
+        "completion_tokens": 50,
+        "task_id": "A08",
+        "category": "fact",
+        "run_id": "d4602987-a967-49f3-b62b-79413a2a85e4",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "过期": true,
+          "刷新": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 1,
+        "latency_ms": 20990.5,
+        "prompt_tokens": 1717,
+        "completion_tokens": 106,
+        "task_id": "A09",
+        "category": "fact",
+        "run_id": "a0d799dd-1b9d-4014-9093-36e6d1803780",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "30": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 26573.5,
+        "prompt_tokens": 1711,
+        "completion_tokens": 55,
+        "task_id": "A10",
+        "category": "fact",
+        "run_id": "f72bda1f-bad7-4e16-8fe2-ec006855ecf2",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "250": true
+        },
+        "forbidden_present": {
+          "200": false
+        },
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 13818.7,
+        "prompt_tokens": 1573,
+        "completion_tokens": 57,
+        "task_id": "A11",
+        "category": "temporal",
+        "run_id": "ff4cc833-c75d-462b-9d8f-99fe2d4c6b37",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "5": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 23837.6,
+        "prompt_tokens": 1666,
+        "completion_tokens": 52,
+        "task_id": "A12",
+        "category": "fact",
+        "run_id": "d77a1c56-1fc5-4f90-a2bf-48e4b9438c8d",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "24": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 13873.0,
+        "prompt_tokens": 1476,
+        "completion_tokens": 49,
+        "task_id": "A13",
+        "category": "fact",
+        "run_id": "4a69cd9b-8ebe-4c6f-a530-5d9c0a2243db",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "100": true,
+          "30": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 1,
+        "latency_ms": 29787.6,
+        "prompt_tokens": 1683,
+        "completion_tokens": 80,
+        "task_id": "A14",
+        "category": "table",
+        "run_id": "e8976d81-3008-438b-9805-b7249fef5a09",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "5": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 13157.0,
+        "prompt_tokens": 1466,
+        "completion_tokens": 54,
+        "task_id": "A15",
+        "category": "fact",
+        "run_id": "097607f5-fdb8-4c20-a9f7-8698e5529956",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "笔记本": true,
+          "显示器": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 17495.9,
+        "prompt_tokens": 1202,
+        "completion_tokens": 48,
+        "task_id": "A16",
+        "category": "compound",
+        "run_id": "5ee25073-525c-41ca-9117-f0a235751767",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "24": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 12539.7,
+        "prompt_tokens": 1261,
+        "completion_tokens": 51,
+        "task_id": "A17",
+        "category": "fact",
+        "run_id": "f369c708-4308-4545-b809-b64c6034bab0",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "5": true,
+          "2": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 20104.3,
+        "prompt_tokens": 1271,
+        "completion_tokens": 53,
+        "task_id": "A18",
+        "category": "compound",
+        "run_id": "0093c0b1-3f06-4159-9183-863de26a1ed6",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "18:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 13306.5,
+        "prompt_tokens": 1680,
+        "completion_tokens": 54,
+        "task_id": "A19",
+        "category": "fact",
+        "run_id": "474d8994-7880-47b7-ab09-b9dbd473bfc0",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "7": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 21898.2,
+        "prompt_tokens": 1482,
+        "completion_tokens": 47,
+        "task_id": "A20",
+        "category": "fact",
+        "run_id": "4f5e8c08-7841-44d6-9722-eef3bffa123d",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "8088": true,
+          "9088": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 1,
+        "latency_ms": 16833.7,
+        "prompt_tokens": 1781,
+        "completion_tokens": 80,
+        "task_id": "A21",
+        "category": "compound",
+        "run_id": "59238097-5023-4602-b702-9a5828e9e205",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "超大文件": true,
+          "独立 worker": true,
+          "租约": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 2,
+        "citation_count": 2,
+        "latency_ms": 30171.4,
+        "prompt_tokens": 1656,
+        "completion_tokens": 102,
+        "task_id": "A22",
+        "category": "compound",
+        "run_id": "1a77a5f9-adb6-4459-9189-514791bfbb29",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "ORCHID-7319": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 14811.7,
+        "prompt_tokens": 1271,
+        "completion_tokens": 55,
+        "task_id": "A23",
+        "category": "acl",
+        "run_id": "795f5385-a0f6-4d09-9d61-d74af8c60733",
+        "steps": 2
+      },
+      {
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 2,
+        "latency_ms": 49358.8,
+        "prompt_tokens": 2181,
+        "completion_tokens": 106,
+        "task_id": "A24",
+        "category": "conflict",
+        "run_id": "8a85244e-c717-4235-bda5-0fbd7e26fc6e",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "45": true
+        },
+        "forbidden_present": {
+          "90": false
+        },
+        "correct": true,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 12365.2,
+        "prompt_tokens": 1308,
+        "completion_tokens": 49,
+        "task_id": "A25",
+        "category": "tenant",
+        "run_id": "2404cf7e-4cf6-4d4f-bbf8-0747274a803b",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "insufficient_evidence",
+        "status_ok": false,
+        "facts": {},
+        "forbidden_present": {
+          "CORAL-4826": false
+        },
+        "correct": false,
+        "claim_count": 1,
+        "citation_count": 1,
+        "latency_ms": 26440.4,
+        "prompt_tokens": 1829,
+        "completion_tokens": 55,
+        "task_id": "A26",
+        "category": "tenant",
+        "run_id": "037355e9-f45d-46bf-a8e2-b29930d7d3ce",
+        "steps": 3
+      },
+      {
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "facts": {},
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 0,
+        "citation_count": 0,
+        "latency_ms": 10856.9,
+        "prompt_tokens": 1074,
+        "completion_tokens": 38,
+        "task_id": "A27",
+        "category": "refusal",
+        "run_id": "4c510749-ac61-4704-a6cf-f62a68384f23",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "120": true,
+          "90": true,
+          "20": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 3,
+        "citation_count": 3,
+        "latency_ms": 46147.5,
+        "prompt_tokens": 2113,
+        "completion_tokens": 188,
+        "task_id": "A28",
+        "category": "compound",
+        "run_id": "d33d13c0-2f33-4322-896a-42439157fbec",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "10": true,
+          "15": true,
+          "18:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 3,
+        "citation_count": 3,
+        "latency_ms": 50480.8,
+        "prompt_tokens": 2238,
+        "completion_tokens": 183,
+        "task_id": "A29",
+        "category": "compound",
+        "run_id": "6a3c3d73-aaa5-43f3-a654-b2394fce6dd4",
+        "steps": 3
+      },
+      {
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "facts": {
+          "15": true,
+          "60": true,
+          "5": true,
+          "2": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "claim_count": 3,
+        "citation_count": 2,
+        "latency_ms": 49009.6,
+        "prompt_tokens": 2078,
+        "completion_tokens": 192,
+        "task_id": "A30",
+        "category": "compound",
+        "run_id": "8867867a-33e0-48b9-a796-9d1742964d3c",
+        "steps": 3
+      }
+    ]
+  },
+  "summary": {
+    "memory_off": {
+      "tasks": 30,
+      "correct": 30,
+      "accuracy": 1.0,
+      "status_accuracy": 1.0,
+      "forbidden_leaks": 0,
+      "median_latency_ms": 15925.0,
+      "mean_prompt_tokens": 1247.0,
+      "mean_completion_tokens": 85.9
+    },
+    "memory_on": {
+      "tasks": 30,
+      "correct": 29,
+      "accuracy": 0.9667,
+      "status_accuracy": 0.9667,
+      "forbidden_leaks": 0,
+      "median_latency_ms": 21890.7,
+      "mean_prompt_tokens": 1675.4,
+      "mean_completion_tokens": 86.4
+    }
+  },
+  "paired": {
+    "pairs": 30,
+    "both_correct": 29,
+    "both_wrong": 0,
+    "memory_off_only_correct": 1,
+    "memory_on_only_correct": 0,
+    "accuracy_delta": -0.0333,
+    "mcnemar_exact_p": 1.0,
+    "changed_tasks": [
+      "A26"
+    ]
+  }
+}

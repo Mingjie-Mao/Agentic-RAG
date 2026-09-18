@@ -1,4 +1,4 @@
-# Enterprise-RAG 未来演化规划
+# Agentic-RAG 未来演化规划
 
 > **目标：做一个面试官可以试用、设计可以解释、实验可以复现的落地项目。**
 >
@@ -7,13 +7,13 @@
 >
 > **复杂度必须由实测失败推动，而不是由技术名词推动。**
 
-核查日期：2026-09-16。本文是未来设计，不是功能发布说明。除第 2 节明确标为已有的能力外，新增架构、接口、预算控制与验收门槛均为**未实现／待验证**。
+初始核查日期：2026-09-16；最终实施复核日期：2026-09-18。第 2 节保留启动工作前的 RAG 基线，第 7 节起用明确的“实施状态”标注已经落地的 Agent、异步执行、三层记忆、访客限制与 benchmark；其余训练和 RL 仍是可选未来研究。
 
 ## 1. 文档目的与边界
 
 `PROJECT_PLAN.md` 继续记录当前 RAG 的实现、阶段状态和实验；本文仅负责演化方向、架构边界、阶段依赖和停止条件，不替代原计划，不复制开发日志。
 
-本轮只新增本文，不实现功能、不修改现有代码、数据或原计划。仓库已有未提交修改，核查以当前工作树为准，而不是只看 Git HEAD。用户进一步明确：暂时不做商业产品。因此“Enterprise”指企业文档、权限、版本和任务场景；近期不建设企业 SaaS、全量管理后台或高可用平台。
+用户明确：暂时不做商业产品。因此“Enterprise”指企业文档、权限、版本和任务场景；近期不建设企业 SaaS、全量管理后台或高可用平台。2026-09-17 已按本文主线实现 Phase B 首版，后续状态以实施说明和 artifact 为准。
 
 **完成 Phase B 与记忆接入、拿到可靠对照和试用入口，就可以作为完整面试项目交付。** 后训练是可选研究成果，不应阻塞交付。熟悉 RL 是开展研究的优势，但不是采用 RL 的充分理由。
 
@@ -22,7 +22,7 @@
 | 想了解什么 | 阅读位置 |
 | --- | --- |
 | 当前到底有什么、参考建议哪些已过时 | 第 2 节 |
-| Agent、RAG、ChronoMem 怎么组合 | 第 3–5 节 |
+| Agent、RAG、llm-long-term-memory 怎么组合 | 第 3–5 节 |
 | 先做什么、怎么实现到可试用 | 第 6–10、17、19 节 |
 | SFT / RL 是否有必要 | 第 11–16、20 节 |
 | 开源项目具体借鉴什么 | 第 18 节 |
@@ -38,7 +38,7 @@
 
 证据优先级：**当前可执行源码 → 同配置逐题产物 → 汇总报告 → 计划／README 描述**。历史测试通过只证明对应快照，本轮不宣称重跑通过。外部项目查阅的是访问时默认分支的相关源码，不代表对整个项目做过审计，也不代表本项目已接入。
 
-本地 HEAD 为 `3b5b3954fc4b7c3fccbedc32319f2fb2b7e15f87`，但工作树与该提交不同。本轮期间其他工作继续更新了改写接入和文档；以下状态按写稿后复核的工作树校正，不以初读时的中间状态作结论。关键文件 SHA-256 前 16 位如下，供识别本次阅读基线，不能代替未来完整 run fingerprint：
+本地 HEAD 为 `3b5b3954fc4b7c3fccbedc32319f2fb2b7e15f87`，但工作树与该提交不同。以下 SHA-256 记录 2026-09-16 的历史阅读基线；实施后已经变化，不能当作当前 release fingerprint：
 
 | 文件 | SHA-256 前缀 |
 | --- | --- |
@@ -55,14 +55,14 @@
 
 | 部分 | 当前核实结果 | 后续真正缺少什么 |
 | --- | --- | --- |
-| S0–S3 | 按现有阶段口径已完成；S3 有冻结输入与完整开发基线 | 独立人工复核、语义质量测量和最终 holdout 仍未完成；不能把 S3 完成理解为质量研究结束 |
+| S0–S3 | 已完成；S3 有冻结输入、开发基线和一次性 80 题 holdout | 独立人工语义复核仍未完成；现有正确率主要是状态与字面事实口径 |
 | S4 | 进行中；PDF.js 高亮、证据抽屉、解析预览、检索 trace 已有实现；`artifacts/s4-tests.json` 记录 2 项通过、0 跳过 | 版本操作入口、剩余状态与交互回归。错误重试 UI 已有代码，但覆盖仍需验收 |
 | S5 检索 | BM25 / Dense / Hybrid 均已实现；默认 `hybrid`；RRF 每路 depth=50、constant=60，最后返回 top_k | Reranker 及完整消融尚未实现 |
-| S5-E1 改写 | A–D 各 160 轮检索实验已完成；后端 `/api/chat` 已接受 `history`，默认 `rule`，每次重算当前 ACL | 复核时 Web 提问仍只发送 question；浏览器端历史回放与多轮端到端验收仍待补齐，不能等同完整对话能力 |
-| S6–S8 | 尚未整体完成 | 版本替换、删除清理、撤权与并发加固、发布评测及演示收尾；基础鉴权和任务租约并非待从零建设 |
+| S5-E1 改写 | A–D 各 160 轮检索实验已完成；Web 会发送当前会话最近 10 个问题，后端默认 `rule` 改写并每轮重算 ACL | 短期记忆只存在当前浏览器会话，刷新后不恢复；它用于检索改写，不替代证据 |
+| S6–S8 | 版本替换、删除清理、撤权、并发回归、备份恢复与发布评测已完成 | 单机试用不声明多机高可用、TLS 终止或生产 SLA |
 | 评测恢复 | S3 已有逐题 JSONL、flush/fsync、输出锁、配置摘要、数据哈希、模型 digest、重复行检查和依赖重试 | 分片调度、坏尾行恢复、运行中源码隔离、完整环境指纹；S5 runner 仍以 `w` 打开结果且无同等 resume 机制 |
 | 公开子集 | 已跑完 39 题 × 3 路，`artifacts/s3-public-summary.json` 为 complete | 英文散文 gold 的语义评分未完成；旧产物仍含已不适用的字面匹配统计 |
-| Memory / Agent | 在线 RAG 支持可选问题历史驱动查询改写，服务端无状态；落库答案历史不回灌；无 Agent task loop / Working Memory / ChronoMem adapter | Agent 与独立长期记忆接入均属于未来新增 |
+| Memory / Agent | 异步 task loop、三层记忆、七个受控工具和 `llm-long-term-memory` adapter 已落地；30 题 B2 回归中 RAG / workflow 均 30/30 | 显式记忆写入可能消耗外部抽取额度；动态策略保持本地实验模式，不进入访客后端 |
 
 原计划仍有局部过时段落，例如“只走 dense”“公开子集未运行”“没有 Git 提交”；原建议中的“改写实现未开始”也已过时。中英文 README 已在并行工作中补入改写结果；本轮只在本文记录核查结论，不改写其他文件。`/api/system` 仍硬编码 `retrieval: dense`，应在 Phase A 收尾时与实际设置统一。
 
@@ -154,7 +154,7 @@ flowchart TB
   CTRL --> POLICY[可替换 Policy：规则 / Instruct / SFT]
   POLICY --> GATE[确定性工具网关：Schema / ACL / Budget]
   GATE --> KT[RAG Knowledge Tools]
-  GATE --> MT[ChronoMem Adapter]
+  GATE --> MT[llm-long-term-memory Adapter]
   GATE -.后续.-> BT[沙箱业务工具]
   KT --> RAG
   RAG --> DB[(PostgreSQL + OpenSearch + 原件)]
@@ -177,9 +177,9 @@ flowchart TB
   class BT,TRAIN opt;
 ```
 
-第一版仍是一个 FastAPI 应用加现有 worker／数据服务，新增 Agent task 执行器；不因为画了模块就拆成多个微服务。ChronoMem 独立进程与独立依赖环境，避免与现有 Python／模型库绑定。RAG 单轮入口始终保留，训练系统不进入在线请求链。
+第一版仍是一个 FastAPI 应用加现有 worker／数据服务，新增 Agent task 执行器；不因为画了模块就拆成多个微服务。`llm-long-term-memory` 独立进程与独立依赖环境，避免与现有 Python／模型库绑定。RAG 单轮入口始终保留，训练系统不进入在线请求链。
 
-## 5. Memory 边界与 ChronoMem 接入
+## 5. Memory 边界与 llm-long-term-memory 接入
 
 ### 5.1 四种信息，各自只有一个职责
 
@@ -187,24 +187,31 @@ flowchart TB
 | --- | --- | --- | --- |
 | Conversation Context | 用户这一句省略了什么？ | 同会话最近 N=3 轮问题文本，限长、可丢弃 | 旧答案或旧证据不能成为本轮可信知识 |
 | Working Memory | 任务做到哪一步？ | goal、步骤、待执行动作、失败状态、证据 ID 与依赖 | 不进入个人长期向量库 |
-| Enterprise-RAG | 企业文件实际写了什么？ | 文档、版本、ACL、原件、可定位证据 | 不存推测出来的个人事实 |
-| ChronoMem | 用户过去说过什么、如何变化？ | 跨会话个人事实、偏好、有效区间、原始对话来源 | 不授予企业文档访问权，不代替当前政策 |
+| Agentic-RAG | 企业文件实际写了什么？ | 文档、版本、ACL、原件、可定位证据 | 不存推测出来的个人事实 |
+| llm-long-term-memory | 用户过去说过什么、如何变化？ | 跨会话个人事实、偏好、有效区间、原始对话来源 | 不授予企业文档访问权，不代替当前政策 |
 
 查询改写后仍重新检索与鉴权；规则改写当前只是拼接上一问，可能污染换题，不能把“无需模型”误当作“无需实验”。不再建设一个短期向量记忆系统。
 
+当前三层均已实现：短期记忆由浏览器传递当前会话最近 10 个问题；Working Memory 由
+`AgentTask / AgentEvent / ToolExecution` 持久化，支持租约、恢复、预算和审计；长期记忆由独立
+服务保存跨会话偏好与角色。长期记忆的确定收益是减少重复说明、保持输出偏好一致并隔离用户
+namespace。尚无 memory on/off 正确率对照，因此不把它写成企业事实问答的准确率提升。
+
 ### 5.2 外部项目已实现什么，接入还缺什么
 
-仓库正式名是 [`llm-long-term-memory`](https://github.com/Mingjie-Mao/llm-long-term-memory)，本文沿用讨论中的 ChronoMem 指代它。它已有长期事实检索、时间更新与来源恢复、REST 与 MCP；并没有本项目的 Agent Working Memory。其 README 明确区分线上服务与 playground，后者不能冒充完整 LLM 抽取／回答链。[项目说明](https://github.com/Mingjie-Mao/llm-long-term-memory#interfaces)
+仓库正式名是 [`llm-long-term-memory`](https://github.com/Mingjie-Mao/llm-long-term-memory)。它已有长期事实检索、时间更新与来源恢复、REST 与 MCP；并没有本项目的 Agent Working Memory。其 README 明确区分线上服务与 playground，后者不能冒充完整 LLM 抽取／回答链。[项目说明](https://github.com/Mingjie-Mao/llm-long-term-memory#interfaces)
 
 当前 `MemoryService` 统一资源与领域逻辑，使用 SQLite 与独立 NumPy 向量文件，并以进程内锁串行写入；读取与 live extractor／answerer 是不同依赖路径。该结构适合通过 adapter 复用，不适合把数据库直接并入 PostgreSQL，也不应让每个 Agent tool 重新加载 embedder。[服务源码](https://github.com/Mingjie-Mao/llm-long-term-memory/blob/main/src/llm_long_term_memory/api/service.py)
 
 REST 已有身份解析入口；README 说明配置 token 后 namespace 由凭证约束，未配置时允许开放 namespace，MCP HTTP 不具备等价身份边界。面试联调优先 **私网 REST + 服务端身份映射**；不向浏览器暴露 Memory token，不让模型自填 `user_id`。[API 源码](https://github.com/Mingjie-Mao/llm-long-term-memory/blob/main/src/llm_long_term_memory/api/app.py)
 
-### 5.3 Adapter 契约（未实现）
+### 5.3 Adapter 契约（首版已实现）
+
+已实现 `search_memory` 与显式 `POST /api/agent/memories`；timeline 与 forget 暂未暴露到 Agentic-RAG UI。真实本机联调已验证受信 Bearer token 与 `tenant:user` 命名空间。长期记忆 A/B 实验只为三个虚构测试用户写入同一组回答偏好，并记录抽取调用量；不写入企业证据或真实用户资料。
 
 | 本项目逻辑工具 | 对应现有 REST | 接入约束 |
 | --- | --- | --- |
-| `retrieve_memory(query, limit)` | `POST /v1/memories/search` | 由网关注入 namespace；返回 ID、来源、有效期与受限文本 |
+| `search_memory(query, limit)` | `POST /v1/memories/search` | 由网关注入 namespace；返回 ID、来源、有效期与受限文本 |
 | `timeline(subject, predicate)` | `GET /v1/timeline` | 用户偏好／状态沿革，不是政策版本时间线 |
 | `remember(user_statement, idempotency_key)` | `POST /v1/messages` | 只写用户明确要求保存的陈述；默认不写 Agent 输出 |
 | `forget(memory_id)` | `DELETE /v1/memories/{id}` | 区分标记移除与完整删除；不承诺删除备份 |
@@ -216,7 +223,7 @@ MCP 原有名字是 `search_memory`、`search_conversations`、`get_timeline`、
 ```mermaid
 flowchart LR
   U[用户明确保存偏好] --> W[写入门控与 namespace]
-  W --> M[(ChronoMem 个人记忆)]
+  W --> M[(llm-long-term-memory 个人记忆)]
   M --> R[按当前身份检索]
   R --> P[偏好与时间来源]
   P --> C[上下文装配]
@@ -241,9 +248,9 @@ flowchart LR
 
 记忆集成从 20 个虚构跨会话场景开始，每个包括无记忆、有记忆、错误／过期记忆三个条件；额外记录抽取调用数、去重调用数、读取延迟、写入延迟、总 token。上线前身份隔离与删除后重读硬回归必须全部通过，偏好遵循收益不得以事实错误增加为代价。
 
-**第一版不把企业证据或其摘要写进 ChronoMem。** 若未来允许，须新增外部证据依赖 schema 与访问回查契约；每条派生记忆保存 doc/version/chunk 依赖，读取正文前重新验证，失权时连同摘要、原始对话回溯与缓存一起隔离。仅调用一次 `forget` 不足以阻断 raw recovery 复活内容。这是未来设计，不能声称 ChronoMem 当前已具备文档级 ACL。
+**第一版不把企业证据或其摘要写进 llm-long-term-memory。** 若未来允许，须新增外部证据依赖 schema 与访问回查契约；每条派生记忆保存 doc/version/chunk 依赖，读取正文前重新验证，失权时连同摘要、原始对话回溯与缓存一起隔离。仅调用一次 `forget` 不足以阻断 raw recovery 复活内容。这是未来设计，不能声称长期记忆当前已具备文档级 ACL。
 
-## 6. Phase A：完成面试范围内的 Enterprise-RAG
+## 6. Phase A：完成面试范围内的 Agentic-RAG
 
 **目标／为什么现在做**：先让单轮 RAG 的答案、证据、版本与失败行为可靠，否则 Agent 只是多次调用不可靠部件。保留 S0–S3 成果，完成 S4–S8 在受控试用范围内的验收。
 
@@ -289,17 +296,43 @@ Relevance 与 entailment 必须拆开：前者问“这段材料是否回答这�
 
 **硬性回归**：跨 tenant、撤权、删除、历史与引用重读、worker 过期租约、旧任务覆盖新版、无权限候选进入 reranker／LLM、文档提示注入、坏文件和依赖失败。固定场景违规数为 0 是验收要求，不是安全性的统计证明。
 
-**验收／进入 B 的 Gate**：单轮链路独立可用；硬回归全部通过；四路检索对照有完整报告（重排允许无收益并关闭）；规则改写完成在线端到端验收，未通过则关闭在线历史功能；语义评分经过人工校准；长跑可恢复；S7 按封存协议完成一次发布评测；五分钟 RAG 演示可完成。剩余已知质量问题有分类与披露，不能通过未实现判别器来宣称“解决幻觉”。
+**验收／进入 B 的 Gate**：单轮链路独立可用；硬回归全部通过；四路检索对照有完整报告（重排允许无收益并关闭）；规则改写完成在线端到端验收；语义评分经过人工校准；长跑可恢复；S7 按封存协议完成一次发布评测；试用入口可独立完成问答、引用检查与 Agent 任务。剩余已知质量问题有分类与披露，不能通过未实现判别器来宣称“解决幻觉”。
 
 **主要参考**：RAGFlow、Onyx、Haystack，源码映射见第 18 节。**本阶段不做** Agent、训练、GraphRAG、额外格式扩张与分布式搜索。
 
 ## 7. Phase B：Enterprise Knowledge Agent
 
+> **实施状态（2026-09-17）**：Agent、异步执行和长期记忆 adapter 已落地。`AgentTask / AgentEvent / ToolExecution` 持久化轨迹；API 以 `202/queued` 返回，worker 使用租约、三次中断恢复和手动重排队；七个受控工具包含 `search_memory`。`llm-long-term-memory` 以独立进程接入，服务端逐用户 token 绑定 `tenant:user` 命名空间，记忆不能作为企业事实证据。B2 的 30 题开发回归中，单次 RAG 与固定 workflow 均为 30/30、禁区泄漏为 0；这不是独立留出成绩。修复前动态 Agent 在 B1 的 5 题上没有质量增益且中位延迟为当时单次 RAG 的 4.73 倍。因此当前 Gate 结论是：默认自动路由到单次 RAG／固定 workflow，动态模式作为实验能力，暂不训练或开展 RL。详见 `AGENT_BENCHMARK.md`。
+
+> **Memory A/B（2026-09-18）**：30 个固定 workflow 任务成对开关长期记忆。关闭为 30/30，开启
+> 为 29/30，差值 −3.3 个百分点且 McNemar `p=1.0`；开启平均多 428.4 个 prompt token，中位
+> 延迟多 6.0 秒。唯一变化来自外租户问题被本租户相似证据错误归属，现已在检索前确定性拒绝
+> 明确的外租户名称，定向开／关回归均通过。结论是长期记忆尚无事实正确率增益证据，价值仍限于
+> 偏好和跨会话上下文；未来需另设偏好遵从指标。
+
 **目标**：围绕三个选定场景，完成可恢复、可观察、权限受控的单 Agent；交付简报、版本差异与可核验来源。
 
 **为什么需要／对应失败**：单轮 top_k 无法根据中间缺口继续查找，不能先定位文档再选择旧版，也不能处理多步失败。这里先实现 deterministic workflow 基线，再允许模型在明确状态与工具空间中选择动作。
 
-### 7.1 Agent Loop（未实现）
+### 7.1 Agent Loop（异步 MVP 与首轮评测已完成）
+
+```mermaid
+flowchart LR
+  UI[React 试用界面] -->|POST 202| API[FastAPI]
+  API --> Q[(AgentTask: queued)]
+  W[Worker] -->|FOR UPDATE SKIP LOCKED| Q
+  W -->|lease token + timeout| C[Controller]
+  C --> P{workflow / dynamic}
+  P --> G[Tool Gateway: schema + ACL]
+  G --> R[RAG / 版本工具]
+  G --> M[LLTM adapter]
+  M -->|Bearer token| L[llm-long-term-memory]
+  L --> N[(tenant:user namespace)]
+  R --> V[引用校验 + 最终鉴权]
+  N -->|偏好上下文，非事实证据| V
+  V --> E[(事件与结果)]
+  UI -->|轮询| E
+```
 
 ```mermaid
 flowchart TB
@@ -407,7 +440,13 @@ sequenceDiagram
 
 ## 10. Agent Evaluation：训练之前先证明 Agent 有用
 
-新增独立 Enterprise Agent Benchmark，不能把现有单轮题改写几遍后随机切行当成 Agent holdout。拟先写 **30 个 smoke 任务**，再建立 **120 个任务：60 train/trajectory、30 dev、30 sealed test**；此规模仅为开发起点，不足以保证显著性。按文档家族、版本家族、任务模板、记忆 persona 联合隔离；现有 80 个 RAG holdout 继续封存，不作为轨迹来源。
+Enterprise Agent Benchmark 已落地为 **30 个分类开发回归任务**，覆盖事实、复合问答、冲突、
+ACL、跨租户、时间版本、表格和拒答。它参与过故障定位，因此只用于版本回归，不宣称独立泛化。
+`agent-v1` 不再追加 Agent holdout；若未来启动 SFT/RL，必须在训练前另行冻结未参与调试的评测任务。
+
+当前从真实 benchmark 轨迹去重得到 17 类历史失败（5 类冲突漏判、1 类错误作答、2 类错误拒答、9 类漏项），
+全部已由确定性工程修复并在后续运行中通过，未解决样本为 0。训练 Gate 要求至少 50 个去重、
+人工归因、可重放的未解决失败并覆盖至少 3 类；在达到门槛前不选择 SFT、偏好优化、蒸馏或 RL。
 
 场景覆盖：多文档、版本对比、冲突、缺失证据、需补查、中途撤权、跨 tenant、工具超时、恢复、不可回答、过期记忆、错误记忆、提示注入。试用展示案例和正式测试集分开。
 
@@ -628,13 +667,13 @@ rollout 决策数 ≈ 任务数 × 每题采样数 × 平均决策步数 × 重�
 
 | 入口 | 体验 | 资源与诚实边界 |
 | --- | --- | --- |
-| 常驻展示页／录屏／轨迹回放 | 随时看架构、三段任务、来源与实测对照 | 明确标“录制／回放”，不伪装为当前实时模型结果 |
-| 预约实时试用 | 浏览器直接体验本机已暖机服务 | 临时 HTTPS 入口、访客凭证、有效期、排队与配额；Mac 必须在线 |
+| 常驻展示页 | 随时看架构、来源、限制与实测对照 | 静态页面明确说明不执行模型 |
+| 临时实时试用 | 浏览器直接体验本机已暖机服务 | 临时 HTTPS 入口、只读访客凭证、每日 10 次、单活动任务；Mac 必须在线 |
 | 以后可选常驻实时站点 | 无需预约 | 只有获得托管与推理预算才评估，不能把完整 OpenSearch+7B 栈塞进免费静态托管假装可用 |
 
-预约入口只暴露应用网关，数据库、OpenSearch、Ollama、Memory 服务保持内网；使用独立虚构 demo namespace，访客不能更改共享 ACL 或上传无限文件。基础身份、HTTPS、限额与一键复位是可用试用的必要工程，不展开 SSO、计费、全套运营后台。
-
-拟定五分钟流程：① 单问并打开 PDF 引用；② 比较两版政策，展开工具步骤；③ 关联虚构工单生成简报；④ 保存／更新个人偏好，新会话读取时间线；⑤ 展示撤权／工具失败的预设回归与一张 baseline 对照表。现场时间不够时只实时跑一项，其余明确用录制轨迹回放。
+临时入口只暴露应用网关，数据库、OpenSearch、Ollama、Memory 服务保持内网；只返回配置的
+虚构访客账号。服务端原子预留每日额度，限制一个活动 Agent，禁止动态模式、资料修改、ACL
+修改和长期记忆写入；`scripts/reset_trial.py` 清除访客任务、问答、会话与额度而不修改种子资料。
 
 ## 18. 每阶段三个 GitHub 参考：只借鉴可落到本项目的边界
 
@@ -663,12 +702,12 @@ rollout 决策数 ≈ 任务数 × 每题采样数 × 平均决策步数 × 重�
 
 估算是单人专注开发时数，依赖既有 RAG 基础；不包含本地长跑机时和模型下载。按首个里程碑实际速度重估，不承诺日历交付。若求职期限紧，优先 M1–M4，M5／M6 不阻塞投递。
 
-| 里程碑 | 依赖 | 交付物（均待实现／补完） | 验收 | 粗估投入 |
+| 里程碑 | 状态 | 交付物 | 验收 | 粗估投入 |
 | --- | --- | --- | --- | --- |
-| M1：RAG 收尾 | 当前 S0–S3 | A 阶段质量、恢复、版本、UI 与发布评测闭环 | 第 6 节 Gate；独立运行演示 | 35–60 h |
-| M2：可解释 Agent | M1 | 六个有限工具、workflow 基线、单 Agent、task 状态 | 完整轨迹、失败恢复、撤权硬回归 | 30–50 h |
-| M3：Memory 集成 | M2 | 独立 adapter、只读再显式写入、时间来源视图 | 第 5 节跨会话与隔离回归；成本路径明确 | 15–30 h；本地 extractor 适配另估 |
-| M4：面试交付 | M2、M3 | benchmark 对照、访客试用、五分钟演示与回放 | 陌生人能按说明完成任务，可复位，限制透明 | 15–25 h |
+| M1：RAG 收尾 | 完成 | A 阶段质量、恢复、版本、UI 与发布评测闭环 | 第 6 节 Gate；独立运行试用 | 35–60 h |
+| M2：可解释 Agent | 完成 | 七个受控工具、workflow 基线、单 Agent、task 状态 | 完整轨迹、失败恢复、撤权硬回归 | 30–50 h |
+| M3：Memory 集成 | 完成 | 独立 adapter、受信 namespace、显式写入入口 | 搜索与隔离已联调；写入额度按需启用 | 15–30 h；本地 extractor 适配另估 |
+| M4：面试交付 | 完成 | benchmark 对照、静态展示、有限额可复位访客后端 | 访客能完成任务，限制透明 | 15–25 h |
 | M5：小模型后训练 | M4 + 稳定可训练失败 | 轨迹集、SFT／蒸馏、同模型对照 | 第 11–12 节 Gate | 20–40 h + 算力机时 |
 | M6：Agentic RL 研究 | M5 + reward/environment/预算通过 | 一个环境、一种算法、与 SFT 对照 | 第 13–16 节 Gate | 30–60 h 起 + 独立 GPU 预算 |
 
@@ -715,7 +754,7 @@ web/src/                     在现有界面增任务步骤与来源；按需拆
 | SFT / 蒸馏 | 有稳定错误和可靠示范，同模型对照改善 | 工具／数据问题先修工程；无收益不进入 RL |
 | DPO | 同任务偏好对可靠，确实改善任务行为 | 仅“更像评分器喜欢的答案”不晋级 |
 | RL | SFT 后策略缺口、可验证 reward、冻结环境、预算就绪 | 奖励失真／环境不稳／无净收益，保留 SFT |
-| 公开实时试用 | 隔离数据、访客授权、HTTPS、限额、可复位 | 暂用预约入口与透明回放，不无限期暴露本机服务 |
+| 公开实时试用 | 隔离数据、访客授权、HTTPS、限额、可复位 | 使用临时入口；本机离线时明确不可用 |
 
 若某阶段收益不显著，可以作为工程探索记录；不得将“没有证明显著更好”改写成“证明没有收益”，也不能持续加测直到显著。安全失败直接暂停；性能或效果失败记录原因并选择成本更低的已验证配置。
 
@@ -725,7 +764,7 @@ web/src/                     在现有界面增任务步骤与来源；按需拆
 flowchart TB
   A[Phase A：RAG 完成受控试用验收] --> B[Phase B：单 Agent 与固定 workflow 对照]
   B --> E[Agent Evaluation + Trajectory Logging]
-  B --> M[ChronoMem Adapter：先读后显式写]
+  B --> M[llm-long-term-memory Adapter：先读后显式写]
   E --> DEMO[面试可交付：真实试用 + 可解释实验]
   M --> DEMO
   DEMO --> GAP{还有稳定可训练失败?}
@@ -756,7 +795,7 @@ flowchart TB
 
 - Multi-Agent swarm、为增加技术标签而做 GraphRAG、自研 foundation model。
 - 从零实现 PPO／GRPO，或一次比较多种 RL 算法。
-- 合并 ChronoMem 与 Enterprise-RAG 数据库，自动把 Agent 结果永久写入长期记忆。
+- 合并 ChronoMem 与 Agentic-RAG 数据库，自动把 Agent 结果永久写入长期记忆。
 - 通用 workflow builder、Kubernetes 平台、全公司规模分布式搜索、完整 SaaS 运营体系。
 - 任意 shell／SQL／外部消息发送，或把真实业务写操作放进首版 Agent。
 - 为了上线而去掉 ACL／证据校验，或把历史回放包装成实时生成。

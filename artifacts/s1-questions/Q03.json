@@ -20,44 +20,167 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "08d50767-fbe1-4e80-ac9e-acadd01d159f",
+    "id": "13f5e3a9-daf5-4933-8c70-7be0d1f864a1",
     "question": "星桥产品上传接口单个文件的大小上限是多少？",
     "status": "answered",
     "claims": [
       {
         "text": "星桥产品的文件上传接口单个文件上限为20MB。",
         "evidence_ids": [
-          "5d43f246-232e-50fe-b546-419d3730d121"
+          "7874b95b-b5b8-5de8-b57a-42b17c8def02"
         ],
         "quotes": [
-          "星桥产品的文件上传接口单个文件上限为 20 MB。"
+          "星桥产品的文件上传接口单个文件上限为 20 MB。"
         ]
       }
     ],
     "citations": [
       {
-        "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+        "chunk_id": "7874b95b-b5b8-5de8-b57a-42b17c8def02",
         "document_id": "seed-upload-guide",
-        "version_id": "70e847f0-517e-420c-bbf6-4cbaa5ea782e",
+        "version_id": "715a3724-f8f6-40d2-bcd4-ee9f4bbc799d",
         "title": "文件上传接口手册",
         "locator": {
           "kind": "pdf",
           "page": 1,
+          "block_type": "section_header",
+          "heading_path": [
+            "文件上传规则"
+          ],
+          "provenance": [
+            {
+              "page": 1,
+              "bbox": {
+                "l": 78,
+                "t": 702.9968,
+                "r": 144,
+                "b": 691.9682614361702,
+                "coord_origin": "BOTTOMLEFT"
+              },
+              "charspan": [
+                0,
+                6
+              ]
+            }
+          ],
+          "item_ref": "#/texts/2",
           "label": "第 1 页",
+          "kind_for_source": "pdf",
+          "sources": [
+            {
+              "start": 0,
+              "end": 6,
+              "locator": {
+                "kind": "pdf",
+                "page": 1,
+                "block_type": "section_header",
+                "heading_path": [
+                  "文件上传规则"
+                ],
+                "provenance": [
+                  {
+                    "page": 1,
+                    "bbox": {
+                      "l": 78,
+                      "t": 702.9968,
+                      "r": 144,
+                      "b": 691.9682614361702,
+                      "coord_origin": "BOTTOMLEFT"
+                    },
+                    "charspan": [
+                      0,
+                      6
+                    ]
+                  }
+                ],
+                "item_ref": "#/texts/2",
+                "label": "第 1 页"
+              },
+              "overlap_start": 0,
+              "overlap_end": 6
+            },
+            {
+              "start": 7,
+              "end": 54,
+              "locator": {
+                "kind": "pdf",
+                "page": 1,
+                "block_type": "text",
+                "heading_path": [
+                  "文件上传规则"
+                ],
+                "provenance": [
+                  {
+                    "page": 1,
+                    "bbox": {
+                      "l": 78,
+                      "t": 678.9968,
+                      "r": 468.03799999999995,
+                      "b": 667.9682614361702,
+                      "coord_origin": "BOTTOMLEFT"
+                    },
+                    "charspan": [
+                      0,
+                      47
+                    ]
+                  }
+                ],
+                "item_ref": "#/texts/3",
+                "label": "第 1 页"
+              },
+              "overlap_start": 0,
+              "overlap_end": 47
+            },
+            {
+              "start": 55,
+              "end": 97,
+              "locator": {
+                "kind": "pdf",
+                "page": 1,
+                "block_type": "text",
+                "heading_path": [
+                  "文件上传规则"
+                ],
+                "provenance": [
+                  {
+                    "page": 1,
+                    "bbox": {
+                      "l": 78,
+                      "t": 654.9968,
+                      "r": 510.71799999999996,
+                      "b": 643.9682614361702,
+                      "coord_origin": "BOTTOMLEFT"
+                    },
+                    "charspan": [
+                      0,
+                      42
+                    ]
+                  }
+                ],
+                "item_ref": "#/texts/4",
+                "label": "第 1 页"
+              },
+              "overlap_start": 0,
+              "overlap_end": 42
+            }
+          ],
           "char_start": 0,
-          "char_end": 140
+          "char_end": 97,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 75,
+          "token_counter": "cl100k_base"
         },
-        "text": "文件上传接口手册\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n文件上传规则\n星桥产品的文件上传接口单个文件上限为 20 MB。支持 PDF、Markdown 和 CSV。\n批量上传每批最多 10 个文件。这里描述的是虚构产品接口，不是本演示系统的上传限制。",
-        "preview_url": "/api/evidence/5d43f246-232e-50fe-b546-419d3730d121",
-        "original_url": "/api/versions/70e847f0-517e-420c-bbf6-4cbaa5ea782e/original"
+        "text": "文件上传规则\n星桥产品的文件上传接口单个文件上限为 20 MB。支持 PDF、Markdown 和 CSV。\n批量上传每批最多 10 个文件。这里描述的是虚构产品接口，不是本演示系统的上传限制。",
+        "preview_url": "/api/evidence/7874b95b-b5b8-5de8-b57a-42b17c8def02",
+        "original_url": "/api/versions/715a3724-f8f6-40d2-bcd4-ee9f4bbc799d/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "星桥产品上传接口单个文件的大小上限是多少？",
       "retrieval_query": "星桥产品上传接口单个文件的大小上限是多少？",
@@ -67,22 +190,33 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.5789,
+        "claim_support": [
+          1
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 800,
+      "context_tokens_estimate": 817,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "5d43f246-232e-50fe-b546-419d3730d121",
+          "chunk_id": "7874b95b-b5b8-5de8-b57a-42b17c8def02",
           "rank": 1,
           "title": "文件上传接口手册",
           "document_id": "seed-upload-guide",
+          "version_id": "715a3724-f8f6-40d2-bcd4-ee9f4bbc799d",
           "locator_label": "第 1 页",
-          "score": 0.8556,
+          "score": 0.8548,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -91,62 +225,97 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "a29a8489-2d6f-54ff-8171-882d8f7bf209",
+          "chunk_id": "0f37d546-103a-53ff-8e24-02c7d06e6f5e",
           "rank": 2,
-          "title": "formula-missing.xlsx",
-          "document_id": "cb290445-6850-45d0-8ec4-d01cbc42edfa",
-          "locator_label": "费用规则 · A1:D1",
-          "score": 0.4883,
-          "bm25_rank": 2,
-          "dense_rank": 7,
-          "fusion_score": 0.031054,
+          "title": "API 调用配额说明",
+          "document_id": "seed-api-limits",
+          "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+          "locator_label": "第 5 行起",
+          "score": 0.7069,
+          "bm25_rank": 3,
+          "dense_rank": 2,
+          "fusion_score": 0.032002,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "chunk_id": "d2229620-bea0-5b01-82b3-71e40b571448",
           "rank": 3,
-          "title": "API 调用配额说明",
-          "document_id": "seed-api-limits",
-          "locator_label": "第 1–9 行",
-          "score": 0.6636,
-          "bm25_rank": 14,
-          "dense_rank": 2,
-          "fusion_score": 0.029643,
+          "title": "文件上传接口手册",
+          "document_id": "seed-upload-guide",
+          "version_id": "715a3724-f8f6-40d2-bcd4-ee9f4bbc799d",
+          "locator_label": "第 1 页",
+          "score": 0.5222,
+          "bm25_rank": 2,
+          "dense_rank": 5,
+          "fusion_score": 0.031514,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "00a89e71-c021-55f2-bbc6-55cbce072804",
+          "rank": 4,
+          "title": "formula-missing.xlsx",
+          "document_id": "8fa8d384-4ffc-48ad-bd46-d31381281844",
+          "version_id": "987bdbe5-90f7-4689-bd03-842729f8e977",
+          "locator_label": "费用规则 · A1:D1",
+          "score": 0.4883,
+          "bm25_rank": 7,
+          "dense_rank": 8,
+          "fusion_score": 0.029631,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "ad7fca1f-58c1-52cf-bf2e-f1ea835a68d6",
-          "rank": 4,
+          "chunk_id": "d33304ad-5549-5300-9b40-ffc59ff0a632",
+          "rank": 5,
           "title": "Python SDK 重试配置",
           "document_id": "seed-sdk-retry",
-          "locator_label": "第 1–8 行",
-          "score": 0.562,
+          "version_id": "6b6b4da8-a812-4cc0-9cd8-a4724390c467",
+          "locator_label": "第 5 行起",
+          "score": 0.5617,
           "bm25_rank": 15,
           "dense_rank": 3,
           "fusion_score": 0.029206,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "1ba61fb6-c9ff-53a1-b08f-fb04344bb691",
+          "rank": 6,
+          "title": "业务数据保留规则",
+          "document_id": "seed-data-retention",
+          "version_id": "a6d48489-c3ef-493c-9779-981f4a7ddc15",
+          "locator_label": "第 1 页",
+          "score": 0.5324,
+          "bm25_rank": 16,
+          "dense_rank": 4,
+          "fusion_score": 0.028783,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E5"
         }
       ],
-      "embed_ms": 1019.9,
-      "retrieval_ms": 73.3,
-      "generation_ms": 36743.9,
-      "total_ms": 37871.6
+      "embed_ms": 216.5,
+      "retrieval_ms": 65.4,
+      "generation_ms": 21137.1,
+      "total_ms": 21462.8
     },
     "usage": {
-      "prompt_tokens": 997,
-      "completion_tokens": 53,
-      "model_duration_ms": 36718.3,
+      "prompt_tokens": 1181,
+      "completion_tokens": 52,
+      "model_duration_ms": 21115,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "星桥产品上传接口单个文件的大小上限是多少"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

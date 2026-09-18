@@ -1,0 +1,87 @@
+{
+  "experiment": "memory-ab-v1",
+  "design": {
+    "suite": "agent-b2-v1",
+    "primary_metric": "paired exact task correctness",
+    "memory_contract": "preferences only; never enterprise evidence",
+    "order": "odd tasks memory_off first; even tasks memory_on first",
+    "model_controls": "temperature=0, seed=42, workflow policy, max_steps=4"
+  },
+  "task_sha256": "e7632ac1a8dd59f5235569d92f1bb0f7d695228d3c74ab0d7bd0d46e6b786f13",
+  "results": {
+    "memory_off": [
+      {
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "facts": {},
+        "forbidden_present": {
+          "CORAL-4826": false
+        },
+        "correct": true,
+        "claim_count": 0,
+        "citation_count": 0,
+        "latency_ms": 62.9,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "task_id": "A26",
+        "category": "tenant",
+        "run_id": "576a3c43-e497-404c-a141-f364dcbfb65d",
+        "steps": 1
+      }
+    ],
+    "memory_on": [
+      {
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "facts": {},
+        "forbidden_present": {
+          "CORAL-4826": false
+        },
+        "correct": true,
+        "claim_count": 0,
+        "citation_count": 0,
+        "latency_ms": 346.9,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "task_id": "A26",
+        "category": "tenant",
+        "run_id": "b8c96301-e3a8-47ff-bd82-0af7de6f00f8",
+        "steps": 2
+      }
+    ]
+  },
+  "summary": {
+    "memory_off": {
+      "tasks": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "status_accuracy": 1.0,
+      "forbidden_leaks": 0,
+      "median_latency_ms": 62.9,
+      "mean_prompt_tokens": 0,
+      "mean_completion_tokens": 0
+    },
+    "memory_on": {
+      "tasks": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "status_accuracy": 1.0,
+      "forbidden_leaks": 0,
+      "median_latency_ms": 346.9,
+      "mean_prompt_tokens": 0,
+      "mean_completion_tokens": 0
+    }
+  },
+  "paired": {
+    "pairs": 1,
+    "both_correct": 1,
+    "both_wrong": 0,
+    "memory_off_only_correct": 0,
+    "memory_on_only_correct": 0,
+    "accuracy_delta": 0.0,
+    "mcnemar_exact_p": 1.0,
+    "changed_tasks": []
+  }
+}

@@ -19,14 +19,14 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "babb94ad-2f8b-416f-aea9-97e611d091b5",
+    "id": "7322d833-04cc-45e2-a84d-0ae9cd03e11f",
     "question": "P1 服务不可用工单要求多久首次响应？",
     "status": "answered",
     "claims": [
       {
-        "text": "P1服务不可用的首次响应时间为15分钟。",
+        "text": "P1 服务不可用的工单，首次响应时间为 15 分钟。",
         "evidence_ids": [
-          "53d6b5e7-e463-5658-8741-d62689411389"
+          "299da41f-e575-5bf7-9a23-34b2f76d9a03"
         ],
         "quotes": [
           "| P1 服务不可用 | 15 分钟 |"
@@ -35,29 +35,57 @@
     ],
     "citations": [
       {
-        "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
+        "chunk_id": "299da41f-e575-5bf7-9a23-34b2f76d9a03",
         "document_id": "seed-support-sla",
-        "version_id": "070746f2-7b7e-488d-9c94-ecd51063195d",
+        "version_id": "b346d2ca-95e3-4f30-8b9b-0a9ce03dd613",
         "title": "支持响应等级表",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–12 行",
+          "block_type": "table",
+          "heading_path": [
+            "支持响应等级表",
+            "工单首响"
+          ],
+          "source_char_start": 46,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 130,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "table",
+                "heading_path": [
+                  "支持响应等级表",
+                  "工单首响"
+                ],
+                "source_char_start": 46,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 130
+            }
+          ],
           "char_start": 0,
-          "char_end": 176,
-          "line_start": 1,
-          "line_end": 12
+          "char_end": 130,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 107,
+          "token_counter": "cl100k_base"
         },
-        "text": "# 支持响应等级表\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 工单首响\n| 等级 | 首次响应时间 |\n| --- | --- |\n| P1 服务不可用 | 15 分钟 |\n| P2 功能受限 | 2 小时 |\n| P3 一般咨询 | 1 个工作日 |\n首次响应不等于问题解决。支持组需要在工单中持续同步处理进度。\n",
-        "preview_url": "/api/evidence/53d6b5e7-e463-5658-8741-d62689411389",
-        "original_url": "/api/versions/070746f2-7b7e-488d-9c94-ecd51063195d/original"
+        "text": "## 工单首响\n| 等级 | 首次响应时间 |\n| --- | --- |\n| P1 服务不可用 | 15 分钟 |\n| P2 功能受限 | 2 小时 |\n| P3 一般咨询 | 1 个工作日 |\n首次响应不等于问题解决。支持组需要在工单中持续同步处理进度。\n",
+        "preview_url": "/api/evidence/299da41f-e575-5bf7-9a23-34b2f76d9a03",
+        "original_url": "/api/versions/b346d2ca-95e3-4f30-8b9b-0a9ce03dd613/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "P1 服务不可用工单要求多久首次响应？",
       "retrieval_query": "P1 服务不可用工单要求多久首次响应？",
@@ -67,22 +95,33 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.6429,
+        "claim_support": [
+          0.75
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 968,
+      "context_tokens_estimate": 877,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "53d6b5e7-e463-5658-8741-d62689411389",
+          "chunk_id": "299da41f-e575-5bf7-9a23-34b2f76d9a03",
           "rank": 1,
           "title": "支持响应等级表",
           "document_id": "seed-support-sla",
-          "locator_label": "第 1–12 行",
-          "score": 0.7552,
+          "version_id": "b346d2ca-95e3-4f30-8b9b-0a9ce03dd613",
+          "locator_label": "第 5 行起",
+          "score": 0.7948,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -91,62 +130,97 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "f5401de6-c2c3-5d2a-a241-e1bc178a3a82",
+          "chunk_id": "157fd048-ca31-5fd1-b7c6-0ba2bf57f460",
           "rank": 2,
-          "title": "工单 218：重复回调",
-          "document_id": "seed-ticket-218",
-          "locator_label": "第 1–9 行",
-          "score": 0.5623,
-          "bm25_rank": 2,
-          "dense_rank": 3,
-          "fusion_score": 0.032002,
+          "title": "SEV1 客户事故升级",
+          "document_id": "seed-support-escalate",
+          "version_id": "2a084d96-ec3c-46e2-aaa8-47011c2b28d6",
+          "locator_label": "第 5 行起",
+          "score": 0.5951,
+          "bm25_rank": 7,
+          "dense_rank": 2,
+          "fusion_score": 0.031054,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "f971902d-d665-5cc7-9fa1-3455c61d3c93",
+          "chunk_id": "a602fdd2-c91e-57fb-8a8f-cc754cd8930c",
           "rank": 3,
-          "title": "SEV1 客户事故升级",
-          "document_id": "seed-support-escalate",
-          "locator_label": "第 1–8 行",
-          "score": 0.5869,
-          "bm25_rank": 3,
-          "dense_rank": 2,
-          "fusion_score": 0.032002,
+          "title": "API 调用配额说明",
+          "document_id": "seed-api-limits",
+          "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+          "locator_label": "第 7 行起",
+          "score": 0.5387,
+          "bm25_rank": 6,
+          "dense_rank": 4,
+          "fusion_score": 0.030777,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "760f26e1-9b50-5330-a781-98790fd66c78",
+          "chunk_id": "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
           "rank": 4,
-          "title": "API 调用配额说明",
-          "document_id": "seed-api-limits",
-          "locator_label": "第 1–9 行",
-          "score": 0.5399,
-          "bm25_rank": 6,
-          "dense_rank": 5,
-          "fusion_score": 0.030536,
+          "title": "工单 218：重复回调",
+          "document_id": "seed-ticket-218",
+          "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+          "locator_label": "第 5 行起",
+          "score": 0.5215,
+          "bm25_rank": 4,
+          "dense_rank": 8,
+          "fusion_score": 0.030331,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "25c7e2e7-35e4-5ab6-a5f7-4e9d4b7d5b07",
+          "rank": 5,
+          "title": "工单 218：重复回调",
+          "document_id": "seed-ticket-218",
+          "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+          "locator_label": "第 1 行起",
+          "score": 0.5089,
+          "bm25_rank": 3,
+          "dense_rank": 11,
+          "fusion_score": 0.029958,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "75c1f9ea-ad1d-5b5d-bf35-9578c2dc0f5e",
+          "rank": 6,
+          "title": "支持组交接清单",
+          "document_id": "seed-support-handoff",
+          "version_id": "1d2b6515-5ae9-4029-98f8-54837a03abea",
+          "locator_label": "第 5 行起",
+          "score": 0.535,
+          "bm25_rank": 10,
+          "dense_rank": 6,
+          "fusion_score": 0.029437,
+          "admitted": true,
+          "excluded_because": null,
+          "evidence_id": "E5"
         }
       ],
-      "embed_ms": 215.8,
-      "retrieval_ms": 55.7,
-      "generation_ms": 24884.5,
-      "total_ms": 25303.6
+      "embed_ms": 208.4,
+      "retrieval_ms": 53.9,
+      "generation_ms": 21371.4,
+      "total_ms": 21675.7
     },
     "usage": {
-      "prompt_tokens": 1163,
-      "completion_tokens": 51,
-      "model_duration_ms": 24848.5,
+      "prompt_tokens": 1178,
+      "completion_tokens": 56,
+      "model_duration_ms": 21350.9,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "P1 服务不可用工单要求多久首次响应"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

@@ -100,7 +100,7 @@ def prepare_snapshot(directory):
 
 def prepare_index(directory):
     snapshot, chunks, blocks = prepare_snapshot(directory)
-    search = Search("enterprise-rag-eval-" + snapshot[:16])
+    search = Search("agentic-rag-eval-" + snapshot[:16])
     search.ensure_index()
     marker = Path(".runtime/evaluation") / snapshot / "indexed.json"
     if marker.exists():

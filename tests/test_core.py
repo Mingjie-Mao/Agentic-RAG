@@ -227,6 +227,47 @@ def test_conflict_is_accepted_only_across_documents(monkeypatch):
     assert usage["conflict_check"]["accepted"] is True
 
 
+def test_schedule_rule_recovers_when_model_refuses_to_cite_conflicting_windows(monkeypatch):
+    from app.clients import Models
+
+    evidence = [
+        span("E1", "doc-a", "每日 08:00 至 20:00。"),
+        span("E2", "doc-b", "工作日 09:00 至 18:00。"),
+    ]
+    calls = []
+
+    def reply(self, path, body):
+        calls.append(body)
+        if len(calls) == 1:
+            return {
+                "message": {
+                    "content": json.dumps(
+                        {"status": "insufficient_evidence", "claims": []}
+                    )
+                }
+            }
+        return {
+            "message": {
+                "content": json.dumps(
+                    {
+                        "conflict": False,
+                        "left_id": "E1:S1",
+                        "right_id": "E2:S1",
+                        "reason": "模型漏报",
+                    }
+                )
+            }
+        }
+
+    monkeypatch.setattr(Models, "_post", reply)
+    generated, usage = Models().generate("两个支持时段是否一致？", evidence)
+    assert generated.answerable is True
+    assert len(generated.claims) == 1
+    assert generated.claims[0].evidence_ids == ["E1", "E2"]
+    assert usage["answer_status"] == "conflict"
+    assert usage["conflict_check"]["accepted_by"] == "schedule_rule"
+
+
 def test_rrf_fuses_ranks_not_scores(monkeypatch):
     """BM25 and cosine scores are not comparable, so fusion must use positions."""
     from app.clients import Search

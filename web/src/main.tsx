@@ -17,6 +17,7 @@ import {
   Search,
   ShieldCheck,
   Upload,
+  Workflow,
   X,
   ExternalLink,
   PanelRightClose,
@@ -31,6 +32,14 @@ type User = {
   tenant_id: string;
   role: string;
   groups: string[];
+  trial: TrialStatus;
+};
+type TrialStatus = {
+  enabled: boolean;
+  read_only?: boolean;
+  used?: number;
+  limit?: number;
+  remaining?: number;
 };
 type Doc = {
   id: string;
@@ -99,13 +108,32 @@ type Evidence = Citation & {
   filename: string;
   content_hash: string;
 };
+type AgentEvent = {
+  sequence: number;
+  event_type: string;
+  tool_name: string | null;
+  payload: Record<string, unknown>;
+  evidence_refs: string[];
+  created_at: string;
+};
+type AgentTask = {
+  id: string;
+  goal: string;
+  mode: "workflow" | "dynamic";
+  status: string;
+  step_no: number;
+  max_steps: number;
+  result: Omit<Result, "id" | "question">;
+  error: string | null;
+  events: AgentEvent[];
+};
 
 async function api<T>(path: string, options: RequestInit = {}): Promise<T> {
   const response = await fetch("/api" + path, {
     ...options,
     credentials: "same-origin",
     headers: {
-      "X-Requested-With": "EnterpriseRAG",
+      "X-Requested-With": "AgenticRAG",
       ...(options.body instanceof FormData
         ? {}
         : { "Content-Type": "application/json" }),
@@ -723,10 +751,17 @@ function ProcessingDialog({data,onClose}:{data:Processing;onClose:()=>void}) {
 }
 
 function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
-  const [tab, setTab] = useState<"chat" | "documents" | "history">("chat");
+  const [tab, setTab] = useState<"chat" | "agent" | "documents" | "history">("chat");
   const [docs, setDocs] = useState<Doc[]>([]);
   const [results, setResults] = useState<Result[]>([]);
   const [history, setHistory] = useState<Result[]>([]);
+  const [agentTasks, setAgentTasks] = useState<AgentTask[]>([]);
+  const [agentGoal, setAgentGoal] = useState("");
+  const [agentMode, setAgentMode] = useState<"auto" | "workflow" | "dynamic">("auto");
+  const [agentDocument, setAgentDocument] = useState("");
+  const [memoryText, setMemoryText] = useState("");
+  const [memoryBusy, setMemoryBusy] = useState(false);
+  const [memoryStatus, setMemoryStatus] = useState("");
   const [question, setQuestion] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -735,6 +770,7 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
   const [evidence, setEvidence] = useState<Evidence | null>(null);
   const [upload, setUpload] = useState(false);
   const [processing,setProcessing]=useState<Processing|null>(null);
+  const [trial, setTrial] = useState<TrialStatus>(user.trial);
   async function preview(id:string){try{setProcessing(await api<Processing>("/documents/"+id+"/processing"));}catch(e){setError((e as Error).message);}}
   const [filter, setFilter] = useState("");
   const bottom = useRef<HTMLDivElement>(null);
@@ -744,6 +780,17 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
     } catch (e) {
       setError((e as Error).message);
     }
+  }
+  async function loadAgentTasks() {
+    try {
+      setAgentTasks(await api<AgentTask[]>("/agent/tasks"));
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  }
+  async function loadTrial() {
+    if (!trial.enabled) return;
+    try { setTrial(await api<TrialStatus>("/trial/status")); } catch { /* main action reports errors */ }
   }
   useEffect(() => {
     loadDocs();
@@ -755,6 +802,12 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
       api<Result[]>("/history")
         .then(setHistory)
         .catch((e) => setError(e.message));
+  }, [tab]);
+  useEffect(() => {
+    if (tab !== "agent") return;
+    loadAgentTasks();
+    const timer = setInterval(loadAgentTasks, 1500);
+    return () => clearInterval(timer);
   }, [tab]);
   useEffect(() => {
     bottom.current?.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -772,10 +825,14 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
     try {
       const result = await api<Result>("/chat", {
         method: "POST",
-        body: JSON.stringify({ question: value }),
+        body: JSON.stringify({
+          question: value,
+          history: results.slice(-10).map((row) => row.question),
+        }),
       });
       setResults((old) => [...old, result]);
       setQuestion("");
+      await loadTrial();
     } catch (e) {
       const failure = e as Error & {
         retryable?: boolean;
@@ -801,6 +858,49 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
       setError((e as Error).message);
     }
   }
+  async function startAgent(e: React.FormEvent) {
+    e.preventDefault();
+    if (agentGoal.trim().length < 4 || busy) return;
+    setBusy(true);
+    setError("");
+    try {
+      const task = await api<AgentTask>("/agent/tasks", {
+        method: "POST",
+        body: JSON.stringify({
+          goal: agentGoal.trim(),
+          mode: agentMode,
+          max_steps: agentMode === "dynamic" ? 6 : 4,
+          document_id: agentDocument || null,
+        }),
+      });
+      setAgentTasks((old) => [task, ...old.filter((row) => row.id !== task.id)]);
+      setAgentGoal("");
+      await loadTrial();
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  async function saveMemory(e: React.FormEvent) {
+    e.preventDefault();
+    const content = memoryText.trim();
+    if (content.length < 4 || memoryBusy) return;
+    setMemoryBusy(true);
+    setMemoryStatus("");
+    try {
+      await api("/agent/memories", {
+        method: "POST",
+        body: JSON.stringify({ content }),
+      });
+      setMemoryText("");
+      setMemoryStatus("已提交到你的长期记忆；后续 Agent 任务会按当前身份检索。");
+    } catch (e) {
+      setMemoryStatus((e as Error).message);
+    } finally {
+      setMemoryBusy(false);
+    }
+  }
   async function retry(doc: Doc) {
     try {
       await api("/documents/" + doc.id + "/retry", { method: "POST" });
@@ -822,6 +922,13 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
           <span>工作空间</span>
         </div>
         <nav>
+          <button
+            className={tab === "agent" ? "active" : ""}
+            onClick={() => setTab("agent")}
+          >
+            <Workflow size={18} />
+            知识 Agent
+          </button>
           <button
             className={tab === "chat" ? "active" : ""}
             onClick={() => setTab("chat")}
@@ -888,17 +995,23 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
             <strong>
               {tab === "chat"
                 ? "知识问答"
+                : tab === "agent"
+                  ? "知识 Agent"
                 : tab === "documents"
                   ? "资料库"
                   : "问答记录"}
             </strong>
           </div>
           <div className="topbar-right">
-            <span className="stage-badge">S2/S3 · 开发版</span>
-            <button className="secondary" onClick={() => setUpload(true)}>
-              <Upload size={15} />
-              添加资料
-            </button>
+            <span className="stage-badge">RAG v1 · Agent MVP</span>
+            {trial.enabled ? (
+              <span className="stage-badge">访客只读 · 今日剩余 {trial.remaining ?? 0}/{trial.limit ?? 0}</span>
+            ) : (
+              <button className="secondary" onClick={() => setUpload(true)}>
+                <Upload size={15} />
+                添加资料
+              </button>
+            )}
           </div>
         </header>
         {error && (
@@ -924,7 +1037,43 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
             </button>
           </div>
         )}
-        {tab === "documents" ? (
+        {tab === "agent" ? (
+          <section className="agent-page">
+            <div className="agent-heading">
+              <span className="eyebrow">ENTERPRISE KNOWLEDGE AGENT</span>
+              <h1>让 Agent 分步查证资料</h1>
+              <p>固定工作流成本最低；动态模式由本地模型选择受控工具，最多执行 6 步。资料读取每一步重新鉴权，长期记忆只用于偏好和任务范围。</p>
+            </div>
+            {!trial.enabled && <form className="memory-composer" onSubmit={saveMemory}>
+              <div><strong>长期记忆</strong><small>显式写入，会调用已配置的记忆抽取模型；不会把 Agent 回答自动永久保存。</small></div>
+              <div className="memory-row"><input aria-label="写入长期记忆" placeholder="例如：我负责支持团队，回答时优先给出简短检查清单" value={memoryText} onChange={(e) => setMemoryText(e.target.value)} maxLength={2000}/><button className="secondary" disabled={memoryBusy || memoryText.trim().length < 4}>{memoryBusy ? "写入中…" : "记住"}</button></div>
+              {memoryStatus && <p className="memory-status" role="status">{memoryStatus}</p>}
+            </form>}
+            <form className="agent-composer" onSubmit={startAgent}>
+              <textarea
+                aria-label="Agent 任务目标"
+                placeholder="例如：比较这份政策最近两个版本，说明 RPO 有什么变化并引用原文"
+                value={agentGoal}
+                onChange={(e) => setAgentGoal(e.target.value)}
+                maxLength={1500}
+                rows={3}
+              />
+              <div className="agent-options">
+                <label>执行方式<select value={agentMode} onChange={(e) => setAgentMode(e.target.value as "auto" | "workflow" | "dynamic")}><option value="auto">自动路由（推荐）</option><option value="workflow">固定工作流</option>{!trial.enabled && <option value="dynamic">动态 Agent（实验）</option>}</select></label>
+                <label>指定资料（可选）<select value={agentDocument} onChange={(e) => setAgentDocument(e.target.value)}><option value="">跨资料检索</option>{docs.filter((doc) => doc.status === "ready").map((doc) => <option key={doc.id} value={doc.id}>{doc.title}</option>)}</select></label>
+                <button className="primary" disabled={busy || agentGoal.trim().length < 4}>{busy ? "Agent 执行中…" : "开始任务"}</button>
+              </div>
+            </form>
+            <div className="agent-task-list">
+              {agentTasks.length === 0 ? <p className="muted">还没有 Agent 任务。先用固定工作流建立基线，再比较动态模式。</p> : agentTasks.map((task) => <article className="agent-task" key={task.id}>
+                <header><div><span className="status-pill ready">{task.status}</span><strong>{task.goal}</strong></div><small>{task.mode === "workflow" ? "固定工作流" : "动态 Agent"} · {task.step_no}/{task.max_steps} 步</small></header>
+                {task.result?.status && <AnswerCard result={{...task.result, id: task.id, question: task.goal}} onEvidence={openEvidence} />}
+                {task.error && <p className="doc-error">{task.error}</p>}
+                <details className="agent-trace"><summary>查看执行轨迹（{task.events.length} 个事件）</summary><ol>{task.events.map((event) => <li key={event.sequence}><code>{event.sequence}</code><b>{event.tool_name ?? event.event_type}</b><span>{String(event.payload.purpose ?? event.payload.status ?? event.payload.error_code ?? "")}</span><small>{event.evidence_refs.length ? `${event.evidence_refs.length} 条证据` : ""}</small></li>)}</ol></details>
+              </article>)}
+            </div>
+          </section>
+        ) : tab === "documents" ? (
           <section className="documents-page">
             <div className="page-title">
               <div>

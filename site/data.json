@@ -1,5 +1,5 @@
 {
-  "commit": "feb92552",
+  "commit": "agent-v1",
   "default": {
     "retrieval_mode": "hybrid",
     "rewrite_mode": "rule",
@@ -191,6 +191,72 @@
       "mode": "llm_history",
       "follow_up_recall_at_5": 0.9,
       "topic_shift_contaminated": 0.025
+    }
+  },
+  "agent": {
+    "status": "Phase B MVP 可运行，B2 开发回归通过",
+    "tools": [
+      "search_documents",
+      "retrieve_evidence",
+      "open_document",
+      "get_document_version",
+      "compare_versions",
+      "verify_chunk_access",
+      "search_memory"
+    ],
+    "workflow": {
+      "tool_steps": 2,
+      "wall_seconds": 23.1,
+      "answer": "生产数据库 RPO 为 15 分钟",
+      "citations": 1
+    },
+    "dynamic": {
+      "tool_steps": 2,
+      "wall_seconds": 111.3,
+      "actions": [
+        "search_documents",
+        "retrieve_evidence",
+        "final"
+      ],
+      "answer": "SEV1：10 分钟内通知负责人，每 30 分钟同步客户",
+      "citations": 1
+    },
+    "benchmark": {
+      "tasks": 30,
+      "rag_accuracy": 1.0,
+      "workflow_accuracy": 1.0,
+      "rag_median_seconds": 22.0,
+      "workflow_median_seconds": 21.6,
+      "forbidden_leaks": 0,
+      "dynamic_legacy": {
+        "tasks": 5,
+        "accuracy": 0.8,
+        "median_seconds": 157.4,
+        "mean_steps": 2.4,
+        "forbidden_leaks": 0
+      },
+      "decision": "当前不训练、不做 RL：30 题开发回归已通过，动态模式保留为本地实验。"
+    },
+    "not_completed": [
+      "长期记忆尚未证明能提高企业事实正确率；偏好遵从需要单独预注册评测",
+      "动态 Agent 的完整 30 题配对未运行；访客后端固定使用低成本路径"
+    ],
+    "memory_ab": {
+      "tasks": 30,
+      "memory_off_accuracy": 1.0,
+      "memory_on_accuracy": 0.9667,
+      "accuracy_delta": -0.0333,
+      "mcnemar_exact_p": 1.0,
+      "memory_off_median_seconds": 15.9,
+      "memory_on_median_seconds": 21.9,
+      "mean_prompt_token_increase": 428.4,
+      "forbidden_leaks": 0,
+      "targeted_fix": "A26 外租户预检后开关均通过"
+    },
+    "failure_corpus": {
+      "unique_failures": 17,
+      "unresolved": 0,
+      "decision": "do_not_train"
     }
   },
   "not_measured": [

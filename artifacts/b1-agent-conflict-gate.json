@@ -1,0 +1,166 @@
+{
+  "benchmark": "agent-b1-v1",
+  "task_sha256": "b0442e4780291e5c3733030e97213a9abf7d91aa128521537fb7b620069b55d7",
+  "arms": [
+    "rag",
+    "workflow",
+    "dynamic"
+  ],
+  "results": {
+    "rag": [
+      {
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 68941.6,
+        "usage": {
+          "prompt_tokens": 1174,
+          "completion_tokens": 158,
+          "model_duration_ms": 66340.1,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "conflict",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个时间段虽然不同，但不构成冲突，因为它们针对的是不同的工作日时间。",
+            "accepted": true,
+            "accepted_by": "schedule_rule",
+            "rule_pair": [
+              "E1:S2",
+              "E2:S2"
+            ]
+          },
+          "acceptance_items": [
+            "2026 年 9 月试点项目到底在哪些时段提供支持"
+          ]
+        },
+        "task_id": "A04",
+        "run_id": null,
+        "steps": 1
+      }
+    ],
+    "workflow": [
+      {
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": true,
+        "citation_count": 2,
+        "latency_ms": 37097.3,
+        "usage": {
+          "prompt_tokens": 1490,
+          "completion_tokens": 157,
+          "model_duration_ms": 36497.3,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "conflict",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个时间段虽然不同，但不构成冲突，因为它们针对的是不同的工作日时间。",
+            "accepted": true,
+            "accepted_by": "schedule_rule",
+            "rule_pair": [
+              "E1:S2",
+              "E2:S2"
+            ]
+          },
+          "acceptance_items": [
+            "2026 年 9 月试点项目到底在哪些时段提供支持"
+          ]
+        },
+        "task_id": "A04",
+        "run_id": "f317f7a1-a700-4b2d-97d9-be17571046d2",
+        "steps": 2
+      }
+    ],
+    "dynamic": [
+      {
+        "status": "answered",
+        "expected_status": "conflict",
+        "status_ok": false,
+        "facts": {
+          "09:00": false,
+          "18:00": false,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "correct": false,
+        "citation_count": 2,
+        "latency_ms": 228200.3,
+        "usage": {
+          "prompt_tokens": 1308,
+          "completion_tokens": 67,
+          "model_duration_ms": 23483.1,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "2026 年 9 月试点项目到底在哪些时段提供支持"
+          ],
+          "agent_policy_prompt_tokens": 13443,
+          "agent_policy_completion_tokens": 351,
+          "total_prompt_tokens": 14751,
+          "total_completion_tokens": 418
+        },
+        "task_id": "A04",
+        "run_id": "185cabf4-1c52-4441-adb9-59e7be150bfc",
+        "steps": 4
+      }
+    ]
+  },
+  "summary": {
+    "rag": {
+      "tasks": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "median_latency_ms": 68941.6,
+      "total_latency_ms": 68941.6,
+      "mean_steps": 1,
+      "forbidden_leaks": 0
+    },
+    "workflow": {
+      "tasks": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "median_latency_ms": 37097.3,
+      "total_latency_ms": 37097.3,
+      "mean_steps": 2,
+      "forbidden_leaks": 0
+    },
+    "dynamic": {
+      "tasks": 1,
+      "correct": 0,
+      "accuracy": 0.0,
+      "median_latency_ms": 228200.3,
+      "total_latency_ms": 228200.3,
+      "mean_steps": 4,
+      "forbidden_leaks": 0
+    }
+  },
+  "note": "开发基准，不是独立留出集；本地 Ollama 的 api_cost 为 0。"
+}

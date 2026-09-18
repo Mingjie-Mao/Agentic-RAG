@@ -20,23 +20,23 @@
     "no_forbidden_marker": true
   },
   "response": {
-    "id": "c0c60bd1-1f4a-46c6-90ce-2e82345aa9d7",
+    "id": "baadf3b9-16a0-4aeb-b866-71286f901a3a",
     "question": "团队版支持多少成员，每日可以导出多少次？",
     "status": "answered",
     "claims": [
       {
         "text": "团队版支持100名成员。",
         "evidence_ids": [
-          "06cb6061-6c94-53a2-b021-0de800be11f9"
+          "bea18c8a-88f5-53a3-a869-f81a130f5eb3"
         ],
         "quotes": [
           "| 团队版 | 100 | 30 |"
         ]
       },
       {
-        "text": "每日可以导出30次。",
+        "text": "团队版每日可以导出30次。",
         "evidence_ids": [
-          "06cb6061-6c94-53a2-b021-0de800be11f9"
+          "bea18c8a-88f5-53a3-a869-f81a130f5eb3"
         ],
         "quotes": [
           "| 团队版 | 100 | 30 |"
@@ -45,29 +45,57 @@
     ],
     "citations": [
       {
-        "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+        "chunk_id": "bea18c8a-88f5-53a3-a869-f81a130f5eb3",
         "document_id": "seed-plan-comparison",
-        "version_id": "5dd768db-0e57-41b1-b9fd-ae5c0ea4e980",
+        "version_id": "1ca1cf19-54f9-4f2f-9ddf-464842567770",
         "title": "套餐功能对照表",
         "locator": {
           "kind": "markdown",
-          "label": "第 1–11 行",
+          "block_type": "table",
+          "heading_path": [
+            "套餐功能对照表",
+            "套餐功能"
+          ],
+          "source_char_start": 46,
+          "line_start": 5,
+          "label": "第 5 行起",
+          "kind_for_source": "markdown",
+          "sources": [
+            {
+              "start": 0,
+              "end": 110,
+              "locator": {
+                "kind": "markdown",
+                "block_type": "table",
+                "heading_path": [
+                  "套餐功能对照表",
+                  "套餐功能"
+                ],
+                "source_char_start": 46,
+                "line_start": 5,
+                "label": "第 5 行起"
+              },
+              "overlap_start": 0,
+              "overlap_end": 110
+            }
+          ],
           "char_start": 0,
-          "char_end": 156,
-          "line_start": 1,
-          "line_end": 11
+          "char_end": 110,
+          "chunk_strategy": "structure",
+          "token_count_estimate": 87,
+          "token_counter": "cl100k_base"
         },
-        "text": "# 套餐功能对照表\n\n本项目自建的虚构资料，仅用于开发与演示，不代表任何真实公司的制度。\n\n## 套餐功能\n| 套餐 | 成员人数 | 每日导出次数 |\n| --- | --- | --- |\n| 标准版 | 20 | 5 |\n| 团队版 | 100 | 30 |\n团队版包含优先支持，具体响应时间以合同为准。\n",
-        "preview_url": "/api/evidence/06cb6061-6c94-53a2-b021-0de800be11f9",
-        "original_url": "/api/versions/5dd768db-0e57-41b1-b9fd-ae5c0ea4e980/original"
+        "text": "## 套餐功能\n| 套餐 | 成员人数 | 每日导出次数 |\n| --- | --- | --- |\n| 标准版 | 20 | 5 |\n| 团队版 | 100 | 30 |\n团队版包含优先支持，具体响应时间以合同为准。\n",
+        "preview_url": "/api/evidence/bea18c8a-88f5-53a3-a869-f81a130f5eb3",
+        "original_url": "/api/versions/1ca1cf19-54f9-4f2f-9ddf-464842567770/original"
       }
     ],
     "message": "",
     "trace": {
       "method": "hybrid",
       "scope": {
-        "readable_documents": 29,
-        "searchable_documents": 29
+        "readable_documents": 30,
+        "searchable_documents": 30
       },
       "original_question": "团队版支持多少成员，每日可以导出多少次？",
       "retrieval_query": "团队版支持多少成员，每日可以导出多少次？",
@@ -77,22 +105,34 @@
         "rewritten": false,
         "history_turns": 0
       },
+      "shadow_scores": {
+        "relevance": 0.375,
+        "claim_support": [
+          0.5714,
+          0.5556
+        ],
+        "scorer": "bigram-overlap-v1",
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/a-q1-calibration.json"
+      },
       "prompt_version": "grounded-v5-conflict-gated",
-      "top_k": 4,
+      "top_k": 6,
       "min_similarity": 0.35,
       "context_token_budget": 5000,
-      "context_tokens_estimate": 889,
+      "context_tokens_estimate": 711,
       "token_counter": "cl100k_base",
       "embedding_model": "bge-m3:567m",
       "generation_model": "qwen2.5:7b-instruct",
       "candidates": [
         {
-          "chunk_id": "06cb6061-6c94-53a2-b021-0de800be11f9",
+          "chunk_id": "bea18c8a-88f5-53a3-a869-f81a130f5eb3",
           "rank": 1,
           "title": "套餐功能对照表",
           "document_id": "seed-plan-comparison",
-          "locator_label": "第 1–11 行",
-          "score": 0.6869,
+          "version_id": "1ca1cf19-54f9-4f2f-9ddf-464842567770",
+          "locator_label": "第 5 行起",
+          "score": 0.7297,
           "bm25_rank": 1,
           "dense_rank": 1,
           "fusion_score": 0.032787,
@@ -101,26 +141,28 @@
           "evidence_id": "E1"
         },
         {
-          "chunk_id": "50a00831-7a6a-5f51-bda1-86ca49664d18",
+          "chunk_id": "5a77eafb-1c0f-5c28-a135-b04176ff1caf",
           "rank": 2,
           "title": "数据导出注意事项",
           "document_id": "seed-export",
-          "locator_label": "第 1–8 行",
-          "score": 0.5389,
-          "bm25_rank": 2,
+          "version_id": "b45d148e-e3d9-43eb-8ed5-a6980bc3a960",
+          "locator_label": "第 5 行起",
+          "score": 0.5388,
+          "bm25_rank": 3,
           "dense_rank": 4,
-          "fusion_score": 0.031754,
+          "fusion_score": 0.031498,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E2"
         },
         {
-          "chunk_id": "7ea8732a-57be-54b9-858c-fa251b66e285",
+          "chunk_id": "1590a974-8df1-5b7d-a0e8-add002893a85",
           "rank": 3,
-          "title": "支持组交接清单",
-          "document_id": "seed-support-handoff",
-          "locator_label": "第 1–8 行",
-          "score": 0.5211,
+          "title": "试点项目支持安排 B",
+          "document_id": "seed-pilot-b",
+          "version_id": "b2938188-f872-44d5-bd39-7b1d206e2b35",
+          "locator_label": "第 5 行起",
+          "score": 0.5243,
           "bm25_rank": 4,
           "dense_rank": 5,
           "fusion_score": 0.03101,
@@ -129,34 +171,66 @@
           "evidence_id": "E3"
         },
         {
-          "chunk_id": "f38120ec-caf5-5ed2-a2e4-e42846bc7b72",
+          "chunk_id": "75c1f9ea-ad1d-5b5d-bf35-9578c2dc0f5e",
           "rank": 4,
-          "title": "试点项目支持安排 B",
-          "document_id": "seed-pilot-b",
-          "locator_label": "第 1–8 行",
-          "score": 0.5101,
-          "bm25_rank": 3,
-          "dense_rank": 7,
-          "fusion_score": 0.030798,
+          "title": "支持组交接清单",
+          "document_id": "seed-support-handoff",
+          "version_id": "1d2b6515-5ae9-4029-98f8-54837a03abea",
+          "locator_label": "第 5 行起",
+          "score": 0.4888,
+          "bm25_rank": 5,
+          "dense_rank": 8,
+          "fusion_score": 0.03009,
           "admitted": true,
           "excluded_because": null,
           "evidence_id": "E4"
+        },
+        {
+          "chunk_id": "7a4950f2-7c9a-505f-9858-8f89770547eb",
+          "rank": 5,
+          "title": "数据导出注意事项",
+          "document_id": "seed-export",
+          "version_id": "b45d148e-e3d9-43eb-8ed5-a6980bc3a960",
+          "locator_label": "第 1 行起",
+          "score": 0.4743,
+          "bm25_rank": 2,
+          "dense_rank": 13,
+          "fusion_score": 0.029828,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
+        },
+        {
+          "chunk_id": "895f3c21-18f3-57fd-b419-eba1fa48f4eb",
+          "rank": 6,
+          "title": "支持组交接清单",
+          "document_id": "seed-support-handoff",
+          "version_id": "1d2b6515-5ae9-4029-98f8-54837a03abea",
+          "locator_label": "第 1 行起",
+          "score": 0.4793,
+          "bm25_rank": 6,
+          "dense_rank": 10,
+          "fusion_score": 0.029437,
+          "admitted": false,
+          "excluded_because": "boilerplate_only"
         }
       ],
-      "embed_ms": 278,
-      "retrieval_ms": 123.8,
-      "generation_ms": 27555.7,
-      "total_ms": 28047.6
+      "embed_ms": 194.8,
+      "retrieval_ms": 51.6,
+      "generation_ms": 24527.2,
+      "total_ms": 24856.5
     },
     "usage": {
-      "prompt_tokens": 1021,
-      "completion_tokens": 74,
-      "model_duration_ms": 27522.7,
+      "prompt_tokens": 1040,
+      "completion_tokens": 76,
+      "model_duration_ms": 24504.5,
       "api_cost": 0,
       "currency": "AUD",
       "execution": "local_ollama",
       "answer_status": "answered",
-      "conflict_check": null
+      "conflict_check": null,
+      "acceptance_items": [
+        "团队版支持多少成员，每日可以导出多少次"
+      ]
     }
   },
   "model_execution": "real_local_ollama",

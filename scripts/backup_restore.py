@@ -22,7 +22,7 @@ from app.db import SessionLocal
 from app.models import Answer, Chunk, Document, DocumentVersion, User
 
 BACKUP = Path(".runtime/backup")
-CONTAINER = "enterprise-rag-postgres-1"
+CONTAINER = "agentic-rag-postgres-1"
 
 
 def run(command, **kwargs):
