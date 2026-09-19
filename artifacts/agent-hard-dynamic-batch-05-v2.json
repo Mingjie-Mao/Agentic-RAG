@@ -1,0 +1,484 @@
+{
+  "benchmark": "agent-hard-v2",
+  "task_sha256": "64e259235d47c6af84815eb252afc94d1a50e7ab39c6644064e4a3f385f04173",
+  "validation": {
+    "tasks": 30,
+    "categories": {
+      "multi_hop": 5,
+      "temporal_version": 5,
+      "conditional_planning": 5,
+      "query_recovery": 5,
+      "security_state": 5,
+      "efficiency_stopping": 5
+    },
+    "documents": 31,
+    "shared_comparable_subset": 21,
+    "controlled_agent_only_subset": 9
+  },
+  "arms": [
+    "dynamic"
+  ],
+  "results": {
+    "dynamic": [
+      {
+        "category": "efficiency_stopping",
+        "controlled": false,
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {},
+        "forbidden_present": {
+          "ORCHID-7319": false
+        },
+        "answer_correct": true,
+        "capabilities": {
+          "efficient_stop": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "工程组 灰度发布 验证口令"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "SEV1 客户事故升级",
+                "试点项目支持安排 B",
+                "试点项目支持安排 A"
+              ]
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-support-escalate",
+              "seed-pilot-b",
+              "seed-pilot-a"
+            ]
+          },
+          {
+            "tool": "verify_chunk_access",
+            "arguments": {
+              "chunk_ids": [
+                "157fd048-ca31-5fd1-b7c6-0ba2bf57f460",
+                "1590a974-8df1-5b7d-a0e8-add002893a85",
+                "c4ce436d-96aa-594f-9d56-ee65f5fcdfd9"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "checks",
+                "all_readable"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-support-escalate",
+              "seed-pilot-b",
+              "seed-pilot-a"
+            ]
+          }
+        ],
+        "steps": 2,
+        "forbidden_tool_calls": [],
+        "over_planned": false,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 162448.6,
+        "usage": {
+          "prompt_tokens": 822,
+          "completion_tokens": 18,
+          "model_duration_ms": 15373.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "工程组灰度发布验证口令是什么"
+          ],
+          "agent_policy_prompt_tokens": 3628,
+          "agent_policy_completion_tokens": 478,
+          "total_prompt_tokens": 4450,
+          "total_completion_tokens": 496
+        },
+        "task_id": "H28",
+        "run_id": "dd780df3-a8f4-42b4-94fe-84b95a92304c"
+      },
+      {
+        "category": "efficiency_stopping",
+        "controlled": false,
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {},
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "efficient_stop": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "火星出差补贴"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "差旅标准 2025 旧版",
+                "差旅标准 2026 生效版"
+              ]
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-travel-2025",
+              "seed-travel-2026"
+            ]
+          }
+        ],
+        "steps": 2,
+        "forbidden_tool_calls": [],
+        "over_planned": false,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 106629.7,
+        "usage": {
+          "prompt_tokens": 816,
+          "completion_tokens": 18,
+          "model_duration_ms": 15621.4,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "公司有没有火星出差补贴"
+          ],
+          "agent_policy_prompt_tokens": 3801,
+          "agent_policy_completion_tokens": 215,
+          "total_prompt_tokens": 4617,
+          "total_completion_tokens": 233
+        },
+        "task_id": "H29",
+        "run_id": "3264122e-f282-4611-83c1-3820cf944240"
+      },
+      {
+        "category": "efficiency_stopping",
+        "controlled": false,
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "gold_evidence_coverage": true,
+          "efficient_stop": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-pilot-a",
+          "seed-pilot-b"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "试点安排A和B的支持时段"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "试点项目支持安排 A",
+                "试点项目支持安排 B"
+              ]
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "seed-pilot-a",
+              "seed-pilot-b"
+            ]
+          }
+        ],
+        "steps": 5,
+        "forbidden_tool_calls": [],
+        "over_planned": false,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 153990.9,
+        "usage": {
+          "prompt_tokens": 923,
+          "completion_tokens": 154,
+          "model_duration_ms": 39128.9,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "conflict",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个支持时段虽然不同，但不构成冲突，因为它们属于不同的试点项目A和B。",
+            "accepted": true,
+            "accepted_by": "schedule_rule",
+            "rule_pair": [
+              "E1:S2",
+              "E2:S2"
+            ]
+          },
+          "acceptance_items": [
+            "试点安排 A 和 B 的支持时段是否一致"
+          ],
+          "agent_policy_prompt_tokens": 4611,
+          "agent_policy_completion_tokens": 330,
+          "total_prompt_tokens": 5534,
+          "total_completion_tokens": 484
+        },
+        "task_id": "H30",
+        "run_id": "10987ca8-b8c0-4573-afb6-b7cbcd5b7f1b"
+      }
+    ]
+  },
+  "summary": {
+    "dynamic": {
+      "shared_comparable_subset": {
+        "requested": 3,
+        "scored": 3,
+        "skipped": 0,
+        "answer_correct": 3,
+        "answer_correct_rate": 1.0,
+        "task_success": 3,
+        "task_success_rate": 1.0,
+        "recovery_rate": null,
+        "over_planning_rate": 0.0,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 3,
+        "p50_latency_ms": 153990.9,
+        "p95_latency_ms": 162448.6,
+        "mean_prompt_tokens": 4867
+      },
+      "controlled_agent_only_subset": {
+        "requested": 0,
+        "scored": 0,
+        "skipped": 0,
+        "answer_correct": 0,
+        "answer_correct_rate": null,
+        "task_success": 0,
+        "task_success_rate": null,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": null,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": null,
+        "p50_latency_ms": null,
+        "p95_latency_ms": null,
+        "mean_prompt_tokens": null
+      },
+      "all_scored_tasks": {
+        "requested": 3,
+        "scored": 3,
+        "skipped": 0,
+        "answer_correct": 3,
+        "answer_correct_rate": 1.0,
+        "task_success": 3,
+        "task_success_rate": 1.0,
+        "recovery_rate": null,
+        "over_planning_rate": 0.0,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 3,
+        "p50_latency_ms": 153990.9,
+        "p95_latency_ms": 162448.6,
+        "mean_prompt_tokens": 4867
+      },
+      "by_category": {
+        "conditional_planning": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "efficiency_stopping": {
+          "requested": 3,
+          "scored": 3,
+          "skipped": 0,
+          "answer_correct": 3,
+          "answer_correct_rate": 1.0,
+          "task_success": 3,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": 0.0,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 3,
+          "p50_latency_ms": 153990.9,
+          "p95_latency_ms": 162448.6,
+          "mean_prompt_tokens": 4867
+        },
+        "multi_hop": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "query_recovery": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "security_state": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "temporal_version": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        }
+      }
+    }
+  },
+  "requested_tasks": 3,
+  "note": "开发 benchmark，不是训练集或独立留出集。跨 arm 只能比较 shared_comparable_subset；受控场景仅用于 Agent 内部诊断。"
+}

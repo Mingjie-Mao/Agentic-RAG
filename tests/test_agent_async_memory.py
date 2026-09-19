@@ -3,7 +3,8 @@ from sqlalchemy.orm import Session, sessionmaker
 
 import agent.controller as controller
 from agent.controller import claim_agent_task, create_task, resume_task
-from agent.memory_adapter import LongTermMemoryAdapter, MemoryUnavailable
+from agent.memory_adapter import LongTermMemoryAdapter, MemoryUnavailable, _compact_memories
+from app.main import AgentTaskBody
 from app.config import settings
 from app.models import Base, Tenant, User
 
@@ -118,3 +119,20 @@ def test_memory_adapter_fails_closed_without_a_namespace_token(monkeypatch):
         assert "受信命名空间" in str(exc)
     else:
         raise AssertionError("missing token must fail closed")
+
+
+def test_long_term_memory_is_opt_in():
+    assert AgentTaskBody(goal="核对灾备策略").use_memory is False
+
+
+def test_memory_context_has_item_and_character_budgets():
+    rows = [
+        {"id": f"m{i}", "content": ("偏好 " * 200), "status": "active"}
+        for i in range(5)
+    ]
+
+    compact = _compact_memories(rows)
+
+    assert len(compact) == 3
+    assert all(len(row["content"]) <= 240 for row in compact)
+    assert sum(len(row["content"]) for row in compact) <= 600

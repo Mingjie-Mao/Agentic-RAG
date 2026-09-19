@@ -1,0 +1,27 @@
+[
+  {
+    "document_id": "hard-support-sla-chain",
+    "tenant_id": "xingqiao",
+    "title": "P1 支持响应政策版本链",
+    "user": "xq-admin",
+    "groups": ["hard-benchmark"],
+    "tenant_public": false,
+    "versions": [
+      {
+        "path": "fixtures/agent/documents/hard-support-sla-v1.md",
+        "filename": "hard-support-sla-v1.md",
+        "effective_from": "2026-01-01T00:00:00Z"
+      },
+      {
+        "path": "fixtures/agent/documents/hard-support-sla-v2.md",
+        "filename": "hard-support-sla-v2.md",
+        "effective_from": "2026-09-01T00:00:00Z"
+      },
+      {
+        "path": "fixtures/agent/documents/hard-support-sla-v3.md",
+        "filename": "hard-support-sla-v3.md",
+        "effective_from": "2026-10-01T00:00:00Z"
+      }
+    ]
+  }
+]

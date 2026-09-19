@@ -1,0 +1,1006 @@
+{
+  "benchmark": "agent-hard-v2",
+  "task_sha256": "64e259235d47c6af84815eb252afc94d1a50e7ab39c6644064e4a3f385f04173",
+  "validation": {
+    "tasks": 30,
+    "categories": {
+      "multi_hop": 5,
+      "temporal_version": 5,
+      "conditional_planning": 5,
+      "query_recovery": 5,
+      "security_state": 5,
+      "efficiency_stopping": 5
+    },
+    "documents": 31,
+    "shared_comparable_subset": 21,
+    "controlled_agent_only_subset": 9
+  },
+  "arms": [
+    "dynamic"
+  ],
+  "results": {
+    "dynamic": [
+      {
+        "category": "temporal_version",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "30": false,
+          "15": true,
+          "12": true
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "required_tool:get_document_version": true,
+          "required_tool:compare_versions": false
+        },
+        "capability_success": false,
+        "task_success": false,
+        "citation_documents": [
+          "hard-support-sla-chain",
+          "seed-support-sla"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "P1首次响应时限 2026-08-20 2026-09-20 2026-10-20"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "P1 支持响应政策版本链",
+                "支持响应等级表",
+                "试点项目支持安排 B",
+                "差旅标准 2026 生效版"
+              ]
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "hard-support-sla-chain",
+              "seed-support-sla",
+              "seed-pilot-b",
+              "seed-travel-2026"
+            ]
+          },
+          {
+            "tool": "get_document_version",
+            "arguments": {
+              "document_id": "hard-support-sla-chain",
+              "version_id": "0b0fd0c5-2bf5-48d2-9138-1274c11ac3c8"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "6f3929eb-1c08-5231-b3ba-e60db90df8d5",
+                "299da41f-e575-5bf7-9a23-34b2f76d9a03"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "evidence"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "hard-support-sla-chain",
+              "seed-support-sla"
+            ]
+          },
+          {
+            "tool": "verify_chunk_access",
+            "arguments": {
+              "chunk_ids": [
+                "6f3929eb-1c08-5231-b3ba-e60db90df8d5",
+                "299da41f-e575-5bf7-9a23-34b2f76d9a03"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "checks",
+                "all_readable"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "hard-support-sla-chain",
+              "seed-support-sla"
+            ]
+          }
+        ],
+        "steps": 4,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 1,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 253390.6,
+        "usage": {
+          "prompt_tokens": 1403,
+          "completion_tokens": 215,
+          "model_duration_ms": 48260.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E2:S4",
+            "right_id": "E1:S3",
+            "reason": "两个文档提供了不同产品或服务的 SLA，不构成冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "按时间列出 2026 年 8 月 20 日、9 月 20 日和 10 月 20 日适用的 P1 首次响应时限。"
+          ],
+          "agent_policy_prompt_tokens": 13104,
+          "agent_policy_completion_tokens": 455,
+          "total_prompt_tokens": 14507,
+          "total_completion_tokens": 670
+        },
+        "task_id": "H08",
+        "run_id": "13e4f7ec-7cf0-4792-8ba3-4ea84d512e4b"
+      },
+      {
+        "category": "temporal_version",
+        "controlled": false,
+        "status": "conflict",
+        "expected_status": "answered",
+        "status_ok": false,
+        "execution_error_kind": null,
+        "facts": {
+          "200": true,
+          "250": true,
+          "30": true
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true
+        },
+        "capability_success": true,
+        "task_success": false,
+        "citation_documents": [
+          "seed-travel-2026",
+          "seed-travel-2025"
+        ],
+        "tool_trace": [
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "sydney_accommodation_policy"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "http_404",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "http_404",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "悉尼住宿政策"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "差旅标准 2026 生效版",
+                "差旅标准 2025 旧版"
+              ]
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-travel-2026",
+              "seed-travel-2025"
+            ]
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "seed-travel-2025",
+              "version_id": "9cf628f2-6743-48dc-8888-0c7d8c69fec5",
+              "chunk_ids": [
+                "705bd30a-7818-59bb-8dc0-d93747744337",
+                "1f236c77-63fb-5d22-a451-fecc33defdec"
+              ]
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "seed-travel-2025",
+              "version_id": "9cf628f2-6743-48dc-8888-0c7d8c69fec5",
+              "other_document_id": "seed-travel-2026",
+              "other_version_id": "fad37674-eab4-48e6-874d-a336bc1819f8"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "seed-travel-2025",
+              "version_id": "9cf628f2-6743-48dc-8888-0c7d8c69fec5",
+              "chunk_id": "705bd30a-7818-59bb-8dc0-d93747744337",
+              "other_document_id": "seed-travel-2026",
+              "other_version_id": "fad37674-eab4-48e6-874d-a336bc1819f8",
+              "other_chunk_id": "324562f2-23c0-51a0-9d2c-8508d5bcc380"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          }
+        ],
+        "steps": 7,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 2,
+        "extra_calls_after_sufficient_evidence": 3,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 296194.9,
+        "usage": {
+          "prompt_tokens": 1293,
+          "completion_tokens": 177,
+          "model_duration_ms": 36197.8,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "conflict",
+          "conflict_check": {
+            "conflict": true,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "悉尼住宿费用上限在两年间发生了变化，2025年的上限为每晚200澳元，而2026年的上限提高到每晚250澳元。",
+            "accepted": true,
+            "accepted_by": "model",
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "比较两版悉尼住宿政策：金额如何变化、报销提交时限是否变化"
+          ],
+          "agent_policy_prompt_tokens": 13789,
+          "agent_policy_completion_tokens": 837,
+          "total_prompt_tokens": 15082,
+          "total_completion_tokens": 1014
+        },
+        "task_id": "H09",
+        "run_id": "0104f46e-06fb-48f7-a134-f99982a902e6"
+      },
+      {
+        "category": "temporal_version",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "200": true,
+          "250": true,
+          "替代": false
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true
+        },
+        "capability_success": true,
+        "task_success": false,
+        "citation_documents": [
+          "seed-travel-2025",
+          "seed-travel-2026"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "2025年 200澳元 历史标准"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "差旅标准 2025 旧版",
+                "差旅标准 2026 生效版"
+              ]
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-travel-2025",
+              "seed-travel-2026"
+            ]
+          },
+          {
+            "tool": "verify_chunk_access",
+            "arguments": {
+              "chunk_ids": [
+                "1f236c77-63fb-5d22-a451-fecc33defdec",
+                "53e5a8a9-f783-56e9-835b-76e7326266d0",
+                "705bd30a-7818-59bb-8dc0-d93747744337"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "checks",
+                "all_readable"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-travel-2025",
+              "seed-travel-2026"
+            ]
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "seed-travel-2025",
+              "chunk_ids": [
+                "1f236c77-63fb-5d22-a451-fecc33defdec",
+                "705bd30a-7818-59bb-8dc0-d93747744337"
+              ]
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "seed-travel-2025",
+              "version_ids": [
+                "9cf628f2-6743-48dc-8888-0c7d8c69fec5",
+                "fad37674-eab4-48e6-874d-a336bc1819f8"
+              ]
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "有人引用 2025 年的 200 澳元历史标准处理 2026 年差旅。核对历史值、当前值，以及旧值为何不适用。",
+              "top_k": 8
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 8,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "差旅标准 2025 旧版",
+                "差旅标准 2026 生效版",
+                "工单 218：重复回调",
+                "业务数据保留规则",
+                "套餐功能对照表"
+              ]
+            },
+            "error": null,
+            "evidence_count": 8,
+            "evidence_documents": [
+              "seed-travel-2025",
+              "seed-travel-2026",
+              "seed-ticket-218",
+              "seed-data-retention",
+              "seed-plan-comparison"
+            ]
+          }
+        ],
+        "steps": 6,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 3,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 238527.9,
+        "usage": {
+          "prompt_tokens": 2091,
+          "completion_tokens": 179,
+          "model_duration_ms": 46469.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E7:S2",
+            "reason": "两个文档分别规定了不同年份的住宿费用标准，不存在冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "有人引用 2025 年的 200 澳元历史标准处理 2026 年差旅。核对历史值",
+            "当前值",
+            "旧值为何不适用"
+          ],
+          "agent_policy_prompt_tokens": 11563,
+          "agent_policy_completion_tokens": 535,
+          "total_prompt_tokens": 13654,
+          "total_completion_tokens": 714
+        },
+        "task_id": "H10",
+        "run_id": "bd63f7c5-74d5-488c-8505-f43938ab4cf4"
+      },
+      {
+        "category": "conditional_planning",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "超大文件": false,
+          "20": false,
+          "独立 worker": false
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "cross_document_evidence": false,
+          "gold_evidence_coverage": false,
+          "conditional_transition": false
+        },
+        "capability_success": false,
+        "task_success": false,
+        "citation_documents": [
+          "seed-incident-092"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "事故 092 根因 文件大小"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "事故 092：索引延迟复盘",
+                "发布回滚操作手册"
+              ]
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-incident-092",
+              "seed-rollback"
+            ]
+          },
+          {
+            "tool": "get_document_version",
+            "arguments": {
+              "document_id": "seed-incident-092",
+              "version_id": "bac388fd-6b73-4eb6-877f-edd4a16f2901"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "事故 092 根因 文件大小",
+              "matches": [
+                {
+                  "document_id": "seed-incident-092",
+                  "version_id": "bac388fd-6b73-4eb6-877f-edd4a16f2901",
+                  "chunk_id": "435622dd-d5bc-5674-aa27-50e52ca32302",
+                  "title": "事故 092：索引延迟复盘",
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "事故 092：索引延迟复盘",
+                      "原因"
+                    ],
+                    "source_char_start": 52,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "snippet": "## 原因\n事故 092 的索引延迟由单个超大文件占用解析队列导致。"
+                }
+              ],
+              "candidate_count": 1
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          }
+        ],
+        "steps": 7,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": true,
+        "evidence_sufficient_step": null,
+        "extra_calls_after_sufficient_evidence": null,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 226723.5,
+        "usage": {
+          "prompt_tokens": 785,
+          "completion_tokens": 99,
+          "model_duration_ms": 20995.1,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "先找出事故 092 的根因；只有根因与文件大小有关时，才继续核对当前单文件上传上限并给出事故后的隔离措施。"
+          ],
+          "agent_policy_prompt_tokens": 12595,
+          "agent_policy_completion_tokens": 575,
+          "total_prompt_tokens": 13380,
+          "total_completion_tokens": 674
+        },
+        "task_id": "H11",
+        "run_id": "a8530cf9-014c-41bf-b82f-2b0a391b89d5"
+      },
+      {
+        "category": "conditional_planning",
+        "controlled": false,
+        "status": "conflict",
+        "expected_status": "conflict",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "09:00": true,
+          "18:00": true,
+          "08:00": true,
+          "20:00": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-pilot-a",
+          "seed-pilot-b"
+        ],
+        "tool_trace": [
+          {
+            "tool": "verify_chunk_access",
+            "arguments": {
+              "chunk_ids": [
+                "doc1-chunk345",
+                "doc2-chunk678"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 0,
+              "keys": [
+                "checks",
+                "all_readable"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "2026年9月试点支持安排"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "试点项目支持安排 A",
+                "试点项目支持安排 B"
+              ]
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "seed-pilot-a",
+              "seed-pilot-b"
+            ]
+          }
+        ],
+        "steps": 6,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 2,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 166239.4,
+        "usage": {
+          "prompt_tokens": 999,
+          "completion_tokens": 214,
+          "model_duration_ms": 38187.4,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "conflict",
+          "conflict_check": {
+            "conflict": true,
+            "left_id": "E1:S2",
+            "right_id": "E2:S2",
+            "reason": "两个文档对 2026 年 9 月试点项目支持时间的规定不同，一个是工作日 09:00 至 18:00，另一个是每日 08:00 至 20:00。",
+            "accepted": true,
+            "accepted_by": "model",
+            "rule_pair": [
+              "E1:S2",
+              "E2:S2"
+            ]
+          },
+          "acceptance_items": [
+            "先检查 2026 年 9 月试点支持安排；如果两份资料一致就给统一时间，不一致则列出双方并报告冲突。"
+          ],
+          "agent_policy_prompt_tokens": 5544,
+          "agent_policy_completion_tokens": 609,
+          "total_prompt_tokens": 6543,
+          "total_completion_tokens": 823
+        },
+        "task_id": "H12",
+        "run_id": "69973036-c48a-4c7e-92e1-2a71f5456106"
+      }
+    ]
+  },
+  "summary": {
+    "dynamic": {
+      "shared_comparable_subset": {
+        "requested": 5,
+        "scored": 5,
+        "skipped": 0,
+        "answer_correct": 1,
+        "answer_correct_rate": 0.2,
+        "task_success": 1,
+        "task_success_rate": 0.2,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.2,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 6,
+        "p50_latency_ms": 238527.9,
+        "p95_latency_ms": 296194.9,
+        "mean_prompt_tokens": 12633.2
+      },
+      "controlled_agent_only_subset": {
+        "requested": 0,
+        "scored": 0,
+        "skipped": 0,
+        "answer_correct": 0,
+        "answer_correct_rate": null,
+        "task_success": 0,
+        "task_success_rate": null,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": null,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": null,
+        "p50_latency_ms": null,
+        "p95_latency_ms": null,
+        "mean_prompt_tokens": null
+      },
+      "all_scored_tasks": {
+        "requested": 5,
+        "scored": 5,
+        "skipped": 0,
+        "answer_correct": 1,
+        "answer_correct_rate": 0.2,
+        "task_success": 1,
+        "task_success_rate": 0.2,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.2,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 6,
+        "p50_latency_ms": 238527.9,
+        "p95_latency_ms": 296194.9,
+        "mean_prompt_tokens": 12633.2
+      },
+      "by_category": {
+        "conditional_planning": {
+          "requested": 2,
+          "scored": 2,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 0.5,
+          "task_success": 1,
+          "task_success_rate": 0.5,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.5,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 6.5,
+          "p50_latency_ms": 196481.5,
+          "p95_latency_ms": 226723.5,
+          "mean_prompt_tokens": 9961.5
+        },
+        "efficiency_stopping": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "multi_hop": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "query_recovery": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "security_state": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "temporal_version": {
+          "requested": 3,
+          "scored": 3,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": 0.0,
+          "task_success": 0,
+          "task_success_rate": 0.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 5.67,
+          "p50_latency_ms": 253390.6,
+          "p95_latency_ms": 296194.9,
+          "mean_prompt_tokens": 14414.3
+        }
+      }
+    }
+  },
+  "requested_tasks": 5,
+  "note": "开发 benchmark，不是训练集或独立留出集。跨 arm 只能比较 shared_comparable_subset；受控场景仅用于 Agent 内部诊断。"
+}

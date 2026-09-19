@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from agent.controller import create_task, run_task, task_payload
 from agent.tools import KnowledgeTools, ToolResult
 from app.clients import AgentDecision, Claim, GeneratedAnswer
-from app.models import Base, Chunk, Document, DocumentVersion, Tenant, User
+from app.models import AgentEvent, Base, Chunk, Document, DocumentVersion, Tenant, User
 
 
 def agent_db():
@@ -143,9 +143,29 @@ def test_workflow_agent_persists_trace_and_returns_verified_citations():
     ]
 
     db.get(Document, "doc-a").active_version_id = "v1"
+    first_tool_event = next(
+        event
+        for event in db.query(AgentEvent).filter(AgentEvent.task_id == task.id).all()
+        if event.event_type == "tool_completed"
+    )
+    first_tool_event.payload = {
+        **first_tool_event.payload,
+        "titles": ["敏感恢复政策"],
+        "arguments": {"query": "敏感恢复政策"},
+        "purpose": "读取敏感恢复政策",
+    }
+    # The historical tool event alone is enough to make the task dependent on c2.
+    task.evidence_chunk_ids = []
+    task.error = "敏感恢复政策处理失败"
     db.commit()
     stale = task_payload(db, user, task)
     assert stale["result"]["status"] == "access_changed"
+    assert stale["error"] is None
+    assert all(event["evidence_refs"] == [] for event in stale["events"])
+    observable = str(stale)
+    assert "敏感恢复政策" not in observable
+    assert "arguments" not in observable
+    assert "purpose" not in observable
     db.get(Document, "doc-a").active_version_id = "v2"
     db.commit()
 

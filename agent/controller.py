@@ -290,13 +290,13 @@ def run_task(db, user, task, *, models=None, tools=None):
     try:
         memory_context = []
         memory_adapter = getattr(tools, "memory", None)
-        if task.input.get("use_memory", True) and memory_adapter and memory_adapter.enabled:
+        if task.input.get("use_memory", False) and memory_adapter and memory_adapter.enabled:
             memory = _execute(
                 db,
                 task,
                 tools,
                 "search_memory",
-                {"query": task.goal, "limit": 5},
+                {"query": task.goal, "limit": 3},
                 reuse=True,
             )
             if memory and memory.status == "ok":
@@ -424,24 +424,53 @@ def run_task(db, user, task, *, models=None, tools=None):
 
 def task_payload(db, user, task):
     require_task(db, user, task.id)
-    # A task becomes unreadable if any source it depended on is no longer readable.
+    events = db.scalars(
+        select(AgentEvent)
+        .where(AgentEvent.task_id == task.id)
+        .order_by(AgentEvent.sequence)
+    ).all()
+    # Search/tool events can retain handles even when a task fails before copying
+    # them onto AgentTask. Treat every persisted handle as a dependency so a later
+    # revoke also hides the observable trace, not only the final answer.
+    dependency_refs = list(task.evidence_chunk_ids)
+    for event in events:
+        dependency_refs.extend(event.evidence_chunk_ids)
+    access_changed = False
     try:
         allow_historical = _uses_historical_versions(db, task)
-        for chunk_id in task.evidence_chunk_ids:
+        for chunk_id in dict.fromkeys(dependency_refs):
             require_chunk(db, user, chunk_id, active_only=not allow_historical)
         result = task.result
     except HTTPException:
+        access_changed = True
         result = {
             "status": "access_changed",
             "claims": [],
             "citations": [],
             "message": "任务依赖的资料已删除或访问权限已变化，结果已隐藏。",
         }
-    events = db.scalars(
-        select(AgentEvent)
-        .where(AgentEvent.task_id == task.id)
-        .order_by(AgentEvent.sequence)
-    ).all()
+
+    def public_event(row):
+        payload = row.payload
+        refs = row.evidence_chunk_ids
+        if access_changed:
+            # Keep operational shape only. Arguments, titles and model-authored
+            # purposes can contain source-derived text and must disappear.
+            payload = {
+                key: payload[key]
+                for key in ("status", "error_code", "evidence_count", "action")
+                if key in payload
+            }
+            refs = []
+        return {
+            "sequence": row.sequence,
+            "event_type": row.event_type,
+            "tool_name": row.tool_name,
+            "payload": payload,
+            "evidence_refs": refs,
+            "created_at": row.created_at.isoformat(),
+        }
+
     return {
         "id": task.id,
         "goal": task.goal,
@@ -451,20 +480,10 @@ def task_payload(db, user, task):
         "max_steps": task.max_steps,
         "state_version": task.state_version,
         "result": result,
-        "error": task.error,
+        "error": None if access_changed else task.error,
         "created_at": task.created_at.isoformat(),
         "updated_at": task.updated_at.isoformat(),
-        "events": [
-            {
-                "sequence": row.sequence,
-                "event_type": row.event_type,
-                "tool_name": row.tool_name,
-                "payload": row.payload,
-                "evidence_refs": row.evidence_chunk_ids,
-                "created_at": row.created_at.isoformat(),
-            }
-            for row in events
-        ],
+        "events": [public_event(row) for row in events],
     }
 
 

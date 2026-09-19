@@ -125,7 +125,10 @@ class AgentTaskBody(BaseModel):
     document_id: str | None = Field(default=None, max_length=64)
     from_version_id: str | None = Field(default=None, max_length=64)
     to_version_id: str | None = Field(default=None, max_length=64)
-    use_memory: bool = True
+    # Long-term memory is an optional personalization layer. The paired A/B
+    # experiment found no factual-accuracy gain and measurable latency/token
+    # overhead, so callers must opt in explicitly.
+    use_memory: bool = False
 
 
 class MemoryWriteBody(BaseModel):

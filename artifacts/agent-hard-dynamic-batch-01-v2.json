@@ -1,0 +1,938 @@
+{
+  "benchmark": "agent-hard-v2",
+  "task_sha256": "64e259235d47c6af84815eb252afc94d1a50e7ab39c6644064e4a3f385f04173",
+  "validation": {
+    "tasks": 30,
+    "categories": {
+      "multi_hop": 5,
+      "temporal_version": 5,
+      "conditional_planning": 5,
+      "query_recovery": 5,
+      "security_state": 5,
+      "efficiency_stopping": 5
+    },
+    "documents": 31,
+    "shared_comparable_subset": 21,
+    "controlled_agent_only_subset": 9
+  },
+  "arms": [
+    "dynamic"
+  ],
+  "results": {
+    "dynamic": [
+      {
+        "category": "multi_hop",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "5": true,
+          "1": true,
+          "2": true,
+          "4": true,
+          "8": true,
+          "16": true,
+          "event_id": false,
+          "7": true
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "conditional_transition": true
+        },
+        "capability_success": true,
+        "task_success": false,
+        "citation_documents": [
+          "seed-ticket-218",
+          "seed-webhook"
+        ],
+        "tool_trace": [
+          {
+            "tool": "open_document",
+            "arguments": {
+              "document_id": "218"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "http_404",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "http_404",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "工单 218 处理机制 重复处理失败 记录保留"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "工单 218：重复回调",
+                "支持响应等级表"
+              ]
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-ticket-218",
+              "seed-support-sla"
+            ]
+          },
+          {
+            "tool": "get_document_version",
+            "arguments": {
+              "document_id": "seed-ticket-218",
+              "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
+                "9407bdbe-2d57-5977-ace9-7660b17b8d63"
+              ],
+              "document_id": "seed-ticket-218"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "工单 218 处理机制 重复处理失败 记录保留 重试次数 退避计划 客户端去重"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "工单 218：重复回调",
+                "Webhook 投递与签名"
+              ]
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-ticket-218",
+              "seed-webhook"
+            ]
+          },
+          {
+            "tool": "verify_chunk_access",
+            "arguments": {
+              "chunk_ids": [
+                "9407bdbe-2d57-5977-ace9-7660b17b8d63",
+                "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
+                "5002f2fa-97f7-51f8-b30e-27b7dd099d1c"
+              ],
+              "purpose": "确定重复处理的失败机制和记录保留期，以及服务端恢复策略"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          }
+        ],
+        "steps": 7,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 5,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 236645.6,
+        "usage": {
+          "prompt_tokens": 1414,
+          "completion_tokens": 196,
+          "model_duration_ms": 40261.9,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S3",
+            "right_id": "E3:S2",
+            "reason": "两份文档讨论的主题不同，一份关于客户端幂等处理的失败机制和记录保留期，另一份关于Webhook投递失败后的重试次数和退避计划。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "先从工单 218 确定重复处理的失败机制和记录保留期，再根据其中提到的投递机制查服务端恢复策略，给出重试次数、退避计划和客户端去重字段。"
+          ],
+          "agent_policy_prompt_tokens": 11463,
+          "agent_policy_completion_tokens": 615,
+          "total_prompt_tokens": 12877,
+          "total_completion_tokens": 811
+        },
+        "task_id": "H02",
+        "run_id": "2eef9d3d-a331-4007-945e-c7a76dafea40"
+      },
+      {
+        "category": "multi_hop",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "15": true,
+          "10": true,
+          "30": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-support-escalate",
+          "seed-support-sla"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "P1工单首次响应时间 SEV1响应时间 值班负责人通知时间 事故状态更新频率"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "SEV1 客户事故升级",
+                "支持响应等级表",
+                "支持组交接清单"
+              ]
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-support-escalate",
+              "seed-support-sla",
+              "seed-support-handoff"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "157fd048-ca31-5fd1-b7c6-0ba2bf57f460",
+                "299da41f-e575-5bf7-9a23-34b2f76d9a03",
+                "75c1f9ea-ad1d-5b5d-bf35-9578c2dc0f5e"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "evidence"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-support-escalate",
+              "seed-support-sla",
+              "seed-support-handoff"
+            ]
+          }
+        ],
+        "steps": 2,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 127290.4,
+        "usage": {
+          "prompt_tokens": 1251,
+          "completion_tokens": 185,
+          "model_duration_ms": 36658.8,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E2:S4",
+            "right_id": "E1:S2",
+            "reason": "两份文档描述的是不同类型的响应时间，不构成冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "一个 P1 工单已确认是 SEV1：最迟多久首次响应客户、多久通知值班负责人、事故期间多久同步一次状态"
+          ],
+          "agent_policy_prompt_tokens": 5172,
+          "agent_policy_completion_tokens": 268,
+          "total_prompt_tokens": 6423,
+          "total_completion_tokens": 453
+        },
+        "task_id": "H03",
+        "run_id": "252af994-a3dd-49d1-95c9-79da753b5d2c"
+      },
+      {
+        "category": "multi_hop",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "5": true,
+          "2%": false,
+          "上一稳定版本": true,
+          "15": true,
+          "60": true
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true
+        },
+        "capability_success": true,
+        "task_success": false,
+        "citation_documents": [
+          "seed-db-backup",
+          "seed-rollback"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "生产发布回滚 触发条件 回滚目标 数据库 最大数据丢失 恢复时间"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "数据库备份与恢复目标",
+                "发布回滚操作手册"
+              ]
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "seed-db-backup",
+              "seed-rollback"
+            ]
+          },
+          {
+            "tool": "get_document_version",
+            "arguments": {
+              "document_id": "seed-db-backup",
+              "version_id": "352c191c-a12e-40f9-b144-39375a7fb786"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "d59a9134-134a-5df7-9344-4d8bbcd93158",
+                "d39946c2-460c-55c5-9ba9-d32ed2c3d581"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "evidence"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "seed-db-backup",
+              "seed-rollback"
+            ]
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "生产发布后需要回滚时，触发条件和回滚目标是什么？同时说明数据库最坏允许丢失多久数据、恢复需要多久。",
+              "top_k": 8
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 8,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "数据库备份与恢复目标",
+                "发布回滚操作手册",
+                "生产发布审批规则",
+                "数据导出注意事项",
+                "业务数据保留规则",
+                "本地研发环境配置",
+                "API 调用配额说明",
+                "单点登录会话规则"
+              ]
+            },
+            "error": null,
+            "evidence_count": 8,
+            "evidence_documents": [
+              "seed-db-backup",
+              "seed-rollback",
+              "seed-deploy-review",
+              "seed-export",
+              "seed-data-retention",
+              "seed-dev-environment",
+              "seed-api-limits",
+              "seed-sso-session"
+            ]
+          }
+        ],
+        "steps": 4,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 2,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 176428.3,
+        "usage": {
+          "prompt_tokens": 2008,
+          "completion_tokens": 217,
+          "model_duration_ms": 49838.8,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E2:S2",
+            "right_id": "E1:S2",
+            "reason": "两个文档讨论的主题不同，一个是回滚的触发条件和操作步骤，另一个是数据库恢复的相关指标，没有冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "生产发布后需要回滚时，触发条件和回滚目标是什么？同时说明数据库最坏允许丢失多久数据",
+            "恢复需要多久"
+          ],
+          "agent_policy_prompt_tokens": 6877,
+          "agent_policy_completion_tokens": 398,
+          "total_prompt_tokens": 8885,
+          "total_completion_tokens": 615
+        },
+        "task_id": "H04",
+        "run_id": "85d5a5fe-bb1d-4725-a61e-b2ecbf583700"
+      },
+      {
+        "category": "multi_hop",
+        "controlled": false,
+        "status": "execution_failed",
+        "expected_status": "answered",
+        "status_ok": false,
+        "execution_error_kind": "unexpected",
+        "facts": {
+          "笔记本": false,
+          "显示器": false,
+          "3": false,
+          "5": false
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "cross_document_evidence": false,
+          "gold_evidence_coverage": false
+        },
+        "capability_success": false,
+        "task_success": false,
+        "citation_documents": [],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "新员工第一天申请设备，三天后计划连续休三天年假。可申请哪些设备、设备多久处理、这次年假至少提前多久申请？"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "年假申请说明",
+                "入职设备申请"
+              ]
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "seed-leave",
+              "seed-equipment"
+            ]
+          },
+          {
+            "tool": "verify_chunk_access",
+            "arguments": {
+              "chunk_ids": [
+                "d2d28b23-369b-5c12-8ccc-ebba888eec24",
+                "ae6369fc-a77e-561b-834e-b8b6e45e1a45"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "checks",
+                "all_readable"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "seed-leave",
+              "seed-equipment"
+            ]
+          }
+        ],
+        "steps": 2,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 111847.0,
+        "usage": {},
+        "task_id": "H05",
+        "run_id": "f2b2c5c5-830a-4384-8b79-2f2867072ced",
+        "execution_error": "DependencyError: Agent 未返回有效动作"
+      },
+      {
+        "category": "temporal_version",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "v2": true,
+          "v3": true,
+          "decrease": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "required_tool:get_document_version": false,
+          "required_tool:compare_versions": true
+        },
+        "capability_success": false,
+        "task_success": false,
+        "citation_documents": [
+          "hard-support-sla-chain",
+          "seed-support-sla"
+        ],
+        "tool_trace": [
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "P1 支持政策",
+              "version_1": "v2",
+              "version_2": "v3"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "P1 支持政策 v2 和 v3 首次响应时限"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "P1 支持响应政策版本链",
+                "支持响应等级表",
+                "试点项目支持安排 B"
+              ]
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "hard-support-sla-chain",
+              "seed-support-sla",
+              "seed-pilot-b"
+            ]
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "6f3929eb-1c08-5231-b3ba-e60db90df8d5",
+              "version_id": "0b0fd0c5-2bf5-48d2-9138-1274c11ac3c8"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          }
+        ],
+        "steps": 7,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 2,
+        "extra_calls_after_sufficient_evidence": 1,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 186780.5,
+        "usage": {
+          "prompt_tokens": 1182,
+          "completion_tokens": 195,
+          "model_duration_ms": 37659.4,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E2:S4",
+            "right_id": "E1:S3",
+            "reason": "两个文档描述了 P1 的首次响应时限，但数值不同，不构成冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "列出 P1 支持政策 v2 与当前 v3 的首次响应时限，并计算缩短了多少分钟。"
+          ],
+          "agent_policy_prompt_tokens": 9534,
+          "agent_policy_completion_tokens": 443,
+          "total_prompt_tokens": 10716,
+          "total_completion_tokens": 638
+        },
+        "task_id": "H06",
+        "run_id": "6d629585-08b6-47d2-b710-6f3f592f1305"
+      }
+    ]
+  },
+  "summary": {
+    "dynamic": {
+      "shared_comparable_subset": {
+        "requested": 5,
+        "scored": 5,
+        "skipped": 0,
+        "answer_correct": 2,
+        "answer_correct_rate": 0.4,
+        "task_success": 1,
+        "task_success_rate": 0.2,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 1,
+        "mean_steps": 4.4,
+        "p50_latency_ms": 176428.3,
+        "p95_latency_ms": 236645.6,
+        "mean_prompt_tokens": 7780.2
+      },
+      "controlled_agent_only_subset": {
+        "requested": 0,
+        "scored": 0,
+        "skipped": 0,
+        "answer_correct": 0,
+        "answer_correct_rate": null,
+        "task_success": 0,
+        "task_success_rate": null,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": null,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": null,
+        "p50_latency_ms": null,
+        "p95_latency_ms": null,
+        "mean_prompt_tokens": null
+      },
+      "all_scored_tasks": {
+        "requested": 5,
+        "scored": 5,
+        "skipped": 0,
+        "answer_correct": 2,
+        "answer_correct_rate": 0.4,
+        "task_success": 1,
+        "task_success_rate": 0.2,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 1,
+        "mean_steps": 4.4,
+        "p50_latency_ms": 176428.3,
+        "p95_latency_ms": 236645.6,
+        "mean_prompt_tokens": 7780.2
+      },
+      "by_category": {
+        "conditional_planning": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "efficiency_stopping": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "multi_hop": {
+          "requested": 4,
+          "scored": 4,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 0.25,
+          "task_success": 1,
+          "task_success_rate": 0.25,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 1,
+          "mean_steps": 3.75,
+          "p50_latency_ms": 151859.3,
+          "p95_latency_ms": 236645.6,
+          "mean_prompt_tokens": 7046.2
+        },
+        "query_recovery": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "security_state": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "temporal_version": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 0,
+          "task_success_rate": 0.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 7,
+          "p50_latency_ms": 186780.5,
+          "p95_latency_ms": 186780.5,
+          "mean_prompt_tokens": 10716
+        }
+      }
+    }
+  },
+  "requested_tasks": 5,
+  "note": "开发 benchmark，不是训练集或独立留出集。跨 arm 只能比较 shared_comparable_subset；受控场景仅用于 Agent 内部诊断。"
+}

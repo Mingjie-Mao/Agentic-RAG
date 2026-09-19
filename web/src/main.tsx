@@ -759,6 +759,7 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
   const [agentGoal, setAgentGoal] = useState("");
   const [agentMode, setAgentMode] = useState<"auto" | "workflow" | "dynamic">("auto");
   const [agentDocument, setAgentDocument] = useState("");
+  const [useMemory, setUseMemory] = useState(false);
   const [memoryText, setMemoryText] = useState("");
   const [memoryBusy, setMemoryBusy] = useState(false);
   const [memoryStatus, setMemoryStatus] = useState("");
@@ -871,6 +872,7 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
           mode: agentMode,
           max_steps: agentMode === "dynamic" ? 6 : 4,
           document_id: agentDocument || null,
+          use_memory: useMemory,
         }),
       });
       setAgentTasks((old) => [task, ...old.filter((row) => row.id !== task.id)]);
@@ -894,7 +896,7 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
         body: JSON.stringify({ content }),
       });
       setMemoryText("");
-      setMemoryStatus("已提交到你的长期记忆；后续 Agent 任务会按当前身份检索。");
+      setMemoryStatus("已提交到你的长期记忆；仅在任务中开启“使用长期记忆”时检索。");
     } catch (e) {
       setMemoryStatus((e as Error).message);
     } finally {
@@ -1061,6 +1063,7 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
               <div className="agent-options">
                 <label>执行方式<select value={agentMode} onChange={(e) => setAgentMode(e.target.value as "auto" | "workflow" | "dynamic")}><option value="auto">自动路由（推荐）</option><option value="workflow">固定工作流</option>{!trial.enabled && <option value="dynamic">动态 Agent（实验）</option>}</select></label>
                 <label>指定资料（可选）<select value={agentDocument} onChange={(e) => setAgentDocument(e.target.value)}><option value="">跨资料检索</option>{docs.filter((doc) => doc.status === "ready").map((doc) => <option key={doc.id} value={doc.id}>{doc.title}</option>)}</select></label>
+                {!trial.enabled && <label><span><input type="checkbox" checked={useMemory} onChange={(e) => setUseMemory(e.target.checked)}/> 使用长期记忆（增加延迟与 token）</span></label>}
                 <button className="primary" disabled={busy || agentGoal.trim().length < 4}>{busy ? "Agent 执行中…" : "开始任务"}</button>
               </div>
             </form>

@@ -12,6 +12,35 @@ class MemoryUnavailable(RuntimeError):
     pass
 
 
+MAX_MEMORY_ITEMS = 3
+MAX_MEMORY_ITEM_CHARS = 240
+MAX_MEMORY_TOTAL_CHARS = 600
+
+
+def _compact_memories(rows):
+    """Keep personalization useful without letting it dominate the evidence prompt."""
+    compact, remaining = [], MAX_MEMORY_TOTAL_CHARS
+    for row in rows[:MAX_MEMORY_ITEMS]:
+        content = " ".join(str(row.get("content", "")).split())
+        if not content or remaining <= 0:
+            continue
+        content = content[: min(MAX_MEMORY_ITEM_CHARS, remaining)]
+        remaining -= len(content)
+        compact.append(
+            {
+                "id": row["id"],
+                "content": content,
+                "status": row.get("status"),
+                "valid_from": row.get("valid_from"),
+                "valid_to": row.get("valid_to"),
+                "scope": row.get("scope"),
+                "source": row.get("source", {}),
+                "score": row.get("score"),
+            }
+        )
+    return compact
+
+
 class LongTermMemoryAdapter:
     def __init__(self, user, *, client=None):
         cfg = settings()
@@ -48,30 +77,19 @@ class LongTermMemoryAdapter:
         except (httpx.HTTPError, ValueError) as exc:
             raise MemoryUnavailable("长期记忆服务暂时不可用") from exc
 
-    def search(self, query, limit=5):
+    def search(self, query, limit=MAX_MEMORY_ITEMS):
+        requested_limit = min(max(limit, 1), MAX_MEMORY_ITEMS)
         result = self._post(
             "/v1/memories/search",
             {
                 "user_id": self.namespace,
                 "query": query,
-                "limit": min(max(limit, 1), 8),
+                "limit": requested_limit,
                 "explain": True,
             },
         )
         return {
-            "memories": [
-                {
-                    "id": row["id"],
-                    "content": row["content"],
-                    "status": row.get("status"),
-                    "valid_from": row.get("valid_from"),
-                    "valid_to": row.get("valid_to"),
-                    "scope": row.get("scope"),
-                    "source": row.get("source", {}),
-                    "score": row.get("score"),
-                }
-                for row in result.get("memories", [])
-            ],
+            "memories": _compact_memories(result.get("memories", [])),
             "candidates_considered": result.get("candidates_considered", 0),
         }
 

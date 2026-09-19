@@ -1,0 +1,685 @@
+{
+  "benchmark": "agent-hard-v2",
+  "task_sha256": "64e259235d47c6af84815eb252afc94d1a50e7ab39c6644064e4a3f385f04173",
+  "validation": {
+    "tasks": 30,
+    "categories": {
+      "multi_hop": 5,
+      "temporal_version": 5,
+      "conditional_planning": 5,
+      "query_recovery": 5,
+      "security_state": 5,
+      "efficiency_stopping": 5
+    },
+    "documents": 31,
+    "shared_comparable_subset": 21,
+    "controlled_agent_only_subset": 9
+  },
+  "arms": [
+    "dynamic"
+  ],
+  "results": {
+    "dynamic": [
+      {
+        "category": "conditional_planning",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "3": true,
+          "5": true,
+          "1": true,
+          "2": true,
+          "4": true,
+          "8": true,
+          "16": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "conditional_transition": false
+        },
+        "capability_success": false,
+        "task_success": false,
+        "citation_documents": [
+          "seed-webhook",
+          "seed-sdk-retry"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "Python SDK 默认重试次数 webhook 最大重试次数"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "Python SDK 重试配置",
+                "Webhook 投递与签名",
+                "API 调用配额说明"
+              ]
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-sdk-retry",
+              "seed-webhook",
+              "seed-api-limits"
+            ]
+          },
+          {
+            "tool": "verify_chunk_access",
+            "arguments": {
+              "chunk_ids": [
+                "d33304ad-5549-5300-9b40-ffc59ff0a632",
+                "5002f2fa-97f7-51f8-b30e-27b7dd099d1c"
+              ],
+              "purpose": "确定 Python SDK 默认重试次数与 webhook 最大重试次数"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "verify_chunk_access",
+            "arguments": {
+              "chunk_ids": [
+                "d33304ad-5549-5300-9b40-ffc59ff0a632",
+                "5002f2fa-97f7-51f8-b30e-27b7dd099d1c"
+              ],
+              "purpose": "验证 Python SDK 重试次数和 webhook 最大重试次数的文档访问权限"
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "open_document",
+            "arguments": {
+              "document_id": "seed-sdk-retry",
+              "version_id": "6b6b4da8-a812-4cc0-9cd8-a4724390c467"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "document_id",
+                "title",
+                "version_id",
+                "is_active",
+                "chunks",
+                "next_offset"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "seed-sdk-retry"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "document_id": "seed-sdk-retry",
+              "chunk_ids": [
+                "d33304ad-5549-5300-9b40-ffc59ff0a632"
+              ]
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "invalid_arguments",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": []
+            },
+            "error": "invalid_arguments",
+            "evidence_count": 0,
+            "evidence_documents": []
+          }
+        ],
+        "steps": 7,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 2,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 208839.1,
+        "usage": {
+          "prompt_tokens": 1233,
+          "completion_tokens": 152,
+          "model_duration_ms": 32325.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E4:S2",
+            "right_id": "E2:S2",
+            "reason": "两个文档描述的是不同服务的重试机制，没有冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "先查 Python SDK 默认重试次数。若它高于 webhook 最大重试次数，说明差值；否则给出 webhook 的完整退避计划。"
+          ],
+          "agent_policy_prompt_tokens": 10610,
+          "agent_policy_completion_tokens": 534,
+          "total_prompt_tokens": 11843,
+          "total_completion_tokens": 686
+        },
+        "task_id": "H14",
+        "run_id": "a767f316-9e9f-41ad-a998-4171a5410db5"
+      },
+      {
+        "category": "conditional_planning",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "30": true,
+          "24": false
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "cross_document_evidence": false,
+          "gold_evidence_coverage": false,
+          "conditional_transition": false
+        },
+        "capability_success": false,
+        "task_success": false,
+        "citation_documents": [
+          "seed-plan-comparison"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "团队版每日导出次数"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 3,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "套餐功能对照表",
+                "数据导出注意事项",
+                "试点项目支持安排 B"
+              ]
+            },
+            "error": null,
+            "evidence_count": 3,
+            "evidence_documents": [
+              "seed-plan-comparison",
+              "seed-export",
+              "seed-pilot-b"
+            ]
+          },
+          {
+            "tool": "verify_chunk_access",
+            "arguments": {
+              "chunk_ids": [
+                "bea18c8a-88f5-53a3-a869-f81a130f5eb3"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 1,
+              "keys": [
+                "checks",
+                "all_readable"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 1,
+            "evidence_documents": [
+              "seed-plan-comparison"
+            ]
+          }
+        ],
+        "steps": 4,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 116757.2,
+        "usage": {
+          "prompt_tokens": 919,
+          "completion_tokens": 89,
+          "model_duration_ms": 21190.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "先查团队版每日导出次数；只有超过 20 次时，才继续核对导出链接有效期。"
+          ],
+          "agent_policy_prompt_tokens": 6822,
+          "agent_policy_completion_tokens": 212,
+          "total_prompt_tokens": 7741,
+          "total_completion_tokens": 301
+        },
+        "task_id": "H15",
+        "run_id": "3125861c-5c07-4b78-8f27-b6637ff13bca"
+      },
+      {
+        "category": "query_recovery",
+        "controlled": true,
+        "status": "insufficient_evidence",
+        "expected_status": "answered",
+        "status_ok": false,
+        "execution_error_kind": null,
+        "facts": {
+          "7": false,
+          "event_id": false
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "gold_evidence_coverage": false,
+          "query_recovery": false,
+          "first_search_miss_exercised": true
+        },
+        "capability_success": false,
+        "task_success": false,
+        "citation_documents": [],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "重复事件记录的保存期限和去重字段"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 0,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 0,
+            "evidence_documents": []
+          }
+        ],
+        "steps": 6,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": true,
+        "evidence_sufficient_step": null,
+        "extra_calls_after_sufficient_evidence": null,
+        "recovery_applicable": true,
+        "recovered": false,
+        "scenario_events": {
+          "first_search_miss": true,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 41635.8,
+        "usage": {},
+        "task_id": "H17",
+        "run_id": "f5fe5e90-f804-4c98-916f-787ef39e8d24"
+      },
+      {
+        "category": "query_recovery",
+        "controlled": true,
+        "status": "insufficient_evidence",
+        "expected_status": "answered",
+        "status_ok": false,
+        "execution_error_kind": null,
+        "facts": {
+          "5": false,
+          "2%": false,
+          "上一稳定版本": false
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "gold_evidence_coverage": false,
+          "query_recovery": false,
+          "first_search_miss_exercised": true
+        },
+        "capability_success": false,
+        "task_success": false,
+        "citation_documents": [],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "服务上线后出现问题是否需要回退到上一个版本以及具体条件"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 0,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 0,
+            "evidence_documents": []
+          }
+        ],
+        "steps": 6,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": true,
+        "evidence_sufficient_step": null,
+        "extra_calls_after_sufficient_evidence": null,
+        "recovery_applicable": true,
+        "recovered": false,
+        "scenario_events": {
+          "first_search_miss": true,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 47510.6,
+        "usage": {},
+        "task_id": "H18",
+        "run_id": "48a83799-5ba7-40af-af2a-b45d1b0e0958"
+      },
+      {
+        "category": "query_recovery",
+        "controlled": true,
+        "status": "insufficient_evidence",
+        "expected_status": "answered",
+        "status_ok": false,
+        "execution_error_kind": null,
+        "facts": {
+          "15": false,
+          "60": false
+        },
+        "forbidden_present": {},
+        "answer_correct": false,
+        "capabilities": {
+          "gold_evidence_coverage": false,
+          "query_recovery": false,
+          "first_search_miss_exercised": true
+        },
+        "capability_success": false,
+        "task_success": false,
+        "citation_documents": [],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "数据库故障 最坏情况 数据丢失 恢复时间"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 0,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": []
+            },
+            "error": null,
+            "evidence_count": 0,
+            "evidence_documents": []
+          }
+        ],
+        "steps": 6,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": true,
+        "evidence_sufficient_step": null,
+        "extra_calls_after_sufficient_evidence": null,
+        "recovery_applicable": true,
+        "recovered": false,
+        "scenario_events": {
+          "first_search_miss": true,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 45295.7,
+        "usage": {},
+        "task_id": "H19",
+        "run_id": "a29abc1c-bb46-4c18-a870-295f2070280c"
+      }
+    ]
+  },
+  "summary": {
+    "dynamic": {
+      "shared_comparable_subset": {
+        "requested": 2,
+        "scored": 2,
+        "skipped": 0,
+        "answer_correct": 1,
+        "answer_correct_rate": 0.5,
+        "task_success": 0,
+        "task_success_rate": 0.0,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 5.5,
+        "p50_latency_ms": 162798.1,
+        "p95_latency_ms": 208839.1,
+        "mean_prompt_tokens": 9792
+      },
+      "controlled_agent_only_subset": {
+        "requested": 3,
+        "scored": 3,
+        "skipped": 0,
+        "answer_correct": 0,
+        "answer_correct_rate": 0.0,
+        "task_success": 0,
+        "task_success_rate": 0.0,
+        "recovery_rate": 0.0,
+        "over_planning_rate": null,
+        "early_stop_rate": 1.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 6,
+        "p50_latency_ms": 45295.7,
+        "p95_latency_ms": 47510.6,
+        "mean_prompt_tokens": 0
+      },
+      "all_scored_tasks": {
+        "requested": 5,
+        "scored": 5,
+        "skipped": 0,
+        "answer_correct": 1,
+        "answer_correct_rate": 0.2,
+        "task_success": 0,
+        "task_success_rate": 0.0,
+        "recovery_rate": 0.0,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.6,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 5.8,
+        "p50_latency_ms": 47510.6,
+        "p95_latency_ms": 208839.1,
+        "mean_prompt_tokens": 3916.8
+      },
+      "by_category": {
+        "conditional_planning": {
+          "requested": 2,
+          "scored": 2,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 0.5,
+          "task_success": 0,
+          "task_success_rate": 0.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 5.5,
+          "p50_latency_ms": 162798.1,
+          "p95_latency_ms": 208839.1,
+          "mean_prompt_tokens": 9792
+        },
+        "efficiency_stopping": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "multi_hop": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "query_recovery": {
+          "requested": 3,
+          "scored": 3,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": 0.0,
+          "task_success": 0,
+          "task_success_rate": 0.0,
+          "recovery_rate": 0.0,
+          "over_planning_rate": null,
+          "early_stop_rate": 1.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 6,
+          "p50_latency_ms": 45295.7,
+          "p95_latency_ms": 47510.6,
+          "mean_prompt_tokens": 0
+        },
+        "security_state": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        },
+        "temporal_version": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null
+        }
+      }
+    }
+  },
+  "requested_tasks": 5,
+  "note": "开发 benchmark，不是训练集或独立留出集。跨 arm 只能比较 shared_comparable_subset；受控场景仅用于 Agent 内部诊断。"
+}
