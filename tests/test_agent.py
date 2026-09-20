@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from agent.controller import create_task, run_task, task_payload
 from agent.tools import KnowledgeTools, ToolResult
-from app.clients import AgentDecision, Claim, GeneratedAnswer
+from app.clients import AgentDecision, Claim, DependencyError, GeneratedAnswer
 from app.models import AgentEvent, Base, Chunk, Document, DocumentVersion, Tenant, User
 
 
@@ -111,8 +111,9 @@ def test_workflow_agent_persists_trace_and_returns_verified_citations():
             return ToolResult("ok", {}, ["c2"], {"checked_now": True})
 
     class FakeModels:
-        def generate(self, question, evidence):
+        def generate(self, question, evidence, **options):
             assert question == "当前 RPO 是多少？"
+            assert "acceptance_items_override" not in options
             assert evidence[0]["chunk_id"] == "c2"
             return (
                 GeneratedAnswer(
@@ -204,11 +205,13 @@ def test_dynamic_compound_task_adds_coverage_retrieval_before_finishing():
     db, user = agent_db()
 
     class EarlyStopModels:
+        questions: list[str] = []
+
         def decide_agent_action(self, *args):
             return AgentDecision(action="final", arguments={}, purpose="已经完成")
 
-        def generate(self, question, evidence):
-            assert question == "当前 RPO 以及恢复目标分别是什么？"
+        def generate(self, question, evidence, **options):
+            self.questions.append(question)
             assert [row["chunk_id"] for row in evidence] == ["c2"]
             return (
                 GeneratedAnswer(
@@ -244,11 +247,157 @@ def test_dynamic_compound_task_adds_coverage_retrieval_before_finishing():
     run_task(db, user, task, models=EarlyStopModels(), tools=tools)
     payload = task_payload(db, user, task)
 
-    assert tools.calls == [
-        (
-            "search_documents",
-            {"query": "当前 RPO 以及恢复目标分别是什么？", "top_k": 8},
+    assert tools.calls[0] == (
+        "search_documents",
+        {"query": "当前 RPO 以及恢复目标分别是什么？", "top_k": 8},
+    )
+    # The first pass answered only the RPO half, so the open subgoal is searched again
+    # with the first hop's own text carried into the query, then generated on its own.
+    assert tools.calls[1] == ("search_documents", {"query": "恢复目标 RPO 为 15 分钟。", "top_k": 6})
+    assert payload["step_no"] == 2
+    events = [event["event_type"] for event in payload["events"]]
+    assert "coverage_retrieval" in events and "coverage_check" in events
+    coverage = next(e for e in payload["events"] if e["event_type"] == "coverage_check")
+    assert coverage["payload"]["missing"] == ["恢复目标分别是什么"]
+    assert EarlyStopModels.questions[-1] == "恢复目标分别是什么"
+
+
+def test_workflow_recovers_once_after_an_empty_first_search():
+    db, user = agent_db()
+
+    class RecoveringTools:
+        def __init__(self):
+            self.user = user
+            self.calls = []
+
+        def call(self, name, arguments):
+            self.calls.append((name, arguments))
+            if name == "search_documents" and len(
+                [row for row in self.calls if row[0] == "search_documents"]
+            ) == 1:
+                return ToolResult("ok", {"matches": []}, [], {"checked_now": True})
+            return ToolResult("ok", {}, ["c2"], {"checked_now": True})
+
+    class FakeModels:
+        def generate(self, question, evidence, **options):
+            return (
+                GeneratedAnswer(
+                    answerable=True,
+                    claims=[Claim(text="RPO 为 15 分钟。", evidence_ids=["E1"], quotes=["RPO 为 15 分钟。"])],
+                ),
+                {"answer_status": "answered"},
+            )
+
+    tools = RecoveringTools()
+    task = create_task(db, user, "数据库真的挂掉以后，最坏会丢多少分钟的数据？", "workflow", 6)
+    run_task(db, user, task, models=FakeModels(), tools=tools)
+    payload = task_payload(db, user, task)
+    searches = [arguments["query"] for name, arguments in tools.calls if name == "search_documents"]
+    assert len(searches) == 2 and searches[0] != searches[1]
+    assert "真的" not in searches[1] and "数据库" in searches[1]
+    assert any(event["event_type"] == "query_recovery" for event in payload["events"])
+    assert payload["result"]["status"] == "answered"
+    # Recovery happens once; a second empty search is a real "no evidence" answer.
+    assert len([row for row in tools.calls if row[0] == "search_documents"]) == 2
+
+
+def test_workflow_walks_the_whole_version_chain_when_three_periods_are_asked_about():
+    db, user = agent_db()
+    db.add(
+        DocumentVersion(
+            id="v0",
+            document_id="doc-a",
+            filename="older.md",
+            media_type="text/markdown",
+            content_hash="0" * 64,
+            storage_key="older",
+            status="ready",
+            pipeline={},
+            timings={},
+            parsed_blocks=[],
         )
+    )
+    db.commit()
+
+    class VersionTools:
+        def __init__(self):
+            self.user = user
+            self.calls = []
+
+        def call(self, name, arguments):
+            self.calls.append((name, arguments))
+            if name == "get_document_version":
+                return ToolResult(
+                    "ok",
+                    {"versions": [{"version_id": "v2"}, {"version_id": "v1"}, {"version_id": "v0"}]},
+                    [],
+                    {"checked_now": True},
+                )
+            return ToolResult("ok", {}, ["c2"], {"checked_now": True})
+
+    class FakeModels:
+        def generate(self, question, evidence, **options):
+            return (
+                GeneratedAnswer(
+                    answerable=True,
+                    claims=[Claim(text="RPO 为 15 分钟。", evidence_ids=["E1"], quotes=["RPO 为 15 分钟。"])],
+                ),
+                {"answer_status": "answered"},
+            )
+
+    tools = VersionTools()
+    task = create_task(
+        db,
+        user,
+        "按时间列出 2026 年 8 月 20 日、9 月 20 日和 10 月 20 日适用的 RPO。",
+        "workflow",
+        7,
+        {"document_id": "doc-a"},
+    )
+    run_task(db, user, task, models=FakeModels(), tools=tools)
+    compared = [arguments for name, arguments in tools.calls if name == "compare_versions"]
+    assert [(row["from_version_id"], row["to_version_id"]) for row in compared] == [
+        ("v1", "v2"),
+        ("v0", "v1"),
     ]
-    assert payload["step_no"] == 1
-    assert any(event["event_type"] == "coverage_retrieval" for event in payload["events"])
+
+
+def test_dynamic_unparseable_action_costs_one_step_and_keeps_the_task():
+    db, user = agent_db()
+
+    class BrokenPolicy:
+        def __init__(self):
+            self.calls = 0
+
+        def decide_agent_action(self, *args):
+            self.calls += 1
+            if self.calls == 1:
+                raise DependencyError("Agent 未返回有效动作", stage="agent_policy")
+            if self.calls == 2:
+                return AgentDecision(
+                    action="search_documents", arguments={"query": "RPO"}, purpose="查找资料"
+                )
+            return AgentDecision(action="final", arguments={}, purpose="证据已足够")
+
+        def generate(self, question, evidence, **options):
+            return (
+                GeneratedAnswer(
+                    answerable=True,
+                    claims=[Claim(text="RPO 为 15 分钟。", evidence_ids=["E1"], quotes=["RPO 为 15 分钟。"])],
+                ),
+                {"answer_status": "answered"},
+            )
+
+    class SimpleTools:
+        def __init__(self):
+            self.user = user
+
+        def call(self, name, arguments):
+            return ToolResult("ok", {}, ["c2"], {"checked_now": True})
+
+    task = create_task(db, user, "当前 RPO 是多少？", "dynamic", 4)
+    run_task(db, user, task, models=BrokenPolicy(), tools=SimpleTools())
+    payload = task_payload(db, user, task)
+    assert payload["result"]["status"] == "answered"
+    assert any(event["event_type"] == "policy_rejected" for event in payload["events"])
+    assert payload["step_no"] == 2

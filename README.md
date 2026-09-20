@@ -123,7 +123,12 @@ B2 Agent 开发回归已完成：事实、复合问答、冲突、ACL、跨租�
 为避免用简单问答否定 Agent，本项目另建了 [`Agent Hard Benchmark`](./AGENT_HARD_BENCHMARK.md)：
 30 题、6 类受控场景，包含首次搜索故障注入、工具调用后撤权和长期记忆污染。它借鉴
 MultiHop-RAG、BFCL V4、τ³-bench 与 ToolSandbox 的任务结构，但题目和语料均为本项目自建；
-scorer v2、真实三版本链和分层运行均已完成。共享 21 题 Task Success 为 RAG 7/21、workflow 14/21、dynamic 7/21；dynamic P50 166.2 秒、P95 253.4 秒。受控 9 题中 workflow 与 dynamic 均为 4/9，安全泄漏为 0，查询恢复为 0/5。结果见 `artifacts/agent-hard-benchmark-v2.json`。
+scorer、真实三版本链和分层运行均已完成。最新一轮（v2.1：确定性查询恢复 + 子目标覆盖）共享
+21 题 Task Success 为 RAG 12/21、**workflow 19/21**、dynamic 14/21；受控 9 题 workflow 与
+dynamic 均为 9/9，查询恢复 5/5，三条 arm 安全泄漏均为 0。workflow P50 43.2 秒 / P95 73.3 秒，
+dynamic P50 93.9 秒 / P95 141.1 秒、平均 prompt token 较上一版下降 63%。结果见
+`artifacts/agent-hard-benchmark-v2_1.json`，逐题归因与两个仍未解决的失败见
+[`AGENT_HARD_BENCHMARK.md`](./AGENT_HARD_BENCHMARK.md)。它仍是参与调试的开发基准，不是泛化成绩。
 
 ## 快速开始
 
@@ -236,7 +241,8 @@ make agent-hard-benchmark # 完整运行三条路径；动态 Agent 为分钟级
 - 冲突集 13 正例 + 15 难负例、外部子集 39 题，规模适合验证系统行为，不足以支撑广泛统计结论
 - `/api/chat` 不保存服务端对话 session；短期上下文由当前浏览器会话回传。长期记忆只接入 Agent，并且需要单独运行 `llm-long-term-memory` 与配置逐用户 token
 - Agent benchmark 的原 30 道任务中 21 道是 fact/compound，主要验证 RAG、ACL、引用与基础工作流；100% 表示 Basic Regression 回归通过，不能证明动态 Agent 的规划能力。新的 30 题 Hard Benchmark 已完成三路分层运行；它仍是参与调试的开发基准
-- 动态 Agent 的完整配对仍只有修复前 5 题；当前数据足以阻止训练投入，不足以证明动态策略长期无价值
+- 动态 Agent 已有 Hard 30 题的完整配对，但成绩仍低于固定 workflow 且更慢；当前数据足以阻止训练投入，不足以证明动态策略长期无价值
+- Hard 30 的 v2.1 成绩是在这 30 题上调出来的开发成绩；外部 MultiHop-RAG 子集尚未接入，泛化能力未验证
 - 长期记忆已完成真实鉴权搜索和严格成对 A/B；当前没有事实正确率增益，且增加延迟与 token，因此默认关闭。它的个性化收益仍需单独 benchmark；显式写入可能使用外部抽取额度
 - 单机演示部署，未覆盖多机、TLS 终止、限流与高并发容量规划
 
@@ -244,8 +250,10 @@ make agent-hard-benchmark # 完整运行三条路径；动态 Agent 为分钟级
 
 - **89.1% 是状态判断正确率**，不是人工判定的完整答案正确率；**81.9% 是严格字符串事实覆盖**。13 个字面遗漏中，8 个是错误拒答，5 个是回答漏项，12/13 在 Recall@5 已找到金标文档。下一步优先做证据已召回后的条件式修复与逐项覆盖校验，而不是盲目换 embedding。
 - `artifacts/agent-failure-corpus.json` 中 17 个历史失败已经全部有成功回归。它们继续作为回归资产，不直接当训练集；只有积累至少 50 个去重、人工归因、尚不能由确定性规则修复的真实策略失败，才重新评估行为克隆、偏好优化、蒸馏或 RL。
-- Hard 30 题已完成：共享集 workflow 14/21，RAG 与 dynamic 均为 7/21；dynamic 没有质量收益，P50 166.2 秒且出现 1 次不可解析动作。下一步先修固定 workflow 的二跳与恢复规则，不启动训练。
-- 动态 Agent 单题约 142–304 秒的问题先通过自动路由、工具结果复用、条件式二次检索和停止规则解决；没有稳定策略失败数据前不训练。
+- Hard 30 题第二轮（v2.1）已完成：共享集 workflow 19/21、dynamic 14/21、RAG 12/21，受控集两条 Agent arm 均 9/9，查询恢复 0/5 → 5/5，安全泄漏保持 0。提升分别来自确定性查询恢复、版本链深度、子目标覆盖补生成，以及两处评分口径修正，逐题归因见 `AGENT_HARD_BENCHMARK.md`。
+- 仍失败的 H01、H13 已经从规划失败变成生成失败：第二跳检索拿到了正确材料，本地 7B 没把结论落到材料里的具体数值上。继续针对这两题调提示属于对两个样本过拟合，因此停手并记录；它们不算策略选择失败，不进入后训练候选。
+- 动态 Agent 延迟通过压缩策略上下文与确定性停止规则从 P50 166.2 秒降到 93.9 秒、prompt token 下降 63%，但仍未低于固定 workflow，默认路由不变。
+- 下一件事是外部验证：固定 MultiHop-RAG 100–200 题子集，冻结题目 ID 与语料版本，只跑一次并与自建 Hard 30 分开报告，不用它调 prompt 或规则。外部集也显示 workflow 优势之后才谈蒸馏，在那之前不做 RL。
 
 所有未解决问题、证据和分阶段计划集中维护在 [`PROJECT_REPORT.md`](./PROJECT_REPORT.md#20-当前问题与后续计划)。
 

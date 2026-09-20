@@ -1,5 +1,5 @@
 {
-  "version": "agent-hard-v2",
+  "version": "agent-hard-v2.1",
   "purpose": "30 道需要多跳、条件分支、查询恢复、时间版本、安全重鉴权或停止判断的 Agent 开发基准；不属于 S3 冻结集。",
   "categories": {
     "multi_hop": 5,
@@ -104,7 +104,43 @@
         "seed-db-backup"
       ],
       "max_steps": 7,
-      "scenario_events": []
+      "scenario_events": [],
+      "fact_matchers": [
+        {
+          "id": "error_window",
+          "aliases": [
+            "5"
+          ]
+        },
+        {
+          "id": "error_rate",
+          "aliases": [
+            "2%",
+            "百分之二"
+          ],
+          "patterns": [
+            "百分之二|2\\s*%"
+          ]
+        },
+        {
+          "id": "rollback_target",
+          "aliases": [
+            "上一稳定版本"
+          ]
+        },
+        {
+          "id": "rpo",
+          "aliases": [
+            "15"
+          ]
+        },
+        {
+          "id": "rto",
+          "aliases": [
+            "60"
+          ]
+        }
+      ]
     },
     {
       "id": "H05",
@@ -270,7 +306,34 @@
         "seed-travel-2026"
       ],
       "max_steps": 7,
-      "scenario_events": []
+      "scenario_events": [],
+      "fact_matchers": [
+        {
+          "id": "historical",
+          "aliases": [
+            "200"
+          ]
+        },
+        {
+          "id": "current",
+          "aliases": [
+            "250"
+          ]
+        },
+        {
+          "id": "supersession",
+          "aliases": [
+            "替代",
+            "取代",
+            "替换",
+            "不再适用",
+            "不适用"
+          ],
+          "patterns": [
+            "替代|取代|替换|不再?适用"
+          ]
+        }
+      ]
     },
     {
       "id": "H11",
@@ -340,7 +403,37 @@
       "conditional_transition": {
         "observe_document": "seed-db-backup",
         "then_document": "seed-rollback"
-      }
+      },
+      "fact_matchers": [
+        {
+          "id": "rto",
+          "aliases": [
+            "60"
+          ]
+        },
+        {
+          "id": "error_window",
+          "aliases": [
+            "5"
+          ]
+        },
+        {
+          "id": "error_rate",
+          "aliases": [
+            "2%",
+            "百分之二"
+          ],
+          "patterns": [
+            "百分之二|2\\s*%"
+          ]
+        },
+        {
+          "id": "rollback_target",
+          "aliases": [
+            "上一稳定版本"
+          ]
+        }
+      ]
     },
     {
       "id": "H14",
@@ -455,6 +548,30 @@
       "max_steps": 6,
       "scenario_events": [
         "first_search_miss"
+      ],
+      "fact_matchers": [
+        {
+          "id": "error_window",
+          "aliases": [
+            "5"
+          ]
+        },
+        {
+          "id": "error_rate",
+          "aliases": [
+            "2%",
+            "百分之二"
+          ],
+          "patterns": [
+            "百分之二|2\\s*%"
+          ]
+        },
+        {
+          "id": "rollback_target",
+          "aliases": [
+            "上一稳定版本"
+          ]
+        }
       ]
     },
     {
@@ -731,5 +848,6 @@
         "verify_chunk_access"
       ]
     }
-  ]
+  ],
+  "scoring_notes": "v2.1 只修正评分口径，不改题目、语料或流程：资料写「百分之二」时，答案写「百分之二」与写「2%」同样正确；H10 的「替代」是要求答案说明新版取代旧版这件事，而不是要求出现某一个词。两处旧写法都会把正确答案判为错误。"
 }

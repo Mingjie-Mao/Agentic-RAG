@@ -7,14 +7,24 @@ from datetime import timedelta
 from fastapi import HTTPException
 from sqlalchemy import func, or_, select
 
+from agent.planner import (
+    carry_forward_query,
+    checklist,
+    compact_observation,
+    recovery_query,
+    repair_question,
+    subgoals,
+    uncovered_items,
+    version_pairs,
+)
 from agent.tools import KnowledgeTools, ToolResult
-from app.clients import Models
+from app.clients import DependencyError, Models
 from app.config import settings
 from app.db import SessionLocal
 from app.models import AgentEvent, AgentTask, ToolExecution, User, now, uid
 from app.qa import validate_claims
 from app.security import require_chunk
-from app.task_analysis import acceptance_items, version_intent
+from app.task_analysis import acceptance_items, conflict_intent, version_intent
 
 
 def _event(db, task, event_type, *, tool_name=None, payload=None, refs=None):
@@ -205,7 +215,73 @@ def _evidence_from_refs(db, user, refs, *, allow_historical=False):
     return evidence
 
 
-def _finish(db, user, task, models, refs, memory_context=None):
+def _merge_usage(usage, extra):
+    for key in ("prompt_tokens", "completion_tokens", "model_duration_ms"):
+        if extra.get(key):
+            usage[key] = (usage.get(key) or 0) + extra[key]
+    return usage
+
+
+def _repair_coverage(db, user, task, models, tools, items, claims, evidence, pool, usage):
+    """Answer the subgoals the first pass left open, and nothing else.
+
+    A weak policy model tends to restate a conditional request instead of executing it,
+    and to stop after the first half of a compound one. Which items are still open is
+    decided lexically by `agent.planner`; this step looks again for those items only
+    and generates the gap. It runs at most once, keeps every claim the first pass
+    already earned, and every added claim goes through the same citation validation.
+    """
+    missing = uncovered_items(items, claims, task.goal)
+    _event(
+        db,
+        task,
+        "coverage_check",
+        payload={"items": items, "missing": missing, "covered": len(items) - len(missing)},
+    )
+    if not missing:
+        return claims, usage
+    focused = evidence
+    if tools is not None and task.step_no < task.max_steps:
+        # The second hop of a latent link is not reachable from the question alone,
+        # so the first hop's authorized text is carried into the query.
+        gap = _execute(
+            db,
+            task,
+            tools,
+            "search_documents",
+            {"query": carry_forward_query(missing, evidence), "top_k": 6},
+            reuse=True,
+        )
+        if gap and gap.evidence_refs:
+            allow_historical = _uses_historical_versions(db, task)
+            # The repair generates on what was retrieved *for the missing item*. Mixing
+            # it back into the first pass's material is what buried the answer the
+            # second search had just found.
+            focused = _evidence_from_refs(db, user, gap.evidence_refs, allow_historical=allow_historical)
+            pool.update({row["chunk_id"]: row for row in focused})
+    if not focused:
+        return claims, usage
+    generated, extra = models.generate(
+        repair_question(items, missing),
+        focused,
+        acceptance_items_override=checklist(missing),
+        check_conflict=False,
+        max_output_tokens=400,
+    )
+    added, status = validate_claims(generated, focused)
+    _event(
+        db,
+        task,
+        "coverage_repair",
+        payload={"missing": missing, "status": status, "added_claims": len(added)},
+    )
+    if status != "answered":
+        return claims, _merge_usage(usage, extra)
+    seen = {claim["text"] for claim in claims}
+    return claims + [claim for claim in added if claim["text"] not in seen], _merge_usage(usage, extra)
+
+
+def _finish(db, user, task, models, refs, memory_context=None, tools=None):
     allow_historical = _uses_historical_versions(db, task)
     evidence = _evidence_from_refs(db, user, refs, allow_historical=allow_historical)
     if not evidence:
@@ -216,12 +292,25 @@ def _finish(db, user, task, models, refs, memory_context=None):
             "message": "Agent 在预算内没有找到足够依据。",
         }
     else:
-        if memory_context:
-            generated, usage = models.generate(
-                task.goal, evidence, memory_context=memory_context
+        # Evidence can be re-selected by the coverage step; a chunk that was already
+        # cited must keep its citation, so every row seen stays available here.
+        pool = {row["chunk_id"]: row for row in evidence}
+        items = subgoals(task.goal)
+        compound = len(items) > 1 and not conflict_intent(task.goal)
+        # The first pass is left exactly as the single-turn path runs it. Handing the
+        # model its own subgoal checklist here was measured in a paired A/B
+        # (`make checklist-ab`) and changed nothing, while a splitter that cuts an
+        # enumeration short would hand the model a list shorter than the question.
+        # No measured gain, non-zero risk, so the subgoals only drive the step below.
+        options = {"memory_context": memory_context} if memory_context else {}
+        generated, usage = models.generate(task.goal, evidence, **options)
+        claims, status = validate_claims(generated, evidence)
+        if status == "answered" and usage.get("answer_status") == "conflict":
+            status = "conflict"
+        if compound and status == "answered" and claims:
+            claims, usage = _repair_coverage(
+                db, user, task, models, tools, items, claims, evidence, pool, usage
             )
-        else:
-            generated, usage = models.generate(task.goal, evidence)
         policy_usage = getattr(models, "agent_policy_usage", None)
         if policy_usage:
             usage["agent_policy_prompt_tokens"] = policy_usage["prompt_tokens"]
@@ -232,9 +321,6 @@ def _finish(db, user, task, models, refs, memory_context=None):
             usage["total_completion_tokens"] = (
                 usage.get("completion_tokens") or 0
             ) + policy_usage["completion_tokens"]
-        claims, status = validate_claims(generated, evidence)
-        if status == "answered" and usage.get("answer_status") == "conflict":
-            status = "conflict"
         used = {chunk_id for claim in claims for chunk_id in claim["evidence_ids"]}
         # Final re-authorization is mandatory, including historical-version evidence.
         for chunk_id in used:
@@ -250,9 +336,10 @@ def _finish(db, user, task, models, refs, memory_context=None):
                 "preview_url": f"/api/evidence/{row['chunk_id']}",
                 "original_url": f"/api/versions/{row['version_id']}/original",
             }
-            for row in evidence
-            if row["chunk_id"] in used
+            for chunk_id, row in pool.items()
+            if chunk_id in used
         ]
+        evidence = list(pool.values())
         payload = {
             "status": status,
             "claims": claims,
@@ -302,11 +389,7 @@ def run_task(db, user, task, *, models=None, tools=None):
             if memory and memory.status == "ok":
                 memory_context = memory.data.get("memories", [])
                 observations.append(
-                    {
-                        "tool": "search_memory",
-                        **_safe_summary(memory),
-                        "data": memory.data,
-                    }
+                    compact_observation("search_memory", _safe_summary(memory), memory.data, [])
                 )
         if task.mode == "workflow":
             document_id = task.input.get("document_id")
@@ -320,20 +403,36 @@ def run_task(db, user, task, *, models=None, tools=None):
                     reuse=True,
                 )
                 observations.append(_safe_summary(version_result))
-                comparison = _execute(
+                # A question about two dates is one transition; a question about three
+                # is two. Diffing only the newest pair silently drops the oldest
+                # version, which is exactly the period such a question asks about.
+                listed = (version_result.data.get("versions", []) if version_result else []) or []
+                pairs = version_pairs(listed, task.goal, task.max_steps - task.step_no) or [
+                    (task.input.get("from_version_id"), task.input.get("to_version_id"))
+                ]
+                _event(
                     db,
                     task,
-                    tools,
-                    "compare_versions",
-                    {
-                        "document_id": document_id,
-                        "from_version_id": task.input.get("from_version_id"),
-                        "to_version_id": task.input.get("to_version_id"),
-                    },
-                    reuse=True,
+                    "version_plan",
+                    payload={"document_id": document_id, "pairs": len(pairs)},
                 )
-                if comparison:
-                    refs.extend(comparison.evidence_refs)
+                for from_version_id, to_version_id in pairs:
+                    if task.step_no >= task.max_steps:
+                        break
+                    comparison = _execute(
+                        db,
+                        task,
+                        tools,
+                        "compare_versions",
+                        {
+                            "document_id": document_id,
+                            "from_version_id": from_version_id,
+                            "to_version_id": to_version_id,
+                        },
+                        reuse=True,
+                    )
+                    if comparison:
+                        refs.extend(comparison.evidence_refs)
             else:
                 search = _execute(
                     db,
@@ -343,6 +442,26 @@ def run_task(db, user, task, *, models=None, tools=None):
                     {"query": task.goal, "top_k": 6},
                     reuse=True,
                 )
+                # One controlled recovery. A question phrased the way a person would
+                # ask it can miss the wording of the material; giving up after the
+                # first empty search reports "no evidence" for something that exists.
+                if (
+                    search is not None
+                    and search.status == "ok"
+                    and not search.evidence_refs
+                    and task.step_no < task.max_steps
+                ):
+                    retry = recovery_query(task.goal, task.goal)
+                    if retry:
+                        _event(db, task, "query_recovery", payload={"retry_query": retry})
+                        search = _execute(
+                            db,
+                            task,
+                            tools,
+                            "search_documents",
+                            {"query": retry, "top_k": 6},
+                            reuse=True,
+                        )
                 if search:
                     refs.extend(search.evidence_refs)
                     if refs and task.step_no < task.max_steps:
@@ -357,11 +476,39 @@ def run_task(db, user, task, *, models=None, tools=None):
                         if detail:
                             refs = detail.evidence_refs
         else:
+            idle_steps = 0
             while task.step_no < task.max_steps:
                 db.refresh(task)
                 if task.status == "cancelled":
                     return task
-                decision = models.decide_agent_action(task.goal, observations[-6:], task.step_no + 1)
+                # The policy needs the goal and the last few observations, not the
+                # full text of every match it has ever seen. Replaying whole tool
+                # payloads is what made the dynamic prompt grow without bound.
+                try:
+                    decision = models.decide_agent_action(
+                        task.goal, observations[-3:], task.step_no + 1
+                    )
+                except DependencyError as exc:
+                    if exc.stage != "agent_policy":
+                        raise
+                    # One malformed action is a wasted step, not a reason to lose a
+                    # durable task and the evidence it already holds.
+                    _event(
+                        db,
+                        task,
+                        "policy_rejected",
+                        payload={"error_code": "unparseable_action"},
+                    )
+                    task.step_no += 1
+                    task.state_version += 1
+                    task.updated_at = now()
+                    db.commit()
+                    observations.append({"status": "error", "error_code": "unparseable_action"})
+                    idle_steps += 1
+                    if idle_steps >= 2:
+                        _event(db, task, "deterministic_stop", payload={"reason": "no_new_evidence"})
+                        break
+                    continue
                 _event(
                     db,
                     task,
@@ -370,21 +517,28 @@ def run_task(db, user, task, *, models=None, tools=None):
                 )
                 if decision.action == "final":
                     break
+                known = set(refs)
                 result = _execute(db, task, tools, decision.action, decision.arguments)
                 if result is None:
                     observations.append({"status": "error", "error_code": "repeated_call"})
+                    idle_steps += 1
+                    if idle_steps >= 2:
+                        _event(db, task, "deterministic_stop", payload={"reason": "no_new_evidence"})
+                        break
                     continue
                 refs.extend(result.evidence_refs)
                 if decision.action in {"retrieve_evidence", "open_document", "compare_versions"}:
                     refs = result.evidence_refs + refs
                 observations.append(
-                    {
-                        "tool": decision.action,
-                        **_safe_summary(result),
-                        "handles": result.evidence_refs[:8],
-                        "data": result.data,
-                    }
+                    compact_observation(
+                        decision.action, _safe_summary(result), result.data, result.evidence_refs
+                    )
                 )
+                # Two actions in a row that add no evidence is a loop, not progress.
+                idle_steps = 0 if set(refs) - known else idle_steps + 1
+                if idle_steps >= 2 and refs:
+                    _event(db, task, "deterministic_stop", payload={"reason": "no_new_evidence"})
+                    break
             # A dynamic policy may stop after answering only the first half of a
             # compound request. Use any remaining step for one deterministic,
             # ACL-scoped coverage retrieval over the original goal. Generation
@@ -410,7 +564,7 @@ def run_task(db, user, task, *, models=None, tools=None):
                         },
                         refs=coverage.evidence_refs,
                     )
-        return _finish(db, user, task, models, refs, memory_context)
+        return _finish(db, user, task, models, refs, memory_context, tools=tools)
     except Exception as exc:
         task.status = "failed"
         task.error = str(exc)[:1000]

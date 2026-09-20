@@ -1,0 +1,293 @@
+{
+  "benchmark": "agent-hard-v2.1",
+  "arms": {
+    "baseline": {
+      "tasks": 5,
+      "all_facts": 3,
+      "facts_covered": 23,
+      "facts_total": 25
+    },
+    "checklist": {
+      "tasks": 5,
+      "all_facts": 3,
+      "facts_covered": 23,
+      "facts_total": 25
+    }
+  },
+  "results": [
+    {
+      "task_id": "H01",
+      "arm": "baseline",
+      "run_id": "2964d441-8a8d-4dba-82fa-935f90e7df74",
+      "subgoals": [
+        "查明事故 092 中阻塞队列的输入特征",
+        "根据该特征核对当前限制",
+        "说明事故后用于降低同类风险的三项机制"
+      ],
+      "status": "answered",
+      "facts": {
+        "超大文件": true,
+        "20": false,
+        "独立 worker": true,
+        "租约": true
+      },
+      "facts_covered": 3,
+      "facts_total": 4,
+      "all_facts": false,
+      "claims": [
+        "查明事故 092 中阻塞队列的输入特征：单个超大文件占用解析队列。",
+        "核对当前限制：无直接提及针对该问题的具体限制，但有提到重试规则和发布前置条件。",
+        "降低同类风险的三项机制：限制单任务最大文件大小、将耗时解析拆到独立 worker 和记录任务租约和重试次数。",
+        "事故 092 中阻塞队列的输入特征是单个超大文件占用解析队列。"
+      ],
+      "latency_ms": 76318.9
+    },
+    {
+      "task_id": "H01",
+      "arm": "checklist",
+      "run_id": "e2b7d564-835b-4a7a-946e-0ce8940a270e",
+      "subgoals": [
+        "查明事故 092 中阻塞队列的输入特征",
+        "根据该特征核对当前限制",
+        "说明事故后用于降低同类风险的三项机制"
+      ],
+      "status": "answered",
+      "facts": {
+        "超大文件": true,
+        "20": false,
+        "独立 worker": true,
+        "租约": true
+      },
+      "facts_covered": 3,
+      "facts_total": 4,
+      "all_facts": false,
+      "claims": [
+        "查明事故 092 中阻塞队列的输入特征：单个超大文件占用解析队列。",
+        "根据该特征核对当前限制：未找到直接针对此问题的具体限制，但有相关机制建议。",
+        "说明事故后用于降低同类风险的三项机制：1. 限制单任务最大文件大小；2. 将耗时解析拆到独立 worker；3. 记录任务租约和重试次数。",
+        "事故 092 中阻塞队列的输入特征是单个超大文件占用解析队列。"
+      ],
+      "latency_ms": 77042.2
+    },
+    {
+      "task_id": "H02",
+      "arm": "checklist",
+      "run_id": "362a5b21-fd3a-4bcf-88e8-339bed7192c1",
+      "subgoals": [
+        "从工单 218 确定重复处理的失败机制和记录保留期",
+        "根据其中提到的投递机制查服务端恢复策略，给出重试次数",
+        "退避计划和客户端去重字段"
+      ],
+      "status": "answered",
+      "facts": {
+        "5": true,
+        "1": true,
+        "2": true,
+        "4": true,
+        "8": true,
+        "16": true,
+        "event_id": true,
+        "7": true
+      },
+      "facts_covered": 8,
+      "facts_total": 8,
+      "all_facts": true,
+      "claims": [
+        "重复处理的失败机制是按 event_id 建立去重表，并保留去重记录 7 天。",
+        "服务端恢复策略包括最大重试次数为 5 次，退避计划依次为 1、2、4、8、16 分钟。",
+        "客户端去重字段未在资料中明确提及。"
+      ],
+      "latency_ms": 64583.9
+    },
+    {
+      "task_id": "H02",
+      "arm": "baseline",
+      "run_id": "11b1331b-8f56-4054-8e90-8e9f4cf74a41",
+      "subgoals": [
+        "从工单 218 确定重复处理的失败机制和记录保留期",
+        "根据其中提到的投递机制查服务端恢复策略，给出重试次数",
+        "退避计划和客户端去重字段"
+      ],
+      "status": "answered",
+      "facts": {
+        "5": true,
+        "1": true,
+        "2": true,
+        "4": true,
+        "8": true,
+        "16": true,
+        "event_id": true,
+        "7": true
+      },
+      "facts_covered": 8,
+      "facts_total": 8,
+      "all_facts": true,
+      "claims": [
+        "重复处理的失败机制是按 event_id 建立去重表，并保留去重记录 7 天。",
+        "投递机制为 Webhook 投递，服务端恢复策略包括最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。",
+        "客户端去重字段未在资料中明确提及。"
+      ],
+      "latency_ms": 69510.7
+    },
+    {
+      "task_id": "H04",
+      "arm": "baseline",
+      "run_id": "c7df9d8b-1eb8-4e96-8d5f-9287185c7288",
+      "subgoals": [
+        "生产发布后需要回滚时，触发条件和回滚目标是什么",
+        "说明数据库最坏允许丢失多久数据",
+        "恢复需要多久"
+      ],
+      "status": "answered",
+      "facts": {
+        "error_window": true,
+        "error_rate": true,
+        "rollback_target": true,
+        "rpo": true,
+        "rto": true
+      },
+      "facts_covered": 5,
+      "facts_total": 5,
+      "all_facts": true,
+      "claims": [
+        "生产发布后需要回滚时，触发条件是发布后错误率连续5分钟超过百分之二。",
+        "回滚目标是使用上一稳定版本镜像，保留当前事故日志，并通知支持值班人员。",
+        "数据库最坏允许丢失15分钟的数据。",
+        "恢复需要60分钟。"
+      ],
+      "latency_ms": 61440.2
+    },
+    {
+      "task_id": "H04",
+      "arm": "checklist",
+      "run_id": "cd3ef34d-ac7a-4885-8e34-8004a8e2091f",
+      "subgoals": [
+        "生产发布后需要回滚时，触发条件和回滚目标是什么",
+        "说明数据库最坏允许丢失多久数据",
+        "恢复需要多久"
+      ],
+      "status": "answered",
+      "facts": {
+        "error_window": true,
+        "error_rate": true,
+        "rollback_target": true,
+        "rpo": true,
+        "rto": true
+      },
+      "facts_covered": 5,
+      "facts_total": 5,
+      "all_facts": true,
+      "claims": [
+        "生产发布后需要回滚时，触发条件是发布后错误率连续5分钟超过百分之二。",
+        "回滚目标是使用上一稳定版本镜像，保留当前事故日志，并通知支持值班人员。",
+        "数据库最坏允许丢失15分钟的数据。",
+        "恢复需要60分钟。"
+      ],
+      "latency_ms": 51784.4
+    },
+    {
+      "task_id": "H05",
+      "arm": "checklist",
+      "run_id": "6d3cf258-4656-4998-aa0f-f08607b8ff69",
+      "subgoals": [
+        "可申请哪些设备",
+        "设备多久处理",
+        "这次年假至少提前多久申请"
+      ],
+      "status": "answered",
+      "facts": {
+        "笔记本": true,
+        "显示器": true,
+        "3": true,
+        "5": true
+      },
+      "facts_covered": 4,
+      "facts_total": 4,
+      "all_facts": true,
+      "claims": [
+        "新员工可以申请一台笔记本电脑和一台显示器。",
+        "入职设备申请由 IT 支持组在 3 个工作日内处理。",
+        "连续 3 天及以上的年假，应至少提前 5 个工作日提交申请。"
+      ],
+      "latency_ms": 43160.7
+    },
+    {
+      "task_id": "H05",
+      "arm": "baseline",
+      "run_id": "39be0fd8-d134-438a-8f77-80edb58e1ba2",
+      "subgoals": [
+        "可申请哪些设备",
+        "设备多久处理",
+        "这次年假至少提前多久申请"
+      ],
+      "status": "answered",
+      "facts": {
+        "笔记本": true,
+        "显示器": true,
+        "3": true,
+        "5": true
+      },
+      "facts_covered": 4,
+      "facts_total": 4,
+      "all_facts": true,
+      "claims": [
+        "新员工第一天可以申请一台笔记本电脑和一台显示器。",
+        "设备将在3个工作日内处理。",
+        "这次年假至少需要提前5个工作日申请。"
+      ],
+      "latency_ms": 41602.5
+    },
+    {
+      "task_id": "H13",
+      "arm": "baseline",
+      "run_id": "97ee3879-1a9a-4003-878c-b3fd69c86c6f",
+      "subgoals": [
+        "查询生产数据库 RTO",
+        "检查发布回滚的触发条件和目标版本"
+      ],
+      "status": "answered",
+      "facts": {
+        "rto": true,
+        "error_window": true,
+        "error_rate": true,
+        "rollback_target": false
+      },
+      "facts_covered": 3,
+      "facts_total": 4,
+      "all_facts": false,
+      "claims": [
+        "先查询生产数据库 RTO；只有它超过 30 分钟时才继续检查发布回滚的触发条件和目标版本。",
+        "生产数据库RTO为60分钟。",
+        "发布回滚的触发条件是：发布后错误率连续5分钟超过百分之二。"
+      ],
+      "latency_ms": 43830.8
+    },
+    {
+      "task_id": "H13",
+      "arm": "checklist",
+      "run_id": "711c3125-54c6-43f7-876e-dd4b765b3b0d",
+      "subgoals": [
+        "查询生产数据库 RTO",
+        "检查发布回滚的触发条件和目标版本"
+      ],
+      "status": "answered",
+      "facts": {
+        "rto": true,
+        "error_window": true,
+        "error_rate": true,
+        "rollback_target": false
+      },
+      "facts_covered": 3,
+      "facts_total": 4,
+      "all_facts": false,
+      "claims": [
+        "查询生产数据库 RTO",
+        "只有它超过 30 分钟时才继续检查发布回滚的触发条件和目标版本",
+        "生产数据库RTO为60分钟。",
+        "发布回滚的触发条件是：发布后错误率连续5分钟超过百分之二。"
+      ],
+      "latency_ms": 43331.7
+    }
+  ],
+  "note": "同一组题、同一 workflow、同一模型设置；唯一差别是首轮生成是否收到子目标清单。样本量小，只用于判断该改动是否安全，不作为泛化成绩。"
+}

@@ -2,7 +2,8 @@ PY := .venv/bin/python
 
 .PHONY: setup infra models models-cpu migrate seed web run test integration browser \
 	s3-retrieval s3-generate s3-public s3-freeze s3-validate s5-dialogues rerank-model \
-	check-docs agent-benchmark trial-reset agent-hard-setup agent-hard-validate agent-hard-benchmark
+	check-docs agent-benchmark trial-reset agent-hard-setup agent-hard-validate agent-hard-benchmark \
+	checklist-ab
 
 setup:
 	uv venv --python 3.13 --allow-existing
@@ -82,6 +83,9 @@ agent-hard-setup:
 
 agent-hard-benchmark:
 	$(PY) scripts/run_agent_hard_benchmark.py
+
+checklist-ab:
+	$(PY) scripts/run_checklist_ab.py
 
 trial-reset:
 	$(PY) scripts/reset_trial.py

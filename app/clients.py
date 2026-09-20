@@ -148,11 +148,24 @@ class Models:
         return vectors
 
     def generate(
-        self, question: str, evidence: list[dict], memory_context: list[dict] | None = None
+        self,
+        question: str,
+        evidence: list[dict],
+        memory_context: list[dict] | None = None,
+        *,
+        acceptance_items_override: list[str] | None = None,
+        check_conflict: bool = True,
+        max_output_tokens: int = 700,
     ) -> tuple[GeneratedAnswer, dict]:
+        """Generate a cited answer.
+
+        `acceptance_items_override` lets a caller supply the checklist the answer has to
+        cover. The single-turn path passes nothing and keeps the frozen behaviour; the
+        Agent passes its subgoals, and its coverage repair passes only what is missing.
+        """
         cfg = settings()
         sources, context = evidence_spans(evidence)
-        required_items = acceptance_items(question)
+        required_items = acceptance_items_override or acceptance_items(question)
         deterministic_pair = schedule_conflict(question, sources, list(sources))
         schema = ModelAnswer.model_json_schema()
         schema["$defs"]["ModelClaim"]["properties"]["source_ids"]["items"]["enum"] = list(sources)
@@ -193,7 +206,12 @@ class Models:
                         ),
                     },
                 ],
-                "options": {"temperature": 0, "seed": 42, "num_ctx": 8192, "num_predict": 700},
+                "options": {
+                    "temperature": 0,
+                    "seed": 42,
+                    "num_ctx": 8192,
+                    "num_predict": max_output_tokens,
+                },
             },
         )
         try:
@@ -232,7 +250,7 @@ class Models:
             conflict_check = None
             # Two regulations can only contradict each other across documents.
             # Several spans of one document are one statement, not a conflict.
-            if len(by_document) > 1 and wire.status != "insufficient_evidence":
+            if check_conflict and len(by_document) > 1 and wire.status != "insufficient_evidence":
                 check = self._post(
                     "/api/chat",
                     {
@@ -296,7 +314,7 @@ class Models:
                     wire.status = "answered"
                 for key in ["prompt_eval_count", "eval_count", "total_duration"]:
                     result[key] = result.get(key, 0) + check.get(key, 0)
-            elif wire.status == "conflict":
+            elif wire.status == "conflict" and check_conflict:
                 # One document cannot contradict itself; the check never ran.
                 wire.status = "answered"
             parsed = GeneratedAnswer(

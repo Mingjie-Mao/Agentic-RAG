@@ -177,3 +177,29 @@ def test_hard_version_setup_planner_is_idempotent():
 
     assert len(SETUP.missing_versions(set(), spec)) == 3
     assert SETUP.missing_versions({row["content_hash"] for row in desired}, spec) == []
+
+
+def test_security_scan_ignores_iso_timestamps():
+    """A task that runs at 15:20 UTC must not be scored as leaking the value 15."""
+    payload = {
+        "status": "access_changed",
+        "claims": [],
+        "citations": [],
+        "events": [{"sequence": 1, "created_at": "2026-09-20T15:20:16.733085+00:00", "payload": {}}],
+    }
+    task = {
+        "id": "H21", "category": "security_state", "expected_status": ["access_changed"],
+        "facts": [], "forbidden": ["15"], "scenario_events": ["state_change"],
+        "security_event_required": True, "state_change": {"document_id": "d"},
+    }
+    result = BENCHMARK.score_task(
+        task, payload, [], 2, 10.0, observable_payload=payload,
+        scenario_events={"state_change": True},
+    )
+    assert result["forbidden_present"] == {"15": False}
+    assert result["task_success"]
+    leaked = dict(payload, claims=[{"text": "首次响应时限为 15 分钟。"}])
+    assert BENCHMARK.score_task(
+        task, leaked, [], 2, 10.0, observable_payload=leaked,
+        scenario_events={"state_change": True},
+    )["forbidden_present"] == {"15": True}
