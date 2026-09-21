@@ -198,15 +198,23 @@ def main():
     if args.smoke:
         frozen = {item["query_sha256"] for item in subset["items"]}
         pool = [row for key, row in sorted(by_query.items()) if key not in frozen]
-        items = [
-            {
-                "id": f"SMOKE-{digest(row['query'])[:12]}",
-                "question_type": row["question_type"],
-                "query_sha256": digest(row["query"]),
-                "answer_sha256": digest(row["answer"]),
-            }
-            for row in pool[: args.smoke]
-        ]
+        items, seen = [], {}
+        # Cover every question type: a plumbing check that only ever sees one type
+        # checks one quarter of the scoring rules.
+        for row in pool:
+            if seen.get(row["question_type"], 0) >= max(1, args.smoke // 4):
+                continue
+            seen[row["question_type"]] = seen.get(row["question_type"], 0) + 1
+            items.append(
+                {
+                    "id": f"SMOKE-{digest(row['query'])[:12]}",
+                    "question_type": row["question_type"],
+                    "query_sha256": digest(row["query"]),
+                    "answer_sha256": digest(row["answer"]),
+                }
+            )
+            if len(items) >= args.smoke:
+                break
     else:
         items = subset["items"][: args.limit]
     results = {arm: [] for arm in args.arms}
@@ -233,26 +241,28 @@ def main():
             ),
         }
 
-    with SessionLocal() as db:
-        user = db.get(User, TENANT_USER)
-        if user is None:
-            raise SystemExit("缺少 mh-eval 账号，先运行 scripts/ingest_multihop.py")
-        for index, item in enumerate(items, 1):
-            question = by_query.get(item["query_sha256"])
-            if question is None or digest(question["answer"]) != item["answer_sha256"]:
-                raise SystemExit(f"{item['id']}: 题面或金标与冻结哈希不符")
-            for arm in args.arms:
-                print(f"[{index}/{len(items)}] {item['id']} {arm} ...", flush=True)
+    for index, item in enumerate(items, 1):
+        question = by_query.get(item["query_sha256"])
+        if question is None or digest(question["answer"]) != item["answer_sha256"]:
+            raise SystemExit(f"{item['id']}: 题面或金标与冻结哈希不符")
+        # One session per question. A session held across the whole run keeps every
+        # row it has ever loaded in its identity map, and the cost of each commit
+        # grows with it: question 1 took 45 seconds and question 6 took ten minutes,
+        # almost all of it inside the database calls rather than the model.
+        for arm in args.arms:
+            print(f"[{index}/{len(items)}] {item['id']} {arm} ...", flush=True)
+            with SessionLocal() as db:
+                user = db.get(User, TENANT_USER)
+                if user is None:
+                    raise SystemExit("缺少 mh-eval 账号，先运行 scripts/ingest_multihop.py")
                 if arm == "rag":
                     result, retrieved, _, usage, latency = run_rag(db, user, question["query"])
                     fired = []
                 else:
                     result, fired, refs, usage, latency = run_workflow(db, user, question["query"])
                     retrieved = documents_for_chunks(db, refs)
-                results[arm].append(
-                    score(item, question, result, retrieved, latency, usage, fired)
-                )
-            out.write_text(json.dumps(payload(), ensure_ascii=False, indent=2) + "\n")
+            results[arm].append(score(item, question, result, retrieved, latency, usage, fired))
+        out.write_text(json.dumps(payload(), ensure_ascii=False, indent=2) + "\n")
     final = payload()
     out.write_text(json.dumps(final, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(final["summary"], ensure_ascii=False, indent=2))
