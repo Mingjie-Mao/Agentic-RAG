@@ -3,7 +3,7 @@ PY := .venv/bin/python
 .PHONY: setup infra models models-cpu migrate seed web run test integration browser \
 	s3-retrieval s3-generate s3-public s3-freeze s3-validate s5-dialogues rerank-model \
 	check-docs agent-benchmark trial-reset agent-hard-setup agent-hard-validate agent-hard-benchmark \
-	checklist-ab multihop-subset multihop-ingest multihop-eval
+	checklist-ab multihop-subset multihop-ingest multihop-eval multihop-diagnose site-data
 
 setup:
 	uv venv --python 3.13 --allow-existing
@@ -95,6 +95,12 @@ multihop-ingest:
 
 multihop-eval:
 	$(PY) scripts/run_multihop_eval.py
+
+multihop-diagnose:
+	$(PY) scripts/diagnose_multihop_verdicts.py
+
+site-data:
+	$(PY) scripts/build_site_data.py
 
 trial-reset:
 	$(PY) scripts/reset_trial.py

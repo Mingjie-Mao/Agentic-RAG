@@ -101,7 +101,7 @@
   <div><dt>留出集正确率</dt><dd id="s-holdout">—</dd></div>
   <div><dt>越权命中</dt><dd id="s-viol">—</dd></div>
   <div><dt>冲突精确率</dt><dd id="s-conf">—</dd></div>
-  <div><dt>自动化检查</dt><dd>100 项</dd></div>
+  <div><dt>自动化检查</dt><dd id="s-tests">—</dd></div>
   <div><dt>发布版本</dt><dd id="s-commit">—</dd></div>
 </dl>
 
@@ -147,7 +147,7 @@
     <thead><tr><th>策略与数据集</th><th>正确</th><th>中位延迟</th><th>平均步骤</th><th>禁区泄漏</th></tr></thead>
     <tbody id="t-agent"></tbody>
   </table></div>
-  <div class="note"><p><b id="agent-decision">—</b> B2 任务参与了本轮修复，因此 100% 只表示开发回归通过；动态行来自修复前的 5 题小集合，分母不同。</p></div>
+  <div class="note" id="agent-notes"><p><b id="agent-decision">—</b> B2 任务参与了本轮修复，因此 100% 只表示开发回归通过；动态行来自修复前的 5 题小集合，分母不同。</p></div>
 </section>
 
 <section>
@@ -235,6 +235,7 @@ fetch("data.json").then(r => r.json()).then(d => {
   document.getElementById("s-viol").textContent = h.permission_violations + h.hidden_source_leaks;
   document.getElementById("s-conf").textContent = "100%";
   document.getElementById("s-commit").textContent = d.commit;
+  document.getElementById("s-tests").textContent = d.tests.collected + " 项";
   document.getElementById("f-commit").textContent = d.commit;
 
   const dev = document.getElementById("t-dev");
@@ -281,7 +282,19 @@ fetch("data.json").then(r => r.json()).then(d => {
   agent.insertAdjacentHTML("beforeend", `<tr><td class="name">固定工作流 · B2 开发回归</td><td class="num">${Math.round(b.workflow_accuracy*b.tasks)}/${b.tasks}</td><td class="num">${b.workflow_median_seconds.toFixed(1)} s</td><td class="num">2.0</td><td class="num">${b.forbidden_leaks}</td></tr>`);
   const dl = b.dynamic_legacy;
   agent.insertAdjacentHTML("beforeend", `<tr><td class="name">动态 Agent · B1 首轮</td><td class="num">${Math.round(dl.accuracy*dl.tasks)}/${dl.tasks}</td><td class="num">${dl.median_seconds.toFixed(1)} s</td><td class="num">${dl.mean_steps.toFixed(1)}</td><td class="num">${dl.forbidden_leaks}</td></tr>`);
+  const num = v => (v === null || v === undefined) ? "—" : v;
+  for (const block of [d.agent.hard, d.agent.external]) {
+    if (!block) continue;
+    for (const r of block.rows)
+      agent.insertAdjacentHTML("beforeend",
+        `<tr><td class="name">${r.name}</td><td class="num">${r.correct}</td>` +
+        `<td class="num">${num(r.median_seconds)} s</td><td class="num">${num(r.mean_steps)}</td>` +
+        `<td class="num">${num(r.leaks)}</td></tr>`);
+  }
   document.getElementById("agent-decision").textContent = b.decision;
+  const agentNotes = document.getElementById("agent-notes");
+  for (const block of [d.agent.hard, d.agent.external])
+    if (block) agentNotes.insertAdjacentHTML("beforeend", `<p>${block.note}</p>`);
 
   const shots = document.getElementById("shots");
   SHOTS.forEach(([file, what], i) => shots.insertAdjacentHTML("beforeend",

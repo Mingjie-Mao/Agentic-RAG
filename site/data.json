@@ -257,6 +257,56 @@
       "unique_failures": 17,
       "unresolved": 0,
       "decision": "do_not_train"
+    },
+    "hard": {
+      "benchmark": "agent-hard-v2.1",
+      "subset": "shared_comparable_subset",
+      "rows": [
+        {
+          "name": "单次 RAG · Hard 共享 21 题",
+          "correct": "12/21",
+          "median_seconds": 33.4,
+          "mean_steps": 1,
+          "leaks": 0
+        },
+        {
+          "name": "固定工作流 · Hard 共享 21 题",
+          "correct": "19/21",
+          "median_seconds": 43.2,
+          "mean_steps": 2.33,
+          "leaks": 0
+        },
+        {
+          "name": "动态 Agent · Hard 共享 21 题",
+          "correct": "14/21",
+          "median_seconds": 93.9,
+          "mean_steps": 3.48,
+          "leaks": 0
+        }
+      ],
+      "note": "Hard 30 是参与调试的开发 benchmark，跨策略只比较同分母的 21 题共享子集；不是泛化成绩。"
+    },
+    "external": {
+      "benchmark": "multihop-rag-external-v1",
+      "rows": [
+        {
+          "name": "单次 RAG · MultiHop-RAG 外部 150 题",
+          "correct": "57/150",
+          "median_seconds": 29.5,
+          "mean_steps": null,
+          "leaks": null,
+          "gold_document_recall": 0.518
+        },
+        {
+          "name": "固定工作流 · MultiHop-RAG 外部 150 题",
+          "correct": "62/150",
+          "median_seconds": 42.9,
+          "mean_steps": null,
+          "leaks": null,
+          "gold_document_recall": 0.578
+        }
+      ],
+      "note": "外部 MultiHop-RAG 固定子集，只运行一次，未用于调 prompt、规则或阈值。答案指标是字面匹配：Yes/No 题要求答案里出现判断词，本系统输出的是带引用的 claim，两者口径不同，这一栏会低估语义正确率。"
     }
   },
   "not_measured": [
@@ -264,5 +314,9 @@
     "金标与校准标签的独立人工复核：均记为 0",
     "并发与峰值负载：单进程单机，未做压测",
     "真实企业语料：全部资料为本项目自建虚构内容"
-  ]
+  ],
+  "tests": {
+    "collected": 134,
+    "source": "pytest --collect-only"
+  }
 }

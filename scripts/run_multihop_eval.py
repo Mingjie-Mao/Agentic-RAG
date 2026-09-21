@@ -185,6 +185,11 @@ def main():
     parser.add_argument("--limit", type=int)
     parser.add_argument("--out", default="artifacts/multihop-external.json")
     parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="接着已有产物跑没跑完的题：题目、金标与评分规则都不变，只补运行",
+    )
+    parser.add_argument(
         "--smoke",
         type=int,
         help="检查管线用：只跑不在冻结子集里的题，绝不动官方子集",
@@ -220,6 +225,17 @@ def main():
     results = {arm: [] for arm in args.arms}
     out = ROOT / args.out
     out.parent.mkdir(parents=True, exist_ok=True)
+    done = {arm: {} for arm in args.arms}
+    if args.resume and out.exists():
+        previous = json.loads(out.read_text())
+        if previous.get("subset_sha256") != hashlib.sha256(SUBSET.read_bytes()).hexdigest():
+            raise SystemExit("已有产物来自另一个冻结子集，不能续跑")
+        for arm in args.arms:
+            done[arm] = {row["id"]: row for row in previous.get("results", {}).get(arm, [])}
+        print(
+            "resuming: " + ", ".join(f"{arm}={len(rows)}" for arm, rows in done.items()),
+            flush=True,
+        )
 
     def payload():
         return {
@@ -250,6 +266,9 @@ def main():
         # grows with it: question 1 took 45 seconds and question 6 took ten minutes,
         # almost all of it inside the database calls rather than the model.
         for arm in args.arms:
+            if item["id"] in done[arm]:
+                results[arm].append(done[arm][item["id"]])
+                continue
             print(f"[{index}/{len(items)}] {item['id']} {arm} ...", flush=True)
             with SessionLocal() as db:
                 user = db.get(User, TENANT_USER)

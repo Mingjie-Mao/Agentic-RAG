@@ -1,0 +1,28 @@
+{
+  "source": "artifacts/multihop-external.json",
+  "question_types": [
+    "comparison_query",
+    "temporal_query"
+  ],
+  "buckets": {
+    "rag": {
+      "questions": 81,
+      "refused": 31,
+      "answered_without_verdict_word": 46,
+      "verdict_matches_gold": 4,
+      "verdict_conflicts_or_wrong": 0,
+      "not_recoverable": 0,
+      "non_verdict_gold": 3
+    },
+    "workflow": {
+      "questions": 81,
+      "refused": 31,
+      "answered_without_verdict_word": 42,
+      "verdict_matches_gold": 4,
+      "verdict_conflicts_or_wrong": 4,
+      "not_recoverable": 0,
+      "non_verdict_gold": 3
+    }
+  },
+  "note": "诊断，不是重新评分：answered_without_verdict_word 只说明答案里没有判断词，不代表它语义正确。已声明的外部指标不因本文件改变。"
+}
