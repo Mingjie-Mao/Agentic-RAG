@@ -1,0 +1,31 @@
+﻿item_id,completeness_MODEL,verdict_reading_MODEL,model_note,v1_to_v2_change,provenance,codebook
+B1-MH-0c18610f435a,complete,yes,规则 6 例外：是非题的必答项就是判断本身；规则 7：两分句均被肯定,,model_prepass_not_gold,codebook_v2
+B1-MH-0e55fef39668,complete,not_applicable,问名称,,model_prepass_not_gold,codebook_v2
+B1-MH-09b478db5759,complete,yes,,,model_prepass_not_gold,codebook_v2
+B2-MH-179cc0ffdb05,complete,no,规则 7：第一分句被明确否定；回答里没有出现 no 字样,,model_prepass_not_gold,codebook_v2
+B2-MH-12912d800c0c,complete,not_applicable,,,model_prepass_not_gold,codebook_v2
+B2-MH-11d9213f77f1,complete,not_applicable,,,model_prepass_not_gold,codebook_v2
+B2-MH-141809cfa779,partial,other_choice,问『更大还是更小』；回答只给了 Rogers 的 2.2%，未选定任何一支,v1=not_applicable → v2=other_choice（规则 8）,model_prepass_not_gold,codebook_v2
+B1-MH-050827e2c17f,complete,yes,规则 7：两分句均被肯定,,model_prepass_not_gold,codebook_v2
+B1-MH-039d7f881e5a,complete,not_applicable,,,model_prepass_not_gold,codebook_v2
+B1-MH-0acddcd35850,complete,yes,,,model_prepass_not_gold,codebook_v2
+B2-MH-1291bbe87804,partial,yes,问句还有『或两者共同趋势』一支未被处理,,model_prepass_not_gold,codebook_v2
+B2-MH-19b313bbba37,complete,not_applicable,,,model_prepass_not_gold,codebook_v2
+B2-MH-1afa5edb190c,complete,other_choice,问『一致还是不一致』；回答选了 consistent,v1=not_applicable → v2=other_choice（规则 8）,model_prepass_not_gold,codebook_v2
+B1-MH-0a7a2c277008,complete,yes,规则 7：两分句均被肯定,,model_prepass_not_gold,codebook_v2
+B1-MH-0a05452eaee8,complete,not_applicable,问哪家公司,,model_prepass_not_gold,codebook_v2
+B1-MH-0cd2bbe92b19,complete,yes,,,model_prepass_not_gold,codebook_v2
+B2-MH-148e008e129a,complete,unclear,『两家都提到，但 TechCrunch 更详细』读不出『是否不同』,,model_prepass_not_gold,codebook_v2
+B2-MH-0f910380b759,complete,not_applicable,,,model_prepass_not_gold,codebook_v2
+B2-MH-1144d2e80b35,complete,no,问『是否改变』，答『保持一致』＝否；回答里没有否定词,,model_prepass_not_gold,codebook_v2
+B1-MH-063f46090a91,complete,yes,规则 7：两分句均被肯定,,model_prepass_not_gold,codebook_v2
+B1-MH-056fe59cd997,complete,not_applicable,,,model_prepass_not_gold,codebook_v2
+B1-MH-0ea267f4ceba,complete,no,,,model_prepass_not_gold,codebook_v2
+B2-MH-19c9e32e360e,complete,yes,规则 7：两分句均被肯定,,model_prepass_not_gold,codebook_v2
+B2-MH-10482bbfd0ca,complete,not_applicable,,,model_prepass_not_gold,codebook_v2
+B2-MH-1cc76df29d2b,partial,unclear,只复述两篇报道各自的说法，没有给出『是否一致』这个必答判断,,model_prepass_not_gold,codebook_v2
+B1-MH-0dff3d635abc,complete,yes,,,model_prepass_not_gold,codebook_v2
+B1-MH-08d8e46196f4,complete,not_applicable,,,model_prepass_not_gold,codebook_v2
+B1-MH-0d1919b11047,partial,unclear,只复述报道内容，没有回答『是否前后不一致』,,model_prepass_not_gold,codebook_v2
+B2-MH-166e026497b9,complete,yes,规则 7：两分句均被肯定,,model_prepass_not_gold,codebook_v2
+B2-MH-1a91106d425c,complete,not_applicable,language-mismatch：英文问题、中文回答,,model_prepass_not_gold,codebook_v2

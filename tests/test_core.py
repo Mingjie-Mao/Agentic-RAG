@@ -610,3 +610,51 @@ def test_shadow_scoring_cannot_change_the_answer(monkeypatch):
     assert result["status"] == "answered"
     assert result["claims"], "影子评分不得拦下任何回答"
     assert result["trace"]["shadow_scores"]["relevance"] < 0.3
+
+
+def test_verdict_is_added_only_for_judgment_questions_and_only_from_claims():
+    from app.clients import AnswerVerdict, DependencyError
+    from app.qa import answer_verdict
+
+    claims = [
+        {"text": "两份报道都提到收入上升。", "evidence_ids": ["c1"], "quotes": ["收入上升"]},
+        {"text": "其中一份提到订阅收入。", "evidence_ids": ["c2"], "quotes": ["订阅收入"]},
+    ]
+
+    class Judge:
+        def __init__(self, index=1):
+            self.calls = []
+            self.index = index
+
+        def decide_verdict(self, question, given):
+            self.calls.append((question, [row["text"] for row in given]))
+            return AnswerVerdict(verdict="yes", claim_index=self.index), {
+                "prompt_tokens": 120,
+                "completion_tokens": 8,
+            }
+
+    judge = Judge()
+    verdict, usage = answer_verdict(judge, "两份报道是否一致？", claims, "answered")
+    assert verdict["value"] == "yes" and verdict["claim_index"] == 1
+    # The verdict points back at a claim that already passed citation validation.
+    assert verdict["evidence_ids"] == ["c1"]
+    assert usage["prompt_tokens"] == 120
+    # Only the claims are shown to it: it can restate a conclusion, not add a fact.
+    assert judge.calls[0][1] == [claim["text"] for claim in claims]
+
+    quiet = Judge()
+    assert answer_verdict(quiet, "当前 RPO 是多少？", claims, "answered") == (None, {})
+    assert answer_verdict(quiet, "两份报道是否一致？", [], "answered") == (None, {})
+    assert answer_verdict(quiet, "两份报道是否一致？", claims, "insufficient_evidence") == (None, {})
+    assert quiet.calls == []
+
+    out_of_range = Judge(index=7)
+    verdict, _ = answer_verdict(out_of_range, "两份报道是否一致？", claims, "answered")
+    assert verdict["claim_index"] is None and verdict["evidence_ids"] == []
+
+    class Broken:
+        def decide_verdict(self, *_args):
+            raise DependencyError("模型不可用", stage="verdict")
+
+    # A missing verdict must never fail an answer that already passed validation.
+    assert answer_verdict(Broken(), "两份报道是否一致？", claims, "answered") == (None, {})

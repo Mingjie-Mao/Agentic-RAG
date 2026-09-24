@@ -1,0 +1,2678 @@
+{
+  "subset": "subset.json",
+  "note": "同一批题、同一语料与索引，只改检索预算与每文档配额；不生成答案，因此与模型无关。第 1 批已经用于完整评测，这里把它当开发集用；第 2 批不参与。",
+  "all_questions": {
+    "before": {
+      "questions": 132,
+      "gold_document_recall": 0.518,
+      "all_gold_retrieved": 38,
+      "mean_documents": 2.55,
+      "median_retrieval_ms": 288.0
+    },
+    "after": {
+      "questions": 132,
+      "gold_document_recall": 0.696,
+      "all_gold_retrieved": 59,
+      "mean_documents": 5.38,
+      "median_retrieval_ms": 329.6
+    }
+  },
+  "multi_source_detected_only": {
+    "before": {
+      "questions": 80,
+      "gold_document_recall": 0.547,
+      "all_gold_retrieved": 27,
+      "mean_documents": 2.44,
+      "median_retrieval_ms": 292.4
+    },
+    "after": {
+      "questions": 80,
+      "gold_document_recall": 0.711,
+      "all_gold_retrieved": 40,
+      "mean_documents": 5.29,
+      "median_retrieval_ms": 328.0
+    }
+  },
+  "results": [
+    {
+      "id": "MH-005e26b475d1",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 445.7
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 310.0
+      }
+    },
+    {
+      "id": "MH-0073ab564e55",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 273.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 379.8
+      }
+    },
+    {
+      "id": "MH-0085f76defbe",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 298.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 362.1
+      }
+    },
+    {
+      "id": "MH-00bcb273add8",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 266.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 366.0
+      }
+    },
+    {
+      "id": "MH-012f1f51ac88",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 280.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 315.2
+      }
+    },
+    {
+      "id": "MH-0165795fd40c",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 297.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 308.4
+      }
+    },
+    {
+      "id": "MH-0175090e1c35",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 328.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 335.5
+      }
+    },
+    {
+      "id": "MH-01ceb7cf9079",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 292.5
+      },
+      "after": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 284.4
+      }
+    },
+    {
+      "id": "MH-022ffac0b5f4",
+      "question_type": "comparison_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 302.5
+      },
+      "after": {
+        "chunks": 2,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 349.8
+      }
+    },
+    {
+      "id": "MH-0279054408d1",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 338.3
+      },
+      "after": {
+        "chunks": 5,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 332.3
+      }
+    },
+    {
+      "id": "MH-02faea4c1161",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 301.9
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 334.8
+      }
+    },
+    {
+      "id": "MH-03c8f9157597",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 335.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 409.8
+      }
+    },
+    {
+      "id": "MH-03cfaa7e78c6",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 386.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 345.3
+      }
+    },
+    {
+      "id": "MH-0445265e8760",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 285.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 352.1
+      }
+    },
+    {
+      "id": "MH-04e2c330afa3",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 308.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 317.4
+      }
+    },
+    {
+      "id": "MH-050827e2c17f",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 315.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 393.0
+      }
+    },
+    {
+      "id": "MH-05810be2d274",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 312.2
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 381.2
+      }
+    },
+    {
+      "id": "MH-05aa636fee50",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 308.7
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 362.0
+      }
+    },
+    {
+      "id": "MH-060223ba72f4",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 297.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 344.1
+      }
+    },
+    {
+      "id": "MH-06287f15585b",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 288.3
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 8,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 314.6
+      }
+    },
+    {
+      "id": "MH-0635b6274899",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 278.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 354.3
+      }
+    },
+    {
+      "id": "MH-063f46090a91",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 302.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 315.8
+      }
+    },
+    {
+      "id": "MH-077d77aaeb42",
+      "question_type": "comparison_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 448.9
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 469.9
+      }
+    },
+    {
+      "id": "MH-089e506e84aa",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 298.7
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 301.7
+      }
+    },
+    {
+      "id": "MH-08a7c191d6eb",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 306.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 329.1
+      }
+    },
+    {
+      "id": "MH-08c95043a751",
+      "question_type": "comparison_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 318.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 335.8
+      }
+    },
+    {
+      "id": "MH-08c9673c1321",
+      "question_type": "comparison_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 296.3
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 342.4
+      }
+    },
+    {
+      "id": "MH-0952d9e73467",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 290.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 332.5
+      }
+    },
+    {
+      "id": "MH-09a87ec62327",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 321.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 290.2
+      }
+    },
+    {
+      "id": "MH-09b930ca1fa9",
+      "question_type": "comparison_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 283.3
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 377.3
+      }
+    },
+    {
+      "id": "MH-09e5975ee83e",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 268.6
+      },
+      "after": {
+        "chunks": 7,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 307.6
+      }
+    },
+    {
+      "id": "MH-0a7a2c277008",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 272.3
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 298.6
+      }
+    },
+    {
+      "id": "MH-0af0da5770fc",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 306.6
+      },
+      "after": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 325.0
+      }
+    },
+    {
+      "id": "MH-0b65c4cf02ac",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 273.2
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 324.8
+      }
+    },
+    {
+      "id": "MH-0b856ab69624",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 283.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 323.8
+      }
+    },
+    {
+      "id": "MH-0bcb3d437738",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 281.2
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 8,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 311.8
+      }
+    },
+    {
+      "id": "MH-0bcfc22c5f10",
+      "question_type": "comparison_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 295.9
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 335.6
+      }
+    },
+    {
+      "id": "MH-0c18610f435a",
+      "question_type": "comparison_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 286.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 339.7
+      }
+    },
+    {
+      "id": "MH-0c203bd2ef40",
+      "question_type": "comparison_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 274.9
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 305.9
+      }
+    },
+    {
+      "id": "MH-0c2c6cb30b77",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 261.9
+      },
+      "after": {
+        "chunks": 6,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 300.4
+      }
+    },
+    {
+      "id": "MH-0c69b8fdbe62",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 278.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 313.0
+      }
+    },
+    {
+      "id": "MH-0c6d6ba18794",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 298.0
+      },
+      "after": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 292.2
+      }
+    },
+    {
+      "id": "MH-0dff3d635abc",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 437.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 429.2
+      }
+    },
+    {
+      "id": "MH-0e1f6d12ec46",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 273.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 305.1
+      }
+    },
+    {
+      "id": "MH-0e6090539b81",
+      "question_type": "comparison_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 300.0
+      },
+      "after": {
+        "chunks": 7,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 324.3
+      }
+    },
+    {
+      "id": "MH-0e908ca4b27b",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 288.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 340.9
+      }
+    },
+    {
+      "id": "MH-0fa9f5034ba7",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 268.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 330.4
+      }
+    },
+    {
+      "id": "MH-103cd5064a52",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 285.9
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 307.9
+      }
+    },
+    {
+      "id": "MH-10cbd523d4ee",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 290.2
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 339.3
+      }
+    },
+    {
+      "id": "MH-111f69baa399",
+      "question_type": "comparison_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 272.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 322.9
+      }
+    },
+    {
+      "id": "MH-00987dcaed8a",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 339.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 8,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 380.5
+      }
+    },
+    {
+      "id": "MH-00ad7107c8d0",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 339.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 411.7
+      }
+    },
+    {
+      "id": "MH-012f9e43588a",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 333.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 384.3
+      }
+    },
+    {
+      "id": "MH-01a03d465730",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 294.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 367.9
+      }
+    },
+    {
+      "id": "MH-01e320e7e25f",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 292.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 315.1
+      }
+    },
+    {
+      "id": "MH-01eae65e9467",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 279.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 317.1
+      }
+    },
+    {
+      "id": "MH-01f65fd5d3b5",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 287.7
+      },
+      "after": {
+        "chunks": 5,
+        "documents": 3,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 298.5
+      }
+    },
+    {
+      "id": "MH-01fb0c8361cd",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 292.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 365.0
+      }
+    },
+    {
+      "id": "MH-0255b6d20283",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 284.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 355.2
+      }
+    },
+    {
+      "id": "MH-027b5802fb84",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 281.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 374.1
+      }
+    },
+    {
+      "id": "MH-027c4406bb87",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 270.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 293.0
+      }
+    },
+    {
+      "id": "MH-02944c2bef58",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 311.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 348.3
+      }
+    },
+    {
+      "id": "MH-02fbe48e5373",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 273.3
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 303.6
+      }
+    },
+    {
+      "id": "MH-039d7f881e5a",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 270.7
+      },
+      "after": {
+        "chunks": 6,
+        "documents": 4,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 330.9
+      }
+    },
+    {
+      "id": "MH-03d7415e1067",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 284.3
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 8,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 353.4
+      }
+    },
+    {
+      "id": "MH-0422ce95acd1",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 263.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 323.2
+      }
+    },
+    {
+      "id": "MH-0431b85aa974",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 292.7
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 386.7
+      }
+    },
+    {
+      "id": "MH-0508c669c295",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 287.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 297.2
+      }
+    },
+    {
+      "id": "MH-056fe59cd997",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 321.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 323.2
+      }
+    },
+    {
+      "id": "MH-05813c2fe535",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 312.7
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 341.7
+      }
+    },
+    {
+      "id": "MH-05ec4a12947a",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 280.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 8,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 341.3
+      }
+    },
+    {
+      "id": "MH-064ec3fb0d8d",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 266.7
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 300.5
+      }
+    },
+    {
+      "id": "MH-06fd9bbf7af9",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 329.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 402.8
+      }
+    },
+    {
+      "id": "MH-07fa5905b99b",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 306.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 334.8
+      }
+    },
+    {
+      "id": "MH-07fb87ae8811",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 282.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 309.0
+      }
+    },
+    {
+      "id": "MH-0848d1d61039",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 269.5
+      },
+      "after": {
+        "chunks": 6,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 330.7
+      }
+    },
+    {
+      "id": "MH-08730d0c8ded",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 275.9
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 300.2
+      }
+    },
+    {
+      "id": "MH-08a0f95f7a0f",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 275.7
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 306.8
+      }
+    },
+    {
+      "id": "MH-08b80cb8cc0f",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 311.7
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 8,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 311.2
+      }
+    },
+    {
+      "id": "MH-08c734d4eea9",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 278.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 338.0
+      }
+    },
+    {
+      "id": "MH-08d8e46196f4",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 291.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 341.8
+      }
+    },
+    {
+      "id": "MH-08ed4605512a",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 295.9
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 321.9
+      }
+    },
+    {
+      "id": "MH-090a82298644",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 274.0
+      },
+      "after": {
+        "chunks": 6,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 305.1
+      }
+    },
+    {
+      "id": "MH-0a05452eaee8",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 274.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 336.1
+      }
+    },
+    {
+      "id": "MH-0a5bd425f609",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 269.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 324.4
+      }
+    },
+    {
+      "id": "MH-0a7e9c9f2ec8",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 285.9
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 4,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 340.3
+      }
+    },
+    {
+      "id": "MH-0b11071739c1",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 289.2
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 351.2
+      }
+    },
+    {
+      "id": "MH-0b473774d189",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 276.3
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 297.7
+      }
+    },
+    {
+      "id": "MH-0b57f5cc55d1",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 284.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 304.6
+      }
+    },
+    {
+      "id": "MH-0bee595f2413",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 310.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 311.1
+      }
+    },
+    {
+      "id": "MH-0c0e689a9056",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 284.7
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 3,
+        "all_gold": false,
+        "retrieval_ms": 354.9
+      }
+    },
+    {
+      "id": "MH-0c7346f158f2",
+      "question_type": "inference_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 298.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 341.5
+      }
+    },
+    {
+      "id": "MH-0cc6140338ed",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 299.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 341.7
+      }
+    },
+    {
+      "id": "MH-0d3b63463da0",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 291.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 347.7
+      }
+    },
+    {
+      "id": "MH-0d5e238015ef",
+      "question_type": "inference_query",
+      "gold_documents": 4,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 279.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 339.9
+      }
+    },
+    {
+      "id": "MH-0d83d8562e5a",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 293.2
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 289.7
+      }
+    },
+    {
+      "id": "MH-0e55fef39668",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 260.9
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 328.0
+      }
+    },
+    {
+      "id": "MH-0efa867faffe",
+      "question_type": "inference_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 268.3
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 315.3
+      }
+    },
+    {
+      "id": "MH-00fc91a80765",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 298.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 324.9
+      }
+    },
+    {
+      "id": "MH-01c35cf3d285",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 295.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 341.9
+      }
+    },
+    {
+      "id": "MH-01f308ed8e76",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 292.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 347.5
+      }
+    },
+    {
+      "id": "MH-0219de95d13e",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 275.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 363.5
+      }
+    },
+    {
+      "id": "MH-024ac868f764",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 272.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 322.4
+      }
+    },
+    {
+      "id": "MH-0284af6075bd",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 271.9
+      },
+      "after": {
+        "chunks": 6,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 286.7
+      }
+    },
+    {
+      "id": "MH-02899e01b5cf",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 287.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 323.1
+      }
+    },
+    {
+      "id": "MH-035ed76f80f8",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 274.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 303.0
+      }
+    },
+    {
+      "id": "MH-03b51326acae",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 269.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 370.0
+      }
+    },
+    {
+      "id": "MH-03b7d00ee202",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 313.1
+      },
+      "after": {
+        "chunks": 5,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 302.2
+      }
+    },
+    {
+      "id": "MH-0401d5c77bd1",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 368.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 7,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 411.3
+      }
+    },
+    {
+      "id": "MH-056b08205dfa",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 294.0
+      },
+      "after": {
+        "chunks": 7,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 326.8
+      }
+    },
+    {
+      "id": "MH-058521536216",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 267.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 296.7
+      }
+    },
+    {
+      "id": "MH-060cc1d31438",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 291.1
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 312.8
+      }
+    },
+    {
+      "id": "MH-077feb9c180a",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 267.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 309.0
+      }
+    },
+    {
+      "id": "MH-088695234e1a",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 278.4
+      },
+      "after": {
+        "chunks": 3,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 316.7
+      }
+    },
+    {
+      "id": "MH-09b478db5759",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 256.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 313.3
+      }
+    },
+    {
+      "id": "MH-0a8d6ccfe904",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 305.8
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 330.2
+      }
+    },
+    {
+      "id": "MH-0ac962ffaee1",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 305.0
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 4,
+        "gold_found": 3,
+        "all_gold": true,
+        "retrieval_ms": 389.1
+      }
+    },
+    {
+      "id": "MH-0acddcd35850",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 293.7
+      },
+      "after": {
+        "chunks": 5,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 353.2
+      }
+    },
+    {
+      "id": "MH-0ad0896342e0",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 279.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 331.1
+      }
+    },
+    {
+      "id": "MH-0b661c6477e4",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 276.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 288.7
+      }
+    },
+    {
+      "id": "MH-0b9a8cb6d75b",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 327.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 4,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 340.6
+      }
+    },
+    {
+      "id": "MH-0bdcc1036f62",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 286.9
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 322.8
+      }
+    },
+    {
+      "id": "MH-0c64116439ba",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 272.3
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 337.7
+      }
+    },
+    {
+      "id": "MH-0cd2bbe92b19",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 280.6
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 365.9
+      }
+    },
+    {
+      "id": "MH-0cfea9648a01",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 270.7
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 4,
+        "gold_found": 0,
+        "all_gold": false,
+        "retrieval_ms": 300.5
+      }
+    },
+    {
+      "id": "MH-0d1919b11047",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 267.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": false,
+        "retrieval_ms": 289.9
+      }
+    },
+    {
+      "id": "MH-0e1408df9ae0",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 298.3
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 396.0
+      }
+    },
+    {
+      "id": "MH-0ea267f4ceba",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 271.0
+      },
+      "after": {
+        "chunks": 6,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 296.9
+      }
+    },
+    {
+      "id": "MH-0f6a4137b71f",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 1,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 263.2
+      },
+      "after": {
+        "chunks": 7,
+        "documents": 5,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 314.8
+      }
+    },
+    {
+      "id": "MH-0fb5fdf6ee28",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": false,
+      "before": {
+        "chunks": 4,
+        "documents": 3,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 272.4
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 5,
+        "gold_found": 2,
+        "all_gold": true,
+        "retrieval_ms": 296.6
+      }
+    },
+    {
+      "id": "MH-10009ac853d4",
+      "question_type": "temporal_query",
+      "gold_documents": 3,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 308.2
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 4,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 310.4
+      }
+    },
+    {
+      "id": "MH-105c1c8841dc",
+      "question_type": "temporal_query",
+      "gold_documents": 2,
+      "multi_source_detected": true,
+      "before": {
+        "chunks": 4,
+        "documents": 2,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 313.5
+      },
+      "after": {
+        "chunks": 8,
+        "documents": 6,
+        "gold_found": 1,
+        "all_gold": false,
+        "retrieval_ms": 336.0
+      }
+    }
+  ]
+}

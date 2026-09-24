@@ -69,6 +69,7 @@ type Result = {
   question: string;
   status: string;
   claims: { text: string; evidence_ids: string[]; quotes: string[] }[];
+  verdict?: { value: "yes" | "no" | "unclear"; claim_index: number | null } | null;
   citations: Citation[];
   message: string;
   trace?: {
@@ -434,6 +435,16 @@ function AnswerCard({
           。
         </p>
       )}
+      {result.verdict && result.claims.length ? (
+        // A yes/no question deserves a yes/no. It is read out of the claims below,
+        // so the reader can check it against the same cited sentences.
+        <p className={`answer-verdict verdict-${result.verdict.value}`} data-testid="answer-verdict">
+          <strong>
+            {{ yes: "结论：是", no: "结论：否", unclear: "结论：依据不足以判断" }[result.verdict.value]}
+          </strong>
+          <span>根据下面第 {result.verdict.claim_index ?? "—"} 条结论，原文引用见其后</span>
+        </p>
+      ) : null}
       {result.claims.length ? (
         <div className="answer-prose">
           {result.claims.map((claim, index) => (

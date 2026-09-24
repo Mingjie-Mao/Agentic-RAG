@@ -1,7 +1,13 @@
 from app.clients import evidence_spans, schedule_conflict
 from app.models import Base, Tenant, User
 from app.retrieval import _boilerplate_only, foreign_tenant_mentioned, retrieve_authorized
-from app.task_analysis import acceptance_items, conflict_intent, needs_document_diversity
+from app.task_analysis import (
+    acceptance_items,
+    conflict_intent,
+    judgment_intent,
+    multi_source_intent,
+    needs_document_diversity,
+)
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from types import SimpleNamespace
@@ -133,3 +139,87 @@ def test_explicit_foreign_tenant_is_rejected_before_retrieval():
         db.commit()
         assert foreign_tenant_mentioned(db, user, "海川工作室的网关标记是什么？") is True
         assert foreign_tenant_mentioned(db, user, "星桥软件的网关标记是什么？") is False
+
+
+def test_judgment_questions_are_recognized_in_both_languages():
+    # The auxiliary verb can open the question or the last clause of a long one.
+    assert judgment_intent("Do the TechCrunch and Hacker News articles both report a rise?")
+    assert judgment_intent(
+        "After the October 7 report on Flexport, and the October 30 article, "
+        "was there a change in the perception of its leadership?"
+    )
+    assert judgment_intent("试点安排 A 和 B 的支持时段是否一致？")
+    # A long fronted adjunct pushes the inverted auxiliary into the middle.
+    assert judgment_intent(
+        "After the report from Fortune on October 4, which discussed the claims, "
+        "did The Verge's report on October 12 maintain consistency with it?"
+    )
+    # A question that asks for a name or a number is not a verdict question.
+    assert not judgment_intent("Who is the individual facing a criminal trial on fraud charges?")
+    assert not judgment_intent("Which article reported the acquisition first?")
+    # A wh-question can still end in an auxiliary clause; it is asking for a name.
+    assert not judgment_intent(
+        "What institution, frequently mentioned in articles from one paper, "
+        "is the focal point of investors' hopes regarding a halt to rate rises?"
+    )
+    assert not judgment_intent("当前 P1 工单首次响应时限是多少？")
+    assert not judgment_intent("Python SDK 默认最多重试几次？")
+
+
+def test_multi_source_intent_does_not_change_the_chinese_retrieval_budget():
+    assert multi_source_intent("Do both articles report an increase in revenue, respectively?")
+    assert multi_source_intent("Compare the Verge report and the TechCrunch story on the trial.")
+    assert multi_source_intent("The BBC article and the Times of India report disagree.")
+    # The internal corpus and its frozen evaluations are Chinese; none of these may
+    # start asking for a different number of chunks as a side effect.
+    for question in (
+        "生产数据库的 RPO、RTO 以及代码审查人数分别是多少？",
+        "试点安排 A 和 B 的支持时段是否一致？",
+        "当前 P1 工单首次响应时限是多少？",
+    ):
+        assert not multi_source_intent(question)
+
+
+def test_multi_source_question_gets_the_full_budget_and_a_document_quota():
+    documents = {
+        key: SimpleNamespace(id=key, active_version_id=f"v{key}", title=key.upper(), metadata_json={})
+        for key in ("a", "b", "c", "d")
+    }
+    chunks = {
+        f"{key}{index}": (
+            SimpleNamespace(id=f"{key}{index}", text=f"{key} {index}", locator={}),
+            SimpleNamespace(id=f"v{key}"),
+            documents[key],
+        )
+        for key in documents
+        for index in range(4)
+    }
+    order = ["a0", "a1", "a2", "a3", "b0", "b1", "c0", "c1", "d0", "d1"]
+
+    class Models:
+        def embed(self, _):
+            return [[0.0]]
+
+    class Search:
+        def retrieve_hybrid(self, *args):
+            assert args[-1] == 24  # eight admitted slots need a deeper candidate pool
+            return [
+                {"chunk_id": key, "score": 0.1, "bm25_rank": rank, "dense_rank": rank}
+                for rank, key in enumerate(order, 1)
+            ]
+
+    result = retrieve_authorized(
+        None,
+        SimpleNamespace(tenant_id="tenant"),
+        "Do the A report and the B article both mention the outage, respectively?",
+        cfg=SimpleNamespace(
+            top_k=4, retrieval_mode="hybrid", min_similarity=0.0, context_token_budget=5000
+        ),
+        models=Models(),
+        search=Search(),
+        top_k=8,
+        readable_documents_fn=lambda *_: list(documents.values()),
+        require_chunk_fn=lambda _db, _user, chunk_id, **_kwargs: chunks[chunk_id],
+    )
+    # Four documents instead of one document using the whole budget.
+    assert [row["document_id"] for row in result.evidence] == ["a", "a", "b", "b", "c", "c", "d", "d"]

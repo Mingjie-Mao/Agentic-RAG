@@ -15,6 +15,7 @@ corrected score: a claim in the second bucket may still be wrong, and this file 
 not pretend to know.
 """
 
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -46,12 +47,61 @@ def token_present(text: str, word: str) -> bool:
     return word in text
 
 
+def verdict_analysis(rows, gold_by_id):
+    """Accuracy of the explicit verdict against the trivial baselines.
+
+    A binary question is guessable: reporting 58% without saying that answering "yes"
+    to everything scores 61% on this batch would be reporting nothing. The confusion
+    matrix is here for the same reason — it shows which way the errors go.
+    """
+    pairs = [
+        (gold_by_id[row["id"]], row.get("verdict"))
+        for row in rows
+        if gold_by_id.get(row["id"]) in {"yes", "no"}
+    ]
+    answered = [(gold, said) for gold, said in pairs if said in {"yes", "no"}]
+    golds = [gold for gold, _ in pairs]
+    majority = max(golds.count("yes"), golds.count("no")) / len(golds) if golds else None
+    matrix = {
+        f"gold={gold}|verdict={said or 'none'}": sum(
+            1 for one, two in pairs if one == gold and (two or "none") == (said or "none")
+        )
+        for gold in ("yes", "no")
+        for said in ("yes", "no", "unclear", None)
+    }
+    return {
+        "yes_no_questions": len(pairs),
+        "gold_yes": golds.count("yes"),
+        "gold_no": golds.count("no"),
+        "majority_class_baseline": round(majority, 3) if majority else None,
+        "verdict_given": len(answered),
+        "verdict_correct": sum(gold == said for gold, said in answered),
+        "accuracy_over_all_yes_no": round(
+            sum(gold == said for gold, said in answered) / len(pairs), 3
+        )
+        if pairs
+        else None,
+        "accuracy_when_a_verdict_was_given": round(
+            sum(gold == said for gold, said in answered) / len(answered), 3
+        )
+        if answered
+        else None,
+        "confusion": {key: value for key, value in matrix.items() if value},
+    }
+
+
 def main():
-    subset = json.loads(SUBSET.read_text())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--subset", default=str(SUBSET))
+    parser.add_argument("--external", default=str(EXTERNAL))
+    parser.add_argument("--out", default=str(OUT))
+    args = parser.parse_args()
+    subset_path, external_path, out_path = Path(args.subset), Path(args.external), Path(args.out)
+    subset = json.loads(subset_path.read_text())
     queries = json.loads((CACHE / "MultiHopRAG.json").read_bytes())
     gold_by_hash = {digest(row["query"]): row["answer"] for row in queries}
     item_by_id = {item["id"]: item for item in subset["items"]}
-    external = json.loads(EXTERNAL.read_text())
+    external = json.loads(external_path.read_text())
     # Each arm keeps its result in its own place: the single-turn path writes an
     # Answer row, the agent keeps it on the task. Reading both from one table made the
     # two arms report identical numbers.
@@ -108,19 +158,32 @@ def main():
                 buckets["verdict_matches_gold"] += 1
             else:
                 buckets["verdict_conflicts_or_wrong"] += 1
-        report[arm] = buckets
+        report[arm] = buckets | {
+            "verdict_field": verdict_analysis(
+                [row for row in rows if row["question_type"] in BINARY],
+                {
+                    row["id"]: (gold_by_hash[item_by_id[row["id"]]["query_sha256"]] or "")
+                    .strip()
+                    .lower()
+                    for row in rows
+                },
+            )
+        }
     output = {
-        "source": "artifacts/multihop-external.json",
+        "source": external_path.name,
+        "subset": subset_path.name,
         "question_types": list(BINARY),
         "buckets": report,
         "note": (
             "诊断，不是重新评分：answered_without_verdict_word 只说明答案里没有判断词，"
             "不代表它语义正确。已声明的外部指标不因本文件改变。"
+            "verdict_field 一节比较的是显式结论字段与两个平凡基线——随机 50% 与多数类——"
+            "二元问题不给基线就等于没给结论。"
         ),
     }
-    OUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
+    out_path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(output, ensure_ascii=False, indent=2))
-    print(OUT)
+    print(out_path)
 
 
 if __name__ == "__main__":

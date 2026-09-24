@@ -3,7 +3,10 @@ PY := .venv/bin/python
 .PHONY: setup infra models models-cpu migrate seed web run test integration browser \
 	s3-retrieval s3-generate s3-public s3-freeze s3-validate s5-dialogues rerank-model \
 	check-docs agent-benchmark trial-reset agent-hard-setup agent-hard-validate agent-hard-benchmark \
-	checklist-ab multihop-subset multihop-ingest multihop-eval multihop-diagnose site-data
+	checklist-ab multihop-subset multihop-ingest multihop-eval multihop-diagnose \
+	multihop-retrieval-ablation multihop-yes-bias semantic-annotation-set \
+	semantic-agreement semantic-final-review semantic-gold-v3 semantic-freeze \
+	semantic-scorers semantic-scorer-eval site-data
 
 setup:
 	uv venv --python 3.13 --allow-existing
@@ -98,6 +101,38 @@ multihop-eval:
 
 multihop-diagnose:
 	$(PY) scripts/diagnose_multihop_verdicts.py
+
+multihop-retrieval-ablation:
+	$(PY) scripts/diagnose_multihop_retrieval.py
+
+multihop-yes-bias:
+	$(PY) scripts/diagnose_yes_bias.py
+
+semantic-annotation-set:
+	$(PY) scripts/build_semantic_annotation_set.py
+
+semantic-agreement:
+	$(PY) scripts/merge_semantic_labels.py --kind claims \
+		--first artifacts/semantic-calibration/machine-prepass-claims.csv \
+		--second artifacts/semantic-calibration/gpt-prepass-claims.csv
+	$(PY) scripts/merge_semantic_labels.py --kind answers \
+		--first artifacts/semantic-calibration/machine-prepass-answers.csv \
+		--second artifacts/semantic-calibration/gpt-prepass-answers.csv
+
+semantic-final-review:
+	$(PY) scripts/build_semantic_final_review.py
+
+semantic-gold-v3:
+	$(PY) scripts/build_semantic_gold_v3.py
+
+semantic-freeze:
+	$(PY) scripts/build_semantic_gold_v3.py --freeze
+
+semantic-scorers:
+	$(PY) scripts/semantic_scorers.py
+
+semantic-scorer-eval:
+	$(PY) scripts/evaluate_semantic_scorers.py
 
 site-data:
 	$(PY) scripts/build_site_data.py

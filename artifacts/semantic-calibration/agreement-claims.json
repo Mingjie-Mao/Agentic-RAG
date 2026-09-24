@@ -1,0 +1,36 @@
+{
+  "kind": "claims",
+  "items_compared": 50,
+  "only_in_first": 0,
+  "only_in_second": 0,
+  "contested_items": 17,
+  "agreed_items": 33,
+  "audit_sample": 7,
+  "human_judgements_required": 24,
+  "by_label": {
+    "entailment": {
+      "compared": 50,
+      "agree": 45,
+      "pairs": {
+        "supported|supported": 24,
+        "unsupported|unsupported": 9,
+        "partial|partial": 12,
+        "unsupported|partial": 2,
+        "partial|supported": 2,
+        "partial|unsupported": 1
+      },
+      "agreement_rate": 0.9
+    },
+    "relevance": {
+      "compared": 50,
+      "agree": 37,
+      "pairs": {
+        "answers|answers": 28,
+        "answers|related": 12,
+        "related|related": 9,
+        "related|answers": 1
+      },
+      "agreement_rate": 0.74
+    }
+  }
+}

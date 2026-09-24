@@ -1,0 +1,51 @@
+﻿item_id,claim_index,entailment_MODEL,relevance_MODEL,model_note,v1_to_v2_change,provenance,codebook
+B1-MH-0c18610f435a,1,partial,answers,echo; attribution-unverifiable：未被支持的是问题限定语中『TechCrunch 指控为私利欺诈』一项,,model_prepass_not_gold,codebook_v2
+B1-MH-0e55fef39668,1,supported,answers,,,model_prepass_not_gold,codebook_v2
+B1-MH-09b478db5759,1,unsupported,answers,两个引用块只有标题与订阅样板，无法建立一致性,,model_prepass_not_gold,codebook_v2
+B2-MH-179cc0ffdb05,1,partial,answers,negative-claim-unfalsifiable：片段不与之冲突，但证否不了,,model_prepass_not_gold,codebook_v2
+B2-MH-179cc0ffdb05,2,supported,answers,attribution-unverifiable,,model_prepass_not_gold,codebook_v2
+B2-MH-12912d800c0c,1,partial,answers,echo：四项限定语里『对互联网外观的影响』『手机与应用商店的法律结果』未被支持,,model_prepass_not_gold,codebook_v2
+B2-MH-11d9213f77f1,1,supported,answers,证据并非问题点名的 Bloomberg/Reuters，但按规则 2 不影响判定,,model_prepass_not_gold,codebook_v2
+B2-MH-141809cfa779,1,supported,related,metadata-unverifiable：日期不在引用块内，按规则 3 不判 partial,v1=partial → v2=supported（规则 3）,model_prepass_not_gold,codebook_v2
+B1-MH-050827e2c17f,1,unsupported,answers,引用块讲代码审查，未提 chief risk officer,,model_prepass_not_gold,codebook_v2
+B1-MH-050827e2c17f,2,supported,answers,,,model_prepass_not_gold,codebook_v2
+B1-MH-039d7f881e5a,1,supported,answers,,,model_prepass_not_gold,codebook_v2
+B1-MH-039d7f881e5a,2,unsupported,answers,引用块只讲签约时间，未涉及谁获益,,model_prepass_not_gold,codebook_v2
+B1-MH-0acddcd35850,1,supported,related,陈述缺席事实，未回答两篇报道是否一致,,model_prepass_not_gold,codebook_v2
+B1-MH-0acddcd35850,2,partial,answers,missing-fact：引用的是两篇 11-11 报道，问题点名的 11-06 那篇不在其中,,model_prepass_not_gold,codebook_v2
+B2-MH-1291bbe87804,1,supported,answers,,,model_prepass_not_gold,codebook_v2
+B2-MH-1291bbe87804,2,unsupported,answers,Wired 引用块是促销页样板，未提 Sony 耳机,,model_prepass_not_gold,codebook_v2
+B2-MH-19b313bbba37,1,supported,answers,,,model_prepass_not_gold,codebook_v2
+B2-MH-19b313bbba37,2,partial,answers,missing-fact：『监管扩张吃力』未被支持,,model_prepass_not_gold,codebook_v2
+B2-MH-1afa5edb190c,1,unsupported,related,引用块是 MBW/NMPA 内容，与 TechCrunch 的 EO 报道无关,,model_prepass_not_gold,codebook_v2
+B2-MH-1afa5edb190c,2,supported,related,支持，但没有回答两家立场是否一致,,model_prepass_not_gold,codebook_v2
+B2-MH-1afa5edb190c,3,supported,related,支持，但没有回答两家立场是否一致,,model_prepass_not_gold,codebook_v2
+B2-MH-1afa5edb190c,4,partial,related,negative-claim-unfalsifiable：『TechCrunch 未提及立场』一半无法证否，MBW 一半被支持,,model_prepass_not_gold,codebook_v2
+B2-MH-1afa5edb190c,5,unsupported,answers,结论需要两侧立场，引用块只有 MBW 一侧，推不出『一致』,,model_prepass_not_gold,codebook_v2
+B1-MH-0a7a2c277008,1,supported,answers,attribution-unverifiable,,model_prepass_not_gold,codebook_v2
+B1-MH-0a7a2c277008,2,unsupported,answers,方向写反：原文是 Swift 去看 Kelce 的比赛，不是 Kelce 去看她的演唱会,,model_prepass_not_gold,codebook_v2
+B1-MH-0a05452eaee8,1,supported,answers,,,model_prepass_not_gold,codebook_v2
+B1-MH-0a05452eaee8,2,unsupported,answers,引用块完全没有 Megan Grey 或操纵搜索结果的内容,,model_prepass_not_gold,codebook_v2
+B1-MH-0a05452eaee8,3,supported,answers,,,model_prepass_not_gold,codebook_v2
+B1-MH-0cd2bbe92b19,1,partial,answers,missing-fact：『与 U2 项目的互联理念一致』需要两侧，引用块只有 TechCrunch 一侧,,model_prepass_not_gold,codebook_v2
+B2-MH-148e008e129a,1,partial,answers,missing-fact：两块都是 TechCrunch，Fortune 一侧与『TechCrunch 更详细』的比较无据,,model_prepass_not_gold,codebook_v2
+B2-MH-0f910380b759,1,partial,answers,missing-fact：『出席过比赛』被支持，『在该球场演出过』无据,,model_prepass_not_gold,codebook_v2
+B2-MH-0f910380b759,2,partial,answers,echo：『不受狗仔影响』无据，『公开谈论恋情』勉强被支持,,model_prepass_not_gold,codebook_v2
+B2-MH-0f910380b759,3,supported,related,逐字对应；但主语是 Kelce 的意图，没有回答『哪位名人』,,model_prepass_not_gold,codebook_v2
+B2-MH-1144d2e80b35,1,partial,answers,两段分别谈正向思考与祷告习惯，支持不到『两篇之间保持一致』这个判断,,model_prepass_not_gold,codebook_v2
+B1-MH-063f46090a91,1,supported,answers,,,model_prepass_not_gold,codebook_v2
+B1-MH-063f46090a91,2,partial,answers,negative-claim-unfalsifiable：前半被支持，『而非 Flipboard 的平台结构』证否不了,,model_prepass_not_gold,codebook_v2
+B1-MH-056fe59cd997,1,supported,answers,,,model_prepass_not_gold,codebook_v2
+B1-MH-056fe59cd997,2,supported,answers,,,model_prepass_not_gold,codebook_v2
+B1-MH-056fe59cd997,3,supported,answers,,,model_prepass_not_gold,codebook_v2
+B1-MH-0ea267f4ceba,1,partial,answers,negative-claim-unfalsifiable：引用块里没有 Yardbarker 的内容,,model_prepass_not_gold,codebook_v2
+B2-MH-19c9e32e360e,1,supported,answers,,,model_prepass_not_gold,codebook_v2
+B2-MH-19c9e32e360e,2,supported,answers,尾部『indicating different aspects』属解释性套话，未按实质断言处理（见新增缺口 8）,,model_prepass_not_gold,codebook_v2
+B2-MH-10482bbfd0ca,1,partial,answers,missing-fact：引用块比的是 GPT-4，claim 写的是 GPT-3.5,,model_prepass_not_gold,codebook_v2
+B2-MH-10482bbfd0ca,2,unsupported,answers,引用块没有『无有效替代』，也没有 The Verge 的内容,,model_prepass_not_gold,codebook_v2
+B2-MH-10482bbfd0ca,3,supported,answers,,,model_prepass_not_gold,codebook_v2
+B2-MH-1cc76df29d2b,1,unsupported,related,hedge-dropped：原文是 Megan Gray 的指控且 Google 强烈否认，claim 当作事实陈述（见新增缺口 9）,,model_prepass_not_gold,codebook_v2
+B2-MH-1cc76df29d2b,2,unsupported,related,hedge-dropped：原文是诉状『argues』，claim 当作事实陈述,,model_prepass_not_gold,codebook_v2
+B1-MH-0dff3d635abc,1,supported,answers,,,model_prepass_not_gold,codebook_v2
+B1-MH-08d8e46196f4,1,partial,answers,echo：三项限定语里只有『被指控为私利欺诈』被支持,,model_prepass_not_gold,codebook_v2
+B1-MH-0d1919b11047,1,supported,related,复述报道内容，没有回答『报道是否前后不一致』,,model_prepass_not_gold,codebook_v2

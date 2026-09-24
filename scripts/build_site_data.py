@@ -16,7 +16,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site/data.json"
 HARD = ROOT / "artifacts/agent-hard-benchmark-v2_1.json"
-EXTERNAL = ROOT / "artifacts/multihop-external.json"
+EXTERNAL = sorted((ROOT / "artifacts").glob("multihop-external*.json"))
 LABELS = {"rag": "单次 RAG", "workflow": "固定工作流", "dynamic": "动态 Agent"}
 
 
@@ -53,30 +53,39 @@ def hard_rows():
 
 
 def external_rows():
-    data = json.loads(EXTERNAL.read_text())
-    rows = []
-    for arm in data["arms"]:
-        summary = data["summary"][arm]["all"]
-        rows.append(
-            {
-                "name": f"{LABELS[arm]} · MultiHop-RAG 外部 {summary['questions']} 题",
-                "correct": f"{summary['answer_correct']}/{summary['questions']}",
-                "median_seconds": seconds(summary["p50_latency_ms"]),
-                "mean_steps": None,
-                "leaks": None,
-                "gold_document_recall": summary["gold_document_recall"],
-            }
-        )
-    return rows, data["benchmark"]
+    """One row per arm per frozen batch, newest batch last."""
+    rows, names = [], []
+    batches = []
+    for path in EXTERNAL:
+        data = json.loads(path.read_text())
+        batch = data.get("subset", "subset.json").replace(".json", "")
+        number = 1 if batch == "subset" else int(batch.rsplit("-r", 1)[-1])
+        batches.append((number, data))
+    for number, data in sorted(batches):
+        label = f"第 {number} 批"
+        names.append(data["benchmark"])
+        for arm in data["arms"]:
+            summary = data["summary"][arm]["all"]
+            rows.append(
+                {
+                    "name": f"{LABELS[arm]} · MultiHop-RAG 外部 {label}（{summary['questions']} 题）",
+                    "correct": f"{summary['answer_correct']}/{summary['questions']}",
+                    "median_seconds": seconds(summary["p50_latency_ms"]),
+                    "mean_steps": None,
+                    "leaks": None,
+                    "gold_document_recall": summary["gold_document_recall"],
+                    "scoring_rule": data.get("scoring_rule", "v1"),
+                }
+            )
+    return rows, ", ".join(dict.fromkeys(names))
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", default=str(SITE))
     args = parser.parse_args()
-    for path in (HARD, EXTERNAL):
-        if not path.exists():
-            raise SystemExit(f"缺少产物 {path}，先运行对应评测")
+    if not HARD.exists() or not EXTERNAL:
+        raise SystemExit("缺少 Hard 或外部评测产物，先运行对应评测")
     site = json.loads(SITE.read_text())
     site["tests"] = {"collected": collected_tests(), "source": "pytest --collect-only"}
     hard, hard_name = hard_rows()
@@ -94,9 +103,10 @@ def main():
         "benchmark": external_name,
         "rows": external,
         "note": (
-            "外部 MultiHop-RAG 固定子集，只运行一次，未用于调 prompt、规则或阈值。"
-            "答案指标是字面匹配：Yes/No 题要求答案里出现判断词，本系统输出的是带引用的 claim，"
-            "两者口径不同，这一栏会低估语义正确率。"
+            "外部 MultiHop-RAG 固定子集，每批只运行一次，未用于调 prompt、规则或阈值。"
+            "第 1 批按旧口径（要求答案里出现判断词）评分，第 2 批按显式结论字段评分，"
+            "因此两批的答案列不可直接相减；Yes/No 题的判断正确率低于「一律答 yes」的平凡基线，"
+            "结论字段解决的是可读性，不是判断力。"
         ),
     }
     Path(args.out).write_text(json.dumps(site, ensure_ascii=False, indent=2) + "\n")

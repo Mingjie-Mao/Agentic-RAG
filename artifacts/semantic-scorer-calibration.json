@@ -1,0 +1,401 @@
+{
+  "preregistration": "artifacts/semantic-calibration/PREREGISTRATION-P2.md",
+  "gold_frozen_at": "2026-09-24T11:09:17+00:00",
+  "final_reviewer": "gpt (fresh session); human item-level review = 0",
+  "split": {
+    "dev": {
+      "items": 39,
+      "claims": 51
+    },
+    "test": {
+      "items": 44,
+      "claims": 71
+    }
+  },
+  "entailment_weighted": {
+    "rule": {
+      "n_dev": 51,
+      "n_test": 71,
+      "threshold_from_dev": 0.4615,
+      "test": {
+        "balanced_accuracy": 0.778,
+        "recall_positive": 0.791,
+        "recall_negative": 0.765,
+        "kappa": 0.546,
+        "pass_rate_unsupported": 0.286,
+        "pass_rate_partial": 0.137,
+        "auc": 0.778
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.637,
+          0.892
+        ],
+        "pass_rate_unsupported": [
+          0.121,
+          0.471
+        ],
+        "kappa": [
+          0.24,
+          0.793
+        ]
+      },
+      "median_ms_per_claim": 0.1
+    },
+    "embedding": {
+      "n_dev": 51,
+      "n_test": 71,
+      "threshold_from_dev": 0.6463,
+      "test": {
+        "balanced_accuracy": 0.655,
+        "recall_positive": 0.724,
+        "recall_negative": 0.587,
+        "kappa": 0.309,
+        "pass_rate_unsupported": 0.321,
+        "pass_rate_partial": 0.589,
+        "auc": 0.753
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.522,
+          0.78
+        ],
+        "pass_rate_unsupported": [
+          0.156,
+          0.536
+        ],
+        "kappa": [
+          0.043,
+          0.569
+        ]
+      },
+      "median_ms_per_claim": 398.6
+    },
+    "cross_encoder": {
+      "n_dev": 51,
+      "n_test": 71,
+      "threshold_from_dev": 2.441,
+      "test": {
+        "balanced_accuracy": 0.825,
+        "recall_positive": 0.65,
+        "recall_negative": 1.0,
+        "kappa": 0.589,
+        "pass_rate_unsupported": 0.0,
+        "pass_rate_partial": 0.0,
+        "auc": 0.905
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.707,
+          0.921
+        ],
+        "pass_rate_unsupported": [
+          0.0,
+          0.0
+        ],
+        "kappa": [
+          0.353,
+          0.808
+        ]
+      },
+      "pass_rate_upper95_rule_of_three": 0.107,
+      "median_ms_per_claim": 293.4
+    },
+    "llm_judge": {
+      "n_dev": 51,
+      "n_test": 71,
+      "test": {
+        "balanced_accuracy": 0.696,
+        "recall_positive": 0.626,
+        "recall_negative": 0.765,
+        "kappa": 0.367,
+        "pass_rate_unsupported": 0.214,
+        "pass_rate_partial": 0.274
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.581,
+          0.803
+        ],
+        "pass_rate_unsupported": [
+          0.062,
+          0.385
+        ],
+        "kappa": [
+          0.138,
+          0.587
+        ]
+      },
+      "median_ms_per_claim": 6997.7,
+      "test_confusion_3way": {
+        "supported": {
+          "supported": 42.6,
+          "unsupported": 25.4
+        },
+        "unsupported": {
+          "unsupported": 20.0,
+          "partial": 2.0,
+          "supported": 6.0
+        },
+        "partial": {
+          "unsupported": 8.6,
+          "supported": 4.0,
+          "partial": 2.0
+        }
+      }
+    }
+  },
+  "entailment_unweighted": {
+    "rule": {
+      "n_dev": 51,
+      "n_test": 71,
+      "threshold_from_dev": 0.4615,
+      "test": {
+        "balanced_accuracy": 0.762,
+        "recall_positive": 0.781,
+        "recall_negative": 0.744,
+        "kappa": 0.52,
+        "pass_rate_unsupported": 0.286,
+        "pass_rate_partial": 0.182,
+        "auc": 0.796
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.651,
+          0.861
+        ],
+        "pass_rate_unsupported": [
+          0.121,
+          0.471
+        ],
+        "kappa": [
+          0.296,
+          0.714
+        ]
+      },
+      "median_ms_per_claim": 0.1
+    },
+    "embedding": {
+      "n_dev": 51,
+      "n_test": 71,
+      "threshold_from_dev": 0.6463,
+      "test": {
+        "balanced_accuracy": 0.696,
+        "recall_positive": 0.75,
+        "recall_negative": 0.641,
+        "kappa": 0.385,
+        "pass_rate_unsupported": 0.321,
+        "pass_rate_partial": 0.455,
+        "auc": 0.753
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.574,
+          0.792
+        ],
+        "pass_rate_unsupported": [
+          0.156,
+          0.536
+        ],
+        "kappa": [
+          0.143,
+          0.568
+        ]
+      },
+      "median_ms_per_claim": 398.6
+    },
+    "cross_encoder": {
+      "n_dev": 51,
+      "n_test": 71,
+      "threshold_from_dev": 2.441,
+      "test": {
+        "balanced_accuracy": 0.797,
+        "recall_positive": 0.594,
+        "recall_negative": 1.0,
+        "kappa": 0.616,
+        "pass_rate_unsupported": 0.0,
+        "pass_rate_partial": 0.0,
+        "auc": 0.885
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.71,
+          0.882
+        ],
+        "pass_rate_unsupported": [
+          0.0,
+          0.0
+        ],
+        "kappa": [
+          0.436,
+          0.784
+        ]
+      },
+      "pass_rate_upper95_rule_of_three": 0.107,
+      "median_ms_per_claim": 293.4
+    },
+    "llm_judge": {
+      "n_dev": 51,
+      "n_test": 71,
+      "test": {
+        "balanced_accuracy": 0.7,
+        "recall_positive": 0.656,
+        "recall_negative": 0.744,
+        "kappa": 0.401,
+        "pass_rate_unsupported": 0.214,
+        "pass_rate_partial": 0.364
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.596,
+          0.797
+        ],
+        "pass_rate_unsupported": [
+          0.062,
+          0.385
+        ],
+        "kappa": [
+          0.192,
+          0.594
+        ]
+      },
+      "median_ms_per_claim": 6997.7,
+      "test_confusion_3way": {
+        "supported": {
+          "supported": 21.0,
+          "unsupported": 11.0
+        },
+        "unsupported": {
+          "unsupported": 20.0,
+          "partial": 2.0,
+          "supported": 6.0
+        },
+        "partial": {
+          "unsupported": 5.0,
+          "supported": 4.0,
+          "partial": 2.0
+        }
+      }
+    }
+  },
+  "relevance": {
+    "rule": {
+      "n_dev": 82,
+      "n_test": 94,
+      "threshold_from_dev": 0.8571,
+      "test": {
+        "balanced_accuracy": 0.648,
+        "recall_positive": 0.463,
+        "recall_negative": 0.833,
+        "kappa": 0.119,
+        "auc": 0.709
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.512,
+          0.789
+        ],
+        "pass_rate_unsupported": null,
+        "kappa": [
+          0.011,
+          0.245
+        ]
+      },
+      "median_ms_per_claim": 0.0
+    },
+    "embedding": {
+      "n_dev": 82,
+      "n_test": 94,
+      "threshold_from_dev": 0.7578,
+      "test": {
+        "balanced_accuracy": 0.653,
+        "recall_positive": 0.39,
+        "recall_negative": 0.917,
+        "kappa": 0.112,
+        "auc": 0.717
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.546,
+          0.744
+        ],
+        "pass_rate_unsupported": null,
+        "kappa": [
+          0.024,
+          0.218
+        ]
+      },
+      "median_ms_per_claim": 205.1
+    },
+    "cross_encoder": {
+      "n_dev": 82,
+      "n_test": 94,
+      "threshold_from_dev": 1.31,
+      "test": {
+        "balanced_accuracy": 0.748,
+        "recall_positive": 0.829,
+        "recall_negative": 0.667,
+        "kappa": 0.366,
+        "auc": 0.872
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.55,
+          0.884
+        ],
+        "pass_rate_unsupported": null,
+        "kappa": [
+          0.058,
+          0.619
+        ]
+      },
+      "median_ms_per_claim": 103.2
+    },
+    "llm_judge": {
+      "n_dev": 82,
+      "n_test": 94,
+      "test": {
+        "balanced_accuracy": 0.491,
+        "recall_positive": 0.732,
+        "recall_negative": 0.25,
+        "kappa": -0.013
+      },
+      "test_ci95": {
+        "balanced_accuracy": [
+          0.369,
+          0.633
+        ],
+        "pass_rate_unsupported": null,
+        "kappa": [
+          -0.158,
+          0.167
+        ]
+      },
+      "median_ms_per_claim": 6997.7
+    }
+  },
+  "selection": {
+    "baseline": "cross_encoder",
+    "eligible": [
+      "cross_encoder"
+    ],
+    "eliminated_as_random": [],
+    "reported_not_ranked": [
+      "llm_judge"
+    ],
+    "selected": "cross_encoder",
+    "deployment": "shadow only — 记录不拦截；升级为拦截需要另一次冻结评估"
+  },
+  "selection_unweighted_sensitivity": {
+    "baseline": "cross_encoder",
+    "eligible": [
+      "cross_encoder"
+    ],
+    "eliminated_as_random": [],
+    "reported_not_ranked": [
+      "llm_judge"
+    ],
+    "selected": "cross_encoder",
+    "deployment": "shadow only — 记录不拦截；升级为拦截需要另一次冻结评估"
+  }
+}

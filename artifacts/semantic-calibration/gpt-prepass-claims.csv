@@ -1,0 +1,812 @@
+item_id,claim_index,question,claim,cited_evidence,entailment(supported|partial|unsupported),relevance(answers|related|off_topic),note
+B1-MH-0c18610f435a,1,"Does the 'Fortune' article suggest a different perspective on Sam Bankman-Fried's legal situation compared to the 'TechCrunch' articles, with 'Fortune' focusing on the jury's determination of truthfulness and 'TechCrunch' alleging fraudulent intentions for personal gain?","'Fortune' article suggests a different perspective on Sam Bankman-Fried's legal situation compared to the 'TechCrunch' articles, with 'Fortune' focusing on the jury's determination of truthfulness and 'TechCrunch' alleging fraudulent intentions for personal gain.","# Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand
+
+
+Source: Fortune · Author: Ben Weiss · Published: 2023-10-04T23:32:53+00:00 · Category: business
+
+
+Who is Sam Bankman-Fried, the former CEO of crypto exchange FTX? Is he a liar and a fraud? Or did he act in good faith, and like many a startup founder, fly too close to the sun?
+
+
+That answer ultimately lies with the jury, which was selected on Wednesday morning before lawyers for the government and then Bankman-Fried swapped two very different stories of the former crypto mogul’s sudden rise and almost instantaneous fall.
+
+
+---
+Sam Bankman-Fried, the founder of failed cryptocurrency exchange FTX, is on trial for seven counts of wire fraud and conspiracy. FTX was a fraud “from the start,” the Securities and Exchange Commission alleges — with a “multi-billion-dollar deficiency caused by his own misappropriation of customer funds.” Follow along for all the latest news and regular updates from the trial.
+
+",partial,answers,echo
+B1-MH-0e55fef39668,1,"What is the name of the service, covered by TechCrunch, that is temporarily free for users due to Apple's interference and is known for reverse-engineering the iMessage protocol to extend functionality to Android users?",Beeper Mini,"# Beeper reversed engineered iMessage to bring blue bubble texts to Android users
+
+
+Source: TechCrunch · Author: Sarah Perez · Published: 2023-12-05T15:00:57+00:00 · Category: technology
+
+
+The push to bring iMessage to Android users today adds a new contender. A startup called Beeper, which had been working on a multi-platform messaging aggregator, is now launching a new app called Beeper Mini which will allow Android users to send and receive end-to-end encrypted iMessage chats for just $1.99 per month. Beeper Mini was made possible because the team behind the app has managed to reverse-engineer the iMessage protocol, they say.
+
+
+---
+Founded by former Pebble smartwatch founder Eric Migicovsky, Beeper had originally been working on an app that aggregated all of a user’s chat apps into a single interface. However, upon the discovery of new technology that allowed it to reverse-engineer the iMessage protocol, it set out to build a new app called Beeper Mini that solely focused on bringing iMessage chats to Android users for $1.99 per month. That included support for high-quality photos and videos, tapback reactions, typing indicators, read receipts and more.
+
+
+The app quickly climbed into the top 20 in the Play Store’s charts and saw over 100,000 downloads in its first 48 hours, the company claims.
+
+",supported,answers,
+B1-MH-09b478db5759,1,"Is the reporting on ""Jada Pinkett Smith and Will Smith's marriage"" by 'The Independent - Life and Style' consistent between the article published on 2023-10-12 and the one on 2023-10-16 regarding ""Jada and Will Smith's marital status""?",The reporting on 'Jada Pinkett Smith and Will Smith's marriage' by 'The Independent - Life and Style' is consistent between the article published on 2023-10-12 and the one on 2023-10-16 regarding 'Jada and Will Smith's marital status'.,"# A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation
+
+
+Source: The Independent - Life and Style · Author: Laura Hampson and Meredith Clark · Published: 2023-10-12T18:10:45+00:00 · Category: entertainment
+
+
+Stay ahead of the trend in fashion and beyond with our free weekly Lifestyle Edit newsletter Stay ahead of the trend in fashion and beyond with our free weekly Lifestyle Edit newsletter Please enter a valid email address Please enter a valid email address SIGN UP I would like to be emailed about offers, events and updates from The Independent. Read our privacy notice Thanks for signing up to the
+
+
+---
+# Jada Pinkett Smith reveals why she and Will Smith never signed a prenup
+
+
+Source: The Independent - Life and Style · Author: Amber Raiken · Published: 2023-10-16T15:48:10+00:00 · Category: entertainment
+
+
+Stay ahead of the trend in fashion and beyond with our free weekly Lifestyle Edit newsletter Stay ahead of the trend in fashion and beyond with our free weekly Lifestyle Edit newsletter Please enter a valid email address Please enter a valid email address SIGN UP I would like to be emailed about offers, events and updates from The Independent. Read our privacy notice Thanks for signing up to the
+
+",unsupported,answers,
+B2-MH-179cc0ffdb05,1,"Does the 'Fortune' article suggest that Rep. Patrick McHenry is actively seeking a permanent speaker role, while 'The Age' article indicates that Kevin McCarthy has been removed from the speaker position?",The 'Fortune' article does not explicitly suggest that Rep. Patrick McHenry is actively seeking a permanent speaker role.,"One new Jordan opponent, Rep. Vern Buchanan of Florida, explained his vote, “I think it’s time to move on.”
+
+
+Bipartisan groups of lawmakers have been floating ways to operate the House by giving greater power to McHenry or another temporary speaker. The House had never ousted its speaker before McCarthy, and McHenry could tap the temporary powers that were created after the Sept. 11, 2001, terror attacks to ensure continuity of government.
+
+
+The novel concept of boosting the interim speaker’s role was gaining favor with a pair of high-profile Republicans: Former GOP speakers Newt Gingrich and John Boehner.
+
+",partial,related,negative-claim-unfalsifiable
+B2-MH-179cc0ffdb05,2,"Does the 'Fortune' article suggest that Rep. Patrick McHenry is actively seeking a permanent speaker role, while 'The Age' article indicates that Kevin McCarthy has been removed from the speaker position?",The 'The Age' article indicates that Kevin McCarthy has been removed from the speaker position.,"ountries. Wall Street is also absorbing the ouster of Kevin McCarthy as the speaker of the House of Representatives. The unprecedented move to remove a speaker from the position likely doesn’t change much in the short term, with funding for the US government set until November 17.
+
+",supported,related,
+B2-MH-12912d800c0c,1,"What company is at the center of antitrust discussions due to its default search engine deals with various tech companies, impact on the internet's appearance, potential legal outcomes regarding phones and app stores, and allegations of harming news publishers' revenue as reported by The Verge and TechCrunch?","Google is at the center of antitrust discussions due to its default search engine deals with various tech companies, impact on the internet's appearance, potential legal outcomes regarding phones and app stores, and allegations of harming news publishers' revenue.","In our last roundup, we learned how Google spent $26.3 billion in 2021 making itself the default search engine across platforms and how Google tried to have Chrome preinstalled on iPhones. Over the past couple of weeks, more of the inner workings of Google has come to light, including some of the search engine’s most lucrative search queries, what the revenue-share agreements between Google and Android OEMs look like and why Expedia has a bone to pick with Google.
+
+
+Before we go into some of these tidbits…
+
+
+Why the Google vs. U.S. antitrust case matters
+
+
+---
+# 5 things we learned so far about the Google antitrust case
+
+
+Source: TechCrunch · Author: Rebecca Bellan · Published: 2023-10-31T02:30:32+00:00 · Category: technology
+
+
+Google CEO Sundar Pichai testified Monday in the U.S. government’s antitrust trial against the company. The executive defended Google’s business tactics, including its deal with Apple and other partners to make Google the default search engine.
+
+
+---
+A new class action lawsuit filed this week in the U.S. District Court in D.C. accuses Google and parent company Alphabet of anticompetitive behavior in violation of U.S. antitrust law, the Sherman Act, and others, on behalf of news publishers. The case, filed by Arkansas-based publisher Helena World Chronicle, argues that Google “siphons off” news publishers’ content, their readers and ad revenue through anticompetitive means. It also specifically cites new AI technologies like Google’s Search Generative Experience (SGE) and Bard AI chatbot as worsening the problem.
+
+
+---
+Cue was on the stand as a witness in US v. Google, the landmark antitrust trial over Google’s search business. Cue is one of the highest-profile witnesses in the case so far, in part because the deal between Google and Apple — which makes Google the default search engine on all Apple devices and pays Apple billions of dollars a year — is central to the US Department of Justice’s case against Google.
+
+
+Cue had two messages: Apple believes in protecting its users’ privacy, and it also believes in Google. Whether those two statements can be simultaneously true became the question of the day.
+
+
+---
+This isn’t Google’s only antitrust case in trial right now. The search engine giant last week settled a separate antitrust lawsuit with dating site Match Group. On November 6, Google went to trial with Fortnite maker Epic Games. The latter hopes to prove that Google engages in anticompetitive behavior with regard to its Android app store, Google Play, and its commission structure.
+
+
+Now, onto the roundup!
+
+
+A window into Google’s most popular search queries
+
+
+---
+Google argues that it’s just doing business. Everybody wants Google as the default engine because it’s the best. That doesn’t make its actions illegal, the company says.
+
+
+Monday’s trial hearing revealed plenty of juicy tidbits, including the $26.3 billion Google spent making itself the default search engine across platforms in 2021, how Google tried to take it further and have Chrome preinstalled on iPhones and more.
+
+
+Google paid $26 billion in 2021 to be everyone’s default search engine
+
+",partial,answers,echo
+B2-MH-11d9213f77f1,1,"Considering the information from a Bloomberg article discussing Visa Inc.'s financial performance in the last quarter and a Reuters report on Visa Inc.'s strategic partnerships formed within the same period, which single letter represents the credit card network's stock symbol on the New York Stock Exchange?",V,"Consensus Revenue Estimates: $54.54B
+
+
+Earnings Insight: Microsoft has outperformed EPS forecasts in 7 of the last 8 quarters, and revenue in 6 of those quarters.
+
+
+Also reporting: General Electric Company (NYSE:GE), Verizon Communications (VZ), Visa Inc. (V), The Coca-Cola Company (KO), 3M Company (MMM), General Motors Company (GM), Raytheon Technologies Corporation (RTX), Teladoc Health, Inc. (TDOC), Dow (DOW), Snap (SNAP), Texas Instruments Incorporated (TXN), Halliburton Company (HAL), Corning Incorporated (GLW), Novartis AG (NVS), Waste Management (WM), Spotify Technology S.A. (SPOT), Kimberly-Clark (KMB) and more.
+
+
+Wednesday, October 25
+
+
+Meta Platforms (META)
+
+",supported,answers,
+B2-MH-141809cfa779,1,"After The Sydney Morning Herald reported on September 26, 2023, that Amazon's stock fell by 4 percent due to an antitrust lawsuit filed by the Federal Trade Commission and 17 state attorneys general, did Fortune report a larger or smaller percentage decrease for Rogers Communications Inc. shares following a family lawsuit on October 12, 2023?","Rogers Communications Inc. shares decreased by 2.2% following a family lawsuit on October 12, 2023.","The documents show that the fractures inside the prominent Toronto family have never healed. Rogers Communications is the country’s largest wireless provider and the owner of a cable television empire, the Toronto Blue Jays baseball team and other media and sports assets. The family’s controlling stake in the public company is worth close to C$8 billion ($5.9 billion), according to calculations based on company filings for its 2023 annual meeting.
+
+
+Shares of Rogers extended losses on news of the lawsuit, closing down 2.2% to C$53.07 in Toronto. They’ve dropped 16% this year.
+
+",supported,related,
+B1-MH-050827e2c17f,1,Does 'The Verge' article suggest that FTX's lack of a chief risk officer contributed to its business risks in a similar way that 'Fortune' implies Caroline Ellison's actions as CEO of Alameda did not adequately mitigate the risks of the crypto markets?,'The Verge' article suggests that FTX’s lack of a chief risk officer contributed to its business risks.,"# Today the FTX jury suffered through a code review
+
+
+Source: The Verge · Author: Elizabeth Lopatto · Published: 2023-10-06T22:21:46+00:00 · Category: technology
+
+
+As a result of today’s testimony, I am both more and less confused. I am clearer on what probably happened at FTX. What I don’t understand is why Gary Wang did it.
+
+
+Wang was the co-founder and chief technology officer of FTX, as well as the co-founder of Alameda Research. He owned only 10 percent of Alameda and 17 percent of FTX. He got a $200,000 a year salary, with no performance bonuses. (Okay, sure, at times he was a billionaire on paper.) By contrast, Bankman-Fried owned 90 percent of Alameda and 65 percent of FTX.
+
+",unsupported,related,
+B1-MH-050827e2c17f,2,Does 'The Verge' article suggest that FTX's lack of a chief risk officer contributed to its business risks in a similar way that 'Fortune' implies Caroline Ellison's actions as CEO of Alameda did not adequately mitigate the risks of the crypto markets?,'Fortune' implies Caroline Ellison's actions as CEO of Alameda did not adequately mitigate the risks of the crypto markets.,"In an analogy he employed throughout his opening statement, he said that “working at a startup is like building a plane as you’re flying it” and that businesses sometimes fail. In fact, he specifically pointed the finger at Ellison, the former CEO of Alameda, who, he said, did not adequately protect her hedge fund from the inherent risk of the crypto markets.
+
+
+When the walls came closing in and the aforementioned plane approached the “eye of the storm,” Bankman-Fried did not act like someone who was guilty. Rather, he was willing to give up his personal wealth to make customers whole, Cohen argued.
+
+",supported,related,
+B1-MH-039d7f881e5a,1,"Who is the free agent that is anticipated to choose a baseball team within the next week and before the conclusion of the upcoming weekend, as reported by Sporting News, and may not benefit from an agreement during the MLB winter meetings as much as the league does?","Shohei Ohtani is anticipated to choose a baseball team within the next week and before the conclusion of the upcoming weekend, as reported by Sporting News.","MLB free agency remains largely on hold as teams wait for Ohtani to sign, and though it had at at point been reported he could sign during the winter meetings, there appears to be a new timeline. MLB Network's Jon Morosi reported Ohtani is expected to make his pick before the end of the upcoming weekend. The winter meetings end on Thursday.
+
+
+Yoshinobu Yamamoto meeting with Yankees, already met with Mets
+
+
+Date: Wednesday, Dec. 6
+
+
+Source: Jon Morosi, MLB Network and Will Sammon, The Athletic
+
+
+---
+This year's winter meetings could wind up being similarly busy. There is a growing sense Shohei Ohtani could sign during the winter meetings, and a move of that magnitude could kick off the next wave of moves. There's also a number of top players on the trade market, including star Padres outfielder Juan Soto.
+
+
+Starting Sunday, Dec. 3, and running through Wednesday, Dec. 6, expect MLB's offseason to really kick into high gear.
+
+
+WINTER MEETINGS: Shohei Ohtani rumors, Juan Soto trade destination come to forefront
+
+
+Sporting News will be tracking all the latest news and rumors from the 2023 Winter Meetings. Follow for any signings and trades from Nashville.
+
+",supported,answers,
+B1-MH-039d7f881e5a,2,"Who is the free agent that is anticipated to choose a baseball team within the next week and before the conclusion of the upcoming weekend, as reported by Sporting News, and may not benefit from an agreement during the MLB winter meetings as much as the league does?",Shohei Ohtani may not benefit from an agreement during the MLB winter meetings as much as the league does.,"MLB free agency remains largely on hold as teams wait for Ohtani to sign, and though it had at at point been reported he could sign during the winter meetings, there appears to be a new timeline. MLB Network's Jon Morosi reported Ohtani is expected to make his pick before the end of the upcoming weekend. The winter meetings end on Thursday.
+
+
+Yoshinobu Yamamoto meeting with Yankees, already met with Mets
+
+
+Date: Wednesday, Dec. 6
+
+
+Source: Jon Morosi, MLB Network and Will Sammon, The Athletic
+
+",unsupported,answers,
+B1-MH-0acddcd35850,1,"Between the Sporting News report on the Michigan sign-stealing scandal involving Jim Harbaugh published on November 6, 2023, and the Sporting News report on Michigan's game against Penn State with Jim Harbaugh on November 11, 2023, was the reporting on Jim Harbaugh's absence from the team consistent?",Jim Harbaugh was absent from Michigan during their game against Penn State.,"# Michigan didn't need Jim Harbaugh against Penn State, but Ohio State is a different game
+
+
+Source: Sporting News · Author: Bill Bender · Published: 2023-11-11T21:32:44+00:00 · Category: sports
+
+
+Did Michigan really need Jim Harbaugh on Saturday?
+
+
+Perhaps the result provides the short-term answer. No. 3 Michigan beat No. 10 Penn State 24-15 at Beaver Stadium on Saturday. The Wolverines threw one pass in the second half – and that didn't even technically count – in a risk-averse game plan under acting coach Sherrone Moore. The defense smothered the Nittany Lions, and that will lead to more buildup ahead of the showdown with No. 1 Ohio State on Nov. 25.
+
+
+---
+Statement from Michigan AD Warde Manuel. “I find that completely unethical, insulting to a well-established process within the NCAA, and an assault on the rights of everyone (especially in the Big Ten) to be judged by a fair and complete investigation.” pic.twitter.com/Qm9iehYVTR — Pete Thamel (@PeteThamel) November 11, 2023
+
+
+Harbaugh will not be on the sidelines vs. Penn State
+
+
+Michigan filed a temporary restraining order against the Big Ten on Friday night, hoping to block Harbaugh's suspension. But there will not be a ruling before the Wolverines' game vs. Penn State, with the hearing scheduled for Friday, Nov. 17.
+
+",supported,related,
+B1-MH-0acddcd35850,2,"Between the Sporting News report on the Michigan sign-stealing scandal involving Jim Harbaugh published on November 6, 2023, and the Sporting News report on Michigan's game against Penn State with Jim Harbaugh on November 11, 2023, was the reporting on Jim Harbaugh's absence from the team consistent?",The reporting on Jim Harbaugh's absence from the team was consistent between the two Sporting News reports.,"# Michigan sign-stealing scandal winners and losers, from Jim Harbaugh to Tony Petitti
+
+
+Source: Sporting News · Author: Bill Bender · Published: 2023-11-11T22:50:13+00:00 · Category: sports
+
+
+The Big Ten announced Michigan coach Jim Harbaugh will be prohibited from coaching on the sideline for the remainder of the regular season.
+
+
+---
+# Michigan didn't need Jim Harbaugh against Penn State, but Ohio State is a different game
+
+
+Source: Sporting News · Author: Bill Bender · Published: 2023-11-11T21:32:44+00:00 · Category: sports
+
+
+Did Michigan really need Jim Harbaugh on Saturday?
+
+
+Perhaps the result provides the short-term answer. No. 3 Michigan beat No. 10 Penn State 24-15 at Beaver Stadium on Saturday. The Wolverines threw one pass in the second half – and that didn't even technically count – in a risk-averse game plan under acting coach Sherrone Moore. The defense smothered the Nittany Lions, and that will lead to more buildup ahead of the showdown with No. 1 Ohio State on Nov. 25.
+
+",supported,answers,
+B2-MH-1291bbe87804,1,"Does the article from Wired suggest that Sony headphones offer the best value in their class during the Walmart Cyber Monday Deals, while the article from Music Business Worldwide indicates that Artists are seeking deals that offer more control and better economics, or do both articles suggest a common trend in seeking value and control in their respective fields?",Music Business Worldwide indicates that Artists are seeking deals that offer more control and better economics.,"# ‘Latin artists have been paving the way for deals that offer more control, transparency, and better economics.’
+
+
+Source: Music Business Worldwide · Author: Tim Ingham · Published: 2023-12-07T20:32:11+00:00 · Category: business
+
+
+MBW’s World Leaders is a regular series in which we turn the spotlight toward some of the most influential industry figures overseeing key international markets. In this feature, we speak to Alejandra Olea, Managing Director, Americas at Believe. World Leaders is supported by PPL.
+
+
+There is no mistaking the global music biz’s biggest breakthrough independent hit of the past few months.
+
+
+---
+# ‘Latin artists have been paving the way for deals that offer more control, transparency, and better economics.’
+
+
+Source: Music Business Worldwide · Author: Tim Ingham · Published: 2023-12-07T20:32:11+00:00 · Category: business
+
+
+MBW’s World Leaders is a regular series in which we turn the spotlight toward some of the most influential industry figures overseeing key international markets. In this feature, we speak to Alejandra Olea, Managing Director, Americas at Believe. World Leaders is supported by PPL.
+
+
+There is no mistaking the global music biz’s biggest breakthrough independent hit of the past few months.
+
+",supported,related,
+B2-MH-1291bbe87804,2,"Does the article from Wired suggest that Sony headphones offer the best value in their class during the Walmart Cyber Monday Deals, while the article from Music Business Worldwide indicates that Artists are seeking deals that offer more control and better economics, or do both articles suggest a common trend in seeking value and control in their respective fields?",Wired suggests that Sony headphones offer the best value in their class during the Walmart Cyber Monday Deals.,"We test products year-round and handpicked these deals. The discounts we show are based on actual street prices at retailers in the past few months. Products that are sold out or no longer discounted as of publishing will be crossed out. We'll update this guide periodically.
+
+
+If you buy something using links in our stories, we may earn a commission. This helps support our journalism. Learn more.
+
+
+Top Deals
+
+
+Jump to a Topic: PC and Gaming Deals, Home and Kitchen Deals, TV Deals, Watch and Fitness Tracker Deals, Headphone and Earbud Deals, Smart Home Deals, Speaker Deals
+
+
+PC and Gaming Deals
+
+",unsupported,related,
+B2-MH-19b313bbba37,1,"Who is the individual that, despite being likened to a prominent investor and once hailed as a savior in the cryptocurrency world by some, not TechCrunch, is accused of using a colleague as a cover for illicit access to customer funds and faced challenges in overseeing the rapid expansion of a crypto exchange and a research firm, leading to allegations of intentional fraud for personal gain?",Sam Bankman-Fried is accused of using his colleague Caroline Ellison as a cover for illicit access to customer funds.,"But “all of that, all of it, was built on lies,” Rehn declared to the jury. “Behind the curtains, he was not what he appeared to be.” What followed was a roughly 30-minute story that repeatedly emphasized how Bankman-Fried allegedly stole customer funds to facilitate his jet-setting lifestyle, donate millions to political candidates, and finance risky bets.
+
+
+The key to his alleged scheme? Alameda Research, a crypto hedge fund he also owned, argued Rehn. Using Caroline Ellison, his on-again off-again girlfriend and the CEO of Alameda, as a front, Bankman-Fried had “secret access” to customer money—both cash and crypto—the government claimed.
+
+",supported,answers,
+B2-MH-19b313bbba37,2,"Who is the individual that, despite being likened to a prominent investor and once hailed as a savior in the cryptocurrency world by some, not TechCrunch, is accused of using a colleague as a cover for illicit access to customer funds and faced challenges in overseeing the rapid expansion of a crypto exchange and a research firm, leading to allegations of intentional fraud for personal gain?","Sam Bankman-Fried faced challenges in overseeing the rapid expansion of FTX and Alameda Research, leading to allegations of intentional fraud for personal gain.","But “all of that, all of it, was built on lies,” Rehn declared to the jury. “Behind the curtains, he was not what he appeared to be.” What followed was a roughly 30-minute story that repeatedly emphasized how Bankman-Fried allegedly stole customer funds to facilitate his jet-setting lifestyle, donate millions to political candidates, and finance risky bets.
+
+
+The key to his alleged scheme? Alameda Research, a crypto hedge fund he also owned, argued Rehn. Using Caroline Ellison, his on-again off-again girlfriend and the CEO of Alameda, as a front, Bankman-Fried had “secret access” to customer money—both cash and crypto—the government claimed.
+
+
+---
+Sam Bankman-Fried, the founder of failed cryptocurrency exchange FTX, is on trial for seven counts of wire fraud and conspiracy. FTX was a fraud “from the start,” the Securities and Exchange Commission alleges — with a “multi-billion-dollar deficiency caused by his own misappropriation of customer funds.” Follow along for all the latest news and regular updates from the trial.
+
+
+Who was making decisions to spend $8 billion of customer funds? Bankman-Fried couldn’t recall knowing anything about it. Were there rules or requirements for how money borrowed from FTX would be returned? Were there rules for risk management? “I was concerned with overall risk management,” Bankman-Fried said.
+
+",partial,answers,echo
+B2-MH-1afa5edb190c,1,"After TechCrunch reported on Biden's AI Executive Order as broad but lacking depth without corresponding legislation on October 31, 2023, and Music Business Worldwide shared concerns from the National Music Publishers Association about generative AI being a significant risk to the human creative class on November 30, 2023, is the stance of these two news sources on the need for regulatory measures for AI consistent or inconsistent?",TechCrunch reported that Biden's AI Executive Order was broad but lacked depth without corresponding legislation.,"However, to get the clearest view of the direction the music industry would like to see things head, it might help to read the submission from the National Music Publishers Association (NMPA).
+
+
+The NMPA’s submission, dated October 30, 2023, pulls no punches.
+
+
+It starts off by stressing that its membership – US music publishers major and independent – are “not opposed” to AI.
+
+
+“There is widespread belief in the music industry that great benefits could come from generative AI systems that can assist human creators,” the NMPA states.
+
+",unsupported,related,
+B2-MH-1afa5edb190c,2,"After TechCrunch reported on Biden's AI Executive Order as broad but lacking depth without corresponding legislation on October 31, 2023, and Music Business Worldwide shared concerns from the National Music Publishers Association about generative AI being a significant risk to the human creative class on November 30, 2023, is the stance of these two news sources on the need for regulatory measures for AI consistent or inconsistent?",Music Business Worldwide shared concerns from the National Music Publishers Association (NMPA) about generative AI being a significant risk to the human creative class.,"# NMPA: Generative AI is ‘the greatest risk to the human creative class that has ever existed’
+
+
+Source: Music Business Worldwide · Author: Daniel Tencer · Published: 2023-11-30T21:28:50+00:00 · Category: business
+
+
+MBW Reacts is a series of analytical commentaries from Music Business Worldwide written in response to major recent entertainment events or news stories. MBW Reacts is supported by JKBX , a technology platform that offers consumers access to music royalties as an asset class.
+
+
+Legislators and regulators around the world are grappling with how to address the many issues that have emerged since AI technology “went mainstream” about a year ago.
+
+",supported,related,
+B2-MH-1afa5edb190c,3,"After TechCrunch reported on Biden's AI Executive Order as broad but lacking depth without corresponding legislation on October 31, 2023, and Music Business Worldwide shared concerns from the National Music Publishers Association about generative AI being a significant risk to the human creative class on November 30, 2023, is the stance of these two news sources on the need for regulatory measures for AI consistent or inconsistent?","The NMPA submitted that there is widespread belief in the music industry that great benefits could come from generative AI systems that can assist human creators, but also emphasized the need for proactive protections for human creators and support for regulatory measures.","However, to get the clearest view of the direction the music industry would like to see things head, it might help to read the submission from the National Music Publishers Association (NMPA).
+
+
+The NMPA’s submission, dated October 30, 2023, pulls no punches.
+
+
+It starts off by stressing that its membership – US music publishers major and independent – are “not opposed” to AI.
+
+
+“There is widespread belief in the music industry that great benefits could come from generative AI systems that can assist human creators,” the NMPA states.
+
+
+---
+The submission adds: “Even more alarming is that we do not know how long the window is to act before it is too late. We therefore implore the [US Copyright] Office to support proactive protections for human creators and, where there is uncertainty, to err on the side of protecting human creators.”
+
+
+That position might not come as a complete surprise from the NMPA, which earlier this year joined the fledgling Human Artistry Campaign, whose goal – in broadest terms – is to ensure that AI doesn’t replace or “erode” human culture.
+
+",supported,related,
+B2-MH-1afa5edb190c,4,"After TechCrunch reported on Biden's AI Executive Order as broad but lacking depth without corresponding legislation on October 31, 2023, and Music Business Worldwide shared concerns from the National Music Publishers Association about generative AI being a significant risk to the human creative class on November 30, 2023, is the stance of these two news sources on the need for regulatory measures for AI consistent or inconsistent?","TechCrunch's report did not explicitly mention the stance on regulatory measures, while Music Business Worldwide highlighted the NMPA's concerns about generative AI as a significant risk and called for proactive protections.","However, to get the clearest view of the direction the music industry would like to see things head, it might help to read the submission from the National Music Publishers Association (NMPA).
+
+
+The NMPA’s submission, dated October 30, 2023, pulls no punches.
+
+
+It starts off by stressing that its membership – US music publishers major and independent – are “not opposed” to AI.
+
+
+“There is widespread belief in the music industry that great benefits could come from generative AI systems that can assist human creators,” the NMPA states.
+
+
+---
+The submission adds: “Even more alarming is that we do not know how long the window is to act before it is too late. We therefore implore the [US Copyright] Office to support proactive protections for human creators and, where there is uncertainty, to err on the side of protecting human creators.”
+
+
+That position might not come as a complete surprise from the NMPA, which earlier this year joined the fledgling Human Artistry Campaign, whose goal – in broadest terms – is to ensure that AI doesn’t replace or “erode” human culture.
+
+",partial,related,negative-claim-unfalsifiable
+B2-MH-1afa5edb190c,5,"After TechCrunch reported on Biden's AI Executive Order as broad but lacking depth without corresponding legislation on October 31, 2023, and Music Business Worldwide shared concerns from the National Music Publishers Association about generative AI being a significant risk to the human creative class on November 30, 2023, is the stance of these two news sources on the need for regulatory measures for AI consistent or inconsistent?","The stances of TechCrunch and Music Business Worldwide on the need for regulatory measures are consistent, both indicating the importance of addressing potential risks associated with generative AI.","However, to get the clearest view of the direction the music industry would like to see things head, it might help to read the submission from the National Music Publishers Association (NMPA).
+
+
+The NMPA’s submission, dated October 30, 2023, pulls no punches.
+
+
+It starts off by stressing that its membership – US music publishers major and independent – are “not opposed” to AI.
+
+
+“There is widespread belief in the music industry that great benefits could come from generative AI systems that can assist human creators,” the NMPA states.
+
+
+---
+The submission adds: “Even more alarming is that we do not know how long the window is to act before it is too late. We therefore implore the [US Copyright] Office to support proactive protections for human creators and, where there is uncertainty, to err on the side of protecting human creators.”
+
+
+That position might not come as a complete surprise from the NMPA, which earlier this year joined the fledgling Human Artistry Campaign, whose goal – in broadest terms – is to ensure that AI doesn’t replace or “erode” human culture.
+
+",partial,answers,echo
+B1-MH-0a7a2c277008,1,"Does the Yardbarker article suggest that Travis Kelce's performance against the Raiders will be similar to his past productivity, as opposed to The Independent - Life and Style article which discusses his attendance at a Taylor Swift concert, without mentioning his on-field performance?",The Yardbarker article suggests that Travis Kelce's performance against the Raiders will be similar to his past productivity.,"Chiefs TE Travis Kelce: Yes, his girlfriend will be in town for the holiday. Kelce is averaging 89.6 yards per game with global popstar Taylor Swift in attendance this season but is coming off his worst outing in her presence, catching five passes for 28 yards.
+
+
+Even so, Kelce's 81.3 average receiving yards per game against the Raiders since 2019 suggests the All-Pro tight end is in line for a productive outing and could potentially snap his four-game scoring drought.
+
+
+New York Giants (5-9) at Philadelphia Eagles (10-4) | 4:30 p.m. ET
+
+",supported,related,
+B1-MH-0a7a2c277008,2,"Does the Yardbarker article suggest that Travis Kelce's performance against the Raiders will be similar to his past productivity, as opposed to The Independent - Life and Style article which discusses his attendance at a Taylor Swift concert, without mentioning his on-field performance?","The Independent - Life and Style article discusses his attendance at a Taylor Swift concert, without mentioning his on-field performance.","# Fans spot Travis Kelce wearing Taylor Swift-themed friendship bracelet before she attended his game
+
+
+Source: The Independent - Life and Style · Author: Amber Raiken · Published: 2023-09-26T22:05:34+00:00 · Category: entertainment
+
+
+Stay ahead of the trend in fashion and beyond with our free weekly Lifestyle Edit newsletter Stay ahead of the trend in fashion and beyond with our free weekly Lifestyle Edit newsletter Please enter a valid email address Please enter a valid email address SIGN UP I would like to be emailed about offers, events and updates from The Independent. Read our privacy notice Thanks for signing up to the
+
+
+---
+Lifestyle Edit email {{ #verifyErrors }} {{ message }} {{ /verifyErrors }} {{ ^verifyErrors }} Something went wrong. Please try again later {{ /verifyErrors }}
+
+
+Fans have spotted Travis Kelce wearing a friendship bracelet with Taylor Swift lyrics on it, just days before she attended his Kansas City Chiefs game.
+
+
+In a video posted to TikTok on 25 September, a fan shared a photo of Kelce posing with the piece of jewellery on his wrist. The post came after Swift was seen enthusiastically cheering him on in the box seats at Arrowhead Stadium, fuelling speculation that she and the athlete are dating.
+
+",partial,related,negative-claim-unfalsifiable
+B1-MH-0a05452eaee8,1,"Which company, recently defended by Apple in court for lack of valid alternatives and accused by Megan Grey in 'The Age' of manipulating search results for ad revenue, is involved in an antitrust battle with Epic Games as reported by 'TechCrunch' and is also facing a class action lawsuit for allegedly harming news publishers' bottom lines as covered by the same source?",The company involved in an antitrust battle with Epic Games is Google.,"Google is also involved in another antitrust lawsuit with the Department of Justice over its alleged search monopoly. Epic, meanwhile, lost its antitrust battle with Apple and is now asking the Supreme Court to weigh in.
+
+---
+Match may have settled its antitrust lawsuit with Google last week, but Fortnite maker Epic Games is still set to go to trial with the tech giant today, November 6, in hopes of convincing a jury that Google engages in anticompetitive behavior with regard to its Android app store, Google Play, and its commission structure. This case will differ slightly from Epic’s battle with Apple on the same topic because, this time, Epic can’t allege there’s no other way to load apps onto Android devices, as it could with Apple, because Android does allow for sideloading apps. Though Epic will suggest Google makes that process cumbersome, the bulk of its arguments will center around what it believes are a
+---
+The case points to other concerns, too, like changing AdSense rates and evidence of improper spoliation of evidence on Google’s part, by its destruction of chat messages — an issue raised in the recent Epic Games lawsuit against Google over app store antitrust issues, which Epic won.
+
+
+In addition to damages, the suit is asking for an injunction that would require Google to obtain consent from publishers to use their website data to train its general artificial intelligence products including Google’s own and those of rivals. It also asks Google to allow publishers who opt out of SGE to still show up in Google search results, among other things.
+
+
+---
+# News publisher files class action antitrust suit against Google, citing AI’s harms to their bottom line
+
+
+Source: TechCrunch · Author: Sarah Perez · Published: 2023-12-15T17:56:02+00:00 · Category: technology
+
+
+---
+In the complaint, Helena World Chronicle, which owns and publishes two weekly newspapers in Arkansas, argues that Google is “starving the free press” by sharing publishers’ content on Google, losing them “billions of dollars.”
+
+
+In addition to new AI technologies, the suit points to Google’s older question-and-answer technologies, like the “Knowledge Graph” launched in May 2012, as part of the problem.
+
+",supported,answers,
+B1-MH-0a05452eaee8,2,"Which company, recently defended by Apple in court for lack of valid alternatives and accused by Megan Grey in 'The Age' of manipulating search results for ad revenue, is involved in an antitrust battle with Epic Games as reported by 'TechCrunch' and is also facing a class action lawsuit for allegedly harming news publishers' bottom lines as covered by the same source?","Google has been accused by Megan Grey of manipulating search results for ad revenue, as reported in 'The Age'.","Google is also involved in another antitrust lawsuit with the Department of Justice over its alleged search monopoly. Epic, meanwhile, lost its antitrust battle with Apple and is now asking the Supreme Court to weigh in.
+",unsupported,answers,
+B1-MH-0a05452eaee8,3,"Which company, recently defended by Apple in court for lack of valid alternatives and accused by Megan Grey in 'The Age' of manipulating search results for ad revenue, is involved in an antitrust battle with Epic Games as reported by 'TechCrunch' and is also facing a class action lawsuit for allegedly harming news publishers' bottom lines as covered by the same source?",Google is facing a class action lawsuit for allegedly harming news publishers' bottom lines.,"A new class action lawsuit filed this week in the U.S. District Court in D.C. accuses Google and parent company Alphabet of anticompetitive behavior in violation of U.S. antitrust law, the Sherman Act, and others, on behalf of news publishers. The case, filed by Arkansas-based publisher Helena World Chronicle, argues that Google “siphons off” news publishers’ content, their readers and ad revenue through anticompetitive means. It also specifically cites new AI technologies like Google’s Search Generative Experience (SGE) and Bard AI chatbot as worsening the problem.
+
+
+---
+The case points to other concerns, too, like changing AdSense rates and evidence of improper spoliation of evidence on Google’s part, by its destruction of chat messages — an issue raised in the recent Epic Games lawsuit against Google over app store antitrust issues, which Epic won.
+
+
+In addition to damages, the suit is asking for an injunction that would require Google to obtain consent from publishers to use their website data to train its general artificial intelligence products including Google’s own and those of rivals. It also asks Google to allow publishers who opt out of SGE to still show up in Google search results, among other things.
+
+
+---
+# News publisher files class action antitrust suit against Google, citing AI’s harms to their bottom line
+
+
+Source: TechCrunch · Author: Sarah Perez · Published: 2023-12-15T17:56:02+00:00 · Category: technology
+
+
+---
+In the complaint, Helena World Chronicle, which owns and publishes two weekly newspapers in Arkansas, argues that Google is “starving the free press” by sharing publishers’ content on Google, losing them “billions of dollars.”
+
+
+In addition to new AI technologies, the suit points to Google’s older question-and-answer technologies, like the “Knowledge Graph” launched in May 2012, as part of the problem.
+
+",supported,answers,
+B1-MH-0cd2bbe92b19,1,"After the collaboration on the U2 project for Sphere reported by The Sydney Morning Herald on October 19, 2023, did TechCrunch's perspective on the role of technologists in product design, published on December 21, 2023, align with the notion of interconnections between technologies as suggested by the U2 project's collaborative effort?",TechCrunch's perspective on technologists' role in product design aligns with the notion of interconnections between technologies as suggested by the U2 project.,"In this innovation cycle, product design requires a wider perspective of platforms and interconnections between technologies, creating a strong need for technologists and designers to be in the process together.
+
+
+---
+# A provocative role for technologists in product innovation
+
+
+Source: TechCrunch · Author: Carrie Andrews · Published: 2023-12-21T16:35:31+00:00 · Category: technology
+
+
+Product design is in a moment of profound change and redefinition as technologies like artificial intelligence (AI) and spatial computing dramatically affect computing experiences. AI, especially, may have only minor impacts on interface design but will significantly impact the holistic product or ecosystem experience. Spatial computing, on the other hand, will change human-computer interactions and unmoor our understanding of what a computer is.
+
+",partial,answers,echo
+B2-MH-148e008e129a,1,Does the TechCrunch article suggest a different level of transparency from Sam Altman with the board compared to the portrayal of his involvement with generative AI technology as described in the Fortune article?,"TechCrunch and Fortune articles both mention Sam Altman's lack of candor with the board, but TechCrunch provides more detail on the specific issue.","# WTF is going on at OpenAI? We have theories
+
+
+Source: TechCrunch · Author: Devin Coldewey · Published: 2023-11-18T00:09:53+00:00 · Category: technology
+
+
+In perhaps the most unexpected tech news of the year, billionaire and AI evangelist Sam Altman has been ejected from his CEO role at OpenAI by the company’s board after an apparent vote of no confidence. Its exact wording in a release issued this afternoon: Altman’s “departure follows a deliberative review process by the board, which concluded that he was not consistently candid in his communications with the board, hindering its ability to exercise its responsibilities.”
+
+
+---
+# Sam Altman ousted as OpenAI’s CEO
+
+
+Source: TechCrunch · Author: Kyle Wiggers · Published: 2023-11-17T20:41:13+00:00 · Category: technology
+
+
+Sam Altman has been fired from OpenAI, Inc., the 501(c)(3) nonprofit that acts as the governing body for OpenAI, the AI startup behind ChatGPT, DALL-E 3, GPT-4 and other highly capable generative AI systems. He’ll both leave the company’s board of directors and step down as CEO.
+
+
+---
+In a post on OpenAI’s official blog, the company writes that Altman’s departure follows a “deliberative review process by the board” that concluded that Altman “wasn’t consistently candid in his communications” with other board members, “hindering its ability to exercise its responsibilities.”
+
+
+Tip TechCrunch
+
+
+Do you work at OpenAI and know more about Sam Altman’s departure?
+
+
+Do you work at OpenAI and know more about Sam Altman’s departure? Get in touch with TechCrunch
+
+
+“The board no longer has confidence in [Altman’s] ability to continue leading OpenAI,” the blog post reads.
+
+",partial,answers,echo
+B2-MH-0f910380b759,1,"Which celebrity, known for not letting paparazzi affect her and being open about her relationship with Travis Kelce, has both performed and attended a game at Arrowhead Stadium and was intended to receive a friendship bracelet during her concert in Kansas City according to reports by 'The Age', 'CBSSports.com', and 'The Independent - Life and Style'?",Taylor Swift has both performed and attended a game at Arrowhead Stadium.,"“This all started when Travis very adorably put me on blast on his podcast, which I thought was metal as hell,” she explained. “We started hanging out right after that. So we actually had a significant amount of time that no one knew, which I’m grateful for, because we got to get to know each other.”
+
+
+Swift also confirmed that when she famously first attended Kelce’s game at Arrowhead Stadium in September, she was already dating the NFL star.
+
+
+“By the time I went to that first game, we were a couple. I think some people think that they saw our first date at that game? We would never be psychotic enough to hard launch a first date,” she said.
+
+
+---
+The NFL player’s tweets have unsurprisingly resurfaced amid his relationship with Swift, who he’s been romantically linked to since the summer. The dating speculation first began in July, when Kelce confessed that he tried and failed to give Swift a friendship bracelet with his number on it during her Eras Tour show. On his podcast, he later invited the “Anti-Hero” singer to one of his games at Arrowhead Stadium - an invitation she famously accepted on 24 September. Since then, Swift has attended three more of Kelce’s games.
+
+",partial,answers,echo
+B2-MH-0f910380b759,2,"Which celebrity, known for not letting paparazzi affect her and being open about her relationship with Travis Kelce, has both performed and attended a game at Arrowhead Stadium and was intended to receive a friendship bracelet during her concert in Kansas City according to reports by 'The Age', 'CBSSports.com', and 'The Independent - Life and Style'?",Taylor Swift is known for not letting paparazzi affect her and being open about her relationship with Travis Kelce.,"“This all started when Travis very adorably put me on blast on his podcast, which I thought was metal as hell,” she explained. “We started hanging out right after that. So we actually had a significant amount of time that no one knew, which I’m grateful for, because we got to get to know each other.”
+
+
+Swift also confirmed that when she famously first attended Kelce’s game at Arrowhead Stadium in September, she was already dating the NFL star.
+
+
+“By the time I went to that first game, we were a couple. I think some people think that they saw our first date at that game? We would never be psychotic enough to hard launch a first date,” she said.
+
+",partial,answers,echo
+B2-MH-0f910380b759,3,"Which celebrity, known for not letting paparazzi affect her and being open about her relationship with Travis Kelce, has both performed and attended a game at Arrowhead Stadium and was intended to receive a friendship bracelet during her concert in Kansas City according to reports by 'The Age', 'CBSSports.com', and 'The Independent - Life and Style'?","Travis Kelce intended to give Taylor Swift a friendship bracelet during her Eras Tour concert in Kansas City, but it never made it to her wrist or his digits to her phone.","Lifestyle Edit email {{ #verifyErrors }} {{ message }} {{ /verifyErrors }} {{ ^verifyErrors }} Something went wrong. Please try again later {{ /verifyErrors }}
+
+
+Fans have spotted Travis Kelce wearing a friendship bracelet with Taylor Swift lyrics on it, just days before she attended his Kansas City Chiefs game.
+
+
+In a video posted to TikTok on 25 September, a fan shared a photo of Kelce posing with the piece of jewellery on his wrist. The post came after Swift was seen enthusiastically cheering him on in the box seats at Arrowhead Stadium, fuelling speculation that she and the athlete are dating.
+
+
+---
+podcast he shares with his brother, New Heights, Kelce said he intended to give Swift a friendship bracelet with his number on it during her Eras Tour concert in Kansas City. Unfortunately, the bracelet never made it to her wrist or his digits to her phone.
+
+
+---
+The NFL player’s tweets have unsurprisingly resurfaced amid his relationship with Swift, who he’s been romantically linked to since the summer. The dating speculation first began in July, when Kelce confessed that he tried and failed to give Swift a friendship bracelet with his number on it during her Eras Tour show. On his podcast, he later invited the “Anti-Hero” singer to one of his games at Arrowhead Stadium - an invitation she famously accepted on 24 September. Since then, Swift has attended three more of Kelce’s games.
+
+",supported,answers,
+B2-MH-1144d2e80b35,1,"Did the emphasis on the role of faith and personal practices in maintaining a positive outlook, as reported by FOX News - Lifestyle, change between the article discussing the effectiveness of positive thinking on October 28, 2023, and the one highlighting the importance of the habit of prayer on December 5, 2023?",The emphasis on faith and personal practices in maintaining a positive outlook remained consistent between the two articles.,"# Faith dilemma: How effective is positive thinking when life gets difficult? Pastor weighs in
+
+
+Source: FOX News - Lifestyle · Published: 2023-10-28T09:00:12+00:00 · Category: entertainment
+
+
+Pastor Jesse Bradley of Auburn, Washington runs Grace Community Church.
+
+
+He's ministered to many, many people struggling with a variety of faith dilemmas and issues in their lives.
+
+
+In this month of October 2023, as Americans grapple with a variety of issues, he addressed the notion of positive thinking — and shared with Fox News Digital what it would ""look like to change your thinking and shift in a new direction.""
+
+
+---
+He added, ""As you consistently tap into that habit, you find your relationship with Jesus growing deeper and deeper, just automatically. And as a result, you then experience much more peace, tranquility and serenity in your life and the ability to really muscle through some of the most difficult obstacles and challenges that life can throw at you,"" he said.
+
+
+Here is more of Fox News Digital's conversation with Roumie about the 25-day prayer challenge during Advent, which started on Monday — and about Roumie's own faith beliefs.
+
+
+‘Deep gratitude’
+
+",supported,answers,
+B1-MH-063f46090a91,1,"Does the TechCrunch article suggest that Flipboard's implementation of the ActivityPub protocol is aimed at changing its platform structure, while The Verge article focuses on the structural elements of posts within the ActivityPub protocol itself?",The TechCrunch article suggests that Flipboard's implementation of the ActivityPub protocol is aimed at changing its platform structure.,"“As we said in the earlier part of this year, we will be embracing ActivityPub into Flipboard and effectively reworking our whole backend to that,” explained Flipboard CEO Mike McCue, in a conversation with TechCrunch about the coming changes. He says the company had first integrated with Mastodon at the API level, so users could log into their Mastodon accounts, see those posts and interact with others in the fediverse from Flipboard. “But you had to have an account on all those platforms,” McCue noted.
+
+
+“What we’re announcing on Monday is basically our roadmap for how we will be rolling out ActivityPub, and effectively tearing down the walls around our own walled garden,” he added.
+
+
+---
+“As we said in the earlier part of this year, we will be embracing ActivityPub into Flipboard and effectively reworking our whole backend to that,” explained Flipboard CEO Mike McCue, in a conversation with TechCrunch about the coming changes. He says the company had first integrated with Mastodon at the API level, so users could log into their Mastodon accounts, see those posts and interact with others in the fediverse from Flipboard. “But you had to have an account on all those platforms,” McCue noted.
+
+
+“What we’re announcing on Monday is basically our roadmap for how we will be rolling out ActivityPub, and effectively tearing down the walls around our own walled garden,” he added.
+
+",supported,related,
+B1-MH-063f46090a91,2,"Does the TechCrunch article suggest that Flipboard's implementation of the ActivityPub protocol is aimed at changing its platform structure, while The Verge article focuses on the structural elements of posts within the ActivityPub protocol itself?","The Verge article focuses on the structural elements of posts within the ActivityPub protocol itself, rather than on changes to Flipboard's platform structure.","In the world of ActivityPub, every post everywhere is made up of a sender, a message, and a URL. Every user has an inbox and an outbox for those messages. That’s the whole protocol in a nutshell. The simplicity is the point: since ActivityPub is not a product but a data format like PDF or JPG, what you do with those messages, those URLs, those inboxes and outboxes, is entirely up to you.
+
+",partial,related,negative-claim-unfalsifiable
+B1-MH-056fe59cd997,1,"Which company, known for its efforts to streamline internet navigation and mentioned by both The Verge and TechCrunch, has not only influenced the visual aspects of the internet and Android app distribution concerns but also spent billions to maintain its default search engine status and has been accused of harming news publishers' revenues through anticompetitive practices?",The company known for its efforts to streamline internet navigation and mentioned by both The Verge and TechCrunch is Google.,"Google argues that it’s just doing business. Everybody wants Google as the default engine because it’s the best. That doesn’t make its actions illegal, the company says.
+
+
+Monday’s trial hearing revealed plenty of juicy tidbits, including the $26.3 billion Google spent making itself the default search engine across platforms in 2021, how Google tried to take it further and have Chrome preinstalled on iPhones and more.
+
+
+Google paid $26 billion in 2021 to be everyone’s default search engine
+
+
+---
+Rosenberg explained how Google gets manufacturers to sign a mobile app distribution agreement (MADA) that requires Android smartphone makers (like Samsung or Oppo) to pre-load a bundle of 11 Google apps on the device, including Search, Chrome and Play. They don’t have to be the default choices, he said.
+
+
+Google also has revenue share agreements (RSAs) with smartphone makers and wireless carriers (like Verizon) that require them to set Google search and Chrome web browser as defaults. Rosenberg defended the move and said it was because Google apps [like Search] are “best in class.” The RSAs also motivate other companies to make or sell more Android devices, he said.
+
+
+---
+In our last roundup, we learned how Google spent $26.3 billion in 2021 making itself the default search engine across platforms and how Google tried to have Chrome preinstalled on iPhones. Over the past couple of weeks, more of the inner workings of Google has come to light, including some of the search engine’s most lucrative search queries, what the revenue-share agreements between Google and Android OEMs look like and why Expedia has a bone to pick with Google.
+
+
+Before we go into some of these tidbits…
+
+
+Why the Google vs. U.S. antitrust case matters
+
+",supported,answers,
+B1-MH-056fe59cd997,2,"Which company, known for its efforts to streamline internet navigation and mentioned by both The Verge and TechCrunch, has not only influenced the visual aspects of the internet and Android app distribution concerns but also spent billions to maintain its default search engine status and has been accused of harming news publishers' revenues through anticompetitive practices?","Google has spent billions of dollars maintaining its default search engine status across platforms, including $26.3 billion in 2021 as mentioned in the US v Google trial.","Google argues that it’s just doing business. Everybody wants Google as the default engine because it’s the best. That doesn’t make its actions illegal, the company says.
+
+
+Monday’s trial hearing revealed plenty of juicy tidbits, including the $26.3 billion Google spent making itself the default search engine across platforms in 2021, how Google tried to take it further and have Chrome preinstalled on iPhones and more.
+
+
+Google paid $26 billion in 2021 to be everyone’s default search engine
+
+
+---
+In our last roundup, we learned how Google spent $26.3 billion in 2021 making itself the default search engine across platforms and how Google tried to have Chrome preinstalled on iPhones. Over the past couple of weeks, more of the inner workings of Google has come to light, including some of the search engine’s most lucrative search queries, what the revenue-share agreements between Google and Android OEMs look like and why Expedia has a bone to pick with Google.
+
+
+Before we go into some of these tidbits…
+
+
+Why the Google vs. U.S. antitrust case matters
+
+",supported,answers,
+B1-MH-056fe59cd997,3,"Which company, known for its efforts to streamline internet navigation and mentioned by both The Verge and TechCrunch, has not only influenced the visual aspects of the internet and Android app distribution concerns but also spent billions to maintain its default search engine status and has been accused of harming news publishers' revenues through anticompetitive practices?","Google has been accused of harming news publishers' revenues through anticompetitive practices, such as siphoning off content and ad revenue.","A new class action lawsuit filed this week in the U.S. District Court in D.C. accuses Google and parent company Alphabet of anticompetitive behavior in violation of U.S. antitrust law, the Sherman Act, and others, on behalf of news publishers. The case, filed by Arkansas-based publisher Helena World Chronicle, argues that Google “siphons off” news publishers’ content, their readers and ad revenue through anticompetitive means. It also specifically cites new AI technologies like Google’s Search Generative Experience (SGE) and Bard AI chatbot as worsening the problem.
+
+",supported,answers,
+B1-MH-0ea267f4ceba,1,Was the performance of the Chicago Bears' defense reported as worsened by Yardbarker after Sporting News highlighted a sack by the Bears' defense on Joshua Dobbs during the NFL 'Monday Night Football' game?,The performance of the Chicago Bears' defense was not reported as worsened by Yardbarker after Sporting News highlighted a sack by the Bears' defense on Joshua Dobbs during the NFL 'Monday Night Football' game.,"The Bears' defense swarmed Dobbs throughout the night, sacking him only twice but bringing a great deal of pressure as the defensive backs made plays. Despite the barrage of turnovers, Chicago largely failed to take advantage. The Bears scored only three points off of the four Dobbs interceptions.
+
+
+MORE: How Joshua Dobbs got his 'Passtronaut' nickname
+
+
+---
+9:22 p.m. — Fields had all day to find open receivers on third down and couldn't locate any. Chicago is 0-for-6 on its last six third down opportunities. The Bears are preparing to punt after the two-minute warning.
+
+
+9:19 p.m. — Fields hits Moore for a 22-yard gain, but his next pass is nearly intercepted by D.J. Wonnum. Neither offense has been able to string together positive plays since that opening drive by Chicago.
+
+
+9:16 p.m. — Dobbs is nearly intercepted by Jaylon Johnson (again) on third down. The last turnover wasn't Dobbs' fault, but this one should've been a pick. The Bears' defense is all over the Vikings tonight, and Minnesota can't get out of its own way.
+
+",partial,answers,negative-claim-unfalsifiable
+B2-MH-19c9e32e360e,1,"Does 'The New York Times' article suggest that the Big Ten commissioner has not taken action on the sign-stealing allegations, while the 'Sporting News' article claims that Michigan accused 'Ohio State and Rutgers' of leaking signs to 'Purdue', indicating different aspects of the controversy?",'The New York Times' article suggests that the Big Ten commissioner has not taken action on the sign-stealing allegations.,"# Michigan’s Rivals Fume About Sign-Stealing: ‘This Was Damn Near Espionage’
+
+
+Source: The New York Times · Author: The New York Times · Published: 2023-11-03T22:07:31+00:00 · Category: sports
+
+
+For the past two weeks, coaches across college football have been riveted by the alleged Michigan sign-stealing scheme, but inside the Big Ten, the topic has been more than just a curiosity. On Wednesday’s Big Ten coaches video call with commissioner Tony Petitti, and after Jim Harbaugh left the call, that frustration was voiced loud and clear, according to conference coaches, who said they don’t feel like the new Big Ten commissioner is “motivated” to do anything about the Wolverines.
+
+",supported,related,
+B2-MH-19c9e32e360e,2,"Does 'The New York Times' article suggest that the Big Ten commissioner has not taken action on the sign-stealing allegations, while the 'Sporting News' article claims that Michigan accused 'Ohio State and Rutgers' of leaking signs to 'Purdue', indicating different aspects of the controversy?","The 'Sporting News' article claims that Michigan accused Ohio State and Rutgers of leaking signs to Purdue, indicating different aspects of the controversy.","Now, Michigan has a scandal on the field, and they countered with allegations that Ohio State and Rutgers leaked Michigan's signs to Purdue in last year's Big Ten championship game. ESPN reported that Big Ten coaches and athletic directors encouraged Big Ten commissioner Petitti to act last week, but that resulted in action before the NCAA investigation concluded.
+
+
+Do you wonder what the SEC and commissioner Greg Sankey privately think about all this? For the Big Ten, it is an ugly run of bad behavior on and off the field for a conference that is welcoming four new members next season in Oregon, UCLA, USC and Washington.
+
+
+To be determined
+
+
+Michigan
+
+
+---
+# Michigan sign-stealing scandal winners and losers, from Jim Harbaugh to Tony Petitti
+
+
+Source: Sporting News · Author: Bill Bender · Published: 2023-11-11T22:50:13+00:00 · Category: sports
+
+
+The Big Ten announced Michigan coach Jim Harbaugh will be prohibited from coaching on the sideline for the remainder of the regular season.
+
+",supported,related,meta-qualifier
+B2-MH-10482bbfd0ca,1,"Which company, recently compared for its Gemini Pro's performance to OpenAI's GPT-3.5 by TechCrunch, was also described by The Verge as having no valid alternative for search engine services during a court defense, and is the subject of a class action antitrust suit by news publishers for allegedly harming their bottom line through anticompetitive practices?",Google was recently compared for its Gemini Pro's performance to OpenAI's GPT-3.5 by TechCrunch.,"# Early impressions of Google’s Gemini aren’t great
+
+
+Source: TechCrunch · Author: Kyle Wiggers · Published: 2023-12-07T16:12:30+00:00 · Category: technology
+
+
+This week, Google took the wraps off of Gemini, its new flagship generative AI model meant to power a range of products and services including Bard, Google’s ChatGPT competitor. In blog posts and press materials, Google touted Gemini’s superior architecture and capabilities, claiming that the model meets or exceeds the performance of other leading gen AI models like OpenAI’s GPT-4.
+
+
+But the anecdotal evidence suggests otherwise.
+
+
+---
+# Early impressions of Google’s Gemini aren’t great
+
+
+Source: TechCrunch · Author: Kyle Wiggers · Published: 2023-12-07T16:12:30+00:00 · Category: technology
+
+
+This week, Google took the wraps off of Gemini, its new flagship generative AI model meant to power a range of products and services including Bard, Google’s ChatGPT competitor. In blog posts and press materials, Google touted Gemini’s superior architecture and capabilities, claiming that the model meets or exceeds the performance of other leading gen AI models like OpenAI’s GPT-4.
+
+
+But the anecdotal evidence suggests otherwise.
+
+",unsupported,answers,
+B2-MH-10482bbfd0ca,2,"Which company, recently compared for its Gemini Pro's performance to OpenAI's GPT-3.5 by TechCrunch, was also described by The Verge as having no valid alternative for search engine services during a court defense, and is the subject of a class action antitrust suit by news publishers for allegedly harming their bottom line through anticompetitive practices?",Google was described by The Verge as having no valid alternative for search engine services during a court defense.,"This isn’t Google’s only antitrust case in trial right now. The search engine giant last week settled a separate antitrust lawsuit with dating site Match Group. On November 6, Google went to trial with Fortnite maker Epic Games. The latter hopes to prove that Google engages in anticompetitive behavior with regard to its Android app store, Google Play, and its commission structure.
+
+
+Now, onto the roundup!
+
+
+A window into Google’s most popular search queries
+
+",unsupported,answers,
+B2-MH-10482bbfd0ca,3,"Which company, recently compared for its Gemini Pro's performance to OpenAI's GPT-3.5 by TechCrunch, was also described by The Verge as having no valid alternative for search engine services during a court defense, and is the subject of a class action antitrust suit by news publishers for allegedly harming their bottom line through anticompetitive practices?",Google is the subject of a class action antitrust suit by news publishers for allegedly harming their bottom line through anticompetitive practices.,"A new class action lawsuit filed this week in the U.S. District Court in D.C. accuses Google and parent company Alphabet of anticompetitive behavior in violation of U.S. antitrust law, the Sherman Act, and others, on behalf of news publishers. The case, filed by Arkansas-based publisher Helena World Chronicle, argues that Google “siphons off” news publishers’ content, their readers and ad revenue through anticompetitive means. It also specifically cites new AI technologies like Google’s Search Generative Experience (SGE) and Bard AI chatbot as worsening the problem.
+
+
+---
+# News publisher files class action antitrust suit against Google, citing AI’s harms to their bottom line
+
+
+Source: TechCrunch · Author: Sarah Perez · Published: 2023-12-15T17:56:02+00:00 · Category: technology
+
+",supported,answers,
+B2-MH-1cc76df29d2b,1,"Between the report from The Age on October 22, 2023, claiming that Google manipulates Search to maximize ad revenue, and the report from TechCrunch on December 15, 2023, alleging that Google ""siphons off"" news publishers' content and ad revenue through anticompetitive means, is there consistency in the portrayal of Google's influence on ad revenue and content distribution?",Google manipulates Search to maximize ad revenue.,"For the US, which has to prove that Google somehow broke the law to achieve the status quo, this legal case could be an uphill battle. But for the rest of us, it offers a rare opportunity for some insight into what the tech giant does with its enormous market share. Is it still focused on being the best? Or, as has been alleged, does it use its ubiquity to squeeze us for money even at the expense of product quality? How ‘organic’ are Google’s results? This month, Wired posted an opinion article by lawyer and privacy advocate Megan Gray, which alleged that Google had accidentally revealed during the trial that it manipulates people’s search queries for maximum ad revenue. The example given wa
+---
+g the trial that it manipulates people’s search queries for maximum ad revenue. The example given was replacing a search for “children’s clothing” with “NIKOLAI-brand kidswear”. Loading Google rejected this in very strong terms, saying the piece was misleading and inaccurate while denying ever altering search terms. Wired removed the article for not meeting its standards, but the degree to which it was shared on social media and boosted in write-ups at other outlets shows just how willing people are to accept foul play on Google’s part. A suspicion of privacy invasion and inappropriate data handling follows the company at all times.
+
+",unsupported,related,hedge-dropped
+B2-MH-1cc76df29d2b,2,"Between the report from The Age on October 22, 2023, claiming that Google manipulates Search to maximize ad revenue, and the report from TechCrunch on December 15, 2023, alleging that Google ""siphons off"" news publishers' content and ad revenue through anticompetitive means, is there consistency in the portrayal of Google's influence on ad revenue and content distribution?",Google siphons off news publishers' content and ad revenue through anticompetitive means.,"A new class action lawsuit filed this week in the U.S. District Court in D.C. accuses Google and parent company Alphabet of anticompetitive behavior in violation of U.S. antitrust law, the Sherman Act, and others, on behalf of news publishers. The case, filed by Arkansas-based publisher Helena World Chronicle, argues that Google “siphons off” news publishers’ content, their readers and ad revenue through anticompetitive means. It also specifically cites new AI technologies like Google’s Search Generative Experience (SGE) and Bard AI chatbot as worsening the problem.
+
+
+---
+The case also arrives alongside the filing of the U.S. Justice Department’s lawsuit against Google for monopolizing digital ad technologies, and references the 2020 Justice Department’s civil antitrust suit over search and search advertising (which are different markets from digital ad technologies in the more recent suit).
+
+
+“The anticompetitive effects of Google’s scheme cause profound harm to competition, to consumers, to labor, and to a democratic free press,” reads an announcement posted to the website of the law firm handling the case, Hausfeld.
+
+",unsupported,related,hedge-dropped
+B1-MH-0dff3d635abc,1,Do the articles from Sporting News discussing bonuses for 'New users of sportsbooks' and 'New customers of sportsbooks' agree on the provision of a welcome bonus upon account registration with a sportsbook?,The articles from Sporting News discussing bonuses for 'New users of sportsbooks' and 'New customers of sportsbooks' agree on the provision of a welcome bonus upon account registration with a sportsbook.,"Choose your sportsbook: Any state with legal online sports betting has a variety of sportsbooks. If you aren’t sure which sportsbooks best fit your needs, research and read our reviews on each. And don’t forget that you can have an account with more than one. Once you decide which sportsbook you’re interested in, follow the link from our site to qualify for the best new customer welcome bonus.
+
+
+---
+Now that you’ve set up your account and accepted the T&Cs, you can collect your welcome bonus as a new customer. You'll find it right here if you need to input a code to get a bonus. Make sure to read through the requirements for your bonus before accepting it so you’re aware of any restrictions or other rules. Make a deposit: You can fund your account using legal sportsbooks in various ways. Many deposit options will work for withdrawals as well.
+
+
+---
+Security number. You’ll also be required to accept the sportsbook terms and conditions, which we recommend you read. Collect your welcome bonus: As a new customer, you’ll receive a welcome bonus. This varies from sportsbook to sportsbook, so do some homework before deciding where you want to register. Read through the playthrough requirements for any sports betting bonus or promo so you’re aware of any restrictions it may involve. Make a deposit: Now that you have an account, you need to fund it by making a deposit with the sportsbook. Online betting sites have a variety of ways you can fund your account or make withdrawals. Start betting: Now, you can place a bet. Simply click on a bet to a
+---
+Accept the terms and conditions: Before finalizing your account information, you must accept the sportsbook’s terms and conditions. We recommend you read through these to understand the rules your sportsbook will enforce regarding bets, especially for the sports you intend to wager on. The terms and conditions are also available on the sportsbook website for you to read at any point.
+
+
+Get your bonus: At this point, you can accept your welcome bonus. Be sure to read through the bonus requirements before accepting anything. If a bonus code is needed, which you can find on our website, this is where you will input it during the registration process.
+
+",supported,answers,
+B1-MH-08d8e46196f4,1,"Who is the individual that, according to articles from The Verge, Fortune, and TechCrunch, is alleged to have permitted withdrawals from a trading platform's revenue, used a colleague as a front for unauthorized access to customer funds, and is accused by the prosecution of committing fraud for personal gain?","Sam Bankman-Fried is alleged to have permitted withdrawals from a trading platform's revenue, used a colleague as a front for unauthorized access to customer funds, and is accused by the prosecution of committing fraud for personal gain.","Sam Bankman-Fried, the founder of failed cryptocurrency exchange FTX, is on trial for seven counts of wire fraud and conspiracy. FTX was a fraud “from the start,” the Securities and Exchange Commission alleges — with a “multi-billion-dollar deficiency caused by his own misappropriation of customer funds.” Follow along for all the latest news and regular updates from the trial.
+
+
+Who was making decisions to spend $8 billion of customer funds? Bankman-Fried couldn’t recall knowing anything about it. Were there rules or requirements for how money borrowed from FTX would be returned? Were there rules for risk management? “I was concerned with overall risk management,” Bankman-Fried said.
+
+
+---
+Also, sometimes when Bankman-Fried says “we,” he only means himself.
+
+
+Sam Bankman-Fried, the founder of failed cryptocurrency exchange FTX, has been found guilty on seven counts including charges of wire fraud. FTX was a fraud “from the start,” the Securities and Exchange Commission alleged — with a “multi-billion-dollar deficiency caused by his own misappropriation of customer funds.” Follow along for all the latest news and regular updates from the trial.
+
+
+---
+Sam Bankman-Fried, the founder of failed cryptocurrency exchange FTX, is on trial for seven counts of wire fraud and conspiracy. FTX was a fraud “from the start,” the Securities and Exchange Commission alleges — with a “multi-billion-dollar deficiency caused by his own misappropriation of customer funds.” Follow along for all the latest news and regular updates from the trial.
+
+
+---
+Sam Bankman-Fried, the founder of failed cryptocurrency exchange FTX, is on trial for seven counts of wire fraud and conspiracy. FTX was a fraud “from the start,” the Securities and Exchange Commission alleges — with a “multi-billion-dollar deficiency caused by his own misappropriation of customer funds.” Follow along for all the latest news and regular updates from the trial.
+
+",partial,answers,echo
+B1-MH-0d1919b11047,1,"Did TechCrunch fail to maintain consistency in its reporting on December 15, 2023, when discussing a class action antitrust suit against Google by a news publisher?","TechCrunch reported on December 15, 2023, that Helena World Chronicle filed a class action antitrust suit against Google.","# News publisher files class action antitrust suit against Google, citing AI’s harms to their bottom line
+
+
+Source: TechCrunch · Author: Sarah Perez · Published: 2023-12-15T17:56:02+00:00 · Category: technology
+
+
+---
+A new class action lawsuit filed this week in the U.S. District Court in D.C. accuses Google and parent company Alphabet of anticompetitive behavior in violation of U.S. antitrust law, the Sherman Act, and others, on behalf of news publishers. The case, filed by Arkansas-based publisher Helena World Chronicle, argues that Google “siphons off” news publishers’ content, their readers and ad revenue through anticompetitive means. It also specifically cites new AI technologies like Google’s Search Generative Experience (SGE) and Bard AI chatbot as worsening the problem.
+
+
+---
+In the complaint, Helena World Chronicle, which owns and publishes two weekly newspapers in Arkansas, argues that Google is “starving the free press” by sharing publishers’ content on Google, losing them “billions of dollars.”
+
+
+In addition to new AI technologies, the suit points to Google’s older question-and-answer technologies, like the “Knowledge Graph” launched in May 2012, as part of the problem.
+
+
+---
+Some publishers are now trying to get ahead of the problem. For example, Axel Springer just this week inked a deal with OpenAI to license its news for AI model training. But overall, publishers believe they’ll lose somewhere between 20-40% of their website traffic when Google’s AI products fully roll out, The WSJ’s report noted.
+
+
+The lawsuit reiterates this concern, claiming that Google’s recent advances in AI-based search were implemented with “the goal of discouraging end-users from visiting the websites of Class members who are part of the digital news and publishing line of commerce.”
+
+
+---
+“Plaintiff Helena World Chronicle, LLC invokes the Sherman Act and Clayton Act to seek class-wide monetary and injunctive relief to restore and ensure competition for digital news and reference publishing and set up guardrails to preserve a free marketplace of ideas in the new era of artificial intelligence,” it states.
+
+
+A Google spokesperson offered a statement on the lawsuit, saying “This lawsuit is meritless. People have many ways to access information and news content today – through publishers’ websites, dedicated apps, social media platforms, print papers and more. Google links people to publishers’ websites more than 24 billion times each month – at no cost to them.”
+
+
+---
+The complaint is available below.
+
+
+Helena World Chronicle, LLC v. Google LLC and Alphabet Inc by TechCrunch on Scribd
+
+
+Editor’s note: This post was updated after publication with a statement provided by Google on Friday evening.
+",supported,related,

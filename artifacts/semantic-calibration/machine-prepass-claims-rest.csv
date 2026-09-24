@@ -1,0 +1,127 @@
+item_id,claim_index,entailment_MODEL,relevance_MODEL,model_note,provenance,codebook
+B2-MH-166e026497b9,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B2-MH-166e026497b9,2,unsupported,answers,missing-fact: 引用块只讲应用商店垄断，没有『法律取证过程的透明度』,model_prepass_not_gold,codebook_v2
+B2-MH-1a91106d425c,1,supported,answers,language-mismatch,model_prepass_not_gold,codebook_v2
+B2-MH-1a91106d425c,2,supported,related,language-mismatch; wh 问句里只确认识别性限定语（决定 4）,model_prepass_not_gold,codebook_v2
+B2-MH-201d810187ac,1,unsupported,answers,关系断言：11-11 那篇完全不在引用里（决定 2）,model_prepass_not_gold,codebook_v2
+B1-MH-0c6d6ba18794,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B1-MH-0c6d6ba18794,2,supported,answers,阿拉伯世界的看法与约旦同样拒绝接收都在引用里,model_prepass_not_gold,codebook_v2
+B1-MH-08b80cb8cc0f,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B1-MH-08b80cb8cc0f,2,unsupported,related,引用块没有『被比作金融偶像』；主语是 He，没有交付身份,model_prepass_not_gold,codebook_v2
+B1-MH-08b80cb8cc0f,3,unsupported,related,引用块只有七项罪名，没有『为财富、权力与影响力』；主语是 him,model_prepass_not_gold,codebook_v2
+B1-MH-0b9a8cb6d75b,1,unsupported,answers,关系断言：9-26 The Verge 那一侧完全不在引用里（决定 2）,model_prepass_not_gold,codebook_v2
+B2-MH-143afd54abe2,1,supported,answers,两侧都在：7 亿美元对 4200 万美元，足以推出更有价值,model_prepass_not_gold,codebook_v2
+B2-MH-1870a8ad1aba,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B2-MH-1870a8ad1aba,2,supported,answers,,model_prepass_not_gold,codebook_v2
+B2-MH-1870a8ad1aba,3,supported,answers,,model_prepass_not_gold,codebook_v2
+B2-MH-106247365877,1,supported,answers,language-mismatch,model_prepass_not_gold,codebook_v2
+B1-MH-09a87ec62327,1,unsupported,answers,与证据冲突：原文说 Deft 要改变用户习惯，不是维持现状,model_prepass_not_gold,codebook_v2
+B1-MH-09a87ec62327,2,partial,answers,negative-claim-unfalsifiable：引用里没有 The Verge 的内容,model_prepass_not_gold,codebook_v2
+B1-MH-00ad7107c8d0,1,partial,answers,echo：『The Verge 批评其改变互联网导航』一项无据,model_prepass_not_gold,codebook_v2
+B1-MH-077feb9c180a,1,supported,answers,关系断言两侧都在：两处都是首注输了返最高 1000 美元,model_prepass_not_gold,codebook_v2
+B2-MH-1aff1bc11ab7,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B2-MH-14f83bb6b441,1,partial,answers,echo：只有『面临欺诈与共谋指控』被支持；Jane Street 与『促成交易所成功』无据,model_prepass_not_gold,codebook_v2
+B2-MH-10a673817f1b,1,unsupported,answers,关系断言：11-01 The Verge 一侧完全不在引用里（决定 2）,model_prepass_not_gold,codebook_v2
+B1-MH-0af0da5770fc,1,supported,answers,两篇的内容都在引用里；按决定 1，提供比较两侧算 answers,model_prepass_not_gold,codebook_v2
+B1-MH-0cc6140338ed,1,supported,answers,attribution-unverifiable,model_prepass_not_gold,codebook_v2
+B1-MH-0ac962ffaee1,1,partial,related,negative-claim-unfalsifiable,model_prepass_not_gold,codebook_v2
+B1-MH-0ac962ffaee1,2,supported,related,attribution-unverifiable：260 亿美元那段所在的块无来源头,model_prepass_not_gold,codebook_v2
+B1-MH-0ac962ffaee1,3,partial,related,negative-claim-unfalsifiable：前半否定无法证否，后半『反垄断、不当使用出版商数据』被支持,model_prepass_not_gold,codebook_v2
+B2-MH-124558122a92,1,partial,answers,negative-claim-unfalsifiable,model_prepass_not_gold,codebook_v2
+B2-MH-124558122a92,2,supported,answers,标题『Mossad 重大情报失误』足以支持,model_prepass_not_gold,codebook_v2
+B2-MH-1cb0b245fa4e,1,partial,answers,echo：『公众对搜索公平性的观感（The Age）』无据,model_prepass_not_gold,codebook_v2
+B2-MH-11b5dbe62ed4,1,unsupported,answers,两侧引用块都只有订阅样板，推不出『不一致』（决定 2）,model_prepass_not_gold,codebook_v2
+B1-MH-0175090e1c35,1,unsupported,answers,与证据冲突：两篇都讲到存在少见但严重的并发症，是一致而非不一致,model_prepass_not_gold,codebook_v2
+B1-MH-0255b6d20283,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B1-MH-0255b6d20283,2,partial,related,negative-claim-unfalsifiable；引用里没有 The Age,model_prepass_not_gold,codebook_v2
+B1-MH-0255b6d20283,3,unsupported,related,引用块没有『硅谷知名人物』的内容,model_prepass_not_gold,codebook_v2
+B1-MH-0255b6d20283,4,partial,related,离职被支持；『引发对其对董事会是否诚实的猜测』无据；决定 4,model_prepass_not_gold,codebook_v2
+B1-MH-060cc1d31438,1,unsupported,answers,CBS 只说传闻恋情，Independent 引用块只有样板且日期不符，推不出『不一致』,model_prepass_not_gold,codebook_v2
+B2-MH-18e0906f3d85,1,supported,answers,规则 1 合取分支；来源归属无法核验不扣分,model_prepass_not_gold,codebook_v2
+B2-MH-18e0906f3d85,2,unsupported,answers,证据反而点名了两种待审批药物，且没有『实现科学进展所需时间』,model_prepass_not_gold,codebook_v2
+B2-MH-1723c0aeb785,1,supported,related,决定 4,model_prepass_not_gold,codebook_v2
+B2-MH-1723c0aeb785,2,supported,related,决定 4,model_prepass_not_gold,codebook_v2
+B2-MH-1723c0aeb785,3,unsupported,related,证据只说 Cue 出庭作证、相信 Google，没有『唯一有效选项』,model_prepass_not_gold,codebook_v2
+B2-MH-1723c0aeb785,4,unsupported,related,没有关于『互联网面貌』的内容,model_prepass_not_gold,codebook_v2
+B2-MH-17280b83d56e,1,unsupported,answers,引用块不是 11/25 Independent 或 Yardbarker 的报道，推不出变化,model_prepass_not_gold,codebook_v2
+B1-MH-012f1f51ac88,1,partial,answers,negative-claim-unfalsifiable（规则 4：引用块不冲突即 partial）,model_prepass_not_gold,codebook_v2
+B1-MH-05813c2fe535,1,unsupported,related,证据没有『可信人物』的描绘,model_prepass_not_gold,codebook_v2
+B1-MH-05813c2fe535,2,supported,related,,model_prepass_not_gold,codebook_v2
+B1-MH-05813c2fe535,3,supported,related,标题：SBF 据报出价 50 亿美元让特朗普不再参选,model_prepass_not_gold,codebook_v2
+B1-MH-05813c2fe535,4,supported,related,,model_prepass_not_gold,codebook_v2
+B1-MH-0e1408df9ae0,1,unsupported,answers,引用的是 14:23 那篇且只有样板；复述题干前提；关系两侧之一按 answers,model_prepass_not_gold,codebook_v2
+B1-MH-0e1408df9ae0,2,supported,answers,复述题干前提；关系两侧之一按 answers,model_prepass_not_gold,codebook_v2
+B2-MH-14a3933e774b,1,supported,answers,合取中的一支（欢迎奖金、促销）,model_prepass_not_gold,codebook_v2
+B2-MH-1431c0a43f40,1,supported,related,决定 4,model_prepass_not_gold,codebook_v2
+B2-MH-1431c0a43f40,2,unsupported,related,证据讲 Epic 诉讼，没有 ITC 上诉,model_prepass_not_gold,codebook_v2
+B2-MH-1431c0a43f40,3,unsupported,related,证据是 Engadget 的 Scary Fast，没有『向竞争对手学习』,model_prepass_not_gold,codebook_v2
+B2-MH-1431c0a43f40,4,unsupported,related,只有下架 Fortnite，没有『统一条款、支付系统』,model_prepass_not_gold,codebook_v2
+B2-MH-1f82048d37f6,1,partial,answers,negative-claim-unfalsifiable；引用块是 11/29 与 12/13 的报道，不是题干两篇,model_prepass_not_gold,codebook_v2
+B1-MH-08c95043a751,1,partial,answers,negative-claim-unfalsifiable；The Age 不在证据中,model_prepass_not_gold,codebook_v2
+B1-MH-08c95043a751,2,partial,answers,只有一篇标题提到手链；『都未提到邀请/公开』属否定式,model_prepass_not_gold,codebook_v2
+B1-MH-08c734d4eea9,1,supported,related,决定 4,model_prepass_not_gold,codebook_v2
+B1-MH-08c734d4eea9,2,supported,related,决定 4,model_prepass_not_gold,codebook_v2
+B1-MH-08c734d4eea9,3,unsupported,related,没有公众认为其『犯规』的内容,model_prepass_not_gold,codebook_v2
+B1-MH-03b51326acae,1,unsupported,answers,只有 Ellison 证词与 10/28 的 Verge，推不出叙事变化,model_prepass_not_gold,codebook_v2
+B2-MH-12b9416cf2b0,1,supported,answers,关系一侧,model_prepass_not_gold,codebook_v2
+B2-MH-12b9416cf2b0,2,unsupported,answers,证据没有 Perine；claim 自相矛盾,model_prepass_not_gold,codebook_v2
+B2-MH-12b9416cf2b0,3,unsupported,answers,Perine 一侧缺失（决定 2）,model_prepass_not_gold,codebook_v2
+B2-MH-1b7cdf6be5ad,1,supported,related,决定 4,model_prepass_not_gold,codebook_v2
+B2-MH-1771e46705cb,1,unsupported,answers,两篇都在讲 Google 反竞争诉讼，且互相引用，推不出不一致,model_prepass_not_gold,codebook_v2
+B1-MH-060223ba72f4,1,unsupported,answers,证据只有 Eagles-Dolphins，没有 Cowboys-Seahawks,model_prepass_not_gold,codebook_v2
+B1-MH-060223ba72f4,2,supported,answers,,model_prepass_not_gold,codebook_v2
+B1-MH-05ec4a12947a,1,partial,answers,整条 claim 复述全部限定语；欺诈指控被支持，巴菲特、Jane Street 同事无据,model_prepass_not_gold,codebook_v2
+B1-MH-03b7d00ee202,1,supported,related,,model_prepass_not_gold,codebook_v2
+B1-MH-03b7d00ee202,2,supported,related,,model_prepass_not_gold,codebook_v2
+B2-MH-1963e8b69161,1,supported,answers,胜诉内容被支持；引用块来源是 The Verge，来源归属不扣分（规则 2/3）,model_prepass_not_gold,codebook_v2
+B2-MH-1963e8b69161,2,supported,answers,胜诉后被推翻，均被支持,model_prepass_not_gold,codebook_v2
+B2-MH-1acbad14990a,1,unsupported,related,证据只提到现任主席 Rob Naylor，没有 Sutch 或招聘,model_prepass_not_gold,codebook_v2
+B2-MH-1acbad14990a,2,supported,related,,model_prepass_not_gold,codebook_v2
+B2-MH-1944708c2bb5,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B1-MH-0e1f6d12ec46,1,partial,answers,可拆关系断言：app store for AI 被支持；GPT-4V 那篇侧重 API 只有 DevDay 列表的薄弱证据,model_prepass_not_gold,codebook_v2
+B1-MH-0bee595f2413,1,supported,related,决定 4,model_prepass_not_gold,codebook_v2
+B1-MH-0bee595f2413,2,unsupported,related,只有庭审素描，没有明确的无罪抗辩,model_prepass_not_gold,codebook_v2
+B1-MH-0bee595f2413,3,unsupported,related,没有『为财富、权力、影响力』的检方说法,model_prepass_not_gold,codebook_v2
+B1-MH-0c64116439ba,1,unsupported,answers,引用块只有样板,model_prepass_not_gold,codebook_v2
+B2-MH-15887f6a540a,1,unsupported,answers,只有『Mossad 情报失误』标题与推文，没有『重大袭击需要情报支持』,model_prepass_not_gold,codebook_v2
+B2-MH-15887f6a540a,2,supported,answers,,model_prepass_not_gold,codebook_v2
+B2-MH-1a900e0391d7,1,supported,related,决定 4,model_prepass_not_gold,codebook_v2
+B2-MH-1a900e0391d7,2,supported,related,决定 4,model_prepass_not_gold,codebook_v2
+B2-MH-1a900e0391d7,3,partial,related,损害出版商被支持；『花数十亿维持默认搜索』不在这份引用中,model_prepass_not_gold,codebook_v2
+B2-MH-1dd857e94826,1,unsupported,answers,没有 10/7 硬件报道，推不出性质变化,model_prepass_not_gold,codebook_v2
+B1-MH-0c69b8fdbe62,1,partial,answers,negative-claim-unfalsifiable,model_prepass_not_gold,codebook_v2
+B1-MH-0c69b8fdbe62,2,supported,answers,,model_prepass_not_gold,codebook_v2
+B1-MH-08a0f95f7a0f,1,partial,answers,整条复述限定语；庭审、欺诈指控被支持，其余（可信形象、财富权力、Jane Street）无据,model_prepass_not_gold,codebook_v2
+B1-MH-0bdcc1036f62,1,unsupported,answers,9/28 文讲 FanDuel 借热点，11/1 文只解释让分盘，推不出『一致』,model_prepass_not_gold,codebook_v2
+B2-MH-17aab942bfb4,1,partial,answers,negative-claim-unfalsifiable,model_prepass_not_gold,codebook_v2
+B2-MH-114722edd549,1,partial,answers,『these controversies』含 lite 模型，这份引用只支持出版商诉讼,model_prepass_not_gold,codebook_v2
+B2-MH-114722edd549,2,supported,related,决定 4,model_prepass_not_gold,codebook_v2
+B2-MH-1126297f39de,1,unsupported,answers,没有 11/1 Verge 报道，推不出变化,model_prepass_not_gold,codebook_v2
+B1-MH-0952d9e73467,1,supported,answers,纠正题干前提：失球纪录说明更差,model_prepass_not_gold,codebook_v2
+B1-MH-0952d9e73467,2,partial,answers,伊斯坦布尔的糟糕回忆被支持；『一贯很差』无据,model_prepass_not_gold,codebook_v2
+B1-MH-0d5e238015ef,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B1-MH-024ac868f764,1,unsupported,answers,两段都说进攻线差、Young 挣扎，是一致而非不一致,model_prepass_not_gold,codebook_v2
+B2-MH-149f2c7b0691,1,supported,answers,两段都是 263 亿美元,model_prepass_not_gold,codebook_v2
+B2-MH-0fa911496c14,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B2-MH-0fa911496c14,2,unsupported,related,引用块没有 Jane Street 同事,model_prepass_not_gold,codebook_v2
+B2-MH-0fa911496c14,3,unsupported,related,引用块没有 Paradigm,model_prepass_not_gold,codebook_v2
+B2-MH-0fa911496c14,4,partial,related,欺诈指控被支持；『为个人利益』只靠挪用资金间接暗示,model_prepass_not_gold,codebook_v2
+B2-MH-145cc8296d13,1,unsupported,answers,两侧都在但只是各自介绍 props，推不出『方式一致』（决定 2）,model_prepass_not_gold,codebook_v2
+B1-MH-08c9673c1321,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B1-MH-08c9673c1321,2,unsupported,answers,引用块是 Sporting News 的交锋史，不是 Guardian/Sky,model_prepass_not_gold,codebook_v2
+B1-MH-0efa867faffe,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B1-MH-0fb5fdf6ee28,1,supported,answers,独立蓝牙模块带来的改进,model_prepass_not_gold,codebook_v2
+B2-MH-17e563aaa33e,1,supported,answers,,model_prepass_not_gold,codebook_v2
+B2-MH-17e563aaa33e,2,supported,answers,Verge 采访中『they've decided to focus exclusively on games』,model_prepass_not_gold,codebook_v2
+B2-MH-13ec6f42b956,1,unsupported,related,没有『可信人物』,model_prepass_not_gold,codebook_v2
+B2-MH-13ec6f42b956,2,partial,related,欺诈指控被支持；『为个人利益』无据,model_prepass_not_gold,codebook_v2
+B2-MH-2237f5effc53,1,supported,related,只描述一侧，不回答一致性,model_prepass_not_gold,codebook_v2
+B2-MH-2237f5effc53,2,supported,related,只描述一侧，不回答一致性,model_prepass_not_gold,codebook_v2
+B1-MH-03cfaa7e78c6,1,partial,answers,negative-claim-unfalsifiable（引用块正面支持，但按规则 4 判 partial）,model_prepass_not_gold,codebook_v2
+B1-MH-03cfaa7e78c6,2,unsupported,answers,引用块是 Kelce 时间线，没有 Mitchell/Rangnick；尾巴自认证据不足,model_prepass_not_gold,codebook_v2
+B1-MH-01e320e7e25f,1,unsupported,answers,实体错误：证据中被指控的是 Google，不是 Epic,model_prepass_not_gold,codebook_v2
+B1-MH-088695234e1a,1,unsupported,answers,规则 4 例外：引用块明确写了 Williams 找 Rice 的深传引发 PI，与否定式断言冲突,model_prepass_not_gold,codebook_v2
+B2-MH-166126f28949,1,supported,answers,best-ever season,model_prepass_not_gold,codebook_v2
+B2-MH-166126f28949,2,supported,answers,,model_prepass_not_gold,codebook_v2
+B2-MH-189b425a1dab,1,partial,answers,『the company』指代题干全部描述；只有 Scary Fast 被支持，ITC 上诉和统一条款无据,model_prepass_not_gold,codebook_v2
+B2-MH-174076520f29,1,unsupported,answers,关系断言（不矛盾）；两侧引用块只有样板，推不出（决定 2）,model_prepass_not_gold,codebook_v2

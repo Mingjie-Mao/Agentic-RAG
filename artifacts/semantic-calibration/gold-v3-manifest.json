@@ -1,0 +1,14 @@
+{
+  "frozen_at": "2026-09-24T11:09:17+00:00",
+  "final_reviewer": "gpt (fresh session); human item-level review = 0",
+  "sha256": {
+    "gold-v3-claims.csv": "d8c201b17cb3a9497e0db0d09ed75423c1539989842bc2f00c781036b5c3ca5b",
+    "gold-v3-answers.csv": "0906576261f146b4462ea8f3da122706ca9b1e1f36d5809ac4be32273dcbc472",
+    "gold-v3-summary.json": "f292e71d4cf7f3cff377534cc94262fa7cdb31379c6acbeff371ed92908c407b",
+    "CODEBOOK.md": "0b8b7fb4a221df8e0bb05180e0a97fa068aa4b7a4f3470f0f5c6789a6d559f74",
+    "PREREGISTRATION-P2.md": "f15122b53747583a8551caac399b70bbe065efcb526d9c22a51917036cbcf384",
+    "round2/final-review-entailment.csv": "09badfcd0bd6cdbe8323549af0d4e054c3493f0073b8cd034fadc04b5ab27958",
+    "round2/final-review-relevance.csv": "99c3d60989d8ea11cb2eb4362093b05b69c37fcb953b595add1c2a8ec4337a3b",
+    "round2/final-review-answers.csv": "f91c148cc66f75659ac0caed97511c54b96619a91d95e0fe95461ea0958d88ab"
+  }
+}

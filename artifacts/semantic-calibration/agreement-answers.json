@@ -1,0 +1,36 @@
+{
+  "kind": "answers",
+  "items_compared": 30,
+  "only_in_first": 0,
+  "only_in_second": 0,
+  "contested_items": 2,
+  "agreed_items": 28,
+  "audit_sample": 6,
+  "human_judgements_required": 8,
+  "by_label": {
+    "completeness": {
+      "compared": 30,
+      "agree": 29,
+      "pairs": {
+        "complete|complete": 26,
+        "partial|partial": 3,
+        "partial|complete": 1
+      },
+      "agreement_rate": 0.967
+    },
+    "verdict_reading": {
+      "compared": 30,
+      "agree": 28,
+      "pairs": {
+        "not_applicable|not_applicable": 11,
+        "yes|yes": 10,
+        "unclear|unclear": 3,
+        "no|no": 3,
+        "yes|unclear": 1,
+        "other_choice|unclear": 1,
+        "other_choice|other_choice": 1
+      },
+      "agreement_rate": 0.933
+    }
+  }
+}

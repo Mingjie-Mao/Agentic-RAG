@@ -3,12 +3,13 @@ import time
 
 from fastapi import HTTPException
 
-from app.clients import Models, Search
+from app.clients import DependencyError, Models, Search
 from app.config import settings
 from app.models import Answer
 from app.rewrite import rewrite_query
 from app.retrieval import retrieve_authorized
 from app.security import readable_documents, require_chunk
+from app.task_analysis import judgment_intent, multi_source_intent
 
 
 def normalize_quote(text):
@@ -80,6 +81,38 @@ def shadow_scores(question, evidence, claims):
     }
 
 
+def answer_verdict(models, question, claims, status):
+    """Expose the yes/no answer of a judgment question as its own field.
+
+    The system answers "do both reports say X?" in prose, and a reader looking for a
+    verdict cannot find one. This adds the verdict without touching the claims: it is
+    read out of the validated claims only, it cites the claim it came from, and it is
+    `unclear` when the claims do not settle the question. A failure here returns no
+    verdict rather than failing an answer that already passed citation validation.
+    """
+    if not claims or status not in {"answered", "conflict"} or not judgment_intent(question):
+        return None, {}
+    try:
+        verdict, usage = models.decide_verdict(question, claims)
+    except DependencyError:
+        return None, {}
+    index = verdict.claim_index if 1 <= verdict.claim_index <= len(claims) else None
+    return {
+        "value": verdict.verdict,
+        "claim_index": index,
+        "evidence_ids": claims[index - 1]["evidence_ids"] if index else [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实",
+    }, usage
+
+
+def merge_verdict_usage(usage, verdict_usage):
+    if verdict_usage:
+        usage["verdict_prompt_tokens"] = verdict_usage.get("prompt_tokens", 0)
+        usage["verdict_completion_tokens"] = verdict_usage.get("completion_tokens", 0)
+    return usage
+
+
 MESSAGES = {
     "verification_failed": "模型的引用未通过检查，本次未返回答案。请调整问题后重试。",
     "no_readable_documents": "你当前没有可访问的资料。上传资料，或请管理者把已有资料分享到你所在的组。",
@@ -97,7 +130,15 @@ def answer_question(db, user, question, history=None):
     # Short fact questions are especially vulnerable to one off-topic chunk occupying
     # a quarter of the context. Six candidates fixed observed misses while the token
     # budget still provides the hard upper bound; longer questions keep the frozen default.
-    retrieval_top_k = 6 if len(question) <= 30 else cfg.top_k
+    # A question that names several sources needs evidence from several documents, and
+    # four chunks are routinely spent inside one of them: the external run found all
+    # gold documents for only a third of its multi-hop questions. Such questions get the
+    # full budget and a per-document quota. The Chinese path keeps the budget its frozen
+    # evaluations were measured with; raising that is a separate decision with its own
+    # re-run, not a side effect of this one.
+    retrieval_top_k = (
+        8 if multi_source_intent(question) else 6 if len(question) <= 30 else cfg.top_k
+    )
     found = retrieve_authorized(
         db,
         user,
@@ -109,7 +150,7 @@ def answer_question(db, user, question, history=None):
         require_chunk_fn=require_chunk,
         top_k=retrieval_top_k,
     )
-    evidence, candidates, usage = found.evidence, found.candidates, {}
+    evidence, candidates, usage, verdict = found.evidence, found.candidates, {}, None
     embed_ms, retrieval_ms, generation_ms = found.embed_ms, found.retrieval_ms, 0
     context_tokens = found.context_tokens
     if found.searchable_documents:
@@ -120,6 +161,8 @@ def answer_question(db, user, question, history=None):
             claims, status = validate_claims(generated, evidence)
             if status == "answered" and usage.get("answer_status") == "conflict":
                 status = "conflict"
+            verdict, verdict_usage = answer_verdict(models, question, claims, status)
+            usage = merge_verdict_usage(usage, verdict_usage)
         else:
             claims, status = [], "insufficient_evidence"
     elif not found.readable_documents:
@@ -148,6 +191,7 @@ def answer_question(db, user, question, history=None):
     payload = {
         "status": status,
         "claims": claims,
+        "verdict": verdict,
         "citations": citations,
         "message": (
             "资料存在冲突，以下规定无法同时成立；在确认适用关系前不能只采用其中一份。"

@@ -1,0 +1,67 @@
+{
+  "source": "multihop-external-r2.json",
+  "subset": "subset-r2.json",
+  "question_types": [
+    "comparison_query",
+    "temporal_query"
+  ],
+  "buckets": {
+    "rag": {
+      "questions": 77,
+      "refused": 16,
+      "answered_without_verdict_word": 53,
+      "verdict_matches_gold": 3,
+      "verdict_conflicts_or_wrong": 5,
+      "not_recoverable": 0,
+      "non_verdict_gold": 7,
+      "verdict_field": {
+        "yes_no_questions": 77,
+        "gold_yes": 47,
+        "gold_no": 30,
+        "majority_class_baseline": 0.61,
+        "verdict_given": 59,
+        "verdict_correct": 41,
+        "accuracy_over_all_yes_no": 0.532,
+        "accuracy_when_a_verdict_was_given": 0.695,
+        "confusion": {
+          "gold=yes|verdict=yes": 35,
+          "gold=yes|verdict=no": 6,
+          "gold=yes|verdict=unclear": 2,
+          "gold=yes|verdict=none": 4,
+          "gold=no|verdict=yes": 12,
+          "gold=no|verdict=no": 6,
+          "gold=no|verdict=none": 12
+        }
+      }
+    },
+    "workflow": {
+      "questions": 77,
+      "refused": 16,
+      "answered_without_verdict_word": 57,
+      "verdict_matches_gold": 1,
+      "verdict_conflicts_or_wrong": 3,
+      "not_recoverable": 0,
+      "non_verdict_gold": 7,
+      "verdict_field": {
+        "yes_no_questions": 77,
+        "gold_yes": 47,
+        "gold_no": 30,
+        "majority_class_baseline": 0.61,
+        "verdict_given": 60,
+        "verdict_correct": 41,
+        "accuracy_over_all_yes_no": 0.532,
+        "accuracy_when_a_verdict_was_given": 0.683,
+        "confusion": {
+          "gold=yes|verdict=yes": 34,
+          "gold=yes|verdict=no": 8,
+          "gold=yes|verdict=unclear": 1,
+          "gold=yes|verdict=none": 4,
+          "gold=no|verdict=yes": 11,
+          "gold=no|verdict=no": 7,
+          "gold=no|verdict=none": 12
+        }
+      }
+    }
+  },
+  "note": "诊断，不是重新评分：answered_without_verdict_word 只说明答案里没有判断词，不代表它语义正确。已声明的外部指标不因本文件改变。verdict_field 一节比较的是显式结论字段与两个平凡基线——随机 50% 与多数类——二元问题不给基线就等于没给结论。"
+}

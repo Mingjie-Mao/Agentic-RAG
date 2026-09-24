@@ -55,6 +55,12 @@ class ConflictCheck(BaseModel):
     reason: str
 
 
+class AnswerVerdict(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    verdict: Literal["yes", "no", "unclear"]
+    claim_index: int = Field(ge=0, le=8)
+
+
 class AgentDecision(BaseModel):
     model_config = ConfigDict(extra="forbid")
     action: Literal[
@@ -341,6 +347,63 @@ class Models:
             "conflict_check": conflict_check,
             "acceptance_items": required_items,
         }
+
+    def decide_verdict(self, question: str, claims: list[dict]) -> tuple[AnswerVerdict, dict]:
+        """Read a yes/no verdict out of claims that are already cited and validated.
+
+        A question like "do both reports say X?" is answered here in prose: "the two
+        reports do not agree". That is a complete answer that no word-level reader can
+        see, so the verdict is exposed as its own field. This step is deliberately not
+        allowed to see the corpus — it only reads the claims the previous step already
+        grounded, so it can restate a conclusion but cannot introduce a fact. When the
+        claims do not settle the question it returns `unclear` rather than guessing.
+        """
+        cfg = settings()
+        schema = AnswerVerdict.model_json_schema()
+        schema["properties"]["claim_index"]["maximum"] = len(claims)
+        result = self._post(
+            "/api/chat",
+            {
+                "model": cfg.chat_model,
+                "stream": False,
+                "keep_alive": "30m",
+                "format": schema,
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": (
+                            "只依据给出的 claims 判断问题的结论。claims 是已经过引用校验的结论，"
+                            "不得改写，也不得使用 claims 之外的任何知识。"
+                            "结论成立选 yes，不成立选 no，claims 不足以判断选 unclear。"
+                            "claim_index 指向最直接支持该判断的那条 claim 的编号；unclear 时填 0。"
+                            "只输出指定 JSON。"
+                        ),
+                    },
+                    {
+                        "role": "user",
+                        "content": json.dumps(
+                            {
+                                "question": question,
+                                "claims": [
+                                    {"index": number, "text": claim["text"]}
+                                    for number, claim in enumerate(claims, 1)
+                                ],
+                            },
+                            ensure_ascii=False,
+                        )[:12000],
+                    },
+                ],
+                "options": {"temperature": 0, "seed": 42, "num_ctx": 4096, "num_predict": 60},
+            },
+        )
+        usage = {
+            "prompt_tokens": result.get("prompt_eval_count", 0),
+            "completion_tokens": result.get("eval_count", 0),
+        }
+        try:
+            return AnswerVerdict.model_validate_json(result["message"]["content"]), usage
+        except (ValueError, KeyError, TypeError) as exc:
+            raise DependencyError("模型未返回有效的判断结论", stage="verdict") from exc
 
     def decide_agent_action(self, goal: str, observations: list[dict], step: int) -> AgentDecision:
         """Choose one bounded read-only action; tool arguments are validated elsewhere."""

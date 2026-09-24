@@ -53,7 +53,17 @@ def fetch(name, expected, download):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--download", action="store_true")
+    parser.add_argument(
+        "--round",
+        type=int,
+        default=1,
+        help=(
+            "第几批。一批用掉之后就不能再用它验证改动；第 2 批取同一排序下的下一段，"
+            "与第 1 批按构造不相交。"
+        ),
+    )
     args = parser.parse_args()
+    out = OUT if args.round == 1 else OUT.with_name(f"subset-r{args.round}.json")
     queries = fetch("MultiHopRAG.json", FILES["MultiHopRAG.json"], args.download)
     corpus = fetch("corpus.json", FILES["corpus.json"], args.download)
     titles = {row["title"] for row in corpus}
@@ -67,9 +77,10 @@ def main():
             if all(item["title"] in titles for item in row.get("evidence_list", []))
         ]
         ordered = sorted(pool, key=lambda row: digest(row["query"]))
-        if len(ordered) < quota:
-            raise SystemExit(f"{question_type}: 只有 {len(ordered)} 题可用，少于配额 {quota}")
-        for row in ordered[:quota]:
+        start = quota * (args.round - 1)
+        if len(ordered) < start + quota:
+            raise SystemExit(f"{question_type}: 只有 {len(ordered)} 题可用，第 {args.round} 批取不满")
+        for row in ordered[start : start + quota]:
             selected.append(
                 {
                     "id": f"MH-{digest(row['query'])[:12]}",
@@ -80,7 +91,8 @@ def main():
                 }
             )
     payload = {
-        "name": "multihop-rag-external-v1",
+        "name": f"multihop-rag-external-r{args.round}",
+        "round": args.round,
         "source": {
             "dataset": "yixuantt/MultiHopRAG",
             "url": "https://huggingface.co/datasets/yixuantt/MultiHopRAG",
@@ -89,20 +101,33 @@ def main():
             "files": FILES,
         },
         "selection": (
-            "按题型配额分层，题内按 sha256(query) 升序取前 N；配额与 2556 题的原始分布成比例。"
+            "按题型配额分层，题内按 sha256(query) 升序，第 N 批取第 (N-1)*配额 之后的一段；"
+            "配额与 2556 题的原始分布成比例。"
             "只保留 gold 证据文档全部存在于 609 篇语料中的题目。"
         ),
         "quota": QUOTA,
         "questions": len(selected),
         "purpose": (
             "一次性外部验证：与自建 Hard 30 分开报告，不用于调 prompt、规则或阈值。"
+            "每一批只用一次；用来验证针对上一批发现的问题所做的改动时，必须换下一批。"
             "题面与金标答案不入库，只保存 ID 与哈希，运行时从原始数据集按哈希还原。"
         ),
         "items": selected,
     }
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
-    print(json.dumps({"questions": len(selected), "quota": QUOTA, "out": str(OUT)}, ensure_ascii=False, indent=2))
+    out.parent.mkdir(parents=True, exist_ok=True)
+    if args.round > 1 and OUT.exists():
+        used = {row["query_sha256"] for row in json.loads(OUT.read_text())["items"]}
+        overlap = used & {row["query_sha256"] for row in selected}
+        if overlap:
+            raise SystemExit(f"第 {args.round} 批与第 1 批有 {len(overlap)} 题重叠")
+    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+    print(
+        json.dumps(
+            {"round": args.round, "questions": len(selected), "quota": QUOTA, "out": str(out)},
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

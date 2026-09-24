@@ -1,0 +1,21 @@
+﻿id,arm,bucket_MODEL,model_note,v1_to_v2_change,provenance,codebook
+MH-124558122a92,workflow,E_right_document_wrong_passage,两篇 Fortune 都在证据里，进来的是无关段落；问题指向的『10-12 警告撤离』那段没进来。paired-question（与 MH-1c31b288b184 成对）,,model_prepass_not_gold,codebook_v2
+MH-12b9416cf2b0,workflow,E_right_document_wrong_passage,Perine 那场的相关段落没进来。language-mismatch：英文问题、中文 claims,,model_prepass_not_gold,codebook_v2
+MH-1421b92cce4c,workflow,A_comparison_reasoning_wrong,证据标题明写 ASX rises，模型却论证『这不直接表明上涨』,,model_prepass_not_gold,codebook_v2
+MH-148e008e129a,workflow,D_benchmark_gold_or_question_arguable,问句把『对董事会的透明度』与『生成式 AI 参与度的刻画』作比较，本身不成立,,model_prepass_not_gold,codebook_v2
+MH-12b9416cf2b0,rag,B_claims_too_vague_for_a_verdict,claims 自相矛盾：先说没有 first down，又说拿到了 first down。language-mismatch,,model_prepass_not_gold,codebook_v2
+MH-1963e8b69161,rag,F_claim_unsupported_by_its_own_citation,三次引用同一篇 The Verge 报道；关于 Sonos 的断言在被引用原文里不存在,,model_prepass_not_gold,codebook_v2
+MH-1bdf980169e9,rag,C_verdict_classifier_flipped_clear_claims,claim 明确说『并非两篇都呈现轻松压制』，结论字段却输出 yes,,model_prepass_not_gold,codebook_v2
+MH-1c31b288b184,rag,A_comparison_reasoning_wrong,paired-question：与 MH-124558122a92 只差 defensive/aggressive 一词，两题都错且方向相反,,model_prepass_not_gold,codebook_v2
+MH-124558122a92,rag,E_right_document_wrong_passage,与 workflow 同因：两篇 Fortune 在证据里，但『警告撤离』那段没进来。paired-question,,model_prepass_not_gold,codebook_v2
+MH-134a74b16a08,rag,retrieval_incomplete_confirmed,机械归因已解释；另注 claim 说两篇 TechCrunch 都正面报道，而 Gemini 那篇标题是『早期印象不佳』,,model_prepass_not_gold,codebook_v2
+MH-1421b92cce4c,rag,A_comparison_reasoning_wrong,与 workflow 同因：标题明写 ASX rises，仍被论证成不表明上涨,,model_prepass_not_gold,codebook_v2
+MH-148e008e129a,rag,D_benchmark_gold_or_question_arguable,与 workflow 同因：问句的比较项不成立,,model_prepass_not_gold,codebook_v2
+MH-11b5dbe62ed4,rag,E_right_document_wrong_passage,两个引用块都是 The Independent 的订阅样板文字，没有任何关于威廉王子反应的内容,,model_prepass_not_gold,codebook_v2
+MH-14aa218c2c66,rag,retrieval_incomplete_confirmed,另注：原文是设问『他是骗子还是善意创业者？』，claim 读成了『Fortune 把他描绘成骗子』,,model_prepass_not_gold,codebook_v2
+MH-170a36ef33f7,rag,retrieval_incomplete_confirmed,,,model_prepass_not_gold,codebook_v2
+MH-17280b83d56e,rag,retrieval_incomplete_confirmed,另注：引用的是 CBSSports，而问题点名的是 The Independent 与 Yardbarker,,model_prepass_not_gold,codebook_v2
+MH-174076520f29,rag,retrieval_incomplete_confirmed,另注：引用块又是 The Independent 的订阅样板文字,,model_prepass_not_gold,codebook_v2
+MH-1771e46705cb,rag,retrieval_incomplete_confirmed,另注：claim 只说『有些不一致』，本身也推不出明确结论,,model_prepass_not_gold,codebook_v2
+MH-1996fe8e6217,rag,retrieval_incomplete_confirmed,,,model_prepass_not_gold,codebook_v2
+MH-1b7d96f154db,rag,B_claims_too_vague_for_a_verdict,两条 claim 都是否定式且含糊；另注问题写的是 2022-10-07，文章是 2023-10-07，日期可能有误,,model_prepass_not_gold,codebook_v2

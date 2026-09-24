@@ -8,7 +8,7 @@ from sqlalchemy import select
 from app.chunking import token_count
 from app.models import Tenant
 from app.security import readable_documents, require_chunk
-from app.task_analysis import needs_document_diversity
+from app.task_analysis import multi_source_intent, needs_document_diversity
 
 
 def _boilerplate_only(text: str) -> bool:
@@ -75,7 +75,7 @@ def retrieve_authorized(
     vector = models.embed([query])[0] if cfg.retrieval_mode != "bm25" else None
     embed_ms = (time.monotonic() - started) * 1000
     started = time.monotonic()
-    diversify = needs_document_diversity(query)
+    diversify = needs_document_diversity(query) or multi_source_intent(query)
     search_limit = min(limit * 3, 24) if diversify else limit
     if cfg.retrieval_mode == "hybrid":
         hits = search.retrieve_hybrid(query, vector, user.tenant_id, versions, search_limit)

@@ -1,0 +1,51 @@
+﻿item_id,claim_index,entailment,relevance,provenance,basis
+B1-MH-039d7f881e5a,1,supported,answers,gpt_final_review_accept,
+B1-MH-039d7f881e5a,2,unsupported,answers,gpt_final_review_accept,
+B1-MH-050827e2c17f,1,unsupported,answers,owner_rule_adjudicated,relevance:decision-1
+B1-MH-050827e2c17f,2,supported,answers,owner_rule_adjudicated,relevance:decision-1
+B1-MH-056fe59cd997,1,partial,answers,gpt_final_review_override,"entailment:override_by_gpt (strict full-claim reading: identity is supported, but the ""streamline internet n); relevance:override_by_gpt (strict full-claim reading: identity is supported, but the ""streamline internet n)"
+B1-MH-056fe59cd997,2,supported,answers,gpt_final_review_accept,
+B1-MH-056fe59cd997,3,supported,answers,gpt_final_review_accept,
+B1-MH-063f46090a91,1,supported,answers,owner_rule_adjudicated,relevance:decision-1
+B1-MH-063f46090a91,2,partial,answers,owner_rule_adjudicated,relevance:decision-1
+B1-MH-08d8e46196f4,1,partial,answers,gpt_final_review_accept,
+B1-MH-09b478db5759,1,unsupported,answers,gpt_final_review_accept,
+B1-MH-0a05452eaee8,1,supported,answers,gpt_final_review_accept,
+B1-MH-0a05452eaee8,2,unsupported,answers,gpt_final_review_accept,
+B1-MH-0a05452eaee8,3,supported,answers,gpt_final_review_accept,
+B1-MH-0a7a2c277008,1,supported,answers,owner_rule_adjudicated,relevance:decision-1
+B1-MH-0a7a2c277008,2,unsupported,answers,owner_rule_adjudicated,entailment:方向写反，属与证据冲突而非否定式断言; relevance:decision-1
+B1-MH-0acddcd35850,1,supported,related,gpt_final_review_accept,
+B1-MH-0acddcd35850,2,supported,answers,owner_rule_adjudicated,entailment:decision-2: 两篇被引报道都指向缺席，足以推出一致
+B1-MH-0c18610f435a,1,partial,answers,gpt_final_review_accept,
+B1-MH-0cd2bbe92b19,1,unsupported,answers,owner_rule_applied,entailment:decision-2: 一致的另一侧（U2 项目）不在引用里；两模型原本都判 partial
+B1-MH-0d1919b11047,1,supported,related,gpt_final_review_accept,
+B1-MH-0dff3d635abc,1,supported,answers,gpt_final_review_accept,
+B1-MH-0e55fef39668,1,supported,answers,gpt_final_review_accept,
+B1-MH-0ea267f4ceba,1,partial,answers,gpt_final_review_accept,
+B2-MH-0f910380b759,1,partial,answers,gpt_final_review_accept,
+B2-MH-0f910380b759,2,partial,answers,gpt_final_review_accept,
+B2-MH-0f910380b759,3,supported,related,owner_rule_adjudicated,relevance:decision-4
+B2-MH-10482bbfd0ca,1,unsupported,answers,owner_rule_adjudicated,entailment:与可见信息冲突：引用写 GPT-4，claim 写 GPT-3.5
+B2-MH-10482bbfd0ca,2,unsupported,answers,gpt_final_review_accept,
+B2-MH-10482bbfd0ca,3,supported,answers,gpt_final_review_accept,
+B2-MH-1144d2e80b35,1,supported,answers,owner_rule_adjudicated,entailment:decision-2: 两侧摘录都强调信仰实践，足以推出一致
+B2-MH-11d9213f77f1,1,supported,answers,gpt_final_review_accept,
+B2-MH-12912d800c0c,1,partial,answers,gpt_final_review_accept,
+B2-MH-1291bbe87804,1,supported,answers,owner_rule_adjudicated,relevance:decision-1
+B2-MH-1291bbe87804,2,unsupported,answers,owner_rule_adjudicated,relevance:decision-1
+B2-MH-141809cfa779,1,supported,related,gpt_final_review_accept,
+B2-MH-148e008e129a,1,partial,answers,gpt_final_review_accept,
+B2-MH-179cc0ffdb05,1,partial,answers,owner_rule_adjudicated,relevance:decision-1
+B2-MH-179cc0ffdb05,2,supported,answers,owner_rule_adjudicated,relevance:decision-1
+B2-MH-19b313bbba37,1,supported,answers,gpt_final_review_accept,
+B2-MH-19b313bbba37,2,partial,answers,gpt_final_review_accept,
+B2-MH-19c9e32e360e,1,supported,answers,owner_rule_adjudicated,relevance:decision-1
+B2-MH-19c9e32e360e,2,supported,answers,owner_rule_adjudicated,relevance:decision-1
+B2-MH-1afa5edb190c,1,unsupported,related,gpt_final_review_accept,
+B2-MH-1afa5edb190c,2,supported,related,gpt_final_review_accept,
+B2-MH-1afa5edb190c,3,supported,related,gpt_final_review_accept,
+B2-MH-1afa5edb190c,4,partial,related,gpt_final_review_accept,
+B2-MH-1afa5edb190c,5,unsupported,answers,owner_rule_adjudicated,entailment:decision-2: TechCrunch 一侧完全不在引用里
+B2-MH-1cc76df29d2b,1,unsupported,related,gpt_final_review_accept,
+B2-MH-1cc76df29d2b,2,unsupported,related,gpt_final_review_accept,

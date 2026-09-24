@@ -1,0 +1,24 @@
+{
+  "claims": {
+    "rows": 50,
+    "by_provenance": {
+      "gpt_final_review_accept": 31,
+      "owner_rule_adjudicated": 17,
+      "gpt_final_review_override": 1,
+      "owner_rule_applied": 1
+    },
+    "usable_as_gold": 50,
+    "human_item_level_review": 0,
+    "unsupported_in_gold": 13,
+    "unsupported_awaiting_review": 0
+  },
+  "answers": {
+    "rows": 30,
+    "by_provenance": {
+      "gpt_final_review_accept": 28,
+      "owner_rule_adjudicated": 2
+    },
+    "usable_as_gold": 30,
+    "human_item_level_review": 0
+  }
+}

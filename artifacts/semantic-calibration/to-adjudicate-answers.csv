@@ -1,0 +1,10 @@
+﻿item_id,reason,label,first_says,second_says,human_decision,note
+B2-MH-1291bbe87804,disagreement,verdict_reading,yes,unclear,,
+B2-MH-141809cfa779,disagreement,completeness,partial,complete,,
+B2-MH-141809cfa779,disagreement,verdict_reading,other_choice,unclear,,
+B1-MH-050827e2c17f,audit_of_agreement,,,,,
+B1-MH-09b478db5759,audit_of_agreement,,,,,
+B1-MH-0acddcd35850,audit_of_agreement,,,,,
+B1-MH-0c18610f435a,audit_of_agreement,,,,,
+B2-MH-11d9213f77f1,audit_of_agreement,,,,,
+B2-MH-179cc0ffdb05,audit_of_agreement,,,,,

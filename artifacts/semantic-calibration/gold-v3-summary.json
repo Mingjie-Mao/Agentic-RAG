@@ -1,0 +1,61 @@
+{
+  "codebook": "v3",
+  "sampling_weight": {
+    "stratum": 69,
+    "sampled": 15,
+    "weight": 4.6
+  },
+  "claims_total": 176,
+  "entailment_gold": 122,
+  "entailment_by_label": {
+    "partial": 20,
+    "supported": 44,
+    "unsupported": 58
+  },
+  "entailment_by_provenance": {
+    "gpt_final_review_v3_accept": 73,
+    "gpt_final_review_v3_disagreement": 10,
+    "model_consensus": 54,
+    "v2_gpt_final_review_accept": 27,
+    "v2_gpt_final_review_override": 1,
+    "v2_owner_rule_adjudicated": 10,
+    "v2_owner_rule_applied": 1
+  },
+  "unsupported_in_gold": 58,
+  "by_batch": {
+    "B1": 62,
+    "B2": 60
+  },
+  "by_question_type": {
+    "comparison_query": 37,
+    "inference_query": 48,
+    "null_query": 1,
+    "temporal_query": 36
+  },
+  "by_arm": {
+    "rag": 67,
+    "workflow": 55
+  },
+  "unsupported_by_question_type": {
+    "comparison_query": 14,
+    "inference_query": 21,
+    "temporal_query": 23
+  },
+  "relevance_by_label": {
+    "answers": 155,
+    "related": 21
+  },
+  "relevance_by_provenance": {
+    "gpt_final_review_v3_blind": 167,
+    "owner_rule_applied_v3_1": 7,
+    "owner_ruling_decision_1": 2
+  },
+  "answers_gold": 56,
+  "answers_by_provenance": {
+    "gpt_final_review_v3_accept": 27,
+    "single_annotator_unreviewed": 47,
+    "v2_gpt_final_review_accept": 27,
+    "v2_owner_rule_adjudicated": 2
+  },
+  "human_item_level_review": 0
+}

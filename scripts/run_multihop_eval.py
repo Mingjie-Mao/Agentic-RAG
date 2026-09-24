@@ -27,7 +27,8 @@ from app.qa import answer_question
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / ".runtime/multihop"
-SUBSET = ROOT / "fixtures/multihop/subset.json"
+SUBSET_DIR = ROOT / "fixtures/multihop"
+SUBSET = SUBSET_DIR / "subset.json"
 TENANT_USER = "mh-eval"
 YES = ("yes", "是的", "是", "确实", "存在")
 NO = ("no", "不是", "否", "没有", "不存在")
@@ -51,12 +52,19 @@ def token_present(text: str, word: str) -> bool:
     return word in text
 
 
-def answer_matches(question_type, gold, status, claims_text):
-    """Literal answer scoring, fixed before the run.
+def answer_matches(question_type, gold, status, claims_text, verdict=None, rule="v2"):
+    """Literal answer scoring. Both rules are kept so both runs stay reproducible.
 
-    A null query is answered correctly by refusing. A Yes/No gold has to appear as a
-    standalone word, and the opposite word must not appear — a claim that says both is
-    not an answer. Everything else is containment of the gold string.
+    `v1` is the rule the 2026-09-21 run was scored with: a null query is answered
+    correctly by refusing, a Yes/No gold has to appear as a standalone word with the
+    opposite word absent, everything else is containment of the gold string.
+
+    `v2` changes one thing. The system now returns an explicit verdict field for
+    judgment questions, read out of its own validated claims, so a Yes/No gold is
+    compared against that field instead of hunting for a word in prose. A verdict of
+    `unclear` is scored wrong — declining to judge is not an answer. When no verdict
+    was produced at all, v2 falls back to the v1 word rule rather than crediting or
+    penalising the question for free.
     """
     if question_type == "null_query":
         return status == "insufficient_evidence"
@@ -64,6 +72,11 @@ def answer_matches(question_type, gold, status, claims_text):
         return False
     gold_normalized = normalized(gold)
     if gold_normalized in {"yes", "no"}:
+        value = (verdict or {}).get("value") if rule == "v2" else None
+        if value in {"yes", "no"}:
+            return value == gold_normalized
+        if value == "unclear":
+            return False
         wanted, other = (YES, NO) if gold_normalized == "yes" else (NO, YES)
         return any(token_present(claims_text, word) for word in wanted) and not any(
             token_present(claims_text, word) for word in other
@@ -116,20 +129,34 @@ def documents_for_chunks(db, chunk_ids):
     return list(dict.fromkeys(document for _, document in rows))
 
 
-def score(item, question, payload, retrieved_documents, latency_ms, usage, fired=()):
+def score(item, question, payload, retrieved_documents, latency_ms, usage, fired=(), rule="v2"):
     gold_documents = sorted({document_id(row["title"]) for row in question["evidence_list"]})
     cited = list(
         dict.fromkeys(row.get("document_id") for row in payload.get("citations", []) if row.get("document_id"))
     )
     claims_text = normalized(" ".join(row.get("text", "") for row in payload.get("claims", [])))
+    scored = {
+        variant: answer_matches(
+            item["question_type"],
+            question["answer"],
+            payload.get("status"),
+            claims_text,
+            payload.get("verdict"),
+            variant,
+        )
+        for variant in ("v1", "v2")
+    }
     found = [document for document in gold_documents if document in set(retrieved_documents)]
     return {
         "id": item["id"],
         "question_type": item["question_type"],
         "status": payload.get("status"),
-        "answer_correct": answer_matches(
-            item["question_type"], question["answer"], payload.get("status"), claims_text
-        ),
+        # Both readings are recorded from the same run, so the effect of the explicit
+        # verdict field can be read off without running the questions twice.
+        "answer_correct": scored[rule],
+        "answer_correct_v1": scored["v1"],
+        "answer_correct_v2": scored["v2"],
+        "verdict": (payload.get("verdict") or {}).get("value"),
         "gold_documents": len(gold_documents),
         "gold_documents_retrieved": len(found),
         "all_gold_retrieved": bool(gold_documents) and len(found) == len(gold_documents),
@@ -142,14 +169,28 @@ def score(item, question, payload, retrieved_documents, latency_ms, usage, fired
     }
 
 
+def recorded(rows, field, wanted=None):
+    """Count a field only if the run recorded it at all; otherwise report nothing."""
+    if not any(field in row for row in rows):
+        return None
+    if wanted is None:
+        return sum(bool(row.get(field)) for row in rows)
+    return sum(row.get(field) in wanted for row in rows)
+
+
 def summarize(rows):
     graded = [row for row in rows if row["question_type"] != "null_query"]
+    unanswerable = [row for row in rows if row["question_type"] == "null_query"]
     def ratio(numerator, denominator):
         return round(numerator / denominator, 3) if denominator else None
     return {
         "questions": len(rows),
         "answer_correct": sum(row["answer_correct"] for row in rows),
         "answer_correct_rate": ratio(sum(row["answer_correct"] for row in rows), len(rows)),
+        # A run that predates a field reports null for it, not zero: "this run did
+        # not record it" and "it never happened" are different facts.
+        "answer_correct_v1": recorded(rows, "answer_correct_v1"),
+        "answer_correct_v2": recorded(rows, "answer_correct_v2"),
         "all_gold_retrieved": sum(row["all_gold_retrieved"] for row in graded),
         "all_gold_retrieved_rate": ratio(sum(row["all_gold_retrieved"] for row in graded), len(graded)),
         "gold_document_recall": ratio(
@@ -161,6 +202,23 @@ def summarize(rows):
             sum(row["gold_documents"] for row in graded),
         ),
         "refused": sum(row["status"] == "insufficient_evidence" for row in rows),
+        # Answerability calibration. Accuracy alone hides the trade this pipeline
+        # makes: a larger evidence budget lifts coverage and, with it, the temptation
+        # to answer a question that has no answer. The two have to be read together.
+        "answerable_questions": len(graded),
+        "answerable_accuracy": ratio(sum(row["answer_correct"] for row in graded), len(graded)),
+        "refusal_rate_on_answerable": ratio(
+            sum(row["status"] == "insufficient_evidence" for row in graded), len(graded)
+        ),
+        "null_questions": len(unanswerable),
+        "null_refusal_recall": ratio(
+            sum(row["status"] == "insufficient_evidence" for row in unanswerable), len(unanswerable)
+        ),
+        "false_answer_rate_on_null": ratio(
+            sum(row["status"] != "insufficient_evidence" for row in unanswerable), len(unanswerable)
+        ),
+        "verdict_given": recorded(rows, "verdict", {"yes", "no"}),
+        "verdict_unclear": recorded(rows, "verdict", {"unclear"}),
         "coverage_repairs": sum("coverage_repair" in row.get("planner_events", []) for row in rows),
         "query_recoveries": sum("query_recovery" in row.get("planner_events", []) for row in rows),
         "p50_latency_ms": round(statistics.median(row["latency_ms"] for row in rows), 1) if rows else None,
@@ -182,8 +240,20 @@ def summarize_arm(rows):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--arms", nargs="+", choices=["rag", "workflow"], default=["rag", "workflow"])
+    parser.add_argument("--subset", default=str(SUBSET), help="要跑的冻结子集文件")
     parser.add_argument("--limit", type=int)
     parser.add_argument("--out", default="artifacts/multihop-external.json")
+    parser.add_argument(
+        "--resummarize",
+        action="store_true",
+        help="只用已存的逐题记录重算 summary，不调用模型、不重新判分",
+    )
+    parser.add_argument(
+        "--scoring",
+        choices=["v1", "v2"],
+        default="v2",
+        help="v1 复现 2026-09-21 那次运行的口径；v2 读取显式结论字段",
+    )
     parser.add_argument(
         "--resume",
         action="store_true",
@@ -195,13 +265,29 @@ def main():
         help="检查管线用：只跑不在冻结子集里的题，绝不动官方子集",
     )
     args = parser.parse_args()
-    subset = json.loads(SUBSET.read_text())
+    if args.resummarize:
+        path = ROOT / args.out
+        stored = json.loads(path.read_text())
+        stored["summary"] = {
+            arm: summarize_arm(rows) for arm, rows in stored["results"].items() if rows
+        }
+        path.write_text(json.dumps(stored, ensure_ascii=False, indent=2) + "\n")
+        print(json.dumps(stored["summary"], ensure_ascii=False, indent=2))
+        return
+    subset_path = Path(args.subset)
+    subset = json.loads(subset_path.read_text())
     raw = (CACHE / "MultiHopRAG.json").read_bytes()
     if hashlib.sha256(raw).hexdigest() != subset["source"]["files"]["MultiHopRAG.json"]:
         raise SystemExit("本地数据集与冻结时的哈希不一致")
     by_query = {digest(row["query"]): row for row in json.loads(raw)}
     if args.smoke:
-        frozen = {item["query_sha256"] for item in subset["items"]}
+        # Every frozen batch is off limits to a plumbing check, not just the one
+        # being run: a batch that has been looked at is no longer a first look.
+        frozen = {
+            item["query_sha256"]
+            for path in sorted(SUBSET_DIR.glob("subset*.json"))
+            for item in json.loads(path.read_text())["items"]
+        }
         pool = [row for key, row in sorted(by_query.items()) if key not in frozen]
         items, seen = [], {}
         # Cover every question type: a plumbing check that only ever sees one type
@@ -228,8 +314,10 @@ def main():
     done = {arm: {} for arm in args.arms}
     if args.resume and out.exists():
         previous = json.loads(out.read_text())
-        if previous.get("subset_sha256") != hashlib.sha256(SUBSET.read_bytes()).hexdigest():
+        if previous.get("subset_sha256") != hashlib.sha256(subset_path.read_bytes()).hexdigest():
             raise SystemExit("已有产物来自另一个冻结子集，不能续跑")
+        if previous.get("scoring_rule", "v1") != args.scoring:
+            raise SystemExit("已有产物用的是另一套评分口径，不能续跑")
         for arm in args.arms:
             done[arm] = {row["id"]: row for row in previous.get("results", {}).get(arm, [])}
         print(
@@ -240,16 +328,19 @@ def main():
     def payload():
         return {
             "benchmark": subset["name"],
-            "subset_sha256": hashlib.sha256(SUBSET.read_bytes()).hexdigest(),
+            "subset": subset_path.name,
+            "subset_sha256": hashlib.sha256(subset_path.read_bytes()).hexdigest(),
             "dataset_files": subset["source"]["files"],
             "mode": "smoke" if args.smoke else "frozen_subset",
+            "scoring_rule": args.scoring,
             "arms": args.arms,
             "questions": len(items),
             "results": results,
             "summary": {arm: summarize_arm(rows) for arm, rows in results.items() if rows},
             "scoring": (
-                "null_query 正确 = 拒答；Yes/No 正确 = 出现对应词且不出现相反词（接受中文写法）；"
-                "其余正确 = 金标答案串出现在 claims 中。检索口径为进入生成的证据所属文档。"
+                "null_query 正确 = 拒答；其余正确 = 金标答案串出现在 claims 中；"
+                "检索口径为进入生成的证据所属文档。Yes/No 题：v1 = 出现对应词且不出现相反词"
+                "（接受中文写法），v2 = 与系统显式结论字段比较，unclear 判错，没有结论字段时退回 v1。"
             ),
             "note": (
                 "外部一次性验证，与自建 Hard 30 分开报告；未用于调 prompt、规则或阈值。"
@@ -280,7 +371,9 @@ def main():
                 else:
                     result, fired, refs, usage, latency = run_workflow(db, user, question["query"])
                     retrieved = documents_for_chunks(db, refs)
-            results[arm].append(score(item, question, result, retrieved, latency, usage, fired))
+            results[arm].append(
+                score(item, question, result, retrieved, latency, usage, fired, args.scoring)
+            )
         out.write_text(json.dumps(payload(), ensure_ascii=False, indent=2) + "\n")
     final = payload()
     out.write_text(json.dumps(final, ensure_ascii=False, indent=2) + "\n")

@@ -22,9 +22,14 @@ from app.clients import DependencyError, Models
 from app.config import settings
 from app.db import SessionLocal
 from app.models import AgentEvent, AgentTask, ToolExecution, User, now, uid
-from app.qa import validate_claims
+from app.qa import answer_verdict, merge_verdict_usage, validate_claims
 from app.security import require_chunk
-from app.task_analysis import acceptance_items, conflict_intent, version_intent
+from app.task_analysis import (
+    acceptance_items,
+    conflict_intent,
+    multi_source_intent,
+    version_intent,
+)
 
 
 def _event(db, task, event_type, *, tool_name=None, payload=None, refs=None):
@@ -311,6 +316,11 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None):
             claims, usage = _repair_coverage(
                 db, user, task, models, tools, items, claims, evidence, pool, usage
             )
+        # A judgment question gets its verdict as a field. It is read out of the claims
+        # the pipeline already validated, so it restates a conclusion without adding a
+        # fact, and it is the last step: repaired claims are included.
+        verdict, verdict_usage = answer_verdict(models, task.goal, claims, status)
+        usage = merge_verdict_usage(usage, verdict_usage)
         policy_usage = getattr(models, "agent_policy_usage", None)
         if policy_usage:
             usage["agent_policy_prompt_tokens"] = policy_usage["prompt_tokens"]
@@ -343,6 +353,7 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None):
         payload = {
             "status": status,
             "claims": claims,
+            "verdict": verdict,
             "citations": citations,
             "message": "" if claims else "Agent 找到了资料，但最终答案未通过引用校验。",
             "usage": usage,
@@ -434,12 +445,15 @@ def run_task(db, user, task, *, models=None, tools=None):
                     if comparison:
                         refs.extend(comparison.evidence_refs)
             else:
+                # A goal that names several sources has to bring back several
+                # documents, so it gets the full evidence budget; the per-document
+                # quota in retrieval then keeps one long document from taking it all.
                 search = _execute(
                     db,
                     task,
                     tools,
                     "search_documents",
-                    {"query": task.goal, "top_k": 6},
+                    {"query": task.goal, "top_k": 8 if multi_source_intent(task.goal) else 6},
                     reuse=True,
                 )
                 # One controlled recovery. A question phrased the way a person would
