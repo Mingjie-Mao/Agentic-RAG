@@ -1,0 +1,2532 @@
+{
+  "scope": "B1/B2 failed arm runs; historical evidence, not current retrieval",
+  "metric": "gold fact delivered when >=50% of its word 4-grams occur in admitted chunks from its own gold document",
+  "input_sha256": {
+    "artifacts/multihop-failure-attribution.json": "0994e1abc4b276e1795f9bc6daf87f4d2f82d509e7184452fe90d6df486604d5",
+    "fixtures/multihop/subset.json": "1f5c75e1e615ac3e4907822bb2e44fc3f70d7da4485adcaa3f1e7c62d19fff62",
+    "fixtures/multihop/subset-r2.json": "19030990b72c231dd0ec3a03162df3fc8d57cddcd1d6bd30cd462b95cf4d628b",
+    ".runtime/multihop/MultiHopRAG.json": "03cfb4926461f868684903aadc8024447bdda5bb3f6804741424cce338515bff"
+  },
+  "summary": {
+    "failures": 279,
+    "by_stage_proxy": {
+      "gold_document_missing": 179,
+      "gold_fact_proxy_missing": 58,
+      "gold_facts_present_generation_or_scoring_review": 42
+    },
+    "historical_chunks_missing": 0
+  },
+  "rows": [
+    {
+      "item_id": "B1-MH-005e26b475d1",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0073ab564e55",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0085f76defbe",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-00bcb273add8",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0165795fd40c",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0175090e1c35",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-01ceb7cf9079",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-022ffac0b5f4",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0279054408d1",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-02faea4c1161",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-03c8f9157597",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-03cfaa7e78c6",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0445265e8760",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-04e2c330afa3",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-050827e2c17f",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-05810be2d274",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-05aa636fee50",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-060223ba72f4",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-06287f15585b",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0635b6274899",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-063f46090a91",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-077d77aaeb42",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-089e506e84aa",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-08a7c191d6eb",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-08c95043a751",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-08c9673c1321",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0952d9e73467",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-09a87ec62327",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-09b930ca1fa9",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-09e5975ee83e",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0a7a2c277008",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0af0da5770fc",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0b856ab69624",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0bcb3d437738",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0bcfc22c5f10",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c18610f435a",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c203bd2ef40",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c2c6cb30b77",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c69b8fdbe62",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c6d6ba18794",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0dff3d635abc",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0e1f6d12ec46",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0e6090539b81",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0e908ca4b27b",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0fa9f5034ba7",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-103cd5064a52",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-10cbd523d4ee",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-111f69baa399",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-01e320e7e25f",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-01f65fd5d3b5",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-027b5802fb84",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-027c4406bb87",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0422ce95acd1",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0508c669c295",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-06fd9bbf7af9",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0848d1d61039",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0a05452eaee8",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0a5bd425f609",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0a7e9c9f2ec8",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c7346f158f2",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0d3b63463da0",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0d83d8562e5a",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-00fc91a80765",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-01c35cf3d285",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-01f308ed8e76",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0219de95d13e",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-024ac868f764",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0284af6075bd",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-02899e01b5cf",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-035ed76f80f8",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-03b51326acae",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0401d5c77bd1",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-056b08205dfa",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-058521536216",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-060cc1d31438",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-077feb9c180a",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-088695234e1a",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-09b478db5759",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0a8d6ccfe904",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0ac962ffaee1",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0acddcd35850",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0ad0896342e0",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0b9a8cb6d75b",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c64116439ba",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0cd2bbe92b19",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0cfea9648a01",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0d1919b11047",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0e1408df9ae0",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0ea267f4ceba",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0f6a4137b71f",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0fb5fdf6ee28",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-10009ac853d4",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-105c1c8841dc",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-005e26b475d1",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0073ab564e55",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0085f76defbe",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-00bcb273add8",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0165795fd40c",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0175090e1c35",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-01ceb7cf9079",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-022ffac0b5f4",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0279054408d1",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-02faea4c1161",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-03c8f9157597",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-03cfaa7e78c6",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0445265e8760",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-04e2c330afa3",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-050827e2c17f",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-05aa636fee50",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-060223ba72f4",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-06287f15585b",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0635b6274899",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-063f46090a91",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-077d77aaeb42",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-089e506e84aa",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-08a7c191d6eb",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-08c95043a751",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-08c9673c1321",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0952d9e73467",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-09a87ec62327",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-09b930ca1fa9",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-09e5975ee83e",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0a7a2c277008",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0af0da5770fc",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0b65c4cf02ac",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0b856ab69624",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0bcb3d437738",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0bcfc22c5f10",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c18610f435a",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c203bd2ef40",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c2c6cb30b77",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c69b8fdbe62",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c6d6ba18794",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0dff3d635abc",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0e1f6d12ec46",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0e6090539b81",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0e908ca4b27b",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0fa9f5034ba7",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-103cd5064a52",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-10cbd523d4ee",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-111f69baa399",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-01e320e7e25f",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-01f65fd5d3b5",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-027b5802fb84",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0508c669c295",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0848d1d61039",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0a5bd425f609",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c7346f158f2",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0d3b63463da0",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0d83d8562e5a",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-00fc91a80765",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-01c35cf3d285",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-01f308ed8e76",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0219de95d13e",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-024ac868f764",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0284af6075bd",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-02899e01b5cf",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-035ed76f80f8",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-03b51326acae",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-03b7d00ee202",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0401d5c77bd1",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-056b08205dfa",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-058521536216",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-060cc1d31438",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-077feb9c180a",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-088695234e1a",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-09b478db5759",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0a8d6ccfe904",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0acddcd35850",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0b661c6477e4",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0b9a8cb6d75b",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0c64116439ba",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0cd2bbe92b19",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0cfea9648a01",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0d1919b11047",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0e1408df9ae0",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0ea267f4ceba",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0f6a4137b71f",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-0fb5fdf6ee28",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-10009ac853d4",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B1-MH-105c1c8841dc",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-124558122a92",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-12b9416cf2b0",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-12e511fabb84",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-134a74b16a08",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1388f62eabd7",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1421b92cce4c",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-148e008e129a",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-15446e267a02",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-15e52f71ac79",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-160a5c8504d4",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-172c2bb1310b",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-18c3bd4ae5ab",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-19003bc9a238",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1963e8b69161",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1abf589dc265",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1b7a0b37afed",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1bdf980169e9",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1c31b288b184",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1c6b36dd084a",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1cae145aacf8",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-11e54c1b8b6f",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-12284f587f2e",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-134e08af5276",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-141d9c437146",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-156a6fb9cddc",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-168cc0dc7173",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-189602010ad9",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-196a2015e6cf",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-198ece95aaf4",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1a3a6a769cb5",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1144d2e80b35",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1175d7044fa1",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-11b5dbe62ed4",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 5,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-141809cfa779",
+      "arm": "rag",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-147111acaddb",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-14aa218c2c66",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-170a36ef33f7",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-17280b83d56e",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-174076520f29",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1771e46705cb",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1944708c2bb5",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1996fe8e6217",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1b7d96f154db",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 7,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1ba051fc3413",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1d392849335d",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-201d810187ac",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-20512ebbdb99",
+      "arm": "rag",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-209e10929f9c",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-2237f5effc53",
+      "arm": "rag",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-124558122a92",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-12b9416cf2b0",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-12e511fabb84",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-134a74b16a08",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1388f62eabd7",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1421b92cce4c",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-148e008e129a",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-15446e267a02",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-15e52f71ac79",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-172c2bb1310b",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-17e563aaa33e",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-181f5439718b",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-185f9f13efd8",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-18c3bd4ae5ab",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-19003bc9a238",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1963e8b69161",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1a151f222781",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1abf589dc265",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1b7a0b37afed",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1bdf980169e9",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1c31b288b184",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-11e54c1b8b6f",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-12284f587f2e",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-141d9c437146",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-156a6fb9cddc",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-168cc0dc7173",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-196a2015e6cf",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-198ece95aaf4",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1a3a6a769cb5",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1a91106d425c",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-11d9213f77f1",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 0,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1175d7044fa1",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-11b5dbe62ed4",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 5,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-147111acaddb",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-14aa218c2c66",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-170a36ef33f7",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 0,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-17280b83d56e",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-174076520f29",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1944708c2bb5",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1996fe8e6217",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1afa5edb190c",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1b7d96f154db",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 7,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1ba051fc3413",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1d392849335d",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1d8b8525cd37",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-1f82048d37f6",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-201d810187ac",
+      "arm": "workflow",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-20512ebbdb99",
+      "arm": "workflow",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "B2-MH-209e10929f9c",
+      "arm": "workflow",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    }
+  ]
+}

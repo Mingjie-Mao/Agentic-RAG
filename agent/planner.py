@@ -10,6 +10,8 @@ benchmark scorer.
 
 import re
 
+from app.task_analysis import english_subquestions
+
 _CJK = re.compile(r"[一-鿿]")
 _TOKEN = re.compile(r"[A-Za-z][A-Za-z0-9_.@-]*|\d+(?:[.:]\d+)*%?")
 # "并" starts a new subgoal only in front of a verb: 并说明 / 并给出 do, 并且 / 并替代 do not.
@@ -70,6 +72,8 @@ def subgoals(goal: str) -> list[str]:
     A goal without an explicit sequence or enumeration marker stays one item, so short
     factual questions keep exactly the behaviour they had before.
     """
+    if not _CJK.search(goal or ""):
+        return english_subquestions(goal)
     fragments = []
     for raw in _CLAUSE.split(goal or ""):
         fragment = _clean(raw)
@@ -121,6 +125,40 @@ def recovery_query(goal: str, previous: str) -> str | None:
     if not candidate or _normalized(candidate) == _normalized(previous):
         return None
     return candidate[:500]
+
+
+_EN_STOP = set(
+    "a an the and or but if for of to in on at by with from as is are was were be been "
+    "do does did has have had can could will would should what which who when where why how "
+    "article report piece story source both same each other this that these those".split()
+)
+
+
+def retrieval_quality(goal: str, refs: list[str], matches: list[dict]) -> str:
+    """Cheap, conservative retrieval grade for one controlled retry.
+
+    A nonempty result with no visible snippets is *unknown*, not irrelevant. For
+    visible snippets, an off-topic verdict requires at least four meaningful query
+    terms and zero overlap with the best three passages (including their titles).
+    This grade only decides whether to search again; it never proves an answer.
+    """
+    if not refs:
+        return "empty"
+    if not matches:
+        return "unknown"
+    wanted = {
+        token.lower()
+        for token in _TOKEN.findall(goal or "")
+        if len(token) >= 4 and token.lower() not in _EN_STOP
+    }
+    wanted |= _grams(_content(goal)) - _tokens(goal)
+    if len(wanted) < 4:
+        return "unknown"
+    for row in matches[:3]:
+        material = f"{row.get('title', '')} {row.get('snippet', '')}"
+        if wanted & _grams(material):
+            return "candidate"
+    return "irrelevant"
 
 
 def carry_forward_query(items: list[str], evidence: list[dict], limit: int = 400) -> str:

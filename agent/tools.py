@@ -128,6 +128,8 @@ class KnowledgeTools:
             search=self.search,
             top_k=args.top_k,
         )
+        if found.blocked_reason:
+            return ToolResult("error", {}, [], {}, "scope_denied", False)
         rows = []
         for evidence in found.evidence:
             rows.append(

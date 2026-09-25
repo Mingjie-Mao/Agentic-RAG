@@ -7,6 +7,7 @@ from datetime import timedelta
 
 from sqlalchemy import delete, or_, select, update, text
 
+from app.boilerplate import strip_web_boilerplate
 from app.clients import Models, Search, DependencyError
 from app.config import settings
 from app.db import SessionLocal
@@ -35,7 +36,7 @@ def accept_upload(filename, data):
 
 def current_pipeline():
     cfg = settings()
-    return {
+    pipeline = {
         "parser": cfg.parser_version,
         "chunking": cfg.chunk_strategy,
         "chunk_chars": cfg.chunk_chars,
@@ -44,6 +45,31 @@ def current_pipeline():
         "embedding_dimension": cfg.embed_dimension,
         "token_counter": "cl100k_base (estimate, not generation tokenizer)",
     }
+    # Recorded only when switched on, so the ingest identity of every existing upload
+    # (and with it deduplication) is unchanged.
+    if cfg.chunk_context != "none":
+        pipeline["chunk_context"] = cfg.chunk_context
+    if cfg.boilerplate_filter != "none":
+        pipeline["boilerplate_filter"] = cfg.boilerplate_filter
+    return pipeline
+
+
+def chunk_header(title, metadata, pipeline) -> str:
+    """What a chunk is embedded and indexed with besides its own text.
+
+    Only the first chunk of an article says which publication it came from and when;
+    the rest cannot be found by a question that names the publication. The stored
+    chunk text is unchanged, so citations still quote exactly what the file says.
+    """
+    if pipeline.get("chunk_context") != "document_header":
+        return ""
+    metadata = metadata or {}
+    published = str(metadata.get("published_at") or "")[:10]
+    return " · ".join(part for part in (title, metadata.get("source"), published) if part)
+
+
+def indexed_text(header: str, text: str) -> str:
+    return f"{header}\n{text}" if header else text
 
 
 def build_version(db, document, user, filename, data):
@@ -92,15 +118,7 @@ def queue_document(
     if not data or len(data) > settings().max_upload_bytes:
         raise ValueError("文件不能为空，且不能超过 10 MB")
     version_id = uid()
-    pipeline = {
-        "parser": settings().parser_version,
-        "chunking": settings().chunk_strategy,
-        "chunk_chars": settings().chunk_chars,
-        "overlap": settings().chunk_overlap,
-        "embedding_model": settings().embed_model,
-        "embedding_dimension": settings().embed_dimension,
-        "token_counter": "cl100k_base (estimate, not generation tokenizer)",
-    }
+    pipeline = current_pipeline()
     content_hash = hashlib.sha256(data).hexdigest()
     identity = [
         user.tenant_id,
@@ -224,6 +242,7 @@ def process_job(job_id: str, token: str):
                 raise ValueError("上传者已无权发布此资料")
             version_id, document_id, tenant_id = version.id, document.id, document.tenant_id
             title = document.title
+            metadata = dict(document.metadata_json or {})
             revision = document.revision
             pipeline = version.pipeline
             if pipeline["embedding_model"] != settings().embed_model:
@@ -231,11 +250,14 @@ def process_job(job_id: str, token: str):
             data = (settings().storage_dir.resolve() / version.storage_key).read_bytes()
             structured = pipeline["parser"] != "pypdf6+utf8-v1"
             passages = parse_document(data, version.media_type, structured=structured)
+            chunkable, furniture_removed = passages, 0
+            if pipeline.get("boilerplate_filter") == "web_v1":
+                chunkable, furniture_removed = strip_web_boilerplate(passages)
             from app.chunking import chunk_blocks
 
             pieces = (
                 chunk_blocks(
-                    passages, pipeline["chunk_chars"], pipeline["overlap"], pipeline["chunking"]
+                    chunkable, pipeline["chunk_chars"], pipeline["overlap"], pipeline["chunking"]
                 )
                 if structured
                 else split_passages(passages, pipeline["chunk_chars"], pipeline["overlap"])
@@ -255,14 +277,18 @@ def process_job(job_id: str, token: str):
         ]
         models, search = Models(), Search()
         search.ensure_index()
+        header = chunk_header(title, metadata, pipeline)
+        texts = [indexed_text(header, c.text) for c in chunks]
         vectors = []
         embedding_start = time.monotonic()
         for offset in range(0, len(chunks), 8):
             heartbeat(job_id, token)
-            vectors.extend(models.embed([c.text for c in chunks[offset : offset + 8]]))
+            vectors.extend(models.embed(texts[offset : offset + 8]))
         embedding_ms = round((time.monotonic() - embedding_start) * 1000, 1)
         heartbeat(job_id, token)
-        search.index_chunks(tenant_id, document_id, version_id, chunks, vectors, title=title)
+        search.index_chunks(
+            tenant_id, document_id, version_id, chunks, vectors, title=title, texts=texts
+        )
         with SessionLocal() as db, db.begin():
             job = db.scalar(select(Job).where(Job.id == job_id).with_for_update())
             document = db.scalar(select(Document).where(Document.id == document_id).with_for_update())
@@ -281,6 +307,7 @@ def process_job(job_id: str, token: str):
                 "embedding_ms": embedding_ms,
                 "total_ms": round((time.monotonic() - started) * 1000, 1),
                 "chunks": len(chunks),
+                "furniture_blocks_removed": furniture_removed,
                 "pages": len(passages),
             }
             document.active_version_id = version_id

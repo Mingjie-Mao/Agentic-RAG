@@ -1,0 +1,267 @@
+{
+  "scope": "all failed arm-runs in pre-registered B3 answer32; actual historical evidence handles",
+  "metric": "gold fact delivered when >=50% of its word 4-grams occur in admitted chunks from its own gold document",
+  "input_sha256": {
+    "fixtures/multihop/subset-r3-eval32.json": "bf8c84412f34ae09006d5472c2a0f56ac51911c8299a69f29941c4009fb5f18a",
+    "artifacts/multihop-external-r3-eval32.json": "4437ef3ce3ed6de6447fa3a19119d8cc93dd370b720f1fbb966f5c38e2d3f517",
+    ".runtime/multihop/MultiHopRAG.json": "03cfb4926461f868684903aadc8024447bdda5bb3f6804741424cce338515bff"
+  },
+  "summary": {
+    "failed_arm_runs": 24,
+    "by_arm": {
+      "rag": {
+        "gold_document_missing": 6,
+        "gold_fact_proxy_missing": 2,
+        "gold_facts_present_generation_or_scoring_review": 3
+      },
+      "workflow": {
+        "gold_document_missing": 5,
+        "gold_fact_proxy_missing": 5,
+        "gold_facts_present_generation_or_scoring_review": 3
+      }
+    },
+    "historical_chunks_missing": 0
+  },
+  "rows": [
+    {
+      "item_id": "MH-1cdb794399af",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-1dbc819a92c3",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-20628537d00a",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-20d010d02350",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-20d14646e9ba",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-202c0d835f0d",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-229ee6f69011",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 3,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-233c7032ea1e",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 5,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-2387d75b7657",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-2435cf059c3f",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-2611d8743474",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 4,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-1cdb794399af",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-1dbc819a92c3",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-1e85bf6c90a5",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-1f989865bc85",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-20628537d00a",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-20d010d02350",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-20d14646e9ba",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-1d7c1337b9dd",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-202c0d835f0d",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-22e89f248619",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-233c7032ea1e",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "stage_proxy": "gold_fact_proxy_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 5,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-2387d75b7657",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8,
+      "missing_historical_chunks": 0
+    },
+    {
+      "item_id": "MH-2611d8743474",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "stage_proxy": "gold_document_missing",
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6,
+      "missing_historical_chunks": 0
+    }
+  ]
+}

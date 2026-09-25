@@ -1,0 +1,233 @@
+{
+  "scope": "all 42 B1/B2 failed arm-runs whose gold fact 4-gram proxy reached the generation context",
+  "reviewer_type": "assistant observable-output review; not independent human gold",
+  "private_queue_sha256": "7b564fa29a62b5624f61ef60f8b343588b3b70be7b0be0d069f3449d5c9ffa3f",
+  "caution": "Gold and source support were not independently adjudicated. Categories describe visible answer and scorer behavior only.",
+  "human_reviewed": 0,
+  "assistant_reviewed": 42,
+  "category_counts": {
+    "false_refusal": 7,
+    "gold_interpretation_needs_source_review": 2,
+    "incomplete_temporal_comparison": 3,
+    "missing_comparison_label": 1,
+    "missing_explicit_verdict": 18,
+    "null_false_answer": 1,
+    "question_echo": 1,
+    "reversed_conclusion": 3,
+    "scorer_true_false_gap": 2,
+    "verdict_claim_mismatch": 2,
+    "wrong_comparison": 2
+  },
+  "rows": [
+    {
+      "item_id": "B1-MH-0085f76defbe",
+      "arm": "rag",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-0085f76defbe",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-0175090e1c35",
+      "arm": "rag",
+      "category": "reversed_conclusion"
+    },
+    {
+      "item_id": "B1-MH-0175090e1c35",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-035ed76f80f8",
+      "arm": "rag",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-035ed76f80f8",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-03c8f9157597",
+      "arm": "rag",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-03c8f9157597",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-0401d5c77bd1",
+      "arm": "rag",
+      "category": "incomplete_temporal_comparison"
+    },
+    {
+      "item_id": "B1-MH-0401d5c77bd1",
+      "arm": "workflow",
+      "category": "incomplete_temporal_comparison"
+    },
+    {
+      "item_id": "B1-MH-0422ce95acd1",
+      "arm": "rag",
+      "category": "false_refusal"
+    },
+    {
+      "item_id": "B1-MH-04e2c330afa3",
+      "arm": "rag",
+      "category": "false_refusal"
+    },
+    {
+      "item_id": "B1-MH-04e2c330afa3",
+      "arm": "workflow",
+      "category": "false_refusal"
+    },
+    {
+      "item_id": "B1-MH-050827e2c17f",
+      "arm": "rag",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-050827e2c17f",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-05810be2d274",
+      "arm": "rag",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-063f46090a91",
+      "arm": "rag",
+      "category": "reversed_conclusion"
+    },
+    {
+      "item_id": "B1-MH-063f46090a91",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-0b65c4cf02ac",
+      "arm": "workflow",
+      "category": "question_echo"
+    },
+    {
+      "item_id": "B1-MH-0b661c6477e4",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-0b856ab69624",
+      "arm": "rag",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-0b856ab69624",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-0c69b8fdbe62",
+      "arm": "rag",
+      "category": "reversed_conclusion"
+    },
+    {
+      "item_id": "B1-MH-0c69b8fdbe62",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-0cd2bbe92b19",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-0e1f6d12ec46",
+      "arm": "rag",
+      "category": "gold_interpretation_needs_source_review"
+    },
+    {
+      "item_id": "B1-MH-0e1f6d12ec46",
+      "arm": "workflow",
+      "category": "gold_interpretation_needs_source_review"
+    },
+    {
+      "item_id": "B1-MH-10cbd523d4ee",
+      "arm": "rag",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B1-MH-10cbd523d4ee",
+      "arm": "workflow",
+      "category": "missing_explicit_verdict"
+    },
+    {
+      "item_id": "B2-MH-11d9213f77f1",
+      "arm": "workflow",
+      "category": "null_false_answer"
+    },
+    {
+      "item_id": "B2-MH-12b9416cf2b0",
+      "arm": "rag",
+      "category": "wrong_comparison"
+    },
+    {
+      "item_id": "B2-MH-12b9416cf2b0",
+      "arm": "workflow",
+      "category": "wrong_comparison"
+    },
+    {
+      "item_id": "B2-MH-1388f62eabd7",
+      "arm": "rag",
+      "category": "scorer_true_false_gap"
+    },
+    {
+      "item_id": "B2-MH-1388f62eabd7",
+      "arm": "workflow",
+      "category": "scorer_true_false_gap"
+    },
+    {
+      "item_id": "B2-MH-141809cfa779",
+      "arm": "rag",
+      "category": "missing_comparison_label"
+    },
+    {
+      "item_id": "B2-MH-172c2bb1310b",
+      "arm": "rag",
+      "category": "false_refusal"
+    },
+    {
+      "item_id": "B2-MH-172c2bb1310b",
+      "arm": "workflow",
+      "category": "false_refusal"
+    },
+    {
+      "item_id": "B2-MH-17e563aaa33e",
+      "arm": "workflow",
+      "category": "verdict_claim_mismatch"
+    },
+    {
+      "item_id": "B2-MH-185f9f13efd8",
+      "arm": "workflow",
+      "category": "verdict_claim_mismatch"
+    },
+    {
+      "item_id": "B2-MH-1b7a0b37afed",
+      "arm": "rag",
+      "category": "false_refusal"
+    },
+    {
+      "item_id": "B2-MH-1b7a0b37afed",
+      "arm": "workflow",
+      "category": "false_refusal"
+    },
+    {
+      "item_id": "B2-MH-209e10929f9c",
+      "arm": "workflow",
+      "category": "incomplete_temporal_comparison"
+    }
+  ]
+}

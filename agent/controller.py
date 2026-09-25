@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import time
 from datetime import timedelta
 
 from fastapi import HTTPException
@@ -12,6 +13,7 @@ from agent.planner import (
     checklist,
     compact_observation,
     recovery_query,
+    retrieval_quality,
     repair_question,
     subgoals,
     uncovered_items,
@@ -22,7 +24,13 @@ from app.clients import DependencyError, Models
 from app.config import settings
 from app.db import SessionLocal
 from app.models import AgentEvent, AgentTask, ToolExecution, User, now, uid
-from app.qa import answer_verdict, merge_verdict_usage, validate_claims
+from app.qa import (
+    answer_verdict,
+    merge_verdict_usage,
+    repair_exact_values,
+    shadow_scores,
+    validate_claims,
+)
 from app.security import require_chunk
 from app.task_analysis import (
     acceptance_items,
@@ -138,9 +146,11 @@ def _execute(db, task, tools, name, arguments, *, reuse=False):
     )
     db.add(execution)
     db.commit()
+    started = time.monotonic()
     result = tools.call(name, arguments)
+    wall_ms = round((time.monotonic() - started) * 1000, 1)
     execution.status = "succeeded" if result.status == "ok" else "failed"
-    execution.result = _safe_summary(result)
+    execution.result = {**_safe_summary(result), "wall_ms": wall_ms, "usage": result.usage or {}}
     execution.evidence_chunk_ids = result.evidence_refs
     execution.error = result.error_code
     execution.completed_at = now()
@@ -153,7 +163,7 @@ def _execute(db, task, tools, name, arguments, *, reuse=False):
         task,
         "tool_completed",
         tool_name=name,
-        payload={"arguments": arguments, **_safe_summary(result)},
+        payload={"arguments": arguments, **_safe_summary(result), "wall_ms": wall_ms},
         refs=result.evidence_refs,
     )
     return result
@@ -221,7 +231,10 @@ def _evidence_from_refs(db, user, refs, *, allow_historical=False):
 
 
 def _merge_usage(usage, extra):
-    for key in ("prompt_tokens", "completion_tokens", "model_duration_ms"):
+    for key in (
+        "prompt_tokens", "completion_tokens", "model_duration_ms", "model_load_ms",
+        "prompt_eval_ms", "completion_eval_ms",
+    ):
         if extra.get(key):
             usage[key] = (usage.get(key) or 0) + extra[key]
     return usage
@@ -286,7 +299,7 @@ def _repair_coverage(db, user, task, models, tools, items, claims, evidence, poo
     return claims + [claim for claim in added if claim["text"] not in seen], _merge_usage(usage, extra)
 
 
-def _finish(db, user, task, models, refs, memory_context=None, tools=None):
+def _finish(db, user, task, models, refs, memory_context=None, tools=None, started=None):
     allow_historical = _uses_historical_versions(db, task)
     evidence = _evidence_from_refs(db, user, refs, allow_historical=allow_historical)
     if not evidence:
@@ -295,6 +308,7 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None):
             "claims": [],
             "citations": [],
             "message": "Agent 在预算内没有找到足够依据。",
+            "usage": {},
         }
     else:
         # Evidence can be re-selected by the coverage step; a chunk that was already
@@ -308,14 +322,33 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None):
         # enumeration short would hand the model a list shorter than the question.
         # No measured gain, non-zero risk, so the subgoals only drive the step below.
         options = {"memory_context": memory_context} if memory_context else {}
+        generated_started = time.monotonic()
         generated, usage = models.generate(task.goal, evidence, **options)
+        usage["generation_wall_ms"] = round((time.monotonic() - generated_started) * 1000, 1)
         claims, status = validate_claims(generated, evidence)
         if status == "answered" and usage.get("answer_status") == "conflict":
             status = "conflict"
         if compound and status == "answered" and claims:
+            repair_started = time.monotonic()
             claims, usage = _repair_coverage(
                 db, user, task, models, tools, items, claims, evidence, pool, usage
             )
+            usage["coverage_repair_wall_ms"] = round((time.monotonic() - repair_started) * 1000, 1)
+        if status == "answered" and claims:
+            exact_started = time.monotonic()
+            claims, usage = repair_exact_values(
+                models, task.goal, list(pool.values()), claims, usage
+            )
+            if usage.get("exact_value_slots_missing_first_pass"):
+                usage["exact_value_repair_wall_ms"] = round((time.monotonic() - exact_started) * 1000, 1)
+                _event(
+                    db, task, "exact_value_check",
+                    payload={
+                        "missing": usage["exact_value_slots_missing_first_pass"],
+                        "status": usage.get("exact_value_repair_status"),
+                        "added_claims": usage.get("exact_value_repair_claims", 0),
+                    },
+                )
         # A judgment question gets its verdict as a field. It is read out of the claims
         # the pipeline already validated, so it restates a conclusion without adding a
         # fact, and it is the last step: repaired claims are included.
@@ -331,6 +364,12 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None):
             usage["total_completion_tokens"] = (
                 usage.get("completion_tokens") or 0
             ) + policy_usage["completion_tokens"]
+            for key in ("wall_ms", "model_duration_ms", "prompt_eval_ms", "completion_eval_ms"):
+                usage[f"agent_policy_{key}"] = policy_usage.get(key, 0)
+        executions = db.scalars(select(ToolExecution).where(ToolExecution.task_id == task.id)).all()
+        usage["tool_wall_ms"] = round(
+            sum((row.result or {}).get("wall_ms", 0) for row in executions), 1
+        )
         used = {chunk_id for claim in claims for chunk_id in claim["evidence_ids"]}
         # Final re-authorization is mandatory, including historical-version evidence.
         for chunk_id in used:
@@ -357,7 +396,21 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None):
             "citations": citations,
             "message": "" if claims else "Agent 找到了资料，但最终答案未通过引用校验。",
             "usage": usage,
+            "shadow_scores": (
+                shadow_scores(task.goal, evidence, claims, semantic=settings().semantic_shadow_enabled)
+                if evidence else None
+            ),
         }
+    if started is not None:
+        payload["usage"]["task_wall_ms"] = round((time.monotonic() - started) * 1000, 1)
+    if "tool_wall_ms" not in payload["usage"]:
+        executions = db.scalars(select(ToolExecution).where(ToolExecution.task_id == task.id)).all()
+        payload["usage"]["tool_wall_ms"] = round(
+            sum((row.result or {}).get("wall_ms", 0) for row in executions), 1
+        )
+    policy_usage = getattr(models, "agent_policy_usage", None)
+    if policy_usage and "agent_policy_wall_ms" not in payload["usage"]:
+        payload["usage"].update({f"agent_policy_{key}": value for key, value in policy_usage.items()})
     db.refresh(task)
     if task.status == "cancelled":
         return task
@@ -373,6 +426,7 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None):
 
 
 def run_task(db, user, task, *, models=None, tools=None):
+    started = time.monotonic()
     if task.status == "cancelled":
         raise HTTPException(409, "任务已取消")
     if task.status == "completed":
@@ -456,18 +510,24 @@ def run_task(db, user, task, *, models=None, tools=None):
                     {"query": task.goal, "top_k": 8 if multi_source_intent(task.goal) else 6},
                     reuse=True,
                 )
-                # One controlled recovery. A question phrased the way a person would
-                # ask it can miss the wording of the material; giving up after the
-                # first empty search reports "no evidence" for something that exists.
+                # CRAG-style bounded correction: a truly empty result and an
+                # obviously off-topic result are different observations. Neither an
+                # ACL error nor a dependency error is a query miss.
+                quality = (
+                    retrieval_quality(task.goal, search.evidence_refs, search.data.get("matches", []))
+                    if search is not None and search.status == "ok"
+                    else "tool_error"
+                )
+                _event(db, task, "retrieval_assessment", payload={"quality": quality})
                 if (
                     search is not None
                     and search.status == "ok"
-                    and not search.evidence_refs
+                    and quality in {"empty", "irrelevant"}
                     and task.step_no < task.max_steps
                 ):
                     retry = recovery_query(task.goal, task.goal)
                     if retry:
-                        _event(db, task, "query_recovery", payload={"retry_query": retry})
+                        _event(db, task, "query_recovery", payload={"retry_query": retry, "reason": quality})
                         search = _execute(
                             db,
                             task,
@@ -478,6 +538,28 @@ def run_task(db, user, task, *, models=None, tools=None):
                         )
                 if search:
                     refs.extend(search.evidence_refs)
+                    items = subgoals(task.goal)
+                    if search.status == "ok" and len(items) > 1 and refs:
+                        # A compound request can retrieve its first article while
+                        # leaving the other subquestion without a useful passage.
+                        # Grade each item conservatively, then spend at most two
+                        # extra searches on items that are plainly off-topic.
+                        matches = search.data.get("matches", [])
+                        targeted = 0
+                        for item in items:
+                            grade = retrieval_quality(item, search.evidence_refs, matches)
+                            _event(db, task, "subgoal_evidence_assessment", payload={
+                                "subgoal": item, "quality": grade,
+                            })
+                            if grade not in {"empty", "irrelevant"} or targeted >= 2 or task.step_no >= task.max_steps - 1:
+                                continue
+                            supplement = _execute(
+                                db, task, tools, "search_documents",
+                                {"query": item, "top_k": 4}, reuse=True,
+                            )
+                            targeted += 1
+                            if supplement and supplement.status == "ok":
+                                refs = list(dict.fromkeys(supplement.evidence_refs + refs))
                     if refs and task.step_no < task.max_steps:
                         detail = _execute(
                             db,
@@ -578,7 +660,7 @@ def run_task(db, user, task, *, models=None, tools=None):
                         },
                         refs=coverage.evidence_refs,
                     )
-        return _finish(db, user, task, models, refs, memory_context, tools=tools)
+        return _finish(db, user, task, models, refs, memory_context, tools=tools, started=started)
     except Exception as exc:
         task.status = "failed"
         task.error = str(exc)[:1000]

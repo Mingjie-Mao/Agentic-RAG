@@ -6,6 +6,7 @@ from agent.planner import (
     repair_question,
     compact_observation,
     recovery_query,
+    retrieval_quality,
     subgoals,
     uncovered_items,
     version_depth,
@@ -41,6 +42,23 @@ def test_recovery_rewrite_differs_from_the_query_that_missed():
     assert "那个" not in retry and "怎样" not in retry
     # Nothing left to change means there is no second attempt to make.
     assert recovery_query("E401", "E401") is None
+
+
+def test_retrieval_grade_keeps_empty_irrelevant_and_unknown_separate():
+    goal = "What did the TechCrunch report say about the Orion event identifier?"
+    assert retrieval_quality(goal, [], []) == "empty"
+    assert retrieval_quality(goal, ["c1"], []) == "unknown"
+    assert retrieval_quality(goal, ["c1"], [{"title": "Sports", "snippet": "Soccer teams played."}]) == "irrelevant"
+    assert retrieval_quality(goal, ["c1"], [{"title": "TechCrunch", "snippet": "The Orion event identifier was E401."}]) == "candidate"
+
+
+def test_english_subquestions_split_independent_asks_without_splitting_both_sources():
+    assert subgoals("What did TechCrunch report, and what did Fortune report?") == [
+        "What did TechCrunch report", "what did Fortune report"
+    ]
+    assert subgoals("Did the TechCrunch and Fortune reports both agree?") == [
+        "Did the TechCrunch and Fortune reports both agree"
+    ]
 
 
 def test_carry_forward_query_uses_the_first_hop_material():

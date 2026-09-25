@@ -429,6 +429,20 @@ def summarize(rows):
         for row in scored
     ]
     count = len(scored)
+    phase_keys = (
+        "agent_policy_wall_ms", "tool_wall_ms", "generation_wall_ms",
+        "coverage_repair_wall_ms", "exact_value_repair_wall_ms", "verdict_model_duration_ms",
+        "task_wall_ms",
+    )
+    phase_latency = {
+        key: {
+            "recorded": len(values),
+            "p50_ms": round(statistics.median(values), 1) if values else None,
+            "p95_ms": round(percentile(values, .95), 1) if values else None,
+        }
+        for key in phase_keys
+        if (values := [row["usage"][key] for row in scored if key in row.get("usage", {})])
+    }
     def ratio(numerator, denominator):
         return round(numerator / denominator, 3) if denominator else None
     return {
@@ -448,6 +462,7 @@ def summarize(rows):
         "p50_latency_ms": round(statistics.median(row["latency_ms"] for row in scored), 1) if scored else None,
         "p95_latency_ms": round(percentile([row["latency_ms"] for row in scored], .95), 1) if scored else None,
         "mean_prompt_tokens": round(statistics.mean(prompt_tokens), 1) if scored else None,
+        "phase_latency": phase_latency,
     }
 
 

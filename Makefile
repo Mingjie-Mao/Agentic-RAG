@@ -4,6 +4,7 @@ PY := .venv/bin/python
 	s3-retrieval s3-generate s3-public s3-freeze s3-validate s5-dialogues rerank-model \
 	check-docs agent-benchmark trial-reset agent-hard-setup agent-hard-validate agent-hard-benchmark \
 	checklist-ab multihop-subset multihop-ingest multihop-eval multihop-diagnose \
+	multihop-reprocess multihop-retrieval-eval generation-ceiling \
 	multihop-retrieval-ablation multihop-yes-bias semantic-annotation-set \
 	semantic-agreement semantic-final-review semantic-gold-v3 semantic-freeze \
 	semantic-scorers semantic-scorer-eval site-data
@@ -107,6 +108,18 @@ multihop-retrieval-ablation:
 
 multihop-yes-bias:
 	$(PY) scripts/diagnose_yes_bias.py
+
+# Re-ingest the external tenant with document headers and web furniture removed.
+multihop-reprocess:
+	RAG_CHUNK_CONTEXT=document_header RAG_BOILERPLATE_FILTER=web_v1 \
+		$(PY) scripts/reprocess_multihop.py --out artifacts/multihop-reprocess-v2.json
+
+multihop-retrieval-eval:
+	$(PY) scripts/multihop_retrieval_eval.py --label index-v2 --routing on
+
+# Needs ANTHROPIC_API_KEY in .env and `uv pip install anthropic` for the hosted arms.
+generation-ceiling:
+	$(PY) scripts/generation_ceiling.py
 
 semantic-annotation-set:
 	$(PY) scripts/build_semantic_annotation_set.py

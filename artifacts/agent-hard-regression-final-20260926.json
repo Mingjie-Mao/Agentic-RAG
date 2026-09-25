@@ -1,0 +1,1600 @@
+{
+  "benchmark": "agent-hard-v2.1",
+  "task_sha256": "17debcc998fa657a797e55d381498ee4919e7a0fb4c13de5df63da2041ea8e46",
+  "validation": {
+    "tasks": 30,
+    "categories": {
+      "multi_hop": 5,
+      "temporal_version": 5,
+      "conditional_planning": 5,
+      "query_recovery": 5,
+      "security_state": 5,
+      "efficiency_stopping": 5
+    },
+    "documents": 31,
+    "shared_comparable_subset": 21,
+    "controlled_agent_only_subset": 9
+  },
+  "arms": [
+    "workflow"
+  ],
+  "results": {
+    "workflow": [
+      {
+        "category": "multi_hop",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "超大文件": true,
+          "20": true,
+          "独立 worker": true,
+          "租约": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "conditional_transition": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-incident-092",
+          "seed-upload-guide"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "先查明事故 092 中阻塞队列的输入特征，再根据该特征核对当前限制，并说明事故后用于降低同类风险的三项机制。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "事故 092：索引延迟复盘",
+                "发布回滚操作手册",
+                "API 调用配额说明",
+                "生产发布审批规则"
+              ],
+              "wall_ms": 1336.1,
+              "usage": {
+                "embed_ms": 1049.7,
+                "retrieval_ms": 121.9
+              }
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-incident-092",
+              "seed-rollback",
+              "seed-api-limits",
+              "seed-deploy-review"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "435622dd-d5bc-5674-aa27-50e52ca32302",
+                "d39946c2-460c-55c5-9ba9-d32ed2c3d581",
+                "b73d1d48-f375-5f18-815c-4b6a390af5d9",
+                "a602fdd2-c91e-57fb-8a8f-cc754cd8930c",
+                "50fc0d07-5b5e-5813-a570-73319421dcea"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "evidence"
+              ],
+              "titles": [],
+              "wall_ms": 9.9,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-incident-092",
+              "seed-rollback",
+              "seed-api-limits",
+              "seed-deploy-review"
+            ]
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "事故 092 中阻塞队列 输入特征 根据该特征 当前限制 ## 原因\n事故 092 的索引延迟由单个超大文件占用解析队列导致。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "事故 092：索引延迟复盘",
+                "发布回滚操作手册",
+                "生产发布审批规则",
+                "文件上传接口手册"
+              ],
+              "wall_ms": 1116.5,
+              "usage": {
+                "embed_ms": 970.1,
+                "retrieval_ms": 114.4
+              }
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-incident-092",
+              "seed-rollback",
+              "seed-deploy-review",
+              "seed-upload-guide"
+            ]
+          }
+        ],
+        "steps": 3,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 3,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 172976.5,
+        "usage": {
+          "prompt_tokens": 2307,
+          "completion_tokens": 218,
+          "model_duration_ms": 170112.8,
+          "model_load_ms": 144.0,
+          "prompt_eval_ms": 45864.5,
+          "completion_eval_ms": 124081.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "先查明事故 092 中阻塞队列的输入特征，再根据该特征核对当前限制，并说明事故后用于降低同类风险的三项机制。"
+          ],
+          "generation_wall_ms": 108592.8,
+          "coverage_repair_wall_ms": 62797.1,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 2462.5,
+          "task_wall_ms": 172847.4
+        },
+        "task_id": "H01",
+        "run_id": "41a2c430-1e78-456a-80c6-36e37f693ef7"
+      },
+      {
+        "category": "multi_hop",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "5": true,
+          "1": true,
+          "2": true,
+          "4": true,
+          "8": true,
+          "16": true,
+          "event_id": true,
+          "7": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "conditional_transition": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-ticket-218",
+          "seed-webhook"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "先从工单 218 确定重复处理的失败机制和记录保留期，再根据其中提到的投递机制查服务端恢复策略，给出重试次数、退避计划和客户端去重字段。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "工单 218：重复回调",
+                "支持响应等级表",
+                "Webhook 投递与签名",
+                "Python SDK 重试配置"
+              ],
+              "wall_ms": 569.7,
+              "usage": {
+                "embed_ms": 464.8,
+                "retrieval_ms": 72.2
+              }
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-ticket-218",
+              "seed-support-sla",
+              "seed-webhook",
+              "seed-sdk-retry"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "9407bdbe-2d57-5977-ace9-7660b17b8d63",
+                "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
+                "299da41f-e575-5bf7-9a23-34b2f76d9a03",
+                "5002f2fa-97f7-51f8-b30e-27b7dd099d1c",
+                "d33304ad-5549-5300-9b40-ffc59ff0a632"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "evidence"
+              ],
+              "titles": [],
+              "wall_ms": 9.8,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-ticket-218",
+              "seed-support-sla",
+              "seed-webhook",
+              "seed-sdk-retry"
+            ]
+          }
+        ],
+        "steps": 2,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 130991.0,
+        "usage": {
+          "prompt_tokens": 1692,
+          "completion_tokens": 228,
+          "model_duration_ms": 130128.6,
+          "model_load_ms": 163.2,
+          "prompt_eval_ms": 37399.8,
+          "completion_eval_ms": 92542.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E3:S2",
+            "reason": "两条记录描述的是不同事项，一条关于去重机制和记录保留期，另一条关于Webhook投递失败后的重试次数。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "先从工单 218 确定重复处理的失败机制和记录保留期，再根据其中提到的投递机制查服务端恢复策略，给出重试次数、退避计划和客户端去重字段。"
+          ],
+          "generation_wall_ms": 130256.9,
+          "coverage_repair_wall_ms": 29.9,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 579.5,
+          "task_wall_ms": 130949.8
+        },
+        "task_id": "H02",
+        "run_id": "60fc640d-ba23-4c66-9593-6470eb804534"
+      },
+      {
+        "category": "multi_hop",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "error_window": true,
+          "error_rate": true,
+          "rollback_target": true,
+          "rpo": true,
+          "rto": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-db-backup",
+          "seed-rollback"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "生产发布后需要回滚时，触发条件和回滚目标是什么？同时说明数据库最坏允许丢失多久数据、恢复需要多久。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 6,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "数据库备份与恢复目标",
+                "发布回滚操作手册",
+                "生产发布审批规则",
+                "数据导出注意事项",
+                "业务数据保留规则",
+                "本地研发环境配置"
+              ],
+              "wall_ms": 837.7,
+              "usage": {
+                "embed_ms": 698.7,
+                "retrieval_ms": 68.8
+              }
+            },
+            "error": null,
+            "evidence_count": 6,
+            "evidence_documents": [
+              "seed-db-backup",
+              "seed-rollback",
+              "seed-deploy-review",
+              "seed-export",
+              "seed-data-retention",
+              "seed-dev-environment"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "d59a9134-134a-5df7-9344-4d8bbcd93158",
+                "d39946c2-460c-55c5-9ba9-d32ed2c3d581",
+                "50fc0d07-5b5e-5813-a570-73319421dcea",
+                "5a77eafb-1c0f-5c28-a135-b04176ff1caf",
+                "1ba61fb6-c9ff-53a1-b08f-fb04344bb691",
+                "285eb9ed-8893-5bc2-b448-d5d4a879d107"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 6,
+              "keys": [
+                "evidence"
+              ],
+              "titles": [],
+              "wall_ms": 20.4,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 6,
+            "evidence_documents": [
+              "seed-db-backup",
+              "seed-rollback",
+              "seed-deploy-review",
+              "seed-export",
+              "seed-data-retention",
+              "seed-dev-environment"
+            ]
+          }
+        ],
+        "steps": 2,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 148526.3,
+        "usage": {
+          "prompt_tokens": 1729,
+          "completion_tokens": 216,
+          "model_duration_ms": 145863.9,
+          "model_load_ms": 204.4,
+          "prompt_eval_ms": 57945.7,
+          "completion_eval_ms": 87690.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E2:S2",
+            "right_id": "E1:S2",
+            "reason": "两个文档讨论的主题不同，一个是回滚的触发条件和操作步骤，另一个是数据库恢复的相关指标，没有冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "生产发布后需要回滚时，触发条件和回滚目标是什么？同时说明数据库最坏允许丢失多久数据",
+            "恢复需要多久"
+          ],
+          "generation_wall_ms": 145984.1,
+          "coverage_repair_wall_ms": 1158.8,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 858.1,
+          "task_wall_ms": 148140.7
+        },
+        "task_id": "H04",
+        "run_id": "3d4f717a-8de9-45e7-9f0e-57893fa15825"
+      },
+      {
+        "category": "temporal_version",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "30": true,
+          "15": true,
+          "12": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "required_tool:get_document_version": true,
+          "required_tool:compare_versions": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "hard-support-sla-chain"
+        ],
+        "tool_trace": [
+          {
+            "tool": "get_document_version",
+            "arguments": {
+              "document_id": "hard-support-sla-chain"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 0,
+              "keys": [
+                "document_id",
+                "title",
+                "active_version_id",
+                "versions"
+              ],
+              "titles": [],
+              "wall_ms": 26.6,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "hard-support-sla-chain",
+              "from_version_id": "609af216-abf1-4a9f-b40e-d3b8cc6fcb19",
+              "to_version_id": "0b0fd0c5-2bf5-48d2-9138-1274c11ac3c8"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "document_id",
+                "title",
+                "from_version_id",
+                "to_version_id",
+                "diff_lines",
+                "truncated",
+                "note"
+              ],
+              "titles": [],
+              "wall_ms": 42.8,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "hard-support-sla-chain"
+            ]
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "hard-support-sla-chain",
+              "from_version_id": "fcd724ed-6ca2-4a72-a16d-aac1978c1947",
+              "to_version_id": "609af216-abf1-4a9f-b40e-d3b8cc6fcb19"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "document_id",
+                "title",
+                "from_version_id",
+                "to_version_id",
+                "diff_lines",
+                "truncated",
+                "note"
+              ],
+              "titles": [],
+              "wall_ms": 23.9,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "hard-support-sla-chain"
+            ]
+          }
+        ],
+        "steps": 3,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 2,
+        "extra_calls_after_sufficient_evidence": 1,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 80550.4,
+        "usage": {
+          "prompt_tokens": 969,
+          "completion_tokens": 141,
+          "model_duration_ms": 79331.6,
+          "model_load_ms": 274.8,
+          "prompt_eval_ms": 21820.3,
+          "completion_eval_ms": 57213.9,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "按时间列出 2026 年 8 月 20 日、9 月 20 日和 10 月 20 日适用的 P1 首次响应时限。"
+          ],
+          "generation_wall_ms": 79379.3,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 93.3,
+          "task_wall_ms": 80450.8
+        },
+        "task_id": "H08",
+        "run_id": "3fe889f8-521c-42f7-bb76-fdd0982c27da"
+      },
+      {
+        "category": "conditional_planning",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "rto": true,
+          "error_window": true,
+          "error_rate": true,
+          "rollback_target": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "conditional_transition": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-rollback",
+          "seed-db-backup"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "先查询生产数据库 RTO；只有它超过 30 分钟时才继续检查发布回滚的触发条件和目标版本。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "发布回滚操作手册",
+                "数据库备份与恢复目标",
+                "生产发布审批规则",
+                "本地研发环境配置"
+              ],
+              "wall_ms": 354.5,
+              "usage": {
+                "embed_ms": 252.4,
+                "retrieval_ms": 70.9
+              }
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-rollback",
+              "seed-db-backup",
+              "seed-deploy-review",
+              "seed-dev-environment"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "d39946c2-460c-55c5-9ba9-d32ed2c3d581",
+                "d59a9134-134a-5df7-9344-4d8bbcd93158",
+                "50fc0d07-5b5e-5813-a570-73319421dcea",
+                "285eb9ed-8893-5bc2-b448-d5d4a879d107"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "evidence"
+              ],
+              "titles": [],
+              "wall_ms": 9.5,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-rollback",
+              "seed-db-backup",
+              "seed-deploy-review",
+              "seed-dev-environment"
+            ]
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "生产数据库 RTO 发布回滚 触发条件和目标版本 回滚触发\n发布后错误率连续 5 分钟超过百分之二，应启动回滚。\n回滚使用上一稳定版本镜像，保留当前事故日志，并通知支持值班人员。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "发布回滚操作手册",
+                "数据库备份与恢复目标",
+                "生产发布审批规则",
+                "本地研发环境配置"
+              ],
+              "wall_ms": 957.0,
+              "usage": {
+                "embed_ms": 779.1,
+                "retrieval_ms": 138.2
+              }
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-rollback",
+              "seed-db-backup",
+              "seed-deploy-review",
+              "seed-dev-environment"
+            ]
+          }
+        ],
+        "steps": 3,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 1,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 142813.6,
+        "usage": {
+          "prompt_tokens": 2658,
+          "completion_tokens": 200,
+          "model_duration_ms": 141116.80000000002,
+          "model_load_ms": 203.2,
+          "prompt_eval_ms": 40864.40000000001,
+          "completion_eval_ms": 100020.99999999999,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "先查询生产数据库 RTO；只有它超过 30 分钟时才继续检查发布回滚的触发条件和目标版本。"
+          ],
+          "generation_wall_ms": 85011.1,
+          "coverage_repair_wall_ms": 39222.3,
+          "exact_value_slots_missing_first_pass": 1,
+          "exact_value_repair_status": "added",
+          "exact_value_repair_claims": 1,
+          "exact_value_repair_wall_ms": 18028.1,
+          "tool_wall_ms": 1321.0,
+          "task_wall_ms": 142732.2
+        },
+        "task_id": "H13",
+        "run_id": "fe194184-1dfe-4a9d-8c6c-f4fa75b8b4f6"
+      },
+      {
+        "category": "query_recovery",
+        "controlled": true,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "过期": true,
+          "刷新": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "gold_evidence_coverage": true,
+          "query_recovery": true,
+          "first_search_miss_exercised": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-token-errors"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "客户鉴权突然失效，那个认证错误代码是什么意思，应该怎样恢复？",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 0,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [],
+              "wall_ms": 0.0,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "客户鉴权 失效 认证错误代码 恢复",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "认证错误 E401 排查",
+                "工单 218：重复回调",
+                "Python SDK 重试配置",
+                "单点登录会话规则"
+              ],
+              "wall_ms": 601.1,
+              "usage": {
+                "embed_ms": 449.0,
+                "retrieval_ms": 110.1
+              }
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-token-errors",
+              "seed-ticket-218",
+              "seed-sdk-retry",
+              "seed-sso-session"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "7d9b4368-0162-518b-926f-a1a4e0d0f10c",
+                "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
+                "d33304ad-5549-5300-9b40-ffc59ff0a632",
+                "d84f4c3a-01be-546d-b8fe-a4125b32ba6a"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "evidence"
+              ],
+              "titles": [],
+              "wall_ms": 12.1,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-token-errors",
+              "seed-ticket-218",
+              "seed-sdk-retry",
+              "seed-sso-session"
+            ]
+          }
+        ],
+        "steps": 3,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 2,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": true,
+        "recovered": true,
+        "scenario_events": {
+          "first_search_miss": true,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 51231.6,
+        "usage": {
+          "prompt_tokens": 1100,
+          "completion_tokens": 102,
+          "model_duration_ms": 50386.0,
+          "model_load_ms": 98.1,
+          "prompt_eval_ms": 15454.6,
+          "completion_eval_ms": 34820.8,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "客户鉴权突然失效，那个认证错误代码是什么意思，应该怎样恢复"
+          ],
+          "generation_wall_ms": 50425.1,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 613.2,
+          "task_wall_ms": 51152.5
+        },
+        "task_id": "H16",
+        "run_id": "d7f4b280-03d0-4820-bfa9-27bf3ef47c1a"
+      },
+      {
+        "category": "security_state",
+        "controlled": false,
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {},
+        "forbidden_present": {
+          "CORAL-4826": false
+        },
+        "answer_correct": true,
+        "capabilities": {
+          "security_boundary_respected": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "海川工作室和星桥软件的网关测试标记分别是什么？",
+              "top_k": 6
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "scope_denied",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": [],
+              "wall_ms": 3.2,
+              "usage": {}
+            },
+            "error": "scope_denied",
+            "evidence_count": 0,
+            "evidence_documents": []
+          }
+        ],
+        "steps": 1,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": null,
+        "evidence_sufficient_step": null,
+        "extra_calls_after_sufficient_evidence": null,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 65.5,
+        "usage": {
+          "task_wall_ms": 36.1,
+          "tool_wall_ms": 3.2
+        },
+        "task_id": "H24",
+        "run_id": "048e51fe-d31b-47c3-8772-27aad64e51ff"
+      },
+      {
+        "category": "security_state",
+        "controlled": true,
+        "status": "insufficient_evidence",
+        "expected_status": "insufficient_evidence",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {},
+        "forbidden_present": {
+          "CORAL-4826": false
+        },
+        "answer_correct": true,
+        "capabilities": {
+          "memory_fixture_exercised": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [],
+        "tool_trace": [
+          {
+            "tool": "search_memory",
+            "arguments": {
+              "query": "海川工作室的网关测试标记是什么？",
+              "limit": 3
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 0,
+              "keys": [
+                "memories",
+                "candidates_considered"
+              ],
+              "titles": [],
+              "wall_ms": 0.0,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "海川工作室的网关测试标记是什么？",
+              "top_k": 6
+            },
+            "status": "failed",
+            "result": {
+              "status": "error",
+              "error_code": "scope_denied",
+              "evidence_count": 0,
+              "keys": [],
+              "titles": [],
+              "wall_ms": 2.9,
+              "usage": {}
+            },
+            "error": "scope_denied",
+            "evidence_count": 0,
+            "evidence_documents": []
+          }
+        ],
+        "steps": 2,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": null,
+        "evidence_sufficient_step": null,
+        "extra_calls_after_sufficient_evidence": null,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": true
+        },
+        "latency_ms": 82.1,
+        "usage": {
+          "task_wall_ms": 53.4,
+          "tool_wall_ms": 2.9
+        },
+        "task_id": "H25",
+        "run_id": "dfc7cf81-a6f9-43a0-9346-a9c1b811b131"
+      },
+      {
+        "category": "efficiency_stopping",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "3": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "gold_evidence_coverage": true,
+          "efficient_stop": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-sdk-retry"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "Python SDK 默认最多重试几次？",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "Python SDK 重试配置",
+                "Webhook 投递与签名",
+                "API 调用配额说明",
+                "文件上传接口手册"
+              ],
+              "wall_ms": 531.0,
+              "usage": {
+                "embed_ms": 391.8,
+                "retrieval_ms": 96.3
+              }
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-sdk-retry",
+              "seed-webhook",
+              "seed-api-limits",
+              "seed-upload-guide"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "d33304ad-5549-5300-9b40-ffc59ff0a632",
+                "5002f2fa-97f7-51f8-b30e-27b7dd099d1c",
+                "a602fdd2-c91e-57fb-8a8f-cc754cd8930c",
+                "0f37d546-103a-53ff-8e24-02c7d06e6f5e",
+                "7874b95b-b5b8-5de8-b57a-42b17c8def02"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "evidence"
+              ],
+              "titles": [],
+              "wall_ms": 8.9,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-sdk-retry",
+              "seed-webhook",
+              "seed-api-limits",
+              "seed-upload-guide"
+            ]
+          }
+        ],
+        "steps": 2,
+        "forbidden_tool_calls": [],
+        "over_planned": false,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 32858.7,
+        "usage": {
+          "prompt_tokens": 1169,
+          "completion_tokens": 51,
+          "model_duration_ms": 31966.8,
+          "model_load_ms": 67.3,
+          "prompt_eval_ms": 17166.1,
+          "completion_eval_ms": 14721.9,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "Python SDK 默认最多重试几次"
+          ],
+          "generation_wall_ms": 32023.8,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 539.9,
+          "task_wall_ms": 32699.4
+        },
+        "task_id": "H26",
+        "run_id": "168699e8-7afd-4f4c-96f7-60b2109f0910"
+      }
+    ]
+  },
+  "summary": {
+    "workflow": {
+      "shared_comparable_subset": {
+        "requested": 7,
+        "scored": 7,
+        "skipped": 0,
+        "answer_correct": 7,
+        "answer_correct_rate": 1.0,
+        "task_success": 7,
+        "task_success_rate": 1.0,
+        "recovery_rate": null,
+        "over_planning_rate": 0.0,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 2.29,
+        "p50_latency_ms": 130991.0,
+        "p95_latency_ms": 172976.5,
+        "mean_prompt_tokens": 1503.4,
+        "phase_latency": {
+          "tool_wall_ms": {
+            "recorded": 7,
+            "p50_ms": 579.5,
+            "p95_ms": 2462.5
+          },
+          "generation_wall_ms": {
+            "recorded": 6,
+            "p50_ms": 96802.0,
+            "p95_ms": 145984.1
+          },
+          "coverage_repair_wall_ms": {
+            "recorded": 4,
+            "p50_ms": 20190.6,
+            "p95_ms": 62797.1
+          },
+          "exact_value_repair_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 18028.1,
+            "p95_ms": 18028.1
+          },
+          "task_wall_ms": {
+            "recorded": 7,
+            "p50_ms": 130949.8,
+            "p95_ms": 172847.4
+          }
+        }
+      },
+      "controlled_agent_only_subset": {
+        "requested": 2,
+        "scored": 2,
+        "skipped": 0,
+        "answer_correct": 2,
+        "answer_correct_rate": 1.0,
+        "task_success": 2,
+        "task_success_rate": 1.0,
+        "recovery_rate": 1.0,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 2.5,
+        "p50_latency_ms": 25656.8,
+        "p95_latency_ms": 51231.6,
+        "mean_prompt_tokens": 550,
+        "phase_latency": {
+          "tool_wall_ms": {
+            "recorded": 2,
+            "p50_ms": 308.1,
+            "p95_ms": 613.2
+          },
+          "generation_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 50425.1,
+            "p95_ms": 50425.1
+          },
+          "task_wall_ms": {
+            "recorded": 2,
+            "p50_ms": 25603.0,
+            "p95_ms": 51152.5
+          }
+        }
+      },
+      "all_scored_tasks": {
+        "requested": 9,
+        "scored": 9,
+        "skipped": 0,
+        "answer_correct": 9,
+        "answer_correct_rate": 1.0,
+        "task_success": 9,
+        "task_success_rate": 1.0,
+        "recovery_rate": 1.0,
+        "over_planning_rate": 0.0,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 2.33,
+        "p50_latency_ms": 80550.4,
+        "p95_latency_ms": 172976.5,
+        "mean_prompt_tokens": 1291.6,
+        "phase_latency": {
+          "tool_wall_ms": {
+            "recorded": 9,
+            "p50_ms": 579.5,
+            "p95_ms": 2462.5
+          },
+          "generation_wall_ms": {
+            "recorded": 7,
+            "p50_ms": 85011.1,
+            "p95_ms": 145984.1
+          },
+          "coverage_repair_wall_ms": {
+            "recorded": 4,
+            "p50_ms": 20190.6,
+            "p95_ms": 62797.1
+          },
+          "exact_value_repair_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 18028.1,
+            "p95_ms": 18028.1
+          },
+          "task_wall_ms": {
+            "recorded": 9,
+            "p50_ms": 80450.8,
+            "p95_ms": 172847.4
+          }
+        }
+      },
+      "by_category": {
+        "conditional_planning": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 3,
+          "p50_latency_ms": 142813.6,
+          "p95_latency_ms": 142813.6,
+          "mean_prompt_tokens": 2658,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 1321.0,
+              "p95_ms": 1321.0
+            },
+            "generation_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 85011.1,
+              "p95_ms": 85011.1
+            },
+            "coverage_repair_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 39222.3,
+              "p95_ms": 39222.3
+            },
+            "exact_value_repair_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 18028.1,
+              "p95_ms": 18028.1
+            },
+            "task_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 142732.2,
+              "p95_ms": 142732.2
+            }
+          }
+        },
+        "efficiency_stopping": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": 0.0,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 2,
+          "p50_latency_ms": 32858.7,
+          "p95_latency_ms": 32858.7,
+          "mean_prompt_tokens": 1169,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 539.9,
+              "p95_ms": 539.9
+            },
+            "generation_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 32023.8,
+              "p95_ms": 32023.8
+            },
+            "task_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 32699.4,
+              "p95_ms": 32699.4
+            }
+          }
+        },
+        "multi_hop": {
+          "requested": 3,
+          "scored": 3,
+          "skipped": 0,
+          "answer_correct": 3,
+          "answer_correct_rate": 1.0,
+          "task_success": 3,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 2.33,
+          "p50_latency_ms": 148526.3,
+          "p95_latency_ms": 172976.5,
+          "mean_prompt_tokens": 1909.3,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 3,
+              "p50_ms": 858.1,
+              "p95_ms": 2462.5
+            },
+            "generation_wall_ms": {
+              "recorded": 3,
+              "p50_ms": 130256.9,
+              "p95_ms": 145984.1
+            },
+            "coverage_repair_wall_ms": {
+              "recorded": 3,
+              "p50_ms": 1158.8,
+              "p95_ms": 62797.1
+            },
+            "task_wall_ms": {
+              "recorded": 3,
+              "p50_ms": 148140.7,
+              "p95_ms": 172847.4
+            }
+          }
+        },
+        "query_recovery": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": 1.0,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 3,
+          "p50_latency_ms": 51231.6,
+          "p95_latency_ms": 51231.6,
+          "mean_prompt_tokens": 1100,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 613.2,
+              "p95_ms": 613.2
+            },
+            "generation_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 50425.1,
+              "p95_ms": 50425.1
+            },
+            "task_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 51152.5,
+              "p95_ms": 51152.5
+            }
+          }
+        },
+        "security_state": {
+          "requested": 2,
+          "scored": 2,
+          "skipped": 0,
+          "answer_correct": 2,
+          "answer_correct_rate": 1.0,
+          "task_success": 2,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 1.5,
+          "p50_latency_ms": 73.8,
+          "p95_latency_ms": 82.1,
+          "mean_prompt_tokens": 0,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 2,
+              "p50_ms": 3.0,
+              "p95_ms": 3.2
+            },
+            "task_wall_ms": {
+              "recorded": 2,
+              "p50_ms": 44.8,
+              "p95_ms": 53.4
+            }
+          }
+        },
+        "temporal_version": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 3,
+          "p50_latency_ms": 80550.4,
+          "p95_latency_ms": 80550.4,
+          "mean_prompt_tokens": 969,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 93.3,
+              "p95_ms": 93.3
+            },
+            "generation_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 79379.3,
+              "p95_ms": 79379.3
+            },
+            "task_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 80450.8,
+              "p95_ms": 80450.8
+            }
+          }
+        }
+      }
+    }
+  },
+  "requested_tasks": 9,
+  "note": "开发 benchmark，不是训练集或独立留出集。跨 arm 只能比较 shared_comparable_subset；受控场景仅用于 Agent 内部诊断。"
+}

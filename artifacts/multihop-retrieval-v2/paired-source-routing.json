@@ -1,0 +1,121 @@
+{
+  "scope": "retrieval only; both MultiHop-RAG batches are development data",
+  "metric": "gold fact delivered = at least half of the fact's word 4-grams occur in the evidence chunks admitted from that fact's own document",
+  "bootstrap": {
+    "resample": "question",
+    "samples": 2000,
+    "seed": 0
+  },
+  "inputs": {
+    "before": {
+      "file": "/Users/mingjie/Desktop/Enterprise-RAG/artifacts/multihop-retrieval-v2/index-v2-routing-off-q2.json",
+      "sha256": "dc775e524fc2866b703a4aafd7eaa45aada4e7a2565df0e83c4eadc472efa42c"
+    },
+    "after": {
+      "file": "/Users/mingjie/Desktop/Enterprise-RAG/artifacts/multihop-retrieval-v2/index-v2-routing-on-q2.json",
+      "sha256": "19adefb3496a03b59fff6bd63bc7fd692c5860563f9728b04811e9f41d13fe31"
+    }
+  },
+  "all": {
+    "questions": 264,
+    "gold_document_recall": {
+      "before": 0.6692,
+      "after": 0.7964,
+      "delta": 0.1272,
+      "delta_ci95": [
+        0.1006,
+        0.1563
+      ]
+    },
+    "gold_fact_recall": {
+      "before": 0.4147,
+      "after": 0.4725,
+      "delta": 0.0578,
+      "delta_ci95": [
+        0.0339,
+        0.0843
+      ]
+    },
+    "median_retrieval_ms": {
+      "before": 324.1,
+      "after": 482.0
+    }
+  },
+  "by_type": {
+    "comparison_query": {
+      "questions": 100,
+      "gold_document_recall": {
+        "before": 0.8009,
+        "after": 0.8935,
+        "delta": 0.0926,
+        "delta_ci95": [
+          0.0596,
+          0.133
+        ]
+      },
+      "gold_fact_recall": {
+        "before": 0.5662,
+        "after": 0.621,
+        "delta": 0.0548,
+        "delta_ci95": [
+          0.0185,
+          0.0917
+        ]
+      },
+      "median_retrieval_ms": {
+        "before": 333.5,
+        "after": 481.4
+      }
+    },
+    "inference_query": {
+      "questions": 96,
+      "gold_document_recall": {
+        "before": 0.5655,
+        "after": 0.7,
+        "delta": 0.1345,
+        "delta_ci95": [
+          0.0883,
+          0.1821
+        ]
+      },
+      "gold_fact_recall": {
+        "before": 0.3693,
+        "after": 0.4281,
+        "delta": 0.0588,
+        "delta_ci95": [
+          0.0198,
+          0.0997
+        ]
+      },
+      "median_retrieval_ms": {
+        "before": 309.0,
+        "after": 489.2
+      }
+    },
+    "temporal_query": {
+      "questions": 68,
+      "gold_document_recall": {
+        "before": 0.679,
+        "after": 0.8395,
+        "delta": 0.1605,
+        "delta_ci95": [
+          0.1026,
+          0.227
+        ]
+      },
+      "gold_fact_recall": {
+        "before": 0.2994,
+        "after": 0.3593,
+        "delta": 0.0599,
+        "delta_ci95": [
+          0.0113,
+          0.1145
+        ]
+      },
+      "median_retrieval_ms": {
+        "before": 324.4,
+        "after": 472.9
+      }
+    }
+  }
+}

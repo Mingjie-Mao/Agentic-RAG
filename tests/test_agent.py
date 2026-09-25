@@ -139,6 +139,7 @@ def test_workflow_agent_persists_trace_and_returns_verified_citations():
         "task_created",
         "task_started",
         "tool_completed",
+        "retrieval_assessment",
         "tool_completed",
         "task_completed",
     ]

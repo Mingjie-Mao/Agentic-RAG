@@ -1,0 +1,18 @@
+{
+  "scope": "11 representative failed B1/B2 arm-runs whose gold fact proxy reached generation; reviewed from question, gold answer and stored claims",
+  "reviewer_type": "assistant spot-check; not independent human adjudication",
+  "caution": "These labels are case-level interpretations. The word-4-gram fact-delivery proxy and benchmark gold may still need human review.",
+  "labels": [
+    {"item_id": "B1-MH-0085f76defbe", "arm": "rag", "type": "missing_explicit_verdict", "basis": "Both requested source facts appear in claims, but the answer never states the yes conclusion."},
+    {"item_id": "B1-MH-0085f76defbe", "arm": "workflow", "type": "missing_explicit_verdict", "basis": "Both source facts appear in claims; the yes conclusion is implicit."},
+    {"item_id": "B1-MH-0175090e1c35", "arm": "rag", "type": "reversed_conclusion", "basis": "Claim says the reports do not agree while the frozen gold says yes."},
+    {"item_id": "B1-MH-0175090e1c35", "arm": "workflow", "type": "missing_explicit_verdict", "basis": "Claim says the reports agree but has no explicit yes field in this older run."},
+    {"item_id": "B1-MH-0422ce95acd1", "arm": "rag", "type": "false_refusal", "basis": "The answer refused despite the gold fact proxy being present in admitted evidence."},
+    {"item_id": "B1-MH-0401d5c77bd1", "arm": "rag", "type": "incomplete_temporal_comparison", "basis": "Claim covers the later article only, without establishing the earlier article or the temporal relation."},
+    {"item_id": "B1-MH-0401d5c77bd1", "arm": "workflow", "type": "incomplete_temporal_comparison", "basis": "Claim covers the later article only, without establishing the cross-document relation."},
+    {"item_id": "B2-MH-12b9416cf2b0", "arm": "rag", "type": "wrong_comparison", "basis": "Claims contradict one another about whether the second report describes a first down; verdict says yes while gold says no."},
+    {"item_id": "B2-MH-141809cfa779", "arm": "rag", "type": "missing_comparison_label", "basis": "Answer gives 2.2% but omits the requested smaller-versus-larger conclusion relative to 4%."},
+    {"item_id": "B2-MH-11d9213f77f1", "arm": "workflow", "type": "unsupported_answer", "basis": "Null-query gold requires refusal; the answer gives a stock symbol without a supported cited derivation."},
+    {"item_id": "B2-MH-209e10929f9c", "arm": "workflow", "type": "incomplete_temporal_comparison", "basis": "Claim states one article's report but omits publication order; yes verdict does not follow from that claim."}
+  ]
+}

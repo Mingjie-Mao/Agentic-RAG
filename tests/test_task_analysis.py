@@ -139,6 +139,12 @@ def test_explicit_foreign_tenant_is_rejected_before_retrieval():
         db.commit()
         assert foreign_tenant_mentioned(db, user, "海川工作室的网关标记是什么？") is True
         assert foreign_tenant_mentioned(db, user, "星桥软件的网关标记是什么？") is False
+        blocked = retrieve_authorized(
+            db, user, "海川工作室的网关标记是什么？", cfg=SimpleNamespace(top_k=4),
+            models=None, search=None, readable_documents_fn=lambda *_: [],
+        )
+        assert blocked.blocked_reason == "tenant_scope"
+        assert blocked.evidence == []
 
 
 def test_judgment_questions_are_recognized_in_both_languages():
@@ -164,6 +170,7 @@ def test_judgment_questions_are_recognized_in_both_languages():
     )
     assert not judgment_intent("当前 P1 工单首次响应时限是多少？")
     assert not judgment_intent("Python SDK 默认最多重试几次？")
+    assert not judgment_intent("Did Fortune report a larger or smaller decrease?")
 
 
 def test_multi_source_intent_does_not_change_the_chinese_retrieval_budget():

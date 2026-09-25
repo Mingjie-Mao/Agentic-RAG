@@ -20,3 +20,28 @@ web/tsconfig.tsbuildinfo
 !.dev.vars.example
 !.env.example
 .wrangler/
+
+# MultiHop-RAG question text, gold answers and article excerpts stay local:
+# the corpus is third-party news; the repository records hashes, not text.
+artifacts/multihop-yes-bias-diagnosis.json
+artifacts/multihop-yes-bias-review.csv
+artifacts/semantic-calibration/round2/final-review-relevance.csv
+artifacts/semantic-calibration/round2/final-review-entailment.csv
+artifacts/semantic-calibration/round2/final-review-answers.csv
+artifacts/semantic-calibration/claims-to-label.csv
+artifacts/semantic-calibration/answers-to-label.csv
+artifacts/semantic-calibration/gpt-prepass-claims-rest.csv
+artifacts/semantic-calibration/claims-to-label-rest126.csv
+artifacts/semantic-calibration/gpt-prepass-answers-rest.csv
+artifacts/semantic-calibration/answers-to-label-rest73.csv
+artifacts/semantic-calibration/gpt-prepass-answers.csv
+artifacts/semantic-calibration/answers-to-label-prefix30.csv
+artifacts/semantic-calibration/consensus-to-confirm-answers.csv
+artifacts/semantic-calibration/consensus-confirmed-answers.csv
+artifacts/semantic-calibration/gpt-prepass-claims.csv
+artifacts/semantic-calibration/claims-to-label-prefix50.csv
+artifacts/semantic-calibration/consensus-to-confirm-claims.csv
+artifacts/semantic-calibration/consensus-confirmed-claims.csv
+
+# Per-question outputs quote claims about third-party articles.
+artifacts/generation-ceiling/*.jsonl

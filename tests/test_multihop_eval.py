@@ -45,6 +45,15 @@ def test_yes_no_scoring_reads_the_verdict_field_and_falls_back_to_words():
     assert not EVAL.answer_matches("comparison_query", "No", "answered", prose, None, "v2")
 
 
+def test_v3_fixes_true_false_gold_without_changing_frozen_v2():
+    claims = "the two reports agree"
+    assert not EVAL.answer_matches("comparison_query", "True", "answered", claims, {"value": "yes"}, "v2")
+    assert EVAL.answer_matches("comparison_query", "True", "answered", claims, {"value": "yes"}, "v3")
+    assert EVAL.answer_matches("comparison_query", "False", "answered", claims, {"value": "no"}, "v3")
+    assert not EVAL.answer_matches("comparison_query", "False", "answered", claims, {"value": "yes"}, "v3")
+    assert EVAL.answer_matches("comparison_query", "True", "answered", "true", None, "v3")
+
+
 def test_entity_answers_are_scored_by_containment_in_either_rule():
     for rule in ("v1", "v2"):
         assert EVAL.answer_matches(

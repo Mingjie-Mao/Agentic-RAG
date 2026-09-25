@@ -5,6 +5,7 @@ from fastapi import HTTPException
 
 from app.clients import DependencyError, Models, Search
 from app.config import settings
+from app.fact_integrity import missing_slots, required_slots
 from app.models import Answer
 from app.rewrite import rewrite_query
 from app.retrieval import retrieve_authorized
@@ -54,7 +55,7 @@ def _bigrams(text):
     return {joined[i : i + 2] for i in range(max(0, len(joined) - 1))}
 
 
-def shadow_scores(question, evidence, claims):
+def shadow_scores(question, evidence, claims, *, semantic=False):
     """Record relevance and entailment without acting on them.
 
     Calibration on 34 machine-labelled cases put the rule, embedding and cross-encoder
@@ -71,7 +72,7 @@ def shadow_scores(question, evidence, claims):
     for claim in claims:
         grams = _bigrams(claim["text"])
         supported.append(round(len(grams & _bigrams(material)) / len(grams), 4) if grams else None)
-    return {
+    result = {
         "relevance": round(relevance, 4) if relevance is not None else None,
         "claim_support": supported,
         "scorer": "bigram-overlap-v1",
@@ -79,6 +80,15 @@ def shadow_scores(question, evidence, claims):
         "action": "recorded only; no answer is withheld on these scores",
         "calibration": "artifacts/a-q1-calibration.json",
     }
+    if semantic and claims:
+        try:
+            from app.semantic_shadow import score_claims
+
+            result["semantic"] = score_claims(evidence, claims)
+        except Exception:
+            # Observation must never change whether the grounded answer is returned.
+            result["semantic"] = {"mode": "shadow", "status": "unavailable"}
+    return result
 
 
 def answer_verdict(models, question, claims, status):
@@ -97,8 +107,9 @@ def answer_verdict(models, question, claims, status):
     except DependencyError:
         return None, {}
     index = verdict.claim_index if 1 <= verdict.claim_index <= len(claims) else None
+    value = verdict.verdict if index or verdict.verdict == "unclear" else "unclear"
     return {
-        "value": verdict.verdict,
+        "value": value,
         "claim_index": index,
         "evidence_ids": claims[index - 1]["evidence_ids"] if index else [],
         "method": "claims_only_classifier",
@@ -110,7 +121,65 @@ def merge_verdict_usage(usage, verdict_usage):
     if verdict_usage:
         usage["verdict_prompt_tokens"] = verdict_usage.get("prompt_tokens", 0)
         usage["verdict_completion_tokens"] = verdict_usage.get("completion_tokens", 0)
+        for key in ("model_duration_ms", "prompt_eval_ms", "completion_eval_ms"):
+            usage[f"verdict_{key}"] = verdict_usage.get(key, 0)
     return usage
+
+
+def repair_exact_values(models, question, evidence, claims, usage):
+    """One focused cited repair when a uniquely labelled exact value was omitted.
+
+    Keep the original claims and accept only a new claim containing the missing value
+    and citing its authorized source chunk. A failed optional repair cannot erase a
+    previously validated answer.
+    """
+    missing = missing_slots(required_slots(question, evidence), claims)
+    usage["exact_value_slots_missing_first_pass"] = len(missing)
+    if not missing or not claims:
+        return claims, usage
+    focused_ids = {slot["chunk_id"] for slot in missing}
+    focused = [row for row in evidence if row["chunk_id"] in focused_ids]
+    labels = {
+        "event_id": "事件标识符",
+        "event_id_field": "事件去重字段",
+        "rollback_threshold": "回滚触发阈值",
+        "rollback_target": "回滚目标版本",
+    }
+    fields = "；".join(dict.fromkeys(
+        f"{labels.get(slot['field'], slot['field'])}：{slot['value']}" for slot in missing
+    ))
+    try:
+        generated, extra = models.generate(
+            f"{question}\n仅补充这些遗漏字段的原文值：{fields}。逐项引用原文。",
+            focused,
+            acceptance_items_override=[labels.get(slot["field"], slot["field"]) for slot in missing],
+            check_conflict=False,
+            max_output_tokens=220,
+        )
+        added, status = validate_claims(generated, focused)
+    except DependencyError:
+        usage["exact_value_repair_status"] = "unavailable"
+        return claims, usage
+    for key in ("prompt_tokens", "completion_tokens", "model_duration_ms", "model_load_ms", "prompt_eval_ms", "completion_eval_ms"):
+        usage[key] = (usage.get(key) or 0) + (extra.get(key) or 0)
+    if status != "answered":
+        usage["exact_value_repair_status"] = status
+        return claims, usage
+    seen = {claim["text"] for claim in claims}
+    accepted = []
+    for claim in added:
+        if claim["text"] in seen:
+            continue
+        if any(
+            slot["chunk_id"] in claim["evidence_ids"]
+            and not missing_slots([slot], [claim])
+            for slot in missing
+        ):
+            accepted.append(claim)
+            seen.add(claim["text"])
+    usage["exact_value_repair_status"] = "added" if accepted else "no_supported_value"
+    usage["exact_value_repair_claims"] = len(accepted)
+    return claims + accepted, usage
 
 
 MESSAGES = {
@@ -161,6 +230,8 @@ def answer_question(db, user, question, history=None):
             claims, status = validate_claims(generated, evidence)
             if status == "answered" and usage.get("answer_status") == "conflict":
                 status = "conflict"
+            if status == "answered":
+                claims, usage = repair_exact_values(models, question, evidence, claims, usage)
             verdict, verdict_usage = answer_verdict(models, question, claims, status)
             usage = merge_verdict_usage(usage, verdict_usage)
         else:
@@ -210,7 +281,10 @@ def answer_question(db, user, question, history=None):
             "retrieval_query": query,
             "query_rewritten": rewrite_trace["rewritten"],
             "rewrite": rewrite_trace,
-            "shadow_scores": shadow_scores(question, evidence, claims) if evidence else None,
+            "shadow_scores": (
+                shadow_scores(question, evidence, claims, semantic=cfg.semantic_shadow_enabled)
+                if evidence else None
+            ),
             "prompt_version": "grounded-v5-conflict-gated",
             "top_k": retrieval_top_k,
             "min_similarity": cfg.min_similarity,

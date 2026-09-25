@@ -19,6 +19,7 @@ from sqlalchemy import func, select
 from app.clients import Search
 from app.config import settings
 from app.db import SessionLocal
+from app.ingestion import chunk_header, indexed_text
 from app.models import Answer, Chunk, Document, DocumentVersion, User
 
 BACKUP = Path(".runtime/backup")
@@ -113,9 +114,14 @@ def rebuild_index():
             ).all()
             if not chunks:
                 continue
+            # Rebuild exactly what ingestion indexed, including any document header the
+            # version's pipeline recorded; otherwise restored search would differ.
+            version = db.get(DocumentVersion, document.active_version_id)
+            header = chunk_header(document.title, document.metadata_json, version.pipeline)
+            texts = [indexed_text(header, c.text) for c in chunks]
             vectors = []
             for offset in range(0, len(chunks), 8):
-                vectors.extend(models.embed([c.text for c in chunks[offset : offset + 8]]))
+                vectors.extend(models.embed(texts[offset : offset + 8]))
             search.index_chunks(
                 document.tenant_id,
                 document.id,
@@ -123,6 +129,7 @@ def rebuild_index():
                 chunks,
                 vectors,
                 title=document.title,
+                texts=texts,
             )
             indexed += len(chunks)
     search.request("POST", f"/{search.index}/_refresh")

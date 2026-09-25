@@ -42,7 +42,7 @@ def _model():
         return _loaded[key]
 
 
-def rerank(query, candidates, top_n=None, text_of=None):
+def rerank(query, candidates, top_n=None, text_of=None, window=None):
     """Reorder `candidates` by cross-encoder relevance, best first.
 
     `text_of(candidate) -> str` supplies the passage text. Candidates beyond the
@@ -50,7 +50,7 @@ def rerank(query, candidates, top_n=None, text_of=None):
     reranker can only reorder what it actually scored.
     """
     cfg = settings()
-    window = cfg.rerank_candidates
+    window = window or cfg.rerank_candidates
     if not candidates:
         return candidates
     head, tail = candidates[:window], candidates[window:]

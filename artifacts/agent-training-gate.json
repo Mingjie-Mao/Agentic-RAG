@@ -1,0 +1,12 @@
+{
+  "decision": "do_not_train",
+  "historical_failures_in_corpus": 17,
+  "marked_resolved_in_corpus": 17,
+  "independently_adjudicated": 0,
+  "qualified_unresolved_unique_policy_failures": 0,
+  "qualified_failure_types": [],
+  "minimum_unique_failures": 50,
+  "minimum_failure_types": 3,
+  "requires_frozen_unseen_evaluation": true,
+  "note": "A positive gate permits a cost-capped comparison; it does not select SFT, distillation, preference optimization or RL."
+}

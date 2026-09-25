@@ -1,8 +1,8 @@
-"""One-shot external validation on a frozen MultiHop-RAG subset.
+"""Resumable external validation on a frozen MultiHop-RAG subset.
 
-This is the only external evaluation in the project: 150 questions, fixed before the
-first run, scored by rules written before the first run, reported separately from the
-self-built Hard 30 and never used to tune a prompt, a rule or a threshold.
+Each batch fixes its questions before the first run, uses the announced scoring rule,
+and is reported separately from the self-built Hard 30. Later batches use different
+questions after prior results have already entered development analysis.
 
 What it can show: whether the retrieval and grounded-generation path works on material
 this project did not write, in a language it was not tuned for, with 609 distractor
@@ -53,7 +53,7 @@ def token_present(text: str, word: str) -> bool:
 
 
 def answer_matches(question_type, gold, status, claims_text, verdict=None, rule="v2"):
-    """Literal answer scoring. Both rules are kept so both runs stay reproducible.
+    """Literal answer scoring. Older rules stay available for reproducibility.
 
     `v1` is the rule the 2026-09-21 run was scored with: a null query is answered
     correctly by refusing, a Yes/No gold has to appear as a standalone word with the
@@ -65,19 +65,26 @@ def answer_matches(question_type, gold, status, claims_text, verdict=None, rule=
     `unclear` is scored wrong — declining to judge is not an answer. When no verdict
     was produced at all, v2 falls back to the v1 word rule rather than crediting or
     penalising the question for free.
+
+    `v3` fixes the True/False gold alias found during retrospective B1/B2 review.
+    The pre-registered B3 run remains on v2; v3 is for future evaluations.
     """
     if question_type == "null_query":
         return status == "insufficient_evidence"
     if status not in {"answered", "conflict"} or not claims_text:
         return False
     gold_normalized = normalized(gold)
+    if rule == "v3":
+        gold_normalized = {"true": "yes", "false": "no"}.get(gold_normalized, gold_normalized)
     if gold_normalized in {"yes", "no"}:
-        value = (verdict or {}).get("value") if rule == "v2" else None
+        value = (verdict or {}).get("value") if rule in {"v2", "v3"} else None
         if value in {"yes", "no"}:
             return value == gold_normalized
         if value == "unclear":
             return False
-        wanted, other = (YES, NO) if gold_normalized == "yes" else (NO, YES)
+        yes_words = YES + (("true",) if rule == "v3" else ())
+        no_words = NO + (("false",) if rule == "v3" else ())
+        wanted, other = (yes_words, no_words) if gold_normalized == "yes" else (no_words, yes_words)
         return any(token_present(claims_text, word) for word in wanted) and not any(
             token_present(claims_text, word) for word in other
         )
@@ -135,6 +142,7 @@ def score(item, question, payload, retrieved_documents, latency_ms, usage, fired
         dict.fromkeys(row.get("document_id") for row in payload.get("citations", []) if row.get("document_id"))
     )
     claims_text = normalized(" ".join(row.get("text", "") for row in payload.get("claims", [])))
+    variants = ("v1", "v2", "v3") if rule == "v3" else ("v1", "v2")
     scored = {
         variant: answer_matches(
             item["question_type"],
@@ -144,7 +152,7 @@ def score(item, question, payload, retrieved_documents, latency_ms, usage, fired
             payload.get("verdict"),
             variant,
         )
-        for variant in ("v1", "v2")
+        for variant in variants
     }
     found = [document for document in gold_documents if document in set(retrieved_documents)]
     return {
@@ -250,9 +258,9 @@ def main():
     )
     parser.add_argument(
         "--scoring",
-        choices=["v1", "v2"],
+        choices=["v1", "v2", "v3"],
         default="v2",
-        help="v1 复现 2026-09-21 那次运行的口径；v2 读取显式结论字段",
+        help="v1 旧字面口径；v2 读取显式结论字段；v3 另将 True/False 映射为 Yes/No（新实验使用）",
     )
     parser.add_argument(
         "--resume",
@@ -340,13 +348,22 @@ def main():
             "scoring": (
                 "null_query 正确 = 拒答；其余正确 = 金标答案串出现在 claims 中；"
                 "检索口径为进入生成的证据所属文档。Yes/No 题：v1 = 出现对应词且不出现相反词"
-                "（接受中文写法），v2 = 与系统显式结论字段比较，unclear 判错，没有结论字段时退回 v1。"
+                "（接受中文写法），v2 = 与系统显式结论字段比较，unclear 判错，没有结论字段时退回 v1；"
+                "v3 在 v2 基础上将 True/False 金标映射为 Yes/No。"
             ),
             "note": (
                 "外部一次性验证，与自建 Hard 30 分开报告；未用于调 prompt、规则或阈值。"
                 "答案指标是字面匹配，不是语义正确率。"
             ),
         }
+
+    def save_snapshot():
+        # Local model calls can time out after several minutes. Keep each completed
+        # arm, and replace the previous artifact atomically so a crash cannot leave
+        # an unparsable half-written JSON file.
+        temporary = out.with_suffix(out.suffix + ".tmp")
+        temporary.write_text(json.dumps(payload(), ensure_ascii=False, indent=2) + "\n")
+        temporary.replace(out)
 
     for index, item in enumerate(items, 1):
         question = by_query.get(item["query_sha256"])
@@ -374,9 +391,9 @@ def main():
             results[arm].append(
                 score(item, question, result, retrieved, latency, usage, fired, args.scoring)
             )
-        out.write_text(json.dumps(payload(), ensure_ascii=False, indent=2) + "\n")
+            save_snapshot()
     final = payload()
-    out.write_text(json.dumps(final, ensure_ascii=False, indent=2) + "\n")
+    save_snapshot()
     print(json.dumps(final["summary"], ensure_ascii=False, indent=2))
     print(out)
 

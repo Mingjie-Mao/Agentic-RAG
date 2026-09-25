@@ -1,0 +1,456 @@
+{
+  "benchmark": "agent-hard-v2.1",
+  "task_sha256": "17debcc998fa657a797e55d381498ee4919e7a0fb4c13de5df63da2041ea8e46",
+  "validation": {
+    "tasks": 30,
+    "categories": {
+      "multi_hop": 5,
+      "temporal_version": 5,
+      "conditional_planning": 5,
+      "query_recovery": 5,
+      "security_state": 5,
+      "efficiency_stopping": 5
+    },
+    "documents": 31,
+    "shared_comparable_subset": 21,
+    "controlled_agent_only_subset": 9
+  },
+  "arms": [
+    "workflow"
+  ],
+  "results": {
+    "workflow": [
+      {
+        "category": "conditional_planning",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "rto": true,
+          "error_window": true,
+          "error_rate": true,
+          "rollback_target": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "conditional_transition": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-rollback",
+          "seed-db-backup"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "先查询生产数据库 RTO；只有它超过 30 分钟时才继续检查发布回滚的触发条件和目标版本。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "发布回滚操作手册",
+                "数据库备份与恢复目标",
+                "生产发布审批规则",
+                "本地研发环境配置"
+              ],
+              "wall_ms": 976.6,
+              "usage": {
+                "embed_ms": 615.9,
+                "retrieval_ms": 116.0
+              }
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-rollback",
+              "seed-db-backup",
+              "seed-deploy-review",
+              "seed-dev-environment"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "d39946c2-460c-55c5-9ba9-d32ed2c3d581",
+                "d59a9134-134a-5df7-9344-4d8bbcd93158",
+                "50fc0d07-5b5e-5813-a570-73319421dcea",
+                "285eb9ed-8893-5bc2-b448-d5d4a879d107"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "evidence"
+              ],
+              "titles": [],
+              "wall_ms": 16.2,
+              "usage": {}
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-rollback",
+              "seed-db-backup",
+              "seed-deploy-review",
+              "seed-dev-environment"
+            ]
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "生产数据库 RTO 发布回滚 触发条件和目标版本 回滚触发\n发布后错误率连续 5 分钟超过百分之二，应启动回滚。\n回滚使用上一稳定版本镜像，保留当前事故日志，并通知支持值班人员。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "发布回滚操作手册",
+                "数据库备份与恢复目标",
+                "生产发布审批规则",
+                "本地研发环境配置"
+              ],
+              "wall_ms": 1028.9,
+              "usage": {
+                "embed_ms": 781.0,
+                "retrieval_ms": 150.7
+              }
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-rollback",
+              "seed-db-backup",
+              "seed-deploy-review",
+              "seed-dev-environment"
+            ]
+          }
+        ],
+        "steps": 3,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 1,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 174097.5,
+        "usage": {
+          "prompt_tokens": 2658,
+          "completion_tokens": 200,
+          "model_duration_ms": 171508.4,
+          "model_load_ms": 2396.9999999999995,
+          "prompt_eval_ms": 59092.200000000004,
+          "completion_eval_ms": 109965.4,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "先查询生产数据库 RTO；只有它超过 30 分钟时才继续检查发布回滚的触发条件和目标版本。"
+          ],
+          "generation_wall_ms": 54233.2,
+          "coverage_repair_wall_ms": 93875.4,
+          "exact_value_slots_missing_first_pass": 1,
+          "exact_value_repair_status": "added",
+          "exact_value_repair_claims": 1,
+          "exact_value_repair_wall_ms": 24700.4,
+          "tool_wall_ms": 2021.7,
+          "task_wall_ms": 173997.7
+        },
+        "task_id": "H13",
+        "run_id": "386782cf-0df1-4a74-aa9c-1c15d55c6484"
+      }
+    ]
+  },
+  "summary": {
+    "workflow": {
+      "shared_comparable_subset": {
+        "requested": 1,
+        "scored": 1,
+        "skipped": 0,
+        "answer_correct": 1,
+        "answer_correct_rate": 1.0,
+        "task_success": 1,
+        "task_success_rate": 1.0,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 3,
+        "p50_latency_ms": 174097.5,
+        "p95_latency_ms": 174097.5,
+        "mean_prompt_tokens": 2658,
+        "phase_latency": {
+          "tool_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 2021.7,
+            "p95_ms": 2021.7
+          },
+          "generation_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 54233.2,
+            "p95_ms": 54233.2
+          },
+          "coverage_repair_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 93875.4,
+            "p95_ms": 93875.4
+          },
+          "exact_value_repair_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 24700.4,
+            "p95_ms": 24700.4
+          },
+          "task_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 173997.7,
+            "p95_ms": 173997.7
+          }
+        }
+      },
+      "controlled_agent_only_subset": {
+        "requested": 0,
+        "scored": 0,
+        "skipped": 0,
+        "answer_correct": 0,
+        "answer_correct_rate": null,
+        "task_success": 0,
+        "task_success_rate": null,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": null,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": null,
+        "p50_latency_ms": null,
+        "p95_latency_ms": null,
+        "mean_prompt_tokens": null,
+        "phase_latency": {}
+      },
+      "all_scored_tasks": {
+        "requested": 1,
+        "scored": 1,
+        "skipped": 0,
+        "answer_correct": 1,
+        "answer_correct_rate": 1.0,
+        "task_success": 1,
+        "task_success_rate": 1.0,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 3,
+        "p50_latency_ms": 174097.5,
+        "p95_latency_ms": 174097.5,
+        "mean_prompt_tokens": 2658,
+        "phase_latency": {
+          "tool_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 2021.7,
+            "p95_ms": 2021.7
+          },
+          "generation_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 54233.2,
+            "p95_ms": 54233.2
+          },
+          "coverage_repair_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 93875.4,
+            "p95_ms": 93875.4
+          },
+          "exact_value_repair_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 24700.4,
+            "p95_ms": 24700.4
+          },
+          "task_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 173997.7,
+            "p95_ms": 173997.7
+          }
+        }
+      },
+      "by_category": {
+        "conditional_planning": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 3,
+          "p50_latency_ms": 174097.5,
+          "p95_latency_ms": 174097.5,
+          "mean_prompt_tokens": 2658,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 2021.7,
+              "p95_ms": 2021.7
+            },
+            "generation_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 54233.2,
+              "p95_ms": 54233.2
+            },
+            "coverage_repair_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 93875.4,
+              "p95_ms": 93875.4
+            },
+            "exact_value_repair_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 24700.4,
+              "p95_ms": 24700.4
+            },
+            "task_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 173997.7,
+              "p95_ms": 173997.7
+            }
+          }
+        },
+        "efficiency_stopping": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null,
+          "phase_latency": {}
+        },
+        "multi_hop": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null,
+          "phase_latency": {}
+        },
+        "query_recovery": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null,
+          "phase_latency": {}
+        },
+        "security_state": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null,
+          "phase_latency": {}
+        },
+        "temporal_version": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null,
+          "phase_latency": {}
+        }
+      }
+    }
+  },
+  "requested_tasks": 1,
+  "note": "开发 benchmark，不是训练集或独立留出集。跨 arm 只能比较 shared_comparable_subset；受控场景仅用于 Agent 内部诊断。"
+}

@@ -28,6 +28,16 @@ _SOURCE_NOUN = re.compile(r"\b(article|report|piece|story|post|source)s?\b", re.
 _MULTI_SOURCE = re.compile(
     r"\b(both|respectively|compare[ds]?|comparison|difference|each of|either)\b", re.IGNORECASE
 )
+_ENGLISH_NEXT_QUESTION = re.compile(
+    r"\s*(?:;|\?\s+|,\s+and\s+)(?=(?:and\s+)?(?:what|which|who|when|where|why|how|"
+    r"do|does|did|is|are|was|were|can|could|has|have|had)\b)",
+    re.IGNORECASE,
+)
+_EXPLICIT_CHOICE = re.compile(
+    r"\b(?:larger\s+or\s+smaller|greater\s+or\s+less|more\s+or\s+less|"
+    r"earlier\s+or\s+later|before\s+or\s+after|consistent\s+or\s+inconsistent)\b",
+    re.IGNORECASE,
+)
 
 
 def conflict_intent(text: str) -> bool:
@@ -41,6 +51,8 @@ def needs_document_diversity(text: str) -> bool:
 def judgment_intent(text: str) -> bool:
     """True when the expected answer is a verdict (yes / no), not a description."""
     clean = (text or "").strip()
+    if _EXPLICIT_CHOICE.search(clean):
+        return False
     if any(marker in clean for marker in JUDGMENT_MARKERS):
         return True
     if not clean.endswith(("?", "？")) or _WH_WORD.match(clean):
@@ -66,9 +78,26 @@ def version_intent(text: str) -> bool:
 def acceptance_items(text: str) -> list[str]:
     """Expose obvious subquestions to the generator without another model call."""
     clean = text.strip().rstrip("？?")
+    english = english_subquestions(clean)
+    if len(english) > 1:
+        return english
     if not any(marker in clean for marker in COMPOSITE_MARKERS):
         return [clean]
     parts = [part.strip(" ，,。") for part in re.split(r"、|以及|并且", clean) if part.strip()]
     if len(parts) == 1 and ("分别" in clean or "和两项" in clean):
         parts = [part.strip(" ，,。") for part in re.split(r"\s+和\s+|和", clean) if part.strip()]
     return parts[:8] if len(parts) > 1 else [clean]
+
+
+def english_subquestions(text: str) -> list[str]:
+    """Split only explicit independent English asks; never split 'A and B both…'."""
+    if re.search(r"[一-鿿]", text or ""):
+        return [text.strip().rstrip("?")]
+    parts = [part.strip(" ,;?") for part in _ENGLISH_NEXT_QUESTION.split(text or "") if part.strip(" ,;?")]
+    return parts[:6] if len(parts) > 1 else [text.strip().rstrip("?")]
+
+
+def explicit_choice(text: str) -> str | None:
+    """Return an explicit pair of answer options, without deciding which is true."""
+    match = _EXPLICIT_CHOICE.search(text or "")
+    return match.group() if match else None

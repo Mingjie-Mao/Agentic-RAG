@@ -1,0 +1,158 @@
+{
+  "design": "generator (qwen2.5:7b baseline, qwen3.5:9b think off/on, hosted Claude) x evidence (system retrieval vs gold-fact oracle); think-on runs yes/no questions only",
+  "batches": [
+    "b1",
+    "b2"
+  ],
+  "claude_model": "claude-opus-5",
+  "local_model": "qwen2.5:7b-instruct",
+  "scoring": "run_multihop_eval.answer_matches, rule v2",
+  "note": "Batches 1 and 2 are development data after their one-shot runs; batch 3 is not read.",
+  "arms": {
+    "local-system": {
+      "questions": 70,
+      "answer_correct": 45,
+      "answer_correct_rate": 0.643,
+      "answerable_accuracy": 0.6,
+      "answerable_refusal_rate": 0.15,
+      "null_false_answer_rate": 0.1,
+      "binary_questions": 36,
+      "binary_accuracy": 0.5,
+      "binary_always_yes_baseline": 0.611,
+      "binary_gold_no_accuracy": 0.286,
+      "binary_verdict_yes_share": 0.731,
+      "execution_failed": 0,
+      "median_latency_ms": 60531.4,
+      "mean_prompt_tokens": 2634.2,
+      "by_type": {
+        "comparison_query": {
+          "questions": 20,
+          "answer_correct": 10,
+          "rate": 0.5
+        },
+        "inference_query": {
+          "questions": 20,
+          "answer_correct": 18,
+          "rate": 0.9
+        },
+        "null_query": {
+          "questions": 10,
+          "answer_correct": 9,
+          "rate": 0.9
+        },
+        "temporal_query": {
+          "questions": 20,
+          "answer_correct": 8,
+          "rate": 0.4
+        }
+      },
+      "b1_answer_correct": 20,
+      "b2_answer_correct": 25
+    },
+    "qwen35-system": {
+      "questions": 70,
+      "answer_correct": 46,
+      "answer_correct_rate": 0.657,
+      "answerable_accuracy": 0.617,
+      "answerable_refusal_rate": 0.217,
+      "null_false_answer_rate": 0.1,
+      "binary_questions": 36,
+      "binary_accuracy": 0.583,
+      "binary_always_yes_baseline": 0.611,
+      "binary_gold_no_accuracy": 0.286,
+      "binary_verdict_yes_share": 0.786,
+      "execution_failed": 0,
+      "median_latency_ms": 87891.6,
+      "mean_prompt_tokens": 2630.1,
+      "by_type": {
+        "comparison_query": {
+          "questions": 20,
+          "answer_correct": 11,
+          "rate": 0.55
+        },
+        "inference_query": {
+          "questions": 20,
+          "answer_correct": 15,
+          "rate": 0.75
+        },
+        "null_query": {
+          "questions": 10,
+          "answer_correct": 9,
+          "rate": 0.9
+        },
+        "temporal_query": {
+          "questions": 20,
+          "answer_correct": 11,
+          "rate": 0.55
+        }
+      },
+      "b1_answer_correct": 21,
+      "b2_answer_correct": 25
+    },
+    "local-oracle": {
+      "questions": 60,
+      "answer_correct": 39,
+      "answer_correct_rate": 0.65,
+      "answerable_accuracy": 0.65,
+      "answerable_refusal_rate": 0.133,
+      "null_false_answer_rate": null,
+      "binary_questions": 36,
+      "binary_accuracy": 0.5,
+      "binary_always_yes_baseline": 0.611,
+      "binary_gold_no_accuracy": 0.286,
+      "binary_verdict_yes_share": 0.76,
+      "execution_failed": 0,
+      "median_latency_ms": 44235.4,
+      "mean_prompt_tokens": 1723.9,
+      "by_type": {
+        "comparison_query": {
+          "questions": 20,
+          "answer_correct": 11,
+          "rate": 0.55
+        },
+        "inference_query": {
+          "questions": 20,
+          "answer_correct": 20,
+          "rate": 1.0
+        },
+        "temporal_query": {
+          "questions": 20,
+          "answer_correct": 8,
+          "rate": 0.4
+        }
+      },
+      "b1_answer_correct": 18,
+      "b2_answer_correct": 21
+    },
+    "qwen35-oracle": {
+      "questions": 36,
+      "answer_correct": 28,
+      "answer_correct_rate": 0.778,
+      "answerable_accuracy": 0.778,
+      "answerable_refusal_rate": 0.056,
+      "null_false_answer_rate": null,
+      "binary_questions": 36,
+      "binary_accuracy": 0.778,
+      "binary_always_yes_baseline": 0.611,
+      "binary_gold_no_accuracy": 0.5,
+      "binary_verdict_yes_share": 0.758,
+      "execution_failed": 0,
+      "median_latency_ms": 89404.1,
+      "mean_prompt_tokens": 1848.9,
+      "by_type": {
+        "comparison_query": {
+          "questions": 19,
+          "answer_correct": 16,
+          "rate": 0.842
+        },
+        "temporal_query": {
+          "questions": 17,
+          "answer_correct": 12,
+          "rate": 0.706
+        }
+      },
+      "b1_answer_correct": 14,
+      "b2_answer_correct": 14
+    }
+  }
+}

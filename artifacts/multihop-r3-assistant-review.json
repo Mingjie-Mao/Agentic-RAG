@@ -1,0 +1,45 @@
+{
+  "scope": "six B3 failed arm-runs whose gold fact 4-gram proxy reached the answer context",
+  "reviewer_type": "assistant observable-output review; source entailment not independently adjudicated",
+  "human_reviewed": 0,
+  "assistant_reviewed": 6,
+  "source_sha256": "78d7e27684408b6859f0f4c0800a8b5adc1494700794d234aa04eb984fc80d98",
+  "rows": [
+    {
+      "item_id": "MH-1cdb794399af",
+      "arm": "rag",
+      "category": "verdict_claim_mismatch",
+      "basis": "Claims negate the first condition; the yes verdict reverses their conjunction."
+    },
+    {
+      "item_id": "MH-1cdb794399af",
+      "arm": "workflow",
+      "category": "verdict_claim_mismatch",
+      "basis": "Claims say the first source describes legal conduct; the yes verdict disagrees."
+    },
+    {
+      "item_id": "MH-1f989865bc85",
+      "arm": "workflow",
+      "category": "comparison_dimension_needs_source_review",
+      "basis": "Claims mix the holiday date with store opening hours."
+    },
+    {
+      "item_id": "MH-20d14646e9ba",
+      "arm": "rag",
+      "category": "conjunction_not_resolved",
+      "basis": "Both requested source propositions are stated, but the verdict remains unclear."
+    },
+    {
+      "item_id": "MH-20d14646e9ba",
+      "arm": "workflow",
+      "category": "conjunction_not_resolved",
+      "basis": "Both requested source propositions are stated, but the verdict remains unclear."
+    },
+    {
+      "item_id": "MH-229ee6f69011",
+      "arm": "rag",
+      "category": "comparison_dimension_needs_source_review",
+      "basis": "Claim compares player availability rather than fantasy strategy."
+    }
+  ]
+}

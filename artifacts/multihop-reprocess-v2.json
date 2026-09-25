@@ -1,0 +1,21 @@
+{
+  "tenant": "multihop",
+  "pipeline": {
+    "parser": "docling-2.127-office-xml-v2",
+    "chunking": "structure",
+    "chunk_chars": 700,
+    "overlap": 100,
+    "embedding_model": "bge-m3:567m",
+    "embedding_dimension": 1024,
+    "token_counter": "cl100k_base (estimate, not generation tokenizer)",
+    "chunk_context": "document_header",
+    "boilerplate_filter": "web_v1"
+  },
+  "queued": 607,
+  "promoted": 607,
+  "failures": [],
+  "articles_on_pipeline": 609,
+  "active_chunks": 12427,
+  "furniture_blocks_removed": 391,
+  "elapsed_seconds": 2447.0
+}

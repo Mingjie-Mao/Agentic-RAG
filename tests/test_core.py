@@ -651,6 +651,7 @@ def test_verdict_is_added_only_for_judgment_questions_and_only_from_claims():
     out_of_range = Judge(index=7)
     verdict, _ = answer_verdict(out_of_range, "两份报道是否一致？", claims, "answered")
     assert verdict["claim_index"] is None and verdict["evidence_ids"] == []
+    assert verdict["value"] == "unclear"
 
     class Broken:
         def decide_verdict(self, *_args):

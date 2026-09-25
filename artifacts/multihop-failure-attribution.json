@@ -1,0 +1,5144 @@
+{
+  "purpose": "Review queue; overlapping signals, not mutually exclusive root causes or a new accuracy score",
+  "sources_sha256": {
+    "artifacts/multihop-external.json": "1839c4f12d10e19451b215c4531c89800ec9e255fd2ba3de74727f7ce9a25ce5",
+    "artifacts/multihop-external-r2.json": "61193340e75ca81553beb4c2c908ab32f7a7bb0290118548d2cd53d9191c7d59",
+    "artifacts/semantic-calibration/gold-v3-claims.csv": "d8c201b17cb3a9497e0db0d09ed75423c1539989842bc2f00c781036b5c3ca5b",
+    "artifacts/semantic-calibration/gold-v3-answers.csv": "0906576261f146b4462ea8f3da122706ca9b1e1f36d5809ac4be32273dcbc472"
+  },
+  "summary": {
+    "failed_arm_runs": 279,
+    "with_reviewed_semantic_label": 44,
+    "by_signal": {
+      "gold_document_missing": 179,
+      "gold_document_present_fact_unverified": 99,
+      "no_reviewed_semantic_label": 235,
+      "reviewed_answer_incomplete": 7,
+      "reviewed_claim_not_fully_supported": 31
+    },
+    "by_question_type": {
+      "comparison_query": 137,
+      "inference_query": 42,
+      "null_query": 1,
+      "temporal_query": 99
+    },
+    "by_batch_arm": {
+      "B1|rag": 93,
+      "B1|workflow": 88,
+      "B2|rag": 49,
+      "B2|workflow": 49
+    }
+  },
+  "failures": [
+    {
+      "item_id": "B1-MH-005e26b475d1",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0073ab564e55",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0085f76defbe",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-00bcb273add8",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0165795fd40c",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0175090e1c35",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "no",
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-01ceb7cf9079",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-022ffac0b5f4",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0279054408d1",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-02faea4c1161",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-03c8f9157597",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-03cfaa7e78c6",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0445265e8760",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-04e2c330afa3",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-050827e2c17f",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-05810be2d274",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-05aa636fee50",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-060223ba72f4",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported",
+        "supported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-06287f15585b",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0635b6274899",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-063f46090a91",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-077d77aaeb42",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-089e506e84aa",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-08a7c191d6eb",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-08c95043a751",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-08c9673c1321",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0952d9e73467",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-09a87ec62327",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": "partial",
+      "reviewed_answer_verdict_reading": "unclear",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported",
+        "reviewed_answer_incomplete"
+      ]
+    },
+    {
+      "item_id": "B1-MH-09b930ca1fa9",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 3,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-09e5975ee83e",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0a7a2c277008",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0af0da5770fc",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0b856ab69624",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0bcb3d437738",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0bcfc22c5f10",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 3,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c18610f435a",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "partial"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "yes",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c203bd2ef40",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c2c6cb30b77",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c69b8fdbe62",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c6d6ba18794",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0dff3d635abc",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0e1f6d12ec46",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0e6090539b81",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 3,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0e908ca4b27b",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0fa9f5034ba7",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-103cd5064a52",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-10cbd523d4ee",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-111f69baa399",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-01e320e7e25f",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-01f65fd5d3b5",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-027b5802fb84",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-027c4406bb87",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0422ce95acd1",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0508c669c295",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-06fd9bbf7af9",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0848d1d61039",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0a05452eaee8",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported",
+        "unsupported",
+        "supported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "not_applicable",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0a5bd425f609",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0a7e9c9f2ec8",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "answered",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 4,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c7346f158f2",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0d3b63463da0",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0d83d8562e5a",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-00fc91a80765",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-01c35cf3d285",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-01f308ed8e76",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0219de95d13e",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-024ac868f764",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0284af6075bd",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-02899e01b5cf",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-035ed76f80f8",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-03b51326acae",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0401d5c77bd1",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-056b08205dfa",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-058521536216",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-060cc1d31438",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-077feb9c180a",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing"
+      ]
+    },
+    {
+      "item_id": "B1-MH-088695234e1a",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-09b478db5759",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0a8d6ccfe904",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0ac962ffaee1",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 3,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0acddcd35850",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0ad0896342e0",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0b9a8cb6d75b",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c64116439ba",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0cd2bbe92b19",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0cfea9648a01",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0d1919b11047",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0e1408df9ae0",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0ea267f4ceba",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0f6a4137b71f",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0fb5fdf6ee28",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-10009ac853d4",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-105c1c8841dc",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-005e26b475d1",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0073ab564e55",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0085f76defbe",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-00bcb273add8",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0165795fd40c",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0175090e1c35",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-01ceb7cf9079",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-022ffac0b5f4",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0279054408d1",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-02faea4c1161",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-03c8f9157597",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-03cfaa7e78c6",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported",
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0445265e8760",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-04e2c330afa3",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-050827e2c17f",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported",
+        "supported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "yes",
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-05aa636fee50",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-060223ba72f4",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-06287f15585b",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0635b6274899",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-063f46090a91",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported",
+        "partial"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "yes",
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-077d77aaeb42",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 3,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-089e506e84aa",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 3,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-08a7c191d6eb",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-08c95043a751",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": "partial",
+      "reviewed_answer_verdict_reading": "unclear",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_answer_incomplete"
+      ]
+    },
+    {
+      "item_id": "B1-MH-08c9673c1321",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0952d9e73467",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-09a87ec62327",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-09b930ca1fa9",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 3,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-09e5975ee83e",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0a7a2c277008",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported",
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "yes",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0af0da5770fc",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "no",
+      "signals": [
+        "gold_document_present_fact_unverified"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0b65c4cf02ac",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 3,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0b856ab69624",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0bcb3d437738",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0bcfc22c5f10",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 3,
+      "gold_documents_cited": 3,
+      "claim_count": 3,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c18610f435a",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c203bd2ef40",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c2c6cb30b77",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c69b8fdbe62",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c6d6ba18794",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "partial"
+      ],
+      "reviewed_answer_completeness": "partial",
+      "reviewed_answer_verdict_reading": "unclear",
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported",
+        "reviewed_answer_incomplete"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0dff3d635abc",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "yes",
+      "signals": [
+        "gold_document_missing"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0e1f6d12ec46",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0e6090539b81",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 3,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0e908ca4b27b",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0fa9f5034ba7",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-103cd5064a52",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-10cbd523d4ee",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-111f69baa399",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-01e320e7e25f",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-01f65fd5d3b5",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-027b5802fb84",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "answered",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 4,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0508c669c295",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0848d1d61039",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0a5bd425f609",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "verification_failed",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c7346f158f2",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0d3b63463da0",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0d83d8562e5a",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-00fc91a80765",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-01c35cf3d285",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-01f308ed8e76",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0219de95d13e",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-024ac868f764",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0284af6075bd",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-02899e01b5cf",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-035ed76f80f8",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-03b51326acae",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-03b7d00ee202",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": "partial",
+      "reviewed_answer_verdict_reading": "unclear",
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_answer_incomplete"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0401d5c77bd1",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-056b08205dfa",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-058521536216",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-060cc1d31438",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-077feb9c180a",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-088695234e1a",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-09b478db5759",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "yes",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0a8d6ccfe904",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0acddcd35850",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported",
+        "supported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "yes",
+      "signals": [
+        "gold_document_present_fact_unverified"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0b661c6477e4",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0b9a8cb6d75b",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0c64116439ba",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0cd2bbe92b19",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "yes",
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0cfea9648a01",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0d1919b11047",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported"
+      ],
+      "reviewed_answer_completeness": "partial",
+      "reviewed_answer_verdict_reading": "unclear",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_answer_incomplete"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0e1408df9ae0",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "unsupported",
+        "supported"
+      ],
+      "reviewed_answer_completeness": "partial",
+      "reviewed_answer_verdict_reading": "unclear",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported",
+        "reviewed_answer_incomplete"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0ea267f4ceba",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "partial"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "no",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0f6a4137b71f",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-0fb5fdf6ee28",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": "partial",
+      "reviewed_answer_verdict_reading": "unclear",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_answer_incomplete"
+      ]
+    },
+    {
+      "item_id": "B1-MH-10009ac853d4",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B1-MH-105c1c8841dc",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-124558122a92",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [
+        "supported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "no",
+      "signals": [
+        "gold_document_present_fact_unverified"
+      ]
+    },
+    {
+      "item_id": "B2-MH-12b9416cf2b0",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 3,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-12e511fabb84",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-134a74b16a08",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1388f62eabd7",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1421b92cce4c",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-148e008e129a",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [
+        "partial"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "unclear",
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B2-MH-15446e267a02",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-15e52f71ac79",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-160a5c8504d4",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-172c2bb1310b",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-18c3bd4ae5ab",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-19003bc9a238",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1963e8b69161",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "yes",
+      "signals": [
+        "gold_document_present_fact_unverified"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1abf589dc265",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1b7a0b37afed",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1bdf980169e9",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1c31b288b184",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1c6b36dd084a",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1cae145aacf8",
+      "arm": "rag",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-11e54c1b8b6f",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-12284f587f2e",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-134e08af5276",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-141d9c437146",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-156a6fb9cddc",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-168cc0dc7173",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-189602010ad9",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-196a2015e6cf",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-198ece95aaf4",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1a3a6a769cb5",
+      "arm": "rag",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1144d2e80b35",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "no",
+      "signals": [
+        "gold_document_missing"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1175d7044fa1",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 3,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-11b5dbe62ed4",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B2-MH-141809cfa779",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-147111acaddb",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-14aa218c2c66",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-170a36ef33f7",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-17280b83d56e",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-174076520f29",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1771e46705cb",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1944708c2bb5",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": "unclear",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1996fe8e6217",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1b7d96f154db",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1ba051fc3413",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 3,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1d392849335d",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-201d810187ac",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "no",
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B2-MH-20512ebbdb99",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-209e10929f9c",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-2237f5effc53",
+      "arm": "rag",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 3,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "unclear",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-124558122a92",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-12b9416cf2b0",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [
+        "unsupported",
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "yes",
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B2-MH-12e511fabb84",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-134a74b16a08",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1388f62eabd7",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1421b92cce4c",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-148e008e129a",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-15446e267a02",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-15e52f71ac79",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-172c2bb1310b",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-17e563aaa33e",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-181f5439718b",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-185f9f13efd8",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-18c3bd4ae5ab",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-19003bc9a238",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1963e8b69161",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "conflict",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1a151f222781",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1abf589dc265",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1b7a0b37afed",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1bdf980169e9",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1c31b288b184",
+      "arm": "workflow",
+      "question_type": "comparison_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-11e54c1b8b6f",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-12284f587f2e",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-141d9c437146",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-156a6fb9cddc",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-168cc0dc7173",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-196a2015e6cf",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "answered",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 4,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-198ece95aaf4",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1a3a6a769cb5",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 4,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1a91106d425c",
+      "arm": "workflow",
+      "question_type": "inference_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": null,
+      "reviewed_claim_labels": [
+        "supported",
+        "supported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "not_applicable",
+      "signals": [
+        "gold_document_present_fact_unverified"
+      ]
+    },
+    {
+      "item_id": "B2-MH-11d9213f77f1",
+      "arm": "workflow",
+      "question_type": "null_query",
+      "status": "answered",
+      "gold_documents": 0,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1175d7044fa1",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 3,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-11b5dbe62ed4",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-147111acaddb",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-14aa218c2c66",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-170a36ef33f7",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-17280b83d56e",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B2-MH-174076520f29",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1944708c2bb5",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 1,
+      "system_verdict": "unclear",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1996fe8e6217",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1afa5edb190c",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 2,
+      "claim_count": 2,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [
+        "unsupported",
+        "supported",
+        "supported",
+        "partial",
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "other_choice",
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1b7d96f154db",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1ba051fc3413",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 3,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1d392849335d",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 0,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1d8b8525cd37",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-1f82048d37f6",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 1,
+      "gold_documents_cited": 0,
+      "claim_count": 1,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [
+        "unsupported"
+      ],
+      "reviewed_answer_completeness": "complete",
+      "reviewed_answer_verdict_reading": "unclear",
+      "signals": [
+        "gold_document_missing",
+        "reviewed_claim_not_fully_supported"
+      ]
+    },
+    {
+      "item_id": "B2-MH-201d810187ac",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "no",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-20512ebbdb99",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "insufficient_evidence",
+      "gold_documents": 3,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 0,
+      "claim_count": 0,
+      "system_verdict": null,
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_missing",
+        "no_reviewed_semantic_label"
+      ]
+    },
+    {
+      "item_id": "B2-MH-209e10929f9c",
+      "arm": "workflow",
+      "question_type": "temporal_query",
+      "status": "answered",
+      "gold_documents": 2,
+      "gold_documents_retrieved": 2,
+      "gold_documents_cited": 1,
+      "claim_count": 1,
+      "system_verdict": "yes",
+      "reviewed_claim_labels": [],
+      "reviewed_answer_completeness": null,
+      "reviewed_answer_verdict_reading": null,
+      "signals": [
+        "gold_document_present_fact_unverified",
+        "no_reviewed_semantic_label"
+      ]
+    }
+  ]
+}
