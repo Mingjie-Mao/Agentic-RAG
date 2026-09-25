@@ -5,6 +5,8 @@ read):
 
     evidence   system       what the current retrieval admits for the question
                rerank       the same, with each lane reordered by the cross-encoder
+               mixed        oracle passages plus the reranked retrieval around them (max 10)
+               compact      the reranked retrieval capped at four passages
                oracle       the chunks that contain the gold facts, and nothing else
     generator  local        qwen2.5:7b-instruct, the production model (frozen baseline)
                qwen35       qwen3.5:9b, thinking off — a current local model of the same size
@@ -188,9 +190,9 @@ def backend(generator: str, claude_model: str):
     return Models()  # local and localjudge: the production model
 
 
-def system_evidence(db, user, question, models, rerank=False):
+def system_evidence(db, user, question, models, rerank=False, top_k=None):
     cfg = settings().model_copy(update={"passage_rerank": rerank})
-    top_k = 8 if multi_source_intent(question) else 6 if len(question) <= 30 else cfg.top_k
+    top_k = top_k or (8 if multi_source_intent(question) else 6 if len(question) <= 30 else cfg.top_k)
     found = retrieve_authorized(db, user, question, cfg=cfg, models=models, search=Search(), top_k=top_k)
     return found.evidence
 
@@ -342,11 +344,29 @@ def run_arm(arm, generator, evidence_mode, items, records, models, lock, binary_
         for index, item in enumerate(todo, 1):
             record = records[item["query_sha256"]]
             embedder = Models()
-            evidence = (
-                oracle_evidence(db, user, record)
-                if evidence_mode == "oracle"
-                else system_evidence(db, user, record["query"], embedder, rerank=evidence_mode == "rerank")
-            )
+            if evidence_mode == "oracle":
+                evidence = oracle_evidence(db, user, record)
+            elif evidence_mode == "mixed":
+                # Gold passages plus what retrieval brings in besides them: separates
+                # "the right passage is missing" from "too much else is there".
+                gold = oracle_evidence(db, user, record)
+                retrieved = system_evidence(db, user, record["query"], embedder, rerank=True)
+                gold_ids = {item["chunk_id"] for item in gold}
+                others = [item for item in retrieved if item["chunk_id"] not in gold_ids]
+                others = others[: max(0, 10 - len(gold))]  # trim distractors, never gold
+                kept = {item["chunk_id"] for item in others} | gold_ids
+                # Retrieval order; gold passages retrieval missed go last, the position
+                # least favourable to them.
+                ordered = [item for item in retrieved if item["chunk_id"] in kept]
+                ordered += [item for item in gold if item["chunk_id"] not in {r["chunk_id"] for r in retrieved}]
+                evidence = [dict(item, id=f"E{n}") for n, item in enumerate(ordered, 1)]
+            elif evidence_mode == "compact":
+                # Fewer, better passages: the reranked retrieval capped at four.
+                evidence = system_evidence(db, user, record["query"], embedder, rerank=True, top_k=4)
+            else:
+                evidence = system_evidence(
+                    db, user, record["query"], embedder, rerank=evidence_mode == "rerank"
+                )
             started = time.monotonic()
             for attempt in range(3):
                 try:
