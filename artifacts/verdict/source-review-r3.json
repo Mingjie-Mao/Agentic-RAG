@@ -1,0 +1,122 @@
+{
+  "scope": "Retrospective assistant review of the exact chunks cited by six B3 failed arm-runs. No rerun, no gold changes, no production gate calibration.",
+  "reviewer_type": "assistant",
+  "human_reviewed": 0,
+  "input": "artifacts/multihop-r3-assistant-review.json",
+  "rows": [
+    {
+      "item_id": "MH-1cdb794399af",
+      "arm": "rag",
+      "finding": "speaker_attribution_and_scope_unresolved",
+      "basis": "The legality passage reports a defense speaker's argument. Another cited passage reports the prosecution's allegations. A claim that the article did not allege illegality is broader than its local supporting quote; the existing yes verdict also contradicts the generated negation.",
+      "fix_layer": [
+        "claim_generation",
+        "verdict"
+      ],
+      "source_entailment": "not_established",
+      "query_sha256": "1cdb794399aff0dad1f6f4da36f5d62ea863c95f8f3206ffb5415d5f5c0d4a3b",
+      "claims_sha256": "bc19abda523d3e6412d68ebfc078ac5426247daa7077fa79cf18533fb8510a3e",
+      "cited_chunk_sha256": {
+        "1e8fdb98-0bc7-551c-9fc7-c707e9f82c05": "afc3c45b1785115721160a0befa8df486a972eb6a9e3d5438f856f1f8b69fc5c",
+        "24d6dc52-9c97-5dde-b151-48baca486eeb": "45b21d142eeea3ac521508447723b35952bdb97e03b0911c4acc85bdf6e001d0",
+        "6e81e437-6427-5f58-bd15-ea704a0a5086": "a59a1815b6c6049d7348005673c0a4c3f9ee975301879c46725d9e65037e73ad",
+        "d095131f-7da3-591e-a702-862adc214788": "2313decdec71207d0e2026a9c235cf9ca150ff55d9846b03e9b967e3c7785cf0"
+      }
+    },
+    {
+      "item_id": "MH-1cdb794399af",
+      "arm": "workflow",
+      "finding": "speaker_attribution_lost",
+      "basis": "The claim attributes reasonable/legal practices to the publication, while the cited passage attributes them to a speaker's argument. The verdict layer alone cannot restore that attribution.",
+      "fix_layer": [
+        "claim_generation",
+        "verdict"
+      ],
+      "source_entailment": "not_established",
+      "query_sha256": "1cdb794399aff0dad1f6f4da36f5d62ea863c95f8f3206ffb5415d5f5c0d4a3b",
+      "claims_sha256": "30094a40c3ebde09b7fe5b904d9d77e62d6d4720831b468d701a332f21c406f3",
+      "cited_chunk_sha256": {
+        "24d6dc52-9c97-5dde-b151-48baca486eeb": "45b21d142eeea3ac521508447723b35952bdb97e03b0911c4acc85bdf6e001d0",
+        "6e81e437-6427-5f58-bd15-ea704a0a5086": "a59a1815b6c6049d7348005673c0a4c3f9ee975301879c46725d9e65037e73ad",
+        "d095131f-7da3-591e-a702-862adc214788": "2313decdec71207d0e2026a9c235cf9ca150ff55d9846b03e9b967e3c7785cf0"
+      }
+    },
+    {
+      "item_id": "MH-20d14646e9ba",
+      "arm": "rag",
+      "finding": "conjunction_and_negative_scope",
+      "basis": "The personal-gain clause is supported as a prosecution portrayal. The jury-role passage is present, but without attributing any motive is an article-wide absence claim not proved by the cited excerpts. Combining generated claims is a separate check from proving both source propositions.",
+      "fix_layer": [
+        "claim_generation",
+        "verdict"
+      ],
+      "source_entailment": "partial",
+      "query_sha256": "20d14646e9ba7c5ae9d7df0fff2f505e091e06bd16412a0e130287745e6c321f",
+      "claims_sha256": "7aa4e36e1153e67215c1a2c5782f9452d7189e4e4f0a685f3c826a4ee43d86dc",
+      "cited_chunk_sha256": {
+        "79030e9e-3b29-5b63-8b6d-849a53a1ef2f": "7716d36c36bdd9693e3f18b4bb7ebbc308cf37a467e358801e502df62e5fba4e",
+        "af757778-08a9-541c-b4fa-3863158c3c45": "3a6c29713f5b79ede6beeb929713e362d099b652a1a0349a14b73d99c6bf6aec",
+        "b9743872-6606-516f-afcb-53a57e6412b5": "7419d9e2c08788cf873e3516c1242ce2db9da7478f44779411113b0dd72d27e5",
+        "dfb6a499-14d4-5dde-9478-131f37ec6490": "fe319bdcb7d7e1c5f72ddbbda7581eb4df73e36bedc2a0ae3a3f11f56052d792"
+      }
+    },
+    {
+      "item_id": "MH-20d14646e9ba",
+      "arm": "workflow",
+      "finding": "conjunction_and_negative_scope",
+      "basis": "The jury-role quote directly supports that clause. Neither that quote nor the defense good-faith quote establishes article-wide absence of a motive. The generated conjunction should not be treated as independently source-verified.",
+      "fix_layer": [
+        "claim_generation",
+        "verdict"
+      ],
+      "source_entailment": "partial",
+      "query_sha256": "20d14646e9ba7c5ae9d7df0fff2f505e091e06bd16412a0e130287745e6c321f",
+      "claims_sha256": "db67f0261f103e47ccb5733decd8bbcee899f339e746a841dac45d0551c5380d",
+      "cited_chunk_sha256": {
+        "79030e9e-3b29-5b63-8b6d-849a53a1ef2f": "7716d36c36bdd9693e3f18b4bb7ebbc308cf37a467e358801e502df62e5fba4e",
+        "af757778-08a9-541c-b4fa-3863158c3c45": "3a6c29713f5b79ede6beeb929713e362d099b652a1a0349a14b73d99c6bf6aec",
+        "b9743872-6606-516f-afcb-53a57e6412b5": "7419d9e2c08788cf873e3516c1242ce2db9da7478f44779411113b0dd72d27e5",
+        "dfb6a499-14d4-5dde-9478-131f37ec6490": "fe319bdcb7d7e1c5f72ddbbda7581eb4df73e36bedc2a0ae3a3f11f56052d792"
+      }
+    },
+    {
+      "item_id": "MH-1f989865bc85",
+      "arm": "workflow",
+      "finding": "unsupported_conflict_and_dimension_drift",
+      "basis": "Date claims agree. The additional conflicting-opening claim cites a single passage saying stores open with location-dependent hours; it does not demonstrate contradictory statements between sources. A verdict over this extra claim compares the wrong dimension.",
+      "fix_layer": [
+        "claim_generation",
+        "verdict"
+      ],
+      "source_entailment": "unsupported_conflict",
+      "query_sha256": "1f989865bc85dae1754e01bd6fc1f8279d0404b66ce4db48d76f19b0cd6ef793",
+      "claims_sha256": "3821ee77a0e22fd588b6f7df9ae6b0dd6ede67f1ebc2ed72117fdc884210828b",
+      "cited_chunk_sha256": {
+        "4fc993f5-a9e2-55dd-8d72-73ea418fb7ad": "a87853e181d0bfbc595c56311d09e1aa5aeee1d763458a378db4365281f6cde6",
+        "a216d6db-e805-5924-9485-371c5ad41764": "d30a5540d35b9f7d57666edc590182d10e8f6d6ebfa1b609d195b6530e719608",
+        "bb4c3a20-fc16-5b75-8393-a96b52b4c7c4": "6f899a7b9c8dd1c71689e56ea66f9ee28c813fe4538b9f7ff263a2bfcca6df9b",
+        "e1dbe894-ab6c-54db-8314-871dbd122ee6": "871fc2c1930711b0abdb20b0a05eeb753dfa2a36d892363fb4ed6ab503a9f59e",
+        "e844488e-2dc8-5cbb-b2a5-5d4464b16054": "5a9954aec848eb0ee4a2c9ead123a51aa9800b1eb2786d452e3d140b921b8765"
+      }
+    },
+    {
+      "item_id": "MH-229ee6f69011",
+      "arm": "rag",
+      "finding": "comparison_dimension_drift",
+      "basis": "The question asks about fantasy strategy. The claim instead compares confidence in player availability, while the passages discuss backup opportunities and a conditional replacement. The available claim does not settle the requested comparison.",
+      "fix_layer": [
+        "claim_generation",
+        "verdict"
+      ],
+      "source_entailment": "off_dimension",
+      "query_sha256": "229ee6f69011cf7cd1d999bb98425332f21f3633019ec4c110d7bebdc691dba2",
+      "claims_sha256": "9d7da27ab2182b1e6b8dd3c9a63026547ad2da8ed5cd50da2a70e207abe28619",
+      "cited_chunk_sha256": {
+        "583f4f4f-a0c4-546d-9d50-0bbf8432ea39": "dc15d9ec2b9b370dce93e1b638c16a2b82b9232e8cb07733269d9568643860d2",
+        "d277261d-517d-5647-a040-fd7f348b649f": "bc27efb3a43d027577884f3c987a893b4836f5f4be17af1ed34f47d57edbd851"
+      }
+    }
+  ],
+  "decision": "Do not call these six independent semantic gold labels. Use attribution, negative scope and requested comparison dimension as general development categories; do not retune frozen B3. A claims-only combiner cannot fix unsupported premises.",
+  "input_sha256": "21a5ed5032eddae08db6a8db038d4a7f34f991edb85a1a32816c88c525152089"
+}

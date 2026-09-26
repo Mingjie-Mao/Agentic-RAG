@@ -1,0 +1,65 @@
+{
+  "name": "external-oracle-claims-r4-8",
+  "source_sha256": "03cfb4926461f868684903aadc8024447bdda5bb3f6804741424cce338515bff",
+  "batch_sha256": "e7f2bc6ca15fdc4a2a56f9b6a60bca26601b54e9bd4be397ea941aceca59f7f2",
+  "selection": "First two sha256-sorted questions per comparison/temporal and yes/no stratum; 1-4 benchmark facts; no overlap with B1-B3.",
+  "scope": "Fresh external oracle facts, not retrieved/generated claims. Balanced majority baseline 4/8. No independent human source adjudication.",
+  "items": [
+    {
+      "id": "MH-2a58564015c3",
+      "question_type": "comparison_query",
+      "query_sha256": "2a58564015c3e2f5889f9037c1ab234a5971d20362b3fb44456a8f7e58140c7a",
+      "answer_sha256": "85a39ab345d672ff8ca9b9c6876f3adcacf45ee7c1e2dbd2408fd338bd55e07e",
+      "gold_document_count": 2
+    },
+    {
+      "id": "MH-2aa1204c3fca",
+      "question_type": "comparison_query",
+      "query_sha256": "2aa1204c3fcaecb95cdadae2ff3b15e08e56be3348de1205b80b20f354ad5e75",
+      "answer_sha256": "85a39ab345d672ff8ca9b9c6876f3adcacf45ee7c1e2dbd2408fd338bd55e07e",
+      "gold_document_count": 2
+    },
+    {
+      "id": "MH-2b35d0bfa29d",
+      "question_type": "comparison_query",
+      "query_sha256": "2b35d0bfa29d3087a65c0c05cac239ce701b110df3235f1aa6aea592269d58c1",
+      "answer_sha256": "9390298f3fb0c5b160498935d79cb139aef28e1c47358b4bbba61862b9c26e59",
+      "gold_document_count": 2
+    },
+    {
+      "id": "MH-2c818c22a629",
+      "question_type": "comparison_query",
+      "query_sha256": "2c818c22a629273f4e11869d09e51fd3f1c62043934e25179092bf55c1759a9a",
+      "answer_sha256": "9390298f3fb0c5b160498935d79cb139aef28e1c47358b4bbba61862b9c26e59",
+      "gold_document_count": 2
+    },
+    {
+      "id": "MH-35ff861e8427",
+      "question_type": "temporal_query",
+      "query_sha256": "35ff861e842741a2fc9deb81fb07fa0a9db6cf22e59deb61b69327ed8c40d5a8",
+      "answer_sha256": "85a39ab345d672ff8ca9b9c6876f3adcacf45ee7c1e2dbd2408fd338bd55e07e",
+      "gold_document_count": 2
+    },
+    {
+      "id": "MH-373552ad432f",
+      "question_type": "temporal_query",
+      "query_sha256": "373552ad432fa5a7b5fd1cd5ebbc31f0e31d9650d6a010f6cce8140f36bb6a6f",
+      "answer_sha256": "85a39ab345d672ff8ca9b9c6876f3adcacf45ee7c1e2dbd2408fd338bd55e07e",
+      "gold_document_count": 2
+    },
+    {
+      "id": "MH-3716695d4dab",
+      "question_type": "temporal_query",
+      "query_sha256": "3716695d4dabcedb3e36e79ad32e588d85577df54dedea3ee5ad08a3dd515af2",
+      "answer_sha256": "9390298f3fb0c5b160498935d79cb139aef28e1c47358b4bbba61862b9c26e59",
+      "gold_document_count": 2
+    },
+    {
+      "id": "MH-377f8952e85b",
+      "question_type": "temporal_query",
+      "query_sha256": "377f8952e85b046a099e73934f0c62891dc85e22e539a40036362ea6fd4ffa01",
+      "answer_sha256": "9390298f3fb0c5b160498935d79cb139aef28e1c47358b4bbba61862b9c26e59",
+      "gold_document_count": 2
+    }
+  ]
+}

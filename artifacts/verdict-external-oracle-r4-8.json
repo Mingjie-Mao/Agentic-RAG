@@ -1,0 +1,544 @@
+{
+  "metadata": {
+    "fixture_sha256": "5ef824f1087d61d76f12e8faaf51404010ea10e65a25799826c7ea43f91acc3d",
+    "model": "qwen2.5:7b-instruct",
+    "scope": "Fresh external oracle facts, not retrieved/generated claims. Balanced majority baseline 4/8. No independent human source adjudication.",
+    "protocols": [
+      "legacy",
+      "structured"
+    ],
+    "api_cost": 0,
+    "span_mode": "constrained",
+    "code_sha256": {
+      "app/clients.py": "ab30fef8dcabb186e475ecf6049ebe380a569b443c74f05c3531d36346959ab6",
+      "app/verdict.py": "073f46f489a88a6f86ac17b11737b2d2afc8c11755752fba7fea87732e92e74a",
+      "app/qa.py": "bcf3234472422b1518e040eca758402b4eb55a698e324d9ad9a0fde659e8171d"
+    }
+  },
+  "records": [
+    {
+      "id": "MH-2a58564015c3",
+      "category": "comparison_query",
+      "protocol": "legacy",
+      "expected": "yes",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 305,
+        "completion_tokens": 16,
+        "model_duration_ms": 4383.9,
+        "prompt_eval_ms": 2601.5,
+        "completion_eval_ms": 1711.1
+      },
+      "latency_ms": 4430.6,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-2a58564015c3",
+      "category": "comparison_query",
+      "protocol": "structured",
+      "expected": "yes",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "atomic",
+        "question_complete": true,
+        "comparison_dimension": "measures taken by central bankers in response to supply disruptions and combat inflation",
+        "propositions": [
+          {
+            "question_span": "Do the 'Business Line' article's views on the actions of central bankers in response to supply disruptions align with 'The Sydney Morning Herald' article's depiction of the measures taken by The Federal Reserve to combat inflation",
+            "truth": "unknown",
+            "claim_indices": []
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 478,
+        "completion_tokens": 114,
+        "model_duration_ms": 18678.0,
+        "prompt_eval_ms": 5230.2,
+        "completion_eval_ms": 13390.7
+      },
+      "latency_ms": 18708.1,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-2aa1204c3fca",
+      "category": "comparison_query",
+      "protocol": "structured",
+      "expected": "yes",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "business practices legality",
+        "propositions": [
+          {
+            "question_span": "Does the Fortune article claim that Alameda Research's business practices with FTX were legal, in contrast to the TechCrunch article which claims that Alameda Research misused FTX customer funds",
+            "truth": "supported",
+            "claim_indices": [
+              1
+            ]
+          }
+        ],
+        "validation_issues": [
+          "comparison_dimension_not_found"
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 494,
+        "completion_tokens": 99,
+        "model_duration_ms": 14859.1,
+        "prompt_eval_ms": 3203.7,
+        "completion_eval_ms": 11599.6
+      },
+      "latency_ms": 14885.9,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-2aa1204c3fca",
+      "category": "comparison_query",
+      "protocol": "legacy",
+      "expected": "yes",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "evidence_ids": [
+          "oracle-1"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 325,
+        "completion_tokens": 15,
+        "model_duration_ms": 5288.6,
+        "prompt_eval_ms": 3512.5,
+        "completion_eval_ms": 1719.8
+      },
+      "latency_ms": 5316.7,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "MH-2b35d0bfa29d",
+      "category": "comparison_query",
+      "protocol": "legacy",
+      "expected": "no",
+      "verdict": {
+        "value": "no",
+        "claim_index": 1,
+        "evidence_ids": [
+          "oracle-1"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 288,
+        "completion_tokens": 15,
+        "model_duration_ms": 4144.1,
+        "prompt_eval_ms": 2472.5,
+        "completion_eval_ms": 1617.0
+      },
+      "latency_ms": 4171.9,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "MH-2b35d0bfa29d",
+      "category": "comparison_query",
+      "protocol": "structured",
+      "expected": "no",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "field goal outcome",
+        "propositions": [
+          {
+            "question_span": "Did the Sporting News article featuring Jayden Fielding mention a successful field goal attempt, while the Sporting News article with Alejandro Mata discuss a missed field goal, contrasting the outcomes of their respective field goal attempts",
+            "truth": "contradicted",
+            "claim_indices": [
+              1
+            ]
+          }
+        ],
+        "validation_issues": [
+          "comparison_dimension_not_found"
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 459,
+        "completion_tokens": 103,
+        "model_duration_ms": 17382.4,
+        "prompt_eval_ms": 5249.6,
+        "completion_eval_ms": 12077.8
+      },
+      "latency_ms": 17411.2,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-2c818c22a629",
+      "category": "comparison_query",
+      "protocol": "structured",
+      "expected": "no",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "grief experience at big events",
+        "propositions": [
+          {
+            "question_span": "Did individuals who have not lost a parent, as discussed in 'The Independent - Life and Style', experience grief at big events in a similar way to how Liam Neeson described his experience with grief to 'FOX News - Entertainment'",
+            "truth": "unknown",
+            "claim_indices": []
+          }
+        ],
+        "validation_issues": [
+          "comparison_dimension_not_found"
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 486,
+        "completion_tokens": 107,
+        "model_duration_ms": 15912.8,
+        "prompt_eval_ms": 3250.3,
+        "completion_eval_ms": 12607.5
+      },
+      "latency_ms": 15946.7,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-2c818c22a629",
+      "category": "comparison_query",
+      "protocol": "legacy",
+      "expected": "no",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 309,
+        "completion_tokens": 16,
+        "model_duration_ms": 5264.1,
+        "prompt_eval_ms": 3488.5,
+        "completion_eval_ms": 1719.2
+      },
+      "latency_ms": 5291.7,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-35ff861e8427",
+      "category": "temporal_query",
+      "protocol": "legacy",
+      "expected": "yes",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 353,
+        "completion_tokens": 16,
+        "model_duration_ms": 5018.8,
+        "prompt_eval_ms": 3204.7,
+        "completion_eval_ms": 1758.1
+      },
+      "latency_ms": 5045.7,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-35ff861e8427",
+      "category": "temporal_query",
+      "protocol": "structured",
+      "expected": "yes",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "stance consistency",
+        "propositions": [
+          {
+            "question_span": "Has the stance of the European Union towards X (formerly Twitter) regarding the spread of disinformation and illegal content on the platform as reported by TechCrunch remained consistent between the analysis published on September 26, 2023, and the urgent warning issued following the Hamas attacks as of October 10, 2023",
+            "truth": "unknown",
+            "claim_indices": []
+          }
+        ],
+        "validation_issues": [
+          "comparison_dimension_not_found"
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 554,
+        "completion_tokens": 128,
+        "model_duration_ms": 23094.6,
+        "prompt_eval_ms": 6662.4,
+        "completion_eval_ms": 16375.0
+      },
+      "latency_ms": 23124.7,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-373552ad432f",
+      "category": "temporal_query",
+      "protocol": "structured",
+      "expected": "yes",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "allegations of financial misrepresentations",
+        "propositions": [
+          {
+            "question_span": "After the report by Fortune on September 26, 2023, claiming Donald Trump inflated the value of his Trump Tower apartment, did The Age report on November 7, 2023, maintain consistency regarding the allegations of Donald Trump's financial misrepresentations",
+            "truth": "unknown",
+            "claim_indices": []
+          }
+        ],
+        "validation_issues": [
+          "comparison_dimension_not_found"
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 476,
+        "completion_tokens": 121,
+        "model_duration_ms": 17217.6,
+        "prompt_eval_ms": 2867.1,
+        "completion_eval_ms": 14294.2
+      },
+      "latency_ms": 17245.9,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-373552ad432f",
+      "category": "temporal_query",
+      "protocol": "legacy",
+      "expected": "yes",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 288,
+        "completion_tokens": 16,
+        "model_duration_ms": 4976.2,
+        "prompt_eval_ms": 3195.7,
+        "completion_eval_ms": 1725.7
+      },
+      "latency_ms": 4998.8,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-3716695d4dab",
+      "category": "temporal_query",
+      "protocol": "legacy",
+      "expected": "no",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 329,
+        "completion_tokens": 16,
+        "model_duration_ms": 5022.5,
+        "prompt_eval_ms": 3242.0,
+        "completion_eval_ms": 1726.1
+      },
+      "latency_ms": 5050.2,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-3716695d4dab",
+      "category": "temporal_query",
+      "protocol": "structured",
+      "expected": "no",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "atomic",
+        "question_complete": false,
+        "comparison_dimension": "",
+        "propositions": [
+          {
+            "question_span": "Did The Guardian's report on October 24, 2023, regarding Britney Spears' experiences at the age of 21 maintain consistency in the narrative of her struggles with autonomy and public scrutiny, after The Independent - Life and Style reported on Britney Spears' voluntary lithium intake on October 18, 2023",
+            "truth": "unknown",
+            "claim_indices": []
+          }
+        ],
+        "validation_issues": [
+          "incomplete_question"
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 531,
+        "completion_tokens": 130,
+        "model_duration_ms": 21691.2,
+        "prompt_eval_ms": 6077.8,
+        "completion_eval_ms": 15556.9
+      },
+      "latency_ms": 21719.7,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-377f8952e85b",
+      "category": "temporal_query",
+      "protocol": "structured",
+      "expected": "no",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "portrayal of Sam Bankman-Fried's actions related to the FTX collapse",
+        "propositions": [
+          {
+            "question_span": "Was there inconsistency in the portrayal of Sam Bankman-Fried's actions related to the FTX collapse after the TechCrunch report published on October 6, 2023, or the subsequent TechCrunch report on Sam Bankman-Fried published on October 7, 2023",
+            "truth": "unknown",
+            "claim_indices": []
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 553,
+        "completion_tokens": 135,
+        "model_duration_ms": 20093.5,
+        "prompt_eval_ms": 3955.1,
+        "completion_eval_ms": 16082.6
+      },
+      "latency_ms": 20121.8,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "MH-377f8952e85b",
+      "category": "temporal_query",
+      "protocol": "legacy",
+      "expected": "no",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "evidence_ids": [
+          "oracle-1"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 360,
+        "completion_tokens": 15,
+        "model_duration_ms": 5928.8,
+        "prompt_eval_ms": 4256.6,
+        "completion_eval_ms": 1616.8
+      },
+      "latency_ms": 5956.3,
+      "error": null,
+      "correct": false
+    }
+  ],
+  "summary": {
+    "legacy": {
+      "correct": 2,
+      "total": 8,
+      "unclear": 5,
+      "missing_verdict": 0,
+      "p50_ms": 5047.95,
+      "completion_tokens": 125,
+      "by_category": {
+        "comparison_query": {
+          "correct": 2,
+          "total": 4
+        },
+        "temporal_query": {
+          "correct": 0,
+          "total": 4
+        }
+      }
+    },
+    "structured": {
+      "correct": 0,
+      "total": 8,
+      "unclear": 8,
+      "missing_verdict": 0,
+      "p50_ms": 18059.65,
+      "completion_tokens": 937,
+      "by_category": {
+        "comparison_query": {
+          "correct": 0,
+          "total": 4
+        },
+        "temporal_query": {
+          "correct": 0,
+          "total": 4
+        }
+      }
+    }
+  }
+}

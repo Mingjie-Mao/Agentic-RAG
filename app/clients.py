@@ -9,6 +9,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from app.config import settings
 from app.task_analysis import acceptance_items, conflict_intent, explicit_choice
+from app.verdict import StructuredVerdict, constrained_schema, question_slots
 
 
 class DependencyError(RuntimeError):
@@ -373,7 +374,9 @@ class Models:
             "acceptance_items": required_items,
         }
 
-    def decide_verdict(self, question: str, claims: list[dict]) -> tuple[AnswerVerdict, dict]:
+    def decide_verdict(
+        self, question: str, claims: list[dict]
+    ) -> tuple[AnswerVerdict | StructuredVerdict, dict]:
         """Read a yes/no verdict out of claims that are already cited and validated.
 
         A question like "do both reports say X?" is answered here in prose: "the two
@@ -384,8 +387,14 @@ class Models:
         claims do not settle the question it returns `unclear` rather than guessing.
         """
         cfg = settings()
-        schema = AnswerVerdict.model_json_schema()
-        schema["properties"]["claim_index"]["maximum"] = len(claims)
+        structured = cfg.verdict_protocol == "structured"
+        response_type = StructuredVerdict if structured else AnswerVerdict
+        schema = response_type.model_json_schema()
+        constrained = structured and cfg.verdict_span_mode == "constrained"
+        if constrained:
+            schema = constrained_schema(question)
+        if not structured:
+            schema["properties"]["claim_index"]["maximum"] = len(claims)
         result = self._chat(
             {
                 "model": cfg.chat_model,
@@ -396,11 +405,26 @@ class Models:
                     {
                         "role": "system",
                         "content": (
+                            (
+                                "只依据 claims 判断问题，不使用外部知识。拆出问题的每个必要命题，"
+                                "如果提供 question_slots，每个槽位恰好评估一次，question_span 选槽位原文。"
+                                "question_span 必须逐字复制问题中该命题的片段；不得把否定改成肯定。"
+                                "每项 truth 是 supported（claims明确肯定）、contradicted（明确否定）"
+                                "或 unknown（缺失或不确定），claim_indices 给出支持判断的全部编号。"
+                                "分别问 A 和 B 是否成立用 all；任一个成立用 any；单项用 atomic。"
+                                "比较一致性用 comparison、一项命题、comparison_dimension 逐字复制"
+                                "问题要求比较的属性；不要用另一个属性的差异代替问题问的属性。"
+                                "非比较时 comparison_dimension 填空字符串。"
+                                "question_complete 只在所有必要分句和来源都被纳入时为 true；"
+                                "无法分解的复杂嵌套问题填 false。unknown 可以不引用。"
+                                "不要给总体结论，系统按逻辑组合。只输出指定 JSON。"
+                            ) if structured else (
                             "只依据给出的 claims 判断问题的结论。claims 是已经过引用校验的结论，"
                             "不得改写，也不得使用 claims 之外的任何知识。"
                             "结论成立选 yes，不成立选 no，claims 不足以判断选 unclear。"
                             "claim_index 指向最直接支持该判断的那条 claim 的编号；unclear 时填 0。"
                             "只输出指定 JSON。"
+                            )
                         ),
                     },
                     {
@@ -408,6 +432,7 @@ class Models:
                         "content": json.dumps(
                             {
                                 "question": question,
+                                **({"question_slots": question_slots(question)} if constrained else {}),
                                 "claims": [
                                     {"index": number, "text": claim["text"]}
                                     for number, claim in enumerate(claims, 1)
@@ -417,7 +442,10 @@ class Models:
                         )[:12000],
                     },
                 ],
-                "options": {"temperature": 0, "seed": 42, "num_ctx": 4096, "num_predict": 60},
+                "options": {
+                    "temperature": 0, "seed": 42, "num_ctx": 4096,
+                    "num_predict": 500 if structured else 60,
+                },
             },
         )
         usage = {
@@ -428,7 +456,7 @@ class Models:
             "completion_eval_ms": round(result.get("eval_duration", 0) / 1e6, 1),
         }
         try:
-            return AnswerVerdict.model_validate_json(result["message"]["content"]), usage
+            return response_type.model_validate_json(result["message"]["content"]), usage
         except (ValueError, KeyError, TypeError) as exc:
             raise DependencyError("模型未返回有效的判断结论", stage="verdict") from exc
 

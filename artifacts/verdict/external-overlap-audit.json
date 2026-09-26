@@ -1,0 +1,63 @@
+{
+  "scope": "Post-run lexical audit only; original scores and selection remain frozen. Exact hash novelty does not ensure semantic independence. A 0.90 character similarity is a screening proxy, not human adjudication.",
+  "near_duplicate_count": 1,
+  "total": 8,
+  "rows": [
+    {
+      "id": "MH-2a58564015c3",
+      "nearest_previous_id": "MH-0c2c6cb30b77",
+      "query_similarity": 0.432,
+      "near_duplicate_at_090": false,
+      "shared_gold_documents": 0
+    },
+    {
+      "id": "MH-2aa1204c3fca",
+      "nearest_previous_id": "MH-1cdb794399af",
+      "query_similarity": 0.9821,
+      "near_duplicate_at_090": true,
+      "shared_gold_documents": 2
+    },
+    {
+      "id": "MH-2b35d0bfa29d",
+      "nearest_previous_id": "MH-241db14ecf7b",
+      "query_similarity": 0.4425,
+      "near_duplicate_at_090": false,
+      "shared_gold_documents": 1
+    },
+    {
+      "id": "MH-2c818c22a629",
+      "nearest_previous_id": "MH-1932c56622b7",
+      "query_similarity": 0.328,
+      "near_duplicate_at_090": false,
+      "shared_gold_documents": 0
+    },
+    {
+      "id": "MH-35ff861e8427",
+      "nearest_previous_id": "MH-1cdb794399af",
+      "query_similarity": 0.3514,
+      "near_duplicate_at_090": false,
+      "shared_gold_documents": 0
+    },
+    {
+      "id": "MH-373552ad432f",
+      "nearest_previous_id": "MH-2fa0de5ec78e",
+      "query_similarity": 0.4087,
+      "near_duplicate_at_090": false,
+      "shared_gold_documents": 0
+    },
+    {
+      "id": "MH-3716695d4dab",
+      "nearest_previous_id": "MH-209e10929f9c",
+      "query_similarity": 0.3586,
+      "near_duplicate_at_090": false,
+      "shared_gold_documents": 0
+    },
+    {
+      "id": "MH-377f8952e85b",
+      "nearest_previous_id": "MH-0219de95d13e",
+      "query_similarity": 0.4624,
+      "near_duplicate_at_090": false,
+      "shared_gold_documents": 1
+    }
+  ]
+}

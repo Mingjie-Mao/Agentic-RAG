@@ -1,0 +1,246 @@
+{
+  "name": "claims-verdict-synthetic-v1",
+  "scope": "Author-written, unambiguous synthetic claims. Mechanism regression only; not independent source entailment or external accuracy.",
+  "items": [
+    {
+      "id": "V01",
+      "category": "conjunction",
+      "question": "Did North approve the patch and did South reject the patch?",
+      "claims": [
+        {
+          "text": "North approved the patch.",
+          "evidence_ids": [
+            "synthetic-1-1"
+          ]
+        },
+        {
+          "text": "South rejected the patch.",
+          "evidence_ids": [
+            "synthetic-1-2"
+          ]
+        }
+      ],
+      "expected": "yes"
+    },
+    {
+      "id": "V02",
+      "category": "conjunction",
+      "question": "Did North approve the patch and did South reject the patch?",
+      "claims": [
+        {
+          "text": "North did not approve the patch.",
+          "evidence_ids": [
+            "synthetic-2-1"
+          ]
+        },
+        {
+          "text": "South rejected the patch.",
+          "evidence_ids": [
+            "synthetic-2-2"
+          ]
+        }
+      ],
+      "expected": "no"
+    },
+    {
+      "id": "V03",
+      "category": "conjunction",
+      "question": "Did North approve the patch and did South reject the patch?",
+      "claims": [
+        {
+          "text": "North approved the patch.",
+          "evidence_ids": [
+            "synthetic-3-1"
+          ]
+        },
+        {
+          "text": "South has not announced a decision.",
+          "evidence_ids": [
+            "synthetic-3-2"
+          ]
+        }
+      ],
+      "expected": "unclear"
+    },
+    {
+      "id": "V04",
+      "category": "conjunction",
+      "question": "甲组是否批准更新，并且乙组是否拒绝更新？",
+      "claims": [
+        {
+          "text": "甲组批准了更新。",
+          "evidence_ids": [
+            "synthetic-4-1"
+          ]
+        },
+        {
+          "text": "乙组拒绝了更新。",
+          "evidence_ids": [
+            "synthetic-4-2"
+          ]
+        }
+      ],
+      "expected": "yes"
+    },
+    {
+      "id": "V05",
+      "category": "conjunction",
+      "question": "甲组是否批准更新，并且乙组是否拒绝更新？",
+      "claims": [
+        {
+          "text": "甲组没有批准更新。",
+          "evidence_ids": [
+            "synthetic-5-1"
+          ]
+        },
+        {
+          "text": "乙组拒绝了更新。",
+          "evidence_ids": [
+            "synthetic-5-2"
+          ]
+        }
+      ],
+      "expected": "no"
+    },
+    {
+      "id": "V06",
+      "category": "conjunction",
+      "question": "甲组是否批准更新，并且乙组是否拒绝更新？",
+      "claims": [
+        {
+          "text": "甲组批准了更新。",
+          "evidence_ids": [
+            "synthetic-6-1"
+          ]
+        },
+        {
+          "text": "乙组仅公布了会议日期，未作出决定。",
+          "evidence_ids": [
+            "synthetic-6-2"
+          ]
+        }
+      ],
+      "expected": "unclear"
+    },
+    {
+      "id": "V07",
+      "category": "comparison",
+      "question": "Are the launch dates consistent in the two reports?",
+      "claims": [
+        {
+          "text": "Report A sets the launch date to April 8 and operating hours to 09:00–17:00.",
+          "evidence_ids": [
+            "synthetic-7-1"
+          ]
+        },
+        {
+          "text": "Report B sets the launch date to April 8 and operating hours to 10:00–16:00.",
+          "evidence_ids": [
+            "synthetic-7-2"
+          ]
+        }
+      ],
+      "expected": "yes"
+    },
+    {
+      "id": "V08",
+      "category": "comparison",
+      "question": "Are the launch dates consistent in the two reports?",
+      "claims": [
+        {
+          "text": "Report A sets the launch date to April 8.",
+          "evidence_ids": [
+            "synthetic-8-1"
+          ]
+        },
+        {
+          "text": "Report B sets the launch date to April 9.",
+          "evidence_ids": [
+            "synthetic-8-2"
+          ]
+        }
+      ],
+      "expected": "no"
+    },
+    {
+      "id": "V09",
+      "category": "comparison",
+      "question": "两份资料给出的生效日期是否一致？",
+      "claims": [
+        {
+          "text": "资料甲的生效日期是6月1日，阈值是2%。",
+          "evidence_ids": [
+            "synthetic-9-1"
+          ]
+        },
+        {
+          "text": "资料乙的生效日期是6月1日，阈值是3%。",
+          "evidence_ids": [
+            "synthetic-9-2"
+          ]
+        }
+      ],
+      "expected": "yes"
+    },
+    {
+      "id": "V10",
+      "category": "comparison",
+      "question": "两份资料给出的生效日期是否一致？",
+      "claims": [
+        {
+          "text": "资料甲的生效日期是6月1日。",
+          "evidence_ids": [
+            "synthetic-10-1"
+          ]
+        },
+        {
+          "text": "资料乙仅给出了发布日期5月30日，未说明生效日期。",
+          "evidence_ids": [
+            "synthetic-10-2"
+          ]
+        }
+      ],
+      "expected": "unclear"
+    },
+    {
+      "id": "V11",
+      "category": "disjunction",
+      "question": "Did either East approve the request or West approve the request?",
+      "claims": [
+        {
+          "text": "East rejected the request.",
+          "evidence_ids": [
+            "synthetic-11-1"
+          ]
+        },
+        {
+          "text": "West approved the request.",
+          "evidence_ids": [
+            "synthetic-11-2"
+          ]
+        }
+      ],
+      "expected": "yes"
+    },
+    {
+      "id": "V12",
+      "category": "disjunction",
+      "question": "Did either East approve the request or West approve the request?",
+      "claims": [
+        {
+          "text": "East rejected the request.",
+          "evidence_ids": [
+            "synthetic-12-1"
+          ]
+        },
+        {
+          "text": "West rejected the request.",
+          "evidence_ids": [
+            "synthetic-12-2"
+          ]
+        }
+      ],
+      "expected": "no"
+    }
+  ]
+}

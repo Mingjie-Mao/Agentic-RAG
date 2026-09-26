@@ -1,0 +1,106 @@
+{
+  "scope": "Judgment-only, local Qwen2.5 7B. Synthetic development and fresh oracle-facts probe are separate. Not end-to-end accuracy or semantic source verification.",
+  "api_cost": 0,
+  "experiments": {
+    "synthetic_free_pilot": {
+      "path": "artifacts/verdict-synthetic-v1.json",
+      "artifact_sha256": "fa3c289f6c8f5e1cf003c5baaea125d25985ea5c515b4c77afe8d4ced8d5f973",
+      "questions": 12,
+      "arms": {
+        "legacy": {
+          "correct": 3,
+          "total": 12,
+          "p50_ms": 3441.8,
+          "p95_ms": 5504.8,
+          "prompt_tokens": 1889,
+          "completion_tokens": 180,
+          "structural_rejections": 0,
+          "missing_verdict": 0
+        },
+        "structured": {
+          "correct": 5,
+          "total": 12,
+          "p50_ms": 13128.5,
+          "p95_ms": 15816.5,
+          "prompt_tokens": 3149,
+          "completion_tokens": 1117,
+          "structural_rejections": 10,
+          "missing_verdict": 0
+        }
+      },
+      "paired": {
+        "legacy_only_correct": 3,
+        "structured_only_correct": 5,
+        "both_correct": 0,
+        "both_wrong": 4
+      }
+    },
+    "synthetic_constrained_development": {
+      "path": "artifacts/verdict-synthetic-v2-constrained.json",
+      "artifact_sha256": "b3891c64db1a81a64774aedea137de49f78f5e2d9d9cea36025678d6db6db3b7",
+      "questions": 12,
+      "arms": {
+        "legacy": {
+          "correct": 3,
+          "total": 12,
+          "p50_ms": 3119.3,
+          "p95_ms": 3528.2,
+          "prompt_tokens": 1889,
+          "completion_tokens": 180,
+          "structural_rejections": 0,
+          "missing_verdict": 0
+        },
+        "structured": {
+          "correct": 9,
+          "total": 12,
+          "p50_ms": 12201.3,
+          "p95_ms": 15116.2,
+          "prompt_tokens": 3593,
+          "completion_tokens": 1028,
+          "structural_rejections": 2,
+          "missing_verdict": 0
+        }
+      },
+      "paired": {
+        "legacy_only_correct": 0,
+        "structured_only_correct": 6,
+        "both_correct": 3,
+        "both_wrong": 3
+      }
+    },
+    "fresh_external_oracle": {
+      "path": "artifacts/verdict-external-oracle-r4-8.json",
+      "artifact_sha256": "305499c8b85aa7f56c946bd35b94b1ea327709a3d1523482a81285e55868916f",
+      "questions": 8,
+      "arms": {
+        "legacy": {
+          "correct": 2,
+          "total": 8,
+          "p50_ms": 5047.9,
+          "p95_ms": 5732.4,
+          "prompt_tokens": 2557,
+          "completion_tokens": 125,
+          "structural_rejections": 0,
+          "missing_verdict": 0
+        },
+        "structured": {
+          "correct": 0,
+          "total": 8,
+          "p50_ms": 18059.7,
+          "p95_ms": 22633.0,
+          "prompt_tokens": 4031,
+          "completion_tokens": 937,
+          "structural_rejections": 6,
+          "missing_verdict": 0
+        }
+      },
+      "paired": {
+        "legacy_only_correct": 2,
+        "structured_only_correct": 0,
+        "both_correct": 0,
+        "both_wrong": 6
+      }
+    }
+  },
+  "deployment_decision": "keep_legacy_default; structured protocol is experimental and has not met the external quality/latency gate"
+}

@@ -1,5 +1,6 @@
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -54,6 +55,8 @@ class Settings(BaseSettings):
     # not only the passages that happened to rank in the lane.
     passage_expand_documents: int = 0
     semantic_shadow_enabled: bool = False
+    verdict_protocol: Literal["legacy", "structured"] = "legacy"
+    verdict_span_mode: Literal["free", "constrained"] = "constrained"
     agent_lease_seconds: int = 300
     memory_url: str = ""
     # JSON: {"tenant_id:user_id": "bearer-token"}. Kept out of API responses/logs.

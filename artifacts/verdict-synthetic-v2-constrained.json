@@ -1,0 +1,907 @@
+{
+  "metadata": {
+    "fixture_sha256": "1c0407e0e8cd74580151ecbe0c11483a7f6b093b0716a6e4a6c20620ce093794",
+    "model": "qwen2.5:7b-instruct",
+    "scope": "Author-written, unambiguous synthetic claims. Mechanism regression only; not independent source entailment or external accuracy.",
+    "protocols": [
+      "legacy",
+      "structured"
+    ],
+    "api_cost": 0,
+    "span_mode": "constrained",
+    "code_sha256": {
+      "app/clients.py": "ab30fef8dcabb186e475ecf6049ebe380a569b443c74f05c3531d36346959ab6",
+      "app/verdict.py": "073f46f489a88a6f86ac17b11737b2d2afc8c11755752fba7fea87732e92e74a",
+      "app/qa.py": "bcf3234472422b1518e040eca758402b4eb55a698e324d9ad9a0fde659e8171d"
+    }
+  },
+  "records": [
+    {
+      "id": "V01",
+      "category": "conjunction",
+      "protocol": "legacy",
+      "expected": "yes",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "evidence_ids": [
+          "synthetic-1-1"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 148,
+        "completion_tokens": 15,
+        "model_duration_ms": 2452.2,
+        "prompt_eval_ms": 806.9,
+        "completion_eval_ms": 1575.0
+      },
+      "latency_ms": 2490.3,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V01",
+      "category": "conjunction",
+      "protocol": "structured",
+      "expected": "yes",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "claim_indices": [
+          1,
+          2
+        ],
+        "evidence_ids": [
+          "synthetic-1-1",
+          "synthetic-1-2"
+        ],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "all",
+        "question_complete": true,
+        "comparison_dimension": "",
+        "propositions": [
+          {
+            "question_span": "Did North approve the patch",
+            "truth": "supported",
+            "claim_indices": [
+              1
+            ]
+          },
+          {
+            "question_span": "did South reject the patch",
+            "truth": "supported",
+            "claim_indices": [
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 291,
+        "completion_tokens": 93,
+        "model_duration_ms": 13922.7,
+        "prompt_eval_ms": 3145.1,
+        "completion_eval_ms": 10723.0
+      },
+      "latency_ms": 13953.5,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V02",
+      "category": "conjunction",
+      "protocol": "structured",
+      "expected": "no",
+      "verdict": {
+        "value": "no",
+        "claim_index": 1,
+        "claim_indices": [
+          1,
+          2
+        ],
+        "evidence_ids": [
+          "synthetic-2-1",
+          "synthetic-2-2"
+        ],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "all",
+        "question_complete": true,
+        "comparison_dimension": "",
+        "propositions": [
+          {
+            "question_span": "Did North approve the patch",
+            "truth": "contradicted",
+            "claim_indices": [
+              1
+            ]
+          },
+          {
+            "question_span": "did South reject the patch",
+            "truth": "supported",
+            "claim_indices": [
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 293,
+        "completion_tokens": 95,
+        "model_duration_ms": 11455.0,
+        "prompt_eval_ms": 381.7,
+        "completion_eval_ms": 11016.7
+      },
+      "latency_ms": 11483.4,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V02",
+      "category": "conjunction",
+      "protocol": "legacy",
+      "expected": "no",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 150,
+        "completion_tokens": 15,
+        "model_duration_ms": 3419.2,
+        "prompt_eval_ms": 1766.4,
+        "completion_eval_ms": 1598.7
+      },
+      "latency_ms": 3446.6,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V03",
+      "category": "conjunction",
+      "protocol": "legacy",
+      "expected": "unclear",
+      "verdict": {
+        "value": "no",
+        "claim_index": 2,
+        "evidence_ids": [
+          "synthetic-3-2"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 150,
+        "completion_tokens": 15,
+        "model_duration_ms": 2086.2,
+        "prompt_eval_ms": 368.8,
+        "completion_eval_ms": 1662.7
+      },
+      "latency_ms": 2113.0,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V03",
+      "category": "conjunction",
+      "protocol": "structured",
+      "expected": "unclear",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "all",
+        "question_complete": true,
+        "comparison_dimension": "",
+        "propositions": [
+          {
+            "question_span": "Did North approve the patch",
+            "truth": "supported",
+            "claim_indices": [
+              1
+            ]
+          },
+          {
+            "question_span": "did South reject the patch",
+            "truth": "unknown",
+            "claim_indices": [
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 293,
+        "completion_tokens": 93,
+        "model_duration_ms": 13931.2,
+        "prompt_eval_ms": 3172.6,
+        "completion_eval_ms": 10702.6
+      },
+      "latency_ms": 13959.2,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V04",
+      "category": "conjunction",
+      "protocol": "structured",
+      "expected": "yes",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "claim_indices": [
+          1,
+          2
+        ],
+        "evidence_ids": [
+          "synthetic-4-1",
+          "synthetic-4-2"
+        ],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "all",
+        "question_complete": true,
+        "comparison_dimension": "",
+        "propositions": [
+          {
+            "question_span": "甲组是否批准更新",
+            "truth": "supported",
+            "claim_indices": [
+              1
+            ]
+          },
+          {
+            "question_span": "乙组是否拒绝更新",
+            "truth": "supported",
+            "claim_indices": [
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 295,
+        "completion_tokens": 93,
+        "model_duration_ms": 11909.8,
+        "prompt_eval_ms": 1088.2,
+        "completion_eval_ms": 10766.3
+      },
+      "latency_ms": 11945.1,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V04",
+      "category": "conjunction",
+      "protocol": "legacy",
+      "expected": "yes",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 152,
+        "completion_tokens": 15,
+        "model_duration_ms": 3414.1,
+        "prompt_eval_ms": 1774.4,
+        "completion_eval_ms": 1585.3
+      },
+      "latency_ms": 3441.6,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V05",
+      "category": "conjunction",
+      "protocol": "legacy",
+      "expected": "no",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "evidence_ids": [
+          "synthetic-5-1"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 152,
+        "completion_tokens": 15,
+        "model_duration_ms": 2084.3,
+        "prompt_eval_ms": 381.5,
+        "completion_eval_ms": 1647.3
+      },
+      "latency_ms": 2111.3,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V05",
+      "category": "conjunction",
+      "protocol": "structured",
+      "expected": "no",
+      "verdict": {
+        "value": "no",
+        "claim_index": 1,
+        "claim_indices": [
+          1,
+          2
+        ],
+        "evidence_ids": [
+          "synthetic-5-1",
+          "synthetic-5-2"
+        ],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "all",
+        "question_complete": true,
+        "comparison_dimension": "",
+        "propositions": [
+          {
+            "question_span": "甲组是否批准更新",
+            "truth": "contradicted",
+            "claim_indices": [
+              1
+            ]
+          },
+          {
+            "question_span": "乙组是否拒绝更新",
+            "truth": "supported",
+            "claim_indices": [
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 295,
+        "completion_tokens": 95,
+        "model_duration_ms": 14586.2,
+        "prompt_eval_ms": 3455.2,
+        "completion_eval_ms": 11074.3
+      },
+      "latency_ms": 14614.6,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V06",
+      "category": "conjunction",
+      "protocol": "structured",
+      "expected": "unclear",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "all",
+        "question_complete": false,
+        "comparison_dimension": "",
+        "propositions": [
+          {
+            "question_span": "甲组是否批准更新",
+            "truth": "supported",
+            "claim_indices": [
+              1
+            ]
+          },
+          {
+            "question_span": "乙组是否拒绝更新",
+            "truth": "unknown",
+            "claim_indices": []
+          }
+        ],
+        "validation_issues": [
+          "incomplete_question"
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 300,
+        "completion_tokens": 72,
+        "model_duration_ms": 9108.0,
+        "prompt_eval_ms": 704.6,
+        "completion_eval_ms": 8349.0
+      },
+      "latency_ms": 9136.9,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V06",
+      "category": "conjunction",
+      "protocol": "legacy",
+      "expected": "unclear",
+      "verdict": {
+        "value": "no",
+        "claim_index": 1,
+        "evidence_ids": [
+          "synthetic-6-1"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 157,
+        "completion_tokens": 15,
+        "model_duration_ms": 3413.6,
+        "prompt_eval_ms": 1791.6,
+        "completion_eval_ms": 1566.6
+      },
+      "latency_ms": 3441.1,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V07",
+      "category": "comparison",
+      "protocol": "legacy",
+      "expected": "yes",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 190,
+        "completion_tokens": 15,
+        "model_duration_ms": 2770.8,
+        "prompt_eval_ms": 1067.6,
+        "completion_eval_ms": 1647.3
+      },
+      "latency_ms": 2797.6,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V07",
+      "category": "comparison",
+      "protocol": "structured",
+      "expected": "yes",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "launch dates",
+        "propositions": [
+          {
+            "question_span": "Are the launch dates consistent in the two reports",
+            "truth": "unknown",
+            "claim_indices": []
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 330,
+        "completion_tokens": 69,
+        "model_duration_ms": 12656.0,
+        "prompt_eval_ms": 3829.1,
+        "completion_eval_ms": 8771.0
+      },
+      "latency_ms": 12684.7,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V08",
+      "category": "comparison",
+      "protocol": "structured",
+      "expected": "no",
+      "verdict": {
+        "value": "no",
+        "claim_index": 1,
+        "claim_indices": [
+          1,
+          2
+        ],
+        "evidence_ids": [
+          "synthetic-8-1",
+          "synthetic-8-2"
+        ],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "launch dates",
+        "propositions": [
+          {
+            "question_span": "Are the launch dates consistent in the two reports",
+            "truth": "contradicted",
+            "claim_indices": [
+              1,
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 298,
+        "completion_tokens": 76,
+        "model_duration_ms": 9475.8,
+        "prompt_eval_ms": 401.6,
+        "completion_eval_ms": 9015.5
+      },
+      "latency_ms": 9503.4,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V08",
+      "category": "comparison",
+      "protocol": "legacy",
+      "expected": "no",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 158,
+        "completion_tokens": 15,
+        "model_duration_ms": 3457.4,
+        "prompt_eval_ms": 1805.1,
+        "completion_eval_ms": 1598.5
+      },
+      "latency_ms": 3482.7,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V09",
+      "category": "comparison",
+      "protocol": "legacy",
+      "expected": "yes",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 2,
+        "evidence_ids": [
+          "synthetic-9-2"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 171,
+        "completion_tokens": 15,
+        "model_duration_ms": 2721.3,
+        "prompt_eval_ms": 1059.1,
+        "completion_eval_ms": 1599.1
+      },
+      "latency_ms": 2748.2,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V09",
+      "category": "comparison",
+      "protocol": "structured",
+      "expected": "yes",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "claim_indices": [
+          1,
+          2
+        ],
+        "evidence_ids": [
+          "synthetic-9-1",
+          "synthetic-9-2"
+        ],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "生效日期",
+        "propositions": [
+          {
+            "question_span": "两份资料给出的生效日期是否一致",
+            "truth": "supported",
+            "claim_indices": [
+              1,
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 311,
+        "completion_tokens": 74,
+        "model_duration_ms": 12280.4,
+        "prompt_eval_ms": 3568.1,
+        "completion_eval_ms": 8657.2
+      },
+      "latency_ms": 12308.1,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V10",
+      "category": "comparison",
+      "protocol": "structured",
+      "expected": "unclear",
+      "verdict": {
+        "value": "no",
+        "claim_index": 1,
+        "claim_indices": [
+          1,
+          2
+        ],
+        "evidence_ids": [
+          "synthetic-10-1",
+          "synthetic-10-2"
+        ],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "生效日期",
+        "propositions": [
+          {
+            "question_span": "两份资料给出的生效日期是否一致",
+            "truth": "contradicted",
+            "claim_indices": [
+              1,
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 305,
+        "completion_tokens": 76,
+        "model_duration_ms": 10178.8,
+        "prompt_eval_ms": 1146.7,
+        "completion_eval_ms": 8976.2
+      },
+      "latency_ms": 10207.3,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V10",
+      "category": "comparison",
+      "protocol": "legacy",
+      "expected": "unclear",
+      "verdict": {
+        "value": "no",
+        "claim_index": 2,
+        "evidence_ids": [
+          "synthetic-10-2"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 165,
+        "completion_tokens": 15,
+        "model_duration_ms": 3556.2,
+        "prompt_eval_ms": 1858.7,
+        "completion_eval_ms": 1641.9
+      },
+      "latency_ms": 3583.9,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V11",
+      "category": "disjunction",
+      "protocol": "legacy",
+      "expected": "yes",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 2,
+        "evidence_ids": [
+          "synthetic-11-2"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 148,
+        "completion_tokens": 15,
+        "model_duration_ms": 2403.5,
+        "prompt_eval_ms": 714.1,
+        "completion_eval_ms": 1635.6
+      },
+      "latency_ms": 2430.3,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V11",
+      "category": "disjunction",
+      "protocol": "structured",
+      "expected": "yes",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "claim_indices": [
+          1,
+          2
+        ],
+        "evidence_ids": [
+          "synthetic-11-1",
+          "synthetic-11-2"
+        ],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "any",
+        "question_complete": true,
+        "comparison_dimension": "",
+        "propositions": [
+          {
+            "question_span": "Did either East approve the request",
+            "truth": "contradicted",
+            "claim_indices": [
+              1
+            ]
+          },
+          {
+            "question_span": "West approve the request",
+            "truth": "supported",
+            "claim_indices": [
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 291,
+        "completion_tokens": 95,
+        "model_duration_ms": 15699.9,
+        "prompt_eval_ms": 3204.6,
+        "completion_eval_ms": 12441.0
+      },
+      "latency_ms": 15729.2,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "V12",
+      "category": "disjunction",
+      "protocol": "structured",
+      "expected": "no",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "any",
+        "question_complete": false,
+        "comparison_dimension": "",
+        "propositions": [
+          {
+            "question_span": "Did either East approve the request",
+            "truth": "contradicted",
+            "claim_indices": [
+              1
+            ]
+          },
+          {
+            "question_span": "West approve the request",
+            "truth": "contradicted",
+            "claim_indices": [
+              2
+            ]
+          }
+        ],
+        "validation_issues": [
+          "incomplete_question"
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 291,
+        "completion_tokens": 97,
+        "model_duration_ms": 12066.3,
+        "prompt_eval_ms": 374.7,
+        "completion_eval_ms": 11635.6
+      },
+      "latency_ms": 12094.5,
+      "error": null,
+      "correct": false
+    },
+    {
+      "id": "V12",
+      "category": "disjunction",
+      "protocol": "legacy",
+      "expected": "no",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      },
+      "usage": {
+        "prompt_tokens": 148,
+        "completion_tokens": 15,
+        "model_duration_ms": 3421.1,
+        "prompt_eval_ms": 1792.8,
+        "completion_eval_ms": 1574.4
+      },
+      "latency_ms": 3448.6,
+      "error": null,
+      "correct": false
+    }
+  ],
+  "summary": {
+    "legacy": {
+      "correct": 3,
+      "total": 12,
+      "unclear": 5,
+      "missing_verdict": 0,
+      "p50_ms": 3119.35,
+      "completion_tokens": 180,
+      "by_category": {
+        "conjunction": {
+          "correct": 1,
+          "total": 6
+        },
+        "comparison": {
+          "correct": 1,
+          "total": 4
+        },
+        "disjunction": {
+          "correct": 1,
+          "total": 2
+        }
+      }
+    },
+    "structured": {
+      "correct": 9,
+      "total": 12,
+      "unclear": 4,
+      "missing_verdict": 0,
+      "p50_ms": 12201.3,
+      "completion_tokens": 1028,
+      "by_category": {
+        "conjunction": {
+          "correct": 6,
+          "total": 6
+        },
+        "comparison": {
+          "correct": 2,
+          "total": 4
+        },
+        "disjunction": {
+          "correct": 1,
+          "total": 2
+        }
+      }
+    }
+  }
+}

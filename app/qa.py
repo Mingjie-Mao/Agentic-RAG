@@ -106,6 +106,12 @@ def answer_verdict(models, question, claims, status):
         verdict, usage = models.decide_verdict(question, claims)
     except DependencyError:
         return None, {}
+    from app.verdict import StructuredVerdict, resolve_verdict
+
+    if isinstance(verdict, StructuredVerdict):
+        return resolve_verdict(
+            verdict, question, claims, constrained=settings().verdict_span_mode == "constrained"
+        ), usage
     index = verdict.claim_index if 1 <= verdict.claim_index <= len(claims) else None
     value = verdict.verdict if index or verdict.verdict == "unclear" else "unclear"
     return {
