@@ -1,0 +1,93 @@
+{
+  "run": "artifacts/s7-holdout/holdout-hybrid-generated.jsonl",
+  "snapshot": "192bc89271af4b1f61d6766b9c369e3d5bea7362765736fa20e109812f318fce",
+  "admitted_chunks": 4,
+  "method": "exact gold fact string (whitespace removed) inside the admitted chunk text",
+  "counts": {
+    "generation_fact_miss|all_facts_in_context": 2,
+    "generation_fact_miss|fact_missing_from_context": 3,
+    "generation_status_miss|all_facts_in_context": 2,
+    "generation_status_miss|fact_missing_from_context": 6,
+    "ok|all_facts_in_context": 51
+  },
+  "failures": [
+    {
+      "id": "Q129",
+      "failure_class": "generation_status_miss",
+      "status": "insufficient_evidence",
+      "facts_in_context": "0/1"
+    },
+    {
+      "id": "Q147",
+      "failure_class": "generation_status_miss",
+      "status": "insufficient_evidence",
+      "facts_in_context": "0/1"
+    },
+    {
+      "id": "Q150",
+      "failure_class": "generation_fact_miss",
+      "status": "answered",
+      "facts_in_context": "1/2"
+    },
+    {
+      "id": "Q152",
+      "failure_class": "generation_status_miss",
+      "status": "verification_failed",
+      "facts_in_context": "1/1"
+    },
+    {
+      "id": "Q153",
+      "failure_class": "generation_status_miss",
+      "status": "insufficient_evidence",
+      "facts_in_context": "0/1"
+    },
+    {
+      "id": "Q157",
+      "failure_class": "generation_fact_miss",
+      "status": "answered",
+      "facts_in_context": "1/1"
+    },
+    {
+      "id": "Q161",
+      "failure_class": "generation_status_miss",
+      "status": "insufficient_evidence",
+      "facts_in_context": "1/1"
+    },
+    {
+      "id": "Q169",
+      "failure_class": "generation_fact_miss",
+      "status": "answered",
+      "facts_in_context": "1/1"
+    },
+    {
+      "id": "Q171",
+      "failure_class": "generation_status_miss",
+      "status": "insufficient_evidence",
+      "facts_in_context": "0/1"
+    },
+    {
+      "id": "Q179",
+      "failure_class": "generation_status_miss",
+      "status": "insufficient_evidence",
+      "facts_in_context": "0/1"
+    },
+    {
+      "id": "Q180",
+      "failure_class": "generation_fact_miss",
+      "status": "answered",
+      "facts_in_context": "1/2"
+    },
+    {
+      "id": "Q187",
+      "failure_class": "generation_status_miss",
+      "status": "insufficient_evidence",
+      "facts_in_context": "0/1"
+    },
+    {
+      "id": "Q195",
+      "failure_class": "generation_fact_miss",
+      "status": "answered",
+      "facts_in_context": "0/1"
+    }
+  ]
+}

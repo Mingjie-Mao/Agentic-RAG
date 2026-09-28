@@ -180,14 +180,40 @@ class OllamaChat:
             raise DependencyError(f"{self.model} unavailable", stage="generation") from exc
 
 
+class Timed:
+    """Wraps a chat backend and records how long each kind of model call took.
+
+    The kind is read from the system prompt, so the split between answer generation,
+    the cross-document conflict check and the verdict step is measured in the same run
+    that is scored — no separate timing run is needed to price a call we might drop.
+    """
+
+    KINDS = (("核对不同文档之间是否存在事实冲突", "conflict"), ("只依据给出的 claims", "verdict"))
+
+    def __init__(self, inner):
+        self.inner, self.calls = inner, []
+
+    def __call__(self, body: dict) -> dict:
+        system = next((m["content"] for m in body["messages"] if m["role"] == "system"), "")
+        kind = next((name for marker, name in self.KINDS if marker in system), "generate")
+        started = time.monotonic()
+        try:
+            return self.inner(body)
+        finally:
+            self.calls.append((kind, round((time.monotonic() - started) * 1000, 1)))
+
+
 def backend(generator: str, claude_model: str):
     if generator == "claude":
-        return Models(ClaudeChat(claude_model))
-    if generator == "qwen35":
-        return Models(OllamaChat("qwen3.5:9b", think=False))
-    if generator == "qwen35think":
-        return Models(OllamaChat("qwen3.5:9b", think=True))
-    return Models()  # local and localjudge: the production model
+        inner = ClaudeChat(claude_model)
+    elif generator in {"qwen35", "qwen35decomp"}:
+        inner = OllamaChat("qwen3.5:9b", think=False)
+    elif generator == "qwen35think":
+        inner = OllamaChat("qwen3.5:9b", think=True)
+    else:  # local and localjudge: the production model on the pinned runtime
+        local = Models()
+        inner = lambda body: local._post("/api/chat", body)  # noqa: E731
+    return Models(Timed(inner))
 
 
 def system_evidence(db, user, question, models, rerank=False, top_k=None):
@@ -298,11 +324,14 @@ def judge_direct(models, question, evidence):
     }
 
 
-def answer(models, question, evidence):
+CHECK_CONFLICT = True
+
+
+def answer(models, question, evidence, clauses=None):
     """The production single-turn answer path from generation onward."""
     if not evidence:
         return {"status": "insufficient_evidence", "claims": [], "verdict": None}, {}
-    generated, usage = models.generate(question, evidence)
+    generated, usage = models.generate(question, evidence, check_conflict=CHECK_CONFLICT)
     claims, status = validate_claims(generated, evidence)
     if status == "answered" and usage.get("answer_status") == "conflict":
         status = "conflict"
@@ -311,6 +340,143 @@ def answer(models, question, evidence):
     usage["verdict_prompt_tokens"] = verdict_usage.get("prompt_tokens", 0)
     usage["verdict_completion_tokens"] = verdict_usage.get("completion_tokens", 0)
     return {"status": status, "claims": claims, "verdict": verdict}, usage
+
+
+def decompose_answer(models, question, evidence, clauses=None):
+    """Per-publication sub-questions for a yes/no comparison, then one comparison.
+
+    Each named publication is asked about separately, from its own selected sentences
+    only, and must cite them; the comparison step then sees those cited findings, not
+    the evidence. Questions that are not yes/no or name fewer than two publications go
+    through the production path unchanged.
+    """
+    from app.clients import evidence_spans
+    from app.task_analysis import judgment_intent
+
+    lanes = list(dict.fromkeys(e.get("lane") for e in evidence if str(e.get("lane", "")).startswith("source:")))
+    if len(lanes) < 2 or not judgment_intent(question):
+        return answer(models, question, evidence)
+    usage = {"prompt_tokens": 0, "completion_tokens": 0}
+    claims, findings = [], []
+    for lane in lanes:
+        items = [dict(e, id=f"E{n}") for n, e in enumerate((e for e in evidence if e.get("lane") == lane), 1)]
+        sources, context = evidence_spans(items)
+        schema = {
+            "type": "object",
+            "properties": {
+                "found": {"type": "boolean"},
+                "finding": {"type": "string"},
+                "source_ids": {"type": "array", "items": {"type": "string", "enum": list(sources)}},
+            },
+            "required": ["found", "finding", "source_ids"],
+        }
+        result = models._chat(
+            {
+                "model": settings().chat_model,
+                "stream": False,
+                "keep_alive": "30m",
+                "format": schema,
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": (
+                            "只根据给出的原文，回答关于这一个来源的子问题：这个来源实际说了什么。"
+                            "用一句话写出，保留数字、日期、说话人和原文的语气，不要替整个问题下结论。"
+                            "source_ids 选择直接支持这句话的原文编号。原文没有涉及时 found=false。只输出指定 JSON。"
+                        ),
+                    },
+                    {
+                        "role": "user",
+                        "content": json.dumps(
+                            {
+                                "question": question,
+                                "sub_question": (clauses or {}).get(lane) or question,
+                                "source": lane.split(":", 1)[1],
+                                "evidence": context,
+                            },
+                            ensure_ascii=False,
+                        ),
+                    },
+                ],
+                "options": {"temperature": 0, "seed": 42, "num_ctx": 8192, "num_predict": 300},
+            }
+        )
+        usage["prompt_tokens"] += result.get("prompt_eval_count", 0)
+        usage["completion_tokens"] += result.get("eval_count", 0)
+        try:
+            parsed = json.loads(result["message"]["content"])
+            keys = [key for key in parsed.get("source_ids", []) if key in sources]
+        except (ValueError, KeyError, TypeError) as exc:
+            raise DependencyError("模型未返回有效的子问题回答", stage="generation") from exc
+        if parsed.get("found") and keys and parsed.get("finding"):
+            chunk_of = {item["id"]: item["chunk_id"] for item in items}
+            claims.append(
+                {
+                    "text": parsed["finding"],
+                    "evidence_ids": [chunk_of[sources[key]["id"]] for key in keys],
+                    "quotes": [sources[key]["quote"] for key in keys],
+                }
+            )
+            findings.append({"source": lane.split(":", 1)[1], "finding": parsed["finding"]})
+        else:
+            findings.append({"source": lane.split(":", 1)[1], "finding": None})
+    if not claims:
+        return {"status": "insufficient_evidence", "claims": [], "verdict": None}, usage
+    result = models._chat(
+        {
+            "model": settings().chat_model,
+            "stream": False,
+            "keep_alive": "30m",
+            "format": {
+                "type": "object",
+                "properties": {
+                    "verdict": {"type": "string", "enum": ["yes", "no", "unclear"]},
+                    "statement": {"type": "string"},
+                },
+                "required": ["verdict", "statement"],
+            },
+            "messages": [
+                {
+                    "role": "system",
+                    "content": (
+                        "只依据各来源的发现（findings）判断问题的命题是否成立，不使用其他知识。"
+                        "不要默认问题中的说法成立。成立选 yes，不成立选 no；某个必要来源没有发现、"
+                        "或发现不足以判断时选 unclear。statement 用一句话说明比较结果。只输出指定 JSON。"
+                    ),
+                },
+                {"role": "user", "content": json.dumps({"question": question, "findings": findings}, ensure_ascii=False)},
+            ],
+            "options": {"temperature": 0, "seed": 42, "num_ctx": 4096, "num_predict": 200},
+        }
+    )
+    usage["verdict_prompt_tokens"] = result.get("prompt_eval_count", 0)
+    usage["verdict_completion_tokens"] = result.get("eval_count", 0)
+    try:
+        compared = json.loads(result["message"]["content"])
+        verdict = compared["verdict"] if compared["verdict"] in {"yes", "no", "unclear"} else "unclear"
+    except (ValueError, KeyError, TypeError) as exc:
+        raise DependencyError("模型未返回有效的比较结论", stage="verdict") from exc
+    return {"status": "answered", "claims": claims, "verdict": {"value": verdict}}, usage
+
+
+def selected_evidence(db, user, question, embedder, *, clause_queries, per_lane, neighbors):
+    from app.evidence_selection import build_lanes, cross_encoder_scorer, select_sentences
+
+    cfg = settings()
+    top_k = 8 if multi_source_intent(question) else 6 if len(question) <= 30 else cfg.top_k
+    lanes, _chunks = build_lanes(
+        db, user, question, cfg=cfg, models=embedder, search=Search(), top_k=top_k, clause_queries=clause_queries
+    )
+    global _SCORER
+    _SCORER = _SCORER or cross_encoder_scorer()
+    evidence = select_sentences(question, lanes, score=_SCORER, per_lane=per_lane, neighbors=neighbors)
+    clauses = {lane["name"]: lane["query"] for lane in lanes if lane["query"] != question}
+    return evidence, clauses
+
+
+_SCORER = None
+TAG = ""
+SELECTION = {"per_lane": 2, "neighbors": 0}
 
 
 def score(item, record, payload):
@@ -326,7 +492,7 @@ def score(item, record, payload):
 
 
 def run_arm(arm, generator, evidence_mode, items, records, models, lock, binary_only=False):
-    path = OUT / f"{arm}.jsonl"
+    path = OUT / f"{arm}{TAG}.jsonl"
     done = set()
     if path.exists():
         done = {json.loads(line)["id"] for line in path.read_text().splitlines() if line.strip()}
@@ -344,6 +510,8 @@ def run_arm(arm, generator, evidence_mode, items, records, models, lock, binary_
         for index, item in enumerate(todo, 1):
             record = records[item["query_sha256"]]
             embedder = Models()
+            clauses = None
+            timer = models.chat_backend if isinstance(models.chat_backend, Timed) else None
             if evidence_mode == "oracle":
                 evidence = oracle_evidence(db, user, record)
             elif evidence_mode == "mixed":
@@ -360,6 +528,10 @@ def run_arm(arm, generator, evidence_mode, items, records, models, lock, binary_
                 ordered = [item for item in retrieved if item["chunk_id"] in kept]
                 ordered += [item for item in gold if item["chunk_id"] not in {r["chunk_id"] for r in retrieved}]
                 evidence = [dict(item, id=f"E{n}") for n, item in enumerate(ordered, 1)]
+            elif evidence_mode in {"sentences", "sentclause"}:
+                evidence, clauses = selected_evidence(
+                    db, user, record["query"], embedder, clause_queries=evidence_mode == "sentclause", **SELECTION
+                )
             elif evidence_mode == "compact":
                 # Fewer, better passages: the reranked retrieval capped at four.
                 evidence = system_evidence(db, user, record["query"], embedder, rerank=True, top_k=4)
@@ -369,9 +541,15 @@ def run_arm(arm, generator, evidence_mode, items, records, models, lock, binary_
                 )
             started = time.monotonic()
             for attempt in range(3):
+                if timer:
+                    timer.calls = []
                 try:
-                    run = judge_direct if generator.endswith("judge") else answer
-                    payload, usage = run(models, record["query"], copy.deepcopy(evidence))
+                    if generator.endswith("judge"):
+                        payload, usage = judge_direct(models, record["query"], copy.deepcopy(evidence))
+                    elif generator.endswith("decomp"):
+                        payload, usage = decompose_answer(models, record["query"], copy.deepcopy(evidence), clauses)
+                    else:
+                        payload, usage = answer(models, record["query"], copy.deepcopy(evidence))
                     error = None
                     break
                 except DependencyError as exc:
@@ -404,6 +582,9 @@ def run_arm(arm, generator, evidence_mode, items, records, models, lock, binary_
                 "evidence_titles": [item["title"] for item in evidence],
                 "error": error,
                 "latency_ms": round((time.monotonic() - started) * 1000, 1),
+                "model_calls": list(timer.calls) if timer else [],
+                "conflict_check": CHECK_CONFLICT,
+                "evidence_words": sum(len(e["text"].split()) for e in evidence),
                 "prompt_tokens": usage.get("prompt_tokens", 0) + usage.get("verdict_prompt_tokens", 0),
                 "completion_tokens": usage.get("completion_tokens", 0)
                 + usage.get("verdict_completion_tokens", 0),
@@ -471,6 +652,10 @@ def main():
     parser.add_argument("--summary-only", action="store_true")
     parser.add_argument("--binary-only", action="store_true", help="yes/no questions only")
     parser.add_argument("--nulls", type=int, default=0, help="with --per-type: N null questions per batch")
+    parser.add_argument("--no-conflict", action="store_true", help="skip the cross-document conflict check")
+    parser.add_argument("--per-lane", type=int, default=2, help="sentences kept per named publication")
+    parser.add_argument("--neighbors", type=int, default=0, help="context sentences kept around each pick")
+    parser.add_argument("--tag", default="", help="suffix for the arm files, e.g. -nc")
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     records = {digest(row["query"]): row for row in json.loads((CACHE / "MultiHopRAG.json").read_bytes())}
@@ -489,13 +674,18 @@ def main():
                 taken[key] = taken.get(key, 0) + 1
                 sample.append(item)
         items = sample
+    global CHECK_CONFLICT, TAG
+    CHECK_CONFLICT = not args.no_conflict
+    TAG = args.tag
+    SELECTION.update(per_lane=args.per_lane, neighbors=args.neighbors)
     arms = args.arms.split(",")
     if not args.summary_only:
         lock = threading.Lock()
         # Arms that share a model server run one after another: queued behind each
         # other, their requests would spend the timeout waiting, not generating.
         servers = {
-            "local": "11436", "localjudge": "11436", "qwen35": "11437", "qwen35think": "11437", "claude": "api"
+            "local": "11436", "localjudge": "11436", "qwen35": "11437", "qwen35think": "11437",
+            "qwen35decomp": "11437", "claude": "api",
         }
         by_server = {}
         for arm in arms:
@@ -512,7 +702,7 @@ def main():
                 job.result()
     summary = {}
     for arm in arms:
-        path = OUT / f"{arm}.jsonl"
+        path = OUT / f"{arm}{TAG}.jsonl"
         if path.exists():
             wanted_ids = {item["id"] for item in items}
             rows = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]

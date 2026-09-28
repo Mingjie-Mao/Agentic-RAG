@@ -34,15 +34,46 @@ def main():
     accounts = {u["username"] for u in json.loads(Path("fixtures/catalog.json").read_text())["users"]}
     tests = collected_tests()
 
-    # Headline figures the READMEs quote, resolved from the artifacts they came from.
-    expected = {
+    # Every figure in the README results table, resolved from the artifact it came from.
+    def pct(numerator, denominator):
+        return f"{numerator / denominator:.1%}"
+
+    hard = "artifacts/agent-hard-benchmark-v2_1.json"
+    readme_figures = {
+        "holdout answer-state accuracy": metric(
+            "artifacts/s7-holdout-summary.json",
+            lambda d: pct(d["results"]["hybrid"]["status_correct"]["count"], d["results"]["hybrid"]["status_correct"]["n"]),
+        ),
+        "holdout literal fact coverage": metric(
+            "artifacts/s7-holdout-summary.json",
+            lambda d: pct(
+                d["results"]["hybrid"]["literal_fact_coverage"]["matches"],
+                d["results"]["hybrid"]["literal_fact_coverage"]["total"],
+            ),
+        ),
+        "MultiHop-RAG batch 2 workflow": metric(
+            "artifacts/multihop-external-r2.json",
+            lambda d: f"{d['summary']['workflow']['all']['answer_correct']}/{d['summary']['workflow']['all']['questions']}",
+        ),
+        **{
+            f"Hard v2.1 {arm}": metric(
+                hard,
+                lambda d, arm=arm: "{task_success}/{scored}".format(
+                    **d["summary"][arm]["shared_comparable_subset"]
+                ),
+            )
+            for arm in ("rag", "workflow", "dynamic")
+        },
+    }
+    # Retrieval headlines now live in the report, which must still quote them exactly.
+    report_figures = {
         "s3-v2 hybrid Recall@5": metric(
             "artifacts/s3-v2-hybrid-summary.json",
-            lambda d: round(d["results"]["hybrid"]["recall_at_5"]["mean"], 3),
+            lambda d: f'{round(d["results"]["hybrid"]["recall_at_5"]["mean"], 3):.3f}',
         ),
         "public hybrid Recall@5": metric(
             "artifacts/s3-public-summary.json",
-            lambda d: round(d["results"]["hybrid"]["recall_at_5"]["mean"], 3),
+            lambda d: f'{round(d["results"]["hybrid"]["recall_at_5"]["mean"], 3):.3f}',
         ),
     }
 
@@ -62,12 +93,15 @@ def main():
         for claimed in re.findall(r"(\d+)\s*项(?:单元与逻辑)?检查", text):
             if tests is not None and int(claimed) != tests:
                 problems.append(f"{doc}: 声称 {claimed} 项测试，实际收集 {tests} 项")
-    # Headline figures must appear in the README, so "written but stale" and
+    # Headline figures must appear where they are quoted, so "written but stale" and
     # "measured but never written down" both fail rather than pass silently.
-    readme = Path("README.md").read_text()
-    for label, value in expected.items():
-        if value is not None and f"{value:.3f}" not in readme:
-            problems.append(f"README.md: 缺少或不匹配 {label} = {value:.3f}")
+    for doc, figures in (("README.md", readme_figures), ("PROJECT_REPORT.md", report_figures)):
+        text = Path(doc).read_text()
+        for label, value in figures.items():
+            if value is None:
+                problems.append(f"{doc}: 无法从产物读取 {label}")
+            elif value not in text:
+                problems.append(f"{doc}: 缺少或不匹配 {label} = {value}")
 
     config = Path("app/config.py").read_text()
     for setting, doc_claim in [

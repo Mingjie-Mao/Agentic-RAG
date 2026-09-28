@@ -101,3 +101,11 @@ def test_document_header_is_indexed_but_only_when_the_pipeline_recorded_it():
     assert indexed_text(header, "body") == "SBF trial · Fortune · 2023-11-27\nbody"
     assert chunk_header("SBF trial", metadata, {}) == ""
     assert indexed_text("", "body") == "body"
+
+
+def test_conflict_check_is_skipped_only_for_listed_tenants(monkeypatch):
+    from app import config
+
+    monkeypatch.setattr(config.settings(), "conflict_check_disabled_tenants", ["multihop"])
+    assert config.conflict_check_enabled("xingqiao")
+    assert not config.conflict_check_enabled("multihop")

@@ -21,7 +21,7 @@ from agent.planner import (
 )
 from agent.tools import KnowledgeTools, ToolResult
 from app.clients import DependencyError, Models
-from app.config import settings
+from app.config import conflict_check_enabled, settings
 from app.db import SessionLocal
 from app.models import AgentEvent, AgentTask, ToolExecution, User, now, uid
 from app.qa import (
@@ -322,6 +322,8 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None, start
         # enumeration short would hand the model a list shorter than the question.
         # No measured gain, non-zero risk, so the subgoals only drive the step below.
         options = {"memory_context": memory_context} if memory_context else {}
+        if not conflict_check_enabled(task.tenant_id):
+            options["check_conflict"] = False
         generated_started = time.monotonic()
         generated, usage = models.generate(task.goal, evidence, **options)
         usage["generation_wall_ms"] = round((time.monotonic() - generated_started) * 1000, 1)

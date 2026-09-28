@@ -1,165 +1,40 @@
 # Agentic-RAG
 
-面向企业内部知识库的**权限感知 RAG 系统**。
+**Auditable, permission-aware RAG for enterprise knowledge.**
 
-支持 PDF、DOCX、XLSX 和 Markdown。系统只检索当前用户有权访问的资料，基于原文证据回答，并返回可定位到原文的引用——PDF 到页和坐标，DOCX 到标题和段落，XLSX 到工作表和单元格。证据不足时拒答，两份资料冲突时报告冲突，不猜测。
+Agentic-RAG is an enterprise RAG system with ACL-aware retrieval, verifiable citations, document versioning, and controlled Agent workflows. It answers only from documents the current user may read, cites the exact source location, refuses when the evidence is insufficient, and reports a conflict instead of picking a side.
 
-> 面向单机、小团队场景。下文所有结果均来自冻结的评测集，可复现；性能数字来自一台 Apple M4 主机，不是生产环境的服务等级承诺。
+## Features
 
-## 核心能力
+- Permission filtering inside the retrieval query, re-checked before an answer is returned
+- Hybrid search: BM25 + BGE-M3 + RRF, with per-publication routing for multi-source questions
+- Verifiable citations: PDF page and bounding box, DOCX heading and paragraph, XLSX sheet and cell
+- Safe document versioning (index first, then publish) and immediate permission revocation
+- Fixed workflow and dynamic Agent over seven bounded tools, with auditable tool traces
+- Query recovery, multi-hop retrieval, and version comparison
+- Reproducible benchmarks with frozen inputs, one-shot holdouts, and failure analysis
 
-- **权限进检索，不做事后过滤**。授权范围是检索查询的一部分，BM25 与向量两路共用同一集合；返回答案前再校验一次。迄今全部评测中越权命中与隐藏文档泄漏均为 **0**。
-- **引用可核验**。模型只选择带编号的证据片段，服务端取回真实原文、校验版本与权限后才组装引用。**校验不通过的答案不会被修复，而是判定失败不返回。**
-- **版本更新不留空窗**。新版本完成索引并确认可搜索后才切换生效；解析或索引失败只会退化成"什么都没变"。旧版本保留，供审计引用了它的历史回答。
-- **撤权立即生效**。决定可见性的是业务库而不是搜索索引，撤权提交后的下一个请求即被拒绝，不等待索引清理。
-- **冲突需要证据**。只有模型交出分属两份不同文档的两段矛盾原文，系统才报告冲突。
-- **评测可复现**。语料、模型摘要与输入哈希冻结；开发集与留出集分离，留出集在命令行层面封存。
-- **可审计的异步知识 Agent**。固定工作流与动态动作选择共用七个受控工具；任务由 worker 通过租约领取，每次资料读取重新鉴权，撤权后已有任务结果会隐藏。
-- **困难 Agent 评测**。30 道 Hard Task 按多跳、时间版本、条件分支、查询恢复、安全状态变化和停止效率各 5 道组织；评分最终事实、必要能力、安全、步骤、延迟与 token，不规定唯一工具顺序。
+## Results
 
-## 实测结果
-
-### 自建开发集 · 147 题
-
-| 检索配置 | Recall@5 | MRR@10 | 回答状态正确率 |
-| --- | ---: | ---: | ---: |
-| BM25 | **0.984** | **0.927** | 84.4% |
-| 向量检索 | 0.903 | 0.840 | 85.0% |
-| **混合检索（默认）** | 0.935 | 0.900 | **89.1%** |
-
-混合检索的检索指标低于 BM25，端到端回答状态正确率却更高，因此默认采用。差异未达统计显著（McNemar 精确检验 p = 0.19），所以准确的说法是**实测最优**，不是已证明更优。
-
-### 冻结留出集 · 80 题（只运行一次）
-
-验收门槛在留出集被执行**之前**已写定并落盘。
-
-| 指标 | 门槛 | 实测 |
-| --- | ---: | ---: |
-| 回答状态正确率 | ≥ 80% | **90.0%** |
-| 字面事实覆盖 | ≥ 80% | **81.9%** |
-| 越权命中 | 0 | **0** |
-| 隐藏文档泄漏 | 0 | **0** |
-| 引用身份校验 | 全通过 | **100%** |
-
-留出集比它从未参与过的开发集**高 0.9 个百分点**，没有观察到开发集过拟合。
-字面事实覆盖是 59/72 的严格字符串命中，不是人工语义正确率：13 个未命中里，8 个是错误拒答，
-5 个是回答漏项；12/13 已在 Recall@5 找到金标文档。详细归因见
-[`PROJECT_REPORT.md`](./PROJECT_REPORT.md#111-819-到底表示什么)。
-
-### 冲突检测
-
-在 13 道真冲突和 15 道易误判反例（不同指标 / 不同适用对象 / 新旧版本 / 跨文档数值不同但不矛盾）上：
-
-| 指标 | 结果 |
+| Benchmark | Result |
 | --- | ---: |
-| 召回率 | **85%** |
-| 精确率 | **100%** |
-| 反例误报 | **0** |
+| Frozen holdout (80 questions, run once) — answer-state accuracy | 90.0% |
+| Frozen holdout — literal fact coverage | 81.9% |
+| Unauthorized retrieval / hidden-document leakage, all runs | 0 |
+| MultiHop-RAG external (150 unseen questions, run once) — answer correct | 101/150 |
+| Hard Benchmark (development set, 21 shared tasks) — RAG | 12/21 |
+| Hard Benchmark — Fixed workflow | 19/21 |
+| Hard Benchmark — Dynamic Agent | 14/21 |
 
-修复前的精确率是 4.2%——24 次冲突报告里只有 1 次为真。
+The controlled workflow currently outperforms the dynamic Agent while using less latency and fewer tokens. The main open gap is yes/no comparison questions on the external set, which still score below a majority-class baseline; controlled experiments trace it to the 7B generator and to noisy evidence, not to missing documents. Details, ablations and limitations are in the report.
 
-### 外部基准 · 39 题
+## Stack
 
-公开企业 RAG 基准的固定子集（英文语料 + 100 份干扰文档）：
+FastAPI · PostgreSQL · OpenSearch · BGE-M3 · Qwen2.5 7B · Ollama · React · TypeScript
 
-| 检索配置 | Recall@5 | 回答正确率 |
-| --- | ---: | ---: |
-| BM25 | 0.897 | 84.6% |
-| 向量检索 | 0.897 | 74.4% |
-| **混合检索** | **0.974** | 84.6% |
+## Quick Start
 
-混合检索在外部数据上的检索优势明显，与内部数据上的排序相反——说明 BM25 在自建语料上的领先来自那批资料的专有名词特征，不能推广。
-
-完整实验、显著性检验、重排与多轮改写对照、失败分析见 [`PROJECT_REPORT.md`](./PROJECT_REPORT.md)。
-
-## 系统结构
-
-```text
-资料入库
-
-上传 → 鉴权 → 保存不可变原件 → 解析 → 分块 → 向量化
-    → 写入待发布索引 → 确认可搜索 → 切换活动版本
-
-
-问答
-
-识别身份 → 按权限检索 → BM25 + 向量 → RRF 融合
-       → 复查版本与授权 → 组织证据 → 生成
-       → 校验引用 → 再次鉴权 → 返回答案与原文位置
-
-
-Agent
-
-任务 → 固定工作流 / 动态策略 → 参数校验 → 权限受控工具
-    → 保存事件与证据句柄 → 最终引用校验 → 再次鉴权 → 结果
-```
-
-| 层次 | 技术 |
-| --- | --- |
-| 接口 | FastAPI · Pydantic |
-| 业务库 | PostgreSQL · SQLAlchemy · Alembic |
-| 检索 | OpenSearch · BM25 · 向量 · RRF 融合 |
-| 解析 | Docling · openpyxl |
-| 向量模型 | BGE-M3（1024 维） |
-| 生成模型 | Qwen2.5 7B Instruct · Ollama |
-| 前端 | React · TypeScript · PDF.js |
-
-Agent 当前提供 `search_documents`、`retrieve_evidence`、`open_document`、`get_document_version`、`compare_versions`、`verify_chunk_access` 和 `search_memory` 七个有限工具。创建任务立即返回 `202/queued`，worker 通过数据库租约执行并可回收中断任务。`llm-long-term-memory` 以独立进程运行；Agentic-RAG 只接受服务端配置的用户命名空间 token，长期记忆只能影响偏好和范围，不能充当企业事实证据。
-
-### 三层记忆
-
-| 层次 | 当前实现 | 带来的能力 |
-| --- | --- | --- |
-| 短期对话记忆 | 浏览器将当前会话最近 10 个问题发送给 `/api/chat`，后端按规则改写当前检索问题 | 能理解“它的时限呢”一类追问；每轮仍重新检索和鉴权，刷新页面后不保留会话上下文 |
-| Agent 工作记忆 | PostgreSQL 中的 `AgentTask / AgentEvent / ToolExecution` | 保存目标、步骤、预算、工具结果、证据句柄、错误和租约；worker 中断后可恢复，任务结束后仍可审计 |
-| 长期记忆 | 独立 `llm-long-term-memory` 服务，显式写入、按 `tenant:user` 受信命名空间检索 | 跨会话复用用户角色、偏好和任务范围，减少重复说明；带来源和时间范围，不参与企业事实引用 |
-
-长期记忆用于改善**连续使用体验、个性化和跨会话一致性**，并通过服务端 namespace 防止用户互相读取记忆。它现在默认关闭，由用户在单个任务上显式开启；最多注入 3 条、单条 240 字且总计 600 字的偏好上下文。30 题成对开关实验中，关闭为 30/30，开启为 29/30，差异不显著（McNemar `p=1.0`）；开启后平均 prompt 增加 428.4 token，中位延迟约增加 6 秒，因此没有证据支持在事实问答中默认使用。唯一变化来自本地 7B 模型把合法检索到的星桥证据错误归给问题中提及的海川，LLTM 返回的三条偏好本身正确；这属于 Agentic-RAG 的记忆使用策略与生成鲁棒性问题，不是 LLTM 的命名空间或检索错误。外租户门禁修复后，定向开／关回归均通过。企业事实仍只来自当前有权访问的文档；记忆服务不可用时，任务记录 `memory_unavailable` 并继续走受控 RAG。完整设计和成本见 [`AGENT_BENCHMARK.md`](./AGENT_BENCHMARK.md#长期记忆开关-ab)。
-
-两种模式的真实本地冒烟记录见 [`artifacts/b0-agent-smoke.json`](./artifacts/b0-agent-smoke.json)：固定工作流约 23 秒，动态 Agent 约 111 秒。两者任务不同，因此这只能证明链路可运行，不能用于比较效果。
-
-B2 Agent 开发回归已完成：事实、复合问答、冲突、ACL、跨租户、时间版本、表格和拒答共 30 题，单次 RAG 与固定工作流均为 **30/30**，中位延迟分别为 **22.0 秒**和 **21.6 秒**，禁区泄漏均为 0。该集合参与了本轮修复，不能当作独立泛化成绩。修复前 5 题动态 Agent 为 4/5、中位延迟 157.4 秒，没有显示出质量收益，因此当前仍决定**不训练、不做 RL**，默认自动路由到低成本路径，动态模式保留为实验能力。完整逐题结果、修复项与训练门槛见 [`AGENT_BENCHMARK.md`](./AGENT_BENCHMARK.md)。
-
-外部一次性验证：MultiHop-RAG 固定 150 题（ODC-BY），609 篇英文新闻经正常上传链路入库为
-12484 个分块并全部作为干扰文档，题目 ID、语料哈希与评分规则在运行前冻结，只运行一次且未用于
-调参。固定 workflow 62/150，单次 RAG 57/150；null 题 18/18 全部正确拒答，实体类多跳题 81.3%。
-协议、逐项结果与两处已知局限见 [`PROJECT_REPORT.md` §12.1](./PROJECT_REPORT.md#121-multihop-rag-固定子集一次性外部验证2026-09-21)。
-
-第二批互不重叠的 150 题中，RAG 和 workflow 均为 101/150；显式判断字段让评分器读到答案，
-但 77 道 Yes/No 题的判断正确率仍仅 53.2%，低于多数类 61.0% 基线。因此不能把 101/150
-解释成可靠的比较推理，也没有外部证据证明 workflow 的规划本身优于单次 RAG。
-
-为定位这个缺口，历史失败按“gold 文档未到／文档已到但目标片段未到／片段已到仍失败”分为
-179／58／42 次。最后 42 次已逐例做**助手可见输出复核**，独立人工金标仍为 0；主要问题是
-显式判断遗漏、误拒、比较关系和判断字段不一致。第三批 150 道新冻结题的检索对照中，来源
-路由把 gold 文档召回从 0.6805 提到 0.7870，把目标片段的词四元组代理召回从 0.4318
-提到 0.4972；后者仍不到一半，且这些是**检索指标，不是答案正确率**。逐项数据见
-[`PROJECT_REPORT.md` §20.11](./PROJECT_REPORT.md#2011-分层恢复事实核对与训练门禁2026-09-25)。
-
-同批中预先选定的 32 题端到端成对验收：RAG **21/32（65.6%）**、workflow **19/32
-（59.4%）**，差值的按题重抽 95% 区间覆盖 0；workflow P50/P95 为 128.8/203.3 秒，
-RAG 为 119.5/173.4 秒。两者对 4 道 null 题都正确拒答，但 17 道 Yes/No 题仅为
-7/17 和 6/17，均低于多数类 9/17。**当前最大缺口是比较/时序结论的可靠性，以及目标片段
-召回仍低**；这 32 题是字面评分的小样本，没有独立人工语义金标。详见
-[`PROJECT_REPORT.md` §20.11](./PROJECT_REPORT.md#2011-分层恢复事实核对与训练门禁2026-09-25)。
-
-为避免用简单问答否定 Agent，本项目另建了 [`Agent Hard Benchmark`](./AGENT_HARD_BENCHMARK.md)：
-30 题、6 类受控场景，包含首次搜索故障注入、工具调用后撤权和长期记忆污染。它借鉴
-MultiHop-RAG、BFCL V4、τ³-bench 与 ToolSandbox 的任务结构，但题目和语料均为本项目自建；
-scorer、真实三版本链和分层运行均已完成。最新一轮（v2.1：确定性查询恢复 + 子目标覆盖）共享
-21 题 Task Success 为 RAG 12/21、**workflow 19/21**、dynamic 14/21；受控 9 题 workflow 与
-dynamic 均为 9/9，查询恢复 5/5，三条 arm 安全泄漏均为 0。workflow P50 43.2 秒 / P95 73.3 秒，
-dynamic P50 93.9 秒 / P95 141.1 秒、平均 prompt token 较上一版下降 63%。结果见
-`artifacts/agent-hard-benchmark-v2_1.json`，逐题归因与两个仍未解决的失败见
-[`AGENT_HARD_BENCHMARK.md`](./AGENT_HARD_BENCHMARK.md)。它仍是参与调试的开发基准，不是泛化成绩。
-
-最后一组 9 道针对性 Hard 开发回归为 **9/9**，包括此前漏掉回滚目标的 H13；安全泄漏和
-未知执行失败均为 0。H13 的精确值补答约增加 18 秒，说明完整性修复有延迟成本。
-这不改变上面的完整 30 题历史对照，也不解决外部 17 道二元题低于多数类基线的问题。
-
-## 快速开始
-
-需要 Docker、Node.js 22.12+、Python 3.13 与 `uv`。首次运行要下载模型，占用数 GB 磁盘。
+Requires Docker, Node.js 22.12+, Python 3.13 and `uv`. The first run downloads several GB of models.
 
 ```bash
 make setup
@@ -171,138 +46,12 @@ make web
 make run
 ```
 
-打开 `http://127.0.0.1:8000`。登录页列出演示账号，密码取自 `.env` 的 `RAG_DEMO_PASSWORD`。
+Open <http://127.0.0.1:8000>. Demo accounts are listed on the login page; the password is `RAG_DEMO_PASSWORD` in `.env`. All seed documents, questions and company names are fictional.
 
-### 可选：连接长期记忆
+## Demo
 
-在相邻的 `llm-long-term-memory` 仓库启动 REST 服务，并为每个 Agentic-RAG 用户分配一个
-独立 token。token 在记忆服务端绑定到 `tenant:user` 命名空间；浏览器不能提交或覆盖
-`user_id`。
+<https://agentic-rag.pages.dev> — a static showcase generated from the stored run artifacts (not a live system).
 
-```bash
-cd ../llm-long-term-memory
-LLTM_REQUIRE_AUTH=true \
-LLTM_API_TOKENS='local-support:xingqiao:xq-support' \
-uv run uvicorn llm_long_term_memory.api.app:app --host 127.0.0.1 --port 18000
-```
+## Documentation
 
-Agentic-RAG 的 `.env` 对应配置：
-
-```bash
-RAG_MEMORY_URL=http://127.0.0.1:18000
-RAG_MEMORY_TOKENS_JSON={"xingqiao:xq-support":"local-support"}
-```
-
-未配置 URL 或当前用户 token 时，记忆功能关闭并 fail closed，不会退回由客户端自由指定的
-开放命名空间。检索仅使用本地 embedding；界面中的显式“记住”会调用该仓库配置的抽取模型，
-可能消耗其 API 额度。Agent 不会自动把回答写成永久记忆。
-
-### 有限额临时试用
-
-设置 `RAG_TRIAL_MODE=true` 和 `RAG_TRIAL_USERNAMES` 后，演示账号进入服务端强制的访客模式：
-
-- 每日问答与 Agent 合计默认 10 次，额度在调用模型前用数据库唯一槽位原子预留；
-- 同一访客最多一个活动 Agent 任务；
-- 只开放自动路由与固定工作流，动态 Agent 不进入公网试用；
-- 禁止上传、版本替换、ACL 修改、删除、重试和长期记忆写入；
-- `/api/demo/accounts` 只返回配置的访客账号，数据库、搜索、模型和 Memory 服务不对公网开放。
-
-复位访客问答、任务、会话与当日额度，不修改种子资料：
-
-```bash
-.venv/bin/python scripts/reset_trial.py
-```
-
-| 账号 | 范围 |
-| --- | --- |
-| `admin@xingqiao.demo` | 租户管理者 |
-| `engineer@xingqiao.demo` | 工程组 |
-| `support@xingqiao.demo` | 支持组 |
-| `admin@haichuan.demo` | 第二个租户，用于隔离性检查 |
-
-所有种子资料、题目与公司名称均为本项目自建的虚构内容。
-
-## 在线展示
-
-**https://agentic-rag.pages.dev**
-
-项目展示页：实测结果、界面截图、以及三个被数据否决的常见方案。页面上的每个数字都由脚本从 `artifacts/` 的运行产物读回生成，不手工填写。
-
-> 展示页是静态页面，不是可交互的在线系统。本系统需要 PostgreSQL、OpenSearch 与本地 7B 模型（约 7 GB），无法在静态托管上运行；要实际试用请按上面的 `make` 步骤在本机启动。
-
-界面走查可以自己跑一遍。`web/tests/demo.spec.ts` 对着当前版本真实操作五个环节，并断言每一步应当展示的内容：上传后变为可检索并显示解析器与生效版本；点开引用后 PDF 打开对应页面并画出高亮框；调试页显示检索方式、两路名次与哪些候选真正进入了模型；换一个组的账号后私有资料完全不可见；没有依据的问题明确拒答且引用为空。走查结束时会清理自己上传的资料，可重复执行。
-
-```bash
-npm --prefix web run test:e2e
-```
-
-## 评测
-
-```bash
-make test           # 单元与逻辑检查，末尾核对文档与实现是否一致
-make integration    # 真实数据库、权限与任务恢复
-make s3-validate    # 审计金标：事实能否在其自身来源中定位
-make s3-freeze      # 冻结输入哈希与模型摘要
-make s3-retrieval   # 三路检索指标
-make s3-generate    # 端到端答案、引用与失败分类
-make agent-benchmark # 单次 RAG / workflow / dynamic 同题配对
-make agent-hard-validate # 校验 30 题、六类配额、matcher、事件和子集归属
-make agent-hard-setup    # 幂等建立 benchmark-only v1/v2/v3 版本链
-make agent-hard-benchmark # 完整运行三条路径；动态 Agent 为分钟级
-```
-
-备份恢复演练（导出 → 恢复 → 从恢复的行重建索引 → 比对原件哈希 → 实跑一次问答）：
-
-```bash
-.venv/bin/python scripts/backup_restore.py drill
-```
-
-实验产物保存在 `artifacts/`。
-
-## 已知限制
-
-- 不支持需要 OCR 的扫描件与 PPTX；没有文字层的 PDF 会显式失败，不会被静默索引成空文档
-- **语义正确性与忠实度仍未被用于判断**：相关性与蕴含评分器已在 34 例校准集上比较过（字符重合 / 向量 / cross-encoder），没有一个有资格拦截回答；cross-encoder 可选开启影子记录。所有正确率数字的底座仍是字面匹配
-- **金标与校准标签的独立人工复核均记为 0**：程序能证明事实出现在指定来源，证明不了问题设计与金标解读都合理；A-Q1 的 34 条标签由模型提议，不是人工复核
-- 全部语料为自建虚构内容；留出集验证的是"同一分布下换一批主题"，不是"换一家公司"
-- 冲突集 13 正例 + 15 难负例、外部子集 39 题与 MultiHop-RAG 150 题，规模适合验证系统行为，不足以支撑广泛统计结论
-- `/api/chat` 不保存服务端对话 session；短期上下文由当前浏览器会话回传。长期记忆只接入 Agent，并且需要单独运行 `llm-long-term-memory` 与配置逐用户 token
-- Agent benchmark 的原 30 道任务中 21 道是 fact/compound，主要验证 RAG、ACL、引用与基础工作流；100% 表示 Basic Regression 回归通过，不能证明动态 Agent 的规划能力。新的 30 题 Hard Benchmark 已完成三路分层运行；它仍是参与调试的开发基准
-- 动态 Agent 已有 Hard 30 题的完整配对，但成绩仍低于固定 workflow 且更慢；当前数据足以阻止训练投入，不足以证明动态策略长期无价值
-- Hard 30 的 v2.1 成绩是在这 30 题上调出来的开发成绩；外部泛化只在 MultiHop-RAG 150 题上验证过一次，且那次验证覆盖的是检索与带引用生成，不是 v1.1 的子目标与恢复机制
-- 长期记忆已完成真实鉴权搜索和严格成对 A/B；当前没有事实正确率增益，且增加延迟与 token，因此默认关闭。它的个性化收益仍需单独 benchmark；显式写入可能使用外部抽取额度
-- 单机演示部署，未覆盖多机、TLS 终止、限流与高并发容量规划
-
-## 当前判断与下一步
-
-- **89.1% 是状态判断正确率**，不是人工判定的完整答案正确率；**81.9% 是严格字符串事实覆盖**。13 个字面遗漏中，8 个是错误拒答，5 个是回答漏项，12/13 在 Recall@5 已找到金标文档。下一步优先做证据已召回后的条件式修复与逐项覆盖校验，而不是盲目换 embedding。
-- `artifacts/agent-failure-corpus.json` 中 17 个历史失败已经全部有成功回归。它们继续作为回归资产，不直接当训练集；只有积累至少 50 个去重、人工归因、尚不能由确定性规则修复的真实策略失败，才重新评估行为克隆、偏好优化、蒸馏或 RL。
-- Hard 30 题第二轮（v2.1）已完成：共享集 workflow 19/21、dynamic 14/21、RAG 12/21，受控集两条 Agent arm 均 9/9，查询恢复 0/5 → 5/5，安全泄漏保持 0。提升分别来自确定性查询恢复、版本链深度、子目标覆盖补生成，以及两处评分口径修正，逐题归因见 `AGENT_HARD_BENCHMARK.md`。
-- H01、H13 的历史失败发生在生成层；加入唯一原文值核对后，最终定向开发回归已为 **9/9**。这不更新历史 Hard 30 三路对照，也不作为独立泛化成绩；已解决的生成失败不进入策略训练候选。
-- 动态 Agent 延迟通过压缩策略上下文与确定性停止规则从 P50 166.2 秒降到 93.9 秒、prompt token 下降 63%，但仍未低于固定 workflow，默认路由不变。
-- **前两批端到端外部验证**各 150 题、每批只跑一次、题目哈希互不重叠，609 篇英文新闻全部入库为干扰文档。第 1 批（修复前）固定 workflow 62/150、单次 RAG 57/150；第 2 批（两处确定性修复之后）两条 arm 都是 **101/150**，gold 文档召回 0.578 → 0.667。
-- 两处修复的效果是分开测出来的：**检索预算**在同一批题的配对消融里把 gold 召回从 0.518 提到 0.696；**判断型问题的结论字段**让原本埋在散文里的判断第一次能被指标读到（同一次运行旧口径 61 分、新口径 101 分）。
-- 但第 2 批也否掉了两个说法：Yes/No 题的判断正确率 53.2%，**低于「一律答 yes」的 61.0% 平凡基线**，结论字段解决的是可读性不是判断力；单次 RAG 追平了固定 workflow，第 1 批的领先大部分可由证据预算解释。外部数据目前不支持「workflow 的规划带来额外收益」。
-- v1.1 的子目标与恢复机制在这两批英文数据上**一次都没触发**，因此它们仍然只是中文企业问答场景下的确定性补丁，没有外部泛化证据。
-- Yes-bias 的初次机械归因只检查 **gold 文档**：37 次 Yes/No 判错中有 24 次 gold 文档齐全，但这不代表正确段落进入了生成上下文；不能据此排除检索失败。判对的 41 次里 34 次金标是 yes，在 47 yes / 30 no 的批次上与「倾向答 yes 恰好蒙对」难以区分。
-- 同时开始报告 **answerability 校准**而不只是正确率：第 2 批可答题正确率 0.636、误拒率 0.174，但固定 workflow 在 18 道 null 题里答了 1 道本该拒答的（0.056）。放大证据预算必然抬高「宁可答」的倾向，这个权衡要看得见。
-- 语义标签已按项目确定的「两模型独立标注 + GPT 最终审核」标准冻结为 v3；**人工逐条复核仍为 0**。评分器校准已完成，cross-encoder 仅适合先做 shadow 记录，不能据此拦截答案。新的失败归因清单汇总前两批 **279 次失败的 arm 运行**：179 次缺 gold 文档，99 次 gold 文档已到但事实片段尚未由原运行验证；44 次失败有最终审核过的语义标签。清单见 [`artifacts/multihop-failure-attribution.json`](./artifacts/multihop-failure-attribution.json)。第 3 批检索与端到端验收现已完成，结果见下方；最新来源复核与判断协议实验见项目报告 §20.12。
-- 已使用的外部题上，来源路由的配对检索实验把 gold 事实片段召回从 **0.4147 提至 0.4725**，中位检索耗时从 324.1 增至 482.0 毫秒；这是检索代理指标，尚不是回答正确率的提升。完整配对区间见 [`PROJECT_REPORT.md`](./PROJECT_REPORT.md#2010-两批外部评测的失败审查队列2026-09-25)。
-- 训练的结论比上一轮更强：经过两轮外部 benchmark、一次配对消融和一次机械归因，现有失败仍主要落在检索、输出协议和语义评测三处，而不是未解决的 policy-learning 问题。继续不做 SFT / RL。
-
-### 分层修复与最新验收
-
-- 前两批外部题的 279 次失败已按**原运行的证据句柄**重新核算：179 次缺金标文档，58 次文档已到但目标事实片段未进入生成，42 次事实片段已到却仍答错、漏答、拒答或被旧评分判错。片段指标是词四元组代理；11 次代表性抽查见 [`artifacts/multihop-manual-spotcheck.json`](./artifacts/multihop-manual-spotcheck.json)，独立人工复核仍为 0。
-- 固定 workflow 现在将空结果和明显不相关结果分开，最多改写一次；英文复合问题能拆分，并对缺失子问题最多补两次检索。`event_id`、去重字段和回滚百分比使用原文值核对，只有唯一且确实漏答时才尝试一次带引用补答。显式二选一问题不再误当普通 Yes/No；无有效 claim 引用的 Yes/No 结论降为 `unclear`。
-- 语义 cross-encoder 已接成可选 shadow：`RAG_SEMANTIC_SHADOW_ENABLED=true`。它只记录每条 claim 与所引片段的分数，不拦截答案；当前校准不足以安全地把它用作拒答门禁。
-- 动态模式记录策略、工具、生成、补答的分段耗时。策略模型可用 `RAG_AGENT_POLICY_MODEL=qwen2.5:3b` 做本地实验，默认仍为 7B，自动路由仍选质量更高的固定 workflow。M4 / 32 GB 上不使用付费模型或云 GPU。训练门禁脚本 `scripts/training_gate.py` 当前输出 **0 条**符合条件的未解决策略失败，结论是 `do_not_train`。
-- 第 3 批 150 题已在代码调整前冻结且与前两批无重叠；最终端到端结果另列，不把前两批开发实验当作独立泛化成绩。
-- 第 3 批检索层验收已完成：132 道可答题同题配对，来源路由使 gold 文档召回 **0.6805 → 0.7870**、gold 事实片段代理召回 **0.4318 → 0.4972**，检索中位耗时 919 → 1116 毫秒。事实片段召回仍不足一半，不能把检索增益当成答案正确率。
-- Hard 最终定向回归 **9/9**、安全泄漏 0、未知执行失败 0，见 `artifacts/agent-hard-regression-final-20260926.json`；早一轮 8/9 记录保留。主要时间花在本地 7B 首轮生成和必要的补生成。
-- 3B 策略模型的本地两题成对探针更快，但任务成功从 7B 的 **2/2 降为 0/2**，默认保持 7B；这两题只用于排除明显退步，不能估计完整 Hard 集正确率。
-
-- 结论判断增加实验性的固定问句槽位与多 claim 引用协议。12 道开发题正确数 **3/12 → 9/12**，但判断 P50 **3.1 → 12.2 秒**，比较/析取仍有失败，默认 `RAG_VERDICT_PROTOCOL=legacy`。随后 8 道公开题 gold 事实上限探针为旧协议 **2/8**、新协议 **0/8**，主要暴露比较维度的格式约束问题，故不默认启用。两者都不是外部端到端正确率；来源复核还发现观点归属与否定范围问题，8 题也有 1 题与旧题近重复，见项目报告 §20.12。
-
-所有未解决问题、证据和分阶段计划集中维护在 [`PROJECT_REPORT.md`](./PROJECT_REPORT.md#20-当前问题与后续计划)。
-
-完整设计、实验方法、失败案例与技术结论：[`PROJECT_REPORT.md`](./PROJECT_REPORT.md)
+See [`PROJECT_REPORT.md`](./PROJECT_REPORT.md) (Chinese) for architecture, experiments, ablations, limitations, failure analysis, and the full evaluation commands.

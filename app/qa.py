@@ -4,7 +4,7 @@ import time
 from fastapi import HTTPException
 
 from app.clients import DependencyError, Models, Search
-from app.config import settings
+from app.config import conflict_check_enabled, settings
 from app.fact_integrity import missing_slots, required_slots
 from app.models import Answer
 from app.rewrite import rewrite_query
@@ -231,7 +231,9 @@ def answer_question(db, user, question, history=None):
     if found.searchable_documents:
         if evidence:
             t = time.monotonic()
-            generated, usage = models.generate(question, evidence)
+            # Only a tenant with the check switched off changes the call at all.
+            options = {} if conflict_check_enabled(user.tenant_id) else {"check_conflict": False}
+            generated, usage = models.generate(question, evidence, **options)
             generation_ms = (time.monotonic() - t) * 1000
             claims, status = validate_claims(generated, evidence)
             if status == "answered" and usage.get("answer_status") == "conflict":

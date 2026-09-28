@@ -45,6 +45,10 @@ class Settings(BaseSettings):
     # A question that names a publication gets part of its evidence budget retrieved
     # from that publication's documents alone. No-op for documents without a source.
     source_routing: bool = True
+    # Tenants whose corpus has no competing rules to reconcile. The cross-document
+    # conflict check is an extra model call per multi-document answer; on the news
+    # corpus it ran on 86 of 150 answers and was accepted 5 times.
+    conflict_check_disabled_tenants: list[str] = ["multihop"]
     source_clause_queries: bool = False
     document_quota: int = 2
     # Reorder each routed lane and the global pool with the cross-encoder before
@@ -72,3 +76,7 @@ class Settings(BaseSettings):
 @lru_cache
 def settings() -> Settings:
     return Settings()
+
+
+def conflict_check_enabled(tenant_id) -> bool:
+    return tenant_id not in settings().conflict_check_disabled_tenants
