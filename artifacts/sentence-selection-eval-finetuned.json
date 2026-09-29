@@ -1,0 +1,1867 @@
+{
+  "sample": "first 10 answerable questions per type per batch (b1, b2)",
+  "metric": "gold fact delivered = >=50% of its word 4-grams in evidence from its own document",
+  "configs": {
+    "sentences-q2": {
+      "clause": false,
+      "per_lane": 2,
+      "global_extra": 2,
+      "neighbors": 0
+    },
+    "sentences-q3": {
+      "clause": false,
+      "per_lane": 3,
+      "global_extra": 2,
+      "neighbors": 0
+    }
+  },
+  "selector": ".runtime/models/sentence-selector-v1",
+  "all": {
+    "chunks-reranked": {
+      "questions": 60,
+      "gold_fact_recall": 0.538,
+      "all_gold_facts": 16,
+      "mean_words": 564.3
+    },
+    "pool-ceiling": {
+      "questions": 60,
+      "gold_fact_recall": 0.627,
+      "all_gold_facts": 22,
+      "mean_words": 1246.0
+    },
+    "sentences-q2": {
+      "questions": 60,
+      "gold_fact_recall": 0.456,
+      "all_gold_facts": 13,
+      "mean_words": 147.8
+    },
+    "sentences-q3": {
+      "questions": 60,
+      "gold_fact_recall": 0.481,
+      "all_gold_facts": 14,
+      "mean_words": 183
+    }
+  },
+  "by_type": {
+    "comparison_query": {
+      "chunks-reranked": {
+        "questions": 20,
+        "gold_fact_recall": 0.651,
+        "all_gold_facts": 10,
+        "mean_words": 649.0
+      },
+      "pool-ceiling": {
+        "questions": 20,
+        "gold_fact_recall": 0.744,
+        "all_gold_facts": 13,
+        "mean_words": 1225.2
+      },
+      "sentences-q2": {
+        "questions": 20,
+        "gold_fact_recall": 0.581,
+        "all_gold_facts": 8,
+        "mean_words": 138.2
+      },
+      "sentences-q3": {
+        "questions": 20,
+        "gold_fact_recall": 0.605,
+        "all_gold_facts": 8,
+        "mean_words": 177.2
+      }
+    },
+    "inference_query": {
+      "chunks-reranked": {
+        "questions": 20,
+        "gold_fact_recall": 0.47,
+        "all_gold_facts": 2,
+        "mean_words": 486.5
+      },
+      "pool-ceiling": {
+        "questions": 20,
+        "gold_fact_recall": 0.53,
+        "all_gold_facts": 2,
+        "mean_words": 1439.8
+      },
+      "sentences-q2": {
+        "questions": 20,
+        "gold_fact_recall": 0.394,
+        "all_gold_facts": 2,
+        "mean_words": 167.2
+      },
+      "sentences-q3": {
+        "questions": 20,
+        "gold_fact_recall": 0.424,
+        "all_gold_facts": 2,
+        "mean_words": 194.4
+      }
+    },
+    "temporal_query": {
+      "chunks-reranked": {
+        "questions": 20,
+        "gold_fact_recall": 0.531,
+        "all_gold_facts": 4,
+        "mean_words": 557.4
+      },
+      "pool-ceiling": {
+        "questions": 20,
+        "gold_fact_recall": 0.653,
+        "all_gold_facts": 7,
+        "mean_words": 1072.8
+      },
+      "sentences-q2": {
+        "questions": 20,
+        "gold_fact_recall": 0.429,
+        "all_gold_facts": 3,
+        "mean_words": 137.8
+      },
+      "sentences-q3": {
+        "questions": 20,
+        "gold_fact_recall": 0.449,
+        "all_gold_facts": 4,
+        "mean_words": 177.3
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "MH-005e26b475d1",
+      "batch": "b1",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 773
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 12,
+        "words": 1162
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 64
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 5,
+        "words": 112
+      }
+    },
+    {
+      "id": "MH-0073ab564e55",
+      "batch": "b1",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 737
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 14,
+        "words": 1331
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 6,
+        "words": 186
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 240
+      }
+    },
+    {
+      "id": "MH-0085f76defbe",
+      "batch": "b1",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 655
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 14,
+        "words": 1195
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 5,
+        "words": 144
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 6,
+        "words": 184
+      }
+    },
+    {
+      "id": "MH-00bcb273add8",
+      "batch": "b1",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 759
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 15,
+        "words": 1444
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 5,
+        "words": 208
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 6,
+        "words": 232
+      }
+    },
+    {
+      "id": "MH-012f1f51ac88",
+      "batch": "b1",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 410
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 14,
+        "words": 1396
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 6,
+        "words": 141
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 7,
+        "words": 187
+      }
+    },
+    {
+      "id": "MH-0165795fd40c",
+      "batch": "b1",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 537
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 14,
+        "words": 1290
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 5,
+        "words": 144
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 6,
+        "words": 171
+      }
+    },
+    {
+      "id": "MH-0175090e1c35",
+      "batch": "b1",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 792
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 8,
+        "words": 723
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 129
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 157
+      }
+    },
+    {
+      "id": "MH-01ceb7cf9079",
+      "batch": "b1",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 7,
+        "words": 710
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 15,
+        "words": 1452
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 6,
+        "words": 150
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 7,
+        "words": 191
+      }
+    },
+    {
+      "id": "MH-022ffac0b5f4",
+      "batch": "b1",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 2,
+        "words": 152
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 8,
+        "words": 616
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 4,
+        "words": 83
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 5,
+        "words": 105
+      }
+    },
+    {
+      "id": "MH-0279054408d1",
+      "batch": "b1",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 334
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 9,
+        "words": 810
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 116
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 5,
+        "words": 135
+      }
+    },
+    {
+      "id": "MH-00987dcaed8a",
+      "batch": "b1",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 4,
+        "delivered": 1,
+        "items": 4,
+        "words": 369
+      },
+      "pool-ceiling": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 19,
+        "words": 1646
+      },
+      "sentences-q2": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 8,
+        "words": 224
+      },
+      "sentences-q3": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 7,
+        "words": 213
+      }
+    },
+    {
+      "id": "MH-00ad7107c8d0",
+      "batch": "b1",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 4,
+        "words": 407
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 18,
+        "words": 1664
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 7,
+        "words": 164
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 7,
+        "words": 208
+      }
+    },
+    {
+      "id": "MH-012f9e43588a",
+      "batch": "b1",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 4,
+        "delivered": 1,
+        "items": 4,
+        "words": 261
+      },
+      "pool-ceiling": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 19,
+        "words": 1473
+      },
+      "sentences-q2": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 8,
+        "words": 251
+      },
+      "sentences-q3": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 8,
+        "words": 221
+      }
+    },
+    {
+      "id": "MH-01a03d465730",
+      "batch": "b1",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 4,
+        "words": 407
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 20,
+        "words": 1819
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 8,
+        "words": 191
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 7,
+        "words": 201
+      }
+    },
+    {
+      "id": "MH-01e320e7e25f",
+      "batch": "b1",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 8,
+        "words": 692
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 16,
+        "words": 1432
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 5,
+        "words": 191
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 7,
+        "words": 250
+      }
+    },
+    {
+      "id": "MH-01eae65e9467",
+      "batch": "b1",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 8,
+        "words": 679
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 15,
+        "words": 1341
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 6,
+        "words": 130
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 8,
+        "words": 169
+      }
+    },
+    {
+      "id": "MH-01f65fd5d3b5",
+      "batch": "b1",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 3,
+        "words": 220
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 8,
+        "words": 598
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 4,
+        "words": 87
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 4,
+        "words": 110
+      }
+    },
+    {
+      "id": "MH-01fb0c8361cd",
+      "batch": "b1",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 4,
+        "delivered": 1,
+        "items": 4,
+        "words": 391
+      },
+      "pool-ceiling": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 20,
+        "words": 1976
+      },
+      "sentences-q2": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 6,
+        "words": 238
+      },
+      "sentences-q3": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 7,
+        "words": 270
+      }
+    },
+    {
+      "id": "MH-0255b6d20283",
+      "batch": "b1",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 4,
+        "words": 397
+      },
+      "pool-ceiling": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 21,
+        "words": 2134
+      },
+      "sentences-q2": {
+        "facts": 4,
+        "delivered": 1,
+        "items": 7,
+        "words": 201
+      },
+      "sentences-q3": {
+        "facts": 4,
+        "delivered": 1,
+        "items": 8,
+        "words": 208
+      }
+    },
+    {
+      "id": "MH-027b5802fb84",
+      "batch": "b1",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 4,
+        "words": 360
+      },
+      "pool-ceiling": {
+        "facts": 4,
+        "delivered": 3,
+        "items": 21,
+        "words": 1954
+      },
+      "sentences-q2": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 8,
+        "words": 165
+      },
+      "sentences-q3": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 8,
+        "words": 185
+      }
+    },
+    {
+      "id": "MH-00fc91a80765",
+      "batch": "b1",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 8,
+        "words": 627
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 12,
+        "words": 960
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 4,
+        "words": 137
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 5,
+        "words": 183
+      }
+    },
+    {
+      "id": "MH-01c35cf3d285",
+      "batch": "b1",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 8,
+        "words": 674
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 12,
+        "words": 995
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 3,
+        "words": 124
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 4,
+        "words": 170
+      }
+    },
+    {
+      "id": "MH-01f308ed8e76",
+      "batch": "b1",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 4,
+        "words": 312
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 16,
+        "words": 1340
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 6,
+        "words": 125
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 8,
+        "words": 170
+      }
+    },
+    {
+      "id": "MH-0219de95d13e",
+      "batch": "b1",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 8,
+        "words": 597
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 12,
+        "words": 902
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 4,
+        "words": 125
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 5,
+        "words": 160
+      }
+    },
+    {
+      "id": "MH-024ac868f764",
+      "batch": "b1",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 4,
+        "words": 399
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 10,
+        "words": 893
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 4,
+        "words": 126
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 4,
+        "words": 149
+      }
+    },
+    {
+      "id": "MH-0284af6075bd",
+      "batch": "b1",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 0,
+        "items": 4,
+        "words": 394
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 12,
+        "words": 1049
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 5,
+        "words": 130
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 7,
+        "words": 197
+      }
+    },
+    {
+      "id": "MH-02899e01b5cf",
+      "batch": "b1",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 8,
+        "words": 646
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 12,
+        "words": 996
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 4,
+        "words": 169
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 5,
+        "words": 202
+      }
+    },
+    {
+      "id": "MH-035ed76f80f8",
+      "batch": "b1",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 4,
+        "words": 459
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 14,
+        "words": 1237
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 5,
+        "words": 153
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 7,
+        "words": 211
+      }
+    },
+    {
+      "id": "MH-03b51326acae",
+      "batch": "b1",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 8,
+        "words": 656
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 18,
+        "words": 1551
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 6,
+        "words": 147
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 7,
+        "words": 210
+      }
+    },
+    {
+      "id": "MH-03b7d00ee202",
+      "batch": "b1",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 396
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 10,
+        "words": 853
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 67
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 5,
+        "words": 84
+      }
+    },
+    {
+      "id": "MH-124558122a92",
+      "batch": "b2",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 8,
+        "words": 664
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 14,
+        "words": 1151
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 5,
+        "words": 143
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 6,
+        "words": 167
+      }
+    },
+    {
+      "id": "MH-1291bbe87804",
+      "batch": "b2",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 771
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 15,
+        "words": 1283
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 5,
+        "words": 135
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 6,
+        "words": 156
+      }
+    },
+    {
+      "id": "MH-1298a1cebbf4",
+      "batch": "b2",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 5,
+        "words": 387
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 14,
+        "words": 1403
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 6,
+        "words": 167
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 7,
+        "words": 225
+      }
+    },
+    {
+      "id": "MH-12b9416cf2b0",
+      "batch": "b2",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 785
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 11,
+        "words": 1147
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 3,
+        "words": 63
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 81
+      }
+    },
+    {
+      "id": "MH-12e511fabb84",
+      "batch": "b2",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 8,
+        "words": 817
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 16,
+        "words": 1656
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 5,
+        "words": 134
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 7,
+        "words": 205
+      }
+    },
+    {
+      "id": "MH-134a74b16a08",
+      "batch": "b2",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 8,
+        "words": 685
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 15,
+        "words": 1342
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 6,
+        "words": 160
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 7,
+        "words": 204
+      }
+    },
+    {
+      "id": "MH-1377f50e2257",
+      "batch": "b2",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 8,
+        "words": 684
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 15,
+        "words": 1143
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 5,
+        "words": 199
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 7,
+        "words": 262
+      }
+    },
+    {
+      "id": "MH-1388f62eabd7",
+      "batch": "b2",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 824
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 15,
+        "words": 1471
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 6,
+        "words": 164
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 8,
+        "words": 210
+      }
+    },
+    {
+      "id": "MH-1421b92cce4c",
+      "batch": "b2",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 8,
+        "words": 754
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 15,
+        "words": 1333
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 5,
+        "words": 160
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 7,
+        "words": 215
+      }
+    },
+    {
+      "id": "MH-143afd54abe2",
+      "batch": "b2",
+      "question_type": "comparison_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 0,
+        "items": 7,
+        "words": 749
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 11,
+        "words": 1155
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 74
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 5,
+        "words": 105
+      }
+    },
+    {
+      "id": "MH-0f1e6025071b",
+      "batch": "b2",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 4,
+        "words": 346
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 14,
+        "words": 1195
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 4,
+        "words": 124
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 6,
+        "words": 187
+      }
+    },
+    {
+      "id": "MH-0f6e61d5754c",
+      "batch": "b2",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 4,
+        "words": 381
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 8,
+        "words": 741
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 3,
+        "words": 99
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 4,
+        "words": 133
+      }
+    },
+    {
+      "id": "MH-0f910380b759",
+      "batch": "b2",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 8,
+        "words": 835
+      },
+      "pool-ceiling": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 20,
+        "words": 2135
+      },
+      "sentences-q2": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 7,
+        "words": 197
+      },
+      "sentences-q3": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 7,
+        "words": 195
+      }
+    },
+    {
+      "id": "MH-0f9240fedbd9",
+      "batch": "b2",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 8,
+        "words": 716
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 15,
+        "words": 1388
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 5,
+        "words": 161
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 7,
+        "words": 201
+      }
+    },
+    {
+      "id": "MH-0fa911496c14",
+      "batch": "b2",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 4,
+        "delivered": 3,
+        "items": 4,
+        "words": 342
+      },
+      "pool-ceiling": {
+        "facts": 4,
+        "delivered": 3,
+        "items": 18,
+        "words": 1441
+      },
+      "sentences-q2": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 8,
+        "words": 265
+      },
+      "sentences-q3": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 8,
+        "words": 239
+      }
+    },
+    {
+      "id": "MH-10482bbfd0ca",
+      "batch": "b2",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 8,
+        "words": 697
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 14,
+        "words": 1136
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 5,
+        "words": 112
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 7,
+        "words": 179
+      }
+    },
+    {
+      "id": "MH-114722edd549",
+      "batch": "b2",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 4,
+        "words": 377
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 666
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 4,
+        "words": 87
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 4,
+        "words": 127
+      }
+    },
+    {
+      "id": "MH-11e54c1b8b6f",
+      "batch": "b2",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 4,
+        "words": 326
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 14,
+        "words": 1149
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 5,
+        "words": 172
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 6,
+        "words": 256
+      }
+    },
+    {
+      "id": "MH-12284f587f2e",
+      "batch": "b2",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 8,
+        "words": 823
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 14,
+        "words": 1091
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 5,
+        "words": 88
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 5,
+        "words": 134
+      }
+    },
+    {
+      "id": "MH-1242cb4d8e00",
+      "batch": "b2",
+      "question_type": "inference_query",
+      "chunks-reranked": {
+        "facts": 4,
+        "delivered": 1,
+        "items": 8,
+        "words": 704
+      },
+      "pool-ceiling": {
+        "facts": 4,
+        "delivered": 2,
+        "items": 21,
+        "words": 1818
+      },
+      "sentences-q2": {
+        "facts": 4,
+        "delivered": 0,
+        "items": 7,
+        "words": 198
+      },
+      "sentences-q3": {
+        "facts": 4,
+        "delivered": 1,
+        "items": 6,
+        "words": 203
+      }
+    },
+    {
+      "id": "MH-106247365877",
+      "batch": "b2",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 7,
+        "words": 608
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 14,
+        "words": 1193
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 123
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 5,
+        "words": 180
+      }
+    },
+    {
+      "id": "MH-10a673817f1b",
+      "batch": "b2",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 8,
+        "words": 803
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 13,
+        "words": 1190
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 5,
+        "words": 236
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 7,
+        "words": 279
+      }
+    },
+    {
+      "id": "MH-1126297f39de",
+      "batch": "b2",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 8,
+        "words": 784
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 14,
+        "words": 1299
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 5,
+        "words": 218
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 0,
+        "items": 6,
+        "words": 266
+      }
+    },
+    {
+      "id": "MH-1144d2e80b35",
+      "batch": "b2",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 282
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 8,
+        "words": 686
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 0,
+        "items": 3,
+        "words": 98
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 0,
+        "items": 4,
+        "words": 138
+      }
+    },
+    {
+      "id": "MH-1175d7044fa1",
+      "batch": "b2",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 8,
+        "words": 563
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 10,
+        "words": 847
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 4,
+        "words": 181
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 5,
+        "words": 204
+      }
+    },
+    {
+      "id": "MH-11b5dbe62ed4",
+      "batch": "b2",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 404
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 10,
+        "words": 931
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 4,
+        "words": 102
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 5,
+        "words": 119
+      }
+    },
+    {
+      "id": "MH-13e5096ff398",
+      "batch": "b2",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 7,
+        "words": 738
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 2,
+        "items": 14,
+        "words": 1469
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 6,
+        "words": 130
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 7,
+        "words": 168
+      }
+    },
+    {
+      "id": "MH-141809cfa779",
+      "batch": "b2",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 4,
+        "words": 362
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 14,
+        "words": 1181
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 5,
+        "words": 128
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 7,
+        "words": 157
+      }
+    },
+    {
+      "id": "MH-145cc8296d13",
+      "batch": "b2",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 2,
+        "delivered": 1,
+        "items": 8,
+        "words": 746
+      },
+      "pool-ceiling": {
+        "facts": 2,
+        "delivered": 2,
+        "items": 8,
+        "words": 776
+      },
+      "sentences-q2": {
+        "facts": 2,
+        "delivered": 0,
+        "items": 3,
+        "words": 96
+      },
+      "sentences-q3": {
+        "facts": 2,
+        "delivered": 0,
+        "items": 4,
+        "words": 109
+      }
+    },
+    {
+      "id": "MH-147111acaddb",
+      "batch": "b2",
+      "question_type": "temporal_query",
+      "chunks-reranked": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 8,
+        "words": 697
+      },
+      "pool-ceiling": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 13,
+        "words": 1109
+      },
+      "sentences-q2": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 4,
+        "words": 142
+      },
+      "sentences-q3": {
+        "facts": 3,
+        "delivered": 1,
+        "items": 6,
+        "words": 191
+      }
+    }
+  ]
+}

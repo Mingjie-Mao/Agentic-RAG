@@ -1,0 +1,30 @@
+{
+  "base_model": "BAAI/bge-reranker-v2-m3",
+  "data": "HotpotQA distractor (CC BY-SA 4.0), Wikipedia; no overlap with the news corpus",
+  "training_questions": 1000,
+  "comparison_share": 0.5,
+  "groups": 2291,
+  "group_size": 8,
+  "steps": 1146,
+  "frozen": "input embeddings",
+  "trainable_parameters": 311753729,
+  "lr": 1e-05,
+  "seed": 13,
+  "validation_questions": 200,
+  "validation_before": {
+    "questions": 200,
+    "supporting_recall_at_k": 0.6731,
+    "supporting_recall_at_4": 0.7863,
+    "all_supporting_in_top_4": 0.585
+  },
+  "validation_after": {
+    "questions": 200,
+    "supporting_recall_at_k": 0.7009,
+    "supporting_recall_at_4": 0.8141,
+    "all_supporting_in_top_4": 0.65
+  },
+  "first_50_loss": 0.869,
+  "last_50_loss": 0.5035,
+  "seconds": 7921,
+  "model_path": ".runtime/models/sentence-selector-v1"
+}

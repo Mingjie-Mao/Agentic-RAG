@@ -120,13 +120,27 @@ def select_sentences(
     return evidence
 
 
-def cross_encoder_scorer():
-    """Score with the project's cross-encoder (bge-reranker-v2-m3), batched."""
+def cross_encoder_scorer(model_path=None):
+    """Score with the project's cross-encoder (bge-reranker-v2-m3), batched, or with a
+    fine-tuned copy of it saved at `model_path`."""
     from app.rerank import _model
     from app.config import settings
 
+    loaded = None
+    if model_path:
+        import torch
+        from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+        device = "mps" if torch.backends.mps.is_available() else "cpu"
+        loaded = (
+            AutoTokenizer.from_pretrained(model_path),
+            AutoModelForSequenceClassification.from_pretrained(model_path).to(device).eval(),
+            device,
+            torch,
+        )
+
     def score(query: str, texts: list[str]) -> list[float]:
-        tokenizer, model, device, torch = _model()
+        tokenizer, model, device, torch = loaded or _model()
         cfg = settings()
         values = []
         for start in range(0, len(texts), 16):

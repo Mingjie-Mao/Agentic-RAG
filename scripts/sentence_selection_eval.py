@@ -80,9 +80,13 @@ def summarize(rows, key):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--per-type", type=int, default=10)
+    parser.add_argument("--selector", help="path of a fine-tuned sentence selector")
+    parser.add_argument("--out", default=str(OUT))
+    parser.add_argument("--configs", default=",".join(CONFIGS))
     args = parser.parse_args()
+    configs = {name: CONFIGS[name] for name in args.configs.split(",")}
     records = {digest(r["query"]): r for r in json.loads((CACHE / "MultiHopRAG.json").read_bytes())}
-    raw = cross_encoder_scorer()
+    raw = cross_encoder_scorer(args.selector)
     memo = {}
 
     def score(query, texts):
@@ -108,7 +112,10 @@ def main():
                 False: [{**lane, "query": question} for lane in with_clauses],
             }
             row["chunks-reranked"] = measure(record, chunks)
-            for name, config in CONFIGS.items():
+            # What a perfect selector could reach: every chunk it is allowed to choose from.
+            pool = {chunk["chunk_id"]: chunk for lane in with_clauses for chunk in lane["chunks"]}
+            row["pool-ceiling"] = measure(record, list(pool.values()))
+            for name, config in configs.items():
                 evidence = select_sentences(
                     question,
                     lanes_by_clause[config["clause"]],
@@ -121,11 +128,12 @@ def main():
             rows.append(row)
             if len(rows) % 10 == 0:
                 print(f"  {len(rows)} questions", flush=True)
-    keys = ["chunks-reranked", *CONFIGS]
+    keys = ["chunks-reranked", "pool-ceiling", *configs]
     output = {
         "sample": f"first {args.per_type} answerable questions per type per batch (b1, b2)",
         "metric": "gold fact delivered = >=50% of its word 4-grams in evidence from its own document",
-        "configs": CONFIGS,
+        "configs": configs,
+        "selector": args.selector or "base bge-reranker-v2-m3",
         "all": {key: summarize(rows, key) for key in keys},
         "by_type": {
             kind: {key: summarize([r for r in rows if r["question_type"] == kind], key) for key in keys}
@@ -133,7 +141,7 @@ def main():
         },
         "results": rows,
     }
-    OUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
+    Path(args.out).write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps({k: output[k] for k in ("all", "by_type")}, ensure_ascii=False, indent=2))
 
 
