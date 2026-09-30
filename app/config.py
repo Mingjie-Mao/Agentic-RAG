@@ -14,6 +14,9 @@ class Settings(BaseSettings):
     embed_model: str = "bge-m3:567m"
     chat_model: str = "qwen2.5:7b-instruct"
     agent_policy_model: str = "qwen2.5:7b-instruct"
+    # Optional separate Ollama endpoint for the dynamic Agent's action choice only, for
+    # a policy model the pinned runtime cannot serve. Empty: same endpoint as generation.
+    agent_policy_url: str = ""
     embed_dimension: int = 1024
     storage_dir: Path = Path(".runtime/files")
     demo_mode: bool = False

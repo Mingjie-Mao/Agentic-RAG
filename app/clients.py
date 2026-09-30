@@ -464,8 +464,7 @@ class Models:
         """Choose one bounded read-only action; tool arguments are validated elsewhere."""
         cfg = settings()
         started = time.monotonic()
-        result = self._post(
-            "/api/chat",
+        body = (
             {
                 "model": cfg.agent_policy_model,
                 "stream": False,
@@ -495,8 +494,13 @@ class Models:
                     },
                 ],
                 "options": {"temperature": 0, "seed": 42, "num_ctx": 8192, "num_predict": 500},
-            },
+            }
         )
+        if cfg.agent_policy_url:
+            # Another runtime; a reasoning model there answers directly, like the default.
+            result = self._post("/api/chat", {**body, "think": False}, base=cfg.agent_policy_url)
+        else:
+            result = self._post("/api/chat", body)
         totals = getattr(self, "agent_policy_usage", {
             "prompt_tokens": 0, "completion_tokens": 0, "wall_ms": 0.0,
             "model_duration_ms": 0.0, "prompt_eval_ms": 0.0, "completion_eval_ms": 0.0,
@@ -516,10 +520,10 @@ class Models:
         except (ValueError, KeyError, TypeError) as exc:
             raise DependencyError("Agent 未返回有效动作", stage="agent_policy") from exc
 
-    def _post(self, path: str, body: dict) -> dict:
+    def _post(self, path: str, body: dict, base: str | None = None) -> dict:
         try:
             response = httpx.post(
-                settings().ollama_url + path,
+                (base or settings().ollama_url) + path,
                 json=body,
                 timeout=settings().model_timeout_seconds,
                 trust_env=False,
