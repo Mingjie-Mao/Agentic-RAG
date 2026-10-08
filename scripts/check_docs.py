@@ -105,16 +105,22 @@ def main():
             elif value not in text:
                 problems.append(f"{doc}: 缺少或不匹配 {label} = {value}")
 
-    # Headline metrics now have a single denominator; legacy numbers remain in
-    # PROJECT_REPORT.md §22 rather than being required in the README main table.
+    # Evaluation details live in the benchmark document; README is the project
+    # introduction. Keep checking split counts and the primary metric at the source.
     from scripts.benchmark_package import validate_package
     try:
         counts = validate_package(require_private=False)["counts"]
-        text = Path("README.md").read_text()
-        expected = f"Dev {counts['dev']} / Core Test {counts['core']} / Security {counts['security']} / External {counts['external']}"
-        if expected not in text or "Strict Task Success" not in text:
-            problems.append("README.md: 主 benchmark 分母或指标不匹配")
-        if any(value in text for value in readme_figures.values() if value):
+        benchmark_doc = "benchmarks/enterprise_rag/v1/README.md"
+        text = Path(benchmark_doc).read_text()
+        for split, label in (("dev", "Dev"), ("core", "Core Test"),
+                             ("security", "Security"), ("external", "External")):
+            expected = rf"^\|\s*{re.escape(label)}\s*\|\s*{counts[split]}\s*\|"
+            if not re.search(expected, text, re.M):
+                problems.append(f"{benchmark_doc}: {label} 分母不匹配")
+        if "Strict Task Success Rate" not in text:
+            problems.append(f"{benchmark_doc}: 主 benchmark 指标不匹配")
+        readme = Path("README.md").read_text()
+        if any(value in readme for value in readme_figures.values() if value):
             problems.append("README.md: 历史分数不应混入当前主表")
     except (ValueError, OSError) as exc:
         problems.append(f"benchmark package: {exc}")

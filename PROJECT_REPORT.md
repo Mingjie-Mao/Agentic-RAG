@@ -1,6 +1,6 @@
 # Agentic-RAG · 项目报告
 
-本文记录系统设计、实验方法、失败案例与技术结论。项目概要与主要指标见 [`README.md`](./README.md)，在线展示页见 <https://agentic-rag.pages.dev>。
+本文记录系统设计、实验方法、失败案例与技术结论。项目概要与本地运行方式见 [`README.md`](./README.md)，评测协议见 [Benchmark 评测包](benchmarks/enterprise_rag/v1/README.md)，在线展示页见 <https://agentic-rag.pages.dev>。
 
 **当前进度、问题与计划集中在 [§20.1 现状总览](#201-现状总览已完成当前问题与计划2026-10-08)。** 本文是项目唯一的进度与结论文档；此前分散在根目录的阶段记录已并入 §2.3.1、§20.26–20.29 与 §22。
 
@@ -2540,7 +2540,7 @@ semantic 控制默认值不变，P2–P4 未作为本阶段完成项。所有变
 | Dynamic | 36/47 | 2/12 | 26 → 34 | 42.2 / 111.1 |
 | Hybrid | 38/47 | 4/12 | 27 → 34 | 30.0 / 78.9 |
 
-Dynamic 策略调用 112→41、工具失败 12→0、执行 token 减少 51.6%，但旧 35 题 P95 从 105.7 升到 122.4 秒。注意此 v4 与 §20.27 的 `dev-five-repairs-unified-20261006-v4` 是两次不同运行，引用时须写全名。
+Dynamic 策略调用 112→41、工具失败 12→0、执行 token 减少 51.6%，但旧 35 题 P95 从 105.7 升到 122.4 秒。逐题前后对比：`artifacts/dev-repair-before-after-20261004-v4.json`。注意此 v4 与 §20.27 的 `dev-five-repairs-unified-20261006-v4` 是两次不同运行，引用时须写全名。
 
 **定点修复（10-05）。** 结构化判断原本把含双引号的问题原文放进 JSON Schema 枚举，触发本机 Ollama 语法解析失败（HTTP 500）并静默返回空结论；改为输出槽位编号、由服务器还原原文，失败时返回 unavailable。比较题要求每个命名来源至少选中一条自己的事实（v27 重放 g1=[1]、g2=[2]，结论正确）。媒体归属与引用 metadata 不一致时进入有界恢复；第三方原文明确转述仍是合法路径。复查结论：本地模型失败不等于必须接入 GPT API，仍有可修的工程缺口。以上都是保存上下文上的定点诊断，不是全量成绩。
 
@@ -2559,6 +2559,8 @@ Dynamic 策略调用 112→41、工具失败 12→0、执行 token 减少 51.6%�
 | Workflow | 38/47 | 35/35 | 3/12 | 46.4 | 86.9 |
 | Dynamic | 37/47 | 35/35 | 2/12 | 64.1 | 81.5 |
 | Hybrid | 37/47 | 35/35 | 2/12 | 45.8 | 86.6 |
+
+分阶段耗时：`artifacts/five-repairs-latency-breakdown-v4-20261006.json`、`artifacts/five-repairs-latency-breakdown-old35-v4-20261006.json`（v2、v6 同名保留）。
 
 本轮代码改动：同名实体整名匹配（`app/evidence_scope.py`，4 个反例中旧逻辑错 3 个、新逻辑 0 个）；嵌入帖/cookie 样板不能支持断言（历史 204 对回放命中 1 条、0 误拦）；断言点名但未检回的媒体不能由其他媒体的引用冒充（188 份答案回放命中 1 条、0 误拦）；策略调用记录服务端预填/解码耗时，未上报为 null 而不是 0。
 
@@ -2981,7 +2983,7 @@ gold 文档有 3 份未进候选、2 份被名额挡住。否定前提、正文/
 
 ## 22. 历史评测记录（不进入 v1 主表）
 
-这些数字使用不同题集与评分口径，部分早于 LangGraph 迁移，只用于复现历史实验，不是 Enterprise-RAG Benchmark Package v1 的主成绩。新主表只使用 Core 70 经审核的 Strict Task Success Rate。
+这些数字使用不同题集与评分口径，部分早于 LangGraph 迁移，只用于复现历史实验，不是 Agentic-RAG Benchmark Package v1 的主成绩。新主表只使用 Core 70 经审核的 Strict Task Success Rate。
 
 | 历史评测 | 记录 | 口径 |
 | --- | ---: | --- |

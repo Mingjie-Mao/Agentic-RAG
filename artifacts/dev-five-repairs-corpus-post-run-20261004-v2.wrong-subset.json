@@ -1,9 +1,0 @@
-{
-  "freeze": ".runtime/benchmark-package/v1/dev-five-repairs-20261004-v2/freeze.json",
-  "indexed_corpus_sha256": "a30875ae79d82fc10ffb925b6c48d98c4c1903863bee2f1916e16660620a1d2b",
-  "post_run_unchanged": false,
-  "documents": 22,
-  "users": 2,
-  "search_chunks": 78,
-  "status": "wrong_subset_spec_used_for_check; superseded by corrected exact frozen package check"
-}

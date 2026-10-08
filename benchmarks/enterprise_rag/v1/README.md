@@ -1,4 +1,6 @@
-# Enterprise-RAG Benchmark Package v1
+# Agentic-RAG Benchmark Package v1
+
+目录名与 manifest 中的 `enterprise-rag-benchmark-package-v1` 是早期命名，已被历次冻结运行的哈希引用，因此保留不改。
 
 本包是之后 RAG / Workflow / Dynamic Agent / Hybrid 的统一评测协议。唯一主表来源为 **Core 70 题的 Strict Task Success Rate**。当前完成数据整理和评测基础设施；**Core 70 与 Security 16 的题目标注已由当前 GPT 会话审核，尚未正式冻结、执行或产生系统正确率**。GPT 审核已获用户授权，保存模型家族、具体服务版本未知的说明、理由和独立性，不要求把模型标签伪装成人工金标。External 150 的新协议标注审核尚未完成。
 

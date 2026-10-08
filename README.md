@@ -1,68 +1,106 @@
 # Agentic-RAG
 
-**Auditable, permission-aware RAG for enterprise knowledge.**
+**面向企业知识库的 RAG 与 Agent 问答系统。**
 
-Agentic-RAG is an enterprise RAG system with ACL-aware retrieval, verifiable citations, document versioning, and controlled Agent workflows. It answers only from documents the current user may read, cites the exact source location, refuses when the evidence is insufficient, and reports a conflict instead of picking a side.
+支持多格式文档检索、权限控制、版本管理及多步问答。系统从用户有权访问的文档中检索证据，生成带有原文引用的回答；证据不足时提示无法回答，检测到资料冲突时展示冲突来源。
 
-## Features
+[在线展示](https://agentic-rag.pages.dev/) · [系统演示](https://agentic-rag.pages.dev/live) · [项目报告](PROJECT_REPORT.md)
 
-- Permission filtering inside the retrieval query, re-checked before an answer is returned
-- Hybrid search: BM25 + BGE-M3 + RRF, with per-publication routing for multi-source questions
-- Verifiable citations: PDF page and bounding box, DOCX heading and paragraph, XLSX sheet and cell range
-- Safe document versioning (index first, then publish) and immediate permission revocation
-- LangGraph workflow, dynamic Agent, Hybrid Agent and an experimental Planner over seven bounded tools, with auditable tool traces; `auto` uses the fixed workflow, or the bounded Hybrid Agent when the next step depends on an observation
-- Query recovery, multi-hop retrieval, and version comparison
-- Reproducible benchmarks with frozen inputs, one-shot holdouts, and failure analysis
+## 核心功能
 
-Execution budgets and resumable benchmark checkpoints are implemented. Literal comparison, condition, and version contracts are enabled by default after Dev validation. Repair history is in [project report §20.26–20.27](PROJECT_REPORT.md#2026-统一评测包langgraph-迁移与-dev-修复2026-10-02-至-10-05) (generation recovery, entity/time scope, citation checks, P95). The latest frozen Dev 47 run (v6) gives strict success RAG 38, Workflow 38, Dynamic 38, Hybrid 37; its new answers were reviewed by Claude Opus 5.5 (not independent, not the GPT review the protocol specifies), so these are Dev diagnostics, not headline results. Formal Core acceptance remains pending.
+- **文档检索**：支持 PDF（文本型）、DOCX、XLSX 和 Markdown 上传与解析，结合 BM25、BGE-M3 向量检索和 RRF 排名融合，实现跨文档知识问答。
+- **权限与版本管理**：按租户、用户与用户组控制文档访问，权限过滤进入检索查询，返回回答前再次鉴权；新版本先完成索引再发布，支持版本比较与权限撤销。
+- **Agent 多步问答**：基于 LangGraph 实现 Workflow、Dynamic Agent 和 Hybrid Agent，支持多轮检索、信息补查和版本比较，通过官方 PostgreSQL 检查点支持任务中断恢复。
+- **可验证引用**：回答关联原始文档证据，可定位 PDF 页码与区域、DOCX 标题与段落、XLSX 工作表与单元格，并校验引文与来源是否对应。
+- **受控执行**：工具参数校验、调用审计、累计模型与工具调用预算及执行时限共同约束 Agent；恢复任务时重新校验权限与版本，继续累计预算。
 
-The Planner (`mode=planner`, explicit only) makes one structured plan; the program executes it and accepts a bridge value only when it appears verbatim in the cited source. On a separate observation-dependent Dev set (30 tasks) it reached 14/30 strict success versus 4–7/30 for the four main methods, at P50 65 s. It was iterated on the same Dev set, its 40-task Test split has not been reviewed or run, and it is not a default path. See [project report §20.28–20.29](PROJECT_REPORT.md#2029-规划器planner一次规划程序执行桥接值逐字核对2026-10-08).
+## 技术栈
 
-Agent node execution and recovery use LangGraph with its official PostgreSQL checkpointer (SQLite in tests). ACL, version validation and cumulative budgets remain application rules. See [project report §2.3.1](PROJECT_REPORT.md#231-langgraph-编排与恢复边界2026-10-02-迁移) for recovery boundaries and validation.
+| 层次 | 技术 |
+| --- | --- |
+| 后端与接口 | Python、FastAPI、Pydantic |
+| Agent 编排 | LangGraph、官方 PostgreSQL Checkpointer |
+| 数据与检索 | PostgreSQL、SQLAlchemy、Alembic、OpenSearch |
+| LLM 与混合检索 | Qwen2.5 7B Instruct、Ollama、BGE-M3、BM25、RRF |
+| 文档解析 | Docling、python-docx、openpyxl |
+| 前端与证据展示 | React、TypeScript、Vite、PDF.js |
+| 本地环境 | Docker Compose、uv |
 
-Slot evaluation and isolated post-completion shadow are implemented as candidates; semantic control remains off. The user-approved benchmark protocol accepts explicit GPT reviews. Formal Core acceptance has not run; old human-review gates for semantic-control calibration remain separate from the new benchmark protocol.
+### 系统架构
 
-## Benchmark and Results
+```mermaid
+flowchart LR
+    subgraph Ingest["① 文档入库"]
+        direction LR
+        Upload["PDF / DOCX<br/>XLSX / Markdown"] --> Parse["解析与分块<br/>保留结构与原文位置"]
+        Parse --> Embed["BGE-M3<br/>向量化"]
+    end
 
-One [Enterprise-RAG Benchmark Package](benchmarks/enterprise_rag/v1/README.md): **Dev 47 / Core Test 70 / Security 16 / External 150**. Only Dev permits tuning. Core contains seven categories of ten tasks; Security is separate. The fixed external selection was evaluated previously and is not a fresh unseen validation.
+    subgraph Storage["② 数据存储"]
+        direction TB
+        Files[("文件存储<br/>不可变原件")]
+        PG[("PostgreSQL<br/>文档 · 权限 · 版本<br/>原文位置 · Agent 状态")]
+        OS[("OpenSearch<br/>文本 · 向量索引")]
+    end
 
-The headline metric is **Strict Task Success Rate on all 70 Core tasks**: complete supported facts, correct condition/version scope, supported citations, correct abstention and safe execution. Retrieval, policy, answer quality, cost and per-category results are reported separately. Expected tool paths are diagnostic and never required for a pass.
+    subgraph QA["③ RAG / Agent 问答"]
+        direction LR
+        Question["用户提问"] --> Route["单轮 RAG / LangGraph Agent<br/>Workflow · Dynamic · Hybrid"]
+        Route --> Search["权限与版本过滤<br/>混合检索<br/>BM25 · Vector · RRF"]
+        Search --> Generate["Qwen2.5 7B<br/>基于证据生成回答"]
+        Generate --> Verify["引用校验<br/>权限与版本复核"]
+        Verify --> Answer["回答 / 拒答 / 冲突<br/>附原文证据位置"]
+    end
 
-| Method | Core Strict Task Success | Fact Recall | Retrieval Recall | Citation | Steps | Latency |
-| --- | --- | --- | --- | --- | --- | --- |
-| Plain RAG | Pending | — | — | — | — | — |
-| Workflow | Pending | — | — | — | — | — |
-| Dynamic Agent | Pending | — | — | — | — | — |
-| Hybrid | Pending | — | — | — | — | — |
+    Upload -->|保存原件| Files
+    Parse -->|文档与分块信息| PG
+    Embed -->|文本与向量| OS
+    PG -.->|授权范围与原文证据| Search
+    OS -.->|检索候选| Search
+    PG -.->|当前权限与版本| Verify
 
-The package and the comparison/ablation matrix are prepared. Same-session GPT annotation review covers Core 70 and Security 16; it does not establish system accuracy or independent human gold. Formal freezing, execution and blinded GPT answer review remain; External annotation review is pending. No historical percentage is substituted for a Core result. Previous measurements are preserved in [project report §22](PROJECT_REPORT.md#22-历史评测记录不进入-v1-主表).
-
-## Stack
-
-FastAPI · LangGraph · PostgreSQL · OpenSearch · BGE-M3 · Qwen2.5 7B · Ollama · React · TypeScript
-
-## Quick Start
-
-Requires Docker, Node.js 22.12+, Python 3.13 and `uv`. The first run downloads several GB of models.
-
-```bash
-make setup
-make infra
-make models
-make migrate
-make seed
-make web
-make run
+    style Ingest fill:#eff6ff,stroke:#3b82f6
+    style Storage fill:#f8fafc,stroke:#64748b
+    style QA fill:#f0fdf4,stroke:#22c55e
 ```
 
-## Demo
+实线表示主流程与入库写入，虚线表示存储层为检索、证据读取和校验提供数据。图中省略后台 Worker、检查点写入与审计连线，详细机制见 [项目报告](PROJECT_REPORT.md)。
 
-<https://agentic-rag.pages.dev> — project page (Chinese, with an English toggle): screenshots, architecture and evaluation design. Its result tables are September 2026 historical experiments, labeled as such; no Benchmark v1 accuracy is shown until Core has run.
+- **文档入库**：解析文档、保留原文位置并生成向量；原件保存在文件存储，业务数据写入 PostgreSQL，文本与向量写入 OpenSearch。新版本完成索引并确认可检索后才发布。
+- **数据存储**：PostgreSQL 管理权限、版本、证据原文及 Agent 状态，OpenSearch 负责关键词与向量检索；检索命中后从 PostgreSQL 读取原文并复核权限。
+- **RAG / Agent 问答**：单轮 RAG 与 Agent 共用授权检索链路；Agent 可按观察结果补查证据或比较版本。LangGraph 负责节点调度与检查点恢复，累计预算和工具审计由业务层控制。生成后再次核对引用、权限与版本；引文存在于来源中不等于模型推理一定正确。
 
-<https://agentic-rag.pages.dev/live> — the full system, relayed through a Cloudflare tunnel to the author's machine. The visitor account is read-only with a daily quota, and the page works only while that machine and the tunnel are up. After a tunnel restart, run `scripts/publish_live_page.sh <new tunnel URL>`.
+## 在线演示
 
-## Documentation
+- [项目展示](https://agentic-rag.pages.dev/)：界面截图、系统架构与设计说明。
+- [系统演示](https://agentic-rag.pages.dev/live)：以虚构企业“星桥软件”为场景，体验文档问答与证据定位。访客账号只读并设有每日额度；演示通过 Cloudflare 隧道连接作者本机，本机与隧道在线时可用。
 
-See [`PROJECT_REPORT.md`](./PROJECT_REPORT.md) (Chinese), the single project document, for architecture, experiments, ablations, limitations, failure analysis, and the full evaluation commands. Current progress, open problems and the plan are summarized in [§20.1](PROJECT_REPORT.md#201-现状总览已完成当前问题与计划2026-10-08).
+## 本地运行
 
-See [RAG and memory](RAG_AND_MEMORY.md) (Chinese) for the actual retrieval pipeline, three memory layers, and their storage locations.
+环境要求：Docker、Python 3.13、Node.js 22.12+、uv。
+
+在仓库根目录执行以下命令（macOS）：
+
+```bash
+make setup   # 安装依赖，首次创建 .env
+make infra   # 启动 PostgreSQL 与 OpenSearch
+make models  # 下载并校验本地 Ollama 与模型
+make migrate # 执行数据库迁移
+make seed    # 导入演示文档与账号
+make web     # 构建前端
+make run     # 启动 API、后台 Worker 与本地模型服务
+```
+
+首次运行需下载数 GB 模型。其他系统将 `make models` 替换为 `make models-cpu`，通过 Docker 启动 Ollama 并下载模型。
+
+启动后打开 [本地应用](http://127.0.0.1:8000)。登录页列出演示账号，密码见 `.env` 中的 `RAG_DEMO_PASSWORD`；配置项参考 [.env.example](.env.example)。
+
+## 详细文档
+
+- [项目报告](PROJECT_REPORT.md)：系统设计、实现细节、实验记录、当前进度与局限。
+- [RAG 与记忆机制](RAG_AND_MEMORY.md)：检索流程、三层记忆及 LangGraph 的职责边界。
+- [Benchmark 评测包](benchmarks/enterprise_rag/v1/README.md)：统一评测设计、方法比较与审核规则。
+
+## License
+
+[MIT](LICENSE)

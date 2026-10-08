@@ -1,0 +1,2 @@
+# Experiment outputs: collapse in GitHub diffs and exclude from language stats.
+artifacts/** linguist-generated=true
