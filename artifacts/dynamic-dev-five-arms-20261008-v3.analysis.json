@@ -1,0 +1,511 @@
+{
+  "raw": "artifacts/dynamic-dev-five-arms-20261008-v3.json",
+  "reviewed": true,
+  "methods": {
+    "rag": {
+      "all": {
+        "n": 30,
+        "strict_success": 7,
+        "mean_steps": 1,
+        "p50_s": 11.8,
+        "p95_s": 60.8,
+        "execution_failures": 0
+      },
+      "needs_dynamic": {
+        "n": 18,
+        "strict_success": 0,
+        "mean_steps": 1,
+        "p50_s": 11.7,
+        "p95_s": 60.8,
+        "execution_failures": 0
+      },
+      "one_shot_sufficient": {
+        "n": 10,
+        "strict_success": 5,
+        "mean_steps": 1,
+        "p50_s": 21.4,
+        "p95_s": 77.8,
+        "execution_failures": 0
+      },
+      "by_type": {
+        "alias": {
+          "n": 4,
+          "strict_success": 0,
+          "mean_steps": 1,
+          "p50_s": 22.5,
+          "p95_s": 23.1,
+          "execution_failures": 0
+        },
+        "bridge": {
+          "n": 6,
+          "strict_success": 0,
+          "mean_steps": 1,
+          "p50_s": 11.2,
+          "p95_s": 20.7,
+          "execution_failures": 0
+        },
+        "bridge_deep": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 1,
+          "p50_s": 11.6,
+          "p95_s": 11.8,
+          "execution_failures": 0
+        },
+        "conditional": {
+          "n": 4,
+          "strict_success": 1,
+          "mean_steps": 1,
+          "p50_s": 54.9,
+          "p95_s": 77.8,
+          "execution_failures": 0
+        },
+        "conflict": {
+          "n": 2,
+          "strict_success": 1,
+          "mean_steps": 1,
+          "p50_s": 28.0,
+          "p95_s": 31.4,
+          "execution_failures": 0
+        },
+        "control": {
+          "n": 3,
+          "strict_success": 3,
+          "mean_steps": 1,
+          "p50_s": 18.3,
+          "p95_s": 25.4,
+          "execution_failures": 0
+        },
+        "enumeration": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 1,
+          "p50_s": 0.3,
+          "p95_s": 0.4,
+          "execution_failures": 0
+        },
+        "event_version": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 1,
+          "p50_s": 0.3,
+          "p95_s": 0.3,
+          "execution_failures": 0
+        },
+        "unanswerable": {
+          "n": 2,
+          "strict_success": 2,
+          "mean_steps": 1,
+          "p50_s": 11.0,
+          "p95_s": 11.9,
+          "execution_failures": 0
+        }
+      },
+      "control_over_planning": 0
+    },
+    "workflow": {
+      "all": {
+        "n": 30,
+        "strict_success": 7,
+        "mean_steps": 1.77,
+        "p50_s": 7.8,
+        "p95_s": 53.2,
+        "execution_failures": 0
+      },
+      "needs_dynamic": {
+        "n": 18,
+        "strict_success": 0,
+        "mean_steps": 1.67,
+        "p50_s": 8.3,
+        "p95_s": 53.2,
+        "execution_failures": 0
+      },
+      "one_shot_sufficient": {
+        "n": 10,
+        "strict_success": 5,
+        "mean_steps": 2.1,
+        "p50_s": 12.8,
+        "p95_s": 104.1,
+        "execution_failures": 0
+      },
+      "by_type": {
+        "alias": {
+          "n": 4,
+          "strict_success": 0,
+          "mean_steps": 2,
+          "p50_s": 10.3,
+          "p95_s": 22.1,
+          "execution_failures": 0
+        },
+        "bridge": {
+          "n": 6,
+          "strict_success": 0,
+          "mean_steps": 1,
+          "p50_s": 6.9,
+          "p95_s": 15.1,
+          "execution_failures": 0
+        },
+        "bridge_deep": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 1,
+          "p50_s": 10.3,
+          "p95_s": 15.8,
+          "execution_failures": 0
+        },
+        "conditional": {
+          "n": 4,
+          "strict_success": 1,
+          "mean_steps": 2.25,
+          "p50_s": 51.3,
+          "p95_s": 104.1,
+          "execution_failures": 0
+        },
+        "conflict": {
+          "n": 2,
+          "strict_success": 1,
+          "mean_steps": 2,
+          "p50_s": 39.6,
+          "p95_s": 43.9,
+          "execution_failures": 0
+        },
+        "control": {
+          "n": 3,
+          "strict_success": 3,
+          "mean_steps": 1,
+          "p50_s": 8.1,
+          "p95_s": 17.5,
+          "execution_failures": 0
+        },
+        "enumeration": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 3,
+          "p50_s": 0.7,
+          "p95_s": 0.7,
+          "execution_failures": 0
+        },
+        "event_version": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 3,
+          "p50_s": 0.6,
+          "p95_s": 0.7,
+          "execution_failures": 0
+        },
+        "unanswerable": {
+          "n": 2,
+          "strict_success": 2,
+          "mean_steps": 1,
+          "p50_s": 7.4,
+          "p95_s": 7.5,
+          "execution_failures": 0
+        }
+      },
+      "control_over_planning": 0
+    },
+    "dynamic": {
+      "all": {
+        "n": 30,
+        "strict_success": 4,
+        "mean_steps": 2.47,
+        "p50_s": 40.9,
+        "p95_s": 119.8,
+        "execution_failures": 0
+      },
+      "needs_dynamic": {
+        "n": 18,
+        "strict_success": 0,
+        "mean_steps": 2.61,
+        "p50_s": 40.9,
+        "p95_s": 132.5,
+        "execution_failures": 0
+      },
+      "one_shot_sufficient": {
+        "n": 10,
+        "strict_success": 2,
+        "mean_steps": 1.9,
+        "p50_s": 30.3,
+        "p95_s": 104.1,
+        "execution_failures": 0
+      },
+      "by_type": {
+        "alias": {
+          "n": 4,
+          "strict_success": 0,
+          "mean_steps": 1,
+          "p50_s": 32.9,
+          "p95_s": 48.6,
+          "execution_failures": 0
+        },
+        "bridge": {
+          "n": 6,
+          "strict_success": 0,
+          "mean_steps": 2.83,
+          "p50_s": 48.0,
+          "p95_s": 108.1,
+          "execution_failures": 0
+        },
+        "bridge_deep": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 5,
+          "p50_s": 119.8,
+          "p95_s": 132.5,
+          "execution_failures": 0
+        },
+        "conditional": {
+          "n": 4,
+          "strict_success": 0,
+          "mean_steps": 1.25,
+          "p50_s": 60.0,
+          "p95_s": 104.1,
+          "execution_failures": 0
+        },
+        "conflict": {
+          "n": 2,
+          "strict_success": 0,
+          "mean_steps": 2,
+          "p50_s": 55.5,
+          "p95_s": 61.2,
+          "execution_failures": 0
+        },
+        "control": {
+          "n": 3,
+          "strict_success": 2,
+          "mean_steps": 1,
+          "p50_s": 28.2,
+          "p95_s": 32.4,
+          "execution_failures": 0
+        },
+        "enumeration": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 3,
+          "p50_s": 0.6,
+          "p95_s": 0.7,
+          "execution_failures": 0
+        },
+        "event_version": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 3,
+          "p50_s": 0.6,
+          "p95_s": 0.6,
+          "execution_failures": 0
+        },
+        "unanswerable": {
+          "n": 2,
+          "strict_success": 2,
+          "mean_steps": 4,
+          "p50_s": 87.4,
+          "p95_s": 102.1,
+          "execution_failures": 0
+        }
+      },
+      "control_over_planning": 0
+    },
+    "hybrid": {
+      "all": {
+        "n": 30,
+        "strict_success": 6,
+        "mean_steps": 2.03,
+        "p50_s": 18.5,
+        "p95_s": 48.8,
+        "execution_failures": 0
+      },
+      "needs_dynamic": {
+        "n": 18,
+        "strict_success": 0,
+        "mean_steps": 2,
+        "p50_s": 15.7,
+        "p95_s": 45.1,
+        "execution_failures": 0
+      },
+      "one_shot_sufficient": {
+        "n": 10,
+        "strict_success": 4,
+        "mean_steps": 1.9,
+        "p50_s": 17.7,
+        "p95_s": 94.6,
+        "execution_failures": 0
+      },
+      "by_type": {
+        "alias": {
+          "n": 4,
+          "strict_success": 0,
+          "mean_steps": 1,
+          "p50_s": 9.0,
+          "p95_s": 18.8,
+          "execution_failures": 0
+        },
+        "bridge": {
+          "n": 6,
+          "strict_success": 0,
+          "mean_steps": 2,
+          "p50_s": 28.8,
+          "p95_s": 45.1,
+          "execution_failures": 0
+        },
+        "bridge_deep": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 3,
+          "p50_s": 44.1,
+          "p95_s": 44.2,
+          "execution_failures": 0
+        },
+        "conditional": {
+          "n": 4,
+          "strict_success": 0,
+          "mean_steps": 1.25,
+          "p50_s": 41.5,
+          "p95_s": 94.6,
+          "execution_failures": 0
+        },
+        "conflict": {
+          "n": 2,
+          "strict_success": 1,
+          "mean_steps": 2,
+          "p50_s": 48.6,
+          "p95_s": 48.8,
+          "execution_failures": 0
+        },
+        "control": {
+          "n": 3,
+          "strict_success": 3,
+          "mean_steps": 1,
+          "p50_s": 17.3,
+          "p95_s": 18.2,
+          "execution_failures": 0
+        },
+        "enumeration": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 3,
+          "p50_s": 0.6,
+          "p95_s": 0.6,
+          "execution_failures": 0
+        },
+        "event_version": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 3,
+          "p50_s": 0.6,
+          "p95_s": 0.6,
+          "execution_failures": 0
+        },
+        "unanswerable": {
+          "n": 2,
+          "strict_success": 2,
+          "mean_steps": 3,
+          "p50_s": 47.6,
+          "p95_s": 48.8,
+          "execution_failures": 0
+        }
+      },
+      "control_over_planning": 0
+    },
+    "planner": {
+      "all": {
+        "n": 30,
+        "strict_success": 14,
+        "mean_steps": 5.17,
+        "p50_s": 65.1,
+        "p95_s": 111.6,
+        "execution_failures": 0
+      },
+      "needs_dynamic": {
+        "n": 18,
+        "strict_success": 6,
+        "mean_steps": 5.5,
+        "p50_s": 70.7,
+        "p95_s": 111.6,
+        "execution_failures": 0
+      },
+      "one_shot_sufficient": {
+        "n": 10,
+        "strict_success": 6,
+        "mean_steps": 5,
+        "p50_s": 57.9,
+        "p95_s": 140.5,
+        "execution_failures": 0
+      },
+      "by_type": {
+        "alias": {
+          "n": 4,
+          "strict_success": 3,
+          "mean_steps": 5.25,
+          "p50_s": 54.3,
+          "p95_s": 66.4,
+          "execution_failures": 0
+        },
+        "bridge": {
+          "n": 6,
+          "strict_success": 2,
+          "mean_steps": 3.5,
+          "p50_s": 70.7,
+          "p95_s": 73.5,
+          "execution_failures": 0
+        },
+        "bridge_deep": {
+          "n": 3,
+          "strict_success": 0,
+          "mean_steps": 7.33,
+          "p50_s": 109.2,
+          "p95_s": 111.6,
+          "execution_failures": 0
+        },
+        "conditional": {
+          "n": 4,
+          "strict_success": 1,
+          "mean_steps": 7.5,
+          "p50_s": 104.3,
+          "p95_s": 140.5,
+          "execution_failures": 0
+        },
+        "conflict": {
+          "n": 2,
+          "strict_success": 0,
+          "mean_steps": 6,
+          "p50_s": 76.2,
+          "p95_s": 98.5,
+          "execution_failures": 0
+        },
+        "control": {
+          "n": 3,
+          "strict_success": 3,
+          "mean_steps": 2.33,
+          "p50_s": 47.6,
+          "p95_s": 50.1,
+          "execution_failures": 0
+        },
+        "enumeration": {
+          "n": 3,
+          "strict_success": 1,
+          "mean_steps": 6.67,
+          "p50_s": 63.3,
+          "p95_s": 78.3,
+          "execution_failures": 0
+        },
+        "event_version": {
+          "n": 3,
+          "strict_success": 2,
+          "mean_steps": 5.33,
+          "p50_s": 62.0,
+          "p95_s": 63.8,
+          "execution_failures": 0
+        },
+        "unanswerable": {
+          "n": 2,
+          "strict_success": 2,
+          "mean_steps": 3,
+          "p50_s": 64.0,
+          "p95_s": 77.2,
+          "execution_failures": 0
+        }
+      },
+      "control_over_planning": 3
+    }
+  }
+}

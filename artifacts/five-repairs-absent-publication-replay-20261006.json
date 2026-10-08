@@ -1,0 +1,19 @@
+{
+  "scope": "Replay of publication_binding_issues on every claim of the 188 v4 Dev answers, with and without the per-user readable-source snapshot. Diagnostic; not a benchmark score.",
+  "changed_claims": [
+    {
+      "review_id": "14ef0141c45fd6c77c2dfc5e40dcb9f7b87157a3516f653ff4fffedf840c94bb",
+      "task": "SF-3f2fcdb94b67",
+      "claim_index": 1,
+      "claim": "The BBC News - Entertainment & Arts article implies Taylor Swift has more control over her personal experiences and privacy.",
+      "reviewer_claim_verdict": "unsupported",
+      "before": [],
+      "after": [
+        "publication_reference_mismatch"
+      ]
+    }
+  ],
+  "changed": 1,
+  "changed_reviewer_supported": 0,
+  "source_sha256": "bd43bd686efca8acc1849a9455c6a390f6c09c67905e6f1efc6a778e369643fc"
+}

@@ -1,0 +1,185 @@
+{
+  "name": "source-contract-development-v1",
+  "scope": "Author-written development fixtures, not independent human gold or an external generalization benchmark. Checks literal requested facts, attribution markers and bounded absence.",
+  "items": [
+    {
+      "id": "S01",
+      "category": "attribution",
+      "question": "What view of the merger did the report attribute to Dana?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "S01-c1",
+          "document_id": "S01-d1",
+          "title": "Report",
+          "text": "Analyst Dana argued that the merger would benefit customers. The publication did not independently confirm that forecast."
+        }
+      ],
+      "must_match": [
+        "Dana|达娜",
+        "argued|said|认为|表示|主张",
+        "benefit|受益|有利"
+      ]
+    },
+    {
+      "id": "S02",
+      "category": "attribution",
+      "question": "根据报道，律师林对交易是否合法有什么说法？",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "S02-c1",
+          "document_id": "S02-d1",
+          "title": "庭审报道",
+          "text": "律师林表示交易合法，这是辩方主张。检方则指控交易存在欺诈，报道并未替任何一方作事实认定。"
+        }
+      ],
+      "must_match": [
+        "律师|辩方|林",
+        "合法",
+        "表示|主张|认为"
+      ]
+    },
+    {
+      "id": "S03",
+      "category": "attribution",
+      "question": "Who raised the concern about Orion and what was alleged?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "S03-c1",
+          "document_id": "S03-d1",
+          "title": "Audit bulletin",
+          "text": "According to the audit team, Orion may have understated costs. This is an allegation pending review, not a confirmed finding."
+        }
+      ],
+      "must_match": [
+        "audit team|审计",
+        "alleg|指控|可能|怀疑|声称",
+        "cost|成本"
+      ]
+    },
+    {
+      "id": "S04",
+      "category": "absence",
+      "question": "Does the entire report never mention fines?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "S04-c1",
+          "document_id": "S04-d1",
+          "title": "Report excerpt",
+          "text": "The provided excerpt describes the estimated operating costs and a tentative launch schedule."
+        }
+      ],
+      "must_match": []
+    },
+    {
+      "id": "S05",
+      "category": "absence",
+      "question": "整份通知是否从未说明审批人？",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "S05-c1",
+          "document_id": "S05-d1",
+          "title": "通知节选",
+          "text": "本段通知说明材料提交日期为6月1日，后续安排将在下一页说明。"
+        }
+      ],
+      "must_match": []
+    },
+    {
+      "id": "S06",
+      "category": "explicit_denial",
+      "question": "Does the policy require approval?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "S06-c1",
+          "document_id": "S06-d1",
+          "title": "Approval policy",
+          "text": "The policy explicitly states that no approval is required for this operation."
+        }
+      ],
+      "must_match": [
+        "no approval|not require approval|无需审批|不需要审批|无需批准|不需要批准|不需批准|不需审批"
+      ]
+    },
+    {
+      "id": "S07",
+      "category": "comparison",
+      "question": "Are the launch dates consistent in both reports, despite different operating hours?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "S07-c1",
+          "document_id": "S07-d1",
+          "title": "Report A",
+          "text": "The launch date is April 8. Operating hours are 09:00–17:00."
+        },
+        {
+          "id": "E2",
+          "chunk_id": "S07-c2",
+          "document_id": "S07-d2",
+          "title": "Report B",
+          "text": "The launch date is April 8. Operating hours are 10:00–16:00."
+        }
+      ],
+      "must_match": [
+        "April 8|4月8日",
+        "\\bconsistent\\b|一致|相同"
+      ]
+    },
+    {
+      "id": "S08",
+      "category": "comparison",
+      "question": "两份通知的生效日期是否一致？注意不要比较发布日期。",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "S08-c1",
+          "document_id": "S08-d1",
+          "title": "通知甲",
+          "text": "发布日期为5月20日，生效日期为6月1日。"
+        },
+        {
+          "id": "E2",
+          "chunk_id": "S08-c2",
+          "document_id": "S08-d2",
+          "title": "通知乙",
+          "text": "发布日期为5月25日，生效日期为6月1日。"
+        }
+      ],
+      "must_match": [
+        "6月1日",
+        "一致|相同"
+      ]
+    },
+    {
+      "id": "S09",
+      "category": "comparison",
+      "question": "Was fantasy football strategy consistent between the reports when Alex was absent?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "S09-c1",
+          "document_id": "S09-d1",
+          "title": "Report A",
+          "text": "If Alex is absent, start Riley as the replacement. Alex is currently unlikely to play."
+        },
+        {
+          "id": "E2",
+          "chunk_id": "S09-c2",
+          "document_id": "S09-d2",
+          "title": "Report B",
+          "text": "If Alex is absent, start Riley as the replacement. Alex is now more likely to play."
+        }
+      ],
+      "must_match": [
+        "Riley|莱利",
+        "\\bconsistent\\b|一致|相同"
+      ]
+    }
+  ]
+}

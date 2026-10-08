@@ -1,0 +1,56 @@
+{
+  "status": "not_accepted",
+  "scope": "Actual saved Dev evidence diagnostics, not benchmark, not arbitrary-claim semantic entailment certification",
+  "reviewer_type": "model",
+  "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+  "independent": false,
+  "method_blinded": false,
+  "rows": [
+    {
+      "artifact": "artifacts/five-repairs-context-v17-focus-gptoss-20261004.json",
+      "task_id": "SF-3f2fcdb94b67",
+      "seconds": 59.62454112479463,
+      "verdict": "unclear",
+      "accepted": false,
+      "reason": "比较属性的相关片段存在；模型仍不作判断，真实Dev比较题不通过，不得启用候选。"
+    },
+    {
+      "artifact": "artifacts/five-repairs-context-v17-focus-gptoss-20261004.json",
+      "task_id": "SF-43709086f7bb",
+      "seconds": 33.03374829189852,
+      "verdict": "no",
+      "accepted": true,
+      "reason": "GPT审核实际选句：条件不代表实际不感兴趣；明确批准拍摄反驳未获同意；billions与明确诉讼报道支持整体No。"
+    },
+    {
+      "artifact": "artifacts/five-repairs-context-v17-focus-gptoss-20261004.json",
+      "task_id": "SF-66b7ed601d85",
+      "seconds": 35.50341895921156,
+      "verdict": "no",
+      "accepted": true,
+      "reason": "GPT审核实际选句：条件不代表实际不感兴趣；明确批准拍摄反驳未获同意；billions与明确诉讼报道支持整体No。"
+    },
+    {
+      "artifact": "artifacts/five-repairs-context-v17-focus-gptoss-20261004.json",
+      "task_id": "SF-64b127ac198d",
+      "seconds": 32.734462125226855,
+      "verdict": "no",
+      "accepted": true,
+      "reason": "GPT审核实际选句：条件不代表实际不感兴趣；明确批准拍摄反驳未获同意；billions与明确诉讼报道支持整体No。"
+    },
+    {
+      "artifact": "artifacts/five-repairs-context-v18-focus-qwen9-20261004.json",
+      "task_id": "SF-3f2fcdb94b67",
+      "seconds": 65.94475833326578,
+      "verdict": "unclear",
+      "accepted": false,
+      "reason": "比较属性的相关片段存在；模型仍不作判断，真实Dev比较题不通过，不得启用候选。"
+    }
+  ],
+  "activation": {
+    "answer_literal_judgment_enabled": false,
+    "answer_comparison_focus_enabled": false,
+    "answer_semantic_audit_enabled": false
+  },
+  "runtime_dependency": "Existing local models did not pass actual semantic comparison; GPT API/local-only preference unanswered, no hosted credentials or calls."
+}

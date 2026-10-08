@@ -1,0 +1,10 @@
+{
+  "scope": "Actual saved Dev claims replay; final completion failed; not full benchmark",
+  "source_artifact_sha256": "d3a102f88d14d7ba5a9520ff49d0e154ace687c3bc76249fe5de622fa3c6898a",
+  "reviewer_type": "model",
+  "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+  "independent": false,
+  "method_blinded": false,
+  "passed": false,
+  "reason": "分来源选择仍允许 supported 时将另一方 proof 留空；实际输出只保留 claim1，服务器正确降为 unclear。来源编号 enum 本身不足以消除单边证明。"
+}

@@ -99,7 +99,9 @@ def test_version_tools_are_acl_scoped_and_distinguish_current_from_history():
     assert denied.data == {} and denied.evidence_refs == []
 
 
-def test_workflow_agent_persists_trace_and_returns_verified_citations():
+def test_workflow_agent_persists_trace_and_returns_verified_citations(monkeypatch):
+    from app.config import settings
+    monkeypatch.setattr(settings(), "adaptive_routing_enabled", False)
     db, user = agent_db()
 
     class FakeTools:
@@ -135,14 +137,20 @@ def test_workflow_agent_persists_trace_and_returns_verified_citations():
     assert payload["status"] == "completed"
     assert payload["result"]["status"] == "answered"
     assert payload["result"]["citations"][0]["chunk_id"] == "c2"
-    assert [event["event_type"] for event in payload["events"]] == [
+    assert [event["event_type"] for event in payload["events"]
+            if event["event_type"] not in {"subgoal_state", "workflow_stop"}] == [
         "task_created",
         "task_started",
         "tool_completed",
         "retrieval_assessment",
         "tool_completed",
+        "generation_context",
         "task_completed",
     ]
+    states = [event["payload"] for event in payload["events"] if event["event_type"] == "subgoal_state"]
+    assert states[0]["items"][0]["state"] == "pending"
+    assert states[-1]["items"][0]["state"] == "answer_covered"
+    assert task.input["_workflow_state"]["items"][0]["evidence_refs"] == ["c2"]
 
     db.get(Document, "doc-a").active_version_id = "v1"
     first_tool_event = next(
@@ -250,11 +258,11 @@ def test_dynamic_compound_task_adds_coverage_retrieval_before_finishing():
 
     assert tools.calls[0] == (
         "search_documents",
-        {"query": "当前 RPO 以及恢复目标分别是什么？", "top_k": 8},
+        {"query": "当前 RPO", "top_k": 4},
     )
-    # The first pass answered only the RPO half, so the open subgoal is searched again
-    # with the first hop's own text carried into the query, then generated on its own.
-    assert tools.calls[1] == ("search_documents", {"query": "恢复目标 RPO 为 15 分钟。", "top_k": 6})
+    # Missing asks are searched individually before generation. The answer check
+    # still detects an unanswered ask when the fake retrieval returns only RPO.
+    assert tools.calls[1] == ("search_documents", {"query": "恢复目标分别是什么", "top_k": 4})
     assert payload["step_no"] == 2
     events = [event["event_type"] for event in payload["events"]]
     assert "coverage_retrieval" in events and "coverage_check" in events

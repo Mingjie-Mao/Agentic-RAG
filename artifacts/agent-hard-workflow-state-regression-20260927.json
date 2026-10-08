@@ -1,0 +1,1969 @@
+{
+  "benchmark": "agent-hard-v2.1",
+  "task_sha256": "17debcc998fa657a797e55d381498ee4919e7a0fb4c13de5df63da2041ea8e46",
+  "validation": {
+    "tasks": 30,
+    "categories": {
+      "multi_hop": 5,
+      "temporal_version": 5,
+      "conditional_planning": 5,
+      "query_recovery": 5,
+      "security_state": 5,
+      "efficiency_stopping": 5
+    },
+    "documents": 31,
+    "shared_comparable_subset": 21,
+    "controlled_agent_only_subset": 9
+  },
+  "arms": [
+    "workflow"
+  ],
+  "results": {
+    "workflow": [
+      {
+        "category": "multi_hop",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "5": true,
+          "1": true,
+          "2": true,
+          "4": true,
+          "8": true,
+          "16": true,
+          "event_id": true,
+          "7": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "conditional_transition": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-ticket-218",
+          "seed-webhook"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "先从工单 218 确定重复处理的失败机制和记录保留期，再根据其中提到的投递机制查服务端恢复策略，给出重试次数、退避计划和客户端去重字段。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "工单 218：重复回调",
+                "支持响应等级表",
+                "Webhook 投递与签名",
+                "Python SDK 重试配置"
+              ],
+              "wall_ms": 2718.5,
+              "usage": {
+                "embed_ms": 2478.2,
+                "retrieval_ms": 89.2
+              },
+              "checkpoint_data": {
+                "matches": [
+                  {
+                    "document_id": "seed-ticket-218",
+                    "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+                    "chunk_id": "9407bdbe-2d57-5977-ace9-7660b17b8d63",
+                    "title": "工单 218：重复回调",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "工单 218：重复回调",
+                        "已确认方案"
+                      ],
+                      "source_char_start": 101,
+                      "line_start": 7,
+                      "label": "第 7 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 56,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "工单 218：重复回调",
+                              "已确认方案"
+                            ],
+                            "source_char_start": 101,
+                            "line_start": 7,
+                            "label": "第 7 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 56
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 56,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 37,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 已确认方案\n按 event_id 建立去重表，并保留去重记录 7 天。处理成功后返回 HTTP 200。\n"
+                  },
+                  {
+                    "document_id": "seed-ticket-218",
+                    "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+                    "chunk_id": "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
+                    "title": "工单 218：重复回调",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "工单 218：重复回调",
+                        "问题记录"
+                      ],
+                      "source_char_start": 50,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 51,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "工单 218：重复回调",
+                              "问题记录"
+                            ],
+                            "source_char_start": 50,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 51
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 51,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 41,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 问题记录\n客户收到相同 event_id 的重复回调。根因是客户端在响应超时后没有做幂等处理。\n"
+                  },
+                  {
+                    "document_id": "seed-support-sla",
+                    "version_id": "b346d2ca-95e3-4f30-8b9b-0a9ce03dd613",
+                    "chunk_id": "299da41f-e575-5bf7-9a23-34b2f76d9a03",
+                    "title": "支持响应等级表",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "table",
+                      "heading_path": [
+                        "支持响应等级表",
+                        "工单首响"
+                      ],
+                      "source_char_start": 46,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 130,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "table",
+                            "heading_path": [
+                              "支持响应等级表",
+                              "工单首响"
+                            ],
+                            "source_char_start": 46,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 130
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 130,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 107,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 工单首响\n| 等级 | 首次响应时间 |\n| --- | --- |\n| P1 服务不可用 | 15 分钟 |\n| P2 功能受限 | 2 小时 |\n| P3 一般咨询 | 1 个工作日 |\n首次响应不等于问题解决。支持组需要在工单中持续同步处理进度。\n"
+                  },
+                  {
+                    "document_id": "seed-webhook",
+                    "version_id": "0172fe6e-352a-4c8f-add8-a3d6887374e9",
+                    "chunk_id": "5002f2fa-97f7-51f8-b30e-27b7dd099d1c",
+                    "title": "Webhook 投递与签名",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "Webhook 投递与签名",
+                        "失败投递"
+                      ],
+                      "source_char_start": 52,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 53,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "Webhook 投递与签名",
+                              "失败投递"
+                            ],
+                            "source_char_start": 52,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 53
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 53,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 49,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 失败投递\nWebhook 投递失败后最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。\n"
+                  },
+                  {
+                    "document_id": "seed-sdk-retry",
+                    "version_id": "6b6b4da8-a812-4cc0-9cd8-a4724390c467",
+                    "chunk_id": "d33304ad-5549-5300-9b40-ffc59ff0a632",
+                    "title": "Python SDK 重试配置",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "Python SDK 重试配置",
+                        "自动重试"
+                      ],
+                      "source_char_start": 54,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 100,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "Python SDK 重试配置",
+                              "自动重试"
+                            ],
+                            "source_char_start": 54,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 100
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 100,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 68,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n"
+                  }
+                ]
+              }
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-ticket-218",
+              "seed-support-sla",
+              "seed-webhook",
+              "seed-sdk-retry"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "9407bdbe-2d57-5977-ace9-7660b17b8d63",
+                "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
+                "299da41f-e575-5bf7-9a23-34b2f76d9a03",
+                "5002f2fa-97f7-51f8-b30e-27b7dd099d1c",
+                "d33304ad-5549-5300-9b40-ffc59ff0a632"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "evidence"
+              ],
+              "titles": [],
+              "wall_ms": 12.8,
+              "usage": {},
+              "checkpoint_data": {}
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-ticket-218",
+              "seed-support-sla",
+              "seed-webhook",
+              "seed-sdk-retry"
+            ]
+          }
+        ],
+        "steps": 2,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 53574.1,
+        "usage": {
+          "prompt_tokens": 1692,
+          "completion_tokens": 228,
+          "model_duration_ms": 50525.1,
+          "model_load_ms": 127.8,
+          "prompt_eval_ms": 19729.6,
+          "completion_eval_ms": 30660.4,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E1:S2",
+            "right_id": "E3:S2",
+            "reason": "两条记录描述的是不同事项，一条关于去重机制和记录保留期，另一条关于Webhook投递失败后的重试次数。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "先从工单 218 确定重复处理的失败机制和记录保留期，再根据其中提到的投递机制查服务端恢复策略，给出重试次数、退避计划和客户端去重字段。"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "generation_wall_ms": 50579.9,
+          "coverage_repair_wall_ms": 8.4,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 2731.3,
+          "task_wall_ms": 53476.5
+        },
+        "task_id": "H02",
+        "run_id": "76b7d98a-e9a7-41cc-ac37-86732a7c11c6"
+      },
+      {
+        "category": "temporal_version",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "30": true,
+          "15": true,
+          "12": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "required_tool:get_document_version": true,
+          "required_tool:compare_versions": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "hard-support-sla-chain"
+        ],
+        "tool_trace": [
+          {
+            "tool": "get_document_version",
+            "arguments": {
+              "document_id": "hard-support-sla-chain"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 0,
+              "keys": [
+                "document_id",
+                "title",
+                "active_version_id",
+                "versions"
+              ],
+              "titles": [],
+              "wall_ms": 4.8,
+              "usage": {},
+              "checkpoint_data": {
+                "versions": [
+                  {
+                    "version_id": "0b0fd0c5-2bf5-48d2-9138-1274c11ac3c8",
+                    "filename": "hard-support-sla-v3.md",
+                    "content_hash": "0e20156af98bc66e58f4edb6f9cd831825eb069f71ece73d5876038ca289fa46",
+                    "status": "ready",
+                    "created_at": "2026-10-01T00:00:00+00:00",
+                    "is_active": true
+                  },
+                  {
+                    "version_id": "609af216-abf1-4a9f-b40e-d3b8cc6fcb19",
+                    "filename": "hard-support-sla-v2.md",
+                    "content_hash": "10d5aa59c3a6085279d200b8a6c2aa2c35e28003c4363e5191806044cf32d480",
+                    "status": "ready",
+                    "created_at": "2026-09-01T00:00:00+00:00",
+                    "is_active": false
+                  },
+                  {
+                    "version_id": "fcd724ed-6ca2-4a72-a16d-aac1978c1947",
+                    "filename": "hard-support-sla-v1.md",
+                    "content_hash": "f9f5c21b86bfe9d92afaf170b0c24b379b675b34b770bef6d1a55f7fe4a9727e",
+                    "status": "ready",
+                    "created_at": "2026-01-01T00:00:00+00:00",
+                    "is_active": false
+                  }
+                ],
+                "active_version_id": "0b0fd0c5-2bf5-48d2-9138-1274c11ac3c8",
+                "document_id": "hard-support-sla-chain"
+              }
+            },
+            "error": null,
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "hard-support-sla-chain",
+              "from_version_id": "609af216-abf1-4a9f-b40e-d3b8cc6fcb19",
+              "to_version_id": "0b0fd0c5-2bf5-48d2-9138-1274c11ac3c8"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "document_id",
+                "title",
+                "from_version_id",
+                "to_version_id",
+                "diff_lines",
+                "truncated",
+                "note"
+              ],
+              "titles": [],
+              "wall_ms": 6.5,
+              "usage": {},
+              "checkpoint_data": {
+                "document_id": "hard-support-sla-chain"
+              }
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "hard-support-sla-chain"
+            ]
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "hard-support-sla-chain",
+              "from_version_id": "fcd724ed-6ca2-4a72-a16d-aac1978c1947",
+              "to_version_id": "609af216-abf1-4a9f-b40e-d3b8cc6fcb19"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "document_id",
+                "title",
+                "from_version_id",
+                "to_version_id",
+                "diff_lines",
+                "truncated",
+                "note"
+              ],
+              "titles": [],
+              "wall_ms": 5.3,
+              "usage": {},
+              "checkpoint_data": {
+                "document_id": "hard-support-sla-chain"
+              }
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "hard-support-sla-chain"
+            ]
+          }
+        ],
+        "steps": 3,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 2,
+        "extra_calls_after_sufficient_evidence": 1,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 31125.2,
+        "usage": {
+          "prompt_tokens": 969,
+          "completion_tokens": 141,
+          "model_duration_ms": 30901.6,
+          "model_load_ms": 67.9,
+          "prompt_eval_ms": 12407.3,
+          "completion_eval_ms": 18422.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "按时间列出 2026 年 8 月 20 日、9 月 20 日和 10 月 20 日适用的 P1 首次响应时限。"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "generation_wall_ms": 30925.5,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 16.6,
+          "task_wall_ms": 31064.8
+        },
+        "task_id": "H08",
+        "run_id": "46c87814-42c1-4f28-9b85-601a0d9ddc72"
+      },
+      {
+        "category": "query_recovery",
+        "controlled": true,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "过期": true,
+          "刷新": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "gold_evidence_coverage": true,
+          "query_recovery": true,
+          "first_search_miss_exercised": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-token-errors"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "客户鉴权突然失效，那个认证错误代码是什么意思，应该怎样恢复？",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 0,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [],
+              "wall_ms": 0.0,
+              "usage": {},
+              "checkpoint_data": {
+                "matches": []
+              }
+            },
+            "error": null,
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "客户鉴权 失效 认证错误代码 恢复",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "认证错误 E401 排查",
+                "工单 218：重复回调",
+                "Python SDK 重试配置",
+                "单点登录会话规则"
+              ],
+              "wall_ms": 302.5,
+              "usage": {
+                "embed_ms": 192.5,
+                "retrieval_ms": 88.5
+              },
+              "checkpoint_data": {
+                "matches": [
+                  {
+                    "document_id": "seed-token-errors",
+                    "version_id": "a028618d-281a-48f3-9021-95e22ffb5f70",
+                    "chunk_id": "7d9b4368-0162-518b-926f-a1a4e0d0f10c",
+                    "title": "认证错误 E401 排查",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "认证错误 E401 排查",
+                        "E401 含义"
+                      ],
+                      "source_char_start": 51,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 83,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "认证错误 E401 排查",
+                              "E401 含义"
+                            ],
+                            "source_char_start": 51,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 83
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 83,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 81,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## E401 含义\n错误 E401 表示访问令牌已过期。先调用刷新接口获取新令牌，再重试原始请求。\n若刷新令牌也失效，必须重新登录。不得把访问令牌记录到业务日志。\n"
+                  },
+                  {
+                    "document_id": "seed-ticket-218",
+                    "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+                    "chunk_id": "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
+                    "title": "工单 218：重复回调",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "工单 218：重复回调",
+                        "问题记录"
+                      ],
+                      "source_char_start": 50,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 51,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "工单 218：重复回调",
+                              "问题记录"
+                            ],
+                            "source_char_start": 50,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 51
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 51,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 41,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 问题记录\n客户收到相同 event_id 的重复回调。根因是客户端在响应超时后没有做幂等处理。\n"
+                  },
+                  {
+                    "document_id": "seed-sdk-retry",
+                    "version_id": "6b6b4da8-a812-4cc0-9cd8-a4724390c467",
+                    "chunk_id": "d33304ad-5549-5300-9b40-ffc59ff0a632",
+                    "title": "Python SDK 重试配置",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "Python SDK 重试配置",
+                        "自动重试"
+                      ],
+                      "source_char_start": 54,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 100,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "Python SDK 重试配置",
+                              "自动重试"
+                            ],
+                            "source_char_start": 54,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 100
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 100,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 68,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n"
+                  },
+                  {
+                    "document_id": "seed-sso-session",
+                    "version_id": "b03473fc-da43-4a9b-933b-fd629f6063e2",
+                    "chunk_id": "d84f4c3a-01be-546d-b8fe-a4125b32ba6a",
+                    "title": "单点登录会话规则",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "单点登录会话规则",
+                        "会话时限"
+                      ],
+                      "source_char_start": 47,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 77,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "单点登录会话规则",
+                              "会话时限"
+                            ],
+                            "source_char_start": 47,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 77
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 77,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 66,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 会话时限\n星桥单点登录会话连续 30 分钟无操作后失效。重新访问需要经过身份提供方认证。\n管理者强制退出用户时，服务端同时撤销该用户所有活动会话。\n"
+                  }
+                ]
+              }
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-token-errors",
+              "seed-ticket-218",
+              "seed-sdk-retry",
+              "seed-sso-session"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "7d9b4368-0162-518b-926f-a1a4e0d0f10c",
+                "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
+                "d33304ad-5549-5300-9b40-ffc59ff0a632",
+                "d84f4c3a-01be-546d-b8fe-a4125b32ba6a"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 4,
+              "keys": [
+                "evidence"
+              ],
+              "titles": [],
+              "wall_ms": 6.4,
+              "usage": {},
+              "checkpoint_data": {}
+            },
+            "error": null,
+            "evidence_count": 4,
+            "evidence_documents": [
+              "seed-token-errors",
+              "seed-ticket-218",
+              "seed-sdk-retry",
+              "seed-sso-session"
+            ]
+          }
+        ],
+        "steps": 3,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 2,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": true,
+        "recovered": true,
+        "scenario_events": {
+          "first_search_miss": true,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 24710.0,
+        "usage": {
+          "prompt_tokens": 1100,
+          "completion_tokens": 102,
+          "model_duration_ms": 24114.7,
+          "model_load_ms": 65.3,
+          "prompt_eval_ms": 10292.0,
+          "completion_eval_ms": 13752.3,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "客户鉴权突然失效，那个认证错误代码是什么意思，应该怎样恢复"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "generation_wall_ms": 24136.8,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 308.9,
+          "task_wall_ms": 24565.8
+        },
+        "task_id": "H16",
+        "run_id": "a0d2c53d-497f-49f4-9d9e-8a34fbb0504c"
+      },
+      {
+        "category": "security_state",
+        "controlled": true,
+        "status": "access_changed",
+        "expected_status": [
+          "access_changed",
+          "insufficient_evidence"
+        ],
+        "status_ok": true,
+        "execution_error_kind": "authorization_change",
+        "facts": {},
+        "forbidden_present": {
+          "15": false
+        },
+        "answer_correct": true,
+        "capabilities": {
+          "state_change_exercised": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "核对当前 P1 首次响应时限；如果执行过程中权限变化，不得使用先前看到的内容。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "支持响应等级表",
+                "数据导出注意事项",
+                "API 调用配额说明",
+                "SEV1 客户事故升级",
+                "认证错误 E401 排查"
+              ],
+              "wall_ms": 314.2,
+              "usage": {
+                "embed_ms": 219.1,
+                "retrieval_ms": 60.7
+              },
+              "checkpoint_data": {
+                "matches": [
+                  {
+                    "document_id": "seed-support-sla",
+                    "version_id": "b346d2ca-95e3-4f30-8b9b-0a9ce03dd613",
+                    "chunk_id": "299da41f-e575-5bf7-9a23-34b2f76d9a03",
+                    "title": "支持响应等级表",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "table",
+                      "heading_path": [
+                        "支持响应等级表",
+                        "工单首响"
+                      ],
+                      "source_char_start": 46,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 130,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "table",
+                            "heading_path": [
+                              "支持响应等级表",
+                              "工单首响"
+                            ],
+                            "source_char_start": 46,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 130
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 130,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 107,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 工单首响\n| 等级 | 首次响应时间 |\n| --- | --- |\n| P1 服务不可用 | 15 分钟 |\n| P2 功能受限 | 2 小时 |\n| P3 一般咨询 | 1 个工作日 |\n首次响应不等于问题解决。支持组需要在工单中持续同步处理进度。\n"
+                  },
+                  {
+                    "document_id": "seed-export",
+                    "version_id": "b45d148e-e3d9-43eb-8ed5-a6980bc3a960",
+                    "chunk_id": "5a77eafb-1c0f-5c28-a135-b04176ff1caf",
+                    "title": "数据导出注意事项",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "数据导出注意事项",
+                        "下载有效期"
+                      ],
+                      "source_char_start": 47,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 76,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "数据导出注意事项",
+                              "下载有效期"
+                            ],
+                            "source_char_start": 47,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 76
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 76,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 63,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 下载有效期\n数据导出的下载链接有效期为 24 小时。链接到期后必须重新发起导出。\n导出权限随用户角色变化而撤销，不能将下载链接转发给无权访问者。\n"
+                  },
+                  {
+                    "document_id": "seed-api-limits",
+                    "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+                    "chunk_id": "a602fdd2-c91e-57fb-8a8f-cc754cd8930c",
+                    "title": "API 调用配额说明",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "API 调用配额说明",
+                        "重试规则"
+                      ],
+                      "source_char_start": 101,
+                      "line_start": 7,
+                      "label": "第 7 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 48,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "API 调用配额说明",
+                              "重试规则"
+                            ],
+                            "source_char_start": 101,
+                            "line_start": 7,
+                            "label": "第 7 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 48
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 48,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 36,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 重试规则\n收到 429 后，应按 Retry-After 响应头等待，不应立即连续重试。\n"
+                  },
+                  {
+                    "document_id": "seed-support-escalate",
+                    "version_id": "2a084d96-ec3c-46e2-aaa8-47011c2b28d6",
+                    "chunk_id": "157fd048-ca31-5fd1-b7c6-0ba2bf57f460",
+                    "title": "SEV1 客户事故升级",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "SEV1 客户事故升级",
+                        "升级要求"
+                      ],
+                      "source_char_start": 50,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 83,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "SEV1 客户事故升级",
+                              "升级要求"
+                            ],
+                            "source_char_start": 50,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 83
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 83,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 79,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 升级要求\n支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。\n事故期间每 30 分钟向客户同步一次状态，不得承诺未经工程组确认的恢复时间。\n"
+                  },
+                  {
+                    "document_id": "seed-token-errors",
+                    "version_id": "a028618d-281a-48f3-9021-95e22ffb5f70",
+                    "chunk_id": "7d9b4368-0162-518b-926f-a1a4e0d0f10c",
+                    "title": "认证错误 E401 排查",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "认证错误 E401 排查",
+                        "E401 含义"
+                      ],
+                      "source_char_start": 51,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 83,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "认证错误 E401 排查",
+                              "E401 含义"
+                            ],
+                            "source_char_start": 51,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 83
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 83,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 81,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## E401 含义\n错误 E401 表示访问令牌已过期。先调用刷新接口获取新令牌，再重试原始请求。\n若刷新令牌也失效，必须重新登录。不得把访问令牌记录到业务日志。\n"
+                  }
+                ]
+              }
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-support-sla",
+              "seed-export",
+              "seed-api-limits",
+              "seed-support-escalate",
+              "seed-token-errors"
+            ]
+          }
+        ],
+        "steps": 1,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": null,
+        "evidence_sufficient_step": null,
+        "extra_calls_after_sufficient_evidence": null,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": true,
+          "memory_fixture": false
+        },
+        "latency_ms": 381.2,
+        "usage": {},
+        "task_id": "H21",
+        "run_id": "930477f4-0973-457c-8a18-45edef102976",
+        "execution_error": "HTTPException: 404: 资料不存在或当前账号无权访问"
+      },
+      {
+        "category": "efficiency_stopping",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "3": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "gold_evidence_coverage": true,
+          "efficient_stop": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "seed-sdk-retry"
+        ],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "Python SDK 默认最多重试几次？",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "Python SDK 重试配置",
+                "Webhook 投递与签名",
+                "API 调用配额说明",
+                "文件上传接口手册"
+              ],
+              "wall_ms": 245.7,
+              "usage": {
+                "embed_ms": 164.1,
+                "retrieval_ms": 54.0
+              },
+              "checkpoint_data": {
+                "matches": [
+                  {
+                    "document_id": "seed-sdk-retry",
+                    "version_id": "6b6b4da8-a812-4cc0-9cd8-a4724390c467",
+                    "chunk_id": "d33304ad-5549-5300-9b40-ffc59ff0a632",
+                    "title": "Python SDK 重试配置",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "Python SDK 重试配置",
+                        "自动重试"
+                      ],
+                      "source_char_start": 54,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 100,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "Python SDK 重试配置",
+                              "自动重试"
+                            ],
+                            "source_char_start": 54,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 100
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 100,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 68,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n"
+                  },
+                  {
+                    "document_id": "seed-webhook",
+                    "version_id": "0172fe6e-352a-4c8f-add8-a3d6887374e9",
+                    "chunk_id": "5002f2fa-97f7-51f8-b30e-27b7dd099d1c",
+                    "title": "Webhook 投递与签名",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "Webhook 投递与签名",
+                        "失败投递"
+                      ],
+                      "source_char_start": 52,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 53,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "Webhook 投递与签名",
+                              "失败投递"
+                            ],
+                            "source_char_start": 52,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 53
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 53,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 49,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 失败投递\nWebhook 投递失败后最多重试 5 次，退避间隔依次为 1、2、4、8、16 分钟。\n"
+                  },
+                  {
+                    "document_id": "seed-api-limits",
+                    "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+                    "chunk_id": "a602fdd2-c91e-57fb-8a8f-cc754cd8930c",
+                    "title": "API 调用配额说明",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "API 调用配额说明",
+                        "重试规则"
+                      ],
+                      "source_char_start": 101,
+                      "line_start": 7,
+                      "label": "第 7 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 48,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "API 调用配额说明",
+                              "重试规则"
+                            ],
+                            "source_char_start": 101,
+                            "line_start": 7,
+                            "label": "第 7 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 48
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 48,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 36,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 重试规则\n收到 429 后，应按 Retry-After 响应头等待，不应立即连续重试。\n"
+                  },
+                  {
+                    "document_id": "seed-api-limits",
+                    "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+                    "chunk_id": "0f37d546-103a-53ff-8e24-02c7d06e6f5e",
+                    "title": "API 调用配额说明",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "API 调用配额说明",
+                        "标准套餐"
+                      ],
+                      "source_char_start": 49,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 52,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "API 调用配额说明",
+                              "标准套餐"
+                            ],
+                            "source_char_start": 49,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 52
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 52,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 48,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n"
+                  },
+                  {
+                    "document_id": "seed-upload-guide",
+                    "version_id": "715a3724-f8f6-40d2-bcd4-ee9f4bbc799d",
+                    "chunk_id": "7874b95b-b5b8-5de8-b57a-42b17c8def02",
+                    "title": "文件上传接口手册",
+                    "locator": {
+                      "kind": "pdf",
+                      "page": 1,
+                      "block_type": "section_header",
+                      "heading_path": [
+                        "文件上传规则"
+                      ],
+                      "provenance": [
+                        {
+                          "page": 1,
+                          "bbox": {
+                            "l": 78.0,
+                            "t": 702.9968,
+                            "r": 144.0,
+                            "b": 691.9682614361702,
+                            "coord_origin": "BOTTOMLEFT"
+                          },
+                          "charspan": [
+                            0,
+                            6
+                          ]
+                        }
+                      ],
+                      "item_ref": "#/texts/2",
+                      "label": "第 1 页",
+                      "kind_for_source": "pdf",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 6,
+                          "locator": {
+                            "kind": "pdf",
+                            "page": 1,
+                            "block_type": "section_header",
+                            "heading_path": [
+                              "文件上传规则"
+                            ],
+                            "provenance": [
+                              {
+                                "page": 1,
+                                "bbox": {
+                                  "l": 78.0,
+                                  "t": 702.9968,
+                                  "r": 144.0,
+                                  "b": 691.9682614361702,
+                                  "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                  0,
+                                  6
+                                ]
+                              }
+                            ],
+                            "item_ref": "#/texts/2",
+                            "label": "第 1 页"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 6
+                        },
+                        {
+                          "start": 7,
+                          "end": 54,
+                          "locator": {
+                            "kind": "pdf",
+                            "page": 1,
+                            "block_type": "text",
+                            "heading_path": [
+                              "文件上传规则"
+                            ],
+                            "provenance": [
+                              {
+                                "page": 1,
+                                "bbox": {
+                                  "l": 78.0,
+                                  "t": 678.9968,
+                                  "r": 468.03799999999995,
+                                  "b": 667.9682614361702,
+                                  "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                  0,
+                                  47
+                                ]
+                              }
+                            ],
+                            "item_ref": "#/texts/3",
+                            "label": "第 1 页"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 47
+                        },
+                        {
+                          "start": 55,
+                          "end": 97,
+                          "locator": {
+                            "kind": "pdf",
+                            "page": 1,
+                            "block_type": "text",
+                            "heading_path": [
+                              "文件上传规则"
+                            ],
+                            "provenance": [
+                              {
+                                "page": 1,
+                                "bbox": {
+                                  "l": 78.0,
+                                  "t": 654.9968,
+                                  "r": 510.71799999999996,
+                                  "b": 643.9682614361702,
+                                  "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                  0,
+                                  42
+                                ]
+                              }
+                            ],
+                            "item_ref": "#/texts/4",
+                            "label": "第 1 页"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 42
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 97,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 75,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "文件上传规则\n星桥产品的文件上传接口单个文件上限为 20 MB。支持 PDF、Markdown 和 CSV。\n批量上传每批最多 10 个文件。这里描述的是虚构产品接口，不是本演示系统的上传限制。"
+                  }
+                ]
+              }
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-sdk-retry",
+              "seed-webhook",
+              "seed-api-limits",
+              "seed-upload-guide"
+            ]
+          },
+          {
+            "tool": "retrieve_evidence",
+            "arguments": {
+              "chunk_ids": [
+                "d33304ad-5549-5300-9b40-ffc59ff0a632",
+                "5002f2fa-97f7-51f8-b30e-27b7dd099d1c",
+                "a602fdd2-c91e-57fb-8a8f-cc754cd8930c",
+                "0f37d546-103a-53ff-8e24-02c7d06e6f5e",
+                "7874b95b-b5b8-5de8-b57a-42b17c8def02"
+              ]
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "evidence"
+              ],
+              "titles": [],
+              "wall_ms": 10.6,
+              "usage": {},
+              "checkpoint_data": {}
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-sdk-retry",
+              "seed-webhook",
+              "seed-api-limits",
+              "seed-upload-guide"
+            ]
+          }
+        ],
+        "steps": 2,
+        "forbidden_tool_calls": [],
+        "over_planned": false,
+        "early_stop": false,
+        "evidence_sufficient_step": 1,
+        "extra_calls_after_sufficient_evidence": 0,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 18507.6,
+        "usage": {
+          "prompt_tokens": 1169,
+          "completion_tokens": 51,
+          "model_duration_ms": 18044.3,
+          "model_load_ms": 64.4,
+          "prompt_eval_ms": 11420.1,
+          "completion_eval_ms": 6553.8,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "Python SDK 默认最多重试几次"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "generation_wall_ms": 18065.7,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 256.3,
+          "task_wall_ms": 18435.4
+        },
+        "task_id": "H26",
+        "run_id": "3512b208-4dfd-4791-826a-e3276f38a7bf"
+      }
+    ]
+  },
+  "summary": {
+    "workflow": {
+      "shared_comparable_subset": {
+        "requested": 3,
+        "scored": 3,
+        "skipped": 0,
+        "answer_correct": 3,
+        "answer_correct_rate": 1.0,
+        "task_success": 3,
+        "task_success_rate": 1.0,
+        "recovery_rate": null,
+        "over_planning_rate": 0.0,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 2.33,
+        "p50_latency_ms": 31125.2,
+        "p95_latency_ms": 53574.1,
+        "mean_prompt_tokens": 1276.7,
+        "phase_latency": {
+          "tool_wall_ms": {
+            "recorded": 3,
+            "p50_ms": 256.3,
+            "p95_ms": 2731.3
+          },
+          "generation_wall_ms": {
+            "recorded": 3,
+            "p50_ms": 30925.5,
+            "p95_ms": 50579.9
+          },
+          "coverage_repair_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 8.4,
+            "p95_ms": 8.4
+          },
+          "task_wall_ms": {
+            "recorded": 3,
+            "p50_ms": 31064.8,
+            "p95_ms": 53476.5
+          }
+        }
+      },
+      "controlled_agent_only_subset": {
+        "requested": 2,
+        "scored": 2,
+        "skipped": 0,
+        "answer_correct": 2,
+        "answer_correct_rate": 1.0,
+        "task_success": 2,
+        "task_success_rate": 1.0,
+        "recovery_rate": 1.0,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 2,
+        "p50_latency_ms": 12545.6,
+        "p95_latency_ms": 24710.0,
+        "mean_prompt_tokens": 550,
+        "phase_latency": {
+          "tool_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 308.9,
+            "p95_ms": 308.9
+          },
+          "generation_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 24136.8,
+            "p95_ms": 24136.8
+          },
+          "task_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 24565.8,
+            "p95_ms": 24565.8
+          }
+        }
+      },
+      "all_scored_tasks": {
+        "requested": 5,
+        "scored": 5,
+        "skipped": 0,
+        "answer_correct": 5,
+        "answer_correct_rate": 1.0,
+        "task_success": 5,
+        "task_success_rate": 1.0,
+        "recovery_rate": 1.0,
+        "over_planning_rate": 0.0,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 2.2,
+        "p50_latency_ms": 24710.0,
+        "p95_latency_ms": 53574.1,
+        "mean_prompt_tokens": 986,
+        "phase_latency": {
+          "tool_wall_ms": {
+            "recorded": 4,
+            "p50_ms": 282.6,
+            "p95_ms": 2731.3
+          },
+          "generation_wall_ms": {
+            "recorded": 4,
+            "p50_ms": 27531.2,
+            "p95_ms": 50579.9
+          },
+          "coverage_repair_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 8.4,
+            "p95_ms": 8.4
+          },
+          "task_wall_ms": {
+            "recorded": 4,
+            "p50_ms": 27815.3,
+            "p95_ms": 53476.5
+          }
+        }
+      },
+      "by_category": {
+        "conditional_planning": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null,
+          "phase_latency": {}
+        },
+        "efficiency_stopping": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": 0.0,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 2,
+          "p50_latency_ms": 18507.6,
+          "p95_latency_ms": 18507.6,
+          "mean_prompt_tokens": 1169,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 256.3,
+              "p95_ms": 256.3
+            },
+            "generation_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 18065.7,
+              "p95_ms": 18065.7
+            },
+            "task_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 18435.4,
+              "p95_ms": 18435.4
+            }
+          }
+        },
+        "multi_hop": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 2,
+          "p50_latency_ms": 53574.1,
+          "p95_latency_ms": 53574.1,
+          "mean_prompt_tokens": 1692,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 2731.3,
+              "p95_ms": 2731.3
+            },
+            "generation_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 50579.9,
+              "p95_ms": 50579.9
+            },
+            "coverage_repair_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 8.4,
+              "p95_ms": 8.4
+            },
+            "task_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 53476.5,
+              "p95_ms": 53476.5
+            }
+          }
+        },
+        "query_recovery": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": 1.0,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 3,
+          "p50_latency_ms": 24710.0,
+          "p95_latency_ms": 24710.0,
+          "mean_prompt_tokens": 1100,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 308.9,
+              "p95_ms": 308.9
+            },
+            "generation_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 24136.8,
+              "p95_ms": 24136.8
+            },
+            "task_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 24565.8,
+              "p95_ms": 24565.8
+            }
+          }
+        },
+        "security_state": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 1,
+          "p50_latency_ms": 381.2,
+          "p95_latency_ms": 381.2,
+          "mean_prompt_tokens": 0,
+          "phase_latency": {}
+        },
+        "temporal_version": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 3,
+          "p50_latency_ms": 31125.2,
+          "p95_latency_ms": 31125.2,
+          "mean_prompt_tokens": 969,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 16.6,
+              "p95_ms": 16.6
+            },
+            "generation_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 30925.5,
+              "p95_ms": 30925.5
+            },
+            "task_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 31064.8,
+              "p95_ms": 31064.8
+            }
+          }
+        }
+      }
+    }
+  },
+  "requested_tasks": 5,
+  "note": "开发 benchmark，不是训练集或独立留出集。跨 arm 只能比较 shared_comparable_subset；受控场景仅用于 Agent 内部诊断。"
+}

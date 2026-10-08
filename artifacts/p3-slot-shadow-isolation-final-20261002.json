@@ -1,0 +1,418 @@
+{
+  "version": "slot-shadow-v2-development-smoke",
+  "source_sha256": "3f681a1f0d3d7d453e033fd7693aaebed8b0138ad6ef22bfd03d08421300473b",
+  "tasks": 2,
+  "isolation_passed": true,
+  "quality_claim": null,
+  "results": [
+    {
+      "run_id": "00e060ba-02a5-44a0-a4e4-b52b5d07686b",
+      "primary_sha256": "306082f1422b4824872adb45c4af98ef5341b64f6a1be7454465e30484bf6d43",
+      "primary_unchanged": true,
+      "shadow": {
+        "version": "slot-shadow-v2",
+        "kind": "agent",
+        "run_id": "00e060ba-02a5-44a0-a4e4-b52b5d07686b",
+        "status": "observed",
+        "affects_control": false,
+        "payload_sha256": "453acc9d343dfcbd74dbc53610b26add449a897fe2797dfbed60388294e8ec45",
+        "evidence_hash": "a04c40e6e3b3cfc3327713ef46d4706b7ea1de1e7623814732239e2053e71d9c",
+        "config_hash": "4ad3dbb9dd7ee9a7a04671eb1ec1271d2add2c3ce1ad7c7c5c6bee700ce5d5ad",
+        "model_signature": {
+          "generation": {
+            "model": "qwen2.5:7b-instruct",
+            "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+            "runtime": "0.11.10"
+          },
+          "embedding": {
+            "model": "bge-m3:567m",
+            "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+            "runtime": "0.11.10"
+          },
+          "policy": {
+            "model": "qwen2.5:7b-instruct",
+            "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+            "runtime": "0.11.10"
+          },
+          "judge": {
+            "model": "qwen2.5:7b-instruct",
+            "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+            "runtime": "0.11.10"
+          },
+          "cross_encoder": {
+            "model": "BAAI/bge-reranker-v2-m3",
+            "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+            "files": {
+              "config.json": "13dcd6c31d9fec9d1d8e158702072f62d7fa7d312a64b9fe057bec9a08cfe41a",
+              "model.safetensors": "d9e3e081faff1eefb84019509b2f5558fd74c1a05a2c7db22f74174fcedb5286",
+              "sentencepiece.bpe.model": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865",
+              "special_tokens_map.json": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+              "tokenizer.json": "69564b696052886ed0ac63fa393e928384e0f8caada38c1f4864a9bfbf379c15",
+              "tokenizer_config.json": "7e4c1cc848840aeccdd763458c18dd525eb0f795c992e00ebe9c28554e7db2d4"
+            },
+            "max_tokens": 512
+          }
+        },
+        "slots": [
+          {
+            "id": "s1",
+            "text": "查明事故 092 中阻塞队列的输入特征"
+          },
+          {
+            "id": "s2",
+            "text": "根据该特征核对当前限制"
+          },
+          {
+            "id": "s3",
+            "text": "说明事故后用于降低同类风险的三项机制"
+          }
+        ],
+        "judgments": [
+          {
+            "subgoal_id": "s1",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [],
+            "reason_code": "citation_or_quote_invalid",
+            "confidence": 0.0,
+            "source": "judge_unavailable",
+            "evaluation_validity": "unknown",
+            "quote_spans": []
+          },
+          {
+            "subgoal_id": "s2",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [],
+            "reason_code": "relevance_cut_unvalidated",
+            "confidence": 0.0,
+            "source": "judge_unavailable",
+            "evaluation_validity": "unknown",
+            "quote_spans": []
+          },
+          {
+            "subgoal_id": "s3",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [],
+            "reason_code": "relevance_cut_unvalidated",
+            "confidence": 0.0,
+            "source": "judge_unavailable",
+            "evaluation_validity": "unknown",
+            "quote_spans": []
+          }
+        ],
+        "report": {
+          "complete": [],
+          "partial": [],
+          "missing": [],
+          "contradicted": [],
+          "unknown": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "inactive": [],
+          "ready": false
+        },
+        "judge_context": {
+          "E1": {
+            "chunk_id": "435622dd-d5bc-5674-aa27-50e52ca32302",
+            "text": "## 原因\n事故 092 的索引延迟由单个超大文件占用解析队列导致。\n",
+            "version_id": "bac388fd-6b73-4eb6-877f-edd4a16f2901",
+            "document_id": "seed-incident-092",
+            "title": "事故 092：索引延迟复盘"
+          },
+          "E2": {
+            "chunk_id": "b73d1d48-f375-5f18-815c-4b6a390af5d9",
+            "text": "## 改进\n限制单任务最大文件大小，将耗时解析拆到独立 worker，并记录任务租约和重试次数。\n",
+            "version_id": "bac388fd-6b73-4eb6-877f-edd4a16f2901",
+            "document_id": "seed-incident-092",
+            "title": "事故 092：索引延迟复盘"
+          }
+        },
+        "raw_judgments": [
+          {
+            "subgoal_id": "s1",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [],
+            "reason_code": "topic_only",
+            "confidence": 0.85,
+            "quote_spans": [
+              {
+                "ref": "",
+                "quote": "事故 092 的索引延迟由单个超大文件占用解析队列导致。"
+              }
+            ],
+            "evaluation_validity": "evaluated"
+          }
+        ],
+        "lexical_covered": {
+          "s1": true,
+          "s2": false,
+          "s3": false
+        },
+        "judge_usage": {
+          "calls": 1,
+          "prompt_tokens": 597,
+          "completion_tokens": 106,
+          "wall_ms": 19676.5,
+          "skipped_by_cascade": 0,
+          "attempted": 1,
+          "succeeded": 1,
+          "failed": 0
+        },
+        "cache_hits": 0,
+        "shadow_wall_ms": 30109.0,
+        "execution_budget": {
+          "deadline": 1790877501.488134,
+          "limits": {
+            "policy": 12,
+            "judge": 2,
+            "generation": 12,
+            "judge_tokens": 32000
+          },
+          "calls": {
+            "judge": {
+              "attempted": 1,
+              "succeeded": 1,
+              "failed": 0,
+              "prompt_tokens": 597,
+              "completion_tokens": 106,
+              "wall_ms": 19676.4
+            }
+          },
+          "judge_tokens_reserved": 703
+        }
+      }
+    },
+    {
+      "run_id": "b9d6705f-814f-476e-9605-cb50faa02cb0",
+      "primary_sha256": "19ac08e94c7cf03ce9bac0c1f33edbf6bf736b44c968729a34dcba1910a7a3a4",
+      "primary_unchanged": true,
+      "shadow": {
+        "version": "slot-shadow-v2",
+        "kind": "agent",
+        "run_id": "b9d6705f-814f-476e-9605-cb50faa02cb0",
+        "status": "observed",
+        "affects_control": false,
+        "payload_sha256": "0db33850b4a0f215bc67b7aad3b7d7a3baf2b2f26d0b530c7a39e274aef6def3",
+        "evidence_hash": "2a98b606d1cc5d2c22a07ae73e4cbd1f296745348d5f25a47a714fa2b1b9f201",
+        "config_hash": "4ad3dbb9dd7ee9a7a04671eb1ec1271d2add2c3ce1ad7c7c5c6bee700ce5d5ad",
+        "model_signature": {
+          "generation": {
+            "model": "qwen2.5:7b-instruct",
+            "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+            "runtime": "0.11.10"
+          },
+          "embedding": {
+            "model": "bge-m3:567m",
+            "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+            "runtime": "0.11.10"
+          },
+          "policy": {
+            "model": "qwen2.5:7b-instruct",
+            "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+            "runtime": "0.11.10"
+          },
+          "judge": {
+            "model": "qwen2.5:7b-instruct",
+            "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+            "runtime": "0.11.10"
+          },
+          "cross_encoder": {
+            "model": "BAAI/bge-reranker-v2-m3",
+            "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+            "files": {
+              "config.json": "13dcd6c31d9fec9d1d8e158702072f62d7fa7d312a64b9fe057bec9a08cfe41a",
+              "model.safetensors": "d9e3e081faff1eefb84019509b2f5558fd74c1a05a2c7db22f74174fcedb5286",
+              "sentencepiece.bpe.model": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865",
+              "special_tokens_map.json": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+              "tokenizer.json": "69564b696052886ed0ac63fa393e928384e0f8caada38c1f4864a9bfbf379c15",
+              "tokenizer_config.json": "7e4c1cc848840aeccdd763458c18dd525eb0f795c992e00ebe9c28554e7db2d4"
+            },
+            "max_tokens": 512
+          }
+        },
+        "slots": [
+          {
+            "id": "s1",
+            "text": "从工单 218 确定重复处理的失败机制和记录保留期"
+          },
+          {
+            "id": "s2",
+            "text": "根据其中提到的投递机制查服务端恢复策略，给出重试次数"
+          },
+          {
+            "id": "s3",
+            "text": "退避计划和客户端去重字段"
+          }
+        ],
+        "judgments": [
+          {
+            "subgoal_id": "s1",
+            "status": "supported",
+            "support_refs": [
+              "9407bdbe-2d57-5977-ace9-7660b17b8d63"
+            ],
+            "missing_slots": [],
+            "reason_code": "value_present",
+            "confidence": 0.95,
+            "source": "judge",
+            "evaluation_validity": "evaluated",
+            "quote_spans": [
+              {
+                "chunk_id": "9407bdbe-2d57-5977-ace9-7660b17b8d63",
+                "quote": "按 event_id 建立去重表，并保留去重记录 7 天。"
+              }
+            ]
+          },
+          {
+            "subgoal_id": "s2",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [
+              "退避计划和客户端去重字段"
+            ],
+            "reason_code": "topic_only",
+            "confidence": 0.8,
+            "source": "judge",
+            "evaluation_validity": "evaluated",
+            "quote_spans": []
+          },
+          {
+            "subgoal_id": "s3",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [
+              "退避计划和客户端去重字段"
+            ],
+            "reason_code": "topic_only",
+            "confidence": 0.8,
+            "source": "judge",
+            "evaluation_validity": "evaluated",
+            "quote_spans": []
+          }
+        ],
+        "report": {
+          "complete": [
+            "s1"
+          ],
+          "partial": [],
+          "missing": [
+            "s2",
+            "s3"
+          ],
+          "contradicted": [],
+          "unknown": [],
+          "inactive": [],
+          "ready": false
+        },
+        "judge_context": {
+          "E1": {
+            "chunk_id": "9407bdbe-2d57-5977-ace9-7660b17b8d63",
+            "text": "## 已确认方案\n按 event_id 建立去重表，并保留去重记录 7 天。处理成功后返回 HTTP 200。\n",
+            "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+            "document_id": "seed-ticket-218",
+            "title": "工单 218：重复回调"
+          },
+          "E2": {
+            "chunk_id": "d33304ad-5549-5300-9b40-ffc59ff0a632",
+            "text": "## 自动重试\n星桥 Python SDK 默认最多重试 3 次。重试仅针对网络超时和 HTTP 502、503、504。\n客户端参数 max_retries 可以覆盖默认值。认证失败不应自动重试。\n",
+            "version_id": "6b6b4da8-a812-4cc0-9cd8-a4724390c467",
+            "document_id": "seed-sdk-retry",
+            "title": "Python SDK 重试配置"
+          },
+          "E3": {
+            "chunk_id": "1b0b8ae6-3330-51e1-9238-dcc51ae75eb7",
+            "text": "## 问题记录\n客户收到相同 event_id 的重复回调。根因是客户端在响应超时后没有做幂等处理。\n",
+            "version_id": "1f7c4e1b-12a4-4c6f-917c-fc29aa697da0",
+            "document_id": "seed-ticket-218",
+            "title": "工单 218：重复回调"
+          }
+        },
+        "raw_judgments": [
+          {
+            "subgoal_id": "s1",
+            "status": "supported",
+            "support_refs": [
+              "E1"
+            ],
+            "missing_slots": [],
+            "reason_code": "value_present",
+            "confidence": 0.95,
+            "quote_spans": [
+              {
+                "ref": "E1",
+                "quote": "按 event_id 建立去重表，并保留去重记录 7 天。"
+              }
+            ],
+            "evaluation_validity": "evaluated"
+          },
+          {
+            "subgoal_id": "s2",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [
+              "退避计划和客户端去重字段"
+            ],
+            "reason_code": "topic_only",
+            "confidence": 0.8,
+            "quote_spans": [],
+            "evaluation_validity": "evaluated"
+          },
+          {
+            "subgoal_id": "s3",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [
+              "退避计划和客户端去重字段"
+            ],
+            "reason_code": "topic_only",
+            "confidence": 0.8,
+            "quote_spans": [],
+            "evaluation_validity": "evaluated"
+          }
+        ],
+        "lexical_covered": {
+          "s1": true,
+          "s2": false,
+          "s3": true
+        },
+        "judge_usage": {
+          "calls": 1,
+          "prompt_tokens": 821,
+          "completion_tokens": 242,
+          "wall_ms": 35810.1,
+          "skipped_by_cascade": 0,
+          "attempted": 1,
+          "succeeded": 1,
+          "failed": 0
+        },
+        "cache_hits": 0,
+        "shadow_wall_ms": 36517.3,
+        "execution_budget": {
+          "deadline": 1790877531.621544,
+          "limits": {
+            "policy": 12,
+            "judge": 2,
+            "generation": 12,
+            "judge_tokens": 32000
+          },
+          "calls": {
+            "judge": {
+              "attempted": 1,
+              "succeeded": 1,
+              "failed": 0,
+              "prompt_tokens": 821,
+              "completion_tokens": 242,
+              "wall_ms": 35810.0
+            }
+          },
+          "judge_tokens_reserved": 1063
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "date": "2026-10-03",
+  "scope": "Targeted fixes on previously used Dev only; no frozen test run",
+  "formal_core_runs": 0,
+  "headline_eligible": false,
+  "root_cause": "Current-document title decoration caused generator abstention on both reproduced SDK evidence contexts. Controlled pairs changed only that suffix.",
+  "fixes": [
+    "Canonical current source title in Agent evidence reconstruction; retain historical labels and authorization",
+    "Complete continuous table and header as one shared citation unit",
+    "Separate generator abstention and claim-validation failure diagnostics"
+  ],
+  "tests": {
+    "passed": 482,
+    "skipped": 36,
+    "targeted_passed": 96
+  },
+  "experiments": [
+    {
+      "id": "dev-abstention-fix-v1",
+      "stage": "title and diagnostics fix, before table citation fix",
+      "tasks": [
+        "U01",
+        "U02",
+        "U32"
+      ],
+      "attempts": 24,
+      "raw": ".runtime/benchmark-results/dev-abstention-fix-v1.json",
+      "reviewed_report": ".runtime/benchmark-results/dev-abstention-fix-v1.report.json",
+      "report_sha256": "ade58bfb568d8d2ad0d615a3fc7ebc0fc71e9d32065e3d2b979206db17816c08",
+      "strict_task_success": {
+        "rag": {
+          "U01": true,
+          "U02": true,
+          "U32": true
+        },
+        "workflow": {
+          "U01": true,
+          "U02": false,
+          "U32": true
+        },
+        "dynamic": {
+          "U01": true,
+          "U02": false,
+          "U32": true
+        },
+        "hybrid": {
+          "U01": true,
+          "U02": false,
+          "U32": true
+        },
+        "rag_bm25": {
+          "U01": true,
+          "U02": true,
+          "U32": true
+        },
+        "rag_hybrid": {
+          "U01": true,
+          "U02": true,
+          "U32": true
+        },
+        "rag_rewrite": {
+          "U01": true,
+          "U02": true,
+          "U32": true
+        },
+        "rag_rerank": {
+          "U01": true,
+          "U02": true,
+          "U32": true
+        }
+      }
+    },
+    {
+      "id": "dev-abstention-table-fix-v2",
+      "stage": "final table citation fix",
+      "tasks": [
+        "U02"
+      ],
+      "attempts": 8,
+      "raw": ".runtime/benchmark-results/dev-abstention-table-fix-v2.json",
+      "reviewed_report": ".runtime/benchmark-results/dev-abstention-table-fix-v2.report.json",
+      "report_sha256": "3b793daf5b2b8decf33f81de60615db1cb7094d9b2616f4558fc841318009f82",
+      "strict_task_success": {
+        "rag": {
+          "U02": true
+        },
+        "workflow": {
+          "U02": true
+        },
+        "dynamic": {
+          "U02": true
+        },
+        "hybrid": {
+          "U02": true
+        },
+        "rag_bm25": {
+          "U02": true
+        },
+        "rag_hybrid": {
+          "U02": true
+        },
+        "rag_rewrite": {
+          "U02": true
+        },
+        "rag_rerank": {
+          "U02": true
+        }
+      }
+    }
+  ],
+  "final_generation_boundary_checks": {
+    "dynamic": {
+      "sdk_final_request_identical_to_verified_positive": true,
+      "sdk_request_sha256": "82acd76c12bf517b3e16c7c018e1e529af12f579e6b1eecfef0c8f8708453fe1",
+      "insufficient_question": "2027 年度研发预算上限是多少？",
+      "insufficient_status": "insufficient_evidence",
+      "insufficient_claims": [],
+      "insufficient_wire": "{\n  \"status\": \"insufficient_evidence\",\n  \"claims\": []\n}",
+      "insufficient_request_sha256": "31d9cdac4a429c5a7097d48e822719cc6afddc4573c11e9468ef886dbe71b101",
+      "generation_calls": {
+        "attempted": 1,
+        "succeeded": 1,
+        "failed": 0,
+        "prompt_tokens": 1004,
+        "completion_tokens": 18,
+        "wall_ms": 15419.6
+      },
+      "usage": {
+        "prompt_tokens": 1004,
+        "completion_tokens": 18,
+        "model_duration_ms": 15370.9,
+        "model_load_ms": 72.7,
+        "prompt_eval_ms": 12828.9,
+        "completion_eval_ms": 2463.7,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "insufficient_evidence",
+        "conflict_check": null,
+        "acceptance_items": [
+          "2027 年度研发预算上限是多少"
+        ],
+        "answer_contract": null,
+        "source_audit": [],
+        "scope_repairs": [],
+        "deterministic_date_comparison": null,
+        "task_contract": {
+          "version": "task-contract-v1",
+          "contract": {
+            "question": "2027 年度研发预算上限是多少？",
+            "intent": "ordinary",
+            "slots": [
+              {
+                "slot_id": "slot_1",
+                "query": "2027 年度研发预算上限是多少",
+                "subject": "",
+                "attribute": "",
+                "value_type": "text",
+                "required": true,
+                "applies_if": "always"
+              }
+            ],
+            "conditions": [],
+            "history_kind": "current",
+            "version_chain_complete": false,
+            "version_ids": [],
+            "reason": "explicit_structure"
+          },
+          "condition": null,
+          "bound_values": [],
+          "status": "ordinary",
+          "slot_states": {
+            "slot_1": "unknown"
+          }
+        }
+      }
+    },
+    "hybrid": {
+      "sdk_final_request_identical_to_verified_positive": true,
+      "sdk_request_sha256": "6f7c2a692279b33f75cd8bdf825768b75fffd2cf07089b9fe13203a79c650584",
+      "insufficient_question": "2027 年度研发预算上限是多少？",
+      "insufficient_status": "insufficient_evidence",
+      "insufficient_claims": [],
+      "insufficient_wire": "{\n  \"status\": \"insufficient_evidence\",\n  \"claims\": []\n}",
+      "insufficient_request_sha256": "18545f7b5c11f74e174677508a869e843c466635bedae99311329f56e70a6af3",
+      "generation_calls": {
+        "attempted": 1,
+        "succeeded": 1,
+        "failed": 0,
+        "prompt_tokens": 1427,
+        "completion_tokens": 18,
+        "wall_ms": 9677.9
+      },
+      "usage": {
+        "prompt_tokens": 1427,
+        "completion_tokens": 18,
+        "model_duration_ms": 9656.0,
+        "model_load_ms": 55.0,
+        "prompt_eval_ms": 7006.6,
+        "completion_eval_ms": 2589.3,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "insufficient_evidence",
+        "conflict_check": null,
+        "acceptance_items": [
+          "2027 年度研发预算上限是多少"
+        ],
+        "answer_contract": null,
+        "source_audit": [],
+        "scope_repairs": [],
+        "deterministic_date_comparison": null,
+        "task_contract": {
+          "version": "task-contract-v1",
+          "contract": {
+            "question": "2027 年度研发预算上限是多少？",
+            "intent": "ordinary",
+            "slots": [
+              {
+                "slot_id": "slot_1",
+                "query": "2027 年度研发预算上限是多少",
+                "subject": "",
+                "attribute": "",
+                "value_type": "text",
+                "required": true,
+                "applies_if": "always"
+              }
+            ],
+            "conditions": [],
+            "history_kind": "current",
+            "version_chain_complete": false,
+            "version_ids": [],
+            "reason": "explicit_structure"
+          },
+          "condition": null,
+          "bound_values": [],
+          "status": "ordinary",
+          "slot_states": {
+            "slot_1": "unknown"
+          }
+        }
+      }
+    }
+  },
+  "review_limitations": "Same-session GPT review, not independent or method-blind. Different Dev snapshots are reported separately; not pooled into a headline accuracy. Full Dev47 and Core70 validation still pending."
+}

@@ -1,0 +1,1183 @@
+{
+  "run": "artifacts/agent-hard-hybrid-qwen25-7b-shadow-20261001.json",
+  "note": "Hard 30 is a development regression set; diagnosis only, no threshold is chosen here.",
+  "pattern_at_stop": {
+    "agree_not_ready": {
+      "tasks": 15,
+      "success": 8,
+      "ids": [
+        "H01",
+        "H02",
+        "H04",
+        "H09",
+        "H10",
+        "H11",
+        "H12",
+        "H14",
+        "H17",
+        "H18",
+        "H20",
+        "H24",
+        "H25",
+        "H28",
+        "H29"
+      ]
+    },
+    "agree_ready": {
+      "tasks": 5,
+      "success": 5,
+      "ids": [
+        "H07",
+        "H08",
+        "H26",
+        "H27",
+        "H30"
+      ]
+    },
+    "lexical_ready_semantic_not": {
+      "tasks": 7,
+      "success": 7,
+      "ids": [
+        "H03",
+        "H05",
+        "H06",
+        "H13",
+        "H15",
+        "H16",
+        "H19"
+      ]
+    },
+    "no_check": {
+      "tasks": 3,
+      "success": 3,
+      "ids": [
+        "H21",
+        "H22",
+        "H23"
+      ]
+    }
+  },
+  "evidence_filter": {
+    "tasks_with_dropped_chunks": 15,
+    "chunks_dropped": 50,
+    "dropped_by_semantic_label": {
+      "irrelevant": 44,
+      "uncertain": 6
+    },
+    "tasks_where_a_highly_relevant_chunk_was_dropped": []
+  },
+  "judge_cost": {
+    "tasks": 30,
+    "calls": 47,
+    "calls_per_task": 1.57,
+    "seconds_per_task": 28.4,
+    "prompt_tokens_per_task": 713.8
+  },
+  "tasks": [
+    {
+      "task_id": "H01",
+      "category": "multi_hop",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 2,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1",
+          "s2"
+        ],
+        "missing": [
+          "s3"
+        ],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 4,
+      "dropped_semantic_labels": {
+        "irrelevant": 4
+      },
+      "judge_calls": 3,
+      "judge_ms": 81851.2,
+      "judge_prompt_tokens": 1295,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          5.4948,
+          6.9394,
+          3.1726
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H02",
+      "category": "multi_hop",
+      "controlled": false,
+      "task_success": false,
+      "answer_correct": false,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 1,
+      "semantic_report_at_stop": {
+        "complete": [
+          "s1"
+        ],
+        "partial": [
+          "s2",
+          "s3"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 6,
+      "dropped_semantic_labels": {
+        "uncertain": 1,
+        "irrelevant": 5
+      },
+      "judge_calls": 3,
+      "judge_ms": 89401.7,
+      "judge_prompt_tokens": 1683,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          5.2594,
+          -1.4883,
+          3.5234
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H03",
+      "category": "multi_hop",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "lexical_ready_semantic_not",
+      "subgoal_disagreements_at_stop": 2,
+      "semantic_report_at_stop": {
+        "complete": [
+          "s3"
+        ],
+        "partial": [
+          "s1",
+          "s2"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 1,
+      "dropped_semantic_labels": {
+        "uncertain": 1
+      },
+      "judge_calls": 1,
+      "judge_ms": 34418.1,
+      "judge_prompt_tokens": 609,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          2.3493,
+          5.0443,
+          4.3383
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H04",
+      "category": "multi_hop",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 2,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 3,
+      "dropped_semantic_labels": {
+        "irrelevant": 2,
+        "uncertain": 1
+      },
+      "judge_calls": 3,
+      "judge_ms": 88428.8,
+      "judge_prompt_tokens": 1749,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          5.6867,
+          4.5132,
+          -0.2642,
+          2.614
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H05",
+      "category": "multi_hop",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "lexical_ready_semantic_not",
+      "subgoal_disagreements_at_stop": 2,
+      "semantic_report_at_stop": {
+        "complete": [
+          "s3"
+        ],
+        "partial": [
+          "s1",
+          "s2"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 1,
+      "dropped_semantic_labels": {
+        "irrelevant": 1
+      },
+      "judge_calls": 1,
+      "judge_ms": 28856.1,
+      "judge_prompt_tokens": 522,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          5.6502,
+          6.2956,
+          4.6406
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H06",
+      "category": "temporal_version",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "lexical_ready_semantic_not",
+      "subgoal_disagreements_at_stop": 1,
+      "semantic_report_at_stop": {
+        "complete": [
+          "s1"
+        ],
+        "partial": [],
+        "missing": [
+          "s2"
+        ],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 1,
+      "judge_ms": 12099.1,
+      "judge_prompt_tokens": 440,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          5.0106,
+          3.3943
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H07",
+      "category": "temporal_version",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "agree_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [
+          "s1"
+        ],
+        "partial": [],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 1,
+      "judge_ms": 13851.1,
+      "judge_prompt_tokens": 474,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          6.6118,
+          6.3761
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H08",
+      "category": "temporal_version",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "agree_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [
+          "s1"
+        ],
+        "partial": [],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 1,
+      "judge_ms": 12945.4,
+      "judge_prompt_tokens": 591,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          5.8885,
+          5.5215,
+          5.2202
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H09",
+      "category": "temporal_version",
+      "controlled": false,
+      "task_success": false,
+      "answer_correct": false,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 1,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1",
+          "s2"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 7,
+      "dropped_semantic_labels": {
+        "irrelevant": 7
+      },
+      "judge_calls": 3,
+      "judge_ms": 62593.9,
+      "judge_prompt_tokens": 1113,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          4.1069,
+          1.3528
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H10",
+      "category": "temporal_version",
+      "controlled": false,
+      "task_success": false,
+      "answer_correct": false,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 1,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s2",
+          "s3"
+        ],
+        "missing": [
+          "s1"
+        ],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 3,
+      "judge_ms": 32937.6,
+      "judge_prompt_tokens": 1929,
+      "claim_support": null
+    },
+    {
+      "task_id": "H11",
+      "category": "conditional_planning",
+      "controlled": false,
+      "task_success": false,
+      "answer_correct": false,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 2,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1"
+        ],
+        "missing": [
+          "s2",
+          "s3"
+        ],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 1,
+      "dropped_semantic_labels": {
+        "uncertain": 1
+      },
+      "judge_calls": 3,
+      "judge_ms": 74207.2,
+      "judge_prompt_tokens": 1443,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          0.9359,
+          -3.4877,
+          5.2966,
+          3.0971,
+          1.7898
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H12",
+      "category": "conditional_planning",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [
+          "s1"
+        ],
+        "partial": [],
+        "missing": [
+          "s2",
+          "s3"
+        ],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 6,
+      "dropped_semantic_labels": {
+        "irrelevant": 6
+      },
+      "judge_calls": 3,
+      "judge_ms": 40013.6,
+      "judge_prompt_tokens": 1239,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          5.9626
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H13",
+      "category": "conditional_planning",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "lexical_ready_semantic_not",
+      "subgoal_disagreements_at_stop": 2,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1",
+          "s2"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 2,
+      "dropped_semantic_labels": {
+        "irrelevant": 2
+      },
+      "judge_calls": 3,
+      "judge_ms": 60649.2,
+      "judge_prompt_tokens": 1470,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          -1.8365,
+          3.8893,
+          5.4872,
+          2.1095
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H14",
+      "category": "conditional_planning",
+      "controlled": false,
+      "task_success": false,
+      "answer_correct": false,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 3,
+      "judge_ms": 35821.4,
+      "judge_prompt_tokens": 1413,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          4.8772
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H15",
+      "category": "conditional_planning",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "lexical_ready_semantic_not",
+      "subgoal_disagreements_at_stop": 2,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1",
+          "s2"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 3,
+      "dropped_semantic_labels": {
+        "irrelevant": 3
+      },
+      "judge_calls": 1,
+      "judge_ms": 21921.6,
+      "judge_prompt_tokens": 418,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          1.6236,
+          -6.1371,
+          6.629
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H16",
+      "category": "query_recovery",
+      "controlled": true,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "lexical_ready_semantic_not",
+      "subgoal_disagreements_at_stop": 1,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 3,
+      "dropped_semantic_labels": {
+        "irrelevant": 3
+      },
+      "judge_calls": 1,
+      "judge_ms": 11886.0,
+      "judge_prompt_tokens": 321,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          6.7209,
+          4.8388,
+          4.525
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H17",
+      "category": "query_recovery",
+      "controlled": true,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 3,
+      "judge_ms": 34837.8,
+      "judge_prompt_tokens": 1341,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          3.9782
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H18",
+      "category": "query_recovery",
+      "controlled": true,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 3,
+      "judge_ms": 32858.4,
+      "judge_prompt_tokens": 918,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          7.1412,
+          7.6621
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H19",
+      "category": "query_recovery",
+      "controlled": true,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "lexical_ready_semantic_not",
+      "subgoal_disagreements_at_stop": 1,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 4,
+      "dropped_semantic_labels": {
+        "irrelevant": 4
+      },
+      "judge_calls": 1,
+      "judge_ms": 12669.8,
+      "judge_prompt_tokens": 324,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          8.2147
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H20",
+      "category": "query_recovery",
+      "controlled": true,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [
+          "s1"
+        ],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 3,
+      "judge_ms": 33257.9,
+      "judge_prompt_tokens": 906,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          7.374
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H21",
+      "category": "security_state",
+      "controlled": true,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": null,
+      "stop_reason": null,
+      "checks": 0,
+      "pattern_at_stop": "no_check",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": null,
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 0,
+      "judge_ms": 0,
+      "judge_prompt_tokens": 0,
+      "claim_support": null
+    },
+    {
+      "task_id": "H22",
+      "category": "security_state",
+      "controlled": true,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": null,
+      "stop_reason": null,
+      "checks": 0,
+      "pattern_at_stop": "no_check",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": null,
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 0,
+      "judge_ms": 0,
+      "judge_prompt_tokens": 0,
+      "claim_support": null
+    },
+    {
+      "task_id": "H23",
+      "category": "security_state",
+      "controlled": true,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": null,
+      "stop_reason": null,
+      "checks": 0,
+      "pattern_at_stop": "no_check",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": null,
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 0,
+      "judge_ms": 0,
+      "judge_prompt_tokens": 0,
+      "claim_support": null
+    },
+    {
+      "task_id": "H24",
+      "category": "security_state",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": null,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [],
+        "missing": [
+          "s1"
+        ],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 0,
+      "judge_ms": 0.0,
+      "judge_prompt_tokens": 0,
+      "claim_support": null
+    },
+    {
+      "task_id": "H25",
+      "category": "security_state",
+      "controlled": true,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": null,
+      "early_stop": null,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [],
+        "missing": [
+          "s1"
+        ],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 0,
+      "judge_ms": 0.0,
+      "judge_prompt_tokens": 0,
+      "claim_support": null
+    },
+    {
+      "task_id": "H26",
+      "category": "efficiency_stopping",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": false,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "agree_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [
+          "s1"
+        ],
+        "partial": [],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 3,
+      "dropped_semantic_labels": {
+        "uncertain": 1,
+        "irrelevant": 2
+      },
+      "judge_calls": 1,
+      "judge_ms": 12519.0,
+      "judge_prompt_tokens": 423,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          7.3699
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H27",
+      "category": "efficiency_stopping",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": false,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "agree_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [
+          "s1"
+        ],
+        "partial": [],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 2,
+      "dropped_semantic_labels": {
+        "uncertain": 1,
+        "irrelevant": 1
+      },
+      "judge_calls": 1,
+      "judge_ms": 11367.5,
+      "judge_prompt_tokens": 404,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          3.5258
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    },
+    {
+      "task_id": "H28",
+      "category": "efficiency_stopping",
+      "controlled": false,
+      "task_success": false,
+      "answer_correct": true,
+      "over_planned": true,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [],
+        "missing": [
+          "s1"
+        ],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 0,
+      "judge_ms": 0.0,
+      "judge_prompt_tokens": 0,
+      "claim_support": null
+    },
+    {
+      "task_id": "H29",
+      "category": "efficiency_stopping",
+      "controlled": false,
+      "task_success": false,
+      "answer_correct": true,
+      "over_planned": true,
+      "early_stop": false,
+      "stop_reason": "no_progress",
+      "checks": 3,
+      "pattern_at_stop": "agree_not_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [],
+        "partial": [],
+        "missing": [
+          "s1"
+        ],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 0,
+      "dropped_semantic_labels": {},
+      "judge_calls": 0,
+      "judge_ms": 0.0,
+      "judge_prompt_tokens": 0,
+      "claim_support": null
+    },
+    {
+      "task_id": "H30",
+      "category": "efficiency_stopping",
+      "controlled": false,
+      "task_success": true,
+      "answer_correct": true,
+      "over_planned": false,
+      "early_stop": false,
+      "stop_reason": "evidence_ready",
+      "checks": 1,
+      "pattern_at_stop": "agree_ready",
+      "subgoal_disagreements_at_stop": 0,
+      "semantic_report_at_stop": {
+        "complete": [
+          "s1"
+        ],
+        "partial": [],
+        "missing": [],
+        "contradicted": [],
+        "supported_confidence_floor": 0.6
+      },
+      "lexically_dropped": 4,
+      "dropped_semantic_labels": {
+        "irrelevant": 4
+      },
+      "judge_calls": 1,
+      "judge_ms": 12134.0,
+      "judge_prompt_tokens": 388,
+      "claim_support": {
+        "scorer": "bge-reranker-v2-m3-v3-shadow",
+        "threshold": 2.44,
+        "claim_support_scores": [
+          6.0144,
+          4.6191
+        ],
+        "mode": "shadow",
+        "action": "recorded only; no answer is withheld on these scores",
+        "calibration": "artifacts/semantic-scorer-calibration.json"
+      }
+    }
+  ]
+}

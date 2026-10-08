@@ -1,0 +1,20 @@
+{
+  "observed_at_utc": "2026-09-27T18:36:35.898319+00:00",
+  "scope": "Read-only local runtime snapshot during v3. Not a hardware throughput benchmark.",
+  "models": [
+    {
+      "name": "qwen2.5:7b-instruct",
+      "size": 6044303360,
+      "size_vram": 6044303360,
+      "context_length": 8192
+    },
+    {
+      "name": "bge-m3:567m",
+      "size": 1772675072,
+      "size_vram": 1772675072,
+      "context_length": 4096
+    }
+  ],
+  "paid_api_calls": 0,
+  "training_runs": 0
+}

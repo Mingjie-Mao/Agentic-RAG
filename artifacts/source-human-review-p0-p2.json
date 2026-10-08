@@ -1,0 +1,249 @@
+{
+  "source_sha256": "74812eb5fa7bf4559d5866c0c3701d5dec312b7eed11f264b491a4f1ea087151",
+  "reviewer": null,
+  "reviewer_type": "human",
+  "status": "pending",
+  "rubric": "Judge entailment separately from relevance. Preserve speaker, modality, negation scope, compared attribute, time and conclusion. Atomic false claims are unsupported; genuinely mixed claims may be partial.",
+  "items": [
+    {
+      "id": "C01",
+      "category": "subject",
+      "question": "What did Dana argue?",
+      "evidence": "Report: Analyst Dana argued the merger would help buyers. The author did not independently endorse that forecast.",
+      "claim": "The report attributed to Dana the view that the merger would help buyers.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C02",
+      "category": "subject",
+      "question": "What did Dana argue?",
+      "evidence": "Report: Analyst Dana argued the merger would help buyers. The author did not independently endorse that forecast.",
+      "claim": "The author independently confirmed that the merger would help buyers.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C03",
+      "category": "subject",
+      "question": "律师林如何看待交易？",
+      "evidence": "报道转述：律师林表示交易合法，这是辩方主张；检方指控交易欺诈。",
+      "claim": "律师林主张交易合法。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C04",
+      "category": "subject",
+      "question": "律师林如何看待交易？",
+      "evidence": "报道转述：律师林表示交易合法，这是辩方主张；检方指控交易欺诈。",
+      "claim": "报道认定交易合法。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C05",
+      "category": "modality",
+      "question": "What concern did the audit team raise?",
+      "evidence": "According to the audit team, Orion may have understated costs; the allegation remains unconfirmed.",
+      "claim": "The audit team said Orion might have understated costs.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C06",
+      "category": "modality",
+      "question": "What concern did the audit team raise?",
+      "evidence": "According to the audit team, Orion may have understated costs; the allegation remains unconfirmed.",
+      "claim": "Orion certainly understated costs.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C07",
+      "category": "modality",
+      "question": "专家如何预测成本？",
+      "evidence": "专家周预测成本可能下降，这并非已实现的结果。",
+      "claim": "专家周预测成本或将下降。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C08",
+      "category": "modality",
+      "question": "专家如何预测成本？",
+      "evidence": "专家周预测成本可能下降，这并非已实现的结果。",
+      "claim": "成本已经下降。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C09",
+      "category": "negation_scope",
+      "question": "Does the whole report never mention fines?",
+      "evidence": "Only an excerpt is supplied: The report describes operating costs.",
+      "claim": "The supplied excerpt contains no mention of fines.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C10",
+      "category": "negation_scope",
+      "question": "Does the whole report never mention fines?",
+      "evidence": "Only an excerpt is supplied: The report describes operating costs.",
+      "claim": "The whole report never mentions fines.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C11",
+      "category": "negation_scope",
+      "question": "政策要求审批吗？",
+      "evidence": "政策明确规定：不需要审批，员工可直接提交。",
+      "claim": "政策不要求审批。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C12",
+      "category": "negation_scope",
+      "question": "政策要求审批吗？",
+      "evidence": "政策明确规定：不需要审批，员工可直接提交。",
+      "claim": "政策要求审批。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C13",
+      "category": "attribute",
+      "question": "Are the opening dates consistent?",
+      "evidence": "Source A: The East store opens on June 4, 2026, at 09:00. Source B: The East store opens on June 4, 2026, at 10:00.",
+      "claim": "Both sources give the same opening date: June 4, 2026.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C14",
+      "category": "attribute",
+      "question": "Are the opening dates consistent?",
+      "evidence": "Source A: The East store opens on June 4, 2026, at 09:00. Source B: The East store opens on June 4, 2026, at 10:00.",
+      "claim": "The opening dates differ because opening hours differ.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C15",
+      "category": "attribute",
+      "question": "两来源对选人策略是否一致？",
+      "evidence": "甲：应选健康球员，不选受伤球员；前锋甲可以出场。乙：应选健康球员，不选受伤球员；前锋甲无法出场。",
+      "claim": "两来源选人策略一致，都是优先健康球员。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C16",
+      "category": "attribute",
+      "question": "两来源对选人策略是否一致？",
+      "evidence": "甲：应选健康球员，不选受伤球员；前锋甲可以出场。乙：应选健康球员，不选受伤球员；前锋甲无法出场。",
+      "claim": "选人策略不一致，因为前锋甲的可用性不同。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C17",
+      "category": "time",
+      "question": "What was the response limit on September 15, 2026?",
+      "evidence": "Published August 20, 2026. Policy v1: effective January 1 through August 31, 2026; limit 30 minutes. Policy v2: effective September 1 through September 30, 2026; limit 15 minutes.",
+      "claim": "On September 15, 2026 the limit was 15 minutes.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C18",
+      "category": "time",
+      "question": "What was the response limit on September 15, 2026?",
+      "evidence": "Published August 20, 2026. Policy v1: effective January 1 through August 31, 2026; limit 30 minutes. Policy v2: effective September 1 through September 30, 2026; limit 15 minutes.",
+      "claim": "On September 15, 2026 the limit was 30 minutes.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C19",
+      "category": "time",
+      "question": "政策何时生效？",
+      "evidence": "文件发布日期为2026-08-20，政策生效日期为2026-09-01。",
+      "claim": "政策在2026-09-01生效。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C20",
+      "category": "time",
+      "question": "政策何时生效？",
+      "evidence": "文件发布日期为2026-08-20，政策生效日期为2026-09-01。",
+      "claim": "政策在2026-08-20生效。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C21",
+      "category": "conclusion",
+      "question": "Do both reports give the same release date?",
+      "evidence": "A: Project Vega releases July 2, 2026. B: Project Vega releases July 3, 2026.",
+      "claim": "No. The release dates differ: July 2 and July 3, 2026.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C22",
+      "category": "conclusion",
+      "question": "Do both reports give the same release date?",
+      "evidence": "A: Project Vega releases July 2, 2026. B: Project Vega releases July 3, 2026.",
+      "claim": "Yes. Both give the same release date.",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C23",
+      "category": "conclusion",
+      "question": "两份报告是否都确认事件已发生？",
+      "evidence": "甲报告：事件已发生。乙报告：事件可能发生，尚未确认。",
+      "claim": "只有甲报告确认事件已发生，乙报告尚未确认。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    },
+    {
+      "id": "C24",
+      "category": "conclusion",
+      "question": "两份报告是否都确认事件已发生？",
+      "evidence": "甲报告：事件已发生。乙报告：事件可能发生，尚未确认。",
+      "claim": "两份报告都确认事件已发生。",
+      "entailment": null,
+      "relevance": null,
+      "reason": null
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "metadata": {
+    "model": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+    "model_revision": "8adb042d524ecd5c26d3e3ba0e3fbcf7e2d0864c",
+    "weights_sha256": "65af59b1ff4450b09ecbf13ca35c840dbf038b26ff8e10e5ea89ca724828ed1e",
+    "runtime": "local_cpu",
+    "tuning": "none",
+    "project_case_human_reviewed": 0,
+    "fixture_sha256": "74812eb5fa7bf4559d5866c0c3701d5dec312b7eed11f264b491a4f1ea087151",
+    "source": "Previously used assistant-authored development labels; not independent human"
+  },
+  "summary": {
+    "n": 24,
+    "by_gold": {
+      "entailment": 12,
+      "contradiction": 12
+    },
+    "three_way_correct": 14,
+    "supported_recall": 0.583,
+    "not_supported_recall": 0.833,
+    "false_accepts": 2,
+    "false_rejects": 5,
+    "confusion": {
+      "entailment": {
+        "entailment": 7,
+        "neutral": 2,
+        "contradiction": 3
+      },
+      "neutral": {},
+      "contradiction": {
+        "contradiction": 7,
+        "entailment": 2,
+        "neutral": 3
+      }
+    },
+    "elapsed_ms": 11704.8
+  },
+  "records": [
+    {
+      "id": "C01",
+      "category": "subject",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9902,
+        "neutral": 0.0084,
+        "contradiction": 0.0012
+      }
+    },
+    {
+      "id": "C02",
+      "category": "subject",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0007,
+        "neutral": 0.0027,
+        "contradiction": 0.9966
+      }
+    },
+    {
+      "id": "C03",
+      "category": "subject",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.999,
+        "neutral": 0.001,
+        "contradiction": 0.0002
+      }
+    },
+    {
+      "id": "C04",
+      "category": "subject",
+      "gold": "contradiction",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.998,
+        "neutral": 0.0018,
+        "contradiction": 0.0003
+      }
+    },
+    {
+      "id": "C05",
+      "category": "modality",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9976,
+        "neutral": 0.002,
+        "contradiction": 0.0003
+      }
+    },
+    {
+      "id": "C06",
+      "category": "modality",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0035,
+        "neutral": 0.1514,
+        "contradiction": 0.8452
+      }
+    },
+    {
+      "id": "C07",
+      "category": "modality",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9985,
+        "neutral": 0.0014,
+        "contradiction": 0.0001
+      }
+    },
+    {
+      "id": "C08",
+      "category": "modality",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0037,
+        "neutral": 0.0067,
+        "contradiction": 0.9897
+      }
+    },
+    {
+      "id": "C09",
+      "category": "negation_scope",
+      "gold": "entailment",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0013,
+        "neutral": 0.9951,
+        "contradiction": 0.0038
+      }
+    },
+    {
+      "id": "C10",
+      "category": "negation_scope",
+      "gold": "contradiction",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0066,
+        "neutral": 0.9077,
+        "contradiction": 0.0856
+      }
+    },
+    {
+      "id": "C11",
+      "category": "negation_scope",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9956,
+        "neutral": 0.004,
+        "contradiction": 0.0006
+      }
+    },
+    {
+      "id": "C12",
+      "category": "negation_scope",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0066,
+        "neutral": 0.0028,
+        "contradiction": 0.9907
+      }
+    },
+    {
+      "id": "C13",
+      "category": "attribute",
+      "gold": "entailment",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.1011,
+        "neutral": 0.0823,
+        "contradiction": 0.8164
+      }
+    },
+    {
+      "id": "C14",
+      "category": "attribute",
+      "gold": "contradiction",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0188,
+        "neutral": 0.979,
+        "contradiction": 0.0021
+      }
+    },
+    {
+      "id": "C15",
+      "category": "attribute",
+      "gold": "entailment",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0008,
+        "neutral": 0.0018,
+        "contradiction": 0.9976
+      }
+    },
+    {
+      "id": "C16",
+      "category": "attribute",
+      "gold": "contradiction",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0009,
+        "neutral": 0.9937,
+        "contradiction": 0.0054
+      }
+    },
+    {
+      "id": "C17",
+      "category": "time",
+      "gold": "entailment",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0558,
+        "neutral": 0.75,
+        "contradiction": 0.1943
+      }
+    },
+    {
+      "id": "C18",
+      "category": "time",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.1202,
+        "neutral": 0.3884,
+        "contradiction": 0.4915
+      }
+    },
+    {
+      "id": "C19",
+      "category": "time",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.998,
+        "neutral": 0.0019,
+        "contradiction": 0.0001
+      }
+    },
+    {
+      "id": "C20",
+      "category": "time",
+      "gold": "contradiction",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9834,
+        "neutral": 0.0025,
+        "contradiction": 0.0143
+      }
+    },
+    {
+      "id": "C21",
+      "category": "conclusion",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.981,
+        "neutral": 0.016,
+        "contradiction": 0.0032
+      }
+    },
+    {
+      "id": "C22",
+      "category": "conclusion",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0522,
+        "neutral": 0.0294,
+        "contradiction": 0.9185
+      }
+    },
+    {
+      "id": "C23",
+      "category": "conclusion",
+      "gold": "entailment",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0047,
+        "neutral": 0.0203,
+        "contradiction": 0.9751
+      }
+    },
+    {
+      "id": "C24",
+      "category": "conclusion",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0014,
+        "neutral": 0.0008,
+        "contradiction": 0.9976
+      }
+    }
+  ]
+}

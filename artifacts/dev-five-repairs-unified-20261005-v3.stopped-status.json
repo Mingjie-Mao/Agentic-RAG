@@ -1,0 +1,37 @@
+{
+  "status": "stopped_resource_contention",
+  "completed": 5,
+  "planned": 188,
+  "pending_interrupted": [
+    "dynamic:U02"
+  ],
+  "full_dev_task_success": null,
+  "full_dev_p95_ms": null,
+  "reason": "Concurrent host GPU load (Android emulator qemu-system-aarch64 and replayd running) cut measured qwen2.5:7b decode to about 3.3 tok/s and prefill to 24-28 tok/s on two of the first four calls (v2: about 16-20 tok/s decode, 118 tok/s prefill). With the 180 s per-call model timeout, hard tasks would fail from host contention rather than system behavior, and latency would not be comparable to v2. Stopped after 4 completed rows; no scores computed.",
+  "observed_calls": [
+    {
+      "row": "rag:U01",
+      "prompt_tokens": 1475,
+      "prefill_tok_s": 24,
+      "decode_tok_s": 3.3
+    },
+    {
+      "row": "workflow:U01",
+      "prefill_tok_s": 1420,
+      "decode_tok_s": 3.6
+    },
+    {
+      "row": "dynamic:U01",
+      "prefill_tok_s": 28,
+      "decode_tok_s": 3.1
+    },
+    {
+      "row": "hybrid:U01",
+      "prefill_tok_s": 180,
+      "decode_tok_s": 3.3
+    }
+  ],
+  "freeze": ".runtime/benchmark-package/v1/dev-five-repairs-20261005-v3/freeze.json",
+  "checkpoint": "artifacts/dev-five-repairs-unified-20261005-v3.checkpoint.json",
+  "core_untouched": true
+}

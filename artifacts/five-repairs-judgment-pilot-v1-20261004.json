@@ -1,0 +1,243 @@
+{
+  "scope": "Dev judgment pilot, GPT synthetic labels; not Core or heldout gate",
+  "rows": [
+    {
+      "question": "Have both reports confirmed private gain?",
+      "expected_verdict": "no",
+      "answer": {
+        "answerable": true,
+        "claims": [
+          {
+            "text": "Report A explicitly denies that the accused obtained private gain.",
+            "evidence_ids": [
+              "0"
+            ],
+            "quotes": [
+              "Report A explicitly denies that the accused obtained private gain."
+            ]
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Report A explicitly denies that the accused obtained private gain."
+            ],
+            "reason": "Quote explicitly denies private gain in Report A.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "Report A denies private gain.",
+        "conclusion_claim_indices": [
+          1
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 656,
+        "completion_tokens": 103,
+        "wall_ms": 24554.9,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "each_claim_bound_quotes_only"
+      },
+      "independent": false,
+      "passed": true
+    },
+    {
+      "question": "Did both people grant filming permission?",
+      "expected_verdict": "no",
+      "answer": {
+        "answerable": true,
+        "claims": [
+          {
+            "text": "One participant explicitly refused filming.",
+            "evidence_ids": [
+              "0"
+            ],
+            "quotes": [
+              "One participant explicitly refused filming."
+            ]
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "One participant explicitly refused filming."
+            ],
+            "reason": "Quote explicitly states one participant refused filming.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "One person refused; both did not grant permission.",
+        "conclusion_claim_indices": [
+          1
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 646,
+        "completion_tokens": 106,
+        "wall_ms": 21803.1,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "each_claim_bound_quotes_only"
+      },
+      "independent": false,
+      "passed": true
+    },
+    {
+      "question": "Are the reports consistent about the launch date?",
+      "expected_verdict": "yes",
+      "answer": {
+        "answerable": true,
+        "claims": [
+          {
+            "text": "Report A gives the launch date as 2035-04-12.",
+            "evidence_ids": [
+              "0"
+            ],
+            "quotes": [
+              "Report A gives the launch date as 2035-04-12."
+            ]
+          },
+          {
+            "text": "Report B gives the launch date as 2035-04-12.",
+            "evidence_ids": [
+              "1"
+            ],
+            "quotes": [
+              "Report B gives the launch date as 2035-04-12."
+            ]
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Report A gives the launch date as 2035-04-12."
+            ],
+            "reason": "Quote confirms Report A gives launch date as 2035-04-12.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Report B gives the launch date as 2035-04-12."
+            ],
+            "reason": "Quote confirms Report B gives launch date as 2035-04-12.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "yes",
+        "conclusion": "Reports are consistent about the launch date.",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 760,
+        "completion_tokens": 177,
+        "wall_ms": 32783.7,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "each_claim_bound_quotes_only"
+      },
+      "independent": false,
+      "passed": true
+    },
+    {
+      "question": "两家中心的营业时间是否相同？",
+      "expected_verdict": "no",
+      "answer": {
+        "answerable": true,
+        "claims": [
+          {
+            "text": "中心甲营业时间为08:00至17:00。",
+            "evidence_ids": [
+              "0"
+            ],
+            "quotes": [
+              "中心甲营业时间为08:00至17:00。"
+            ]
+          },
+          {
+            "text": "中心乙营业时间为09:00至18:00。",
+            "evidence_ids": [
+              "1"
+            ],
+            "quotes": [
+              "中心乙营业时间为09:00至18:00。"
+            ]
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "中心甲营业时间为08:00至17:00。"
+            ],
+            "reason": "Quote confirms Center A hours are 08:00 to 17:00.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "中心乙营业时间为09:00至18:00。"
+            ],
+            "reason": "Quote confirms Center B hours are 09:00 to 18:00.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "No, the operating hours are different.",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 750,
+        "completion_tokens": 177,
+        "wall_ms": 36122.3,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "each_claim_bound_quotes_only"
+      },
+      "independent": false,
+      "passed": true
+    }
+  ]
+}

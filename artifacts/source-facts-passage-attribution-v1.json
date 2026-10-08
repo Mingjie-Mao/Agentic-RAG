@@ -1,0 +1,250 @@
+{
+  "scope": "Final generation evidence handles; gold word-4gram >=50% is a passage proxy, not semantic entailment.",
+  "human_reviewed": 0,
+  "rows": [
+    {
+      "id": "SF-2b0d715cf3dd",
+      "arm": "legacy",
+      "task_id": "d52dd0e8-5136-41d1-bf9b-a287a6b642f4",
+      "answer_correct": true,
+      "stage_proxy": "gold_fact_proxy_missing",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6
+    },
+    {
+      "id": "SF-2b0d715cf3dd",
+      "arm": "source_facts",
+      "task_id": "dc95d23e-c467-461d-9908-e81fb6a80955",
+      "answer_correct": false,
+      "stage_proxy": "gold_fact_proxy_missing",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 6
+    },
+    {
+      "id": "SF-2ce18087c78c",
+      "arm": "source_facts",
+      "task_id": "616fd25e-d2cf-41d8-bd07-25dd0ead8305",
+      "answer_correct": false,
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8
+    },
+    {
+      "id": "SF-2ce18087c78c",
+      "arm": "legacy",
+      "task_id": "1fbf600a-692c-41f5-906a-7e4fddb1a025",
+      "answer_correct": false,
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 8
+    },
+    {
+      "id": "SF-2cd2e207dd8f",
+      "arm": "legacy",
+      "task_id": "45d47bfb-707b-43c3-9fe7-08c8041cb2bf",
+      "answer_correct": false,
+      "stage_proxy": "gold_fact_proxy_missing",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8
+    },
+    {
+      "id": "SF-2cd2e207dd8f",
+      "arm": "source_facts",
+      "task_id": "ae9f261b-843f-4fdc-8bad-343f69a06405",
+      "answer_correct": false,
+      "stage_proxy": "gold_fact_proxy_missing",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 8
+    },
+    {
+      "id": "SF-2d607f4cf710",
+      "arm": "source_facts",
+      "task_id": "2eb5b473-936f-4970-a5ff-c939000b35d3",
+      "answer_correct": false,
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 5
+    },
+    {
+      "id": "SF-2d607f4cf710",
+      "arm": "legacy",
+      "task_id": "6a2d3480-81f5-4d17-970c-0da5864155ea",
+      "answer_correct": true,
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 5
+    },
+    {
+      "id": "SF-39f7b8eb4a3e",
+      "arm": "legacy",
+      "task_id": "7bbd739a-dceb-4763-a00d-e4d7e1f5b5fe",
+      "answer_correct": true,
+      "stage_proxy": "gold_document_missing",
+      "all_gold_documents_in_generation": false,
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8
+    },
+    {
+      "id": "SF-39f7b8eb4a3e",
+      "arm": "source_facts",
+      "task_id": "f8c0c8b1-3c37-494e-b985-8b57877a67b9",
+      "answer_correct": false,
+      "stage_proxy": "gold_document_missing",
+      "all_gold_documents_in_generation": false,
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8
+    },
+    {
+      "id": "SF-3a0194728516",
+      "arm": "source_facts",
+      "task_id": "02be64a5-6056-462c-83a4-15b1264e79b0",
+      "answer_correct": false,
+      "stage_proxy": "gold_fact_proxy_missing",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6
+    },
+    {
+      "id": "SF-3a0194728516",
+      "arm": "legacy",
+      "task_id": "5f0bfbc1-0c32-48b1-8700-166a3a35182b",
+      "answer_correct": true,
+      "stage_proxy": "gold_fact_proxy_missing",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6
+    },
+    {
+      "id": "SF-3b531339f028",
+      "arm": "legacy",
+      "task_id": "41e33fa3-6bce-451c-b49d-6139ee47ad5c",
+      "answer_correct": false,
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6
+    },
+    {
+      "id": "SF-3b531339f028",
+      "arm": "source_facts",
+      "task_id": "9f613725-b50e-4875-ac72-280e7b8b7031",
+      "answer_correct": false,
+      "stage_proxy": "gold_facts_present_generation_or_scoring_review",
+      "all_gold_documents_in_generation": true,
+      "gold_facts": 2,
+      "gold_facts_delivered_proxy": 2,
+      "evidence_chunks": 6
+    },
+    {
+      "id": "SF-3d0e1bd5c45c",
+      "arm": "source_facts",
+      "task_id": "d55fa504-a52a-4eaa-8864-531b3033c28a",
+      "answer_correct": false,
+      "stage_proxy": "gold_document_missing",
+      "all_gold_documents_in_generation": false,
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 7
+    },
+    {
+      "id": "SF-3d0e1bd5c45c",
+      "arm": "legacy",
+      "task_id": "8b5c796c-6039-4610-a4e9-f55c6f574dae",
+      "answer_correct": false,
+      "stage_proxy": "gold_document_missing",
+      "all_gold_documents_in_generation": false,
+      "gold_facts": 3,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 7
+    },
+    {
+      "id": "SF-2d7db1426b8a",
+      "arm": "legacy",
+      "task_id": "bc588f47-092c-4360-8580-b5709aece039",
+      "answer_correct": true,
+      "stage_proxy": "gold_document_missing",
+      "all_gold_documents_in_generation": false,
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8
+    },
+    {
+      "id": "SF-2d7db1426b8a",
+      "arm": "source_facts",
+      "task_id": "0503be12-4d22-4234-b591-9a6c71af76b6",
+      "answer_correct": false,
+      "stage_proxy": "gold_document_missing",
+      "all_gold_documents_in_generation": false,
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 0,
+      "evidence_chunks": 8
+    },
+    {
+      "id": "SF-2dafe134840c",
+      "arm": "source_facts",
+      "task_id": "c73575a2-6197-49f8-84c0-a6b3aca6e5c3",
+      "answer_correct": false,
+      "stage_proxy": "gold_document_missing",
+      "all_gold_documents_in_generation": false,
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6
+    },
+    {
+      "id": "SF-2dafe134840c",
+      "arm": "legacy",
+      "task_id": "deb99373-a0fc-40ec-8aec-70f75e046583",
+      "answer_correct": false,
+      "stage_proxy": "gold_document_missing",
+      "all_gold_documents_in_generation": false,
+      "gold_facts": 4,
+      "gold_facts_delivered_proxy": 1,
+      "evidence_chunks": 6
+    }
+  ],
+  "summary": {
+    "legacy": {
+      "answerable_tasks": 10,
+      "all_gold_documents_in_generation": 6,
+      "gold_facts": 26,
+      "gold_facts_delivered_proxy": 10,
+      "failure_stages": {
+        "gold_document_missing": 2,
+        "gold_fact_proxy_missing": 1,
+        "gold_facts_present_generation_or_scoring_review": 2
+      }
+    },
+    "source_facts": {
+      "answerable_tasks": 10,
+      "all_gold_documents_in_generation": 6,
+      "gold_facts": 26,
+      "gold_facts_delivered_proxy": 10,
+      "failure_stages": {
+        "gold_document_missing": 4,
+        "gold_fact_proxy_missing": 3,
+        "gold_facts_present_generation_or_scoring_review": 3
+      }
+    }
+  }
+}

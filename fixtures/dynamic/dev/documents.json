@@ -1,0 +1,809 @@
+{
+  "tenant": {
+    "id": "qinghe",
+    "name": "青禾智造"
+  },
+  "users": [
+    {
+      "id": "qi-eng",
+      "tenant_id": "qinghe",
+      "username": "engineer@qinghe.dynamic",
+      "display_name": "青禾智造 · 工程",
+      "role": "member",
+      "groups": [
+        "engineering"
+      ]
+    },
+    {
+      "id": "qi-admin",
+      "tenant_id": "qinghe",
+      "username": "admin@qinghe.dynamic",
+      "display_name": "青禾智造 · 管理者",
+      "role": "admin",
+      "groups": [
+        "engineering",
+        "hr",
+        "finance"
+      ]
+    }
+  ],
+  "owner": "qi-admin",
+  "documents": [
+    {
+      "document_id": "qi-svc-qinghe-svc-11",
+      "title": "白泽账务运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-svc-qinghe-svc-11.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-svc-qinghe-svc-12",
+      "title": "螭吻报表运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-svc-qinghe-svc-12.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-svc-qinghe-svc-13",
+      "title": "帝江排产运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-svc-qinghe-svc-13.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-svc-qinghe-svc-14",
+      "title": "青鸾对象存储运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-svc-qinghe-svc-14.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-svc-qinghe-svc-15",
+      "title": "夔牛结算运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-svc-qinghe-svc-15.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-svc-qinghe-svc-16",
+      "title": "朱厌计费运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-svc-qinghe-svc-16.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-svc-qinghe-svc-17",
+      "title": "狻猊质检运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-svc-qinghe-svc-17.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-svc-qinghe-svc-18",
+      "title": "驺吾消息运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-svc-qinghe-svc-18.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-svc-qinghe-svc-19",
+      "title": "当康调度运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-svc-qinghe-svc-19.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-svc-qinghe-svc-20",
+      "title": "陆吾网关运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-svc-qinghe-svc-20.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-bbc6c2",
+      "title": "员工名片：苏南星",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-bbc6c2.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-4f029e",
+      "title": "员工名片：钱霁",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-4f029e.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-8cefcc",
+      "title": "员工名片：钱清和",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-8cefcc.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-db38ad",
+      "title": "员工名片：谢若川",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-db38ad.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-532870",
+      "title": "员工名片：沈清和",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-532870.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-7d6a27",
+      "title": "员工名片：邵棠",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-7d6a27.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-b21a96",
+      "title": "员工名片：宋子衿",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-b21a96.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-eb477c",
+      "title": "员工名片：唐珩",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-eb477c.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-760c8b",
+      "title": "员工名片：姚舟",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-760c8b.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-d2179f",
+      "title": "员工名片：钱越",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-d2179f.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-1d1cd8",
+      "title": "员工名片：宋舟",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-1d1cd8.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-dd28d7",
+      "title": "员工名片：姚言蹊",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-dd28d7.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-b09cb9",
+      "title": "员工名片：顾岚",
+      "groups": [
+        "hr"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-b09cb9.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-staff-e92bab",
+      "title": "员工名片：韩子衿",
+      "groups": [
+        "hr"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-staff-e92bab.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-148",
+      "title": "事故 QINGHE-INC-148 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-148.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-731",
+      "title": "事故 QINGHE-INC-731 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-731.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-210",
+      "title": "事故 QINGHE-INC-210 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-210.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-293",
+      "title": "事故 QINGHE-INC-293 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-293.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-375",
+      "title": "事故 QINGHE-INC-375 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-375.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-931",
+      "title": "事故 QINGHE-INC-931 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-931.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-481",
+      "title": "事故 QINGHE-INC-481 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-481.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-105",
+      "title": "事故 QINGHE-INC-105 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-105.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-966",
+      "title": "事故 QINGHE-INC-966 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-966.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-620",
+      "title": "事故 QINGHE-INC-620 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-620.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-366",
+      "title": "事故 QINGHE-INC-366 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-366.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-403",
+      "title": "事故 QINGHE-INC-403 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-403.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-159",
+      "title": "事故 QINGHE-INC-159 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-159.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-952",
+      "title": "事故 QINGHE-INC-952 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-952.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-248",
+      "title": "事故 QINGHE-INC-248 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-248.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-220",
+      "title": "事故 QINGHE-INC-220 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-220.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-163",
+      "title": "事故 QINGHE-INC-163 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-163.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-inc-qinghe-inc-847",
+      "title": "事故 QINGHE-INC-847 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-inc-qinghe-inc-847.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-glossary",
+      "title": "内部常用俗称对照表",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-glossary.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-form-f-81",
+      "title": "外协加工单管理规定",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-form-f-81.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-form-f-72",
+      "title": "跨仓调拨申请单管理规定",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-form-f-72.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-form-f-32",
+      "title": "临时用工申请单管理规定",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-form-f-32.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-form-f-71",
+      "title": "报废处置单管理规定",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-form-f-71.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-quality-q3",
+      "title": "2026 年第三季度仓储质量报表",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-quality-q3.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-return-escalation",
+      "title": "退货率升级处理规则",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-return-escalation.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-warehouse-directory",
+      "title": "仓库主管名录",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-warehouse-directory.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-freeze-r-800",
+      "title": "变更冻结规则 R-800",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-freeze-r-800.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-freeze-r-411",
+      "title": "变更冻结规则 R-411",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-freeze-r-411.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-freeze-r-922",
+      "title": "变更冻结规则 R-922",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-freeze-r-922.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-policy-0",
+      "title": "外包人员门禁管理办法",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-policy-0-v1.md",
+          "effective_from": "2025-07-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-policy-0-v2.md",
+          "effective_from": "2026-02-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-policy-0-v3.md",
+          "effective_from": "2026-06-15T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-notice-qinghe-an-16",
+      "title": "行政公告 QINGHE-AN-16",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-notice-qinghe-an-16.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-notice-qinghe-an-63",
+      "title": "行政公告 QINGHE-AN-63",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-notice-qinghe-an-63.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-policy-1",
+      "title": "差旅住宿管理办法",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-policy-1-v1.md",
+          "effective_from": "2025-07-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-policy-1-v2.md",
+          "effective_from": "2026-02-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-policy-1-v3.md",
+          "effective_from": "2026-06-15T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-notice-qinghe-an-22",
+      "title": "行政公告 QINGHE-AN-22",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-notice-qinghe-an-22.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-notice-qinghe-an-51",
+      "title": "行政公告 QINGHE-AN-51",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-notice-qinghe-an-51.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-site-rule-0",
+      "title": "二厂区作业规范",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-site-rule-0.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-safety-0",
+      "title": "安全通告第 11 号",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-safety-0.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-site-rule-1",
+      "title": "一厂区作业规范",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-site-rule-1.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "qi-safety-1",
+      "title": "安全通告第 6 号",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/dev/documents/qi-safety-1.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    }
+  ]
+}

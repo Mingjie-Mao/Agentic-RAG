@@ -1,0 +1,488 @@
+{
+  "metadata": {
+    "fixture_sha256": "74812eb5fa7bf4559d5866c0c3701d5dec312b7eed11f264b491a4f1ea087151",
+    "code_sha256": "32549e70f084c85e8aa6d3f6892ebfa1ba4efd01a62df750f2cdb6ea0e1bb0aa",
+    "model": "qwen2.5:7b-instruct",
+    "rubric": "compact-source-entailment-v5",
+    "api_cost": 0,
+    "human_reviewed": 0,
+    "scope": "Previously used authored calibration cases, not unseen generalization. No production semantic blocking."
+  },
+  "records": [
+    {
+      "id": "C01",
+      "category": "subject",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "The evidence directly supports the claim by attributing to Dana the view that the merger would help buyers, even though it mentions the author did not endorse."
+      },
+      "usage": {
+        "prompt_tokens": 252,
+        "completion_tokens": 59
+      },
+      "wall_ms": 10158.7
+    },
+    {
+      "id": "C02",
+      "category": "subject",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "unclear",
+        "failure_type": "attribute",
+        "reason": "The claim focuses on whether the author independently confirmed the merger's benefits, while the evidence discusses what Dana argued. These are different claims"
+      },
+      "usage": {
+        "prompt_tokens": 249,
+        "completion_tokens": 56
+      },
+      "wall_ms": 8746.7
+    },
+    {
+      "id": "C03",
+      "category": "subject",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "证据明确支持了律师林的主张交易合法这一事实，并且与问题相关。"
+      },
+      "usage": {
+        "prompt_tokens": 247,
+        "completion_tokens": 47
+      },
+      "wall_ms": 6527.6
+    },
+    {
+      "id": "C04",
+      "category": "subject",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "证据明确指出律师林认为交易合法，这与声明一致。"
+      },
+      "usage": {
+        "prompt_tokens": 246,
+        "completion_tokens": 43
+      },
+      "wall_ms": 6045.4
+    },
+    {
+      "id": "C05",
+      "category": "modality",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "The evidence supports that the audit team raised a concern about Orion possibly understating costs, which is directly related to the question asked."
+      },
+      "usage": {
+        "prompt_tokens": 251,
+        "completion_tokens": 54
+      },
+      "wall_ms": 7383.2
+    },
+    {
+      "id": "C06",
+      "category": "modality",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "unclear",
+        "failure_type": "none",
+        "reason": "The evidence does not explicitly state that the audit team raised a concern about Orion understating costs. The statement is uncertain and only suggests a可能性被低估"
+      },
+      "usage": {
+        "prompt_tokens": 247,
+        "completion_tokens": 61
+      },
+      "wall_ms": 8273.6
+    },
+    {
+      "id": "C07",
+      "category": "modality",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "证据支持了关于成本预测的陈述，即专家认为成本可能会下降。"
+      },
+      "usage": {
+        "prompt_tokens": 240,
+        "completion_tokens": 48
+      },
+      "wall_ms": 6749.9
+    },
+    {
+      "id": "C08",
+      "category": "modality",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "related",
+        "failure_type": "attribute",
+        "reason": "证据提到的是专家的预测，并未实际证明成本已经下降。"
+      },
+      "usage": {
+        "prompt_tokens": 237,
+        "completion_tokens": 46
+      },
+      "wall_ms": 6179.0
+    },
+    {
+      "id": "C09",
+      "category": "negation_scope",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "The claim matches the evidence, as the excerpt does not contain any mention of fines. While it does not cover the entire document, the absence in the provided部分"
+      },
+      "usage": {
+        "prompt_tokens": 242,
+        "completion_tokens": 60
+      },
+      "wall_ms": 8877.8
+    },
+    {
+      "id": "C10",
+      "category": "negation_scope",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unclear",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "The evidence only states that the excerpt discusses operating costs, but does not provide information about the entire document's content regarding fines."
+      },
+      "usage": {
+        "prompt_tokens": 240,
+        "completion_tokens": 58
+      },
+      "wall_ms": 7963.6
+    },
+    {
+      "id": "C11",
+      "category": "negation_scope",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "证据明确指出政策不要求审批，与声明一致。"
+      },
+      "usage": {
+        "prompt_tokens": 236,
+        "completion_tokens": 41
+      },
+      "wall_ms": 6201.0
+    },
+    {
+      "id": "C12",
+      "category": "negation_scope",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "unclear",
+        "failure_type": "none",
+        "reason": "证据与主张相反，但问题未明确询问证据是否支持或反驳主张。"
+      },
+      "usage": {
+        "prompt_tokens": 235,
+        "completion_tokens": 49
+      },
+      "wall_ms": 6484.0
+    },
+    {
+      "id": "C13",
+      "category": "attribute",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "Both sources provide the same opening date of June 4, 2026, even though they differ in the opening time."
+      },
+      "usage": {
+        "prompt_tokens": 289,
+        "completion_tokens": 56
+      },
+      "wall_ms": 8106.6
+    },
+    {
+      "id": "C14",
+      "category": "attribute",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "related",
+        "failure_type": "attribute",
+        "reason": "The claim asserts that opening dates differ due to different hours, but the evidence shows both stores open on the same date. The attribute of opening date is a"
+      },
+      "usage": {
+        "prompt_tokens": 280,
+        "completion_tokens": 65
+      },
+      "wall_ms": 9170.9
+    },
+    {
+      "id": "C15",
+      "category": "attribute",
+      "expected": "supported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "两来源都强调优先选择健康球员，但并未明确说明策略一致，且乙的发言与甲矛盾。"
+      },
+      "usage": {
+        "prompt_tokens": 270,
+        "completion_tokens": 53
+      },
+      "wall_ms": 7604.8
+    },
+    {
+      "id": "C16",
+      "category": "attribute",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "failure_type": "attribute",
+        "reason": "虽然两来源都提到选人策略是应选健康球员，不选受伤球员，但关于前锋甲的可用性不同导致策略不一致这一点只在乙的陈述中有所体现，缺乏甲的具体信息。"
+      },
+      "usage": {
+        "prompt_tokens": 272,
+        "completion_tokens": 75
+      },
+      "wall_ms": 9975.8
+    },
+    {
+      "id": "C17",
+      "category": "time",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "The evidence clearly states that the policy with a 15-minute limit was effective from September 1 through September 30, 2026. Since September 15, 2026 falls in "
+      },
+      "usage": {
+        "prompt_tokens": 313,
+        "completion_tokens": 75
+      },
+      "wall_ms": 10658.2
+    },
+    {
+      "id": "C18",
+      "category": "time",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "The evidence provides a policy change on September 1, 2026, which aligns with the claim about the response limit on September 15, 2026."
+      },
+      "usage": {
+        "prompt_tokens": 313,
+        "completion_tokens": 68
+      },
+      "wall_ms": 9742.7
+    },
+    {
+      "id": "C19",
+      "category": "time",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "证据明确指出政策的生效日期是2026-09-01，与声明一致。"
+      },
+      "usage": {
+        "prompt_tokens": 263,
+        "completion_tokens": 53
+      },
+      "wall_ms": 7775.7
+    },
+    {
+      "id": "C20",
+      "category": "time",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "related",
+        "failure_type": "attribute",
+        "reason": "虽然文件发布日期是2026-08-20，但政策的生效日期是2026-09-01，与声称的生效日期不符。"
+      },
+      "usage": {
+        "prompt_tokens": 263,
+        "completion_tokens": 72
+      },
+      "wall_ms": 9752.3
+    },
+    {
+      "id": "C21",
+      "category": "conclusion",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "failure_type": "none",
+        "reason": "Both reports provide the release dates for Project Vega, and they differ as stated in the claim."
+      },
+      "usage": {
+        "prompt_tokens": 273,
+        "completion_tokens": 48
+      },
+      "wall_ms": 7172.4
+    },
+    {
+      "id": "C22",
+      "category": "conclusion",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "unclear",
+        "failure_type": "mixed",
+        "reason": "The evidence presents two different release dates from the sources, which contradicts the claim that both reports give the same release date. The question of 'g"
+      },
+      "usage": {
+        "prompt_tokens": 261,
+        "completion_tokens": 62
+      },
+      "wall_ms": 8596.1
+    },
+    {
+      "id": "C23",
+      "category": "conclusion",
+      "expected": "supported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "related",
+        "failure_type": "attribute",
+        "reason": "甲报告确认了事件已发生，但乙报告只是说事件可能发生，并未明确表示是否已经发生，因此不能确定两份报告都确认事件已发生。"
+      },
+      "usage": {
+        "prompt_tokens": 254,
+        "completion_tokens": 69
+      },
+      "wall_ms": 9265.7
+    },
+    {
+      "id": "C24",
+      "category": "conclusion",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "related",
+        "failure_type": "attribute",
+        "reason": "虽然甲报告确认了事件已发生，但乙报告表示事件可能发生，尚未确认，因此两份报告并未都确认事件已发生。"
+      },
+      "usage": {
+        "prompt_tokens": 250,
+        "completion_tokens": 62
+      },
+      "wall_ms": 8568.2
+    }
+  ],
+  "summary": {
+    "cases": 24,
+    "exact_labels_correct": 18,
+    "false_accepts": 2,
+    "unsafe_cases": 12,
+    "false_rejects": 2,
+    "supported_cases": 12,
+    "unclear": 1,
+    "p50_ms": 8190.1,
+    "prompt_tokens": 6223,
+    "completion_tokens": 1380
+  },
+  "by_category": {
+    "attribute": {
+      "cases": 4,
+      "exact_labels_correct": 2,
+      "false_accepts": 0,
+      "unsafe_cases": 2,
+      "false_rejects": 1,
+      "supported_cases": 2,
+      "unclear": 0,
+      "p50_ms": 8638.8,
+      "prompt_tokens": 1111,
+      "completion_tokens": 249
+    },
+    "conclusion": {
+      "cases": 4,
+      "exact_labels_correct": 3,
+      "false_accepts": 0,
+      "unsafe_cases": 2,
+      "false_rejects": 1,
+      "supported_cases": 2,
+      "unclear": 0,
+      "p50_ms": 8582.2,
+      "prompt_tokens": 1038,
+      "completion_tokens": 241
+    },
+    "modality": {
+      "cases": 4,
+      "exact_labels_correct": 4,
+      "false_accepts": 0,
+      "unsafe_cases": 2,
+      "false_rejects": 0,
+      "supported_cases": 2,
+      "unclear": 0,
+      "p50_ms": 7066.5,
+      "prompt_tokens": 975,
+      "completion_tokens": 209
+    },
+    "negation_scope": {
+      "cases": 4,
+      "exact_labels_correct": 3,
+      "false_accepts": 0,
+      "unsafe_cases": 2,
+      "false_rejects": 0,
+      "supported_cases": 2,
+      "unclear": 1,
+      "p50_ms": 7223.8,
+      "prompt_tokens": 953,
+      "completion_tokens": 208
+    },
+    "subject": {
+      "cases": 4,
+      "exact_labels_correct": 3,
+      "false_accepts": 1,
+      "unsafe_cases": 2,
+      "false_rejects": 0,
+      "supported_cases": 2,
+      "unclear": 0,
+      "p50_ms": 7637.2,
+      "prompt_tokens": 994,
+      "completion_tokens": 205
+    },
+    "time": {
+      "cases": 4,
+      "exact_labels_correct": 3,
+      "false_accepts": 1,
+      "unsafe_cases": 2,
+      "false_rejects": 0,
+      "supported_cases": 2,
+      "unclear": 0,
+      "p50_ms": 9747.5,
+      "prompt_tokens": 1152,
+      "completion_tokens": 268
+    }
+  },
+  "independent_human_calibration": {
+    "status": "pending",
+    "reviewed": 0
+  },
+  "decision": "shadow_only; human validation and fresh external quality gate required"
+}

@@ -1,0 +1,1912 @@
+{
+  "scope": "New Dev diagnostic; not full frozen benchmark",
+  "configuration": {
+    "answer_quality_enabled": true,
+    "answer_extractive_enabled": false,
+    "answer_semantic_audit_enabled": false,
+    "answer_contract_enabled": true,
+    "focused_generation_enabled": true,
+    "claim_consistency_enabled": true,
+    "verdict_protocol": "structured"
+  },
+  "rows": [
+    {
+      "task_id": "U12",
+      "method": "hybrid",
+      "goal": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+      "run_id": "3f1f0ad8-d1bc-472f-9177-e9dd863ad650",
+      "seconds": 25.841,
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "事故 417 中占满连接池的那次导入任务一次性提交了 12 万行运单数据，没有分片。",
+            "evidence_ids": [
+              "b51c898f-8657-5bb8-9b81-2998df9d5fa0"
+            ],
+            "quotes": [
+              "单个租户的一次批量导入任务一次性提交了 12 万行运单数据，没有分片。"
+            ]
+          },
+          {
+            "text": "按这个特征对应的规则，现在单次导入最多允许 5 万行。",
+            "evidence_ids": [
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+            ],
+            "quotes": [
+              "单次导入任务最多 5 万行。"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "document_id": "lt-incident-417",
+            "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+            "title": "事故 417 复盘：路由服务超时",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "事故 417 复盘：路由服务超时",
+                "根因"
+              ],
+              "source_char_start": 121,
+              "line_start": 8,
+              "label": "第 8 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 80,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "事故 417 复盘：路由服务超时",
+                      "根因"
+                    ],
+                    "source_char_start": 121,
+                    "line_start": 8,
+                    "label": "第 8 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 80
+                }
+              ],
+              "char_start": 0,
+              "char_end": 80,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 69,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 根因\n单个租户的一次批量导入任务一次性提交了 12 万行运单数据，没有分片。导入任务长时间占用路由服务的数据库连接池，其他租户的请求拿不到连接而超时。\n\n",
+            "preview_url": "/api/evidence/b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "original_url": "/api/versions/f29553c0-c6e6-4af5-aba3-3a981ea1121f/original"
+          },
+          {
+            "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "document_id": "lt-import-guide",
+            "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+            "title": "批量导入指南",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "批量导入指南",
+                "限制"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 41,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "批量导入指南",
+                      "限制"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 41
+                }
+              ],
+              "char_start": 0,
+              "char_end": 41,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 35,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+            "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original"
+          }
+        ],
+        "message": "",
+        "usage": {
+          "prompt_tokens": 1542,
+          "completion_tokens": 106,
+          "model_duration_ms": 24525.7,
+          "model_load_ms": 70.1,
+          "prompt_eval_ms": 11412.6,
+          "completion_eval_ms": 13036.5,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行"
+          ],
+          "selection_missing_items": [],
+          "answer_contract": {
+            "comparison_target": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行",
+            "comparison_target_extracted": false,
+            "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+            "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+          },
+          "source_audit": [
+            {
+              "claim_index": 1,
+              "issues": []
+            },
+            {
+              "claim_index": 2,
+              "issues": []
+            }
+          ],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "answer_recovery": {
+            "framework": "langgraph",
+            "repair_attempts": 0,
+            "first_issues": [],
+            "remaining_issues": [],
+            "stages": {
+              "initial_generation_ms": 24581.9
+            }
+          },
+          "quality_validation_failed": false,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行",
+                  "subject": "",
+                  "attribute": "单次导入最多允许多少行",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "scope_preparation": {
+            "status": "not_applicable"
+          },
+          "generation_wall_ms": 24619.0,
+          "generation_context_chunk_ids": [
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "e012e8f9-9dcb-5192-a9ae-1c7bc7deafa2",
+            "14ee309a-33c6-567d-80d3-1b6a81d278ad"
+          ],
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "coverage_repair_wall_ms": 5.2,
+          "final_coverage": {
+            "missing": [],
+            "tool_budget_exhausted": false,
+            "basis": "lexical_diagnostic; strict correctness assessed offline"
+          },
+          "exact_value_slots_missing_first_pass": 0,
+          "execution_route": {
+            "mode": "hybrid"
+          },
+          "tool_wall_ms": 432.7,
+          "task_wall_ms": 25588.8,
+          "execution_budget": {
+            "deadline": 1791110189.09186,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1542,
+                "completion_tokens": 106,
+                "wall_ms": 24549.1
+              }
+            },
+            "judge_tokens_reserved": 0,
+            "model_call_records": [
+              {
+                "role": "generation",
+                "status": "ok",
+                "wall_ms": 24549.1,
+                "prompt_tokens": 1542,
+                "completion_tokens": 106,
+                "server_ms": 24525.7,
+                "load_ms": 70.1,
+                "prompt_eval_ms": 11412.6,
+                "completion_eval_ms": 13036.5
+              }
+            ]
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.2051,
+          "claim_support": [
+            0.7333,
+            0.2381
+          ],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "error": null
+    },
+    {
+      "task_id": "U12",
+      "method": "dynamic",
+      "goal": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+      "run_id": "03200286-679a-4fbf-b3ab-79eba6df304a",
+      "seconds": 41.373,
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "事故 417 中占满连接池的那次导入任务一次性提交了 12 万行运单数据，没有分片。",
+            "evidence_ids": [
+              "b51c898f-8657-5bb8-9b81-2998df9d5fa0"
+            ],
+            "quotes": [
+              "单个租户的一次批量导入任务一次性提交了 12 万行运单数据，没有分片。"
+            ]
+          },
+          {
+            "text": "按这个特征对应的规则，现在单次导入最多允许 5 万行。",
+            "evidence_ids": [
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+            ],
+            "quotes": [
+              "单次导入任务最多 5 万行。"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "document_id": "lt-import-guide",
+            "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+            "title": "批量导入指南",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "批量导入指南",
+                "限制"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 41,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "批量导入指南",
+                      "限制"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 41
+                }
+              ],
+              "char_start": 0,
+              "char_end": 41,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 35,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+            "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original"
+          },
+          {
+            "chunk_id": "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "document_id": "lt-incident-417",
+            "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+            "title": "事故 417 复盘：路由服务超时",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "事故 417 复盘：路由服务超时",
+                "根因"
+              ],
+              "source_char_start": 121,
+              "line_start": 8,
+              "label": "第 8 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 80,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "事故 417 复盘：路由服务超时",
+                      "根因"
+                    ],
+                    "source_char_start": 121,
+                    "line_start": 8,
+                    "label": "第 8 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 80
+                }
+              ],
+              "char_start": 0,
+              "char_end": 80,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 69,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 根因\n单个租户的一次批量导入任务一次性提交了 12 万行运单数据，没有分片。导入任务长时间占用路由服务的数据库连接池，其他租户的请求拿不到连接而超时。\n\n",
+            "preview_url": "/api/evidence/b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "original_url": "/api/versions/f29553c0-c6e6-4af5-aba3-3a981ea1121f/original"
+          }
+        ],
+        "message": "",
+        "usage": {
+          "prompt_tokens": 1423,
+          "completion_tokens": 106,
+          "model_duration_ms": 29341.7,
+          "model_load_ms": 70.3,
+          "prompt_eval_ms": 16041.8,
+          "completion_eval_ms": 13224.2,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行"
+          ],
+          "selection_missing_items": [],
+          "answer_contract": {
+            "comparison_target": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行",
+            "comparison_target_extracted": false,
+            "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+            "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+          },
+          "source_audit": [
+            {
+              "claim_index": 1,
+              "issues": []
+            },
+            {
+              "claim_index": 2,
+              "issues": []
+            }
+          ],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "answer_recovery": {
+            "framework": "langgraph",
+            "repair_attempts": 0,
+            "first_issues": [],
+            "remaining_issues": [],
+            "stages": {
+              "initial_generation_ms": 29384.2
+            }
+          },
+          "quality_validation_failed": false,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行",
+                  "subject": "",
+                  "attribute": "单次导入最多允许多少行",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "scope_preparation": {
+            "status": "not_applicable"
+          },
+          "generation_wall_ms": 29426.1,
+          "generation_context_chunk_ids": [
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "e012e8f9-9dcb-5192-a9ae-1c7bc7deafa2",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81"
+          ],
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "coverage_repair_wall_ms": 6.5,
+          "final_coverage": {
+            "missing": [],
+            "tool_budget_exhausted": false,
+            "basis": "lexical_diagnostic; strict correctness assessed offline"
+          },
+          "exact_value_slots_missing_first_pass": 0,
+          "execution_route": {
+            "mode": "dynamic"
+          },
+          "agent_policy_prompt_tokens": 238,
+          "agent_policy_completion_tokens": 72,
+          "total_prompt_tokens": 1661,
+          "total_completion_tokens": 178,
+          "agent_policy_wall_ms": 11379.8,
+          "agent_policy_model_duration_ms": 11357.3,
+          "agent_policy_prompt_eval_ms": 2724.3,
+          "agent_policy_completion_eval_ms": 8561.0,
+          "tool_wall_ms": 311.0,
+          "task_wall_ms": 41319.8,
+          "execution_budget": {
+            "deadline": 1791110214.731972,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "policy": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 238,
+                "completion_tokens": 72,
+                "wall_ms": 11382.7
+              },
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1423,
+                "completion_tokens": 106,
+                "wall_ms": 29366.4
+              }
+            },
+            "judge_tokens_reserved": 0,
+            "model_call_records": [
+              {
+                "role": "policy",
+                "status": "ok",
+                "wall_ms": 11382.7,
+                "prompt_tokens": 238,
+                "completion_tokens": 72
+              },
+              {
+                "role": "generation",
+                "status": "ok",
+                "wall_ms": 29366.4,
+                "prompt_tokens": 1423,
+                "completion_tokens": 106,
+                "server_ms": 29341.7,
+                "load_ms": 70.3,
+                "prompt_eval_ms": 16041.8,
+                "completion_eval_ms": 13224.2
+              }
+            ]
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.2051,
+          "claim_support": [
+            0.7333,
+            0.2381
+          ],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "error": null
+    },
+    {
+      "task_id": "U12",
+      "method": "rag",
+      "goal": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+      "run_id": "6d46bd01-58bd-4f92-8a76-8b3c10fea376",
+      "seconds": 17.781,
+      "result": {
+        "id": "6d46bd01-58bd-4f92-8a76-8b3c10fea376",
+        "question": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+        "status": "answered",
+        "claims": [
+          {
+            "text": "事故 417 中占满连接池的那次导入任务一次性提交了 12 万行运单数据，没有分片。",
+            "evidence_ids": [
+              "b51c898f-8657-5bb8-9b81-2998df9d5fa0"
+            ],
+            "quotes": [
+              "单个租户的一次批量导入任务一次性提交了 12 万行运单数据，没有分片。"
+            ]
+          },
+          {
+            "text": "按这个特征对应的规则，现在单次导入最多允许 5 万行。",
+            "evidence_ids": [
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+            ],
+            "quotes": [
+              "单次导入任务最多 5 万行。"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "document_id": "lt-import-guide",
+            "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+            "title": "批量导入指南",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "批量导入指南",
+                "限制"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 41,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "批量导入指南",
+                      "限制"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 41
+                }
+              ],
+              "char_start": 0,
+              "char_end": 41,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 35,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+            "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original"
+          },
+          {
+            "chunk_id": "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "document_id": "lt-incident-417",
+            "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+            "title": "事故 417 复盘：路由服务超时",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "事故 417 复盘：路由服务超时",
+                "根因"
+              ],
+              "source_char_start": 121,
+              "line_start": 8,
+              "label": "第 8 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 80,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "事故 417 复盘：路由服务超时",
+                      "根因"
+                    ],
+                    "source_char_start": 121,
+                    "line_start": 8,
+                    "label": "第 8 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 80
+                }
+              ],
+              "char_start": 0,
+              "char_end": 80,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 69,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 根因\n单个租户的一次批量导入任务一次性提交了 12 万行运单数据，没有分片。导入任务长时间占用路由服务的数据库连接池，其他租户的请求拿不到连接而超时。\n\n",
+            "preview_url": "/api/evidence/b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "original_url": "/api/versions/f29553c0-c6e6-4af5-aba3-3a981ea1121f/original"
+          }
+        ],
+        "message": "",
+        "trace": {
+          "method": "hybrid",
+          "scope": {
+            "readable_documents": 20,
+            "searchable_documents": 20
+          },
+          "original_question": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+          "retrieval_query": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+          "query_rewritten": false,
+          "rewrite": {
+            "mode": "rule",
+            "rewritten": false,
+            "history_turns": 0
+          },
+          "shadow_scores": {
+            "relevance": 0.2051,
+            "claim_support": [
+              0.7333,
+              0.2381
+            ],
+            "scorer": "bigram-overlap-v1",
+            "mode": "shadow",
+            "action": "recorded only; no answer is withheld on these scores",
+            "calibration": "artifacts/a-q1-calibration.json"
+          },
+          "prompt_version": "grounded-v5-conflict-gated",
+          "top_k": 4,
+          "min_similarity": 0.35,
+          "context_token_budget": 5000,
+          "context_tokens_estimate": 654,
+          "token_counter": "cl100k_base",
+          "embedding_model": "bge-m3:567m",
+          "generation_model": "qwen2.5:7b-instruct",
+          "generation_context_chunk_ids": [
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "e012e8f9-9dcb-5192-a9ae-1c7bc7deafa2"
+          ],
+          "candidates": [
+            {
+              "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+              "rank": 1,
+              "title": "批量导入指南",
+              "document_id": "lt-import-guide",
+              "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+              "locator_label": "第 5 行起",
+              "score": 0.7158,
+              "bm25_rank": 1,
+              "dense_rank": 1,
+              "fusion_score": 0.032787,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E1"
+            },
+            {
+              "chunk_id": "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+              "rank": 2,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 8 行起",
+              "score": 0.663,
+              "bm25_rank": 2,
+              "dense_rank": 2,
+              "fusion_score": 0.032258,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E2"
+            },
+            {
+              "chunk_id": "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+              "rank": 3,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 11 行起",
+              "score": 0.6087,
+              "bm25_rank": 3,
+              "dense_rank": 3,
+              "fusion_score": 0.031746,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E3"
+            },
+            {
+              "chunk_id": "e012e8f9-9dcb-5192-a9ae-1c7bc7deafa2",
+              "rank": 4,
+              "title": "批量导入指南",
+              "document_id": "lt-import-guide",
+              "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+              "locator_label": "第 8 行起",
+              "score": 0.5938,
+              "bm25_rank": 4,
+              "dense_rank": 4,
+              "fusion_score": 0.03125,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E4"
+            }
+          ],
+          "embed_ms": 191.0,
+          "retrieval_ms": 66.4,
+          "generation_ms": 17464.2,
+          "total_ms": 17761.3
+        },
+        "usage": {
+          "prompt_tokens": 1423,
+          "completion_tokens": 106,
+          "model_duration_ms": 17434.0,
+          "model_load_ms": 56.9,
+          "prompt_eval_ms": 4316.9,
+          "completion_eval_ms": 13055.1,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行"
+          ],
+          "selection_missing_items": [],
+          "answer_contract": {
+            "comparison_target": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行",
+            "comparison_target_extracted": false,
+            "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+            "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+          },
+          "source_audit": [
+            {
+              "claim_index": 1,
+              "issues": []
+            },
+            {
+              "claim_index": 2,
+              "issues": []
+            }
+          ],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "answer_recovery": {
+            "framework": "langgraph",
+            "repair_attempts": 0,
+            "first_issues": [],
+            "remaining_issues": [],
+            "stages": {
+              "initial_generation_ms": 17456.5
+            }
+          },
+          "quality_validation_failed": false,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行",
+                  "subject": "",
+                  "attribute": "单次导入最多允许多少行",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "contract_preparation": null,
+          "scope_preparation": {
+            "status": "not_applicable"
+          },
+          "generation_context_chunk_ids": [
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "e012e8f9-9dcb-5192-a9ae-1c7bc7deafa2"
+          ],
+          "exact_value_slots_missing_first_pass": 0,
+          "execution_budget": {
+            "deadline": 1791110256.093857,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1423,
+                "completion_tokens": 106,
+                "wall_ms": 17454.6
+              }
+            },
+            "judge_tokens_reserved": 0,
+            "model_call_records": [
+              {
+                "role": "generation",
+                "status": "ok",
+                "wall_ms": 17454.6,
+                "prompt_tokens": 1423,
+                "completion_tokens": 106,
+                "server_ms": 17434.0,
+                "load_ms": 56.9,
+                "prompt_eval_ms": 4316.9,
+                "completion_eval_ms": 13055.1
+              }
+            ]
+          }
+        }
+      },
+      "error": null
+    },
+    {
+      "task_id": "U12",
+      "method": "workflow",
+      "goal": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+      "run_id": "b0147902-4c2e-4600-9d12-cf02f8186258",
+      "seconds": 20.49,
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "事故 417 中占满连接池的那次导入任务一次性提交了 12 万行运单数据，没有分片。",
+            "evidence_ids": [
+              "b51c898f-8657-5bb8-9b81-2998df9d5fa0"
+            ],
+            "quotes": [
+              "单个租户的一次批量导入任务一次性提交了 12 万行运单数据，没有分片。"
+            ]
+          },
+          {
+            "text": "现在单次导入最多允许 5 万行。",
+            "evidence_ids": [
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+            ],
+            "quotes": [
+              "单次导入任务最多 5 万行。"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "document_id": "lt-import-guide",
+            "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+            "title": "批量导入指南",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "批量导入指南",
+                "限制"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 41,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "批量导入指南",
+                      "限制"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 41
+                }
+              ],
+              "char_start": 0,
+              "char_end": 41,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 35,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+            "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original"
+          },
+          {
+            "chunk_id": "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "document_id": "lt-incident-417",
+            "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+            "title": "事故 417 复盘：路由服务超时",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "事故 417 复盘：路由服务超时",
+                "根因"
+              ],
+              "source_char_start": 121,
+              "line_start": 8,
+              "label": "第 8 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 80,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "事故 417 复盘：路由服务超时",
+                      "根因"
+                    ],
+                    "source_char_start": 121,
+                    "line_start": 8,
+                    "label": "第 8 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 80
+                }
+              ],
+              "char_start": 0,
+              "char_end": 80,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 69,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 根因\n单个租户的一次批量导入任务一次性提交了 12 万行运单数据，没有分片。导入任务长时间占用路由服务的数据库连接池，其他租户的请求拿不到连接而超时。\n\n",
+            "preview_url": "/api/evidence/b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "original_url": "/api/versions/f29553c0-c6e6-4af5-aba3-3a981ea1121f/original"
+          }
+        ],
+        "message": "",
+        "usage": {
+          "prompt_tokens": 1673,
+          "completion_tokens": 100,
+          "model_duration_ms": 19693.9,
+          "model_load_ms": 70.0,
+          "prompt_eval_ms": 7214.0,
+          "completion_eval_ms": 12404.8,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行"
+          ],
+          "selection_missing_items": [],
+          "answer_contract": {
+            "comparison_target": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行",
+            "comparison_target_extracted": false,
+            "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+            "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+          },
+          "source_audit": [
+            {
+              "claim_index": 1,
+              "issues": []
+            },
+            {
+              "claim_index": 2,
+              "issues": []
+            }
+          ],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "answer_recovery": {
+            "framework": "langgraph",
+            "repair_attempts": 0,
+            "first_issues": [],
+            "remaining_issues": [],
+            "stages": {
+              "initial_generation_ms": 19754.7
+            }
+          },
+          "quality_validation_failed": false,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行",
+                  "subject": "",
+                  "attribute": "单次导入最多允许多少行",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "scope_preparation": {
+            "status": "not_applicable"
+          },
+          "generation_wall_ms": 19811.1,
+          "generation_context_chunk_ids": [
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "0dc72485-17ce-51fd-8ac4-7fdc4f22a874",
+            "e012e8f9-9dcb-5192-a9ae-1c7bc7deafa2",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "14ee309a-33c6-567d-80d3-1b6a81d278ad"
+          ],
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "coverage_repair_wall_ms": 7.5,
+          "final_coverage": {
+            "missing": [],
+            "tool_budget_exhausted": false,
+            "basis": "lexical_diagnostic; strict correctness assessed offline"
+          },
+          "exact_value_slots_missing_first_pass": 0,
+          "execution_route": {
+            "mode": "workflow",
+            "reason": "fixed_compound_workflow"
+          },
+          "tool_wall_ms": 322.3,
+          "task_wall_ms": 20418.0,
+          "execution_budget": {
+            "deadline": 1791110273.893743,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1673,
+                "completion_tokens": 100,
+                "wall_ms": 19723.2
+              }
+            },
+            "judge_tokens_reserved": 0,
+            "model_call_records": [
+              {
+                "role": "generation",
+                "status": "ok",
+                "wall_ms": 19723.2,
+                "prompt_tokens": 1673,
+                "completion_tokens": 100,
+                "server_ms": 19693.9,
+                "load_ms": 70.0,
+                "prompt_eval_ms": 7214.0,
+                "completion_eval_ms": 12404.8
+              }
+            ]
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.2051,
+          "claim_support": [
+            0.7333,
+            0.4545
+          ],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "error": null
+    },
+    {
+      "task_id": "U11",
+      "method": "hybrid",
+      "goal": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+      "run_id": "30939070-ee77-4d64-a521-d7aa1dd8a081",
+      "seconds": 22.244,
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "批量导入单次最多5万行。",
+            "evidence_ids": [
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+            ],
+            "quotes": [
+              "单次导入任务最多 5 万行。"
+            ]
+          },
+          {
+            "text": "路由服务单个请求的超时阈值为8秒。",
+            "evidence_ids": [
+              "33427f32-6781-59e7-87fb-96b1c1a8cc7d"
+            ],
+            "quotes": [
+              "单个请求的超时阈值为 8 秒。"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "document_id": "lt-import-guide",
+            "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+            "title": "批量导入指南",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "批量导入指南",
+                "限制"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 41,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "批量导入指南",
+                      "限制"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 41
+                }
+              ],
+              "char_start": 0,
+              "char_end": 41,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 35,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+            "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original"
+          },
+          {
+            "chunk_id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "document_id": "lt-routing-ops",
+            "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+            "title": "路由服务运维手册",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "路由服务运维手册",
+                "超时"
+              ],
+              "source_char_start": 89,
+              "line_start": 8,
+              "label": "第 8 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 23,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "路由服务运维手册",
+                      "超时"
+                    ],
+                    "source_char_start": 89,
+                    "line_start": 8,
+                    "label": "第 8 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 23
+                }
+              ],
+              "char_start": 0,
+              "char_end": 23,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 21,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 超时\n单个请求的超时阈值为 8 秒。\n\n",
+            "preview_url": "/api/evidence/33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "original_url": "/api/versions/db769968-f5e8-4a35-a947-36f7bde506f8/original"
+          }
+        ],
+        "message": "",
+        "usage": {
+          "prompt_tokens": 1549,
+          "completion_tokens": 80,
+          "model_duration_ms": 21560.5,
+          "model_load_ms": 68.6,
+          "prompt_eval_ms": 11343.0,
+          "completion_eval_ms": 10143.9,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少"
+          ],
+          "selection_missing_items": [],
+          "answer_contract": {
+            "comparison_target": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少",
+            "comparison_target_extracted": false,
+            "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+            "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+          },
+          "source_audit": [
+            {
+              "claim_index": 1,
+              "issues": []
+            },
+            {
+              "claim_index": 2,
+              "issues": []
+            }
+          ],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "answer_recovery": {
+            "framework": "langgraph",
+            "repair_attempts": 0,
+            "first_issues": [],
+            "remaining_issues": [],
+            "stages": {
+              "initial_generation_ms": 21604.1
+            }
+          },
+          "quality_validation_failed": false,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少",
+                  "subject": "批量导入单次最多多少行？路由服务",
+                  "attribute": "单次最多多少行",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "scope_preparation": {
+            "status": "not_applicable"
+          },
+          "generation_wall_ms": 21649.3,
+          "generation_context_chunk_ids": [
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "a206e830-63df-5116-8c42-da66fffd3207"
+          ],
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "coverage_repair_wall_ms": 5.7,
+          "final_coverage": {
+            "missing": [],
+            "tool_budget_exhausted": false,
+            "basis": "lexical_diagnostic; strict correctness assessed offline"
+          },
+          "exact_value_slots_missing_first_pass": 0,
+          "execution_route": {
+            "mode": "hybrid"
+          },
+          "tool_wall_ms": 285.0,
+          "task_wall_ms": 22169.3,
+          "execution_budget": {
+            "deadline": 1791110294.383323,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1549,
+                "completion_tokens": 80,
+                "wall_ms": 21586.3
+              }
+            },
+            "judge_tokens_reserved": 0,
+            "model_call_records": [
+              {
+                "role": "generation",
+                "status": "ok",
+                "wall_ms": 21586.3,
+                "prompt_tokens": 1549,
+                "completion_tokens": 80,
+                "server_ms": 21560.5,
+                "load_ms": 68.6,
+                "prompt_eval_ms": 11343.0,
+                "completion_eval_ms": 10143.9
+              }
+            ]
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.64,
+          "claim_support": [
+            0.7778,
+            0.9286
+          ],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "error": null
+    },
+    {
+      "task_id": "U11",
+      "method": "rag",
+      "goal": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+      "run_id": "629013ca-3542-4c6e-b552-128679cc0bcd",
+      "seconds": 46.641,
+      "result": {
+        "id": "629013ca-3542-4c6e-b552-128679cc0bcd",
+        "question": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+        "status": "answered",
+        "claims": [
+          {
+            "text": "批量导入单次最多5万行。",
+            "evidence_ids": [
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+            ],
+            "quotes": [
+              "单次导入任务最多 5 万行。",
+              "超过 5 万行的数据需要拆成多个任务。"
+            ]
+          },
+          {
+            "text": "路由服务单个请求的超时阈值为8秒。",
+            "evidence_ids": [
+              "33427f32-6781-59e7-87fb-96b1c1a8cc7d"
+            ],
+            "quotes": [
+              "单个请求的超时阈值为 8 秒。"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "document_id": "lt-routing-ops",
+            "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+            "title": "路由服务运维手册",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "路由服务运维手册",
+                "超时"
+              ],
+              "source_char_start": 89,
+              "line_start": 8,
+              "label": "第 8 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 23,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "路由服务运维手册",
+                      "超时"
+                    ],
+                    "source_char_start": 89,
+                    "line_start": 8,
+                    "label": "第 8 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 23
+                }
+              ],
+              "char_start": 0,
+              "char_end": 23,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 21,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 超时\n单个请求的超时阈值为 8 秒。\n\n",
+            "preview_url": "/api/evidence/33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "original_url": "/api/versions/db769968-f5e8-4a35-a947-36f7bde506f8/original"
+          },
+          {
+            "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "document_id": "lt-import-guide",
+            "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+            "title": "批量导入指南",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "批量导入指南",
+                "限制"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 41,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "批量导入指南",
+                      "限制"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 41
+                }
+              ],
+              "char_start": 0,
+              "char_end": 41,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 35,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+            "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original"
+          }
+        ],
+        "message": "",
+        "trace": {
+          "method": "hybrid",
+          "scope": {
+            "readable_documents": 20,
+            "searchable_documents": 20
+          },
+          "original_question": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+          "retrieval_query": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+          "query_rewritten": false,
+          "rewrite": {
+            "mode": "rule",
+            "rewritten": false,
+            "history_turns": 0
+          },
+          "shadow_scores": {
+            "relevance": 0.64,
+            "claim_support": [
+              0.7778,
+              0.9286
+            ],
+            "scorer": "bigram-overlap-v1",
+            "mode": "shadow",
+            "action": "recorded only; no answer is withheld on these scores",
+            "calibration": "artifacts/a-q1-calibration.json"
+          },
+          "prompt_version": "grounded-v5-conflict-gated",
+          "top_k": 6,
+          "min_similarity": 0.35,
+          "context_token_budget": 5000,
+          "context_tokens_estimate": 830,
+          "token_counter": "cl100k_base",
+          "embedding_model": "bge-m3:567m",
+          "generation_model": "qwen2.5:7b-instruct",
+          "generation_context_chunk_ids": [
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "a206e830-63df-5116-8c42-da66fffd3207"
+          ],
+          "candidates": [
+            {
+              "chunk_id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+              "rank": 1,
+              "title": "路由服务运维手册",
+              "document_id": "lt-routing-ops",
+              "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+              "locator_label": "第 8 行起",
+              "score": 0.7097,
+              "bm25_rank": 1,
+              "dense_rank": 3,
+              "fusion_score": 0.032266,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E1"
+            },
+            {
+              "chunk_id": "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+              "rank": 2,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 8 行起",
+              "score": 0.7106,
+              "bm25_rank": 2,
+              "dense_rank": 2,
+              "fusion_score": 0.032258,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E2"
+            },
+            {
+              "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+              "rank": 3,
+              "title": "批量导入指南",
+              "document_id": "lt-import-guide",
+              "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+              "locator_label": "第 5 行起",
+              "score": 0.7391,
+              "bm25_rank": 7,
+              "dense_rank": 1,
+              "fusion_score": 0.031319,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E3"
+            },
+            {
+              "chunk_id": "aa649ef9-12e7-5922-b9ae-1b4aaeef0ddb",
+              "rank": 4,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 1 行起",
+              "score": 0.6153,
+              "bm25_rank": 3,
+              "dense_rank": 5,
+              "fusion_score": 0.031258,
+              "admitted": false,
+              "excluded_because": "boilerplate_only",
+              "lane": "global"
+            },
+            {
+              "chunk_id": "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+              "rank": 5,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 11 行起",
+              "score": 0.6843,
+              "bm25_rank": 5,
+              "dense_rank": 4,
+              "fusion_score": 0.03101,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E4"
+            },
+            {
+              "chunk_id": "a206e830-63df-5116-8c42-da66fffd3207",
+              "rank": 6,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 5 行起",
+              "score": 0.604,
+              "bm25_rank": 4,
+              "dense_rank": 7,
+              "fusion_score": 0.03055,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E5"
+            }
+          ],
+          "embed_ms": 182.3,
+          "retrieval_ms": 78.4,
+          "generation_ms": 46318.2,
+          "total_ms": 46621.2
+        },
+        "usage": {
+          "prompt_tokens": 3232,
+          "completion_tokens": 190,
+          "model_duration_ms": 46255.3,
+          "model_load_ms": 110.80000000000001,
+          "prompt_eval_ms": 22580.6,
+          "completion_eval_ms": 23552.5,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少"
+          ],
+          "selection_missing_items": [],
+          "answer_contract": {
+            "comparison_target": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少",
+            "comparison_target_extracted": false,
+            "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+            "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+          },
+          "source_audit": [
+            {
+              "claim_index": 1,
+              "issues": []
+            },
+            {
+              "claim_index": 2,
+              "issues": []
+            }
+          ],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "answer_recovery": {
+            "framework": "langgraph",
+            "repair_attempts": 1,
+            "first_issues": [
+              {
+                "claim_index": 0,
+                "codes": [
+                  "unrelated_heading_reference"
+                ]
+              },
+              {
+                "claim_index": 1,
+                "codes": [
+                  "unrelated_heading_reference"
+                ]
+              }
+            ],
+            "remaining_issues": [],
+            "stages": {
+              "initial_generation_ms": 22655.4,
+              "local_repair_ms": 23653.4
+            }
+          },
+          "quality_validation_failed": false,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少",
+                  "subject": "批量导入单次最多多少行？路由服务",
+                  "attribute": "单次最多多少行",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "contract_preparation": null,
+          "scope_preparation": {
+            "status": "not_applicable"
+          },
+          "generation_context_chunk_ids": [
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "a206e830-63df-5116-8c42-da66fffd3207"
+          ],
+          "exact_value_slots_missing_first_pass": 0,
+          "execution_budget": {
+            "deadline": 1791110316.613497,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 2,
+                "succeeded": 2,
+                "failed": 0,
+                "prompt_tokens": 3232,
+                "completion_tokens": 190,
+                "wall_ms": 46302.2
+              }
+            },
+            "judge_tokens_reserved": 0,
+            "model_call_records": [
+              {
+                "role": "generation",
+                "status": "ok",
+                "wall_ms": 22651.1,
+                "prompt_tokens": 1549,
+                "completion_tokens": 104,
+                "server_ms": 22630.5,
+                "load_ms": 57.1,
+                "prompt_eval_ms": 9715.7,
+                "completion_eval_ms": 12852.2
+              },
+              {
+                "role": "generation",
+                "status": "ok",
+                "wall_ms": 23651.1,
+                "prompt_tokens": 1683,
+                "completion_tokens": 86,
+                "server_ms": 23624.8,
+                "load_ms": 53.7,
+                "prompt_eval_ms": 12864.9,
+                "completion_eval_ms": 10700.3
+              }
+            ]
+          }
+        }
+      },
+      "error": null
+    }
+  ]
+}

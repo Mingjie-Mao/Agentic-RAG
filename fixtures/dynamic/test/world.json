@@ -1,0 +1,680 @@
+{
+  "persons": [
+    {
+      "name": "邵棠",
+      "ext": "6865",
+      "team": "供应链系统组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "林子衿"
+    },
+    {
+      "name": "林子衿",
+      "ext": "6578",
+      "team": "平台基础组",
+      "day": "周三",
+      "restricted": false,
+      "deputy": "罗越"
+    },
+    {
+      "name": "罗越",
+      "ext": "6128",
+      "team": "平台基础组",
+      "day": "周四",
+      "restricted": false,
+      "deputy": "韩朗"
+    },
+    {
+      "name": "韩朗",
+      "ext": "6508",
+      "team": "平台基础组",
+      "day": "周三",
+      "restricted": false,
+      "deputy": "孟听澜"
+    },
+    {
+      "name": "孟听澜",
+      "ext": "6473",
+      "team": "安全工程组",
+      "day": "周五",
+      "restricted": false,
+      "deputy": "陆珩"
+    },
+    {
+      "name": "陆珩",
+      "ext": "6329",
+      "team": "安全工程组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "韩子衿"
+    },
+    {
+      "name": "韩子衿",
+      "ext": "6342",
+      "team": "数据平台组",
+      "day": "周二",
+      "restricted": false,
+      "deputy": "孟子衿"
+    },
+    {
+      "name": "孟子衿",
+      "ext": "6393",
+      "team": "数据平台组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "沈南星"
+    },
+    {
+      "name": "沈南星",
+      "ext": "6561",
+      "team": "平台基础组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "孟思远"
+    },
+    {
+      "name": "孟思远",
+      "ext": "6161",
+      "team": "数据平台组",
+      "day": "周二",
+      "restricted": false,
+      "deputy": "姚珩"
+    },
+    {
+      "name": "姚珩",
+      "ext": "6297",
+      "team": "数据平台组",
+      "day": "周二",
+      "restricted": false,
+      "deputy": "苏若川"
+    },
+    {
+      "name": "苏若川",
+      "ext": "6195",
+      "team": "平台基础组",
+      "day": "周三",
+      "restricted": false,
+      "deputy": "邵思远"
+    },
+    {
+      "name": "邵思远",
+      "ext": "6666",
+      "team": "平台基础组",
+      "day": "周二",
+      "restricted": false,
+      "deputy": "卢听澜"
+    },
+    {
+      "name": "卢听澜",
+      "ext": "6940",
+      "team": "平台基础组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "许霁"
+    },
+    {
+      "name": "许霁",
+      "ext": "6983",
+      "team": "安全工程组",
+      "day": "周四",
+      "restricted": false,
+      "deputy": "姚岚"
+    },
+    {
+      "name": "姚岚",
+      "ext": "6397",
+      "team": "平台基础组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "苏清和"
+    },
+    {
+      "name": "苏清和",
+      "ext": "6773",
+      "team": "安全工程组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "程景行"
+    },
+    {
+      "name": "程景行",
+      "ext": "6515",
+      "team": "供应链系统组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "顾思远"
+    },
+    {
+      "name": "顾思远",
+      "ext": "6605",
+      "team": "平台基础组",
+      "day": "周四",
+      "restricted": true,
+      "deputy": "宋朗"
+    },
+    {
+      "name": "宋朗",
+      "ext": "6574",
+      "team": "交易系统组",
+      "day": "周二",
+      "restricted": true,
+      "deputy": "邵棠"
+    }
+  ],
+  "services": [
+    {
+      "name": "朱厌搜索",
+      "code": "YUANFAN-SVC-11",
+      "purpose": "商品检索",
+      "team": "供应链系统组",
+      "owner": "邵棠",
+      "timeout": 3,
+      "resp": 15,
+      "hc": 15
+    },
+    {
+      "name": "夔牛风控",
+      "code": "YUANFAN-SVC-12",
+      "purpose": "交易风险识别",
+      "team": "平台基础组",
+      "owner": "林子衿",
+      "timeout": 10,
+      "resp": 5,
+      "hc": 30
+    },
+    {
+      "name": "乘黄门户",
+      "code": "YUANFAN-SVC-13",
+      "purpose": "供应商门户",
+      "team": "平台基础组",
+      "owner": "罗越",
+      "timeout": 6,
+      "resp": 5,
+      "hc": 30
+    },
+    {
+      "name": "玄武结算",
+      "code": "YUANFAN-SVC-14",
+      "purpose": "订单结算与对账",
+      "team": "平台基础组",
+      "owner": "韩朗",
+      "timeout": 3,
+      "resp": 5,
+      "hc": 15
+    },
+    {
+      "name": "帝江网关",
+      "code": "YUANFAN-SVC-15",
+      "purpose": "统一接入与鉴权",
+      "team": "安全工程组",
+      "owner": "孟听澜",
+      "timeout": 3,
+      "resp": 5,
+      "hc": 15
+    },
+    {
+      "name": "貔貅计费",
+      "code": "YUANFAN-SVC-16",
+      "purpose": "用量计费",
+      "team": "安全工程组",
+      "owner": "陆珩",
+      "timeout": 3,
+      "resp": 20,
+      "hc": 15
+    },
+    {
+      "name": "精卫调度",
+      "code": "YUANFAN-SVC-17",
+      "purpose": "任务编排与定时调度",
+      "team": "数据平台组",
+      "owner": "韩子衿",
+      "timeout": 5,
+      "resp": 15,
+      "hc": 30
+    },
+    {
+      "name": "白泽质检",
+      "code": "YUANFAN-SVC-18",
+      "purpose": "来料质检记录",
+      "team": "数据平台组",
+      "owner": "孟子衿",
+      "timeout": 5,
+      "resp": 15,
+      "hc": 10
+    },
+    {
+      "name": "文鳐库存",
+      "code": "YUANFAN-SVC-19",
+      "purpose": "库存同步",
+      "team": "平台基础组",
+      "owner": "沈南星",
+      "timeout": 5,
+      "resp": 20,
+      "hc": 15
+    },
+    {
+      "name": "鹊桥报表",
+      "code": "YUANFAN-SVC-20",
+      "purpose": "经营报表生成",
+      "team": "数据平台组",
+      "owner": "孟思远",
+      "timeout": 5,
+      "resp": 10,
+      "hc": 15
+    },
+    {
+      "name": "旋龟账务",
+      "code": "YUANFAN-SVC-21",
+      "purpose": "总账记账",
+      "team": "数据平台组",
+      "owner": "姚珩",
+      "timeout": 12,
+      "resp": 5,
+      "hc": 30
+    },
+    {
+      "name": "鸾鸟排产",
+      "code": "YUANFAN-SVC-22",
+      "purpose": "生产排程",
+      "team": "平台基础组",
+      "owner": null,
+      "timeout": 5,
+      "resp": 10,
+      "hc": 30
+    },
+    {
+      "name": "鵸鵌消息",
+      "code": "YUANFAN-SVC-23",
+      "purpose": "站内消息投递",
+      "team": "交易系统组",
+      "owner": "宋朗",
+      "timeout": 12,
+      "resp": 10,
+      "hc": 30
+    },
+    {
+      "name": "蒲牢对象存储",
+      "code": "YUANFAN-SVC-24",
+      "purpose": "附件存储",
+      "team": "平台基础组",
+      "owner": "顾思远",
+      "timeout": 8,
+      "resp": 15,
+      "hc": 10
+    }
+  ],
+  "incidents": [
+    {
+      "id": "YUANFAN-INC-410",
+      "service": "朱厌搜索",
+      "date": "2026-03-16",
+      "symptom": "消息积压",
+      "cause": "配置推送遗漏了一个可用区",
+      "minutes": 49
+    },
+    {
+      "id": "YUANFAN-INC-773",
+      "service": "夔牛风控",
+      "date": "2026-06-20",
+      "symptom": "定时任务漏跑",
+      "cause": "慢查询占满数据库连接",
+      "minutes": 52
+    },
+    {
+      "id": "YUANFAN-INC-779",
+      "service": "乘黄门户",
+      "date": "2026-03-25",
+      "symptom": "定时任务漏跑",
+      "cause": "慢查询占满数据库连接",
+      "minutes": 23
+    },
+    {
+      "id": "YUANFAN-INC-232",
+      "service": "玄武结算",
+      "date": "2026-07-23",
+      "symptom": "定时任务漏跑",
+      "cause": "依赖库升级引入了重试风暴",
+      "minutes": 93
+    },
+    {
+      "id": "YUANFAN-INC-147",
+      "service": "帝江网关",
+      "date": "2026-08-25",
+      "symptom": "连接池耗尽",
+      "cause": "配置推送遗漏了一个可用区",
+      "minutes": 80
+    },
+    {
+      "id": "YUANFAN-INC-381",
+      "service": "貔貅计费",
+      "date": "2026-09-24",
+      "symptom": "定时任务漏跑",
+      "cause": "配置推送遗漏了一个可用区",
+      "minutes": 60
+    },
+    {
+      "id": "YUANFAN-INC-756",
+      "service": "精卫调度",
+      "date": "2026-09-18",
+      "symptom": "定时任务漏跑",
+      "cause": "依赖库升级引入了重试风暴",
+      "minutes": 36
+    },
+    {
+      "id": "YUANFAN-INC-396",
+      "service": "白泽质检",
+      "date": "2026-08-17",
+      "symptom": "消息积压",
+      "cause": "依赖库升级引入了重试风暴",
+      "minutes": 38
+    },
+    {
+      "id": "YUANFAN-INC-281",
+      "service": "文鳐库存",
+      "date": "2026-06-20",
+      "symptom": "间歇性 502 错误",
+      "cause": "配置推送遗漏了一个可用区",
+      "minutes": 28
+    },
+    {
+      "id": "YUANFAN-INC-156",
+      "service": "鹊桥报表",
+      "date": "2026-09-19",
+      "symptom": "数据延迟入库",
+      "cause": "上游批量任务未限流",
+      "minutes": 45
+    },
+    {
+      "id": "YUANFAN-INC-169",
+      "service": "旋龟账务",
+      "date": "2026-05-16",
+      "symptom": "连接池耗尽",
+      "cause": "上游批量任务未限流",
+      "minutes": 92
+    },
+    {
+      "id": "YUANFAN-INC-650",
+      "service": "鸾鸟排产",
+      "date": "2026-04-24",
+      "symptom": "数据延迟入库",
+      "cause": "证书过期后未自动续期",
+      "minutes": 53
+    },
+    {
+      "id": "YUANFAN-INC-562",
+      "service": "鵸鵌消息",
+      "date": "2026-04-23",
+      "symptom": "消息积压",
+      "cause": "证书过期后未自动续期",
+      "minutes": 66
+    },
+    {
+      "id": "YUANFAN-INC-104",
+      "service": "蒲牢对象存储",
+      "date": "2026-03-13",
+      "symptom": "消息积压",
+      "cause": "慢查询占满数据库连接",
+      "minutes": 71
+    },
+    {
+      "id": "YUANFAN-INC-966",
+      "service": "朱厌搜索",
+      "date": "2026-06-28",
+      "symptom": "定时任务漏跑",
+      "cause": "依赖库升级引入了重试风暴",
+      "minutes": 76
+    },
+    {
+      "id": "YUANFAN-INC-342",
+      "service": "夔牛风控",
+      "date": "2026-09-21",
+      "symptom": "大量请求超时",
+      "cause": "依赖库升级引入了重试风暴",
+      "minutes": 51
+    },
+    {
+      "id": "YUANFAN-INC-734",
+      "service": "乘黄门户",
+      "date": "2026-05-22",
+      "symptom": "定时任务漏跑",
+      "cause": "证书过期后未自动续期",
+      "minutes": 94
+    },
+    {
+      "id": "YUANFAN-INC-904",
+      "service": "玄武结算",
+      "date": "2026-08-27",
+      "symptom": "连接池耗尽",
+      "cause": "证书过期后未自动续期",
+      "minutes": 89
+    },
+    {
+      "id": "YUANFAN-INC-685",
+      "service": "帝江网关",
+      "date": "2026-08-20",
+      "symptom": "间歇性 502 错误",
+      "cause": "慢查询占满数据库连接",
+      "minutes": 90
+    },
+    {
+      "id": "YUANFAN-INC-865",
+      "service": "貔貅计费",
+      "date": "2026-06-22",
+      "symptom": "大量请求超时",
+      "cause": "证书过期后未自动续期",
+      "minutes": 72
+    },
+    {
+      "id": "YUANFAN-INC-286",
+      "service": "精卫调度",
+      "date": "2026-06-20",
+      "symptom": "数据延迟入库",
+      "cause": "扩容脚本误删了健康检查",
+      "minutes": 23
+    },
+    {
+      "id": "YUANFAN-INC-817",
+      "service": "白泽质检",
+      "date": "2026-07-11",
+      "symptom": "消息积压",
+      "cause": "依赖库升级引入了重试风暴",
+      "minutes": 52
+    },
+    {
+      "id": "YUANFAN-INC-954",
+      "service": "文鳐库存",
+      "date": "2026-05-19",
+      "symptom": "间歇性 502 错误",
+      "cause": "依赖库升级引入了重试风暴",
+      "minutes": 45
+    },
+    {
+      "id": "YUANFAN-INC-373",
+      "service": "鹊桥报表",
+      "date": "2026-08-26",
+      "symptom": "连接池耗尽",
+      "cause": "上游批量任务未限流",
+      "minutes": 42
+    },
+    {
+      "id": "YUANFAN-INC-576",
+      "service": "旋龟账务",
+      "date": "2026-04-22",
+      "symptom": "消息积压",
+      "cause": "上游批量任务未限流",
+      "minutes": 81
+    },
+    {
+      "id": "YUANFAN-INC-578",
+      "service": "鸾鸟排产",
+      "date": "2026-04-16",
+      "symptom": "消息积压",
+      "cause": "上游批量任务未限流",
+      "minutes": 66
+    }
+  ],
+  "forms": [
+    {
+      "official": "报废处置单",
+      "alias": "黑单",
+      "code": "F-22",
+      "amount": 50000,
+      "approver": "运营副总裁"
+    },
+    {
+      "official": "外协加工单",
+      "alias": "外发单",
+      "code": "F-62",
+      "amount": 20000,
+      "approver": "质量总监"
+    },
+    {
+      "official": "样品出库单",
+      "alias": "白条",
+      "code": "F-18",
+      "amount": 8000,
+      "approver": "质量总监"
+    },
+    {
+      "official": "跨仓调拨申请单",
+      "alias": "小蓝单",
+      "code": "F-32",
+      "amount": 5000,
+      "approver": "质量总监"
+    },
+    {
+      "official": "临时用工申请单",
+      "alias": "短工单",
+      "code": "F-42",
+      "amount": 20000,
+      "approver": "运营副总裁"
+    }
+  ],
+  "warehouses": [
+    {
+      "site": "一厂区",
+      "rate": 3.4,
+      "supervisor": "陆珩"
+    },
+    {
+      "site": "北仓",
+      "rate": 2.8,
+      "supervisor": "苏若川"
+    },
+    {
+      "site": "二厂区",
+      "rate": 1.6,
+      "supervisor": "孟思远"
+    },
+    {
+      "site": "东仓",
+      "rate": 1.6,
+      "supervisor": "苏清和"
+    },
+    {
+      "site": "南仓",
+      "rate": 1.6,
+      "supervisor": "韩子衿"
+    }
+  ],
+  "rules": [
+    {
+      "id": "R-830",
+      "services": [
+        "文鳐库存",
+        "精卫调度",
+        "朱厌搜索"
+      ],
+      "window": "季度结账前 3 个工作日"
+    },
+    {
+      "id": "R-211",
+      "services": [
+        "夔牛风控",
+        "玄武结算",
+        "精卫调度"
+      ],
+      "window": "季度结账前 3 个工作日"
+    },
+    {
+      "id": "R-832",
+      "services": [
+        "旋龟账务",
+        "帝江网关"
+      ],
+      "window": "每月最后一个周五 18:00 起 48 小时"
+    },
+    {
+      "id": "R-323",
+      "services": [
+        "朱厌搜索",
+        "旋龟账务"
+      ],
+      "window": "季度结账前 3 个工作日"
+    }
+  ],
+  "policies": [
+    {
+      "title": "外包人员门禁管理办法",
+      "attr": "外包人员门禁卡有效期",
+      "unit": "天",
+      "values": [
+        90,
+        60,
+        30
+      ],
+      "dates": [
+        "2025-07-01",
+        "2026-02-01",
+        "2026-06-15"
+      ],
+      "notices": [
+        "YUANFAN-AN-20",
+        "YUANFAN-AN-70"
+      ]
+    },
+    {
+      "title": "差旅住宿管理办法",
+      "attr": "一线城市住宿标准上限",
+      "unit": "元/晚",
+      "values": [
+        550,
+        650,
+        600
+      ],
+      "dates": [
+        "2025-07-01",
+        "2026-02-01",
+        "2026-06-15"
+      ],
+      "notices": [
+        "YUANFAN-AN-40",
+        "YUANFAN-AN-85"
+      ]
+    }
+  ],
+  "conflicts": [
+    {
+      "attr": "夜间叉车作业截止时间",
+      "site": "东仓",
+      "site_value": "22:00",
+      "notice_value": "21:00",
+      "notice": "安全通告第 7 号"
+    },
+    {
+      "attr": "高温天气室外作业暂停时间",
+      "site": "北仓",
+      "site_value": "13:00",
+      "notice_value": "12:30",
+      "notice": "安全通告第 9 号"
+    },
+    {
+      "attr": "危化品库房单次进入人数上限",
+      "site": "二厂区",
+      "site_value": "4 人",
+      "notice_value": "3 人",
+      "notice": "安全通告第 6 号"
+    }
+  ],
+  "director": "孟听澜"
+}

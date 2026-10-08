@@ -12,7 +12,9 @@ import re
 import subprocess
 import sys
 
-DOCS = ["README.md", "PROJECT_REPORT.md"]
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+DOCS = ["README.md", "PROJECT_REPORT.md", "RAG_AND_MEMORY.md"]
 problems = []
 
 
@@ -95,13 +97,27 @@ def main():
                 problems.append(f"{doc}: 声称 {claimed} 项测试，实际收集 {tests} 项")
     # Headline figures must appear where they are quoted, so "written but stale" and
     # "measured but never written down" both fail rather than pass silently.
-    for doc, figures in (("README.md", readme_figures), ("PROJECT_REPORT.md", report_figures)):
+    for doc, figures in (("PROJECT_REPORT.md", {**readme_figures, **report_figures}),):
         text = Path(doc).read_text()
         for label, value in figures.items():
             if value is None:
                 problems.append(f"{doc}: 无法从产物读取 {label}")
             elif value not in text:
                 problems.append(f"{doc}: 缺少或不匹配 {label} = {value}")
+
+    # Headline metrics now have a single denominator; legacy numbers remain in
+    # PROJECT_REPORT.md §22 rather than being required in the README main table.
+    from scripts.benchmark_package import validate_package
+    try:
+        counts = validate_package(require_private=False)["counts"]
+        text = Path("README.md").read_text()
+        expected = f"Dev {counts['dev']} / Core Test {counts['core']} / Security {counts['security']} / External {counts['external']}"
+        if expected not in text or "Strict Task Success" not in text:
+            problems.append("README.md: 主 benchmark 分母或指标不匹配")
+        if any(value in text for value in readme_figures.values() if value):
+            problems.append("README.md: 历史分数不应混入当前主表")
+    except (ValueError, OSError) as exc:
+        problems.append(f"benchmark package: {exc}")
 
     config = Path("app/config.py").read_text()
     for setting, doc_claim in [

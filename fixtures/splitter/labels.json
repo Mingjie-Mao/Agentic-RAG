@@ -1,0 +1,1369 @@
+{
+ "source": "fixtures/s3-v2/questions.json (question text only; no answers used)",
+ "labelled_by": "Claude, 2026-10-01, by reading each question: number of independent things asked",
+ "rule": "rules may be changed against dev only; test is reported once after the change",
+ "items": [
+  {
+   "id": "Q01",
+   "split": "dev",
+   "question": "星桥标准套餐每分钟可以调用多少次 API？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q02",
+   "split": "dev",
+   "question": "Python SDK 默认最多重试几次？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q03",
+   "split": "dev",
+   "question": "星桥产品上传接口单个文件的大小上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q04",
+   "split": "dev",
+   "question": "标准套餐的业务事件日志保留多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q05",
+   "split": "dev",
+   "question": "Webhook 投递失败最多重试几次？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q06",
+   "split": "dev",
+   "question": "错误 E401 表示什么，应该怎么处理？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q07",
+   "split": "dev",
+   "question": "单点登录会话多久无操作会失效？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q08",
+   "split": "dev",
+   "question": "2026 年悉尼出差的酒店每晚报销上限是多少澳元？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q09",
+   "split": "dev",
+   "question": "连续 3 天年假应该提前多久申请？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q10",
+   "split": "dev",
+   "question": "P1 服务不可用工单要求多久首次响应？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q11",
+   "split": "dev",
+   "question": "确认 SEV1 事故后多久通知值班负责人？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q12",
+   "split": "dev",
+   "question": "生产发布需要几名工程师完成代码审查？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q13",
+   "split": "dev",
+   "question": "生产数据库的 RPO 和 RTO 分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q14",
+   "split": "dev",
+   "question": "数据导出的下载链接有效期是多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q15",
+   "split": "dev",
+   "question": "团队版支持多少成员，每日可以导出多少次？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q16",
+   "split": "dev",
+   "question": "2026 年 9 月试点项目到底在哪些时段提供支持？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q17",
+   "split": "dev",
+   "question": "公司去火星出差的补贴是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q18",
+   "split": "dev",
+   "question": "工程组灰度发布验证口令是什么？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q19",
+   "split": "dev",
+   "question": "海川工作室业务日志保留多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q20",
+   "split": "dev",
+   "question": "海川工作室的网关测试标记是什么？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q021",
+   "split": "dev",
+   "question": "星桥：客户一次推送整批订单，每个请求最多可以放多少条记录？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q022",
+   "split": "dev",
+   "question": "星桥批量导入的请求超时是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q023",
+   "split": "dev",
+   "question": "星桥：提交后台作业后，客户端隔多久查一次执行进度？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q024",
+   "split": "dev",
+   "question": "星桥异步任务的结果保留是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q025",
+   "split": "dev",
+   "question": "星桥：从队列里领取待处理消息时，一次取多少条？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q026",
+   "split": "dev",
+   "question": "星桥消息队列的可见性超时是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q027",
+   "split": "dev",
+   "question": "星桥：调用方和服务端的时钟最多可以相差多久才不影响验签？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q028",
+   "split": "dev",
+   "question": "星桥接口签名在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q029",
+   "split": "dev",
+   "question": "星桥：一批文件同时送来，后台最多能一起处理几个？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q030",
+   "split": "dev",
+   "question": "请对照星桥的接口签名和附件处理：前者的时间戳偏差、后者的排队时限分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q031",
+   "split": "dev",
+   "question": "星桥：监控曲线上相邻两次数据采集通常间隔多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q032",
+   "split": "dev",
+   "question": "星桥指标采集的保留窗口是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q033",
+   "split": "dev",
+   "question": "星桥：同一故障重复发通知，暂时不再提醒的窗口有多长？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q034",
+   "split": "dev",
+   "question": "星桥告警抑制的连续触发次数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q035",
+   "split": "dev",
+   "question": "星桥：不是每个请求都保存调用链，默认保留的比例是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q036",
+   "split": "dev",
+   "question": "星桥链路追踪的慢请求阈值是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q037",
+   "split": "dev",
+   "question": "星桥：故障明细列表多久自动更新一次？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q038",
+   "split": "dev",
+   "question": "星桥错误面板在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q039",
+   "split": "dev",
+   "question": "星桥：排查历史故障时，一次搜索最多能跨多少天的日志？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q040",
+   "split": "dev",
+   "question": "请对照星桥的错误面板和日志检索：前者的刷新周期、后者的单次结果上限分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q041",
+   "split": "dev",
+   "question": "星桥：准备先让小部分用户用新版本，第一批应分配多少流量？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q042",
+   "split": "dev",
+   "question": "星桥金丝雀发布的观察窗口是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q043",
+   "split": "dev",
+   "question": "星桥：发布镜像所用的制品签名能够有效多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q044",
+   "split": "dev",
+   "question": "星桥制品签名的复核人数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q045",
+   "split": "dev",
+   "question": "星桥：想在维护时段做改动，至少要提前多久提交申请？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q046",
+   "split": "dev",
+   "question": "星桥变更窗口的窗口长度是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q047",
+   "split": "dev",
+   "question": "星桥：执行数据库结构迁移，等待迁移锁的时限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q048",
+   "split": "dev",
+   "question": "星桥数据库变更在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q049",
+   "split": "dev",
+   "question": "星桥：功能开关按用户做灰度时，最多能圈入多少人？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q050",
+   "split": "dev",
+   "question": "请对照星桥的数据库变更和配置开关：前者的迁移锁时限、后者的自动过期时间分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q051",
+   "split": "dev",
+   "question": "星桥：新客服请求进了公共池，系统应在多久内把它分给处理人？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q052",
+   "split": "dev",
+   "question": "星桥工单分派的每人待办上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q053",
+   "split": "dev",
+   "question": "星桥：客户问题关单后，要过多久进行回访？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q054",
+   "split": "dev",
+   "question": "星桥客户回访的尝试次数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q055",
+   "split": "dev",
+   "question": "星桥：客户投诉收进来以后，首次打回电话的期限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q056",
+   "split": "dev",
+   "question": "星桥投诉处理的升级时限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q057",
+   "split": "dev",
+   "question": "星桥：有人反馈帮助条目事实不对，应该多久完成事实核验？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q058",
+   "split": "dev",
+   "question": "星桥知识纠错在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q059",
+   "split": "dev",
+   "question": "星桥：马上要换班，交班人需要提前多久开始整理未完事项？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q060",
+   "split": "dev",
+   "question": "请对照星桥的知识纠错和轮值交接：前者的事实复核时限、后者的未结工单检查数分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q061",
+   "split": "dev",
+   "question": "星桥：发给新成员的加入链接多久以后会失效？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q062",
+   "split": "dev",
+   "question": "星桥组织邀请的每天邀请上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q063",
+   "split": "dev",
+   "question": "星桥：一个项目最多可以维护多少个分类标签？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q064",
+   "split": "dev",
+   "question": "星桥项目标签的标签字数上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q065",
+   "split": "dev",
+   "question": "星桥：关闭逐条提醒改收汇总后，多长时间收到一轮摘要？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q066",
+   "split": "dev",
+   "question": "星桥通知摘要的摘要事件上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q067",
+   "split": "dev",
+   "question": "星桥：误把团队归档后，可以反悔的冷静期有多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q068",
+   "split": "dev",
+   "question": "星桥团队归档在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q069",
+   "split": "dev",
+   "question": "星桥：员工要调到另一个组织，成员转移审核需要多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q070",
+   "split": "dev",
+   "question": "请对照星桥的团队归档和成员转移：前者的归档冷静期、后者的批量转移上限分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q071",
+   "split": "dev",
+   "question": "星桥：审计记录打包下载时，每个文件最多放多少条？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q072",
+   "split": "dev",
+   "question": "星桥审计导出的临时文件保留是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q073",
+   "split": "dev",
+   "question": "星桥：定时报表安排得很频繁，两次执行最少要隔多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q074",
+   "split": "dev",
+   "question": "星桥报表排程的同时排程上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q075",
+   "split": "dev",
+   "question": "星桥：把真实字段替换成匿名值后，反向对应表保留多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q076",
+   "split": "dev",
+   "question": "星桥匿名化处理的复核抽样比例是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q077",
+   "split": "dev",
+   "question": "星桥：只同步上次以来新产生的数据，增量时间窗口是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q078",
+   "split": "dev",
+   "question": "星桥增量导出在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q079",
+   "split": "dev",
+   "question": "星桥：导出完成的提醒里，下载链接能用多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q080",
+   "split": "dev",
+   "question": "请对照星桥的增量导出和导出通知：前者的增量窗口、后者的提醒次数分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q081",
+   "split": "dev",
+   "question": "星桥：申请一次隔离联调环境，最多能连续用多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q082",
+   "split": "dev",
+   "question": "星桥测试沙箱的同时实例上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q083",
+   "split": "dev",
+   "question": "星桥：为代码分支临时起的环境不用了，闲置多久会回收？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q084",
+   "split": "dev",
+   "question": "星桥分支环境的保留分支上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q085",
+   "split": "dev",
+   "question": "星桥：流水线一直在编译，一次构建到多久应判超时？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q086",
+   "split": "dev",
+   "question": "星桥CI 构建的失败重跑次数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q087",
+   "split": "dev",
+   "question": "星桥：为了复现缺陷准备的样本库可以保留多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q088",
+   "split": "dev",
+   "question": "星桥测试数据在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q089",
+   "split": "dev",
+   "question": "星桥：工程师临时连上服务排查问题，调试凭据的有效期是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q090",
+   "split": "dev",
+   "question": "请对照星桥的测试数据和调试会话：前者的样本库保留、后者的并发连接上限分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q091",
+   "split": "dev",
+   "question": "星桥：某个服务换了负责人，目录信息必须在多久内更新？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q092",
+   "split": "dev",
+   "question": "星桥服务登记的负责人上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q093",
+   "split": "dev",
+   "question": "星桥：上游下游关系可能变化，依赖清单隔多久检查一次？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q094",
+   "split": "dev",
+   "question": "星桥依赖清单的最大依赖层数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q095",
+   "split": "dev",
+   "question": "星桥：客户想预约一次应急演练，需要提前几个工作日？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q096",
+   "split": "dev",
+   "question": "星桥客户演练的演练时长是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q097",
+   "split": "dev",
+   "question": "星桥：计划维护影响客户之前，应提前多久发布公告？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q098",
+   "split": "dev",
+   "question": "星桥维护公告在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q099",
+   "split": "dev",
+   "question": "星桥：旧服务准备退出使用，至少要提前多久通知客户？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q100",
+   "split": "dev",
+   "question": "请对照星桥的维护公告和下线服务：前者的提前发布时长、后者的只读保留时间分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q101",
+   "split": "dev",
+   "question": "星桥：为处理应急任务临时开放资料访问，授权最长能持续多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q102",
+   "split": "dev",
+   "question": "星桥临时权限的审批人数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q103",
+   "split": "dev",
+   "question": "星桥：机器使用的账号密钥按多久一次的周期更换？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q104",
+   "split": "dev",
+   "question": "星桥服务账号的过渡窗口是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q105",
+   "split": "dev",
+   "question": "星桥：同一台设备刚通过身份校验，校验缓存能维持多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q106",
+   "split": "dev",
+   "question": "星桥设备校验的失败锁定次数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q107",
+   "split": "dev",
+   "question": "星桥：人员离职后，需要在多久内完成停权处理？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q108",
+   "split": "dev",
+   "question": "星桥离职交接在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q109",
+   "split": "dev",
+   "question": "星桥：岗位和资源权限需要定期对照，每隔多久复核一次？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q110",
+   "split": "dev",
+   "question": "请对照星桥的离职交接和权限复核：前者的停权处理时限、后者的整改时限分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q111",
+   "split": "dev",
+   "question": "星桥：为了检验告警与恢复流程，故障注入演练多久开展一次？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q112",
+   "split": "dev",
+   "question": "星桥故障演练的最长影响时间是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q113",
+   "split": "dev",
+   "question": "星桥：主区域出问题后转向备用区域，切换目标用时是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q114",
+   "split": "dev",
+   "question": "星桥区域切换的观察时间是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q115",
+   "split": "dev",
+   "question": "星桥：不能只看备份任务成功，要实际读回验证的抽查比例是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q116",
+   "split": "dev",
+   "question": "星桥恢复抽查的检查间隔是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q117",
+   "split": "dev",
+   "question": "星桥：事故中通知应急联系人后，应在多久内取得联系确认？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q118",
+   "split": "dev",
+   "question": "星桥应急联络在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q119",
+   "split": "dev",
+   "question": "星桥：事故复盘安排了整改，应在多久后回头验证落实情况？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q120",
+   "split": "dev",
+   "question": "请对照星桥的应急联络和复盘跟进：前者的联系确认时限、后者的复查轮次分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q121",
+   "split": "test",
+   "question": "星桥：客户认为本期费用对不上，账单核对需要在几个工作日内完成？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q122",
+   "split": "test",
+   "question": "星桥账单核对的差异容差是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q123",
+   "split": "test",
+   "question": "星桥：客户付款到期之前，首次提醒提前多久发送？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q124",
+   "split": "test",
+   "question": "星桥付款提醒的提醒间隔是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q125",
+   "split": "test",
+   "question": "星桥：账单差异需要申请贷项，审核一般要求几个工作日？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q126",
+   "split": "test",
+   "question": "星桥贷项申请的主管复核门槛是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q127",
+   "split": "test",
+   "question": "星桥：客户收到退款后，相关凭证应继续保存多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q128",
+   "split": "test",
+   "question": "星桥退款记录在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q129",
+   "split": "test",
+   "question": "星桥：客户希望改变结算周期，至少要提前多久申请？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q130",
+   "split": "test",
+   "question": "请对照星桥的退款记录和账期调整：前者的凭证保留期限、后者的年度调整次数分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q131",
+   "split": "test",
+   "question": "星桥：新供应商材料齐全后，准入审核的时限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q132",
+   "split": "test",
+   "question": "星桥供应商准入的报价数量是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q133",
+   "split": "test",
+   "question": "星桥：采购拿到报价后，这次询价有效多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q134",
+   "split": "test",
+   "question": "星桥采购询价的免比价门槛是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q135",
+   "split": "test",
+   "question": "星桥：合同已经签好，应在多久内完成归档？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q136",
+   "split": "test",
+   "question": "星桥合同归档的原件保留期限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q137",
+   "split": "test",
+   "question": "星桥：采购货物送达后，要求在几个工作日内验收？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q138",
+   "split": "test",
+   "question": "星桥验收登记在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q139",
+   "split": "test",
+   "question": "星桥：发现采购物品不符合要求，多久以内要提出退货申请？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q140",
+   "split": "test",
+   "question": "请对照星桥的验收登记和采购退货：前者的验收时限、后者的退款跟踪间隔分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q141",
+   "split": "test",
+   "question": "星桥：准备入职的人，材料需要在到岗前几个工作日提交？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q142",
+   "split": "test",
+   "question": "星桥入职材料的补交期限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q143",
+   "split": "test",
+   "question": "星桥：新员工欢迎课程一共多长时间？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q144",
+   "split": "test",
+   "question": "星桥欢迎培训的完成时限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q145",
+   "split": "test",
+   "question": "星桥：新同事入职后，多久内要安排好导师？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q146",
+   "split": "test",
+   "question": "星桥导师安排的首次沟通时长是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q147",
+   "split": "test",
+   "question": "星桥：试用期间的第一轮反馈应该在什么时候进行？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q148",
+   "split": "test",
+   "question": "星桥试用反馈在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q149",
+   "split": "test",
+   "question": "星桥：入职所用的体检报告，从有效期限看能用多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q150",
+   "split": "test",
+   "question": "请对照星桥的试用反馈和入职体检：前者的首次反馈时间、后者的报销上限分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q151",
+   "split": "test",
+   "question": "星桥：员工领走设备后，资产登记应在多久内完成？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q152",
+   "split": "test",
+   "question": "星桥设备领用的核对项目数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q153",
+   "split": "test",
+   "question": "星桥：设备送修之后，多长时间内要完成初步检查？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q154",
+   "split": "test",
+   "question": "星桥设备维修的备用设备借期是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q155",
+   "split": "test",
+   "question": "星桥：库存与实物要定期对账，资产盘点间隔是多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q156",
+   "split": "test",
+   "question": "星桥资产盘点的抽查比例是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q157",
+   "split": "test",
+   "question": "星桥：电脑转给别人之前，需要验证数据擦除几次？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q158",
+   "split": "test",
+   "question": "星桥设备转让在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q159",
+   "split": "test",
+   "question": "星桥：设备报废所要求的使用年限门槛是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q160",
+   "split": "test",
+   "question": "请对照星桥的设备转让和设备报废：前者的擦除验证次数、后者的凭证保留期限分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q161",
+   "split": "test",
+   "question": "星桥：临时到访人员的通行授权一次可以持续多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q162",
+   "split": "test",
+   "question": "星桥访客登记的陪同人数上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q163",
+   "split": "test",
+   "question": "星桥：客户来公司开会，访客名单需要提前多久提交？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q164",
+   "split": "test",
+   "question": "星桥会议访客的访客人数上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q165",
+   "split": "test",
+   "question": "星桥：员工发现门禁卡丢了，要在多久内报告？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q166",
+   "split": "test",
+   "question": "星桥门禁遗失的临时卡有效期是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q167",
+   "split": "test",
+   "question": "星桥：机房现场检查按多长的间隔开展？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q168",
+   "split": "test",
+   "question": "星桥机房巡检在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q169",
+   "split": "test",
+   "question": "星桥：申请借走存储介质时，需要几位人员审批？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q170",
+   "split": "test",
+   "question": "请对照星桥的机房巡检和存储介质：前者的巡检间隔、后者的归还时限分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q171",
+   "split": "test",
+   "question": "星桥：统一产品译名的词库，每隔多久发布一版？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q172",
+   "split": "test",
+   "question": "星桥术语词库的词条复核人数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q173",
+   "split": "test",
+   "question": "星桥：界面字符串送翻译时，一批最多有多少字？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q174",
+   "split": "test",
+   "question": "星桥界面翻译的交付时限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q175",
+   "split": "test",
+   "question": "星桥：语言质量抽查应覆盖多少比例的内容？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q176",
+   "split": "test",
+   "question": "星桥语言校验的返修期限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q177",
+   "split": "test",
+   "question": "星桥：客服经常用的答复模板，多久审查一次？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q178",
+   "split": "test",
+   "question": "星桥客服模板在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q179",
+   "split": "test",
+   "question": "星桥：用户的日期显示规则变更后，缓存应在多久内更新？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q180",
+   "split": "test",
+   "question": "请对照星桥的客服模板和日期格式：前者的模板审查周期、后者的支持区域数量分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q181",
+   "split": "test",
+   "question": "星桥：企业提交合作伙伴申请后，初审时限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q182",
+   "split": "test",
+   "question": "星桥伙伴申请的证明材料数量是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q183",
+   "split": "test",
+   "question": "星桥：想约一次与伙伴共同进行的产品演示，需要提前多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q184",
+   "split": "test",
+   "question": "星桥联合演示的演示时长是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q185",
+   "split": "test",
+   "question": "星桥：提供给合作伙伴试用的隔离环境，授权有效多少天？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q186",
+   "split": "test",
+   "question": "星桥伙伴沙箱的延长次数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q187",
+   "split": "test",
+   "question": "星桥：伙伴把销售线索交过来后，多长时间内要确认？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q188",
+   "split": "test",
+   "question": "星桥线索共享在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q189",
+   "split": "test",
+   "question": "星桥：合作伙伴培训后的考试，达到多少分才算通过？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q190",
+   "split": "test",
+   "question": "请对照星桥的线索共享和伙伴培训：前者的确认时限、后者的补考间隔分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q191",
+   "split": "test",
+   "question": "星桥：产品需要新增埋点，事件注册审核的期限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q192",
+   "split": "test",
+   "question": "星桥事件注册的字段数量上限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q193",
+   "split": "test",
+   "question": "星桥：做转化漏斗时，一条漏斗最多可以包含几步？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q194",
+   "split": "test",
+   "question": "星桥漏斗报表的数据更新间隔是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q195",
+   "split": "test",
+   "question": "星桥：分析用户是否持续回来使用，留存观察周期有多长？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q196",
+   "split": "test",
+   "question": "星桥留存分析的最小样本量是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q197",
+   "split": "test",
+   "question": "星桥：线上实验要划出一小部分用户，允许的最小分流比例是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q198",
+   "split": "test",
+   "question": "星桥实验分流在南极分部的专用补贴金额是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q199",
+   "split": "test",
+   "question": "星桥：报表指标定义确认后，需要保持口径冻结多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q200",
+   "split": "test",
+   "question": "请对照星桥的实验分流和指标口径：前者的最小分流比例、后者的变更提前通知分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q201",
+   "split": "dev",
+   "question": "星桥证书续期提前量到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q202",
+   "split": "dev",
+   "question": "星桥演练报告提交时限到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q203",
+   "split": "dev",
+   "question": "星桥门禁卡补办周期到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q204",
+   "split": "dev",
+   "question": "星桥会议室预订上限到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q205",
+   "split": "dev",
+   "question": "星桥工位搬迁通知期到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q206",
+   "split": "dev",
+   "question": "星桥培训学时要求到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q207",
+   "split": "dev",
+   "question": "星桥图书借阅期限到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q208",
+   "split": "dev",
+   "question": "星桥体检预约提前期到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q209",
+   "split": "dev",
+   "question": "星桥快递签收时限到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q210",
+   "split": "dev",
+   "question": "星桥发票开具时限到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q211",
+   "split": "dev",
+   "question": "星桥班车发车间隔到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q212",
+   "split": "dev",
+   "question": "星桥团建经费上限到底是多少？两处说法一致吗？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q213",
+   "split": "dev",
+   "question": "星桥绿植养护频次的浇水频次和修剪频次分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q214",
+   "split": "dev",
+   "question": "星桥急救箱检查周期的日常检查周期和药品更换周期分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q215",
+   "split": "dev",
+   "question": "星桥打印配额的每月黑白页数和每月彩色页数分别是多少？",
+   "expected_asks": 2
+  },
+  {
+   "id": "Q216",
+   "split": "dev",
+   "question": "星桥部门负责人的停车位分配数量是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q217",
+   "split": "dev",
+   "question": "星桥现场岗的工服发放数量是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q218",
+   "split": "dev",
+   "question": "星桥长期员工的储物柜使用期限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q219",
+   "split": "dev",
+   "question": "星桥现在的失物招领保管期是多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q220",
+   "split": "dev",
+   "question": "星桥现在的会议纪要提交时限是多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q221",
+   "split": "dev",
+   "question": "星桥现在的纸质档案调阅时限是多久？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q222",
+   "split": "dev",
+   "question": "星桥客户经理的名片印制批量是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q223",
+   "split": "dev",
+   "question": "星桥特种作业岗位的年度体检项目数是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q224",
+   "split": "dev",
+   "question": "星桥郊区线路的班车站点数量是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q225",
+   "split": "dev",
+   "question": "星桥2026-09-01 起借出的雨伞的雨伞借用期限是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q226",
+   "split": "dev",
+   "question": "星桥2026-09-01 起的年度计划的消防演练频次是多少？",
+   "expected_asks": 1
+  },
+  {
+   "id": "Q227",
+   "split": "dev",
+   "question": "星桥2026-09-01 起的空调温度设定是多少？",
+   "expected_asks": 1
+  }
+ ]
+}

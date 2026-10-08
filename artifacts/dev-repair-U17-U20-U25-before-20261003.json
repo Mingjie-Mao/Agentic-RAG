@@ -1,0 +1,2597 @@
+{
+  "scope": "Dev diagnostic, not frozen benchmark",
+  "task_contract_enabled": true,
+  "rows": [
+    {
+      "task_id": "U17",
+      "method": "rag",
+      "run_id": "02af0189-1aea-418d-aea9-24a2a7f00de4",
+      "seconds": 1.941,
+      "result": {
+        "id": "02af0189-1aea-418d-aea9-24a2a7f00de4",
+        "question": "先查生产数据库的 RTO；如果超过 30 分钟，再给出发布灰度期间自动回滚的错误率阈值；否则只回答 RTO。",
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "在你有权访问的资料中，未找到足够依据。",
+        "trace": {
+          "method": "hybrid",
+          "scope": {
+            "readable_documents": 20,
+            "searchable_documents": 20
+          },
+          "original_question": "先查生产数据库的 RTO；如果超过 30 分钟，再给出发布灰度期间自动回滚的错误率阈值；否则只回答 RTO。",
+          "retrieval_query": "生产数据库的 RTO",
+          "query_rewritten": false,
+          "rewrite": {
+            "mode": "rule",
+            "rewritten": false,
+            "history_turns": 0
+          },
+          "shadow_scores": {
+            "relevance": 0.4054,
+            "claim_support": [],
+            "scorer": "bigram-overlap-v1",
+            "mode": "shadow",
+            "action": "recorded only; no answer is withheld on these scores",
+            "calibration": "artifacts/a-q1-calibration.json"
+          },
+          "prompt_version": "grounded-v5-conflict-gated",
+          "top_k": 4,
+          "min_similarity": 0.35,
+          "context_token_budget": 5000,
+          "context_tokens_estimate": 466,
+          "token_counter": "cl100k_base",
+          "embedding_model": "bge-m3:567m",
+          "generation_model": "qwen2.5:7b-instruct",
+          "generation_context_chunk_ids": [
+            "0b3d1822-1e9f-5221-9128-79825dc95650",
+            "0dc72485-17ce-51fd-8ac4-7fdc4f22a874",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "6c3a7a75-ffc6-51d9-b205-43a35fc8509a",
+            "eb556396-2a46-556e-be2b-b59db96dbfff",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+            "14ee309a-33c6-567d-80d3-1b6a81d278ad",
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "0475763c-187a-5286-8b7c-020b48cd70b7",
+            "a206e830-63df-5116-8c42-da66fffd3207"
+          ],
+          "candidates": [
+            {
+              "chunk_id": "0b3d1822-1e9f-5221-9128-79825dc95650",
+              "rank": 1,
+              "title": "数据库备份与恢复",
+              "document_id": "lt-db-backup",
+              "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+              "locator_label": "第 5 行起",
+              "score": 0.8022,
+              "bm25_rank": 1,
+              "dense_rank": 1,
+              "fusion_score": 0.032787,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E1"
+            },
+            {
+              "chunk_id": "6bc8b194-fec3-5c5b-a1b4-ace026be13d1",
+              "rank": 2,
+              "title": "数据库备份与恢复",
+              "document_id": "lt-db-backup",
+              "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+              "locator_label": "第 1 行起",
+              "score": 0.4992,
+              "bm25_rank": 2,
+              "dense_rank": 2,
+              "fusion_score": 0.032258,
+              "admitted": false,
+              "excluded_because": "boilerplate_only",
+              "lane": "global"
+            },
+            {
+              "chunk_id": "0dc72485-17ce-51fd-8ac4-7fdc4f22a874",
+              "rank": 3,
+              "title": "路由服务运维手册",
+              "document_id": "lt-routing-ops",
+              "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+              "locator_label": "第 5 行起",
+              "score": 0.4526,
+              "bm25_rank": 4,
+              "dense_rank": 4,
+              "fusion_score": 0.03125,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E2"
+            },
+            {
+              "chunk_id": "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+              "rank": 4,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 8 行起",
+              "score": 0.4221,
+              "bm25_rank": 5,
+              "dense_rank": 15,
+              "fusion_score": 0.028718,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E3"
+            },
+            {
+              "chunk_id": "6c3a7a75-ffc6-51d9-b205-43a35fc8509a",
+              "document_id": "lt-release-gate",
+              "title": "发布闸门规则",
+              "admitted": true,
+              "lane": "task_contract"
+            },
+            {
+              "chunk_id": "eb556396-2a46-556e-be2b-b59db96dbfff",
+              "document_id": "lt-release-gate",
+              "title": "发布闸门规则",
+              "admitted": true,
+              "lane": "task_contract"
+            },
+            {
+              "chunk_id": "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+              "document_id": "lt-routing-ops",
+              "title": "路由服务运维手册",
+              "admitted": true,
+              "lane": "task_contract"
+            },
+            {
+              "chunk_id": "14ee309a-33c6-567d-80d3-1b6a81d278ad",
+              "document_id": "lt-import-guide",
+              "title": "批量导入指南",
+              "admitted": true,
+              "lane": "task_contract"
+            },
+            {
+              "chunk_id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+              "document_id": "lt-routing-ops",
+              "title": "路由服务运维手册",
+              "admitted": true,
+              "lane": "task_contract"
+            },
+            {
+              "chunk_id": "0475763c-187a-5286-8b7c-020b48cd70b7",
+              "document_id": "lt-oncall",
+              "title": "值班规则",
+              "admitted": true,
+              "lane": "task_contract"
+            },
+            {
+              "chunk_id": "a206e830-63df-5116-8c42-da66fffd3207",
+              "document_id": "lt-incident-417",
+              "title": "事故 417 复盘：路由服务超时",
+              "admitted": true,
+              "lane": "task_contract"
+            }
+          ],
+          "embed_ms": 421.7,
+          "retrieval_ms": 401.2,
+          "generation_ms": 1.4,
+          "total_ms": 1829.2
+        },
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "先查生产数据库的 RTO；如果超过 30 分钟，再给出发布灰度期间自动回滚的错误率阈值；否则只回答 RTO。",
+              "intent": "conditional",
+              "slots": [
+                {
+                  "slot_id": "operand",
+                  "query": "生产数据库的 RTO",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "true_1",
+                  "query": "发布灰度期间自动回滚的错误率阈值",
+                  "subject": "",
+                  "attribute": "阈值",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "true",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "false_1",
+                  "query": "只回答 RTO",
+                  "subject": "",
+                  "attribute": "RTO",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "false",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [
+                {
+                  "condition_id": "condition_1",
+                  "operand_slot_id": "operand",
+                  "operator": "gt",
+                  "threshold": "30",
+                  "unit": "分钟"
+                }
+              ],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "true",
+              "operands_with_refs": [
+                {
+                  "slot_id": "operand",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value": "45",
+                  "unit": "分钟",
+                  "chunk_id": "0b3d1822-1e9f-5221-9128-79825dc95650",
+                  "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+                  "quote": "RTO 为 45 分钟"
+                }
+              ],
+              "active_slot_ids": [
+                "operand",
+                "true_1"
+              ],
+              "reason": "explicit_numeric_predicate"
+            },
+            "bound_values": [],
+            "status": "active_slot_incomplete",
+            "slot_states": {
+              "operand": "supported",
+              "true_1": "unknown",
+              "false_1": "inactive"
+            }
+          },
+          "contract_preparation": {
+            "searches": [
+              {
+                "query": "发布灰度期间自动回滚的错误率阈值",
+                "status": "ok"
+              }
+            ],
+            "recovery_attempted": false,
+            "version_chain_complete": false,
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "true",
+              "operands_with_refs": [
+                {
+                  "slot_id": "operand",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value": "45",
+                  "unit": "分钟",
+                  "chunk_id": "0b3d1822-1e9f-5221-9128-79825dc95650",
+                  "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+                  "quote": "RTO 为 45 分钟"
+                }
+              ],
+              "active_slot_ids": [
+                "operand",
+                "true_1"
+              ],
+              "reason": "explicit_numeric_predicate"
+            }
+          },
+          "execution_budget": {
+            "deadline": 1791004691.0924082,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        }
+      }
+    },
+    {
+      "task_id": "U17",
+      "method": "workflow",
+      "run_id": "ff3dada2-1f6f-4d41-8717-10bccf209ac4",
+      "seconds": 2.277,
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "未能确认所需条件或历史事实，资料不足以支持完整回答。",
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "先查生产数据库的 RTO；如果超过 30 分钟，再给出发布灰度期间自动回滚的错误率阈值；否则只回答 RTO。",
+              "intent": "conditional",
+              "slots": [
+                {
+                  "slot_id": "operand",
+                  "query": "生产数据库的 RTO",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "true_1",
+                  "query": "发布灰度期间自动回滚的错误率阈值",
+                  "subject": "",
+                  "attribute": "阈值",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "true",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "false_1",
+                  "query": "只回答 RTO",
+                  "subject": "",
+                  "attribute": "RTO",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "false",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [
+                {
+                  "condition_id": "condition_1",
+                  "operand_slot_id": "operand",
+                  "operator": "gt",
+                  "threshold": "30",
+                  "unit": "分钟"
+                }
+              ],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "true",
+              "operands_with_refs": [
+                {
+                  "slot_id": "operand",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value": "45",
+                  "unit": "分钟",
+                  "chunk_id": "0b3d1822-1e9f-5221-9128-79825dc95650",
+                  "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+                  "quote": "RTO 为 45 分钟"
+                }
+              ],
+              "active_slot_ids": [
+                "operand",
+                "true_1"
+              ],
+              "reason": "explicit_numeric_predicate"
+            },
+            "bound_values": [],
+            "status": "active_slot_incomplete",
+            "slot_states": {
+              "operand": "supported",
+              "true_1": "unknown",
+              "false_1": "inactive"
+            }
+          },
+          "contract_preparation": {
+            "searches": [
+              {
+                "query": "生产数据库的 RTO",
+                "status": "ok"
+              },
+              {
+                "query": "发布灰度期间自动回滚的错误率阈值",
+                "status": "ok"
+              }
+            ],
+            "recovery_attempted": false,
+            "version_chain_complete": false,
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "true",
+              "operands_with_refs": [
+                {
+                  "slot_id": "operand",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value": "45",
+                  "unit": "分钟",
+                  "chunk_id": "0b3d1822-1e9f-5221-9128-79825dc95650",
+                  "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+                  "quote": "RTO 为 45 分钟"
+                }
+              ],
+              "active_slot_ids": [
+                "operand",
+                "true_1"
+              ],
+              "reason": "explicit_numeric_predicate"
+            }
+          },
+          "generation_wall_ms": 7.3,
+          "generation_context_chunk_ids": [
+            "0b3d1822-1e9f-5221-9128-79825dc95650",
+            "0dc72485-17ce-51fd-8ac4-7fdc4f22a874",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "c0cbcabe-4112-5787-b40a-7ca06571c850",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "6c3a7a75-ffc6-51d9-b205-43a35fc8509a",
+            "eb556396-2a46-556e-be2b-b59db96dbfff",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+            "14ee309a-33c6-567d-80d3-1b6a81d278ad",
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "0475763c-187a-5286-8b7c-020b48cd70b7",
+            "a206e830-63df-5116-8c42-da66fffd3207"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "contract_active_slot_incomplete"
+          },
+          "execution_route": {
+            "mode": "workflow",
+            "reason": "explicit_workflow"
+          },
+          "tool_wall_ms": 853.6,
+          "task_wall_ms": 1775.7,
+          "execution_budget": {
+            "deadline": 1791004693.3848991,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.1622,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      }
+    },
+    {
+      "task_id": "U17",
+      "method": "dynamic",
+      "run_id": "f745cb0b-f2d6-44d7-b5c7-5869a461e953",
+      "seconds": 0.98,
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "未能确认所需条件或历史事实，资料不足以支持完整回答。",
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "先查生产数据库的 RTO；如果超过 30 分钟，再给出发布灰度期间自动回滚的错误率阈值；否则只回答 RTO。",
+              "intent": "conditional",
+              "slots": [
+                {
+                  "slot_id": "operand",
+                  "query": "生产数据库的 RTO",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "true_1",
+                  "query": "发布灰度期间自动回滚的错误率阈值",
+                  "subject": "",
+                  "attribute": "阈值",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "true",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "false_1",
+                  "query": "只回答 RTO",
+                  "subject": "",
+                  "attribute": "RTO",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "false",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [
+                {
+                  "condition_id": "condition_1",
+                  "operand_slot_id": "operand",
+                  "operator": "gt",
+                  "threshold": "30",
+                  "unit": "分钟"
+                }
+              ],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "true",
+              "operands_with_refs": [
+                {
+                  "slot_id": "operand",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value": "45",
+                  "unit": "分钟",
+                  "chunk_id": "0b3d1822-1e9f-5221-9128-79825dc95650",
+                  "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+                  "quote": "RTO 为 45 分钟"
+                }
+              ],
+              "active_slot_ids": [
+                "operand",
+                "true_1"
+              ],
+              "reason": "explicit_numeric_predicate"
+            },
+            "bound_values": [],
+            "status": "active_slot_incomplete",
+            "slot_states": {
+              "operand": "supported",
+              "true_1": "unknown",
+              "false_1": "inactive"
+            }
+          },
+          "contract_preparation": {
+            "searches": [
+              {
+                "query": "生产数据库的 RTO",
+                "status": "ok"
+              },
+              {
+                "query": "发布灰度期间自动回滚的错误率阈值",
+                "status": "ok"
+              }
+            ],
+            "recovery_attempted": false,
+            "version_chain_complete": false,
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "true",
+              "operands_with_refs": [
+                {
+                  "slot_id": "operand",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value": "45",
+                  "unit": "分钟",
+                  "chunk_id": "0b3d1822-1e9f-5221-9128-79825dc95650",
+                  "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+                  "quote": "RTO 为 45 分钟"
+                }
+              ],
+              "active_slot_ids": [
+                "operand",
+                "true_1"
+              ],
+              "reason": "explicit_numeric_predicate"
+            }
+          },
+          "generation_wall_ms": 4.2,
+          "generation_context_chunk_ids": [
+            "0b3d1822-1e9f-5221-9128-79825dc95650",
+            "0dc72485-17ce-51fd-8ac4-7fdc4f22a874",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "c0cbcabe-4112-5787-b40a-7ca06571c850",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "6c3a7a75-ffc6-51d9-b205-43a35fc8509a",
+            "eb556396-2a46-556e-be2b-b59db96dbfff",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+            "14ee309a-33c6-567d-80d3-1b6a81d278ad",
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "0475763c-187a-5286-8b7c-020b48cd70b7",
+            "a206e830-63df-5116-8c42-da66fffd3207"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "contract_active_slot_incomplete"
+          },
+          "execution_route": {
+            "mode": "dynamic"
+          },
+          "tool_wall_ms": 717.1,
+          "task_wall_ms": 934.2,
+          "execution_budget": {
+            "deadline": 1791004695.243365,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.1622,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      }
+    },
+    {
+      "task_id": "U17",
+      "method": "hybrid",
+      "run_id": "c2a35817-7c8f-44ea-b704-5316c70ed81a",
+      "seconds": 0.98,
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "未能确认所需条件或历史事实，资料不足以支持完整回答。",
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "先查生产数据库的 RTO；如果超过 30 分钟，再给出发布灰度期间自动回滚的错误率阈值；否则只回答 RTO。",
+              "intent": "conditional",
+              "slots": [
+                {
+                  "slot_id": "operand",
+                  "query": "生产数据库的 RTO",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "true_1",
+                  "query": "发布灰度期间自动回滚的错误率阈值",
+                  "subject": "",
+                  "attribute": "阈值",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "true",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "false_1",
+                  "query": "只回答 RTO",
+                  "subject": "",
+                  "attribute": "RTO",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "false",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [
+                {
+                  "condition_id": "condition_1",
+                  "operand_slot_id": "operand",
+                  "operator": "gt",
+                  "threshold": "30",
+                  "unit": "分钟"
+                }
+              ],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "true",
+              "operands_with_refs": [
+                {
+                  "slot_id": "operand",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value": "45",
+                  "unit": "分钟",
+                  "chunk_id": "0b3d1822-1e9f-5221-9128-79825dc95650",
+                  "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+                  "quote": "RTO 为 45 分钟"
+                }
+              ],
+              "active_slot_ids": [
+                "operand",
+                "true_1"
+              ],
+              "reason": "explicit_numeric_predicate"
+            },
+            "bound_values": [],
+            "status": "active_slot_incomplete",
+            "slot_states": {
+              "operand": "supported",
+              "true_1": "unknown",
+              "false_1": "inactive"
+            }
+          },
+          "contract_preparation": {
+            "searches": [
+              {
+                "query": "生产数据库的 RTO",
+                "status": "ok"
+              },
+              {
+                "query": "发布灰度期间自动回滚的错误率阈值",
+                "status": "ok"
+              }
+            ],
+            "recovery_attempted": false,
+            "version_chain_complete": false,
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "true",
+              "operands_with_refs": [
+                {
+                  "slot_id": "operand",
+                  "subject": "生产数据库",
+                  "attribute": "RTO",
+                  "value": "45",
+                  "unit": "分钟",
+                  "chunk_id": "0b3d1822-1e9f-5221-9128-79825dc95650",
+                  "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+                  "quote": "RTO 为 45 分钟"
+                }
+              ],
+              "active_slot_ids": [
+                "operand",
+                "true_1"
+              ],
+              "reason": "explicit_numeric_predicate"
+            }
+          },
+          "generation_wall_ms": 12.2,
+          "generation_context_chunk_ids": [
+            "0b3d1822-1e9f-5221-9128-79825dc95650",
+            "0dc72485-17ce-51fd-8ac4-7fdc4f22a874",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "c0cbcabe-4112-5787-b40a-7ca06571c850",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "6c3a7a75-ffc6-51d9-b205-43a35fc8509a",
+            "eb556396-2a46-556e-be2b-b59db96dbfff",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+            "14ee309a-33c6-567d-80d3-1b6a81d278ad",
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "0475763c-187a-5286-8b7c-020b48cd70b7",
+            "a206e830-63df-5116-8c42-da66fffd3207"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "contract_active_slot_incomplete"
+          },
+          "execution_route": {
+            "mode": "hybrid"
+          },
+          "tool_wall_ms": 732.2,
+          "task_wall_ms": 942.8,
+          "execution_budget": {
+            "deadline": 1791004696.215353,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.1622,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      }
+    },
+    {
+      "task_id": "U20",
+      "method": "rag",
+      "run_id": "c5a8bc10-44d3-4d12-9739-3829d9996773",
+      "seconds": 0.581,
+      "result": {
+        "id": "c5a8bc10-44d3-4d12-9739-3829d9996773",
+        "question": "先查开放平台基础版每分钟配额；如果低于 500 次，再给出专业版的配额；否则只回答基础版。",
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "在你有权访问的资料中，未找到足够依据。",
+        "trace": {
+          "method": "hybrid",
+          "scope": {
+            "readable_documents": 20,
+            "searchable_documents": 20
+          },
+          "original_question": "先查开放平台基础版每分钟配额；如果低于 500 次，再给出专业版的配额；否则只回答基础版。",
+          "retrieval_query": "开放平台基础版每分钟配额",
+          "query_rewritten": false,
+          "rewrite": {
+            "mode": "rule",
+            "rewritten": false,
+            "history_turns": 0
+          },
+          "shadow_scores": {
+            "relevance": 0.2188,
+            "claim_support": [],
+            "scorer": "bigram-overlap-v1",
+            "mode": "shadow",
+            "action": "recorded only; no answer is withheld on these scores",
+            "calibration": "artifacts/a-q1-calibration.json"
+          },
+          "prompt_version": "grounded-v5-conflict-gated",
+          "top_k": 4,
+          "min_similarity": 0.35,
+          "context_token_budget": 5000,
+          "context_tokens_estimate": 496,
+          "token_counter": "cl100k_base",
+          "embedding_model": "bge-m3:567m",
+          "generation_model": "qwen2.5:7b-instruct",
+          "generation_context_chunk_ids": [
+            "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+            "22897e39-4101-5cef-9dde-832ed43e6bbc",
+            "0b3d1822-1e9f-5221-9128-79825dc95650",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+            "eb556396-2a46-556e-be2b-b59db96dbfff",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81"
+          ],
+          "candidates": [
+            {
+              "chunk_id": "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+              "rank": 1,
+              "title": "开放平台调用配额",
+              "document_id": "lt-api-quota",
+              "version_id": "d7e63212-1e14-4d2f-86eb-87230ee39041",
+              "locator_label": "第 5 行起",
+              "score": 0.7097,
+              "bm25_rank": 2,
+              "dense_rank": 1,
+              "fusion_score": 0.032522,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E1"
+            },
+            {
+              "chunk_id": "caa9b0c9-04e6-5acf-b8ec-70f802909dad",
+              "rank": 2,
+              "title": "开放平台调用配额",
+              "document_id": "lt-api-quota",
+              "version_id": "d7e63212-1e14-4d2f-86eb-87230ee39041",
+              "locator_label": "第 1 行起",
+              "score": 0.6376,
+              "bm25_rank": 1,
+              "dense_rank": 2,
+              "fusion_score": 0.032522,
+              "admitted": false,
+              "excluded_because": "boilerplate_only",
+              "lane": "global"
+            },
+            {
+              "chunk_id": "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+              "rank": 3,
+              "title": "开放平台调用配额",
+              "document_id": "lt-api-quota",
+              "version_id": "d7e63212-1e14-4d2f-86eb-87230ee39041",
+              "locator_label": "第 11 行起",
+              "score": 0.6209,
+              "bm25_rank": 3,
+              "dense_rank": 3,
+              "fusion_score": 0.031746,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E2"
+            },
+            {
+              "chunk_id": "22897e39-4101-5cef-9dde-832ed43e6bbc",
+              "rank": 4,
+              "title": "事故 502 复盘：结算延迟",
+              "document_id": "lt-incident-502",
+              "version_id": "0da1f809-dfe4-416c-80d2-ade33f235679",
+              "locator_label": "第 11 行起",
+              "score": 0.5885,
+              "bm25_rank": 5,
+              "dense_rank": 4,
+              "fusion_score": 0.03101,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E3"
+            },
+            {
+              "chunk_id": "0b3d1822-1e9f-5221-9128-79825dc95650",
+              "document_id": "lt-db-backup",
+              "title": "数据库备份与恢复",
+              "admitted": true,
+              "lane": "task_contract"
+            },
+            {
+              "chunk_id": "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+              "document_id": "lt-routing-ops",
+              "title": "路由服务运维手册",
+              "admitted": true,
+              "lane": "task_contract"
+            },
+            {
+              "chunk_id": "eb556396-2a46-556e-be2b-b59db96dbfff",
+              "document_id": "lt-release-gate",
+              "title": "发布闸门规则",
+              "admitted": true,
+              "lane": "task_contract"
+            },
+            {
+              "chunk_id": "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+              "document_id": "lt-incident-417",
+              "title": "事故 417 复盘：路由服务超时",
+              "admitted": true,
+              "lane": "task_contract"
+            }
+          ],
+          "embed_ms": 235.3,
+          "retrieval_ms": 59.2,
+          "generation_ms": 0.2,
+          "total_ms": 573.6
+        },
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "先查开放平台基础版每分钟配额；如果低于 500 次，再给出专业版的配额；否则只回答基础版。",
+              "intent": "conditional",
+              "slots": [
+                {
+                  "slot_id": "operand",
+                  "query": "开放平台基础版每分钟配额",
+                  "subject": "",
+                  "attribute": "配额",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "true_1",
+                  "query": "专业版的配额",
+                  "subject": "专业版",
+                  "attribute": "配额",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "true",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "false_1",
+                  "query": "只回答基础版",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "false",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [
+                {
+                  "condition_id": "condition_1",
+                  "operand_slot_id": "operand",
+                  "operator": "lt",
+                  "threshold": "500",
+                  "unit": "次"
+                }
+              ],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "unknown",
+              "operands_with_refs": [],
+              "active_slot_ids": [
+                "operand"
+              ],
+              "reason": "unbound_or_ambiguous_operand"
+            },
+            "bound_values": [],
+            "status": "unknown_condition",
+            "slot_states": {
+              "operand": "unknown",
+              "true_1": "unknown",
+              "false_1": "unknown"
+            }
+          },
+          "contract_preparation": {
+            "searches": [
+              {
+                "query": "开放平台基础版每分钟配额",
+                "status": "ok"
+              }
+            ],
+            "recovery_attempted": false,
+            "version_chain_complete": false,
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "unknown",
+              "operands_with_refs": [],
+              "active_slot_ids": [
+                "operand"
+              ],
+              "reason": "unbound_or_ambiguous_operand"
+            }
+          },
+          "execution_budget": {
+            "deadline": 1791004697.189963,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        }
+      }
+    },
+    {
+      "task_id": "U20",
+      "method": "workflow",
+      "run_id": "4b6d743f-500c-4109-9f57-d480195a9669",
+      "seconds": 0.417,
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "未能确认所需条件或历史事实，资料不足以支持完整回答。",
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "先查开放平台基础版每分钟配额；如果低于 500 次，再给出专业版的配额；否则只回答基础版。",
+              "intent": "conditional",
+              "slots": [
+                {
+                  "slot_id": "operand",
+                  "query": "开放平台基础版每分钟配额",
+                  "subject": "",
+                  "attribute": "配额",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "true_1",
+                  "query": "专业版的配额",
+                  "subject": "专业版",
+                  "attribute": "配额",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "true",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "false_1",
+                  "query": "只回答基础版",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "false",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [
+                {
+                  "condition_id": "condition_1",
+                  "operand_slot_id": "operand",
+                  "operator": "lt",
+                  "threshold": "500",
+                  "unit": "次"
+                }
+              ],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "unknown",
+              "operands_with_refs": [],
+              "active_slot_ids": [
+                "operand"
+              ],
+              "reason": "unbound_or_ambiguous_operand"
+            },
+            "bound_values": [],
+            "status": "unknown_condition",
+            "slot_states": {
+              "operand": "unknown",
+              "true_1": "unknown",
+              "false_1": "unknown"
+            }
+          },
+          "contract_preparation": {
+            "searches": [
+              {
+                "query": "开放平台基础版每分钟配额",
+                "status": "ok"
+              }
+            ],
+            "recovery_attempted": false,
+            "version_chain_complete": false,
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "unknown",
+              "operands_with_refs": [],
+              "active_slot_ids": [
+                "operand"
+              ],
+              "reason": "unbound_or_ambiguous_operand"
+            }
+          },
+          "generation_wall_ms": 4.6,
+          "generation_context_chunk_ids": [
+            "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+            "22897e39-4101-5cef-9dde-832ed43e6bbc",
+            "0b3d1822-1e9f-5221-9128-79825dc95650",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+            "eb556396-2a46-556e-be2b-b59db96dbfff",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "contract_unknown_condition"
+          },
+          "execution_route": {
+            "mode": "workflow",
+            "reason": "explicit_workflow"
+          },
+          "tool_wall_ms": 251.6,
+          "task_wall_ms": 378.0,
+          "execution_budget": {
+            "deadline": 1791004697.7764769,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.2188,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      }
+    },
+    {
+      "task_id": "U20",
+      "method": "dynamic",
+      "run_id": "bf8c1df3-69d5-41b2-8247-918d279e1076",
+      "seconds": 0.377,
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "未能确认所需条件或历史事实，资料不足以支持完整回答。",
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "先查开放平台基础版每分钟配额；如果低于 500 次，再给出专业版的配额；否则只回答基础版。",
+              "intent": "conditional",
+              "slots": [
+                {
+                  "slot_id": "operand",
+                  "query": "开放平台基础版每分钟配额",
+                  "subject": "",
+                  "attribute": "配额",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "true_1",
+                  "query": "专业版的配额",
+                  "subject": "专业版",
+                  "attribute": "配额",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "true",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "false_1",
+                  "query": "只回答基础版",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "false",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [
+                {
+                  "condition_id": "condition_1",
+                  "operand_slot_id": "operand",
+                  "operator": "lt",
+                  "threshold": "500",
+                  "unit": "次"
+                }
+              ],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "unknown",
+              "operands_with_refs": [],
+              "active_slot_ids": [
+                "operand"
+              ],
+              "reason": "unbound_or_ambiguous_operand"
+            },
+            "bound_values": [],
+            "status": "unknown_condition",
+            "slot_states": {
+              "operand": "unknown",
+              "true_1": "unknown",
+              "false_1": "unknown"
+            }
+          },
+          "contract_preparation": {
+            "searches": [
+              {
+                "query": "开放平台基础版每分钟配额",
+                "status": "ok"
+              }
+            ],
+            "recovery_attempted": false,
+            "version_chain_complete": false,
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "unknown",
+              "operands_with_refs": [],
+              "active_slot_ids": [
+                "operand"
+              ],
+              "reason": "unbound_or_ambiguous_operand"
+            }
+          },
+          "generation_wall_ms": 3.1,
+          "generation_context_chunk_ids": [
+            "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+            "22897e39-4101-5cef-9dde-832ed43e6bbc",
+            "0b3d1822-1e9f-5221-9128-79825dc95650",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+            "eb556396-2a46-556e-be2b-b59db96dbfff",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "contract_unknown_condition"
+          },
+          "execution_route": {
+            "mode": "dynamic"
+          },
+          "tool_wall_ms": 246.4,
+          "task_wall_ms": 348.6,
+          "execution_budget": {
+            "deadline": 1791004698.1971421,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.2188,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      }
+    },
+    {
+      "task_id": "U20",
+      "method": "hybrid",
+      "run_id": "6db1dff3-1912-4337-83ce-9de5cae89835",
+      "seconds": 0.406,
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "未能确认所需条件或历史事实，资料不足以支持完整回答。",
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "先查开放平台基础版每分钟配额；如果低于 500 次，再给出专业版的配额；否则只回答基础版。",
+              "intent": "conditional",
+              "slots": [
+                {
+                  "slot_id": "operand",
+                  "query": "开放平台基础版每分钟配额",
+                  "subject": "",
+                  "attribute": "配额",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "true_1",
+                  "query": "专业版的配额",
+                  "subject": "专业版",
+                  "attribute": "配额",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "true",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "false_1",
+                  "query": "只回答基础版",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "false",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [
+                {
+                  "condition_id": "condition_1",
+                  "operand_slot_id": "operand",
+                  "operator": "lt",
+                  "threshold": "500",
+                  "unit": "次"
+                }
+              ],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "unknown",
+              "operands_with_refs": [],
+              "active_slot_ids": [
+                "operand"
+              ],
+              "reason": "unbound_or_ambiguous_operand"
+            },
+            "bound_values": [],
+            "status": "unknown_condition",
+            "slot_states": {
+              "operand": "unknown",
+              "true_1": "unknown",
+              "false_1": "unknown"
+            }
+          },
+          "contract_preparation": {
+            "searches": [
+              {
+                "query": "开放平台基础版每分钟配额",
+                "status": "ok"
+              }
+            ],
+            "recovery_attempted": false,
+            "version_chain_complete": false,
+            "condition": {
+              "condition_id": "condition_1",
+              "result": "unknown",
+              "operands_with_refs": [],
+              "active_slot_ids": [
+                "operand"
+              ],
+              "reason": "unbound_or_ambiguous_operand"
+            }
+          },
+          "generation_wall_ms": 3.6,
+          "generation_context_chunk_ids": [
+            "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+            "22897e39-4101-5cef-9dde-832ed43e6bbc",
+            "0b3d1822-1e9f-5221-9128-79825dc95650",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+            "eb556396-2a46-556e-be2b-b59db96dbfff",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "contract_unknown_condition"
+          },
+          "execution_route": {
+            "mode": "hybrid"
+          },
+          "tool_wall_ms": 255.5,
+          "task_wall_ms": 369.8,
+          "execution_budget": {
+            "deadline": 1791004698.5784872,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.2188,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      }
+    },
+    {
+      "task_id": "U25",
+      "method": "rag",
+      "run_id": "ab7c049d-3191-45c0-9486-888a3403f541",
+      "seconds": 0.271,
+      "result": {
+        "id": "ab7c049d-3191-45c0-9486-888a3403f541",
+        "question": "回调通知的最大重试次数和 Java SDK 的默认重试次数，哪个更多？",
+        "status": "answered",
+        "claims": [
+          {
+            "text": "回调通知的重试为 6 次。",
+            "evidence_ids": [
+              "aa1fbc60-3898-5d82-aa44-081f707cb874"
+            ],
+            "quotes": [
+              "回调投递失败后最多重试 6 次"
+            ]
+          },
+          {
+            "text": "Java SDK的重试为 2 次。",
+            "evidence_ids": [
+              "17e16650-4b23-5677-aeb2-0a5196223c0d"
+            ],
+            "quotes": [
+              "失败后默认重试 2 次"
+            ]
+          },
+          {
+            "text": "两者相差 4 次；回调通知更大。",
+            "evidence_ids": [
+              "aa1fbc60-3898-5d82-aa44-081f707cb874",
+              "17e16650-4b23-5677-aeb2-0a5196223c0d"
+            ],
+            "quotes": [
+              "回调投递失败后最多重试 6 次",
+              "失败后默认重试 2 次"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "document_id": "lt-sdk-guide",
+            "version_id": "4398a52c-d763-4285-b60a-d969f92e5526",
+            "title": "Java SDK 使用说明",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "Java SDK 使用说明",
+                "默认配置"
+              ],
+              "source_char_start": 52,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 42,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "Java SDK 使用说明",
+                      "默认配置"
+                    ],
+                    "source_char_start": 52,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 42
+                }
+              ],
+              "char_start": 0,
+              "char_end": 42,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 26,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 默认配置\nJava SDK 默认请求超时 6 秒，失败后默认重试 2 次。\n\n",
+            "preview_url": "/api/evidence/17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "original_url": "/api/versions/4398a52c-d763-4285-b60a-d969f92e5526/original"
+          },
+          {
+            "chunk_id": "aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "document_id": "lt-webhook",
+            "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+            "title": "回调通知说明",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "回调通知说明",
+                "重试"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 47,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "回调通知说明",
+                      "重试"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 47
+                }
+              ],
+              "char_start": 0,
+              "char_end": 47,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 44,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 重试\n回调投递失败后最多重试 6 次，间隔依次为 1、2、4、8、16、32 分钟。\n\n",
+            "preview_url": "/api/evidence/aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "original_url": "/api/versions/7d42efa6-d1e6-4e58-908f-78568aca48f3/original"
+          }
+        ],
+        "message": "",
+        "trace": {
+          "method": "hybrid",
+          "scope": {
+            "readable_documents": 20,
+            "searchable_documents": 20
+          },
+          "original_question": "回调通知的最大重试次数和 Java SDK 的默认重试次数，哪个更多？",
+          "retrieval_query": "回调通知的最大重试次数和 Java SDK 的默认重试次数，哪个更多？",
+          "query_rewritten": false,
+          "rewrite": {
+            "mode": "rule",
+            "rewritten": false,
+            "history_turns": 0
+          },
+          "shadow_scores": {
+            "relevance": 0.2632,
+            "claim_support": [
+              0.25,
+              0.25,
+              0.1
+            ],
+            "scorer": "bigram-overlap-v1",
+            "mode": "shadow",
+            "action": "recorded only; no answer is withheld on these scores",
+            "calibration": "artifacts/a-q1-calibration.json"
+          },
+          "prompt_version": "grounded-v5-conflict-gated",
+          "top_k": 4,
+          "min_similarity": 0.35,
+          "context_token_budget": 5000,
+          "context_tokens_estimate": 431,
+          "token_counter": "cl100k_base",
+          "embedding_model": "bge-m3:567m",
+          "generation_model": "qwen2.5:7b-instruct",
+          "generation_context_chunk_ids": [
+            "17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646"
+          ],
+          "candidates": [
+            {
+              "chunk_id": "17e16650-4b23-5677-aeb2-0a5196223c0d",
+              "rank": 1,
+              "title": "Java SDK 使用说明",
+              "document_id": "lt-sdk-guide",
+              "version_id": "4398a52c-d763-4285-b60a-d969f92e5526",
+              "locator_label": "第 5 行起",
+              "score": 0.7136,
+              "bm25_rank": 1,
+              "dense_rank": 1,
+              "fusion_score": 0.032787,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E1"
+            },
+            {
+              "chunk_id": "aa1fbc60-3898-5d82-aa44-081f707cb874",
+              "rank": 2,
+              "title": "回调通知说明",
+              "document_id": "lt-webhook",
+              "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+              "locator_label": "第 5 行起",
+              "score": 0.6604,
+              "bm25_rank": 3,
+              "dense_rank": 2,
+              "fusion_score": 0.032002,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E2"
+            },
+            {
+              "chunk_id": "c6bca396-592d-5445-9c00-6b7d66206afb",
+              "rank": 3,
+              "title": "回调通知说明",
+              "document_id": "lt-webhook",
+              "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+              "locator_label": "第 1 行起",
+              "score": 0.508,
+              "bm25_rank": 2,
+              "dense_rank": 7,
+              "fusion_score": 0.031054,
+              "admitted": false,
+              "excluded_because": "boilerplate_only",
+              "lane": "global"
+            },
+            {
+              "chunk_id": "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+              "rank": 4,
+              "title": "开放平台调用配额",
+              "document_id": "lt-api-quota",
+              "version_id": "d7e63212-1e14-4d2f-86eb-87230ee39041",
+              "locator_label": "第 11 行起",
+              "score": 0.5322,
+              "bm25_rank": 7,
+              "dense_rank": 5,
+              "fusion_score": 0.03031,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E3"
+            }
+          ],
+          "embed_ms": 183.4,
+          "retrieval_ms": 49.1,
+          "generation_ms": 1.0,
+          "total_ms": 260.9
+        },
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "回调通知的最大重试次数和 Java SDK 的默认重试次数，哪个更多？",
+              "intent": "comparison",
+              "slots": [
+                {
+                  "slot_id": "left",
+                  "query": "回调通知的最大重试次数",
+                  "subject": "回调通知",
+                  "attribute": "重试",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "right",
+                  "query": "Java SDK 的默认重试次数",
+                  "subject": "Java SDK",
+                  "attribute": "重试",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [
+              {
+                "slot_id": "left",
+                "subject": "回调通知",
+                "attribute": "重试",
+                "value": "6",
+                "unit": "次",
+                "chunk_id": "aa1fbc60-3898-5d82-aa44-081f707cb874",
+                "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+                "quote": "回调投递失败后最多重试 6 次"
+              },
+              {
+                "slot_id": "right",
+                "subject": "Java SDK",
+                "attribute": "重试",
+                "value": "2",
+                "unit": "次",
+                "chunk_id": "17e16650-4b23-5677-aeb2-0a5196223c0d",
+                "version_id": "4398a52c-d763-4285-b60a-d969f92e5526",
+                "quote": "失败后默认重试 2 次"
+              }
+            ],
+            "status": "explicit_comparison",
+            "slot_states": {
+              "left": "supported",
+              "right": "supported"
+            }
+          },
+          "contract_preparation": {
+            "searches": [],
+            "recovery_attempted": false,
+            "version_chain_complete": false
+          },
+          "execution_budget": {
+            "deadline": 1791004698.972864,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        }
+      }
+    },
+    {
+      "task_id": "U25",
+      "method": "workflow",
+      "run_id": "6ad5bb89-a320-4108-9074-0ba7dfca2d01",
+      "seconds": 0.486,
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "回调通知的重试为 6 次。",
+            "evidence_ids": [
+              "aa1fbc60-3898-5d82-aa44-081f707cb874"
+            ],
+            "quotes": [
+              "回调投递失败后最多重试 6 次"
+            ]
+          },
+          {
+            "text": "Java SDK的重试为 2 次。",
+            "evidence_ids": [
+              "17e16650-4b23-5677-aeb2-0a5196223c0d"
+            ],
+            "quotes": [
+              "失败后默认重试 2 次"
+            ]
+          },
+          {
+            "text": "两者相差 4 次；回调通知更大。",
+            "evidence_ids": [
+              "aa1fbc60-3898-5d82-aa44-081f707cb874",
+              "17e16650-4b23-5677-aeb2-0a5196223c0d"
+            ],
+            "quotes": [
+              "回调投递失败后最多重试 6 次",
+              "失败后默认重试 2 次"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "document_id": "lt-sdk-guide",
+            "version_id": "4398a52c-d763-4285-b60a-d969f92e5526",
+            "title": "Java SDK 使用说明",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "Java SDK 使用说明",
+                "默认配置"
+              ],
+              "source_char_start": 52,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 42,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "Java SDK 使用说明",
+                      "默认配置"
+                    ],
+                    "source_char_start": 52,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 42
+                }
+              ],
+              "char_start": 0,
+              "char_end": 42,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 26,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 默认配置\nJava SDK 默认请求超时 6 秒，失败后默认重试 2 次。\n\n",
+            "preview_url": "/api/evidence/17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "original_url": "/api/versions/4398a52c-d763-4285-b60a-d969f92e5526/original"
+          },
+          {
+            "chunk_id": "aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "document_id": "lt-webhook",
+            "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+            "title": "回调通知说明",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "回调通知说明",
+                "重试"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 47,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "回调通知说明",
+                      "重试"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 47
+                }
+              ],
+              "char_start": 0,
+              "char_end": 47,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 44,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 重试\n回调投递失败后最多重试 6 次，间隔依次为 1、2、4、8、16、32 分钟。\n\n",
+            "preview_url": "/api/evidence/aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "original_url": "/api/versions/7d42efa6-d1e6-4e58-908f-78568aca48f3/original"
+          }
+        ],
+        "message": "",
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "回调通知的最大重试次数和 Java SDK 的默认重试次数，哪个更多？",
+              "intent": "comparison",
+              "slots": [
+                {
+                  "slot_id": "left",
+                  "query": "回调通知的最大重试次数",
+                  "subject": "回调通知",
+                  "attribute": "重试",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "right",
+                  "query": "Java SDK 的默认重试次数",
+                  "subject": "Java SDK",
+                  "attribute": "重试",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [
+              {
+                "slot_id": "left",
+                "subject": "回调通知",
+                "attribute": "重试",
+                "value": "6",
+                "unit": "次",
+                "chunk_id": "aa1fbc60-3898-5d82-aa44-081f707cb874",
+                "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+                "quote": "回调投递失败后最多重试 6 次"
+              },
+              {
+                "slot_id": "right",
+                "subject": "Java SDK",
+                "attribute": "重试",
+                "value": "2",
+                "unit": "次",
+                "chunk_id": "17e16650-4b23-5677-aeb2-0a5196223c0d",
+                "version_id": "4398a52c-d763-4285-b60a-d969f92e5526",
+                "quote": "失败后默认重试 2 次"
+              }
+            ],
+            "status": "explicit_comparison",
+            "slot_states": {
+              "left": "supported",
+              "right": "supported"
+            }
+          },
+          "contract_preparation": {
+            "searches": [],
+            "recovery_attempted": false,
+            "version_chain_complete": false
+          },
+          "generation_wall_ms": 5.5,
+          "generation_context_chunk_ids": [
+            "17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "7101e22e-cc40-5760-942c-4f713ae01bb4",
+            "061e2fc0-20d7-5bd6-8e9f-fef575a9eec7"
+          ],
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 3,
+            "validated_claim_count": 3,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "execution_route": {
+            "mode": "workflow",
+            "reason": "direct_retrieval",
+            "direct": true
+          },
+          "tool_wall_ms": 264.9,
+          "task_wall_ms": 438.0,
+          "execution_budget": {
+            "deadline": 1791004699.254645,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.3158,
+          "claim_support": [
+            0.375,
+            0.25,
+            0.2
+          ],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      }
+    },
+    {
+      "task_id": "U25",
+      "method": "dynamic",
+      "run_id": "5255f728-9be7-4a75-847d-dd1a1bc41f28",
+      "seconds": 0.399,
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "回调通知的重试为 6 次。",
+            "evidence_ids": [
+              "aa1fbc60-3898-5d82-aa44-081f707cb874"
+            ],
+            "quotes": [
+              "回调投递失败后最多重试 6 次"
+            ]
+          },
+          {
+            "text": "Java SDK的重试为 2 次。",
+            "evidence_ids": [
+              "17e16650-4b23-5677-aeb2-0a5196223c0d"
+            ],
+            "quotes": [
+              "失败后默认重试 2 次"
+            ]
+          },
+          {
+            "text": "两者相差 4 次；回调通知更大。",
+            "evidence_ids": [
+              "aa1fbc60-3898-5d82-aa44-081f707cb874",
+              "17e16650-4b23-5677-aeb2-0a5196223c0d"
+            ],
+            "quotes": [
+              "回调投递失败后最多重试 6 次",
+              "失败后默认重试 2 次"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "document_id": "lt-sdk-guide",
+            "version_id": "4398a52c-d763-4285-b60a-d969f92e5526",
+            "title": "Java SDK 使用说明",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "Java SDK 使用说明",
+                "默认配置"
+              ],
+              "source_char_start": 52,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 42,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "Java SDK 使用说明",
+                      "默认配置"
+                    ],
+                    "source_char_start": 52,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 42
+                }
+              ],
+              "char_start": 0,
+              "char_end": 42,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 26,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 默认配置\nJava SDK 默认请求超时 6 秒，失败后默认重试 2 次。\n\n",
+            "preview_url": "/api/evidence/17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "original_url": "/api/versions/4398a52c-d763-4285-b60a-d969f92e5526/original"
+          },
+          {
+            "chunk_id": "aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "document_id": "lt-webhook",
+            "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+            "title": "回调通知说明",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "回调通知说明",
+                "重试"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 47,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "回调通知说明",
+                      "重试"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 47
+                }
+              ],
+              "char_start": 0,
+              "char_end": 47,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 44,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 重试\n回调投递失败后最多重试 6 次，间隔依次为 1、2、4、8、16、32 分钟。\n\n",
+            "preview_url": "/api/evidence/aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "original_url": "/api/versions/7d42efa6-d1e6-4e58-908f-78568aca48f3/original"
+          }
+        ],
+        "message": "",
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "回调通知的最大重试次数和 Java SDK 的默认重试次数，哪个更多？",
+              "intent": "comparison",
+              "slots": [
+                {
+                  "slot_id": "left",
+                  "query": "回调通知的最大重试次数",
+                  "subject": "回调通知",
+                  "attribute": "重试",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "right",
+                  "query": "Java SDK 的默认重试次数",
+                  "subject": "Java SDK",
+                  "attribute": "重试",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [
+              {
+                "slot_id": "left",
+                "subject": "回调通知",
+                "attribute": "重试",
+                "value": "6",
+                "unit": "次",
+                "chunk_id": "aa1fbc60-3898-5d82-aa44-081f707cb874",
+                "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+                "quote": "回调投递失败后最多重试 6 次"
+              },
+              {
+                "slot_id": "right",
+                "subject": "Java SDK",
+                "attribute": "重试",
+                "value": "2",
+                "unit": "次",
+                "chunk_id": "17e16650-4b23-5677-aeb2-0a5196223c0d",
+                "version_id": "4398a52c-d763-4285-b60a-d969f92e5526",
+                "quote": "失败后默认重试 2 次"
+              }
+            ],
+            "status": "explicit_comparison",
+            "slot_states": {
+              "left": "supported",
+              "right": "supported"
+            }
+          },
+          "contract_preparation": {
+            "searches": [],
+            "recovery_attempted": false,
+            "version_chain_complete": false
+          },
+          "generation_wall_ms": 3.7,
+          "generation_context_chunk_ids": [
+            "17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "7101e22e-cc40-5760-942c-4f713ae01bb4",
+            "061e2fc0-20d7-5bd6-8e9f-fef575a9eec7"
+          ],
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 3,
+            "validated_claim_count": 3,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "execution_route": {
+            "mode": "dynamic"
+          },
+          "tool_wall_ms": 249.6,
+          "task_wall_ms": 368.2,
+          "execution_budget": {
+            "deadline": 1791004699.741486,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.3158,
+          "claim_support": [
+            0.375,
+            0.25,
+            0.2
+          ],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      }
+    },
+    {
+      "task_id": "U25",
+      "method": "hybrid",
+      "run_id": "826ecc26-77ca-414a-b123-8046ef0cefd5",
+      "seconds": 0.414,
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "回调通知的重试为 6 次。",
+            "evidence_ids": [
+              "aa1fbc60-3898-5d82-aa44-081f707cb874"
+            ],
+            "quotes": [
+              "回调投递失败后最多重试 6 次"
+            ]
+          },
+          {
+            "text": "Java SDK的重试为 2 次。",
+            "evidence_ids": [
+              "17e16650-4b23-5677-aeb2-0a5196223c0d"
+            ],
+            "quotes": [
+              "失败后默认重试 2 次"
+            ]
+          },
+          {
+            "text": "两者相差 4 次；回调通知更大。",
+            "evidence_ids": [
+              "aa1fbc60-3898-5d82-aa44-081f707cb874",
+              "17e16650-4b23-5677-aeb2-0a5196223c0d"
+            ],
+            "quotes": [
+              "回调投递失败后最多重试 6 次",
+              "失败后默认重试 2 次"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "document_id": "lt-sdk-guide",
+            "version_id": "4398a52c-d763-4285-b60a-d969f92e5526",
+            "title": "Java SDK 使用说明",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "Java SDK 使用说明",
+                "默认配置"
+              ],
+              "source_char_start": 52,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 42,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "Java SDK 使用说明",
+                      "默认配置"
+                    ],
+                    "source_char_start": 52,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 42
+                }
+              ],
+              "char_start": 0,
+              "char_end": 42,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 26,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 默认配置\nJava SDK 默认请求超时 6 秒，失败后默认重试 2 次。\n\n",
+            "preview_url": "/api/evidence/17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "original_url": "/api/versions/4398a52c-d763-4285-b60a-d969f92e5526/original"
+          },
+          {
+            "chunk_id": "aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "document_id": "lt-webhook",
+            "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+            "title": "回调通知说明",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "回调通知说明",
+                "重试"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 47,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "回调通知说明",
+                      "重试"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 47
+                }
+              ],
+              "char_start": 0,
+              "char_end": 47,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 44,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 重试\n回调投递失败后最多重试 6 次，间隔依次为 1、2、4、8、16、32 分钟。\n\n",
+            "preview_url": "/api/evidence/aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "original_url": "/api/versions/7d42efa6-d1e6-4e58-908f-78568aca48f3/original"
+          }
+        ],
+        "message": "",
+        "usage": {
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "回调通知的最大重试次数和 Java SDK 的默认重试次数，哪个更多？",
+              "intent": "comparison",
+              "slots": [
+                {
+                  "slot_id": "left",
+                  "query": "回调通知的最大重试次数",
+                  "subject": "回调通知",
+                  "attribute": "重试",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                },
+                {
+                  "slot_id": "right",
+                  "query": "Java SDK 的默认重试次数",
+                  "subject": "Java SDK",
+                  "attribute": "重试",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [
+              {
+                "slot_id": "left",
+                "subject": "回调通知",
+                "attribute": "重试",
+                "value": "6",
+                "unit": "次",
+                "chunk_id": "aa1fbc60-3898-5d82-aa44-081f707cb874",
+                "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+                "quote": "回调投递失败后最多重试 6 次"
+              },
+              {
+                "slot_id": "right",
+                "subject": "Java SDK",
+                "attribute": "重试",
+                "value": "2",
+                "unit": "次",
+                "chunk_id": "17e16650-4b23-5677-aeb2-0a5196223c0d",
+                "version_id": "4398a52c-d763-4285-b60a-d969f92e5526",
+                "quote": "失败后默认重试 2 次"
+              }
+            ],
+            "status": "explicit_comparison",
+            "slot_states": {
+              "left": "supported",
+              "right": "supported"
+            }
+          },
+          "contract_preparation": {
+            "searches": [],
+            "recovery_attempted": false,
+            "version_chain_complete": false
+          },
+          "generation_wall_ms": 4.0,
+          "generation_context_chunk_ids": [
+            "17e16650-4b23-5677-aeb2-0a5196223c0d",
+            "aa1fbc60-3898-5d82-aa44-081f707cb874",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "7101e22e-cc40-5760-942c-4f713ae01bb4",
+            "061e2fc0-20d7-5bd6-8e9f-fef575a9eec7"
+          ],
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 3,
+            "validated_claim_count": 3,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "execution_route": {
+            "mode": "hybrid"
+          },
+          "tool_wall_ms": 263.5,
+          "task_wall_ms": 384.2,
+          "execution_budget": {
+            "deadline": 1791004700.1395211,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {},
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.3158,
+          "claim_support": [
+            0.375,
+            0.25,
+            0.2
+          ],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      }
+    }
+  ]
+}

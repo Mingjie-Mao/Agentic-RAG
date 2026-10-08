@@ -29,7 +29,7 @@ _MULTI_SOURCE = re.compile(
     r"\b(both|respectively|compare[ds]?|comparison|difference|each of|either)\b", re.IGNORECASE
 )
 _ENGLISH_NEXT_QUESTION = re.compile(
-    r"\s*(?:;|\?\s+|,\s+and\s+)(?=(?:and\s+)?(?:what|which|who|when|where|why|how|"
+    r"\s*(?:;|\?\s+|,\s+and\s+|\s+and\s+(?=what\b|which\b|who\b|when\b|where\b|why\b|how\b))(?=(?:and\s+)?(?:what|which|who|when|where|why|how|"
     r"do|does|did|is|are|was|were|can|could|has|have|had)\b)",
     re.IGNORECASE,
 )
@@ -72,7 +72,26 @@ def multi_source_intent(text: str) -> bool:
 
 
 def version_intent(text: str) -> bool:
-    return any(marker in text for marker in VERSION_MARKERS)
+    return any(marker in text for marker in VERSION_MARKERS) or bool(re.search(
+        r"\b(?:versions?|revisions?|historical|previous|older|newer)\b", text or "", re.IGNORECASE
+    )) or bool(
+        len(re.findall(r"(?<!\d)\d{4}-\d{2}-\d{2}(?!\d)|(?:\d{4}\s*年\s*)?\d{1,2}\s*月\s*\d{1,2}\s*日", text or "")) >= 2
+        and re.search(r"policy|regulation|政策|规定|制度|工单", text or "", re.IGNORECASE)
+    )
+
+
+def historical_route_intent(text: str) -> bool:
+    """A current SDK version is not a request for a document's version history."""
+    clean = text or ""
+    return bool(re.search(
+        r"历史|旧版|之前|变更|演变|(?:比较|对比).{0,20}版本|"
+        r"\b(?:previous|older|historical)\b.{0,30}\b(?:versions?|revisions?|polic(?:y|ies)|rules?|standards?)\b|"
+        r"\brevisions?\b|\bcompare\b.{0,40}\bversions?\b",
+        clean, re.IGNORECASE,
+    )) or bool(
+        len(re.findall(r"(?<!\d)\d{4}-\d{2}-\d{2}(?!\d)|(?:\d{4}\s*年\s*)?\d{1,2}\s*月\s*\d{1,2}\s*日", clean)) >= 2
+        and re.search(r"policy|regulation|政策|规定|制度|工单", clean, re.IGNORECASE)
+    )
 
 
 def acceptance_items(text: str) -> list[str]:

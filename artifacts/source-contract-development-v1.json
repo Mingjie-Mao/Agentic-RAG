@@ -1,0 +1,924 @@
+{
+  "metadata": {
+    "fixture_sha256": "838d2fcbddb18df5b14673eb0b48b09c9d22e99fc057b600a8f32572e2841268",
+    "model": "qwen2.5:7b-instruct",
+    "scope": "Author-written development fixtures, not independent human gold or an external generalization benchmark. Checks literal requested facts, attribution markers and bounded absence.",
+    "api_cost": 0,
+    "check_conflict": false,
+    "num_predict": 320,
+    "code_sha256": {
+      "app/clients.py": "6bcc9d931946d478a9b877f3a7f7265cd469e212cf0353bf7e7b5763e508c734",
+      "app/answer_contract.py": "3d174a5e77862cb2ec6851759632b738dc5b38c73155b02218691a893f5a2e0f",
+      "app/qa.py": "b2afd1f987beb208292428e744791eaee7edba7bc66184ef681cc6a2fbe7b697"
+    }
+  },
+  "records": [
+    {
+      "id": "S01",
+      "category": "attribution",
+      "contract_enabled": false,
+      "claims": [
+        {
+          "text": "The report attributed to Dana that the merger would benefit customers.",
+          "evidence_ids": [
+            "S01-c1"
+          ],
+          "quotes": [
+            "Analyst Dana argued that the merger would benefit customers. The publication did not independently confirm that forecast."
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 413,
+        "completion_tokens": 49,
+        "model_duration_ms": 19090.3,
+        "model_load_ms": 2662.6,
+        "prompt_eval_ms": 7424.2,
+        "completion_eval_ms": 8997.9,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "What view of the merger did the report attribute to Dana"
+        ],
+        "answer_contract": null,
+        "source_audit": []
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 19134.9,
+      "criterion_met": false,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S01",
+      "category": "attribution",
+      "contract_enabled": true,
+      "claims": [
+        {
+          "text": "The report attributed a positive view of the merger to Dana, stating that Dana argued the merger would benefit customers.",
+          "evidence_ids": [
+            "S01-c1"
+          ],
+          "quotes": [
+            "Analyst Dana argued that the merger would benefit customers. The publication did not independently confirm that forecast."
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 679,
+        "completion_tokens": 59,
+        "model_duration_ms": 19604.3,
+        "model_load_ms": 56.6,
+        "prompt_eval_ms": 7493.5,
+        "completion_eval_ms": 12050.3,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "What view of the merger did the report attribute to Dana"
+        ],
+        "answer_contract": {
+          "comparison_target": "What view of the merger did the report attribute to Dana",
+          "comparison_target_extracted": false,
+          "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+          "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+        },
+        "source_audit": [
+          {
+            "claim_index": 1,
+            "issues": []
+          }
+        ]
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 19631.7,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S02",
+      "category": "attribution",
+      "contract_enabled": true,
+      "claims": [
+        {
+          "text": "律师林表示交易合法，这是辩方主张。",
+          "evidence_ids": [
+            "S02-c1"
+          ],
+          "quotes": [
+            "律师林表示交易合法，这是辩方主张。"
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 717,
+        "completion_tokens": 48,
+        "model_duration_ms": 14653.7,
+        "model_load_ms": 56.1,
+        "prompt_eval_ms": 5462.2,
+        "completion_eval_ms": 9131.5,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "根据报道，律师林对交易是否合法有什么说法"
+        ],
+        "answer_contract": {
+          "comparison_target": "根据报道，律师林对交易是否合法有什么说法",
+          "comparison_target_extracted": false,
+          "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+          "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+        },
+        "source_audit": [
+          {
+            "claim_index": 1,
+            "issues": []
+          }
+        ]
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 14686.1,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S02",
+      "category": "attribution",
+      "contract_enabled": false,
+      "claims": [
+        {
+          "text": "律师林表示交易合法。",
+          "evidence_ids": [
+            "S02-c1"
+          ],
+          "quotes": [
+            "律师林表示交易合法，这是辩方主张。"
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 438,
+        "completion_tokens": 43,
+        "model_duration_ms": 8062.8,
+        "model_load_ms": 63.3,
+        "prompt_eval_ms": 2427.1,
+        "completion_eval_ms": 5568.9,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "根据报道，律师林对交易是否合法有什么说法"
+        ],
+        "answer_contract": null,
+        "source_audit": []
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 8092.6,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S03",
+      "category": "attribution",
+      "contract_enabled": false,
+      "claims": [
+        {
+          "text": "The audit team raised a concern that Orion may have understated costs.",
+          "evidence_ids": [
+            "S03-c1"
+          ],
+          "quotes": [
+            "According to the audit team, Orion may have understated costs. This is an allegation pending review, not a confirmed finding."
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 417,
+        "completion_tokens": 51,
+        "model_duration_ms": 8913.3,
+        "model_load_ms": 52.8,
+        "prompt_eval_ms": 2230.8,
+        "completion_eval_ms": 6627.1,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "Who raised the concern about Orion and what was alleged"
+        ],
+        "answer_contract": null,
+        "source_audit": []
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 8942.8,
+      "criterion_met": false,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S03",
+      "category": "attribution",
+      "contract_enabled": true,
+      "claims": [
+        {
+          "text": "The audit team raised a concern that Orion may have understated costs.",
+          "evidence_ids": [
+            "S03-c1"
+          ],
+          "quotes": [
+            "According to the audit team, Orion may have understated costs. This is an allegation pending review, not a confirmed finding."
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 682,
+        "completion_tokens": 51,
+        "model_duration_ms": 12217.6,
+        "model_load_ms": 54.2,
+        "prompt_eval_ms": 5479.9,
+        "completion_eval_ms": 6679.7,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "Who raised the concern about Orion and what was alleged"
+        ],
+        "answer_contract": {
+          "comparison_target": "Who raised the concern about Orion and what was alleged",
+          "comparison_target_extracted": false,
+          "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+          "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+        },
+        "source_audit": [
+          {
+            "claim_index": 1,
+            "issues": []
+          }
+        ]
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 12245.4,
+      "criterion_met": false,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S04",
+      "category": "absence",
+      "contract_enabled": true,
+      "claims": [],
+      "status": "insufficient_evidence",
+      "usage": {
+        "prompt_tokens": 652,
+        "completion_tokens": 20,
+        "model_duration_ms": 5952.9,
+        "model_load_ms": 53.7,
+        "prompt_eval_ms": 2952.5,
+        "completion_eval_ms": 2942.7,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "insufficient_evidence",
+        "conflict_check": null,
+        "acceptance_items": [
+          "Does the entire report never mention fines"
+        ],
+        "answer_contract": {
+          "comparison_target": "Does the entire report never mention fines",
+          "comparison_target_extracted": false,
+          "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+          "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+        },
+        "source_audit": []
+      },
+      "draft_audit": [],
+      "error": null,
+      "latency_ms": 5981.3,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S04",
+      "category": "absence",
+      "contract_enabled": false,
+      "claims": [],
+      "status": "insufficient_evidence",
+      "usage": {
+        "prompt_tokens": 400,
+        "completion_tokens": 18,
+        "model_duration_ms": 4383.1,
+        "model_load_ms": 80.3,
+        "prompt_eval_ms": 1909.2,
+        "completion_eval_ms": 2390.1,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "insufficient_evidence",
+        "conflict_check": null,
+        "acceptance_items": [
+          "Does the entire report never mention fines"
+        ],
+        "answer_contract": null,
+        "source_audit": []
+      },
+      "draft_audit": [],
+      "error": null,
+      "latency_ms": 4418.9,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S05",
+      "category": "absence",
+      "contract_enabled": false,
+      "claims": [],
+      "status": "insufficient_evidence",
+      "usage": {
+        "prompt_tokens": 411,
+        "completion_tokens": 18,
+        "model_duration_ms": 3930.2,
+        "model_load_ms": 55.0,
+        "prompt_eval_ms": 1697.7,
+        "completion_eval_ms": 2175.1,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "insufficient_evidence",
+        "conflict_check": null,
+        "acceptance_items": [
+          "整份通知是否从未说明审批人"
+        ],
+        "answer_contract": null,
+        "source_audit": []
+      },
+      "draft_audit": [],
+      "error": null,
+      "latency_ms": 3966.8,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S05",
+      "category": "absence",
+      "contract_enabled": true,
+      "claims": [],
+      "status": "insufficient_evidence",
+      "usage": {
+        "prompt_tokens": 664,
+        "completion_tokens": 18,
+        "model_duration_ms": 8118.4,
+        "model_load_ms": 56.2,
+        "prompt_eval_ms": 5526.0,
+        "completion_eval_ms": 2532.7,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "insufficient_evidence",
+        "conflict_check": null,
+        "acceptance_items": [
+          "整份通知是否从未说明审批人"
+        ],
+        "answer_contract": {
+          "comparison_target": "整份通知是否从未说明审批人",
+          "comparison_target_extracted": false,
+          "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+          "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+        },
+        "source_audit": []
+      },
+      "draft_audit": [],
+      "error": null,
+      "latency_ms": 8146.8,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S06",
+      "category": "explicit_denial",
+      "contract_enabled": true,
+      "claims": [
+        {
+          "text": "The policy explicitly states that no approval is required for this operation.",
+          "evidence_ids": [
+            "S06-c1"
+          ],
+          "quotes": [
+            "The policy explicitly states that no approval is required for this operation."
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 645,
+        "completion_tokens": 50,
+        "model_duration_ms": 9524.2,
+        "model_load_ms": 53.4,
+        "prompt_eval_ms": 2964.7,
+        "completion_eval_ms": 6502.4,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "Does the policy require approval"
+        ],
+        "answer_contract": {
+          "comparison_target": "Does the policy require approval",
+          "comparison_target_extracted": false,
+          "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+          "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+        },
+        "source_audit": [
+          {
+            "claim_index": 1,
+            "issues": []
+          }
+        ]
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 9549.8,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S06",
+      "category": "explicit_denial",
+      "contract_enabled": false,
+      "claims": [
+        {
+          "text": "The policy explicitly states that no approval is required for this operation.",
+          "evidence_ids": [
+            "S06-c1"
+          ],
+          "quotes": [
+            "The policy explicitly states that no approval is required for this operation."
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 395,
+        "completion_tokens": 50,
+        "model_duration_ms": 8155.9,
+        "model_load_ms": 55.0,
+        "prompt_eval_ms": 1631.2,
+        "completion_eval_ms": 6466.2,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "Does the policy require approval"
+        ],
+        "answer_contract": null,
+        "source_audit": []
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 8182.0,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S07",
+      "category": "comparison",
+      "contract_enabled": false,
+      "claims": [
+        {
+          "text": "The launch date is April 8.",
+          "evidence_ids": [
+            "S07-c1",
+            "S07-c2"
+          ],
+          "quotes": [
+            "The launch date is April 8. Operating hours are 09:00–17:00.",
+            "The launch date is April 8. Operating hours are 10:00–16:00."
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 495,
+        "completion_tokens": 51,
+        "model_duration_ms": 9524.7,
+        "model_load_ms": 54.1,
+        "prompt_eval_ms": 2865.3,
+        "completion_eval_ms": 6602.5,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "Are the launch dates consistent in both reports, despite different operating hours"
+        ],
+        "answer_contract": null,
+        "source_audit": []
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 9551.1,
+      "criterion_met": false,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S07",
+      "category": "comparison",
+      "contract_enabled": true,
+      "claims": [
+        {
+          "text": "The launch date is April 8.",
+          "evidence_ids": [
+            "S07-c1",
+            "S07-c2"
+          ],
+          "quotes": [
+            "The launch date is April 8. Operating hours are 09:00–17:00.",
+            "The launch date is April 8. Operating hours are 10:00–16:00."
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 742,
+        "completion_tokens": 53,
+        "model_duration_ms": 13456.7,
+        "model_load_ms": 54.3,
+        "prompt_eval_ms": 6326.9,
+        "completion_eval_ms": 7071.4,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "Are the launch dates consistent in both reports, despite different operating hours"
+        ],
+        "answer_contract": {
+          "comparison_target": "launch dates",
+          "comparison_target_extracted": true,
+          "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+          "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+        },
+        "source_audit": [
+          {
+            "claim_index": 1,
+            "issues": []
+          }
+        ]
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 13485.5,
+      "criterion_met": false,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S08",
+      "category": "comparison",
+      "contract_enabled": true,
+      "claims": [
+        {
+          "text": "通知甲和通知乙的生效日期是一致的，都是6月1日。",
+          "evidence_ids": [
+            "S08-c1",
+            "S08-c2"
+          ],
+          "quotes": [
+            "发布日期为5月20日，生效日期为6月1日。",
+            "发布日期为5月25日，生效日期为6月1日。"
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 734,
+        "completion_tokens": 61,
+        "model_duration_ms": 12733.8,
+        "model_load_ms": 54.7,
+        "prompt_eval_ms": 4146.9,
+        "completion_eval_ms": 8528.5,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "两份通知的生效日期是否一致？注意不要比较发布日期。"
+        ],
+        "answer_contract": {
+          "comparison_target": "生效日期",
+          "comparison_target_extracted": true,
+          "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+          "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+        },
+        "source_audit": [
+          {
+            "claim_index": 1,
+            "issues": []
+          }
+        ]
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 12761.7,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S08",
+      "category": "comparison",
+      "contract_enabled": false,
+      "claims": [
+        {
+          "text": "两份通知的生效日期是一致的，均为6月1日。",
+          "evidence_ids": [
+            "S08-c1",
+            "S08-c2"
+          ],
+          "quotes": [
+            "发布日期为5月20日，生效日期为6月1日。",
+            "发布日期为5月25日，生效日期为6月1日。"
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 487,
+        "completion_tokens": 59,
+        "model_duration_ms": 11316.3,
+        "model_load_ms": 55.7,
+        "prompt_eval_ms": 2908.5,
+        "completion_eval_ms": 8349.2,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "两份通知的生效日期是否一致？注意不要比较发布日期。"
+        ],
+        "answer_contract": null,
+        "source_audit": []
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 11345.4,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S09",
+      "category": "comparison",
+      "contract_enabled": false,
+      "claims": [
+        {
+          "text": "The fantasy football strategy for replacing Alex with Riley is consistent between the two reports.",
+          "evidence_ids": [
+            "S09-c1",
+            "S09-c2"
+          ],
+          "quotes": [
+            "If Alex is absent, start Riley as the replacement. Alex is currently unlikely to play.",
+            "If Alex is absent, start Riley as the replacement. Alex is now more likely to play."
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 482,
+        "completion_tokens": 59,
+        "model_duration_ms": 11111.9,
+        "model_load_ms": 85.7,
+        "prompt_eval_ms": 3340.5,
+        "completion_eval_ms": 7681.2,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "Was fantasy football strategy consistent between the reports when Alex was absent"
+        ],
+        "answer_contract": null,
+        "source_audit": []
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 11148.4,
+      "criterion_met": true,
+      "scope_guard_refusal": false
+    },
+    {
+      "id": "S09",
+      "category": "comparison",
+      "contract_enabled": true,
+      "claims": [
+        {
+          "text": "If Alex is absent, start Riley as the replacement. Alex is currently unlikely to play.",
+          "evidence_ids": [
+            "S09-c1"
+          ],
+          "quotes": [
+            "If Alex is absent, start Riley as the replacement. Alex is currently unlikely to play."
+          ]
+        },
+        {
+          "text": "If Alex is absent, start Riley as the replacement. Alex is now more likely to play.",
+          "evidence_ids": [
+            "S09-c2"
+          ],
+          "quotes": [
+            "If Alex is absent, start Riley as the replacement. Alex is now more likely to play."
+          ]
+        }
+      ],
+      "status": "answered",
+      "usage": {
+        "prompt_tokens": 731,
+        "completion_tokens": 96,
+        "model_duration_ms": 19282.7,
+        "model_load_ms": 53.5,
+        "prompt_eval_ms": 6242.1,
+        "completion_eval_ms": 12983.1,
+        "api_cost": 0,
+        "currency": "AUD",
+        "execution": "local_ollama",
+        "answer_status": "answered",
+        "conflict_check": null,
+        "acceptance_items": [
+          "Was fantasy football strategy consistent between the reports when Alex was absent"
+        ],
+        "answer_contract": {
+          "comparison_target": "fantasy football strategy",
+          "comparison_target_extracted": true,
+          "attribution": "Preserve who asserted a statement and whether it is an allegation/opinion; a publication reporting a speaker is not independently endorsing them.",
+          "absence_scope": "Only retrieved excerpts are available. Missing a statement here cannot establish absence from a whole document. Explicit source denials remain ordinary cited facts."
+        },
+        "source_audit": [
+          {
+            "claim_index": 1,
+            "issues": []
+          },
+          {
+            "claim_index": 2,
+            "issues": []
+          }
+        ]
+      },
+      "draft_audit": [
+        {
+          "claim_index": 1,
+          "issues": []
+        },
+        {
+          "claim_index": 2,
+          "issues": []
+        }
+      ],
+      "error": null,
+      "latency_ms": 19309.5,
+      "criterion_met": false,
+      "scope_guard_refusal": false
+    }
+  ],
+  "summary": {
+    "false": {
+      "criterion_met": 6,
+      "total": 9,
+      "scope_guard_refusals": 0,
+      "p50_ms": 8942.8,
+      "by_category": {
+        "absence": {
+          "met": 2,
+          "total": 2
+        },
+        "attribution": {
+          "met": 1,
+          "total": 3
+        },
+        "comparison": {
+          "met": 2,
+          "total": 3
+        },
+        "explicit_denial": {
+          "met": 1,
+          "total": 1
+        }
+      }
+    },
+    "true": {
+      "criterion_met": 6,
+      "total": 9,
+      "scope_guard_refusals": 0,
+      "p50_ms": 12761.7,
+      "by_category": {
+        "absence": {
+          "met": 2,
+          "total": 2
+        },
+        "attribution": {
+          "met": 2,
+          "total": 3
+        },
+        "comparison": {
+          "met": 1,
+          "total": 3
+        },
+        "explicit_denial": {
+          "met": 1,
+          "total": 1
+        }
+      }
+    }
+  }
+}

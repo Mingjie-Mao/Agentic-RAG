@@ -1,0 +1,297 @@
+{
+  "protocol": "literal-answer-composition-validation-result-v1",
+  "cases_sha256": "9874017f3c33d37f927a3fcc3a832092d54900a8321f012727a9ae8aca437cc2",
+  "registered_gates": {
+    "all_registered_cases_correct": true,
+    "transport_or_format_failures_max": 0
+  },
+  "model": "qwen3.5:27b",
+  "model_digest": "7653528ba5cba4dd8e19da24aaddc7f4d0b5ecd93571c0825dfd4137958ec06e",
+  "implementation_sha256": "2c32de226b097cc9c48549933a264049077980ebb546631d140044b068349d49",
+  "rows": [
+    {
+      "id": "composition-v3-final-00",
+      "label": "supported",
+      "passed": true,
+      "seconds": 57.884,
+      "budget": {
+        "deadline": 1791097886.647084,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 452,
+            "completion_tokens": 25,
+            "wall_ms": 57881.6
+          }
+        },
+        "judge_tokens_reserved": 477,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 57881.6,
+            "prompt_tokens": 452,
+            "completion_tokens": 25,
+            "server_ms": 57854.7,
+            "load_ms": 18912.4,
+            "prompt_eval_ms": 27162.1,
+            "completion_eval_ms": 11688.8
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Analyst North states explicitly that personal profit was not the reason for the failure."
+            ],
+            "reason": "Exact authorized quoted statement; relation evaluated by model, not independent.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Analyst South attributes the failure to a motive of personal profit."
+            ],
+            "reason": "Exact authorized quoted statement; relation evaluated by model, not independent.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "NO",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ],
+        "selected_claims": [
+          {
+            "text": "Analyst North states explicitly that personal profit was not the reason for the failure.",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              "Analyst North states explicitly that personal profit was not the reason for the failure."
+            ]
+          },
+          {
+            "text": "Analyst South attributes the failure to a motive of personal profit.",
+            "evidence_ids": [
+              "E2"
+            ],
+            "quotes": [
+              "Analyst South attributes the failure to a motive of personal profit."
+            ]
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 452,
+        "completion_tokens": 25,
+        "model": "qwen3.5:27b",
+        "independent": false,
+        "scope": "all_authorized_context_plus_bound_model_composition"
+      }
+    },
+    {
+      "id": "composition-v3-final-01",
+      "label": "supported",
+      "passed": true,
+      "seconds": 42.448,
+      "budget": {
+        "deadline": 1791097944.532803,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 432,
+            "completion_tokens": 25,
+            "wall_ms": 42445.1
+          }
+        },
+        "judge_tokens_reserved": 457,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 42445.1,
+            "prompt_tokens": 432,
+            "completion_tokens": 25,
+            "server_ms": 42412.2,
+            "load_ms": 11.7,
+            "prompt_eval_ms": 27914.7,
+            "completion_eval_ms": 14486.9
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Yara gave permission to record her presentation."
+            ],
+            "reason": "Exact authorized quoted statement; relation evaluated by model, not independent.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Jonas explicitly declined recording."
+            ],
+            "reason": "Exact authorized quoted statement; relation evaluated by model, not independent.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "NO",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ],
+        "selected_claims": [
+          {
+            "text": "Yara gave permission to record her presentation.",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              "Yara gave permission to record her presentation."
+            ]
+          },
+          {
+            "text": "Jonas explicitly declined recording.",
+            "evidence_ids": [
+              "E2"
+            ],
+            "quotes": [
+              "Jonas explicitly declined recording."
+            ]
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 432,
+        "completion_tokens": 25,
+        "model": "qwen3.5:27b",
+        "independent": false,
+        "scope": "all_authorized_context_plus_bound_model_composition"
+      }
+    },
+    {
+      "id": "composition-v3-final-02",
+      "label": "supported",
+      "passed": true,
+      "seconds": 37.894,
+      "budget": {
+        "deadline": 1791097986.996306,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 430,
+            "completion_tokens": 20,
+            "wall_ms": 37887.1
+          }
+        },
+        "judge_tokens_reserved": 450,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 37887.1,
+            "prompt_tokens": 430,
+            "completion_tokens": 20,
+            "server_ms": 37835.7,
+            "load_ms": 4.4,
+            "prompt_eval_ms": 27130.5,
+            "completion_eval_ms": 10681.4
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Office West approved the extension."
+            ],
+            "reason": "Exact authorized quoted statement; relation evaluated by model, not independent.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "yes",
+        "conclusion": "YES",
+        "conclusion_claim_indices": [
+          1
+        ],
+        "selected_claims": [
+          {
+            "text": "Office West approved the extension.",
+            "evidence_ids": [
+              "E2"
+            ],
+            "quotes": [
+              "Office West approved the extension."
+            ]
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 430,
+        "completion_tokens": 20,
+        "model": "qwen3.5:27b",
+        "independent": false,
+        "scope": "all_authorized_context_plus_bound_model_composition"
+      }
+    }
+  ],
+  "completed": 3,
+  "independent": false,
+  "status": "stopped_resource_cost",
+  "not_run_cases": 13,
+  "gate_passed": null,
+  "reason": "Larger local model uses 16.8GB resident VRAM and early simple cases take 42-58s. Validate corrected all-context path on smaller model before deploying a costly candidate.",
+  "interrupted_cases": 1,
+  "never_started_cases": 12
+}

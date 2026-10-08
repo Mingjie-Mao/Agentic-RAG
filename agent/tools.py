@@ -5,7 +5,7 @@ from dataclasses import asdict, dataclass
 
 from fastapi import HTTPException
 from pydantic import BaseModel, ConfigDict, Field
-from sqlalchemy import select
+from sqlalchemy import func, select
 
 from app.clients import Models, Search
 from app.config import settings
@@ -148,7 +148,8 @@ class KnowledgeTools:
             {"query": args.query, "matches": rows, "candidate_count": len(found.candidates)},
             refs,
             {"scope": "active_versions", "checked_now": True},
-            usage={"embed_ms": round(found.embed_ms, 1), "retrieval_ms": round(found.retrieval_ms, 1)},
+            usage={"embed_ms": round(found.embed_ms, 1), "retrieval_ms": round(found.retrieval_ms, 1),
+                   **({"missing_constraints": found.missing_constraints} if found.missing_constraints else {})},
         )
 
     def retrieve_evidence(self, args: EvidenceArgs):
@@ -211,12 +212,21 @@ class KnowledgeTools:
             .order_by(DocumentVersion.created_at.desc())
             .limit(args.limit)
         ).all()
+        from app.temporal import effective_interval
+        intervals = {}
+        for version in versions:
+            chunks = self.db.scalars(select(Chunk).where(
+                Chunk.version_id == version.id).order_by(Chunk.ordinal)).all()
+            text = '\n'.join(require_chunk(self.db, self.user, chunk.id, active_only=False)[0].text
+                             for chunk in chunks)
+            intervals[version.id] = effective_interval(text)
         return ToolResult(
             "ok",
             {
                 "document_id": document.id,
                 "title": document.title,
                 "active_version_id": document.active_version_id,
+                "total_version_count": self.db.scalar(select(func.count()).select_from(DocumentVersion).where(DocumentVersion.document_id == document.id)),
                 "versions": [
                     {
                         "version_id": row.id,
@@ -225,6 +235,7 @@ class KnowledgeTools:
                         "status": row.status,
                         "created_at": row.created_at.isoformat(),
                         "is_active": row.id == document.active_version_id,
+                        "effective_interval": intervals[row.id],
                     }
                     for row in versions
                 ],

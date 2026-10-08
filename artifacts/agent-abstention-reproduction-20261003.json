@@ -1,0 +1,50 @@
+{
+  "scope": "Dev U01 generation replay only, not a formal benchmark",
+  "question": "兰亭云 Java SDK 默认失败后重试几次？",
+  "model": "qwen2.5:7b-instruct",
+  "method_pairs": {
+    "dynamic": {
+      "only_current_title_suffix_changed": true,
+      "before_status": "insufficient_evidence",
+      "after_status": "answered",
+      "before_wire": "{\n  \"status\": \"insufficient_evidence\",\n  \"claims\": []\n}\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "after_claims": [
+        {
+          "text": "Java SDK 默认请求超时 6 秒，失败后默认重试 2 次。",
+          "evidence_ids": [
+            "17e16650-4b23-5677-aeb2-0a5196223c0d"
+          ],
+          "quotes": [
+            "Java SDK 默认请求超时 6 秒，失败后默认重试 2 次。"
+          ]
+        }
+      ],
+      "before_request_sha256": "5cd0e570b3ca8c8be8362b2fdb4fccbfc40e4d8809a21a581068dad136830dde",
+      "after_request_sha256": "82acd76c12bf517b3e16c7c018e1e529af12f579e6b1eecfef0c8f8708453fe1",
+      "before_prompt_tokens": 966,
+      "after_prompt_tokens": 950
+    },
+    "hybrid": {
+      "only_current_title_suffix_changed": true,
+      "before_status": "insufficient_evidence",
+      "after_status": "answered",
+      "before_wire": "{\n  \"status\": \"insufficient_evidence\",\n  \"claims\": []\n}\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "after_claims": [
+        {
+          "text": "Java SDK 默认请求超时 6 秒，失败后默认重试 2 次。",
+          "evidence_ids": [
+            "17e16650-4b23-5677-aeb2-0a5196223c0d"
+          ],
+          "quotes": [
+            "Java SDK 默认请求超时 6 秒，失败后默认重试 2 次。"
+          ]
+        }
+      ],
+      "before_request_sha256": "22c30557cc8257fd5c1eb3ac1a537f538c049dbc9123f305a2cb92c5e6c4f4c7",
+      "after_request_sha256": "6f7c2a692279b33f75cd8bdf825768b75fffd2cf07089b9fe13203a79c650584",
+      "before_prompt_tokens": 763,
+      "after_prompt_tokens": 751
+    }
+  },
+  "raw_path": ".runtime/abstain-fix/reproduction.json"
+}

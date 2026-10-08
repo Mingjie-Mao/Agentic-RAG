@@ -27,6 +27,14 @@ def is_trial_user(user: User) -> bool:
     return settings().trial_mode and user.username in trial_usernames()
 
 
+def require_trial_login(username: str) -> None:
+    # Every demo account shares the published demo password, so while the trial is
+    # public only the listed visitor accounts may sign in; the same message as a wrong
+    # password avoids revealing which accounts exist.
+    if settings().trial_mode and username not in trial_usernames():
+        raise HTTPException(401, "账号或密码不正确")
+
+
 def require_trial_read_only(user: User) -> None:
     if is_trial_user(user):
         raise HTTPException(403, "访客试用为只读模式，不能修改资料或长期记忆")
@@ -74,6 +82,10 @@ def reset_trial(db, user: User) -> dict:
     """Remove visitor-created history while preserving seeded documents."""
     task_ids = list(db.scalars(select(AgentTask.id).where(AgentTask.user_id == user.id)))
     if task_ids:
+        from agent.graph_runtime import graph_checkpointer
+        with graph_checkpointer(db) as saver:
+            for task_id in task_ids:
+                saver.delete_thread(f"{user.tenant_id}:{user.id}:{task_id}")
         db.execute(delete(AgentEvent).where(AgentEvent.task_id.in_(task_ids)))
         db.execute(delete(ToolExecution).where(ToolExecution.task_id.in_(task_ids)))
     deleted_tasks = db.query(AgentTask).filter(AgentTask.user_id == user.id).delete(synchronize_session=False)

@@ -1,0 +1,367 @@
+{
+  "scope": "Previously used development questions, retrieval only; no unseen answer-accuracy claim.",
+  "manifest_sha256": "ece58ccb62e42a5eb05eaf1e324826f326442cb04c7ef6bb7cca5319d1cabcc2",
+  "retrieval_code_sha256": "8e26a662024882c4064315bc28bd7be902e258300511cb32eab32e9daae4dfcd",
+  "top_k": 6,
+  "summary": {
+    "baseline": {
+      "tasks": 10,
+      "all_gold_documents": 5,
+      "gold_documents_found": 18,
+      "gold_documents": 23,
+      "gold_facts_delivered_proxy": 14,
+      "gold_facts": 25,
+      "p50_retrieval_ms": 463.3
+    },
+    "source_clause": {
+      "tasks": 10,
+      "all_gold_documents": 6,
+      "gold_documents_found": 19,
+      "gold_documents": 23,
+      "gold_facts_delivered_proxy": 17,
+      "gold_facts": 25,
+      "p50_retrieval_ms": 819.1
+    },
+    "source_focus": {
+      "tasks": 10,
+      "all_gold_documents": 8,
+      "gold_documents_found": 21,
+      "gold_documents": 23,
+      "gold_facts_delivered_proxy": 20,
+      "gold_facts": 25,
+      "p50_retrieval_ms": 801.6
+    }
+  },
+  "rows": [
+    {
+      "id": "SF-39afc9e691a3",
+      "type": "comparison_query",
+      "mode": "baseline",
+      "all_gold_documents": false,
+      "gold_documents_found": 1,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 1,
+      "gold_fact_count": 2,
+      "retrieval_ms": 673.5
+    },
+    {
+      "id": "SF-39afc9e691a3",
+      "type": "comparison_query",
+      "mode": "source_clause",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 848.9
+    },
+    {
+      "id": "SF-39afc9e691a3",
+      "type": "comparison_query",
+      "mode": "source_focus",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 804.1
+    },
+    {
+      "id": "SF-39d3acb4b2ff",
+      "type": "comparison_query",
+      "mode": "baseline",
+      "all_gold_documents": false,
+      "gold_documents_found": 1,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 1,
+      "gold_fact_count": 2,
+      "retrieval_ms": 480.9
+    },
+    {
+      "id": "SF-39d3acb4b2ff",
+      "type": "comparison_query",
+      "mode": "source_clause",
+      "all_gold_documents": false,
+      "gold_documents_found": 1,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 1,
+      "gold_fact_count": 2,
+      "retrieval_ms": 846.8
+    },
+    {
+      "id": "SF-39d3acb4b2ff",
+      "type": "comparison_query",
+      "mode": "source_focus",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 893.2
+    },
+    {
+      "id": "SF-37dd7b5497ad",
+      "type": "comparison_query",
+      "mode": "baseline",
+      "all_gold_documents": false,
+      "gold_documents_found": 2,
+      "gold_document_count": 3,
+      "gold_facts_delivered_proxy": 1,
+      "gold_fact_count": 3,
+      "retrieval_ms": 469.8
+    },
+    {
+      "id": "SF-37dd7b5497ad",
+      "type": "comparison_query",
+      "mode": "source_clause",
+      "all_gold_documents": false,
+      "gold_documents_found": 2,
+      "gold_document_count": 3,
+      "gold_facts_delivered_proxy": 1,
+      "gold_fact_count": 3,
+      "retrieval_ms": 825.1
+    },
+    {
+      "id": "SF-37dd7b5497ad",
+      "type": "comparison_query",
+      "mode": "source_focus",
+      "all_gold_documents": false,
+      "gold_documents_found": 2,
+      "gold_document_count": 3,
+      "gold_facts_delivered_proxy": 1,
+      "gold_fact_count": 3,
+      "retrieval_ms": 839.2
+    },
+    {
+      "id": "SF-393ce0039418",
+      "type": "comparison_query",
+      "mode": "baseline",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 0,
+      "gold_fact_count": 2,
+      "retrieval_ms": 451.9
+    },
+    {
+      "id": "SF-393ce0039418",
+      "type": "comparison_query",
+      "mode": "source_clause",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 0,
+      "gold_fact_count": 2,
+      "retrieval_ms": 869.4
+    },
+    {
+      "id": "SF-393ce0039418",
+      "type": "comparison_query",
+      "mode": "source_focus",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 1,
+      "gold_fact_count": 2,
+      "retrieval_ms": 757.3
+    },
+    {
+      "id": "SF-48df94c7ab34",
+      "type": "temporal_query",
+      "mode": "baseline",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 480.3
+    },
+    {
+      "id": "SF-48df94c7ab34",
+      "type": "temporal_query",
+      "mode": "source_clause",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 754.8
+    },
+    {
+      "id": "SF-48df94c7ab34",
+      "type": "temporal_query",
+      "mode": "source_focus",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 781.7
+    },
+    {
+      "id": "SF-498cac959ebd",
+      "type": "temporal_query",
+      "mode": "baseline",
+      "all_gold_documents": false,
+      "gold_documents_found": 2,
+      "gold_document_count": 3,
+      "gold_facts_delivered_proxy": 1,
+      "gold_fact_count": 3,
+      "retrieval_ms": 444.9
+    },
+    {
+      "id": "SF-498cac959ebd",
+      "type": "temporal_query",
+      "mode": "source_clause",
+      "all_gold_documents": false,
+      "gold_documents_found": 2,
+      "gold_document_count": 3,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 3,
+      "retrieval_ms": 899.2
+    },
+    {
+      "id": "SF-498cac959ebd",
+      "type": "temporal_query",
+      "mode": "source_focus",
+      "all_gold_documents": false,
+      "gold_documents_found": 2,
+      "gold_document_count": 3,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 3,
+      "retrieval_ms": 806.3
+    },
+    {
+      "id": "SF-5047efb9a8b3",
+      "type": "temporal_query",
+      "mode": "baseline",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 1,
+      "gold_fact_count": 2,
+      "retrieval_ms": 467.7
+    },
+    {
+      "id": "SF-5047efb9a8b3",
+      "type": "temporal_query",
+      "mode": "source_clause",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 771.7
+    },
+    {
+      "id": "SF-5047efb9a8b3",
+      "type": "temporal_query",
+      "mode": "source_focus",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 799.1
+    },
+    {
+      "id": "SF-50978f63027a",
+      "type": "temporal_query",
+      "mode": "baseline",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 458.9
+    },
+    {
+      "id": "SF-50978f63027a",
+      "type": "temporal_query",
+      "mode": "source_clause",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 813.1
+    },
+    {
+      "id": "SF-50978f63027a",
+      "type": "temporal_query",
+      "mode": "source_focus",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 2,
+      "retrieval_ms": 788.8
+    },
+    {
+      "id": "SF-3cd6916c99e0",
+      "type": "inference_query",
+      "mode": "baseline",
+      "all_gold_documents": false,
+      "gold_documents_found": 2,
+      "gold_document_count": 3,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 4,
+      "retrieval_ms": 453.7
+    },
+    {
+      "id": "SF-3cd6916c99e0",
+      "type": "inference_query",
+      "mode": "source_clause",
+      "all_gold_documents": false,
+      "gold_documents_found": 2,
+      "gold_document_count": 3,
+      "gold_facts_delivered_proxy": 2,
+      "gold_fact_count": 4,
+      "retrieval_ms": 802.0
+    },
+    {
+      "id": "SF-3cd6916c99e0",
+      "type": "inference_query",
+      "mode": "source_focus",
+      "all_gold_documents": true,
+      "gold_documents_found": 3,
+      "gold_document_count": 3,
+      "gold_facts_delivered_proxy": 3,
+      "gold_fact_count": 4,
+      "retrieval_ms": 805.4
+    },
+    {
+      "id": "SF-3d04a03cb7b3",
+      "type": "inference_query",
+      "mode": "baseline",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 3,
+      "gold_fact_count": 3,
+      "retrieval_ms": 396.5
+    },
+    {
+      "id": "SF-3d04a03cb7b3",
+      "type": "inference_query",
+      "mode": "source_clause",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 3,
+      "gold_fact_count": 3,
+      "retrieval_ms": 592.6
+    },
+    {
+      "id": "SF-3d04a03cb7b3",
+      "type": "inference_query",
+      "mode": "source_focus",
+      "all_gold_documents": true,
+      "gold_documents_found": 2,
+      "gold_document_count": 2,
+      "gold_facts_delivered_proxy": 3,
+      "gold_fact_count": 3,
+      "retrieval_ms": 554.4
+    }
+  ]
+}

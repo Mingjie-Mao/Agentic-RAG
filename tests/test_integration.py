@@ -229,3 +229,68 @@ def test_E10_expired_lease_recovery_and_exhaustion(monkeypatch):
             db.delete(db.get(Document, doc_id))
             db.commit()
         (settings().storage_dir / storage_key).unlink(missing_ok=True)
+
+
+@pytest.mark.skipif(os.getenv('RAG_P0_P2_WORKER_CANDIDATES') != '1',
+                    reason='requires worker with P0-P2 candidates explicitly enabled')
+def test_async_candidate_comparison_and_revocation_hide_full_observable_payload(monkeypatch):
+    """Real ingestion/model/worker/API plus revocation of the added event dependencies."""
+    import json
+    import uuid
+
+    for flag in ('passage_window_enabled', 'focused_generation_enabled', 'adaptive_routing_enabled'):
+        monkeypatch.setattr(settings(), flag, True)
+    marker = 'Cedar' + uuid.uuid4().hex[:10]
+    docs = []
+    with TestClient(app, headers=HEADERS) as owner, TestClient(app, headers=HEADERS) as reader:
+        for client, username in ((owner, 'admin@xingqiao.demo'), (reader, 'engineer@xingqiao.demo')):
+            assert client.post('/api/auth/login', json={
+                'username': username, 'password': settings().demo_password}).status_code == 200
+        try:
+            for index, hours in enumerate(('09:00', '10:00')):
+                response = owner.post('/api/documents', files={'file': (
+                    f'candidate-{index}.md',
+                    f'{marker} release opens June 4, 2026 at {hours}.'.encode(), 'text/markdown')},
+                    data={'title': f'{marker} release notice {index}', 'groups': '["engineering"]',
+                          'tenant_public': 'false'})
+                assert response.status_code == 202, response.text
+                doc_id = response.json()['id']
+                docs.append(doc_id)
+                deadline = time.monotonic() + 120
+                while time.monotonic() < deadline:
+                    state = owner.get(f'/api/documents/{doc_id}').json()
+                    if state['status'] in {'ready', 'failed'}:
+                        break
+                    time.sleep(0.25)
+                assert state['status'] == 'ready', state
+            created = reader.post('/api/agent/tasks', json={
+                'goal': f'Are the opening dates of {marker} release consistent across these two notices, despite different hours?',
+                'mode': 'auto', 'max_steps': 6})
+            assert created.status_code == 202, created.text
+            task_id = created.json()['id']
+            deadline = time.monotonic() + 240
+            while time.monotonic() < deadline:
+                task = reader.get(f'/api/agent/tasks/{task_id}').json()
+                if task['status'] in {'completed', 'failed', 'paused'}:
+                    break
+                time.sleep(0.5)
+            assert task['status'] == 'completed', task
+            assert task['result']['status'] == 'answered', task['result']
+            assert task['result']['usage']['deterministic_date_comparison']['value'] == 'yes'
+            assert {row['document_id'] for row in task['result']['citations']} == set(docs)
+            refs = {ref for event in task['events'] for ref in event['evidence_refs']}
+            assert refs and any(event['event_type'] == 'generation_context' for event in task['events'])
+            assert owner.patch(f'/api/documents/{docs[0]}/access', json={
+                'groups': ['support'], 'tenant_public': False}).status_code == 200
+            revoked = reader.get(f'/api/agent/tasks/{task_id}').json()
+            assert revoked['result']['status'] == 'access_changed'
+            assert not revoked['result']['claims'] and not revoked['result']['citations']
+            encoded = json.dumps(revoked, ensure_ascii=False)
+            assert 'June 4' not in encoded and '09:00' not in encoded
+            assert all(json.dumps(ref) not in encoded for ref in refs)
+            for event in revoked['events']:
+                assert not event['evidence_refs']
+                assert set(event['payload']) <= {'status', 'error_code', 'evidence_count', 'action'}
+        finally:
+            for doc_id in docs:
+                owner.delete(f'/api/documents/{doc_id}')

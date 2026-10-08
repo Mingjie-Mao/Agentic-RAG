@@ -1,0 +1,46 @@
+{
+  "scope": "Synthetic source-proof component, not Dev/Core benchmark",
+  "question": "Are opening hours consistent across Paper Alpha and Paper Beta?",
+  "groups": [
+    {
+      "key": "g1",
+      "source": "Paper Alpha",
+      "claim_indices": [
+        1
+      ]
+    },
+    {
+      "key": "g2",
+      "source": "Paper Beta",
+      "claim_indices": [
+        2
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "equal",
+      "expected": "yes",
+      "texts": [
+        "Paper Alpha: weekday opening hours are 08:00–18:00.",
+        "Paper Beta: weekday opening hours are 08:00–18:00."
+      ]
+    },
+    {
+      "id": "different",
+      "expected": "no",
+      "texts": [
+        "Paper Alpha: weekday opening hours are 08:00–18:00.",
+        "Paper Beta: weekday opening hours are 09:00–17:00."
+      ]
+    },
+    {
+      "id": "unknown",
+      "expected": "unclear",
+      "texts": [
+        "Paper Alpha reports a venue refurbishment without stating its opening hours.",
+        "Paper Beta announces a new building without stating its opening hours."
+      ]
+    }
+  ]
+}

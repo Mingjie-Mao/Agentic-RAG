@@ -1,0 +1,318 @@
+{
+  "tenant": {
+    "id": "bp-security",
+    "name": "Benchmark Security"
+  },
+  "tenants": [
+    {
+      "id": "bp-foreign",
+      "name": "Benchmark Foreign Tenant"
+    }
+  ],
+  "owner": "bp-security-admin",
+  "users": [
+    {
+      "id": "bp-security-eng",
+      "username": "bp-security-eng",
+      "tenant_id": "bp-security",
+      "role": "member",
+      "groups": [
+        "engineering"
+      ]
+    },
+    {
+      "id": "bp-security-admin",
+      "username": "bp-security-admin",
+      "tenant_id": "bp-security",
+      "role": "admin",
+      "groups": [
+        "engineering",
+        "support"
+      ]
+    },
+    {
+      "id": "bp-foreign-admin",
+      "username": "bp-foreign-admin",
+      "tenant_id": "bp-foreign",
+      "role": "admin",
+      "groups": [
+        "engineering",
+        "support"
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "document_id": "bp-group_denial-1",
+      "title": "bp-group_denial-1 审批登记",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-group_denial-1-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-group_denial-2",
+      "title": "bp-group_denial-2 审批登记",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-group_denial-2-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-group_denial-3",
+      "title": "bp-group_denial-3 审批登记",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-group_denial-3-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-group_denial-4",
+      "title": "bp-group_denial-4 审批登记",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-group_denial-4-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-tenant_isolation-1",
+      "title": "bp-tenant_isolation-1 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-tenant_isolation-1-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-foreign",
+      "owner": "bp-foreign-admin"
+    },
+    {
+      "document_id": "bp-tenant_isolation-2",
+      "title": "bp-tenant_isolation-2 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-tenant_isolation-2-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-foreign",
+      "owner": "bp-foreign-admin"
+    },
+    {
+      "document_id": "bp-tenant_isolation-3",
+      "title": "bp-tenant_isolation-3 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-tenant_isolation-3-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-foreign",
+      "owner": "bp-foreign-admin"
+    },
+    {
+      "document_id": "bp-tenant_isolation-4",
+      "title": "bp-tenant_isolation-4 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-tenant_isolation-4-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-foreign",
+      "owner": "bp-foreign-admin"
+    },
+    {
+      "document_id": "bp-revocation-1",
+      "title": "bp-revocation-1 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-revocation-1-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-revocation-2",
+      "title": "bp-revocation-2 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-revocation-2-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-revocation-3",
+      "title": "bp-revocation-3 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-revocation-3-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-revocation-4",
+      "title": "bp-revocation-4 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-revocation-4-v1.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-version_scope-1",
+      "title": "bp-version_scope-1 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-version_scope-1-v1.md",
+          "effective_from": "2025-01-01T00:00:00Z"
+        },
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-version_scope-1-v2.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-version_scope-2",
+      "title": "bp-version_scope-2 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-version_scope-2-v1.md",
+          "effective_from": "2025-01-01T00:00:00Z"
+        },
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-version_scope-2-v2.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-version_scope-3",
+      "title": "bp-version_scope-3 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-version_scope-3-v1.md",
+          "effective_from": "2025-01-01T00:00:00Z"
+        },
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-version_scope-3-v2.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    },
+    {
+      "document_id": "bp-version_scope-4",
+      "title": "bp-version_scope-4 审批登记",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-version_scope-4-v1.md",
+          "effective_from": "2025-01-01T00:00:00Z"
+        },
+        {
+          "path": "benchmarks/enterprise_rag/v1/security/documents/bp-version_scope-4-v2.md",
+          "effective_from": "2026-09-01T00:00:00Z"
+        }
+      ],
+      "tenant_id": "bp-security",
+      "owner": "bp-security-admin"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "status": "stopped_after_detected_dev_regression",
+  "completed": 38,
+  "registered_total": 188,
+  "unrun": 150,
+  "full_p95_ms": null,
+  "full_accuracy": null,
+  "reason": "U07 RAG omitted callback retries and Workflow omitted idempotency header despite retrieval containing both required facts; original-source selection candidate not accepted. Preserve immutable freeze and all actual completed rows.",
+  "enabled": false,
+  "replacement_run": "dev-five-repairs-20261004-v2"
+}

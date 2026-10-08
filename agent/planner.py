@@ -66,6 +66,40 @@ def _clean(text: str) -> str:
     return text.strip(_STRIP)
 
 
+_PREAMBLE = re.compile(r"^(?P<pre>[^：:？?。]{2,60})[：:](?P<rest>.+)$")
+_PAIR = re.compile(r"(?:对照|对比|比较)?(?P<a>.+?)(?:和|与|及)(?P<b>.+)$")
+_RESPECTIVELY = re.compile(r"^(?P<members>.+?)分别(?P<tail>.*)$")
+
+
+def _resolve_preamble(goal: str) -> str:
+    """'请对照 X 和 Y：前者的 A、后者的 B 分别是多少' — the part before the colon names
+    what is compared and asks nothing itself. It is dropped from the subgoals, and the
+    references 前者 / 后者 are replaced by what they refer to."""
+    match = _PREAMBLE.match(goal)
+    if not match or any(word in match["pre"] for word in _INTERROGATIVE):
+        return goal
+    if not any(marker in match["rest"] for marker in ("前者", "后者", "、", "分别")):
+        return goal  # a single ask after a topic label keeps its label
+    rest = match["rest"]
+    pair = _PAIR.match(_LEADING.sub("", match["pre"].strip()).removeprefix("请").strip())
+    if pair and ("前者" in rest or "后者" in rest):
+        rest = rest.replace("前者", pair["a"].strip(), 1).replace("后者", pair["b"].strip(), 1)
+    return rest
+
+
+def _split_respectively(item: str) -> list[str]:
+    """'A 和 B 分别是多少' asks two things; only an explicit 分别 splits on 和/及/与,
+    so 'the clocks of caller and server' stays one ask."""
+    match = _RESPECTIVELY.match(item)
+    if not match or "、" in match["members"]:
+        return [item]
+    members = [m.strip() for m in re.split(r"和|及|与", match["members"]) if m.strip()]
+    if len(members) < 2:
+        return [item]
+    tail = match["tail"].strip()
+    return [f"{member}{tail}" for member in members]
+
+
 def subgoals(goal: str) -> list[str]:
     """Split a compound goal into checkable subgoals, newest scaffolding removed.
 
@@ -74,6 +108,7 @@ def subgoals(goal: str) -> list[str]:
     """
     if not _CJK.search(goal or ""):
         return english_subquestions(goal)
+    goal = _resolve_preamble(goal or "")
     fragments = []
     for raw in _CLAUSE.split(goal or ""):
         fragment = _clean(raw)
@@ -100,8 +135,10 @@ def subgoals(goal: str) -> list[str]:
         )
         if asked or enumerated:
             items.append(fragment)
+    items = [part for item in items for part in _split_respectively(item)]
     if len(items) < 2:
-        return [_clean(goal or "")]
+        whole = _split_respectively(_clean(goal or ""))
+        return whole if len(whole) > 1 else [_clean(goal or "")]
     return items[:6]
 
 
@@ -228,6 +265,59 @@ def uncovered_items(items: list[str], claims: list[dict], goal: str = "") -> lis
     return missing
 
 
+def evidence_coverage(items: list[str], evidence: list[dict], goal: str) -> dict[str, list[str]]:
+    """Lexical candidate coverage only, never a proof of semantic sufficiency."""
+    covered = {}
+    for item in items:
+        numeric_refs = None
+        from app.config import settings
+
+        if settings().answer_quality_enabled:
+            from app.task_contract import _metric, _ROW_LIMIT_SOURCE, _slot, bind_values
+
+            if _metric(item)[1] == _ROW_LIMIT_SOURCE:
+                # A row-count alarm contains the same words as a limit request,
+                # but no bound value. Keep the actual limit document in Hybrid's
+                # final evidence rather than certifying it from lexical overlap.
+                numeric_refs = {value.chunk_id for value in bind_values(_slot(item, "rows"), evidence)}
+        if numeric_refs is not None:
+            # The explicitly labelled value supplies attribute coverage. Words in
+            # a referential question ("according to that feature's rule") must not
+            # erase that binding through a second lexical-overlap threshold.
+            covered[item] = list(dict.fromkeys(
+                row["chunk_id"] for row in evidence if row["chunk_id"] in numeric_refs
+            ))
+            continue
+        wanted = _grams(_content(item))
+        refs = []
+        for row in evidence:
+            if not str(row.get("text", "")).strip():
+                continue
+            text = f"{row.get('title', '')} {row.get('text', '')}"
+            found = _grams(text)
+            if not wanted or not found or len(wanted & found) / len(wanted) < 0.25:
+                continue
+            novel_tokens = _tokens(text) - _tokens(goal)
+            if not novel_tokens and len(found - _grams(goal)) / len(found) < 0.2:
+                continue
+            refs.append(row["chunk_id"])
+        covered[item] = list(dict.fromkeys(refs))
+    return covered
+
+
+def evidence_gaps(goal, evidence):
+    """Coverage directs bounded supplementation; it never certifies an answer."""
+    from app.task_contract import _slot, bind_values
+    items = subgoals(goal)
+    coverage = evidence_coverage(items, evidence, goal)
+    missing = []
+    for i, item in enumerate(items):
+        slot = _slot(item, str(i))
+        if not coverage[item] or (slot.value_type == 'number' and not bind_values(slot, evidence)):
+            missing.append(item)
+    return missing
+
+
 _ANAPHORA = ("该", "此", "其", "它", "上述", "前述", "这")
 _AND = re.compile(r"[和及与](?=[^，,]{2,})")
 
@@ -265,6 +355,13 @@ _VERSION_LABEL = re.compile(r"v\s*\d+|第\s*\d+\s*版")
 _CHAIN_MARKERS = ("按时间", "历史上", "各版本", "全部版本", "所有版本", "演变", "依次")
 
 
+def version_points(goal: str) -> int:
+    """Count explicitly requested dates or version labels, not inferred history."""
+    return (len(set(_MONTH_DAY.findall(goal or "")))
+            or len(set(re.findall(r"(?<!\d)\d{4}-\d{2}-\d{2}(?!\d)", goal or "")))
+            or len(set(_VERSION_LABEL.findall(goal or ""))))
+
+
 def version_depth(goal: str) -> int:
     """How many adjacent version pairs a temporal question needs.
 
@@ -272,9 +369,11 @@ def version_depth(goal: str) -> int:
     history rather than for one change gets at least two, so the oldest version is
     never silently dropped.
     """
-    points = len(set(_MONTH_DAY.findall(goal or ""))) or len(set(_VERSION_LABEL.findall(goal or "")))
+    points = version_points(goal)
     depth = max(points - 1, 1)
-    if any(marker in (goal or "") for marker in _CHAIN_MARKERS):
+    if any(marker in (goal or "") for marker in _CHAIN_MARKERS) or re.search(
+        r"历史版本|\b(?:all versions|history|historical versions)\b", goal or "", re.IGNORECASE
+    ):
         depth = max(depth, 2)
     return min(depth, 3)
 
@@ -294,8 +393,10 @@ def compact_observation(tool: str, summary: dict, data: dict, handles: list[str]
     dynamic prompt grow without bound.
     """
     matches = [
-        {"title": row.get("title"), "chunk_id": row.get("chunk_id"), "snippet": str(row.get("snippet", ""))[:120]}
-        for row in (data.get("matches") or [])[:3]
+        {"title": row.get("title"), "document_id": row.get("document_id"),
+         "version_id": row.get("version_id"), "chunk_id": row.get("chunk_id"),
+         "snippet": str(row.get("snippet", ""))[:120]}
+        for row in (data.get("matches") or data.get('evidence') or [])[:3]
     ]
     observation = {
         "tool": tool,
@@ -307,6 +408,9 @@ def compact_observation(tool: str, summary: dict, data: dict, handles: list[str]
     }
     if matches:
         observation["matches"] = matches
+    for key in ('document_id', 'version_id'):
+        if data.get(key):
+            observation[key] = data[key]
     for key in ("versions", "diff_lines", "checks"):
         if data.get(key):
             observation[key] = json_trim(data[key])

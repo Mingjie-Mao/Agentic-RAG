@@ -1,0 +1,71 @@
+{
+  "scope": "Actual targeted Dev diagnostic, strict quote-bound semantic review; not full benchmark",
+  "source_artifact_sha256": "8c43c8566541d03caeb05a33d82bcb6627311d8592ad5b0e56bb7a44a2c579ec",
+  "reviews": [
+    {
+      "task_id": "SF-3e8219f58317",
+      "method": "rag",
+      "run_id": "3a106e29-f3e9-4ec8-9985-dd5b28775845",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "answered",
+      "passed": false,
+      "answer_sha256": "94ef8bfa1ffed92cac750b48ae77ec646f53ef8e85ec0a33be8b312e159a0e3f",
+      "reason": "原文中支持两项事实，但当前所选quote没有标识Sophie（仅she said）；RAG/Workflow还添加未由所选quote绑定的作者名。整体Yes不等同于严格引用通过。"
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "method": "workflow",
+      "run_id": "fee7af31-c751-4dce-a2c2-6370c66db6a7",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "answered",
+      "passed": false,
+      "answer_sha256": "94ef8bfa1ffed92cac750b48ae77ec646f53ef8e85ec0a33be8b312e159a0e3f",
+      "reason": "原文中支持两项事实，但当前所选quote没有标识Sophie（仅she said）；RAG/Workflow还添加未由所选quote绑定的作者名。整体Yes不等同于严格引用通过。"
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "method": "dynamic",
+      "run_id": "c3aa8837-f303-413d-a810-b57ff40eef18",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "answered",
+      "passed": false,
+      "answer_sha256": "7542aa001f9507fd5e37b7df2532c2c40966cfbc5b6e9acc6cfe5b450f24e363",
+      "reason": "整体Yes恢复，但Sophie只绑定she said且第一条附加的列表标题不支持创新/活力断言，严格引用未通过。"
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "method": "hybrid",
+      "run_id": "7a093aa4-5430-4458-bd35-18bfb5e041fa",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "answered",
+      "passed": false,
+      "answer_sha256": "ae08ff418bfe4bd7b6930a085ecc49a7a888520ac7860873817cf7c13f17ec93",
+      "reason": "Hybrid整体结论仍unclear，且第一条附有行业收购/流量背景等不支持所问创新/活力的额外引用。"
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "method": "rag",
+      "run_id": "d4ad543b-93da-4fdc-9d35-13f5741a7fa9",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "verification_failed",
+      "passed": false,
+      "answer_sha256": "0f8f7c6af1b949a87ad4ddeb69d3b7487c5586aa72ad60ffdf8ac5581da0dbe6",
+      "reason": "来源检查及一次局部恢复后仍有明确媒体归属不匹配，安全拦截为verification_failed；没有完成必要比较，不计Task Success。"
+    }
+  ]
+}

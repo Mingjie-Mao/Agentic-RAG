@@ -1,0 +1,34 @@
+{
+  "rag": {
+    "hop1_found": 15,
+    "hop2_found": 7,
+    "second_search_used_bridge": "0/9 bridge tasks",
+    "repeated_question": 0,
+    "version_tool_misfire": 0,
+    "n": 18
+  },
+  "workflow": {
+    "hop1_found": 16,
+    "hop2_found": 9,
+    "second_search_used_bridge": "0/9 bridge tasks",
+    "repeated_question": 0,
+    "version_tool_misfire": 3,
+    "n": 18
+  },
+  "dynamic": {
+    "hop1_found": 11,
+    "hop2_found": 10,
+    "second_search_used_bridge": "0/9 bridge tasks",
+    "repeated_question": 9,
+    "version_tool_misfire": 3,
+    "n": 18
+  },
+  "hybrid": {
+    "hop1_found": 16,
+    "hop2_found": 10,
+    "second_search_used_bridge": "0/9 bridge tasks",
+    "repeated_question": 12,
+    "version_tool_misfire": 3,
+    "n": 18
+  }
+}

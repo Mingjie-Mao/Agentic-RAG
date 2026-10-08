@@ -1,0 +1,74 @@
+{
+  "scope": "Registered synthetic counterexamples for entity/period binding in operating-window comparisons (U22 class). Component check, not a benchmark score.",
+  "question": "华东仓和华南仓2028年第二季度的工作日收货窗口分别是什么？两者是否相同？",
+  "before_substring_matching": {
+    "lookalike_only": {
+      "expected": "refuse",
+      "answerable": true,
+      "claims": [
+        "华东仓的收货窗口为 07:00 至 20:00。",
+        "华南仓的收货窗口为 09:00 至 17:00。",
+        "两者的收货窗口不同。"
+      ],
+      "verdict": "no"
+    },
+    "lookalike_extra": {
+      "expected": "no: 08-18 vs 09-17",
+      "answerable": false,
+      "claims": [],
+      "verdict": null
+    },
+    "cross_month": {
+      "expected": "refuse",
+      "answerable": false,
+      "claims": [],
+      "verdict": null
+    },
+    "operator_clause": {
+      "expected": "no: 08-18 vs 09-17",
+      "answerable": false,
+      "claims": [],
+      "verdict": null
+    }
+  },
+  "after_whole_name_matching": {
+    "lookalike_only": {
+      "expected": "refuse",
+      "answerable": false,
+      "claims": [],
+      "verdict": null
+    },
+    "lookalike_extra": {
+      "expected": "no: 08-18 vs 09-17",
+      "answerable": true,
+      "claims": [
+        "华东仓的收货窗口为 08:00 至 18:00。",
+        "华南仓的收货窗口为 09:00 至 17:00。",
+        "两者的收货窗口不同。"
+      ],
+      "verdict": "no"
+    },
+    "cross_month": {
+      "expected": "refuse",
+      "answerable": false,
+      "claims": [],
+      "verdict": null
+    },
+    "operator_clause": {
+      "expected": "no: 08-18 vs 09-17",
+      "answerable": true,
+      "claims": [
+        "华东仓的收货窗口为 08:00 至 18:00。",
+        "华南仓的收货窗口为 09:00 至 17:00。",
+        "两者的收货窗口不同。"
+      ],
+      "verdict": "no"
+    }
+  },
+  "before_failures": [
+    "lookalike_only",
+    "lookalike_extra",
+    "operator_clause"
+  ],
+  "after_failures": []
+}

@@ -1,0 +1,500 @@
+{
+  "persons": [
+    {
+      "name": "苏南星",
+      "ext": "6985",
+      "team": "平台基础组",
+      "day": "周五",
+      "restricted": false,
+      "deputy": "钱霁"
+    },
+    {
+      "name": "钱霁",
+      "ext": "6934",
+      "team": "交易系统组",
+      "day": "周二",
+      "restricted": false,
+      "deputy": "钱清和"
+    },
+    {
+      "name": "钱清和",
+      "ext": "6231",
+      "team": "平台基础组",
+      "day": "周三",
+      "restricted": false,
+      "deputy": "谢若川"
+    },
+    {
+      "name": "谢若川",
+      "ext": "6612",
+      "team": "交易系统组",
+      "day": "周三",
+      "restricted": false,
+      "deputy": "沈清和"
+    },
+    {
+      "name": "沈清和",
+      "ext": "6669",
+      "team": "安全工程组",
+      "day": "周四",
+      "restricted": false,
+      "deputy": "邵棠"
+    },
+    {
+      "name": "邵棠",
+      "ext": "6943",
+      "team": "交易系统组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "宋子衿"
+    },
+    {
+      "name": "宋子衿",
+      "ext": "6869",
+      "team": "安全工程组",
+      "day": "周三",
+      "restricted": false,
+      "deputy": "唐珩"
+    },
+    {
+      "name": "唐珩",
+      "ext": "6204",
+      "team": "数据平台组",
+      "day": "周五",
+      "restricted": false,
+      "deputy": "姚舟"
+    },
+    {
+      "name": "姚舟",
+      "ext": "6941",
+      "team": "平台基础组",
+      "day": "周二",
+      "restricted": false,
+      "deputy": "钱越"
+    },
+    {
+      "name": "钱越",
+      "ext": "6205",
+      "team": "安全工程组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "宋舟"
+    },
+    {
+      "name": "宋舟",
+      "ext": "6586",
+      "team": "平台基础组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "姚言蹊"
+    },
+    {
+      "name": "姚言蹊",
+      "ext": "6105",
+      "team": "平台基础组",
+      "day": "周一",
+      "restricted": false,
+      "deputy": "顾岚"
+    },
+    {
+      "name": "顾岚",
+      "ext": "6747",
+      "team": "平台基础组",
+      "day": "周五",
+      "restricted": true,
+      "deputy": "韩子衿"
+    },
+    {
+      "name": "韩子衿",
+      "ext": "6295",
+      "team": "平台基础组",
+      "day": "周四",
+      "restricted": true,
+      "deputy": "苏南星"
+    }
+  ],
+  "services": [
+    {
+      "name": "白泽账务",
+      "code": "QINGHE-SVC-11",
+      "purpose": "总账记账",
+      "team": "平台基础组",
+      "owner": "苏南星",
+      "timeout": 10,
+      "resp": 15,
+      "hc": 10
+    },
+    {
+      "name": "螭吻报表",
+      "code": "QINGHE-SVC-12",
+      "purpose": "经营报表生成",
+      "team": "交易系统组",
+      "owner": "钱霁",
+      "timeout": 8,
+      "resp": 15,
+      "hc": 15
+    },
+    {
+      "name": "帝江排产",
+      "code": "QINGHE-SVC-13",
+      "purpose": "生产排程",
+      "team": "平台基础组",
+      "owner": "钱清和",
+      "timeout": 8,
+      "resp": 5,
+      "hc": 15
+    },
+    {
+      "name": "青鸾对象存储",
+      "code": "QINGHE-SVC-14",
+      "purpose": "附件存储",
+      "team": "交易系统组",
+      "owner": "谢若川",
+      "timeout": 6,
+      "resp": 15,
+      "hc": 30
+    },
+    {
+      "name": "夔牛结算",
+      "code": "QINGHE-SVC-15",
+      "purpose": "订单结算与对账",
+      "team": "安全工程组",
+      "owner": "沈清和",
+      "timeout": 15,
+      "resp": 10,
+      "hc": 15
+    },
+    {
+      "name": "朱厌计费",
+      "code": "QINGHE-SVC-16",
+      "purpose": "用量计费",
+      "team": "交易系统组",
+      "owner": "邵棠",
+      "timeout": 8,
+      "resp": 10,
+      "hc": 15
+    },
+    {
+      "name": "狻猊质检",
+      "code": "QINGHE-SVC-17",
+      "purpose": "来料质检记录",
+      "team": "安全工程组",
+      "owner": "宋子衿",
+      "timeout": 8,
+      "resp": 20,
+      "hc": 10
+    },
+    {
+      "name": "驺吾消息",
+      "code": "QINGHE-SVC-18",
+      "purpose": "站内消息投递",
+      "team": "数据平台组",
+      "owner": null,
+      "timeout": 10,
+      "resp": 20,
+      "hc": 10
+    },
+    {
+      "name": "当康调度",
+      "code": "QINGHE-SVC-19",
+      "purpose": "任务编排与定时调度",
+      "team": "平台基础组",
+      "owner": "韩子衿",
+      "timeout": 3,
+      "resp": 10,
+      "hc": 15
+    },
+    {
+      "name": "陆吾网关",
+      "code": "QINGHE-SVC-20",
+      "purpose": "统一接入与鉴权",
+      "team": "平台基础组",
+      "owner": "顾岚",
+      "timeout": 10,
+      "resp": 5,
+      "hc": 15
+    }
+  ],
+  "incidents": [
+    {
+      "id": "QINGHE-INC-148",
+      "service": "白泽账务",
+      "date": "2026-09-14",
+      "symptom": "定时任务漏跑",
+      "cause": "配置推送遗漏了一个可用区",
+      "minutes": 82
+    },
+    {
+      "id": "QINGHE-INC-731",
+      "service": "螭吻报表",
+      "date": "2026-05-23",
+      "symptom": "数据延迟入库",
+      "cause": "证书过期后未自动续期",
+      "minutes": 85
+    },
+    {
+      "id": "QINGHE-INC-210",
+      "service": "帝江排产",
+      "date": "2026-07-10",
+      "symptom": "间歇性 502 错误",
+      "cause": "配置推送遗漏了一个可用区",
+      "minutes": 70
+    },
+    {
+      "id": "QINGHE-INC-293",
+      "service": "青鸾对象存储",
+      "date": "2026-07-10",
+      "symptom": "大量请求超时",
+      "cause": "依赖库升级引入了重试风暴",
+      "minutes": 39
+    },
+    {
+      "id": "QINGHE-INC-375",
+      "service": "夔牛结算",
+      "date": "2026-09-27",
+      "symptom": "间歇性 502 错误",
+      "cause": "配置推送遗漏了一个可用区",
+      "minutes": 26
+    },
+    {
+      "id": "QINGHE-INC-931",
+      "service": "朱厌计费",
+      "date": "2026-03-22",
+      "symptom": "消息积压",
+      "cause": "证书过期后未自动续期",
+      "minutes": 74
+    },
+    {
+      "id": "QINGHE-INC-481",
+      "service": "狻猊质检",
+      "date": "2026-06-28",
+      "symptom": "消息积压",
+      "cause": "依赖库升级引入了重试风暴",
+      "minutes": 44
+    },
+    {
+      "id": "QINGHE-INC-105",
+      "service": "驺吾消息",
+      "date": "2026-07-11",
+      "symptom": "大量请求超时",
+      "cause": "证书过期后未自动续期",
+      "minutes": 30
+    },
+    {
+      "id": "QINGHE-INC-966",
+      "service": "当康调度",
+      "date": "2026-05-28",
+      "symptom": "数据延迟入库",
+      "cause": "慢查询占满数据库连接",
+      "minutes": 40
+    },
+    {
+      "id": "QINGHE-INC-620",
+      "service": "陆吾网关",
+      "date": "2026-08-26",
+      "symptom": "定时任务漏跑",
+      "cause": "扩容脚本误删了健康检查",
+      "minutes": 37
+    },
+    {
+      "id": "QINGHE-INC-366",
+      "service": "白泽账务",
+      "date": "2026-08-19",
+      "symptom": "定时任务漏跑",
+      "cause": "慢查询占满数据库连接",
+      "minutes": 48
+    },
+    {
+      "id": "QINGHE-INC-403",
+      "service": "螭吻报表",
+      "date": "2026-08-19",
+      "symptom": "大量请求超时",
+      "cause": "慢查询占满数据库连接",
+      "minutes": 27
+    },
+    {
+      "id": "QINGHE-INC-159",
+      "service": "帝江排产",
+      "date": "2026-08-10",
+      "symptom": "消息积压",
+      "cause": "配置推送遗漏了一个可用区",
+      "minutes": 52
+    },
+    {
+      "id": "QINGHE-INC-952",
+      "service": "青鸾对象存储",
+      "date": "2026-08-22",
+      "symptom": "数据延迟入库",
+      "cause": "证书过期后未自动续期",
+      "minutes": 62
+    },
+    {
+      "id": "QINGHE-INC-248",
+      "service": "夔牛结算",
+      "date": "2026-08-25",
+      "symptom": "数据延迟入库",
+      "cause": "证书过期后未自动续期",
+      "minutes": 35
+    },
+    {
+      "id": "QINGHE-INC-220",
+      "service": "朱厌计费",
+      "date": "2026-09-18",
+      "symptom": "连接池耗尽",
+      "cause": "依赖库升级引入了重试风暴",
+      "minutes": 83
+    },
+    {
+      "id": "QINGHE-INC-163",
+      "service": "狻猊质检",
+      "date": "2026-08-24",
+      "symptom": "大量请求超时",
+      "cause": "配置推送遗漏了一个可用区",
+      "minutes": 62
+    },
+    {
+      "id": "QINGHE-INC-847",
+      "service": "驺吾消息",
+      "date": "2026-08-16",
+      "symptom": "消息积压",
+      "cause": "扩容脚本误删了健康检查",
+      "minutes": 92
+    }
+  ],
+  "forms": [
+    {
+      "official": "外协加工单",
+      "alias": "外发单",
+      "code": "F-81",
+      "amount": 5000,
+      "approver": "质量总监"
+    },
+    {
+      "official": "跨仓调拨申请单",
+      "alias": "小蓝单",
+      "code": "F-72",
+      "amount": 8000,
+      "approver": "财务总监"
+    },
+    {
+      "official": "临时用工申请单",
+      "alias": "短工单",
+      "code": "F-32",
+      "amount": 50000,
+      "approver": "供应链总监"
+    },
+    {
+      "official": "报废处置单",
+      "alias": "黑单",
+      "code": "F-71",
+      "amount": 5000,
+      "approver": "质量总监"
+    }
+  ],
+  "warehouses": [
+    {
+      "site": "三厂区",
+      "rate": 1.6,
+      "supervisor": "宋子衿"
+    },
+    {
+      "site": "一厂区",
+      "rate": 2.8,
+      "supervisor": "宋舟"
+    },
+    {
+      "site": "东仓",
+      "rate": 4.6,
+      "supervisor": "谢若川"
+    },
+    {
+      "site": "南仓",
+      "rate": 2.8,
+      "supervisor": "钱清和"
+    }
+  ],
+  "rules": [
+    {
+      "id": "R-800",
+      "services": [
+        "青鸾对象存储",
+        "帝江排产",
+        "狻猊质检"
+      ],
+      "window": "每月最后一个周五 18:00 起 48 小时"
+    },
+    {
+      "id": "R-411",
+      "services": [
+        "螭吻报表",
+        "白泽账务"
+      ],
+      "window": "季度结账前 3 个工作日"
+    },
+    {
+      "id": "R-922",
+      "services": [
+        "夔牛结算",
+        "帝江排产"
+      ],
+      "window": "每月最后一个周五 18:00 起 48 小时"
+    }
+  ],
+  "policies": [
+    {
+      "title": "外包人员门禁管理办法",
+      "attr": "外包人员门禁卡有效期",
+      "unit": "天",
+      "values": [
+        60,
+        90,
+        30
+      ],
+      "dates": [
+        "2025-07-01",
+        "2026-02-01",
+        "2026-06-15"
+      ],
+      "notices": [
+        "QINGHE-AN-16",
+        "QINGHE-AN-63"
+      ]
+    },
+    {
+      "title": "差旅住宿管理办法",
+      "attr": "一线城市住宿标准上限",
+      "unit": "元/晚",
+      "values": [
+        550,
+        600,
+        500
+      ],
+      "dates": [
+        "2025-07-01",
+        "2026-02-01",
+        "2026-06-15"
+      ],
+      "notices": [
+        "QINGHE-AN-22",
+        "QINGHE-AN-51"
+      ]
+    }
+  ],
+  "conflicts": [
+    {
+      "attr": "危化品库房单次进入人数上限",
+      "site": "二厂区",
+      "site_value": "4 人",
+      "notice_value": "3 人",
+      "notice": "安全通告第 11 号"
+    },
+    {
+      "attr": "高温天气室外作业暂停时间",
+      "site": "一厂区",
+      "site_value": "13:00",
+      "notice_value": "12:30",
+      "notice": "安全通告第 6 号"
+    }
+  ],
+  "director": "苏南星"
+}

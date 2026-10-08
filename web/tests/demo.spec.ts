@@ -10,7 +10,8 @@ import fs from 'node:fs';
  * screenshot per beat — so the demo cannot quietly drift away from the system.
  */
 
-const shots = path.resolve('../artifacts/s8-demo');
+// RAG_DEMO_SHOTS lets a refresh write elsewhere without overwriting the stored S8 run.
+const shots = path.resolve(process.env.RAG_DEMO_SHOTS ?? '../artifacts/s8-demo');
 fs.mkdirSync(shots, { recursive: true });
 const beat = async (page: any, name: string) =>
   page.screenshot({ path: path.join(shots, `${name}.png`), fullPage: true });
@@ -105,6 +106,9 @@ test('浏览器回归：上传、证据、检索过程、权限、边界', async
   expect(refusal.citations).toEqual([]);
   await expect(page.getByTestId('answer-card').last()).toContainText('未找到足够依据');
   notes.beat5 = { status: refusal.status, citations: refusal.citations.length };
+  // The thread smooth-scrolls to the newest answer; wait for it so the refusal is in frame.
+  await page.getByTestId('answer-card').last().scrollIntoViewIfNeeded();
+  await page.waitForTimeout(1000);
   await beat(page, '5-refusal');
 
   fs.writeFileSync(

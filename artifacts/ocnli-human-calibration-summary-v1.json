@@ -1,0 +1,28 @@
+{
+  "scope": "OCNLI hard gov/news human-majority sentence pairs only; not enterprise QA, provenance checking or project-case human review",
+  "source": "https://github.com/CLUEbenchmark/OCNLI",
+  "sha256": {
+    "llm_artifact": "8d6ea2c34fedb66773d0689b32010ced5a1ebae6386558797f720076ea648df1",
+    "nli_artifact": "264498e54f4ead66f039f2f1f0d4e7654bc2aa4e7c02900ebd0337beba9aa77d"
+  },
+  "n": 60,
+  "llm": {
+    "supported_recall": 0.55,
+    "false_accept_rate": 0.1,
+    "binary_accuracy": 0.7833333333333333
+  },
+  "nli": {
+    "supported_recall": 0.6,
+    "false_accept_rate": 0.1,
+    "binary_accuracy": 0.8
+  },
+  "paired_binary_accuracy_difference_nli_minus_llm": 0.017,
+  "paired_bootstrap_difference_ci95": [
+    -0.083,
+    0.117
+  ],
+  "llm_p50_ms": 8965.2,
+  "nli_total_ms": 22783.9,
+  "nli_mean_ms_per_pair": 379.7,
+  "project_cases_independent_human_reviewed": 0
+}

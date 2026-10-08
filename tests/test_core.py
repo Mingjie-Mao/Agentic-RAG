@@ -658,4 +658,6 @@ def test_verdict_is_added_only_for_judgment_questions_and_only_from_claims():
             raise DependencyError("模型不可用", stage="verdict")
 
     # A missing verdict must never fail an answer that already passed validation.
-    assert answer_verdict(Broken(), "两份报道是否一致？", claims, "answered") == (None, {})
+    verdict, usage = answer_verdict(Broken(), "两份报道是否一致？", claims, "answered")
+    assert verdict is None and usage["verdict_status"] == "unavailable"
+    assert usage["verdict_failure_stage"] == "verdict"

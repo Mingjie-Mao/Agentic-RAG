@@ -1,0 +1,84 @@
+{
+  "scope": "Actual targeted Dev diagnostic, not full frozen benchmark or P95",
+  "source_artifact_sha256": "ce4593bec598ff9013a4273ba3f02791b57f2c334ede0691a014916a24f7550f",
+  "reviews": [
+    {
+      "task_id": "U12",
+      "method": "hybrid",
+      "run_id": "3f1f0ad8-d1bc-472f-9177-e9dd863ad650",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "answered",
+      "passed": true,
+      "answer_sha256": "b83f4c1a47ba0f13e52d45f3a0c9554e404aa72aa2ec29b917adf849f9e7ea8a",
+      "reason": "逐项核对事故原文12万行未分片与当前指南单次最多5万行，两个断言引用对应文档，未混用事故值或报警阈值。"
+    },
+    {
+      "task_id": "U12",
+      "method": "dynamic",
+      "run_id": "03200286-679a-4fbf-b3ab-79eba6df304a",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "answered",
+      "passed": true,
+      "answer_sha256": "c632d4f11c3089b628caac7706e721d8864d131878c584010af0fbe02ad93c14",
+      "reason": "逐项核对事故原文12万行未分片与当前指南单次最多5万行，两个断言引用对应文档，未混用事故值或报警阈值。"
+    },
+    {
+      "task_id": "U12",
+      "method": "rag",
+      "run_id": "6d46bd01-58bd-4f92-8a76-8b3c10fea376",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "answered",
+      "passed": true,
+      "answer_sha256": "c632d4f11c3089b628caac7706e721d8864d131878c584010af0fbe02ad93c14",
+      "reason": "逐项核对事故原文12万行未分片与当前指南单次最多5万行，两个断言引用对应文档，未混用事故值或报警阈值。"
+    },
+    {
+      "task_id": "U12",
+      "method": "workflow",
+      "run_id": "b0147902-4c2e-4600-9d12-cf02f8186258",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "answered",
+      "passed": true,
+      "answer_sha256": "f19695a97c87551d84541b1b3484bc1c94ae818449460298dd0587398db28f97",
+      "reason": "逐项核对事故原文12万行未分片与当前指南单次最多5万行，两个断言引用对应文档，未混用事故值或报警阈值。"
+    },
+    {
+      "task_id": "U11",
+      "method": "hybrid",
+      "run_id": "30939070-ee77-4d64-a521-d7aa1dd8a081",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "answered",
+      "passed": true,
+      "answer_sha256": "84a61d94beb4603d9f49970661dc76d98655476bf67ca67bf7304033e41cb9f6",
+      "reason": "逐项核对单次5万行与单请求8秒，均由对应规则正文支持；RAG第二条同文档拆分规定支持行数上限，没有无关标题引用。"
+    },
+    {
+      "task_id": "U11",
+      "method": "rag",
+      "run_id": "629013ca-3542-4c6e-b552-128679cc0bcd",
+      "reviewer_type": "model",
+      "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+      "independent": false,
+      "method_blinded": false,
+      "reviewed_status": "answered",
+      "passed": true,
+      "answer_sha256": "d265cf5c0b0c2162c8de316339f9520967a65c23e9b2135409d20d37667aca9d",
+      "reason": "逐项核对单次5万行与单请求8秒，均由对应规则正文支持；RAG第二条同文档拆分规定支持行数上限，没有无关标题引用。"
+    }
+  ]
+}

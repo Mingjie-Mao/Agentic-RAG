@@ -1,0 +1,3381 @@
+{
+  "scope": "Actual persisted development probe answers; no reconstructed latency",
+  "rows": [
+    {
+      "task_id": "U11",
+      "method": "rag",
+      "run_id": "59315076-3dbf-4393-b3af-e112bac48d63",
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "批量导入单次最多5万行。",
+            "evidence_ids": [
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+            ],
+            "quotes": [
+              "单次导入任务最多 5 万行。"
+            ]
+          },
+          {
+            "text": "路由服务单个请求的超时阈值为8秒。",
+            "evidence_ids": [
+              "33427f32-6781-59e7-87fb-96b1c1a8cc7d"
+            ],
+            "quotes": [
+              "单个请求的超时阈值为 8 秒。"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "document_id": "lt-routing-ops",
+            "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+            "title": "路由服务运维手册",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "路由服务运维手册",
+                "超时"
+              ],
+              "source_char_start": 89,
+              "line_start": 8,
+              "label": "第 8 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 23,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "路由服务运维手册",
+                      "超时"
+                    ],
+                    "source_char_start": 89,
+                    "line_start": 8,
+                    "label": "第 8 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 23
+                }
+              ],
+              "char_start": 0,
+              "char_end": 23,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 21,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 超时\n单个请求的超时阈值为 8 秒。\n\n",
+            "preview_url": "/api/evidence/33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "original_url": "/api/versions/db769968-f5e8-4a35-a947-36f7bde506f8/original"
+          },
+          {
+            "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "document_id": "lt-import-guide",
+            "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+            "title": "批量导入指南",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "批量导入指南",
+                "限制"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 41,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "批量导入指南",
+                      "限制"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 41
+                }
+              ],
+              "char_start": 0,
+              "char_end": 41,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 35,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+            "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original"
+          }
+        ],
+        "message": "",
+        "trace": {
+          "method": "hybrid",
+          "scope": {
+            "readable_documents": 20,
+            "searchable_documents": 20
+          },
+          "original_question": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+          "retrieval_query": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+          "query_rewritten": false,
+          "rewrite": {
+            "mode": "rule",
+            "rewritten": false,
+            "history_turns": 0
+          },
+          "shadow_scores": {
+            "relevance": 0.64,
+            "claim_support": [
+              0.7778,
+              0.9286
+            ],
+            "scorer": "bigram-overlap-v1",
+            "mode": "shadow",
+            "action": "recorded only; no answer is withheld on these scores",
+            "calibration": "artifacts/a-q1-calibration.json"
+          },
+          "prompt_version": "grounded-v5-conflict-gated",
+          "top_k": 6,
+          "min_similarity": 0.35,
+          "context_token_budget": 5000,
+          "context_tokens_estimate": 830,
+          "token_counter": "cl100k_base",
+          "embedding_model": "bge-m3:567m",
+          "generation_model": "qwen2.5:7b-instruct",
+          "generation_context_chunk_ids": [
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "a206e830-63df-5116-8c42-da66fffd3207"
+          ],
+          "candidates": [
+            {
+              "chunk_id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+              "rank": 1,
+              "title": "路由服务运维手册",
+              "document_id": "lt-routing-ops",
+              "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+              "locator_label": "第 8 行起",
+              "score": 0.7097,
+              "bm25_rank": 1,
+              "dense_rank": 3,
+              "fusion_score": 0.032266,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E1"
+            },
+            {
+              "chunk_id": "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+              "rank": 2,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 8 行起",
+              "score": 0.7106,
+              "bm25_rank": 2,
+              "dense_rank": 2,
+              "fusion_score": 0.032258,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E2"
+            },
+            {
+              "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+              "rank": 3,
+              "title": "批量导入指南",
+              "document_id": "lt-import-guide",
+              "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+              "locator_label": "第 5 行起",
+              "score": 0.7391,
+              "bm25_rank": 7,
+              "dense_rank": 1,
+              "fusion_score": 0.031319,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E3"
+            },
+            {
+              "chunk_id": "aa649ef9-12e7-5922-b9ae-1b4aaeef0ddb",
+              "rank": 4,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 1 行起",
+              "score": 0.6153,
+              "bm25_rank": 3,
+              "dense_rank": 5,
+              "fusion_score": 0.031258,
+              "admitted": false,
+              "excluded_because": "boilerplate_only",
+              "lane": "global"
+            },
+            {
+              "chunk_id": "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+              "rank": 5,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 11 行起",
+              "score": 0.6843,
+              "bm25_rank": 5,
+              "dense_rank": 4,
+              "fusion_score": 0.03101,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E4"
+            },
+            {
+              "chunk_id": "a206e830-63df-5116-8c42-da66fffd3207",
+              "rank": 6,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 5 行起",
+              "score": 0.604,
+              "bm25_rank": 4,
+              "dense_rank": 7,
+              "fusion_score": 0.03055,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E5"
+            }
+          ],
+          "embed_ms": 232.8,
+          "retrieval_ms": 76.6,
+          "generation_ms": 47231.7,
+          "total_ms": 47736.9
+        },
+        "usage": {
+          "prompt_tokens": 1416,
+          "completion_tokens": 138,
+          "model_duration_ms": 47183.7,
+          "model_load_ms": 4239.7,
+          "prompt_eval_ms": 22430.6,
+          "completion_eval_ms": 20492.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E3:S2",
+            "right_id": "E1:S2",
+            "reason": "两个问题的答案分别来自不同的文档，且不涉及同一事项、同一适用时间和人群的规则对比，因此不存在冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少",
+                  "subject": "批量导入单次最多多少行？路由服务",
+                  "attribute": "超时",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "contract_preparation": null,
+          "exact_value_slots_missing_first_pass": 0,
+          "execution_budget": {
+            "deadline": 1791003117.5965781,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 2,
+                "succeeded": 2,
+                "failed": 0,
+                "prompt_tokens": 1416,
+                "completion_tokens": 138,
+                "wall_ms": 47228.8
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        }
+      },
+      "created_at": "2026-10-03T04:42:45.336953+00:00"
+    },
+    {
+      "task_id": "U11",
+      "method": "workflow",
+      "run_id": "380cee92-a4c4-474a-967f-81acec1f4fa6",
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "批量导入单次最多5万行。",
+            "evidence_ids": [
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+            ],
+            "quotes": [
+              "单次导入任务最多 5 万行。"
+            ]
+          },
+          {
+            "text": "路由服务单个请求的超时阈值为8秒。",
+            "evidence_ids": [
+              "33427f32-6781-59e7-87fb-96b1c1a8cc7d"
+            ],
+            "quotes": [
+              "单个请求的超时阈值为 8 秒。"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "document_id": "lt-routing-ops",
+            "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+            "title": "路由服务运维手册",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "路由服务运维手册",
+                "超时"
+              ],
+              "source_char_start": 89,
+              "line_start": 8,
+              "label": "第 8 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 23,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "路由服务运维手册",
+                      "超时"
+                    ],
+                    "source_char_start": 89,
+                    "line_start": 8,
+                    "label": "第 8 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 23
+                }
+              ],
+              "char_start": 0,
+              "char_end": 23,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 21,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 超时\n单个请求的超时阈值为 8 秒。\n\n",
+            "preview_url": "/api/evidence/33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "original_url": "/api/versions/db769968-f5e8-4a35-a947-36f7bde506f8/original"
+          },
+          {
+            "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "document_id": "lt-import-guide",
+            "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+            "title": "批量导入指南",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "批量导入指南",
+                "限制"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 41,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "批量导入指南",
+                      "限制"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 41
+                }
+              ],
+              "char_start": 0,
+              "char_end": 41,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 35,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+            "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original"
+          }
+        ],
+        "message": "",
+        "usage": {
+          "prompt_tokens": 1416,
+          "completion_tokens": 138,
+          "model_duration_ms": 44653.2,
+          "model_load_ms": 182.6,
+          "prompt_eval_ms": 22666.4,
+          "completion_eval_ms": 21796.1,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E3:S2",
+            "right_id": "E1:S2",
+            "reason": "两个问题的答案分别来自不同的文档，且不涉及同一事项、同一适用时间和人群的规则对比，因此不存在冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少",
+                  "subject": "批量导入单次最多多少行？路由服务",
+                  "attribute": "超时",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 44782.0,
+          "generation_context_chunk_ids": [
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "a206e830-63df-5116-8c42-da66fffd3207"
+          ],
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "coverage_repair_wall_ms": 7.8,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 328.0,
+          "task_wall_ms": 45643.2,
+          "execution_budget": {
+            "deadline": 1791003165.514307,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 2,
+                "succeeded": 2,
+                "failed": 0,
+                "prompt_tokens": 1416,
+                "completion_tokens": 138,
+                "wall_ms": 44728.3
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.64,
+          "claim_support": [
+            0.7778,
+            0.9286
+          ],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:42:45.362125+00:00"
+    },
+    {
+      "task_id": "U11",
+      "method": "dynamic",
+      "run_id": "674703ba-8613-482d-9141-e980d67af670",
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "批量导入单次最多5万行。",
+            "evidence_ids": [
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+            ],
+            "quotes": [
+              "单次导入任务最多 5 万行。"
+            ]
+          },
+          {
+            "text": "路由服务单个请求的超时阈值为8秒。",
+            "evidence_ids": [
+              "33427f32-6781-59e7-87fb-96b1c1a8cc7d"
+            ],
+            "quotes": [
+              "单个请求的超时阈值为 8 秒。"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "document_id": "lt-routing-ops",
+            "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+            "title": "路由服务运维手册",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "路由服务运维手册",
+                "超时"
+              ],
+              "source_char_start": 89,
+              "line_start": 8,
+              "label": "第 8 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 23,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "路由服务运维手册",
+                      "超时"
+                    ],
+                    "source_char_start": 89,
+                    "line_start": 8,
+                    "label": "第 8 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 23
+                }
+              ],
+              "char_start": 0,
+              "char_end": 23,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 21,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 超时\n单个请求的超时阈值为 8 秒。\n\n",
+            "preview_url": "/api/evidence/33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "original_url": "/api/versions/db769968-f5e8-4a35-a947-36f7bde506f8/original"
+          },
+          {
+            "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "document_id": "lt-import-guide",
+            "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+            "title": "批量导入指南",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "批量导入指南",
+                "限制"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 41,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "批量导入指南",
+                      "限制"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 41
+                }
+              ],
+              "char_start": 0,
+              "char_end": 41,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 35,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+            "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original"
+          }
+        ],
+        "message": "",
+        "usage": {
+          "prompt_tokens": 1416,
+          "completion_tokens": 138,
+          "model_duration_ms": 55491.1,
+          "model_load_ms": 127.6,
+          "prompt_eval_ms": 27163.2,
+          "completion_eval_ms": 28191.5,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E3:S2",
+            "right_id": "E1:S2",
+            "reason": "两个问题的答案分别来自不同的文档，且不涉及同一事项、同一适用时间和人群的规则对比，因此不存在冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少",
+                  "subject": "批量导入单次最多多少行？路由服务",
+                  "attribute": "超时",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 55631.9,
+          "generation_context_chunk_ids": [
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "a206e830-63df-5116-8c42-da66fffd3207",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81"
+          ],
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "coverage_repair_wall_ms": 17.0,
+          "exact_value_slots_missing_first_pass": 0,
+          "agent_policy_prompt_tokens": 2350,
+          "agent_policy_completion_tokens": 201,
+          "total_prompt_tokens": 3766,
+          "total_completion_tokens": 339,
+          "agent_policy_wall_ms": 58699.799999999996,
+          "agent_policy_model_duration_ms": 58611.8,
+          "agent_policy_prompt_eval_ms": 28349.8,
+          "agent_policy_completion_eval_ms": 30046.9,
+          "tool_wall_ms": 626.5,
+          "task_wall_ms": 115444.1,
+          "execution_budget": {
+            "deadline": 1791003211.243902,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "policy": {
+                "attempted": 3,
+                "succeeded": 3,
+                "failed": 0,
+                "prompt_tokens": 2350,
+                "completion_tokens": 201,
+                "wall_ms": 58709.1
+              },
+              "generation": {
+                "attempted": 2,
+                "succeeded": 2,
+                "failed": 0,
+                "prompt_tokens": 1416,
+                "completion_tokens": 138,
+                "wall_ms": 55565.5
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.64,
+          "claim_support": [
+            0.7778,
+            0.9286
+          ],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:43:31.229391+00:00"
+    },
+    {
+      "task_id": "U11",
+      "method": "hybrid",
+      "run_id": "f2788d25-aa97-491d-9d2b-e835a0d116a1",
+      "result": {
+        "status": "answered",
+        "claims": [
+          {
+            "text": "批量导入单次最多5万行。",
+            "evidence_ids": [
+              "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+            ],
+            "quotes": [
+              "单次导入任务最多 5 万行。"
+            ]
+          },
+          {
+            "text": "路由服务单个请求的超时阈值为8秒。",
+            "evidence_ids": [
+              "33427f32-6781-59e7-87fb-96b1c1a8cc7d"
+            ],
+            "quotes": [
+              "单个请求的超时阈值为 8 秒。"
+            ]
+          }
+        ],
+        "verdict": null,
+        "citations": [
+          {
+            "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "document_id": "lt-import-guide",
+            "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+            "title": "批量导入指南",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "批量导入指南",
+                "限制"
+              ],
+              "source_char_start": 45,
+              "line_start": 5,
+              "label": "第 5 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 41,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "批量导入指南",
+                      "限制"
+                    ],
+                    "source_char_start": 45,
+                    "line_start": 5,
+                    "label": "第 5 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 41
+                }
+              ],
+              "char_start": 0,
+              "char_end": 41,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 35,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+            "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original"
+          },
+          {
+            "chunk_id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "document_id": "lt-routing-ops",
+            "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+            "title": "路由服务运维手册",
+            "locator": {
+              "kind": "markdown",
+              "block_type": "paragraph",
+              "heading_path": [
+                "路由服务运维手册",
+                "超时"
+              ],
+              "source_char_start": 89,
+              "line_start": 8,
+              "label": "第 8 行起",
+              "kind_for_source": "markdown",
+              "sources": [
+                {
+                  "start": 0,
+                  "end": 23,
+                  "locator": {
+                    "kind": "markdown",
+                    "block_type": "paragraph",
+                    "heading_path": [
+                      "路由服务运维手册",
+                      "超时"
+                    ],
+                    "source_char_start": 89,
+                    "line_start": 8,
+                    "label": "第 8 行起"
+                  },
+                  "overlap_start": 0,
+                  "overlap_end": 23
+                }
+              ],
+              "char_start": 0,
+              "char_end": 23,
+              "chunk_strategy": "structure",
+              "token_count_estimate": 21,
+              "token_counter": "cl100k_base"
+            },
+            "text": "## 超时\n单个请求的超时阈值为 8 秒。\n\n",
+            "preview_url": "/api/evidence/33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "original_url": "/api/versions/db769968-f5e8-4a35-a947-36f7bde506f8/original"
+          }
+        ],
+        "message": "",
+        "usage": {
+          "prompt_tokens": 1416,
+          "completion_tokens": 138,
+          "model_duration_ms": 45369.0,
+          "model_load_ms": 121.6,
+          "prompt_eval_ms": 22838.3,
+          "completion_eval_ms": 22401.1,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": {
+            "conflict": false,
+            "left_id": "E2:S2",
+            "right_id": "E3:S2",
+            "reason": "两个问题的答案分别来自不同的文档，且不涉及同一事项、同一适用时间和人群的规则对比，因此不存在冲突。",
+            "accepted": false,
+            "accepted_by": null,
+            "rule_pair": null
+          },
+          "acceptance_items": [
+            "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少",
+                  "subject": "批量导入单次最多多少行？路由服务",
+                  "attribute": "超时",
+                  "value_type": "number",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 45462.5,
+          "generation_context_chunk_ids": [
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "a206e830-63df-5116-8c42-da66fffd3207"
+          ],
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "coverage_repair_wall_ms": 9.9,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 285.8,
+          "task_wall_ms": 46007.3,
+          "execution_budget": {
+            "deadline": 1791003326.793522,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 2,
+                "succeeded": 2,
+                "failed": 0,
+                "prompt_tokens": 1416,
+                "completion_tokens": 138,
+                "wall_ms": 45417.1
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.64,
+          "claim_support": [
+            0.7778,
+            0.9286
+          ],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:45:26.781005+00:00"
+    },
+    {
+      "task_id": "U32",
+      "method": "rag",
+      "run_id": "4a772e3e-811f-4d81-a247-b08d03a09253",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "在你有权访问的资料中，未找到足够依据。",
+        "trace": {
+          "method": "hybrid",
+          "scope": {
+            "readable_documents": 20,
+            "searchable_documents": 20
+          },
+          "original_question": "2027 年度研发预算上限是多少？",
+          "retrieval_query": "2027 年度研发预算上限是多少？",
+          "query_rewritten": false,
+          "rewrite": {
+            "mode": "rule",
+            "rewritten": false,
+            "history_turns": 0
+          },
+          "shadow_scores": {
+            "relevance": 0.1,
+            "claim_support": [],
+            "scorer": "bigram-overlap-v1",
+            "mode": "shadow",
+            "action": "recorded only; no answer is withheld on these scores",
+            "calibration": "artifacts/a-q1-calibration.json"
+          },
+          "prompt_version": "grounded-v5-conflict-gated",
+          "top_k": 6,
+          "min_similarity": 0.35,
+          "context_token_budget": 5000,
+          "context_tokens_estimate": 958,
+          "token_counter": "cl100k_base",
+          "embedding_model": "bge-m3:567m",
+          "generation_model": "qwen2.5:7b-instruct",
+          "generation_context_chunk_ids": [
+            "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "13f57a55-ec76-5726-8cf7-d3dbbef23175",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54"
+          ],
+          "candidates": [
+            {
+              "chunk_id": "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+              "rank": 1,
+              "title": "开放平台调用配额",
+              "document_id": "lt-api-quota",
+              "version_id": "d7e63212-1e14-4d2f-86eb-87230ee39041",
+              "locator_label": "第 5 行起",
+              "score": 0.4239,
+              "bm25_rank": 1,
+              "dense_rank": 4,
+              "fusion_score": 0.032018,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E1"
+            },
+            {
+              "chunk_id": "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+              "rank": 2,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 11 行起",
+              "score": 0.3984,
+              "bm25_rank": 2,
+              "dense_rank": 13,
+              "fusion_score": 0.029828,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E2"
+            },
+            {
+              "chunk_id": "13f57a55-ec76-5726-8cf7-d3dbbef23175",
+              "rank": 3,
+              "title": "事故 502 复盘：结算延迟",
+              "document_id": "lt-incident-502",
+              "version_id": "0da1f809-dfe4-416c-80d2-ade33f235679",
+              "locator_label": "第 5 行起",
+              "score": 0.467,
+              "bm25_rank": null,
+              "dense_rank": 1,
+              "fusion_score": 0.016393,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E3"
+            },
+            {
+              "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+              "rank": 4,
+              "title": "批量导入指南",
+              "document_id": "lt-import-guide",
+              "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+              "locator_label": "第 5 行起",
+              "score": 0.4652,
+              "bm25_rank": null,
+              "dense_rank": 2,
+              "fusion_score": 0.016129,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E4"
+            },
+            {
+              "chunk_id": "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+              "rank": 5,
+              "title": "开放平台调用配额",
+              "document_id": "lt-api-quota",
+              "version_id": "d7e63212-1e14-4d2f-86eb-87230ee39041",
+              "locator_label": "第 11 行起",
+              "score": 0.432,
+              "bm25_rank": null,
+              "dense_rank": 3,
+              "fusion_score": 0.015873,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E5"
+            },
+            {
+              "chunk_id": "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+              "rank": 6,
+              "title": "路由服务运维手册",
+              "document_id": "lt-routing-ops",
+              "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+              "locator_label": "第 11 行起",
+              "score": 0.421,
+              "bm25_rank": null,
+              "dense_rank": 5,
+              "fusion_score": 0.015385,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E6"
+            }
+          ],
+          "embed_ms": 177.4,
+          "retrieval_ms": 85.2,
+          "generation_ms": 19619.1,
+          "total_ms": 19937.9
+        },
+        "usage": {
+          "prompt_tokens": 1302,
+          "completion_tokens": 18,
+          "model_duration_ms": 19596.5,
+          "model_load_ms": 52.7,
+          "prompt_eval_ms": 17429.4,
+          "completion_eval_ms": 2109.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "2027 年度研发预算上限是多少"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "2027 年度研发预算上限是多少？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "2027 年度研发预算上限是多少",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "contract_preparation": null,
+          "execution_budget": {
+            "deadline": 1791003372.8351412,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1302,
+                "completion_tokens": 18,
+                "wall_ms": 19618.2
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        }
+      },
+      "created_at": "2026-10-03T04:46:32.774074+00:00"
+    },
+    {
+      "task_id": "U32",
+      "method": "workflow",
+      "run_id": "67856c35-84e1-40c7-9361-1b30018ed9d7",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 1302,
+          "completion_tokens": 18,
+          "model_duration_ms": 6129.2,
+          "model_load_ms": 70.0,
+          "prompt_eval_ms": 3935.4,
+          "completion_eval_ms": 2118.3,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "2027 年度研发预算上限是多少"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "2027 年度研发预算上限是多少？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "2027 年度研发预算上限是多少",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 6172.7,
+          "generation_context_chunk_ids": [
+            "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "13f57a55-ec76-5726-8cf7-d3dbbef23175",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "tool_wall_ms": 331.3,
+          "task_wall_ms": 6728.1,
+          "execution_budget": {
+            "deadline": 1791003392.807861,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1302,
+                "completion_tokens": 18,
+                "wall_ms": 6153.0
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.1,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:46:32.793452+00:00"
+    },
+    {
+      "task_id": "U32",
+      "method": "dynamic",
+      "run_id": "31044e92-7119-417e-ad10-24404796667b",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 1004,
+          "completion_tokens": 18,
+          "model_duration_ms": 13581.7,
+          "model_load_ms": 68.4,
+          "prompt_eval_ms": 11441.0,
+          "completion_eval_ms": 2068.4,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "2027 年度研发预算上限是多少"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "2027 年度研发预算上限是多少？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "2027 年度研发预算上限是多少",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 13627.1,
+          "generation_context_chunk_ids": [
+            "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "13f57a55-ec76-5726-8cf7-d3dbbef23175"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "agent_policy_prompt_tokens": 2404,
+          "agent_policy_completion_tokens": 191,
+          "total_prompt_tokens": 3408,
+          "total_completion_tokens": 209,
+          "agent_policy_wall_ms": 49328.899999999994,
+          "agent_policy_model_duration_ms": 49246.0,
+          "agent_policy_prompt_eval_ms": 23945.4,
+          "agent_policy_completion_eval_ms": 25092.1,
+          "tool_wall_ms": 671.5,
+          "task_wall_ms": 64092.5,
+          "execution_budget": {
+            "deadline": 1791003399.609422,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "policy": {
+                "attempted": 3,
+                "succeeded": 3,
+                "failed": 0,
+                "prompt_tokens": 2404,
+                "completion_tokens": 191,
+                "wall_ms": 49336.8
+              },
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1004,
+                "completion_tokens": 18,
+                "wall_ms": 13606.1
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.1,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:46:39.594343+00:00"
+    },
+    {
+      "task_id": "U32",
+      "method": "hybrid",
+      "run_id": "4eae64fa-3f4d-4c71-ab50-3c5b3a36279e",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 1427,
+          "completion_tokens": 18,
+          "model_duration_ms": 20982.7,
+          "model_load_ms": 68.1,
+          "prompt_eval_ms": 17806.2,
+          "completion_eval_ms": 3103.3,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "2027 年度研发预算上限是多少"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "2027 年度研发预算上限是多少？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "2027 年度研发预算上限是多少",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 21031.8,
+          "generation_context_chunk_ids": [
+            "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+            "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+            "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+            "13f57a55-ec76-5726-8cf7-d3dbbef23175",
+            "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+            "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+            "ae8528c4-214c-5c85-a71b-08d31ed41e54"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "agent_policy_prompt_tokens": 758,
+          "agent_policy_completion_tokens": 76,
+          "total_prompt_tokens": 2185,
+          "total_completion_tokens": 94,
+          "agent_policy_wall_ms": 0.0,
+          "agent_policy_model_duration_ms": 15861.3,
+          "agent_policy_prompt_eval_ms": 0.0,
+          "agent_policy_completion_eval_ms": 0.0,
+          "tool_wall_ms": 925.0,
+          "task_wall_ms": 38456.0,
+          "execution_budget": {
+            "deadline": 1791003463.769495,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "policy": {
+                "attempted": 2,
+                "succeeded": 2,
+                "failed": 0,
+                "prompt_tokens": 758,
+                "completion_tokens": 76,
+                "wall_ms": 15912.400000000001
+              },
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1427,
+                "completion_tokens": 18,
+                "wall_ms": 21010.7
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.1,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:47:43.754793+00:00"
+    },
+    {
+      "task_id": "U33",
+      "method": "rag",
+      "run_id": "f084415f-5678-4372-9587-946e1ac13e48",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "在你有权访问的资料中，未找到足够依据。",
+        "trace": {
+          "method": "hybrid",
+          "scope": {
+            "readable_documents": 20,
+            "searchable_documents": 20
+          },
+          "original_question": "今年的年度调薪窗口安排在几月？",
+          "retrieval_query": "今年的年度调薪窗口安排在几月？",
+          "query_rewritten": false,
+          "rewrite": {
+            "mode": "rule",
+            "rewritten": false,
+            "history_turns": 0
+          },
+          "shadow_scores": {
+            "relevance": 0.1538,
+            "claim_support": [],
+            "scorer": "bigram-overlap-v1",
+            "mode": "shadow",
+            "action": "recorded only; no answer is withheld on these scores",
+            "calibration": "artifacts/a-q1-calibration.json"
+          },
+          "prompt_version": "grounded-v5-conflict-gated",
+          "top_k": 6,
+          "min_similarity": 0.35,
+          "context_token_budget": 5000,
+          "context_tokens_estimate": 892,
+          "token_counter": "cl100k_base",
+          "embedding_model": "bge-m3:567m",
+          "generation_model": "qwen2.5:7b-instruct",
+          "generation_context_chunk_ids": [
+            "6a0d1807-145d-5e89-bc10-1e1c6af106b0",
+            "ca908669-712c-56f2-9c62-c1b0ea4eb753",
+            "2ad0c501-eb8d-51ce-a5ab-d095e3a732db",
+            "e438b463-232c-501d-b6af-82b9d20fb6a5",
+            "13f57a55-ec76-5726-8cf7-d3dbbef23175",
+            "c145be38-4641-570b-a683-927343f1459b"
+          ],
+          "candidates": [
+            {
+              "chunk_id": "6a0d1807-145d-5e89-bc10-1e1c6af106b0",
+              "rank": 1,
+              "title": "华东仓收货时间临时通知",
+              "document_id": "lt-warehouse-east-notice",
+              "version_id": "229ed1d1-27cf-418e-b8e1-4082391f59ec",
+              "locator_label": "第 8 行起",
+              "score": 0.505,
+              "bm25_rank": 3,
+              "dense_rank": 1,
+              "fusion_score": 0.032266,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E1"
+            },
+            {
+              "chunk_id": "ca908669-712c-56f2-9c62-c1b0ea4eb753",
+              "rank": 2,
+              "title": "华东仓收货时间",
+              "document_id": "lt-warehouse-east",
+              "version_id": "61b29312-187c-4240-84b7-bc4467554a22",
+              "locator_label": "第 8 行起",
+              "score": 0.4749,
+              "bm25_rank": 1,
+              "dense_rank": 10,
+              "fusion_score": 0.030679,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E2"
+            },
+            {
+              "chunk_id": "2ad0c501-eb8d-51ce-a5ab-d095e3a732db",
+              "rank": 3,
+              "title": "华南仓收货时间",
+              "document_id": "lt-warehouse-south",
+              "version_id": "e421f203-87cc-436d-b060-fb3cb63d51a5",
+              "locator_label": "第 8 行起",
+              "score": 0.4766,
+              "bm25_rank": 2,
+              "dense_rank": 9,
+              "fusion_score": 0.030622,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E3"
+            },
+            {
+              "chunk_id": "e438b463-232c-501d-b6af-82b9d20fb6a5",
+              "rank": 4,
+              "title": "华东仓收货时间临时通知",
+              "document_id": "lt-warehouse-east-notice",
+              "version_id": "229ed1d1-27cf-418e-b8e1-4082391f59ec",
+              "locator_label": "第 5 行起",
+              "score": 0.4775,
+              "bm25_rank": 4,
+              "dense_rank": 8,
+              "fusion_score": 0.030331,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E4"
+            },
+            {
+              "chunk_id": "13f57a55-ec76-5726-8cf7-d3dbbef23175",
+              "rank": 5,
+              "title": "事故 502 复盘：结算延迟",
+              "document_id": "lt-incident-502",
+              "version_id": "0da1f809-dfe4-416c-80d2-ade33f235679",
+              "locator_label": "第 5 行起",
+              "score": 0.5021,
+              "bm25_rank": null,
+              "dense_rank": 2,
+              "fusion_score": 0.016129,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E5"
+            },
+            {
+              "chunk_id": "c145be38-4641-570b-a683-927343f1459b",
+              "rank": 6,
+              "title": "华南仓收货时间",
+              "document_id": "lt-warehouse-south",
+              "version_id": "e421f203-87cc-436d-b060-fb3cb63d51a5",
+              "locator_label": "第 5 行起",
+              "score": 0.489,
+              "bm25_rank": null,
+              "dense_rank": 3,
+              "fusion_score": 0.015873,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E6"
+            }
+          ],
+          "embed_ms": 207.5,
+          "retrieval_ms": 56.7,
+          "generation_ms": 17251.6,
+          "total_ms": 17573.9
+        },
+        "usage": {
+          "prompt_tokens": 1186,
+          "completion_tokens": 18,
+          "model_duration_ms": 17228.9,
+          "model_load_ms": 55.3,
+          "prompt_eval_ms": 14640.7,
+          "completion_eval_ms": 2527.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "今年的年度调薪窗口安排在几月"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "今年的年度调薪窗口安排在几月？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "今年的年度调薪窗口安排在几月",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "contract_preparation": null,
+          "execution_budget": {
+            "deadline": 1791003502.278307,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1186,
+                "completion_tokens": 18,
+                "wall_ms": 17250.6
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        }
+      },
+      "created_at": "2026-10-03T04:48:39.852787+00:00"
+    },
+    {
+      "task_id": "U33",
+      "method": "workflow",
+      "run_id": "e28c7fff-1509-45a8-95e4-ad2c907fa732",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 1186,
+          "completion_tokens": 18,
+          "model_duration_ms": 9308.7,
+          "model_load_ms": 66.1,
+          "prompt_eval_ms": 6688.9,
+          "completion_eval_ms": 2549.2,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "今年的年度调薪窗口安排在几月"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "今年的年度调薪窗口安排在几月？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "今年的年度调薪窗口安排在几月",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 9356.0,
+          "generation_context_chunk_ids": [
+            "6a0d1807-145d-5e89-bc10-1e1c6af106b0",
+            "ca908669-712c-56f2-9c62-c1b0ea4eb753",
+            "2ad0c501-eb8d-51ce-a5ab-d095e3a732db",
+            "13f57a55-ec76-5726-8cf7-d3dbbef23175",
+            "e438b463-232c-501d-b6af-82b9d20fb6a5",
+            "c145be38-4641-570b-a683-927343f1459b"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "tool_wall_ms": 309.1,
+          "task_wall_ms": 9851.3,
+          "execution_budget": {
+            "deadline": 1791003519.8917131,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1186,
+                "completion_tokens": 18,
+                "wall_ms": 9342.2
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.0769,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:48:39.877094+00:00"
+    },
+    {
+      "task_id": "U33",
+      "method": "dynamic",
+      "run_id": "961ccf50-2b4a-4210-8864-3bc6bc35c0a0",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 907,
+          "completion_tokens": 38,
+          "model_duration_ms": 15974.9,
+          "model_load_ms": 68.0,
+          "prompt_eval_ms": 10995.0,
+          "completion_eval_ms": 4908.1,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "今年的年度调薪窗口安排在几月"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "今年的年度调薪窗口安排在几月？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "今年的年度调薪窗口安排在几月",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 16022.5,
+          "generation_context_chunk_ids": [
+            "6a0d1807-145d-5e89-bc10-1e1c6af106b0",
+            "2ad0c501-eb8d-51ce-a5ab-d095e3a732db",
+            "ca908669-712c-56f2-9c62-c1b0ea4eb753",
+            "e438b463-232c-501d-b6af-82b9d20fb6a5"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "agent_policy_prompt_tokens": 2028,
+          "agent_policy_completion_tokens": 167,
+          "total_prompt_tokens": 2935,
+          "total_completion_tokens": 205,
+          "agent_policy_wall_ms": 44865.399999999994,
+          "agent_policy_model_duration_ms": 44787.299999999996,
+          "agent_policy_prompt_eval_ms": 23037.0,
+          "agent_policy_completion_eval_ms": 21544.4,
+          "tool_wall_ms": 627.9,
+          "task_wall_ms": 61991.1,
+          "execution_budget": {
+            "deadline": 1791003529.825674,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "policy": {
+                "attempted": 3,
+                "succeeded": 3,
+                "failed": 0,
+                "prompt_tokens": 2028,
+                "completion_tokens": 167,
+                "wall_ms": 44874.399999999994
+              },
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 907,
+                "completion_tokens": 38,
+                "wall_ms": 15999.6
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.1538,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:48:49.810802+00:00"
+    },
+    {
+      "task_id": "U33",
+      "method": "hybrid",
+      "run_id": "7872a819-47aa-49ae-b560-c60ecdb94c9e",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 1186,
+          "completion_tokens": 18,
+          "model_duration_ms": 16515.4,
+          "model_load_ms": 69.1,
+          "prompt_eval_ms": 14209.2,
+          "completion_eval_ms": 2233.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "今年的年度调薪窗口安排在几月"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "今年的年度调薪窗口安排在几月？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "今年的年度调薪窗口安排在几月",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 16572.9,
+          "generation_context_chunk_ids": [
+            "6a0d1807-145d-5e89-bc10-1e1c6af106b0",
+            "ca908669-712c-56f2-9c62-c1b0ea4eb753",
+            "2ad0c501-eb8d-51ce-a5ab-d095e3a732db",
+            "13f57a55-ec76-5726-8cf7-d3dbbef23175",
+            "e438b463-232c-501d-b6af-82b9d20fb6a5",
+            "c145be38-4641-570b-a683-927343f1459b"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "agent_policy_prompt_tokens": 729,
+          "agent_policy_completion_tokens": 59,
+          "total_prompt_tokens": 1915,
+          "total_completion_tokens": 77,
+          "agent_policy_wall_ms": 0.0,
+          "agent_policy_model_duration_ms": 11839.599999999999,
+          "agent_policy_prompt_eval_ms": 0.0,
+          "agent_policy_completion_eval_ms": 0.0,
+          "tool_wall_ms": 836.2,
+          "task_wall_ms": 29898.7,
+          "execution_budget": {
+            "deadline": 1791003591.880734,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "policy": {
+                "attempted": 2,
+                "succeeded": 2,
+                "failed": 0,
+                "prompt_tokens": 729,
+                "completion_tokens": 59,
+                "wall_ms": 11891.3
+              },
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1186,
+                "completion_tokens": 18,
+                "wall_ms": 16543.4
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.0769,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:49:51.865647+00:00"
+    },
+    {
+      "task_id": "U34",
+      "method": "rag",
+      "run_id": "02369e8a-5b4a-4204-9bca-795c232833fa",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "在你有权访问的资料中，未找到足够依据。",
+        "trace": {
+          "method": "hybrid",
+          "scope": {
+            "readable_documents": 20,
+            "searchable_documents": 20
+          },
+          "original_question": "兰亭云有没有宠物陪伴假，一年几天？",
+          "retrieval_query": "兰亭云有没有宠物陪伴假，一年几天？",
+          "query_rewritten": false,
+          "rewrite": {
+            "mode": "rule",
+            "rewritten": false,
+            "history_turns": 0
+          },
+          "shadow_scores": {
+            "relevance": 0.2143,
+            "claim_support": [],
+            "scorer": "bigram-overlap-v1",
+            "mode": "shadow",
+            "action": "recorded only; no answer is withheld on these scores",
+            "calibration": "artifacts/a-q1-calibration.json"
+          },
+          "prompt_version": "grounded-v5-conflict-gated",
+          "top_k": 6,
+          "min_similarity": 0.35,
+          "context_token_budget": 5000,
+          "context_tokens_estimate": 804,
+          "token_counter": "cl100k_base",
+          "embedding_model": "bge-m3:567m",
+          "generation_model": "qwen2.5:7b-instruct",
+          "generation_context_chunk_ids": [
+            "a206e830-63df-5116-8c42-da66fffd3207",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+            "2ece6e95-bcbf-58a8-8039-c3655b688aa0",
+            "42e9b639-7325-561d-b28e-9eb635ff0db4",
+            "640ccb70-9431-5001-a3bc-53a7fab98817"
+          ],
+          "candidates": [
+            {
+              "chunk_id": "a206e830-63df-5116-8c42-da66fffd3207",
+              "rank": 1,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 5 行起",
+              "score": 0.4611,
+              "bm25_rank": 1,
+              "dense_rank": 1,
+              "fusion_score": 0.032787,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E1"
+            },
+            {
+              "chunk_id": "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+              "rank": 2,
+              "title": "事故 417 复盘：路由服务超时",
+              "document_id": "lt-incident-417",
+              "version_id": "f29553c0-c6e6-4af5-aba3-3a981ea1121f",
+              "locator_label": "第 8 行起",
+              "score": 0.3252,
+              "bm25_rank": 3,
+              "dense_rank": 21,
+              "fusion_score": 0.028219,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E2"
+            },
+            {
+              "chunk_id": "2ece6e95-bcbf-58a8-8039-c3655b688aa0",
+              "rank": 3,
+              "title": "事故 502 复盘：结算延迟",
+              "document_id": "lt-incident-502",
+              "version_id": "0da1f809-dfe4-416c-80d2-ade33f235679",
+              "locator_label": "第 8 行起",
+              "score": 0.0161,
+              "bm25_rank": 2,
+              "dense_rank": null,
+              "fusion_score": 0.016129,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E3"
+            },
+            {
+              "chunk_id": "c1236e0a-f8ae-5cf2-928f-93964e1f94cb",
+              "rank": 4,
+              "title": "值班规则",
+              "document_id": "lt-oncall",
+              "version_id": "8376d0d3-798b-4f1b-b8fe-8ba5e6ad97d6",
+              "locator_label": "第 1 行起",
+              "score": 0.4067,
+              "bm25_rank": null,
+              "dense_rank": 2,
+              "fusion_score": 0.016129,
+              "admitted": false,
+              "excluded_because": "boilerplate_only",
+              "lane": "global"
+            },
+            {
+              "chunk_id": "42e9b639-7325-561d-b28e-9eb635ff0db4",
+              "rank": 5,
+              "title": "门禁卡管理",
+              "document_id": "lt-badge",
+              "version_id": "17b64552-3428-4dd6-bedf-da726c3c7933",
+              "locator_label": "第 8 行起",
+              "score": 0.4036,
+              "bm25_rank": null,
+              "dense_rank": 3,
+              "fusion_score": 0.015873,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E4"
+            },
+            {
+              "chunk_id": "640ccb70-9431-5001-a3bc-53a7fab98817",
+              "rank": 6,
+              "title": "值班规则",
+              "document_id": "lt-oncall",
+              "version_id": "8376d0d3-798b-4f1b-b8fe-8ba5e6ad97d6",
+              "locator_label": "第 5 行起",
+              "score": 0.4008,
+              "bm25_rank": null,
+              "dense_rank": 4,
+              "fusion_score": 0.015625,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E5"
+            }
+          ],
+          "embed_ms": 191.4,
+          "retrieval_ms": 70.0,
+          "generation_ms": 12712.0,
+          "total_ms": 13026.1
+        },
+        "usage": {
+          "prompt_tokens": 1110,
+          "completion_tokens": 18,
+          "model_duration_ms": 12689.1,
+          "model_load_ms": 53.9,
+          "prompt_eval_ms": 10401.1,
+          "completion_eval_ms": 2229.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "兰亭云有没有宠物陪伴假，一年几天"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "兰亭云有没有宠物陪伴假，一年几天？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "兰亭云有没有宠物陪伴假，一年几天",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "contract_preparation": null,
+          "execution_budget": {
+            "deadline": 1791003621.8282628,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1110,
+                "completion_tokens": 18,
+                "wall_ms": 12711.0
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        }
+      },
+      "created_at": "2026-10-03T04:50:34.855301+00:00"
+    },
+    {
+      "task_id": "U34",
+      "method": "workflow",
+      "run_id": "59a7a053-33a8-48af-9eaf-7d1454080d31",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 1110,
+          "completion_tokens": 18,
+          "model_duration_ms": 13577.8,
+          "model_load_ms": 69.4,
+          "prompt_eval_ms": 10376.3,
+          "completion_eval_ms": 3128.1,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "兰亭云有没有宠物陪伴假，一年几天"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "兰亭云有没有宠物陪伴假，一年几天？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "兰亭云有没有宠物陪伴假，一年几天",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 13635.9,
+          "generation_context_chunk_ids": [
+            "a206e830-63df-5116-8c42-da66fffd3207",
+            "2ece6e95-bcbf-58a8-8039-c3655b688aa0",
+            "42e9b639-7325-561d-b28e-9eb635ff0db4",
+            "640ccb70-9431-5001-a3bc-53a7fab98817",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "tool_wall_ms": 309.5,
+          "task_wall_ms": 14187.5,
+          "execution_budget": {
+            "deadline": 1791003634.897152,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1110,
+                "completion_tokens": 18,
+                "wall_ms": 13602.6
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.2143,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:50:34.882617+00:00"
+    },
+    {
+      "task_id": "U34",
+      "method": "dynamic",
+      "run_id": "1921a796-2ef4-4bc1-a4c3-98de486dac91",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 1231,
+          "completion_tokens": 18,
+          "model_duration_ms": 23629.9,
+          "model_load_ms": 69.4,
+          "prompt_eval_ms": 20717.7,
+          "completion_eval_ms": 2837.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "兰亭云有没有宠物陪伴假，一年几天"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "兰亭云有没有宠物陪伴假，一年几天？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "兰亭云有没有宠物陪伴假，一年几天",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 23681.1,
+          "generation_context_chunk_ids": [
+            "a206e830-63df-5116-8c42-da66fffd3207",
+            "2ece6e95-bcbf-58a8-8039-c3655b688aa0",
+            "42e9b639-7325-561d-b28e-9eb635ff0db4",
+            "640ccb70-9431-5001-a3bc-53a7fab98817",
+            "14ee309a-33c6-567d-80d3-1b6a81d278ad",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "agent_policy_prompt_tokens": 3293,
+          "agent_policy_completion_tokens": 165,
+          "total_prompt_tokens": 4524,
+          "total_completion_tokens": 183,
+          "agent_policy_wall_ms": 69119.8,
+          "agent_policy_model_duration_ms": 68995.0,
+          "agent_policy_prompt_eval_ms": 42828.899999999994,
+          "agent_policy_completion_eval_ms": 25877.0,
+          "tool_wall_ms": 921.5,
+          "task_wall_ms": 94303.4,
+          "execution_budget": {
+            "deadline": 1791003649.17365,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "policy": {
+                "attempted": 4,
+                "succeeded": 4,
+                "failed": 0,
+                "prompt_tokens": 3293,
+                "completion_tokens": 165,
+                "wall_ms": 69132.09999999999
+              },
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1231,
+                "completion_tokens": 18,
+                "wall_ms": 23657.8
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.2143,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:50:49.158854+00:00"
+    },
+    {
+      "task_id": "U34",
+      "method": "hybrid",
+      "run_id": "07e1d072-563b-4968-ab95-f02d5e1dc626",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 1110,
+          "completion_tokens": 18,
+          "model_duration_ms": 24267.3,
+          "model_load_ms": 74.3,
+          "prompt_eval_ms": 21106.0,
+          "completion_eval_ms": 3079.5,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "兰亭云有没有宠物陪伴假，一年几天"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "兰亭云有没有宠物陪伴假，一年几天？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "兰亭云有没有宠物陪伴假，一年几天",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 24324.7,
+          "generation_context_chunk_ids": [
+            "a206e830-63df-5116-8c42-da66fffd3207",
+            "2ece6e95-bcbf-58a8-8039-c3655b688aa0",
+            "42e9b639-7325-561d-b28e-9eb635ff0db4",
+            "640ccb70-9431-5001-a3bc-53a7fab98817",
+            "b51c898f-8657-5bb8-9b81-2998df9d5fa0"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "agent_policy_prompt_tokens": 733,
+          "agent_policy_completion_tokens": 65,
+          "total_prompt_tokens": 1843,
+          "total_completion_tokens": 83,
+          "agent_policy_wall_ms": 0.0,
+          "agent_policy_model_duration_ms": 17850.300000000003,
+          "agent_policy_prompt_eval_ms": 0.0,
+          "agent_policy_completion_eval_ms": 0.0,
+          "tool_wall_ms": 1057.7,
+          "task_wall_ms": 43958.9,
+          "execution_budget": {
+            "deadline": 1791003743.5478709,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "policy": {
+                "attempted": 2,
+                "succeeded": 2,
+                "failed": 0,
+                "prompt_tokens": 733,
+                "completion_tokens": 65,
+                "wall_ms": 17903.4
+              },
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 1110,
+                "completion_tokens": 18,
+                "wall_ms": 24299.3
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.2143,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:52:23.532285+00:00"
+    },
+    {
+      "task_id": "U35",
+      "method": "rag",
+      "run_id": "f4a49208-6340-4d87-ac65-e1ed4ab0546e",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "在你有权访问的资料中，未找到足够依据。",
+        "trace": {
+          "method": "hybrid",
+          "scope": {
+            "readable_documents": 20,
+            "searchable_documents": 20
+          },
+          "original_question": "西北仓的工作日收货窗口是几点到几点？",
+          "retrieval_query": "西北仓的工作日收货窗口是几点到几点？",
+          "query_rewritten": false,
+          "rewrite": {
+            "mode": "rule",
+            "rewritten": false,
+            "history_turns": 0
+          },
+          "shadow_scores": {
+            "relevance": 0.4,
+            "claim_support": [],
+            "scorer": "bigram-overlap-v1",
+            "mode": "shadow",
+            "action": "recorded only; no answer is withheld on these scores",
+            "calibration": "artifacts/a-q1-calibration.json"
+          },
+          "prompt_version": "grounded-v5-conflict-gated",
+          "top_k": 6,
+          "min_similarity": 0.35,
+          "context_token_budget": 5000,
+          "context_tokens_estimate": 568,
+          "token_counter": "cl100k_base",
+          "embedding_model": "bge-m3:567m",
+          "generation_model": "qwen2.5:7b-instruct",
+          "generation_context_chunk_ids": [
+            "ca908669-712c-56f2-9c62-c1b0ea4eb753",
+            "2ad0c501-eb8d-51ce-a5ab-d095e3a732db",
+            "6a0d1807-145d-5e89-bc10-1e1c6af106b0",
+            "5dbd7686-87a2-5a29-9d1d-af13aa29ddc2"
+          ],
+          "candidates": [
+            {
+              "chunk_id": "ca908669-712c-56f2-9c62-c1b0ea4eb753",
+              "rank": 1,
+              "title": "华东仓收货时间",
+              "document_id": "lt-warehouse-east",
+              "version_id": "61b29312-187c-4240-84b7-bc4467554a22",
+              "locator_label": "第 8 行起",
+              "score": 0.7235,
+              "bm25_rank": 1,
+              "dense_rank": 1,
+              "fusion_score": 0.032787,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E1"
+            },
+            {
+              "chunk_id": "2ad0c501-eb8d-51ce-a5ab-d095e3a732db",
+              "rank": 2,
+              "title": "华南仓收货时间",
+              "document_id": "lt-warehouse-south",
+              "version_id": "e421f203-87cc-436d-b060-fb3cb63d51a5",
+              "locator_label": "第 8 行起",
+              "score": 0.7234,
+              "bm25_rank": 2,
+              "dense_rank": 2,
+              "fusion_score": 0.032258,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E2"
+            },
+            {
+              "chunk_id": "6a0d1807-145d-5e89-bc10-1e1c6af106b0",
+              "rank": 3,
+              "title": "华东仓收货时间临时通知",
+              "document_id": "lt-warehouse-east-notice",
+              "version_id": "229ed1d1-27cf-418e-b8e1-4082391f59ec",
+              "locator_label": "第 8 行起",
+              "score": 0.6972,
+              "bm25_rank": 3,
+              "dense_rank": 3,
+              "fusion_score": 0.031746,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E3"
+            },
+            {
+              "chunk_id": "86bb75f8-19e6-5a61-950e-f49f60da8514",
+              "rank": 4,
+              "title": "华东仓收货时间",
+              "document_id": "lt-warehouse-east",
+              "version_id": "61b29312-187c-4240-84b7-bc4467554a22",
+              "locator_label": "第 1 行起",
+              "score": 0.6385,
+              "bm25_rank": 5,
+              "dense_rank": 4,
+              "fusion_score": 0.03101,
+              "admitted": false,
+              "excluded_because": "boilerplate_only",
+              "lane": "global"
+            },
+            {
+              "chunk_id": "6d0f9552-8630-56f0-bd48-c4306c4de7f1",
+              "rank": 5,
+              "title": "华南仓收货时间",
+              "document_id": "lt-warehouse-south",
+              "version_id": "e421f203-87cc-436d-b060-fb3cb63d51a5",
+              "locator_label": "第 1 行起",
+              "score": 0.631,
+              "bm25_rank": 7,
+              "dense_rank": 5,
+              "fusion_score": 0.03031,
+              "admitted": false,
+              "excluded_because": "boilerplate_only",
+              "lane": "global"
+            },
+            {
+              "chunk_id": "5dbd7686-87a2-5a29-9d1d-af13aa29ddc2",
+              "rank": 6,
+              "title": "华东仓收货时间",
+              "document_id": "lt-warehouse-east",
+              "version_id": "61b29312-187c-4240-84b7-bc4467554a22",
+              "locator_label": "第 5 行起",
+              "score": 0.5445,
+              "bm25_rank": 6,
+              "dense_rank": 9,
+              "fusion_score": 0.029644,
+              "admitted": true,
+              "excluded_because": null,
+              "lane": "global",
+              "evidence_id": "E4"
+            }
+          ],
+          "embed_ms": 217.5,
+          "retrieval_ms": 80.7,
+          "generation_ms": 17243.3,
+          "total_ms": 17597.0
+        },
+        "usage": {
+          "prompt_tokens": 898,
+          "completion_tokens": 38,
+          "model_duration_ms": 17219.0,
+          "model_load_ms": 56.1,
+          "prompt_eval_ms": 10994.3,
+          "completion_eval_ms": 6163.8,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "西北仓的工作日收货窗口是几点到几点"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "西北仓的工作日收货窗口是几点到几点？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "西北仓的工作日收货窗口是几点到几点",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "contract_preparation": null,
+          "execution_budget": {
+            "deadline": 1791003787.557327,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 898,
+                "completion_tokens": 38,
+                "wall_ms": 17242.3
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        }
+      },
+      "created_at": "2026-10-03T04:53:25.155881+00:00"
+    },
+    {
+      "task_id": "U35",
+      "method": "workflow",
+      "run_id": "af858586-8149-4256-9ad5-0d09132f4b83",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 898,
+          "completion_tokens": 38,
+          "model_duration_ms": 5448.5,
+          "model_load_ms": 69.0,
+          "prompt_eval_ms": 61.7,
+          "completion_eval_ms": 5305.4,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "西北仓的工作日收货窗口是几点到几点"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "西北仓的工作日收货窗口是几点到几点？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "西北仓的工作日收货窗口是几点到几点",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 5497.8,
+          "generation_context_chunk_ids": [
+            "ca908669-712c-56f2-9c62-c1b0ea4eb753",
+            "2ad0c501-eb8d-51ce-a5ab-d095e3a732db",
+            "6a0d1807-145d-5e89-bc10-1e1c6af106b0",
+            "5dbd7686-87a2-5a29-9d1d-af13aa29ddc2"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "tool_wall_ms": 352.1,
+          "task_wall_ms": 6089.3,
+          "execution_budget": {
+            "deadline": 1791003805.209781,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 898,
+                "completion_tokens": 38,
+                "wall_ms": 5473.2
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.4,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:53:25.192102+00:00"
+    },
+    {
+      "task_id": "U35",
+      "method": "dynamic",
+      "run_id": "a847dbd8-f043-4c33-9e2b-d9662367fa36",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 761,
+          "completion_tokens": 38,
+          "model_duration_ms": 17719.6,
+          "model_load_ms": 67.9,
+          "prompt_eval_ms": 12563.2,
+          "completion_eval_ms": 5084.6,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "西北仓的工作日收货窗口是几点到几点"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "西北仓的工作日收货窗口是几点到几点？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "西北仓的工作日收货窗口是几点到几点",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 17771.0,
+          "generation_context_chunk_ids": [
+            "2ad0c501-eb8d-51ce-a5ab-d095e3a732db",
+            "ca908669-712c-56f2-9c62-c1b0ea4eb753",
+            "6a0d1807-145d-5e89-bc10-1e1c6af106b0"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "agent_policy_prompt_tokens": 218,
+          "agent_policy_completion_tokens": 43,
+          "total_prompt_tokens": 979,
+          "total_completion_tokens": 81,
+          "agent_policy_wall_ms": 11144.7,
+          "agent_policy_model_duration_ms": 11121.2,
+          "agent_policy_prompt_eval_ms": 3156.5,
+          "agent_policy_completion_eval_ms": 7892.8,
+          "tool_wall_ms": 395.9,
+          "task_wall_ms": 29524.0,
+          "execution_budget": {
+            "deadline": 1791003811.3669062,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "policy": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 218,
+                "completion_tokens": 43,
+                "wall_ms": 11148.3
+              },
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 761,
+                "completion_tokens": 38,
+                "wall_ms": 17744.7
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.4,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:53:31.352850+00:00"
+    },
+    {
+      "task_id": "U35",
+      "method": "hybrid",
+      "run_id": "ec2a1d92-3e1b-4fb5-bb7e-5f6815b6b322",
+      "result": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "verdict": null,
+        "citations": [],
+        "message": "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。",
+        "usage": {
+          "prompt_tokens": 898,
+          "completion_tokens": 38,
+          "model_duration_ms": 13070.3,
+          "model_load_ms": 67.9,
+          "prompt_eval_ms": 6941.7,
+          "completion_eval_ms": 6057.0,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "insufficient_evidence",
+          "conflict_check": null,
+          "acceptance_items": [
+            "西北仓的工作日收货窗口是几点到几点"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "scope_repairs": [],
+          "deterministic_date_comparison": null,
+          "task_contract": {
+            "version": "task-contract-v1",
+            "contract": {
+              "question": "西北仓的工作日收货窗口是几点到几点？",
+              "intent": "ordinary",
+              "slots": [
+                {
+                  "slot_id": "slot_1",
+                  "query": "西北仓的工作日收货窗口是几点到几点",
+                  "subject": "",
+                  "attribute": "",
+                  "value_type": "text",
+                  "required": true,
+                  "applies_if": "always",
+                  "history_kind": null
+                }
+              ],
+              "conditions": [],
+              "history_kind": "current",
+              "version_chain_complete": false,
+              "version_ids": [],
+              "versions": [],
+              "reason": "explicit_structure"
+            },
+            "condition": null,
+            "bound_values": [],
+            "status": "ordinary",
+            "slot_states": {
+              "slot_1": "unknown"
+            }
+          },
+          "generation_wall_ms": 13125.4,
+          "generation_context_chunk_ids": [
+            "ca908669-712c-56f2-9c62-c1b0ea4eb753",
+            "2ad0c501-eb8d-51ce-a5ab-d095e3a732db",
+            "6a0d1807-145d-5e89-bc10-1e1c6af106b0",
+            "5dbd7686-87a2-5a29-9d1d-af13aa29ddc2"
+          ],
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "tool_wall_ms": 310.4,
+          "task_wall_ms": 13665.5,
+          "execution_budget": {
+            "deadline": 1791003840.952356,
+            "limits": {
+              "policy": 12,
+              "judge": 8,
+              "generation": 12,
+              "judge_tokens": 24000
+            },
+            "calls": {
+              "generation": {
+                "attempted": 1,
+                "succeeded": 1,
+                "failed": 0,
+                "prompt_tokens": 898,
+                "completion_tokens": 38,
+                "wall_ms": 13097.3
+              }
+            },
+            "judge_tokens_reserved": 0
+          }
+        },
+        "shadow_scores": {
+          "relevance": 0.4,
+          "claim_support": [],
+          "scorer": "bigram-overlap-v1",
+          "mode": "shadow",
+          "action": "recorded only; no answer is withheld on these scores",
+          "calibration": "artifacts/a-q1-calibration.json"
+        }
+      },
+      "created_at": "2026-10-03T04:54:00.939140+00:00"
+    }
+  ]
+}

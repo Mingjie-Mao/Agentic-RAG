@@ -1,0 +1,1586 @@
+{
+  "scope": "Complete historical old35 Dev regression; legacy answer_correct and task_success are diagnostic, not reviewed Core Strict Task Success",
+  "runs": 140,
+  "task_count_per_method": 35,
+  "methods": [
+    "rag",
+    "workflow",
+    "dynamic",
+    "hybrid"
+  ],
+  "baseline": {
+    "path": "artifacts/unseen-benchmark-v1.json",
+    "sha256": "0d2857e2e2ea2143032f5790a70701d16efeb0db24d348d8b8ceb71ae96972e6"
+  },
+  "current": {
+    "path": "artifacts/dev-old35-regression-20261003.json",
+    "sha256": "bbbb693d3ad4092d7b1c0fb0a5cfdb1eb1a7026032e9e17968f15acbc77b9d14"
+  },
+  "comparability": {
+    "original_tasks_sha256": "7c1255ee323634e72be779c88d287dc0fdaa7e3013a166c0639d844611341154",
+    "original_spec_sha256": "15fe9e1807a3bdedb334c51a3c2ad1c6ecfc62007d55620c7ddb9eb59679662b",
+    "legacy_scoring_ast_matches_head": {
+      "normalized": true,
+      "scannable": true,
+      "_literal_pattern": true,
+      "fact_matches": true,
+      "_task_matchers": true,
+      "_transition_satisfied": true,
+      "_sufficiency": true,
+      "score_task": true
+    },
+    "historical_scorer_file_matches_head": false,
+    "historical_full_model_fingerprint_available": false,
+    "historical_paired_dynamic_baseline_available": false,
+    "known_limitations": [
+      "Dev regression, not frozen Core accuracy",
+      "Historical model names match; historical full digests/configuration not recorded",
+      "Original task_input document hints retained for U27/U28",
+      "Original literal facts and prescribed-path metrics remain diagnostic",
+      "Historical RAG latency rebuilt from answer timestamps, first task unknown",
+      "Current full-code changes and runtime safeguards prevent attributing aggregate gains to the abstention fix alone"
+    ],
+    "historical_all_105_scores_recomputed_identically": true,
+    "indexed_corpus_before_after_identical": true
+  },
+  "comparison": {
+    "rag": {
+      "answer_correct": {
+        "old": 26,
+        "new": 26,
+        "old_percent": 74.29,
+        "new_percent": 74.29,
+        "delta_percentage_points": 0.0,
+        "improved_tasks": [],
+        "regressed_tasks": []
+      },
+      "task_success": {
+        "old": 20,
+        "new": 20,
+        "old_percent": 57.14,
+        "new_percent": 57.14,
+        "delta_percentage_points": 0.0,
+        "improved_tasks": [],
+        "regressed_tasks": []
+      },
+      "old_summary": {
+        "tasks": 35,
+        "task_success": 20,
+        "answer_correct": 26,
+        "execution_failures": 0,
+        "non_termination": [],
+        "violations": {
+          "conditional_violation": [],
+          "acl_content_leak": [],
+          "other_forbidden_output": []
+        },
+        "normal_cost": {
+          "tasks": 35,
+          "latency_samples": 34,
+          "unknown_latency": 1,
+          "p50_seconds": 21.07565,
+          "p95_seconds": 41.5369,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 3279,
+          "generation_prompt_tokens": 40065
+        },
+        "failure_cost": {
+          "tasks": 0,
+          "latency_samples": 0,
+          "unknown_latency": 0,
+          "p50_seconds": null,
+          "p95_seconds": null,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 0,
+          "generation_prompt_tokens": 0
+        },
+        "note": "Forbidden output is not an ACL leak without a task-specific safety label; unknown latencies excluded; costs of failed attempts retained separately."
+      },
+      "current_summary": {
+        "tasks": 35,
+        "task_success": 20,
+        "answer_correct": 26,
+        "execution_failures": 0,
+        "non_termination": [],
+        "violations": {
+          "conditional_violation": [],
+          "acl_content_leak": [],
+          "other_forbidden_output": []
+        },
+        "normal_cost": {
+          "tasks": 35,
+          "latency_samples": 35,
+          "unknown_latency": 0,
+          "p50_seconds": 17.9799,
+          "p95_seconds": 42.6263,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 3239,
+          "generation_prompt_tokens": 39842
+        },
+        "failure_cost": {
+          "tasks": 0,
+          "latency_samples": 0,
+          "unknown_latency": 0,
+          "p50_seconds": null,
+          "p95_seconds": null,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 0,
+          "generation_prompt_tokens": 0
+        },
+        "note": "Forbidden output is not an ACL leak without a task-specific safety label; unknown latencies excluded; costs of failed attempts retained separately."
+      },
+      "false_abstention": {
+        "old_tasks": [
+          "U27",
+          "U30"
+        ],
+        "new_tasks": [
+          "U27",
+          "U30"
+        ]
+      },
+      "failures": [
+        {
+          "task_id": "U12",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U13",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U14",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U15",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [
+            "handoff"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U16",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U17",
+          "category": "conditional_planning",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U19",
+          "category": "conditional_planning",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {
+            "x-idempotency-key": false
+          },
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U20",
+          "category": "conditional_planning",
+          "status": "answered",
+          "missing_literal_facts": [
+            "pro"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U22",
+          "category": "comparison",
+          "status": "answered",
+          "missing_literal_facts": [
+            "east_start",
+            "east_end",
+            "south_start",
+            "south_end"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U24",
+          "category": "comparison",
+          "status": "answered",
+          "missing_literal_facts": [
+            "basic",
+            "pro"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U26",
+          "category": "comparison",
+          "status": "answered",
+          "missing_literal_facts": [
+            "s2",
+            "s1"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U27",
+          "category": "temporal_version",
+          "status": "insufficient_evidence",
+          "missing_literal_facts": [
+            "old",
+            "new"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "gold_evidence_coverage",
+            "required_tool:get_document_version",
+            "required_tool:compare_versions"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U28",
+          "category": "temporal_version",
+          "status": "answered",
+          "missing_literal_facts": [
+            "old"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "required_tool:get_document_version",
+            "required_tool:compare_versions"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U29",
+          "category": "temporal_version",
+          "status": "answered",
+          "missing_literal_facts": [
+            "first"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "required_tool:get_document_version",
+            "required_tool:compare_versions"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U30",
+          "category": "temporal_version",
+          "status": "insufficient_evidence",
+          "missing_literal_facts": [
+            "old",
+            "new"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "gold_evidence_coverage",
+            "required_tool:get_document_version",
+            "required_tool:compare_versions"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        }
+      ],
+      "null_cases": {
+        "tasks": 4,
+        "correct_abstentions": 4
+      },
+      "category_comparison": {
+        "efficiency_stopping": {
+          "old_answer_correct": 6,
+          "new_answer_correct": 6,
+          "tasks": 6
+        },
+        "multi_hop": {
+          "old_answer_correct": 5,
+          "new_answer_correct": 5,
+          "tasks": 5
+        },
+        "latent_link": {
+          "old_answer_correct": 4,
+          "new_answer_correct": 4,
+          "tasks": 5
+        },
+        "conditional_planning": {
+          "old_answer_correct": 4,
+          "new_answer_correct": 4,
+          "tasks": 5
+        },
+        "comparison": {
+          "old_answer_correct": 2,
+          "new_answer_correct": 2,
+          "tasks": 5
+        },
+        "temporal_version": {
+          "old_answer_correct": 1,
+          "new_answer_correct": 1,
+          "tasks": 5
+        },
+        "null_insufficient": {
+          "old_answer_correct": 4,
+          "new_answer_correct": 4,
+          "tasks": 4
+        }
+      },
+      "policy_measurements": {
+        "policy_calls": 0,
+        "failed_tool_calls": 0,
+        "mean_steps": 1.0
+      }
+    },
+    "workflow": {
+      "answer_correct": {
+        "old": 27,
+        "new": 26,
+        "old_percent": 77.14,
+        "new_percent": 74.29,
+        "delta_percentage_points": -2.86,
+        "improved_tasks": [],
+        "regressed_tasks": [
+          "U28"
+        ]
+      },
+      "task_success": {
+        "old": 27,
+        "new": 26,
+        "old_percent": 77.14,
+        "new_percent": 74.29,
+        "delta_percentage_points": -2.86,
+        "improved_tasks": [],
+        "regressed_tasks": [
+          "U28"
+        ]
+      },
+      "old_summary": {
+        "tasks": 35,
+        "task_success": 27,
+        "answer_correct": 27,
+        "execution_failures": 0,
+        "non_termination": [],
+        "violations": {
+          "conditional_violation": [
+            "U18",
+            "U21"
+          ],
+          "acl_content_leak": [],
+          "other_forbidden_output": []
+        },
+        "normal_cost": {
+          "tasks": 35,
+          "latency_samples": 35,
+          "unknown_latency": 0,
+          "p50_seconds": 28.433,
+          "p95_seconds": 49.0964,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 3341,
+          "generation_prompt_tokens": 48617
+        },
+        "failure_cost": {
+          "tasks": 0,
+          "latency_samples": 0,
+          "unknown_latency": 0,
+          "p50_seconds": null,
+          "p95_seconds": null,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 0,
+          "generation_prompt_tokens": 0
+        },
+        "note": "Forbidden output is not an ACL leak without a task-specific safety label; unknown latencies excluded; costs of failed attempts retained separately."
+      },
+      "current_summary": {
+        "tasks": 35,
+        "task_success": 26,
+        "answer_correct": 26,
+        "execution_failures": 0,
+        "non_termination": [],
+        "violations": {
+          "conditional_violation": [
+            "U18",
+            "U21"
+          ],
+          "acl_content_leak": [],
+          "other_forbidden_output": []
+        },
+        "normal_cost": {
+          "tasks": 35,
+          "latency_samples": 35,
+          "unknown_latency": 0,
+          "p50_seconds": 31.429299999999998,
+          "p95_seconds": 49.5357,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 3376,
+          "generation_prompt_tokens": 47419
+        },
+        "failure_cost": {
+          "tasks": 0,
+          "latency_samples": 0,
+          "unknown_latency": 0,
+          "p50_seconds": null,
+          "p95_seconds": null,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 0,
+          "generation_prompt_tokens": 0
+        },
+        "note": "Forbidden output is not an ACL leak without a task-specific safety label; unknown latencies excluded; costs of failed attempts retained separately."
+      },
+      "false_abstention": {
+        "old_tasks": [
+          "U29",
+          "U30"
+        ],
+        "new_tasks": [
+          "U28",
+          "U29",
+          "U30"
+        ]
+      },
+      "failures": [
+        {
+          "task_id": "U15",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [
+            "handoff"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U18",
+          "category": "conditional_planning",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {
+            "备岗": true
+          },
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U21",
+          "category": "conditional_planning",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {
+            "1 天": true,
+            "1天": true,
+            "一天": false
+          },
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U24",
+          "category": "comparison",
+          "status": "answered",
+          "missing_literal_facts": [
+            "basic",
+            "pro"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U26",
+          "category": "comparison",
+          "status": "answered",
+          "missing_literal_facts": [
+            "s2",
+            "s1"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U27",
+          "category": "temporal_version",
+          "status": "answered",
+          "missing_literal_facts": [
+            "old"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U28",
+          "category": "temporal_version",
+          "status": "insufficient_evidence",
+          "missing_literal_facts": [
+            "hotel",
+            "old",
+            "new"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "gold_evidence_coverage"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U29",
+          "category": "temporal_version",
+          "status": "insufficient_evidence",
+          "missing_literal_facts": [
+            "first"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "gold_evidence_coverage",
+            "required_tool:get_document_version",
+            "required_tool:compare_versions"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U30",
+          "category": "temporal_version",
+          "status": "insufficient_evidence",
+          "missing_literal_facts": [
+            "old",
+            "new"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "gold_evidence_coverage",
+            "required_tool:get_document_version",
+            "required_tool:compare_versions"
+          ],
+          "execution_error": null,
+          "answer_validation": null,
+          "invalid_calls": 0
+        }
+      ],
+      "null_cases": {
+        "tasks": 4,
+        "correct_abstentions": 4
+      },
+      "category_comparison": {
+        "efficiency_stopping": {
+          "old_answer_correct": 6,
+          "new_answer_correct": 6,
+          "tasks": 6
+        },
+        "multi_hop": {
+          "old_answer_correct": 5,
+          "new_answer_correct": 5,
+          "tasks": 5
+        },
+        "latent_link": {
+          "old_answer_correct": 4,
+          "new_answer_correct": 4,
+          "tasks": 5
+        },
+        "conditional_planning": {
+          "old_answer_correct": 3,
+          "new_answer_correct": 3,
+          "tasks": 5
+        },
+        "comparison": {
+          "old_answer_correct": 3,
+          "new_answer_correct": 3,
+          "tasks": 5
+        },
+        "temporal_version": {
+          "old_answer_correct": 2,
+          "new_answer_correct": 1,
+          "tasks": 5
+        },
+        "null_insufficient": {
+          "old_answer_correct": 4,
+          "new_answer_correct": 4,
+          "tasks": 4
+        }
+      },
+      "policy_measurements": {
+        "policy_calls": 0,
+        "failed_tool_calls": 0,
+        "mean_steps": 2.14
+      }
+    },
+    "dynamic": {
+      "answer_correct": {
+        "old": null,
+        "new": 25,
+        "old_percent": null,
+        "new_percent": 71.43,
+        "delta_percentage_points": null,
+        "improved_tasks": [],
+        "regressed_tasks": []
+      },
+      "task_success": {
+        "old": null,
+        "new": 23,
+        "old_percent": null,
+        "new_percent": 65.71,
+        "delta_percentage_points": null,
+        "improved_tasks": [],
+        "regressed_tasks": []
+      },
+      "old_summary": null,
+      "current_summary": {
+        "tasks": 35,
+        "task_success": 23,
+        "answer_correct": 25,
+        "execution_failures": 0,
+        "non_termination": [],
+        "violations": {
+          "conditional_violation": [
+            "U18",
+            "U21"
+          ],
+          "acl_content_leak": [],
+          "other_forbidden_output": []
+        },
+        "normal_cost": {
+          "tasks": 35,
+          "latency_samples": 35,
+          "unknown_latency": 0,
+          "p50_seconds": 71.995,
+          "p95_seconds": 105.7158,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 65369,
+          "policy_completion_tokens": 7285,
+          "generation_completion_tokens": 3200,
+          "generation_prompt_tokens": 42521
+        },
+        "failure_cost": {
+          "tasks": 0,
+          "latency_samples": 0,
+          "unknown_latency": 0,
+          "p50_seconds": null,
+          "p95_seconds": null,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 0,
+          "generation_prompt_tokens": 0
+        },
+        "note": "Forbidden output is not an ACL leak without a task-specific safety label; unknown latencies excluded; costs of failed attempts retained separately."
+      },
+      "false_abstention": {
+        "old_tasks": null,
+        "new_tasks": [
+          "U27",
+          "U28",
+          "U30"
+        ]
+      },
+      "failures": [
+        {
+          "task_id": "U02",
+          "category": "efficiency_stopping",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "efficient_stop"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 1
+        },
+        {
+          "task_id": "U11",
+          "category": "multi_hop",
+          "status": "answered",
+          "missing_literal_facts": [
+            "timeout"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "gold_evidence_coverage"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U14",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U18",
+          "category": "conditional_planning",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {
+            "备岗": true
+          },
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U19",
+          "category": "conditional_planning",
+          "status": "answered",
+          "missing_literal_facts": [
+            "webhook"
+          ],
+          "forbidden_present": {
+            "x-idempotency-key": false
+          },
+          "failed_capabilities": [
+            "cross_document_evidence",
+            "gold_evidence_coverage",
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 1
+        },
+        {
+          "task_id": "U21",
+          "category": "conditional_planning",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {
+            "1 天": true,
+            "1天": true,
+            "一天": false
+          },
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U24",
+          "category": "comparison",
+          "status": "answered",
+          "missing_literal_facts": [
+            "basic",
+            "pro"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U26",
+          "category": "comparison",
+          "status": "answered",
+          "missing_literal_facts": [
+            "s2",
+            "s1"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U27",
+          "category": "temporal_version",
+          "status": "insufficient_evidence",
+          "missing_literal_facts": [
+            "old",
+            "new"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "gold_evidence_coverage",
+            "required_tool:get_document_version"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "invalid_calls": 2
+        },
+        {
+          "task_id": "U28",
+          "category": "temporal_version",
+          "status": "insufficient_evidence",
+          "missing_literal_facts": [
+            "hotel",
+            "old",
+            "new"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "gold_evidence_coverage",
+            "required_tool:get_document_version"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "invalid_calls": 2
+        },
+        {
+          "task_id": "U29",
+          "category": "temporal_version",
+          "status": "answered",
+          "missing_literal_facts": [
+            "first"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "required_tool:get_document_version"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 1
+        },
+        {
+          "task_id": "U30",
+          "category": "temporal_version",
+          "status": "insufficient_evidence",
+          "missing_literal_facts": [
+            "old",
+            "new"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "gold_evidence_coverage",
+            "required_tool:get_document_version"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "invalid_calls": 2
+        }
+      ],
+      "null_cases": {
+        "tasks": 4,
+        "correct_abstentions": 4
+      },
+      "category_comparison": {
+        "efficiency_stopping": {
+          "old_answer_correct": null,
+          "new_answer_correct": 6,
+          "tasks": 6
+        },
+        "multi_hop": {
+          "old_answer_correct": null,
+          "new_answer_correct": 4,
+          "tasks": 5
+        },
+        "latent_link": {
+          "old_answer_correct": null,
+          "new_answer_correct": 5,
+          "tasks": 5
+        },
+        "conditional_planning": {
+          "old_answer_correct": null,
+          "new_answer_correct": 2,
+          "tasks": 5
+        },
+        "comparison": {
+          "old_answer_correct": null,
+          "new_answer_correct": 3,
+          "tasks": 5
+        },
+        "temporal_version": {
+          "old_answer_correct": null,
+          "new_answer_correct": 1,
+          "tasks": 5
+        },
+        "null_insufficient": {
+          "old_answer_correct": null,
+          "new_answer_correct": 4,
+          "tasks": 4
+        }
+      },
+      "policy_measurements": {
+        "policy_calls": 112,
+        "failed_tool_calls": 12,
+        "mean_steps": 3.0
+      }
+    },
+    "hybrid": {
+      "answer_correct": {
+        "old": 26,
+        "new": 27,
+        "old_percent": 74.29,
+        "new_percent": 77.14,
+        "delta_percentage_points": 2.86,
+        "improved_tasks": [
+          "U01"
+        ],
+        "regressed_tasks": []
+      },
+      "task_success": {
+        "old": 23,
+        "new": 24,
+        "old_percent": 65.71,
+        "new_percent": 68.57,
+        "delta_percentage_points": 2.86,
+        "improved_tasks": [
+          "U01"
+        ],
+        "regressed_tasks": []
+      },
+      "old_summary": {
+        "tasks": 35,
+        "task_success": 23,
+        "answer_correct": 26,
+        "execution_failures": 0,
+        "non_termination": [],
+        "violations": {
+          "conditional_violation": [
+            "U18",
+            "U21"
+          ],
+          "acl_content_leak": [],
+          "other_forbidden_output": []
+        },
+        "normal_cost": {
+          "tasks": 35,
+          "latency_samples": 35,
+          "unknown_latency": 0,
+          "p50_seconds": 30.46,
+          "p95_seconds": 65.1078,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 7315,
+          "policy_completion_tokens": 570,
+          "generation_completion_tokens": 3394,
+          "generation_prompt_tokens": 45516
+        },
+        "failure_cost": {
+          "tasks": 0,
+          "latency_samples": 0,
+          "unknown_latency": 0,
+          "p50_seconds": null,
+          "p95_seconds": null,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 0,
+          "generation_prompt_tokens": 0
+        },
+        "note": "Forbidden output is not an ACL leak without a task-specific safety label; unknown latencies excluded; costs of failed attempts retained separately."
+      },
+      "current_summary": {
+        "tasks": 35,
+        "task_success": 24,
+        "answer_correct": 27,
+        "execution_failures": 0,
+        "non_termination": [],
+        "violations": {
+          "conditional_violation": [
+            "U18",
+            "U21"
+          ],
+          "acl_content_leak": [],
+          "other_forbidden_output": []
+        },
+        "normal_cost": {
+          "tasks": 35,
+          "latency_samples": 35,
+          "unknown_latency": 0,
+          "p50_seconds": 32.2778,
+          "p95_seconds": 73.9046,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 7315,
+          "policy_completion_tokens": 570,
+          "generation_completion_tokens": 3521,
+          "generation_prompt_tokens": 44807
+        },
+        "failure_cost": {
+          "tasks": 0,
+          "latency_samples": 0,
+          "unknown_latency": 0,
+          "p50_seconds": null,
+          "p95_seconds": null,
+          "judge_calls": 0,
+          "judge_succeeded": 0,
+          "judge_failed": 0,
+          "judge_wall_seconds": 0.0,
+          "judge_prompt_tokens": 0,
+          "judge_completion_tokens": 0,
+          "policy_prompt_tokens": 0,
+          "policy_completion_tokens": 0,
+          "generation_completion_tokens": 0,
+          "generation_prompt_tokens": 0
+        },
+        "note": "Forbidden output is not an ACL leak without a task-specific safety label; unknown latencies excluded; costs of failed attempts retained separately."
+      },
+      "false_abstention": {
+        "old_tasks": [
+          "U01",
+          "U28"
+        ],
+        "new_tasks": [
+          "U28"
+        ]
+      },
+      "failures": [
+        {
+          "task_id": "U13",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U14",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U15",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [
+            "handoff"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U16",
+          "category": "latent_link",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "conditional_transition"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U18",
+          "category": "conditional_planning",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {
+            "备岗": true
+          },
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U21",
+          "category": "conditional_planning",
+          "status": "answered",
+          "missing_literal_facts": [],
+          "forbidden_present": {
+            "1 天": true,
+            "1天": true,
+            "一天": false
+          },
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U24",
+          "category": "comparison",
+          "status": "answered",
+          "missing_literal_facts": [
+            "basic",
+            "pro"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U26",
+          "category": "comparison",
+          "status": "answered",
+          "missing_literal_facts": [
+            "s2",
+            "s1"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U27",
+          "category": "temporal_version",
+          "status": "answered",
+          "missing_literal_facts": [
+            "old"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 2,
+            "validated_claim_count": 2,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U28",
+          "category": "temporal_version",
+          "status": "insufficient_evidence",
+          "missing_literal_facts": [
+            "hotel",
+            "old",
+            "new"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [
+            "gold_evidence_coverage"
+          ],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": false,
+            "generated_claim_count": 0,
+            "validated_claim_count": 0,
+            "status": "insufficient_evidence",
+            "reason": "generator_abstained"
+          },
+          "invalid_calls": 0
+        },
+        {
+          "task_id": "U29",
+          "category": "temporal_version",
+          "status": "answered",
+          "missing_literal_facts": [
+            "first"
+          ],
+          "forbidden_present": {},
+          "failed_capabilities": [],
+          "execution_error": null,
+          "answer_validation": {
+            "generated_answerable": true,
+            "generated_claim_count": 1,
+            "validated_claim_count": 1,
+            "status": "answered",
+            "reason": "validated"
+          },
+          "invalid_calls": 0
+        }
+      ],
+      "null_cases": {
+        "tasks": 4,
+        "correct_abstentions": 4
+      },
+      "category_comparison": {
+        "efficiency_stopping": {
+          "old_answer_correct": 5,
+          "new_answer_correct": 6,
+          "tasks": 6
+        },
+        "multi_hop": {
+          "old_answer_correct": 5,
+          "new_answer_correct": 5,
+          "tasks": 5
+        },
+        "latent_link": {
+          "old_answer_correct": 4,
+          "new_answer_correct": 4,
+          "tasks": 5
+        },
+        "conditional_planning": {
+          "old_answer_correct": 3,
+          "new_answer_correct": 3,
+          "tasks": 5
+        },
+        "comparison": {
+          "old_answer_correct": 3,
+          "new_answer_correct": 3,
+          "tasks": 5
+        },
+        "temporal_version": {
+          "old_answer_correct": 2,
+          "new_answer_correct": 2,
+          "tasks": 5
+        },
+        "null_insufficient": {
+          "old_answer_correct": 4,
+          "new_answer_correct": 4,
+          "tasks": 4
+        }
+      },
+      "policy_measurements": {
+        "policy_calls": 16,
+        "failed_tool_calls": 0,
+        "mean_steps": 1.74
+      }
+    }
+  },
+  "qualitative_audit": {
+    "path": "artifacts/dev-old35-answer-audit-20261003.json",
+    "full_strict_task_success": null,
+    "scores_changed": false
+  }
+}

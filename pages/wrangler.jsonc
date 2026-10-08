@@ -1,0 +1,8 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  // Settings for the showcase + /live relay; scripts/publish_live_page.sh deploys from here.
+  "name": "agentic-rag",
+  "pages_build_output_dir": "../.runtime/pages-live/site",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"]
+}

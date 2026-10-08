@@ -1,0 +1,740 @@
+{
+  "benchmark": "agent-hard-v2.1",
+  "task_sha256": "17debcc998fa657a797e55d381498ee4919e7a0fb4c13de5df63da2041ea8e46",
+  "validation": {
+    "tasks": 30,
+    "categories": {
+      "multi_hop": 5,
+      "temporal_version": 5,
+      "conditional_planning": 5,
+      "query_recovery": 5,
+      "security_state": 5,
+      "efficiency_stopping": 5
+    },
+    "documents": 31,
+    "shared_comparable_subset": 21,
+    "controlled_agent_only_subset": 9
+  },
+  "arms": [
+    "workflow"
+  ],
+  "results": {
+    "workflow": [
+      {
+        "category": "temporal_version",
+        "controlled": false,
+        "status": "answered",
+        "expected_status": "answered",
+        "status_ok": true,
+        "execution_error_kind": null,
+        "facts": {
+          "30": true,
+          "15": true,
+          "12": true
+        },
+        "forbidden_present": {},
+        "answer_correct": true,
+        "capabilities": {
+          "cross_document_evidence": true,
+          "gold_evidence_coverage": true,
+          "required_tool:get_document_version": true,
+          "required_tool:compare_versions": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [
+          "hard-support-sla-chain"
+        ],
+        "tool_trace": [
+          {
+            "tool": "get_document_version",
+            "arguments": {
+              "document_id": "hard-support-sla-chain"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 0,
+              "keys": [
+                "document_id",
+                "title",
+                "active_version_id",
+                "versions"
+              ],
+              "titles": [],
+              "wall_ms": 9.6,
+              "usage": {},
+              "checkpoint_data": {
+                "versions": [
+                  {
+                    "version_id": "0b0fd0c5-2bf5-48d2-9138-1274c11ac3c8",
+                    "filename": "hard-support-sla-v3.md",
+                    "content_hash": "0e20156af98bc66e58f4edb6f9cd831825eb069f71ece73d5876038ca289fa46",
+                    "status": "ready",
+                    "created_at": "2026-10-01T00:00:00+00:00",
+                    "is_active": true
+                  },
+                  {
+                    "version_id": "609af216-abf1-4a9f-b40e-d3b8cc6fcb19",
+                    "filename": "hard-support-sla-v2.md",
+                    "content_hash": "10d5aa59c3a6085279d200b8a6c2aa2c35e28003c4363e5191806044cf32d480",
+                    "status": "ready",
+                    "created_at": "2026-09-01T00:00:00+00:00",
+                    "is_active": false
+                  },
+                  {
+                    "version_id": "fcd724ed-6ca2-4a72-a16d-aac1978c1947",
+                    "filename": "hard-support-sla-v1.md",
+                    "content_hash": "f9f5c21b86bfe9d92afaf170b0c24b379b675b34b770bef6d1a55f7fe4a9727e",
+                    "status": "ready",
+                    "created_at": "2026-01-01T00:00:00+00:00",
+                    "is_active": false
+                  }
+                ],
+                "active_version_id": "0b0fd0c5-2bf5-48d2-9138-1274c11ac3c8",
+                "document_id": "hard-support-sla-chain"
+              }
+            },
+            "error": null,
+            "evidence_count": 0,
+            "evidence_documents": []
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "hard-support-sla-chain",
+              "from_version_id": "609af216-abf1-4a9f-b40e-d3b8cc6fcb19",
+              "to_version_id": "0b0fd0c5-2bf5-48d2-9138-1274c11ac3c8"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "document_id",
+                "title",
+                "from_version_id",
+                "to_version_id",
+                "diff_lines",
+                "truncated",
+                "note"
+              ],
+              "titles": [],
+              "wall_ms": 7.5,
+              "usage": {},
+              "checkpoint_data": {
+                "document_id": "hard-support-sla-chain"
+              }
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "hard-support-sla-chain"
+            ]
+          },
+          {
+            "tool": "compare_versions",
+            "arguments": {
+              "document_id": "hard-support-sla-chain",
+              "from_version_id": "fcd724ed-6ca2-4a72-a16d-aac1978c1947",
+              "to_version_id": "609af216-abf1-4a9f-b40e-d3b8cc6fcb19"
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 2,
+              "keys": [
+                "document_id",
+                "title",
+                "from_version_id",
+                "to_version_id",
+                "diff_lines",
+                "truncated",
+                "note"
+              ],
+              "titles": [],
+              "wall_ms": 4.5,
+              "usage": {},
+              "checkpoint_data": {
+                "document_id": "hard-support-sla-chain"
+              }
+            },
+            "error": null,
+            "evidence_count": 2,
+            "evidence_documents": [
+              "hard-support-sla-chain"
+            ]
+          }
+        ],
+        "steps": 3,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": false,
+        "evidence_sufficient_step": 2,
+        "extra_calls_after_sufficient_evidence": 1,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": false,
+          "memory_fixture": false
+        },
+        "latency_ms": 31126.1,
+        "usage": {
+          "prompt_tokens": 969,
+          "completion_tokens": 141,
+          "model_duration_ms": 30834.9,
+          "model_load_ms": 70.8,
+          "prompt_eval_ms": 11456.6,
+          "completion_eval_ms": 19303.7,
+          "api_cost": 0,
+          "currency": "AUD",
+          "execution": "local_ollama",
+          "answer_status": "answered",
+          "conflict_check": null,
+          "acceptance_items": [
+            "按时间列出 2026 年 8 月 20 日、9 月 20 日和 10 月 20 日适用的 P1 首次响应时限。"
+          ],
+          "answer_contract": null,
+          "source_audit": [],
+          "generation_wall_ms": 30888.7,
+          "exact_value_slots_missing_first_pass": 0,
+          "tool_wall_ms": 21.6,
+          "task_wall_ms": 31045.4
+        },
+        "task_id": "H08",
+        "run_id": "082f4088-0d42-4e67-885c-7c1b0dd7b3db"
+      },
+      {
+        "category": "security_state",
+        "controlled": true,
+        "status": "access_changed",
+        "expected_status": [
+          "access_changed",
+          "insufficient_evidence"
+        ],
+        "status_ok": true,
+        "execution_error_kind": "authorization_change",
+        "facts": {},
+        "forbidden_present": {
+          "15": false
+        },
+        "answer_correct": true,
+        "capabilities": {
+          "state_change_exercised": true
+        },
+        "capability_success": true,
+        "task_success": true,
+        "citation_documents": [],
+        "tool_trace": [
+          {
+            "tool": "search_documents",
+            "arguments": {
+              "query": "核对当前 P1 首次响应时限；如果执行过程中权限变化，不得使用先前看到的内容。",
+              "top_k": 6
+            },
+            "status": "succeeded",
+            "result": {
+              "status": "ok",
+              "error_code": null,
+              "evidence_count": 5,
+              "keys": [
+                "query",
+                "matches",
+                "candidate_count"
+              ],
+              "titles": [
+                "支持响应等级表",
+                "数据导出注意事项",
+                "API 调用配额说明",
+                "SEV1 客户事故升级",
+                "认证错误 E401 排查"
+              ],
+              "wall_ms": 420.3,
+              "usage": {
+                "embed_ms": 190.2,
+                "retrieval_ms": 80.5
+              },
+              "checkpoint_data": {
+                "matches": [
+                  {
+                    "document_id": "seed-support-sla",
+                    "version_id": "b346d2ca-95e3-4f30-8b9b-0a9ce03dd613",
+                    "chunk_id": "299da41f-e575-5bf7-9a23-34b2f76d9a03",
+                    "title": "支持响应等级表",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "table",
+                      "heading_path": [
+                        "支持响应等级表",
+                        "工单首响"
+                      ],
+                      "source_char_start": 46,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 130,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "table",
+                            "heading_path": [
+                              "支持响应等级表",
+                              "工单首响"
+                            ],
+                            "source_char_start": 46,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 130
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 130,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 107,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 工单首响\n| 等级 | 首次响应时间 |\n| --- | --- |\n| P1 服务不可用 | 15 分钟 |\n| P2 功能受限 | 2 小时 |\n| P3 一般咨询 | 1 个工作日 |\n首次响应不等于问题解决。支持组需要在工单中持续同步处理进度。\n"
+                  },
+                  {
+                    "document_id": "seed-export",
+                    "version_id": "b45d148e-e3d9-43eb-8ed5-a6980bc3a960",
+                    "chunk_id": "5a77eafb-1c0f-5c28-a135-b04176ff1caf",
+                    "title": "数据导出注意事项",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "数据导出注意事项",
+                        "下载有效期"
+                      ],
+                      "source_char_start": 47,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 76,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "数据导出注意事项",
+                              "下载有效期"
+                            ],
+                            "source_char_start": 47,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 76
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 76,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 63,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 下载有效期\n数据导出的下载链接有效期为 24 小时。链接到期后必须重新发起导出。\n导出权限随用户角色变化而撤销，不能将下载链接转发给无权访问者。\n"
+                  },
+                  {
+                    "document_id": "seed-api-limits",
+                    "version_id": "6d6bcbe5-4896-4bb5-afe2-3beccc535498",
+                    "chunk_id": "a602fdd2-c91e-57fb-8a8f-cc754cd8930c",
+                    "title": "API 调用配额说明",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "API 调用配额说明",
+                        "重试规则"
+                      ],
+                      "source_char_start": 101,
+                      "line_start": 7,
+                      "label": "第 7 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 48,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "API 调用配额说明",
+                              "重试规则"
+                            ],
+                            "source_char_start": 101,
+                            "line_start": 7,
+                            "label": "第 7 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 48
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 48,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 36,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 重试规则\n收到 429 后，应按 Retry-After 响应头等待，不应立即连续重试。\n"
+                  },
+                  {
+                    "document_id": "seed-support-escalate",
+                    "version_id": "2a084d96-ec3c-46e2-aaa8-47011c2b28d6",
+                    "chunk_id": "157fd048-ca31-5fd1-b7c6-0ba2bf57f460",
+                    "title": "SEV1 客户事故升级",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "SEV1 客户事故升级",
+                        "升级要求"
+                      ],
+                      "source_char_start": 50,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 83,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "SEV1 客户事故升级",
+                              "升级要求"
+                            ],
+                            "source_char_start": 50,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 83
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 83,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 79,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## 升级要求\n支持工程师确认 SEV1 事故后，必须在 10 分钟内通知值班负责人。\n事故期间每 30 分钟向客户同步一次状态，不得承诺未经工程组确认的恢复时间。\n"
+                  },
+                  {
+                    "document_id": "seed-token-errors",
+                    "version_id": "a028618d-281a-48f3-9021-95e22ffb5f70",
+                    "chunk_id": "7d9b4368-0162-518b-926f-a1a4e0d0f10c",
+                    "title": "认证错误 E401 排查",
+                    "locator": {
+                      "kind": "markdown",
+                      "block_type": "paragraph",
+                      "heading_path": [
+                        "认证错误 E401 排查",
+                        "E401 含义"
+                      ],
+                      "source_char_start": 51,
+                      "line_start": 5,
+                      "label": "第 5 行起",
+                      "kind_for_source": "markdown",
+                      "sources": [
+                        {
+                          "start": 0,
+                          "end": 83,
+                          "locator": {
+                            "kind": "markdown",
+                            "block_type": "paragraph",
+                            "heading_path": [
+                              "认证错误 E401 排查",
+                              "E401 含义"
+                            ],
+                            "source_char_start": 51,
+                            "line_start": 5,
+                            "label": "第 5 行起"
+                          },
+                          "overlap_start": 0,
+                          "overlap_end": 83
+                        }
+                      ],
+                      "char_start": 0,
+                      "char_end": 83,
+                      "chunk_strategy": "structure",
+                      "token_count_estimate": 81,
+                      "token_counter": "cl100k_base"
+                    },
+                    "snippet": "## E401 含义\n错误 E401 表示访问令牌已过期。先调用刷新接口获取新令牌，再重试原始请求。\n若刷新令牌也失效，必须重新登录。不得把访问令牌记录到业务日志。\n"
+                  }
+                ]
+              }
+            },
+            "error": null,
+            "evidence_count": 5,
+            "evidence_documents": [
+              "seed-support-sla",
+              "seed-export",
+              "seed-api-limits",
+              "seed-support-escalate",
+              "seed-token-errors"
+            ]
+          }
+        ],
+        "steps": 1,
+        "forbidden_tool_calls": [],
+        "over_planned": null,
+        "early_stop": null,
+        "evidence_sufficient_step": null,
+        "extra_calls_after_sufficient_evidence": null,
+        "recovery_applicable": false,
+        "recovered": null,
+        "scenario_events": {
+          "first_search_miss": false,
+          "state_change": true,
+          "memory_fixture": false
+        },
+        "latency_ms": 492.0,
+        "usage": {},
+        "task_id": "H21",
+        "run_id": "75b945b7-d1b3-478d-bcdf-e85f01c05e7a",
+        "execution_error": "HTTPException: 404: 资料不存在或当前账号无权访问"
+      }
+    ]
+  },
+  "summary": {
+    "workflow": {
+      "shared_comparable_subset": {
+        "requested": 1,
+        "scored": 1,
+        "skipped": 0,
+        "answer_correct": 1,
+        "answer_correct_rate": 1.0,
+        "task_success": 1,
+        "task_success_rate": 1.0,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 3,
+        "p50_latency_ms": 31126.1,
+        "p95_latency_ms": 31126.1,
+        "mean_prompt_tokens": 969,
+        "phase_latency": {
+          "tool_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 21.6,
+            "p95_ms": 21.6
+          },
+          "generation_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 30888.7,
+            "p95_ms": 30888.7
+          },
+          "task_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 31045.4,
+            "p95_ms": 31045.4
+          }
+        }
+      },
+      "controlled_agent_only_subset": {
+        "requested": 1,
+        "scored": 1,
+        "skipped": 0,
+        "answer_correct": 1,
+        "answer_correct_rate": 1.0,
+        "task_success": 1,
+        "task_success_rate": 1.0,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": null,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 1,
+        "p50_latency_ms": 492.0,
+        "p95_latency_ms": 492.0,
+        "mean_prompt_tokens": 0,
+        "phase_latency": {}
+      },
+      "all_scored_tasks": {
+        "requested": 2,
+        "scored": 2,
+        "skipped": 0,
+        "answer_correct": 2,
+        "answer_correct_rate": 1.0,
+        "task_success": 2,
+        "task_success_rate": 1.0,
+        "recovery_rate": null,
+        "over_planning_rate": null,
+        "early_stop_rate": 0.0,
+        "security_leaks": 0,
+        "unexpected_execution_failures": 0,
+        "mean_steps": 2,
+        "p50_latency_ms": 15809.0,
+        "p95_latency_ms": 31126.1,
+        "mean_prompt_tokens": 484.5,
+        "phase_latency": {
+          "tool_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 21.6,
+            "p95_ms": 21.6
+          },
+          "generation_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 30888.7,
+            "p95_ms": 30888.7
+          },
+          "task_wall_ms": {
+            "recorded": 1,
+            "p50_ms": 31045.4,
+            "p95_ms": 31045.4
+          }
+        }
+      },
+      "by_category": {
+        "conditional_planning": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null,
+          "phase_latency": {}
+        },
+        "efficiency_stopping": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null,
+          "phase_latency": {}
+        },
+        "multi_hop": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null,
+          "phase_latency": {}
+        },
+        "query_recovery": {
+          "requested": 0,
+          "scored": 0,
+          "skipped": 0,
+          "answer_correct": 0,
+          "answer_correct_rate": null,
+          "task_success": 0,
+          "task_success_rate": null,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": null,
+          "p50_latency_ms": null,
+          "p95_latency_ms": null,
+          "mean_prompt_tokens": null,
+          "phase_latency": {}
+        },
+        "security_state": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": null,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 1,
+          "p50_latency_ms": 492.0,
+          "p95_latency_ms": 492.0,
+          "mean_prompt_tokens": 0,
+          "phase_latency": {}
+        },
+        "temporal_version": {
+          "requested": 1,
+          "scored": 1,
+          "skipped": 0,
+          "answer_correct": 1,
+          "answer_correct_rate": 1.0,
+          "task_success": 1,
+          "task_success_rate": 1.0,
+          "recovery_rate": null,
+          "over_planning_rate": null,
+          "early_stop_rate": 0.0,
+          "security_leaks": 0,
+          "unexpected_execution_failures": 0,
+          "mean_steps": 3,
+          "p50_latency_ms": 31126.1,
+          "p95_latency_ms": 31126.1,
+          "mean_prompt_tokens": 969,
+          "phase_latency": {
+            "tool_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 21.6,
+              "p95_ms": 21.6
+            },
+            "generation_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 30888.7,
+              "p95_ms": 30888.7
+            },
+            "task_wall_ms": {
+              "recorded": 1,
+              "p50_ms": 31045.4,
+              "p95_ms": 31045.4
+            }
+          }
+        }
+      }
+    }
+  },
+  "requested_tasks": 2,
+  "note": "开发 benchmark，不是训练集或独立留出集。跨 arm 只能比较 shared_comparable_subset；受控场景仅用于 Agent 内部诊断。"
+}

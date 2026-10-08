@@ -1,0 +1,23 @@
+{
+ "purpose": "GPT task-annotation review for the dynamic benchmark test split before it is used. Required for Test before ingestion/run (require_task_review).",
+ "packet": "benchmarks/enterprise_rag/v1/dynamic/test/review.json",
+ "source_sha256": "efbfb8382364bc276faa4d2b5eca78b19fe3c85f5b33d93dbfe537b10c421340",
+ "corpus_sha256": "40de23ac11ea4bb1d52a9c4dcc452a9ad9d1d140a8bc88cfcafe8044f69a2807",
+ "required_checks": [
+  "question",
+  "facts",
+  "evidence",
+  "scope",
+  "fairness"
+ ],
+ "instructions": [
+  "For each task, read the goal, gold facts and the full gold documents in corpus_spec/gold_evidence.",
+  "question: unambiguous and answerable (or correctly unanswerable for null_insufficient).",
+  "facts: every gold value is exactly what the documents state; accepted aliases are fair.",
+  "evidence: expected_evidence_documents are necessary and sufficient; the observation-dependent hop is real (the next document can only be identified from the first).",
+  "scope: versions/dates/ACL are correct (HR-only profiles must not be readable by the engineer user).",
+  "fairness: no method is privileged; the task does not leak the bridge entity.",
+  "Output one row per task id into reviewed.json 'reviews': {id, label: approved|rejected, checks:{question,facts,evidence,scope,fairness: true|false}, reviewer, reviewer_type:'model', model, independent, reason}."
+ ],
+ "tasks": 40
+}

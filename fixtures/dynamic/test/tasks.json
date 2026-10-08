@@ -1,0 +1,1529 @@
+{
+  "version": "dynamic-test-v1",
+  "split": "test",
+  "tasks": [
+    {
+      "id": "DT01",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-410 中出故障的那个服务，单个请求的超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "3 秒",
+            "3秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-410",
+        "yu-svc-yuanfan-svc-11"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-410",
+        "then_document": "yu-svc-yuanfan-svc-11"
+      }
+    },
+    {
+      "id": "DT02",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-773 中出故障的服务由谁负责？此人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "owner",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner",
+          "aliases": [
+            "林子衿"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6578"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-773",
+        "yu-svc-yuanfan-svc-12",
+        "yu-staff-b4ed43"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-773",
+        "then_document": "yu-svc-yuanfan-svc-12"
+      }
+    },
+    {
+      "id": "DT03",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-779 中出故障的那个服务，单个请求的超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "6 秒",
+            "6秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-779",
+        "yu-svc-yuanfan-svc-13"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-779",
+        "then_document": "yu-svc-yuanfan-svc-13"
+      }
+    },
+    {
+      "id": "DT04",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-232 中出故障的服务由谁负责？此人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "owner",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner",
+          "aliases": [
+            "韩朗"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6508"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-232",
+        "yu-svc-yuanfan-svc-14",
+        "yu-staff-2bcb2f"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-232",
+        "then_document": "yu-svc-yuanfan-svc-14"
+      }
+    },
+    {
+      "id": "DT05",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-147 中出故障的那个服务，单个请求的超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "3 秒",
+            "3秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-147",
+        "yu-svc-yuanfan-svc-15"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-147",
+        "then_document": "yu-svc-yuanfan-svc-15"
+      }
+    },
+    {
+      "id": "DT06",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-381 中出故障的服务由谁负责？此人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "owner",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner",
+          "aliases": [
+            "陆珩"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6329"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-381",
+        "yu-svc-yuanfan-svc-16",
+        "yu-staff-da2b70"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-381",
+        "then_document": "yu-svc-yuanfan-svc-16"
+      }
+    },
+    {
+      "id": "DT07",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-756 中出故障的那个服务，单个请求的超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "5 秒",
+            "5秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-756",
+        "yu-svc-yuanfan-svc-17"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-756",
+        "then_document": "yu-svc-yuanfan-svc-17"
+      }
+    },
+    {
+      "id": "DT08",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-396 中出故障的服务由谁负责？此人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "owner",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner",
+          "aliases": [
+            "孟子衿"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6393"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-396",
+        "yu-svc-yuanfan-svc-18",
+        "yu-staff-064a62"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-396",
+        "then_document": "yu-svc-yuanfan-svc-18"
+      }
+    },
+    {
+      "id": "DT09",
+      "dynamic_type": "bridge_deep",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-281 中出故障的服务，其负责人休假时由谁代班？代班人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "deputy",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "deputy",
+          "aliases": [
+            "孟思远"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6161"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-281",
+        "yu-svc-yuanfan-svc-19",
+        "yu-staff-71d6b1",
+        "yu-staff-08345b"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 4,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-281",
+        "then_document": "yu-svc-yuanfan-svc-19"
+      }
+    },
+    {
+      "id": "DT10",
+      "dynamic_type": "bridge_deep",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-156 中出故障的服务，其负责人休假时由谁代班？代班人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "deputy",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "deputy",
+          "aliases": [
+            "姚珩"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6297"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-156",
+        "yu-svc-yuanfan-svc-20",
+        "yu-staff-08345b",
+        "yu-staff-954fab"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 4,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-156",
+        "then_document": "yu-svc-yuanfan-svc-20"
+      }
+    },
+    {
+      "id": "DT11",
+      "dynamic_type": "bridge_deep",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-169 中出故障的服务，其负责人休假时由谁代班？代班人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "deputy",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "deputy",
+          "aliases": [
+            "苏若川"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6195"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-169",
+        "yu-svc-yuanfan-svc-21",
+        "yu-staff-954fab",
+        "yu-staff-705db8"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 4,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-169",
+        "then_document": "yu-svc-yuanfan-svc-21"
+      }
+    },
+    {
+      "id": "DT12",
+      "dynamic_type": "bridge_deep",
+      "category": "latent_link",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-966 中出故障的服务，其负责人休假时由谁代班？代班人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "deputy",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "deputy",
+          "aliases": [
+            "林子衿"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6578"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-inc-yuanfan-inc-966",
+        "yu-svc-yuanfan-svc-11",
+        "yu-staff-7d6a27",
+        "yu-staff-b4ed43"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 4,
+      "conditional_transition": {
+        "observe_document": "yu-inc-yuanfan-inc-966",
+        "then_document": "yu-svc-yuanfan-svc-11"
+      }
+    },
+    {
+      "id": "DT13",
+      "dynamic_type": "alias",
+      "category": "query_recovery",
+      "user": "yu-eng",
+      "goal": "黑单的金额超过多少元时需要更高级别审批？由谁审批？",
+      "expected_status": "answered",
+      "facts": [
+        "amount",
+        "approver"
+      ],
+      "fact_matchers": [
+        {
+          "id": "amount",
+          "aliases": [
+            "50000 元",
+            "50000元",
+            "50,000 元"
+          ]
+        },
+        {
+          "id": "approver",
+          "aliases": [
+            "运营副总裁"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-glossary",
+        "yu-form-f-22"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-glossary",
+        "then_document": "yu-form-f-22"
+      }
+    },
+    {
+      "id": "DT14",
+      "dynamic_type": "alias",
+      "category": "query_recovery",
+      "user": "yu-eng",
+      "goal": "外发单的金额超过多少元时需要更高级别审批？由谁审批？",
+      "expected_status": "answered",
+      "facts": [
+        "amount",
+        "approver"
+      ],
+      "fact_matchers": [
+        {
+          "id": "amount",
+          "aliases": [
+            "20000 元",
+            "20000元",
+            "20,000 元"
+          ]
+        },
+        {
+          "id": "approver",
+          "aliases": [
+            "质量总监"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-glossary",
+        "yu-form-f-62"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-glossary",
+        "then_document": "yu-form-f-62"
+      }
+    },
+    {
+      "id": "DT15",
+      "dynamic_type": "alias",
+      "category": "query_recovery",
+      "user": "yu-eng",
+      "goal": "白条的金额超过多少元时需要更高级别审批？由谁审批？",
+      "expected_status": "answered",
+      "facts": [
+        "amount",
+        "approver"
+      ],
+      "fact_matchers": [
+        {
+          "id": "amount",
+          "aliases": [
+            "8000 元",
+            "8000元",
+            "8,000 元"
+          ]
+        },
+        {
+          "id": "approver",
+          "aliases": [
+            "质量总监"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-glossary",
+        "yu-form-f-18"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-glossary",
+        "then_document": "yu-form-f-18"
+      }
+    },
+    {
+      "id": "DT16",
+      "dynamic_type": "alias",
+      "category": "query_recovery",
+      "user": "yu-eng",
+      "goal": "小蓝单的金额超过多少元时需要更高级别审批？由谁审批？",
+      "expected_status": "answered",
+      "facts": [
+        "amount",
+        "approver"
+      ],
+      "fact_matchers": [
+        {
+          "id": "amount",
+          "aliases": [
+            "5000 元",
+            "5000元",
+            "5,000 元"
+          ]
+        },
+        {
+          "id": "approver",
+          "aliases": [
+            "质量总监"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-glossary",
+        "yu-form-f-32"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-glossary",
+        "then_document": "yu-form-f-32"
+      }
+    },
+    {
+      "id": "DT17",
+      "dynamic_type": "alias",
+      "category": "query_recovery",
+      "user": "yu-eng",
+      "goal": "短工单的金额超过多少元时需要更高级别审批？由谁审批？",
+      "expected_status": "answered",
+      "facts": [
+        "amount",
+        "approver"
+      ],
+      "fact_matchers": [
+        {
+          "id": "amount",
+          "aliases": [
+            "20000 元",
+            "20000元",
+            "20,000 元"
+          ]
+        },
+        {
+          "id": "approver",
+          "aliases": [
+            "运营副总裁"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-glossary",
+        "yu-form-f-42"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-glossary",
+        "then_document": "yu-form-f-42"
+      }
+    },
+    {
+      "id": "DT18",
+      "dynamic_type": "conditional",
+      "category": "conditional_planning",
+      "user": "yu-eng",
+      "goal": "一厂区第三季度退货率是否需要启动升级处理？应由谁牵头或跟进？",
+      "expected_status": "answered",
+      "facts": [
+        "rate",
+        "decision",
+        "lead"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rate",
+          "aliases": [
+            "3.4%"
+          ]
+        },
+        {
+          "id": "decision",
+          "aliases": [
+            "需要",
+            "需启动"
+          ]
+        },
+        {
+          "id": "lead",
+          "aliases": [
+            "孟听澜"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-quality-q3",
+        "yu-return-escalation"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-quality-q3",
+        "then_document": "yu-return-escalation"
+      }
+    },
+    {
+      "id": "DT19",
+      "dynamic_type": "conditional",
+      "category": "conditional_planning",
+      "user": "yu-eng",
+      "goal": "北仓第三季度退货率是否需要启动升级处理？应由谁牵头或跟进？",
+      "expected_status": "answered",
+      "facts": [
+        "rate",
+        "decision",
+        "lead"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rate",
+          "aliases": [
+            "2.8%"
+          ]
+        },
+        {
+          "id": "decision",
+          "aliases": [
+            "不需要",
+            "不启动"
+          ]
+        },
+        {
+          "id": "lead",
+          "aliases": [
+            "苏若川"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-quality-q3",
+        "yu-return-escalation",
+        "yu-warehouse-directory"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "yu-quality-q3",
+        "then_document": "yu-warehouse-directory"
+      }
+    },
+    {
+      "id": "DT20",
+      "dynamic_type": "conditional",
+      "category": "conditional_planning",
+      "user": "yu-eng",
+      "goal": "二厂区第三季度退货率是否需要启动升级处理？应由谁牵头或跟进？",
+      "expected_status": "answered",
+      "facts": [
+        "rate",
+        "decision",
+        "lead"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rate",
+          "aliases": [
+            "1.6%"
+          ]
+        },
+        {
+          "id": "decision",
+          "aliases": [
+            "不需要",
+            "不启动"
+          ]
+        },
+        {
+          "id": "lead",
+          "aliases": [
+            "孟思远"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-quality-q3",
+        "yu-return-escalation",
+        "yu-warehouse-directory"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "yu-quality-q3",
+        "then_document": "yu-warehouse-directory"
+      }
+    },
+    {
+      "id": "DT21",
+      "dynamic_type": "conditional",
+      "category": "conditional_planning",
+      "user": "yu-eng",
+      "goal": "东仓第三季度退货率是否需要启动升级处理？应由谁牵头或跟进？",
+      "expected_status": "answered",
+      "facts": [
+        "rate",
+        "decision",
+        "lead"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rate",
+          "aliases": [
+            "1.6%"
+          ]
+        },
+        {
+          "id": "decision",
+          "aliases": [
+            "不需要",
+            "不启动"
+          ]
+        },
+        {
+          "id": "lead",
+          "aliases": [
+            "苏清和"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-quality-q3",
+        "yu-return-escalation",
+        "yu-warehouse-directory"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "yu-quality-q3",
+        "then_document": "yu-warehouse-directory"
+      }
+    },
+    {
+      "id": "DT22",
+      "dynamic_type": "conditional",
+      "category": "conditional_planning",
+      "user": "yu-eng",
+      "goal": "南仓第三季度退货率是否需要启动升级处理？应由谁牵头或跟进？",
+      "expected_status": "answered",
+      "facts": [
+        "rate",
+        "decision",
+        "lead"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rate",
+          "aliases": [
+            "1.6%"
+          ]
+        },
+        {
+          "id": "decision",
+          "aliases": [
+            "不需要",
+            "不启动"
+          ]
+        },
+        {
+          "id": "lead",
+          "aliases": [
+            "韩子衿"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-quality-q3",
+        "yu-return-escalation",
+        "yu-warehouse-directory"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "yu-quality-q3",
+        "then_document": "yu-warehouse-directory"
+      }
+    },
+    {
+      "id": "DT23",
+      "dynamic_type": "enumeration",
+      "category": "enumeration",
+      "user": "yu-eng",
+      "goal": "变更冻结规则 R-830 覆盖的服务分别由谁负责？",
+      "expected_status": "answered",
+      "facts": [
+        "owner1",
+        "owner2",
+        "owner3",
+        "svc1",
+        "svc2",
+        "svc3"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner1",
+          "aliases": [
+            "沈南星"
+          ]
+        },
+        {
+          "id": "owner2",
+          "aliases": [
+            "韩子衿"
+          ]
+        },
+        {
+          "id": "owner3",
+          "aliases": [
+            "邵棠"
+          ]
+        },
+        {
+          "id": "svc1",
+          "aliases": [
+            "文鳐库存"
+          ]
+        },
+        {
+          "id": "svc2",
+          "aliases": [
+            "精卫调度"
+          ]
+        },
+        {
+          "id": "svc3",
+          "aliases": [
+            "朱厌搜索"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-freeze-r-830",
+        "yu-svc-yuanfan-svc-19",
+        "yu-svc-yuanfan-svc-17",
+        "yu-svc-yuanfan-svc-11"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 4,
+      "conditional_transition": {
+        "observe_document": "yu-freeze-r-830",
+        "then_document": "yu-svc-yuanfan-svc-19"
+      }
+    },
+    {
+      "id": "DT24",
+      "dynamic_type": "enumeration",
+      "category": "enumeration",
+      "user": "yu-eng",
+      "goal": "变更冻结规则 R-211 覆盖的服务分别由谁负责？",
+      "expected_status": "answered",
+      "facts": [
+        "owner1",
+        "owner2",
+        "owner3",
+        "svc1",
+        "svc2",
+        "svc3"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner1",
+          "aliases": [
+            "林子衿"
+          ]
+        },
+        {
+          "id": "owner2",
+          "aliases": [
+            "韩朗"
+          ]
+        },
+        {
+          "id": "owner3",
+          "aliases": [
+            "韩子衿"
+          ]
+        },
+        {
+          "id": "svc1",
+          "aliases": [
+            "夔牛风控"
+          ]
+        },
+        {
+          "id": "svc2",
+          "aliases": [
+            "玄武结算"
+          ]
+        },
+        {
+          "id": "svc3",
+          "aliases": [
+            "精卫调度"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-freeze-r-211",
+        "yu-svc-yuanfan-svc-12",
+        "yu-svc-yuanfan-svc-14",
+        "yu-svc-yuanfan-svc-17"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 4,
+      "conditional_transition": {
+        "observe_document": "yu-freeze-r-211",
+        "then_document": "yu-svc-yuanfan-svc-12"
+      }
+    },
+    {
+      "id": "DT25",
+      "dynamic_type": "enumeration",
+      "category": "enumeration",
+      "user": "yu-eng",
+      "goal": "变更冻结规则 R-832 覆盖的服务分别由谁负责？",
+      "expected_status": "answered",
+      "facts": [
+        "owner1",
+        "owner2",
+        "svc1",
+        "svc2"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner1",
+          "aliases": [
+            "姚珩"
+          ]
+        },
+        {
+          "id": "owner2",
+          "aliases": [
+            "孟听澜"
+          ]
+        },
+        {
+          "id": "svc1",
+          "aliases": [
+            "旋龟账务"
+          ]
+        },
+        {
+          "id": "svc2",
+          "aliases": [
+            "帝江网关"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-freeze-r-832",
+        "yu-svc-yuanfan-svc-21",
+        "yu-svc-yuanfan-svc-15"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "yu-freeze-r-832",
+        "then_document": "yu-svc-yuanfan-svc-21"
+      }
+    },
+    {
+      "id": "DT26",
+      "dynamic_type": "enumeration",
+      "category": "enumeration",
+      "user": "yu-eng",
+      "goal": "变更冻结规则 R-323 覆盖的服务分别由谁负责？",
+      "expected_status": "answered",
+      "facts": [
+        "owner1",
+        "owner2",
+        "svc1",
+        "svc2"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner1",
+          "aliases": [
+            "邵棠"
+          ]
+        },
+        {
+          "id": "owner2",
+          "aliases": [
+            "姚珩"
+          ]
+        },
+        {
+          "id": "svc1",
+          "aliases": [
+            "朱厌搜索"
+          ]
+        },
+        {
+          "id": "svc2",
+          "aliases": [
+            "旋龟账务"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-freeze-r-323",
+        "yu-svc-yuanfan-svc-11",
+        "yu-svc-yuanfan-svc-21"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "yu-freeze-r-323",
+        "then_document": "yu-svc-yuanfan-svc-11"
+      }
+    },
+    {
+      "id": "DT27",
+      "dynamic_type": "event_version",
+      "category": "temporal_version",
+      "user": "yu-eng",
+      "goal": "行政公告 YUANFAN-AN-20 宣布的那次修订生效之前，外包人员门禁卡有效期是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "90 天",
+            "90天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-notice-yuanfan-an-20",
+        "yu-policy-0"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-notice-yuanfan-an-20",
+        "then_document": "yu-policy-0"
+      }
+    },
+    {
+      "id": "DT28",
+      "dynamic_type": "event_version",
+      "category": "temporal_version",
+      "user": "yu-eng",
+      "goal": "行政公告 YUANFAN-AN-20 宣布的那次修订生效之后、下一次修订之前，外包人员门禁卡有效期是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "60 天",
+            "60天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-notice-yuanfan-an-20",
+        "yu-policy-0"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-notice-yuanfan-an-20",
+        "then_document": "yu-policy-0"
+      }
+    },
+    {
+      "id": "DT29",
+      "dynamic_type": "event_version",
+      "category": "temporal_version",
+      "user": "yu-eng",
+      "goal": "行政公告 YUANFAN-AN-70 宣布的那次修订生效之前，外包人员门禁卡有效期是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "60 天",
+            "60天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-notice-yuanfan-an-70",
+        "yu-policy-0"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-notice-yuanfan-an-70",
+        "then_document": "yu-policy-0"
+      }
+    },
+    {
+      "id": "DT30",
+      "dynamic_type": "event_version",
+      "category": "temporal_version",
+      "user": "yu-eng",
+      "goal": "行政公告 YUANFAN-AN-70 宣布的那次修订生效之后，外包人员门禁卡有效期是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "30 天",
+            "30天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-notice-yuanfan-an-70",
+        "yu-policy-0"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "yu-notice-yuanfan-an-70",
+        "then_document": "yu-policy-0"
+      }
+    },
+    {
+      "id": "DT31",
+      "dynamic_type": "conflict",
+      "category": "comparison",
+      "user": "yu-eng",
+      "goal": "东仓的夜间叉车作业截止时间，作业规范与安全通告不一致时以哪份为准？具体是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value",
+        "source"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "21:00"
+          ]
+        },
+        {
+          "id": "source",
+          "aliases": [
+            "安全通告第 7 号"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-site-rule-0",
+        "yu-safety-0"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2
+    },
+    {
+      "id": "DT32",
+      "dynamic_type": "conflict",
+      "category": "comparison",
+      "user": "yu-eng",
+      "goal": "北仓的高温天气室外作业暂停时间，作业规范与安全通告不一致时以哪份为准？具体是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value",
+        "source"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "12:30"
+          ]
+        },
+        {
+          "id": "source",
+          "aliases": [
+            "安全通告第 9 号"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-site-rule-1",
+        "yu-safety-1"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2
+    },
+    {
+      "id": "DT33",
+      "dynamic_type": "conflict",
+      "category": "comparison",
+      "user": "yu-eng",
+      "goal": "二厂区的危化品库房单次进入人数上限，作业规范与安全通告不一致时以哪份为准？具体是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value",
+        "source"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "3 人",
+            "3人"
+          ]
+        },
+        {
+          "id": "source",
+          "aliases": [
+            "安全通告第 6 号"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-site-rule-2",
+        "yu-safety-2"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2
+    },
+    {
+      "id": "DT34",
+      "dynamic_type": "control",
+      "category": "efficiency_stopping",
+      "user": "yu-eng",
+      "goal": "朱厌搜索的单个请求超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "3 秒",
+            "3秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-svc-yuanfan-svc-11"
+      ],
+      "max_steps": 4,
+      "min_source_documents": 1,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ]
+    },
+    {
+      "id": "DT35",
+      "dynamic_type": "control",
+      "category": "efficiency_stopping",
+      "user": "yu-eng",
+      "goal": "夔牛风控的服务负责人是谁？",
+      "expected_status": "answered",
+      "facts": [
+        "owner"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner",
+          "aliases": [
+            "林子衿"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-svc-yuanfan-svc-12"
+      ],
+      "max_steps": 4,
+      "min_source_documents": 1,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ]
+    },
+    {
+      "id": "DT36",
+      "dynamic_type": "control",
+      "category": "efficiency_stopping",
+      "user": "yu-eng",
+      "goal": "乘黄门户的单个请求超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "6 秒",
+            "6秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-svc-yuanfan-svc-13"
+      ],
+      "max_steps": 4,
+      "min_source_documents": 1,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ]
+    },
+    {
+      "id": "DT37",
+      "dynamic_type": "control",
+      "category": "efficiency_stopping",
+      "user": "yu-eng",
+      "goal": "玄武结算的服务负责人是谁？",
+      "expected_status": "answered",
+      "facts": [
+        "owner"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner",
+          "aliases": [
+            "韩朗"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "yu-svc-yuanfan-svc-14"
+      ],
+      "max_steps": 4,
+      "min_source_documents": 1,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ]
+    },
+    {
+      "id": "DT38",
+      "dynamic_type": "unanswerable",
+      "category": "null_insufficient",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-650 中出故障的服务，其负责人的办公分机是多少？",
+      "expected_status": "insufficient_evidence",
+      "facts": [],
+      "fact_matchers": [],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [],
+      "max_steps": 8,
+      "min_source_documents": 0
+    },
+    {
+      "id": "DT39",
+      "dynamic_type": "unanswerable",
+      "category": "null_insufficient",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-562 中出故障的服务，其负责人的办公分机是多少？",
+      "expected_status": "insufficient_evidence",
+      "facts": [],
+      "fact_matchers": [],
+      "forbidden": [
+        "6574"
+      ],
+      "scenario_events": [],
+      "expected_evidence_documents": [],
+      "max_steps": 8,
+      "min_source_documents": 0
+    },
+    {
+      "id": "DT40",
+      "dynamic_type": "unanswerable",
+      "category": "null_insufficient",
+      "user": "yu-eng",
+      "goal": "事故 YUANFAN-INC-104 中出故障的服务，其负责人的办公分机是多少？",
+      "expected_status": "insufficient_evidence",
+      "facts": [],
+      "fact_matchers": [],
+      "forbidden": [
+        "6605"
+      ],
+      "scenario_events": [],
+      "expected_evidence_documents": [],
+      "max_steps": 8,
+      "min_source_documents": 0
+    }
+  ],
+  "purpose": "observation-dependent tasks; necessity measured separately"
+}

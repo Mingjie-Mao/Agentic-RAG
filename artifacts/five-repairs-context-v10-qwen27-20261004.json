@@ -1,0 +1,9 @@
+{
+  "scope": "Dev saved authorized-evidence diagnostic, not benchmark",
+  "model": "qwen3.5:27b",
+  "reasoning": "low",
+  "status": "cancelled_before_any_completed_prediction",
+  "completed": 0,
+  "gate_passed": null,
+  "reason": "Qwen non-thinking official mode is boolean false; rerun with off instead of GPT reasoning level."
+}

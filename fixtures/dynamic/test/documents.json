@@ -1,0 +1,1073 @@
+{
+  "tenant": {
+    "id": "yuanfan",
+    "name": "远帆数科"
+  },
+  "users": [
+    {
+      "id": "yu-eng",
+      "tenant_id": "yuanfan",
+      "username": "engineer@yuanfan.dynamic",
+      "display_name": "远帆数科 · 工程",
+      "role": "member",
+      "groups": [
+        "engineering"
+      ]
+    },
+    {
+      "id": "yu-admin",
+      "tenant_id": "yuanfan",
+      "username": "admin@yuanfan.dynamic",
+      "display_name": "远帆数科 · 管理者",
+      "role": "admin",
+      "groups": [
+        "engineering",
+        "hr",
+        "finance"
+      ]
+    }
+  ],
+  "owner": "yu-admin",
+  "documents": [
+    {
+      "document_id": "yu-svc-yuanfan-svc-11",
+      "title": "朱厌搜索运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-11.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-12",
+      "title": "夔牛风控运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-12.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-13",
+      "title": "乘黄门户运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-13.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-14",
+      "title": "玄武结算运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-14.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-15",
+      "title": "帝江网关运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-15.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-16",
+      "title": "貔貅计费运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-16.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-17",
+      "title": "精卫调度运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-17.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-18",
+      "title": "白泽质检运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-18.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-19",
+      "title": "文鳐库存运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-19.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-20",
+      "title": "鹊桥报表运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-20.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-21",
+      "title": "旋龟账务运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-21.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-22",
+      "title": "鸾鸟排产运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-22.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-23",
+      "title": "鵸鵌消息运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-23.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-svc-yuanfan-svc-24",
+      "title": "蒲牢对象存储运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-svc-yuanfan-svc-24.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-7d6a27",
+      "title": "员工名片：邵棠",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-7d6a27.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-b4ed43",
+      "title": "员工名片：林子衿",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-b4ed43.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-1fb536",
+      "title": "员工名片：罗越",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-1fb536.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-2bcb2f",
+      "title": "员工名片：韩朗",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-2bcb2f.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-93c21a",
+      "title": "员工名片：孟听澜",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-93c21a.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-da2b70",
+      "title": "员工名片：陆珩",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-da2b70.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-e92bab",
+      "title": "员工名片：韩子衿",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-e92bab.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-064a62",
+      "title": "员工名片：孟子衿",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-064a62.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-71d6b1",
+      "title": "员工名片：沈南星",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-71d6b1.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-08345b",
+      "title": "员工名片：孟思远",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-08345b.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-954fab",
+      "title": "员工名片：姚珩",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-954fab.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-705db8",
+      "title": "员工名片：苏若川",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-705db8.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-5e2ba4",
+      "title": "员工名片：邵思远",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-5e2ba4.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-ca9fa1",
+      "title": "员工名片：卢听澜",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-ca9fa1.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-ea93db",
+      "title": "员工名片：许霁",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-ea93db.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-455c72",
+      "title": "员工名片：姚岚",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-455c72.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-aa6e76",
+      "title": "员工名片：苏清和",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-aa6e76.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-601827",
+      "title": "员工名片：程景行",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-601827.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-6d41a7",
+      "title": "员工名片：顾思远",
+      "groups": [
+        "hr"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-6d41a7.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-staff-5b3ff6",
+      "title": "员工名片：宋朗",
+      "groups": [
+        "hr"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-staff-5b3ff6.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-410",
+      "title": "事故 YUANFAN-INC-410 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-410.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-773",
+      "title": "事故 YUANFAN-INC-773 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-773.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-779",
+      "title": "事故 YUANFAN-INC-779 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-779.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-232",
+      "title": "事故 YUANFAN-INC-232 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-232.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-147",
+      "title": "事故 YUANFAN-INC-147 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-147.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-381",
+      "title": "事故 YUANFAN-INC-381 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-381.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-756",
+      "title": "事故 YUANFAN-INC-756 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-756.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-396",
+      "title": "事故 YUANFAN-INC-396 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-396.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-281",
+      "title": "事故 YUANFAN-INC-281 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-281.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-156",
+      "title": "事故 YUANFAN-INC-156 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-156.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-169",
+      "title": "事故 YUANFAN-INC-169 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-169.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-650",
+      "title": "事故 YUANFAN-INC-650 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-650.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-562",
+      "title": "事故 YUANFAN-INC-562 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-562.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-104",
+      "title": "事故 YUANFAN-INC-104 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-104.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-966",
+      "title": "事故 YUANFAN-INC-966 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-966.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-342",
+      "title": "事故 YUANFAN-INC-342 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-342.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-734",
+      "title": "事故 YUANFAN-INC-734 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-734.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-904",
+      "title": "事故 YUANFAN-INC-904 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-904.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-685",
+      "title": "事故 YUANFAN-INC-685 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-685.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-865",
+      "title": "事故 YUANFAN-INC-865 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-865.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-286",
+      "title": "事故 YUANFAN-INC-286 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-286.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-817",
+      "title": "事故 YUANFAN-INC-817 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-817.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-954",
+      "title": "事故 YUANFAN-INC-954 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-954.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-373",
+      "title": "事故 YUANFAN-INC-373 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-373.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-576",
+      "title": "事故 YUANFAN-INC-576 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-576.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-inc-yuanfan-inc-578",
+      "title": "事故 YUANFAN-INC-578 复盘",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-inc-yuanfan-inc-578.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-glossary",
+      "title": "内部常用俗称对照表",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-glossary.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-form-f-22",
+      "title": "报废处置单管理规定",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-form-f-22.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-form-f-62",
+      "title": "外协加工单管理规定",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-form-f-62.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-form-f-18",
+      "title": "样品出库单管理规定",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-form-f-18.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-form-f-32",
+      "title": "跨仓调拨申请单管理规定",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-form-f-32.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-form-f-42",
+      "title": "临时用工申请单管理规定",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-form-f-42.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-quality-q3",
+      "title": "2026 年第三季度仓储质量报表",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-quality-q3.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-return-escalation",
+      "title": "退货率升级处理规则",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-return-escalation.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-warehouse-directory",
+      "title": "仓库主管名录",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-warehouse-directory.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-freeze-r-830",
+      "title": "变更冻结规则 R-830",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-freeze-r-830.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-freeze-r-211",
+      "title": "变更冻结规则 R-211",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-freeze-r-211.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-freeze-r-832",
+      "title": "变更冻结规则 R-832",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-freeze-r-832.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-freeze-r-323",
+      "title": "变更冻结规则 R-323",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-freeze-r-323.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-policy-0",
+      "title": "外包人员门禁管理办法",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-policy-0-v1.md",
+          "effective_from": "2025-07-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/dynamic/test/documents/yu-policy-0-v2.md",
+          "effective_from": "2026-02-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/dynamic/test/documents/yu-policy-0-v3.md",
+          "effective_from": "2026-06-15T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-notice-yuanfan-an-20",
+      "title": "行政公告 YUANFAN-AN-20",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-notice-yuanfan-an-20.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-notice-yuanfan-an-70",
+      "title": "行政公告 YUANFAN-AN-70",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-notice-yuanfan-an-70.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-policy-1",
+      "title": "差旅住宿管理办法",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-policy-1-v1.md",
+          "effective_from": "2025-07-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/dynamic/test/documents/yu-policy-1-v2.md",
+          "effective_from": "2026-02-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/dynamic/test/documents/yu-policy-1-v3.md",
+          "effective_from": "2026-06-15T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-notice-yuanfan-an-40",
+      "title": "行政公告 YUANFAN-AN-40",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-notice-yuanfan-an-40.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-notice-yuanfan-an-85",
+      "title": "行政公告 YUANFAN-AN-85",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-notice-yuanfan-an-85.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-site-rule-0",
+      "title": "东仓作业规范",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-site-rule-0.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-safety-0",
+      "title": "安全通告第 7 号",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-safety-0.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-site-rule-1",
+      "title": "北仓作业规范",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-site-rule-1.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-safety-1",
+      "title": "安全通告第 9 号",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-safety-1.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-site-rule-2",
+      "title": "二厂区作业规范",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-site-rule-2.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "yu-safety-2",
+      "title": "安全通告第 6 号",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/dynamic/test/documents/yu-safety-2.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "scope": "Assistant review of the authored development outputs. No independent human gold; primary strict scores remain unchanged.",
+  "human_reviewed": 0,
+  "source_sha256": "43cad40781e339eaddd498aecf1077d987c63588deda0d4bafccbb103a704731",
+  "rows": [
+    {
+      "id": "S01",
+      "contract_enabled": false,
+      "finding": "strict_matcher_requires_semantic_review",
+      "basis": "Speaker attribution is already retained by attributed to; the strict matcher requires a narrower reporting verb."
+    },
+    {
+      "id": "S01",
+      "contract_enabled": true,
+      "finding": "strict_matcher_requires_semantic_review",
+      "basis": "Speaker attribution is already retained by attributed to; the strict matcher requires a narrower reporting verb."
+    },
+    {
+      "id": "S03",
+      "contract_enabled": false,
+      "finding": "strict_matcher_requires_semantic_review",
+      "basis": "Audit team and may have preserve the speaker and uncertainty; the matcher omits may as an allegation/uncertainty synonym."
+    },
+    {
+      "id": "S03",
+      "contract_enabled": true,
+      "finding": "strict_matcher_requires_semantic_review",
+      "basis": "Audit team and may have preserve the speaker and uncertainty; the matcher omits may as an allegation/uncertainty synonym."
+    },
+    {
+      "id": "S07",
+      "contract_enabled": false,
+      "finding": "comparison_conclusion_not_explicit",
+      "basis": "Correct source values are present. This generation-only experiment did not run the production verdict step; do not label an absent comparison word as a wrong comparison dimension."
+    },
+    {
+      "id": "S07",
+      "contract_enabled": true,
+      "finding": "comparison_conclusion_not_explicit",
+      "basis": "Correct source values are present. This generation-only experiment did not run the production verdict step; do not label an absent comparison word as a wrong comparison dimension."
+    },
+    {
+      "id": "S09",
+      "contract_enabled": false,
+      "finding": "explicit_comparison_conclusion_present",
+      "basis": "Correct source values are present. This generation-only experiment did not run the production verdict step; do not label an absent comparison word as a wrong comparison dimension."
+    },
+    {
+      "id": "S09",
+      "contract_enabled": true,
+      "finding": "comparison_conclusion_not_explicit",
+      "basis": "Correct source values are present. This generation-only experiment did not run the production verdict step; do not label an absent comparison word as a wrong comparison dimension."
+    }
+  ],
+  "decision": "Do not enable the generation contract by default: strict 6/9 versus 6/9 and higher latency establish no answer-quality gain; strict reporting-word matches also need calibration."
+}

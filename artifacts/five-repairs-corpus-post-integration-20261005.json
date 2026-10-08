@@ -1,0 +1,9 @@
+{
+  "scope": "Read-only post-integration verification of full frozen Dev corpus, not fixtures/unseen subset",
+  "freeze": ".runtime/benchmark-package/v1/dev-five-repairs-20261004-v2/freeze.json",
+  "match": true,
+  "sha256": "494072c1f6b61c2ae4c69919c000b7fdbb2986feaba140420b3f2da985294b75",
+  "documents": 631,
+  "chunks": 24989,
+  "users": 3
+}

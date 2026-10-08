@@ -3,304 +3,405 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agentic-RAG · 权限感知 RAG 与知识 Agent</title>
-<meta name="description" content="权限感知 RAG 与可审计知识 Agent：引用可核验、撤权立即生效、任务轨迹可追踪。">
+<title>Agentic-RAG · 权限感知的企业知识问答</title>
+<meta name="description" content="企业知识问答系统：只检索用户有权查看的资料，每句回答都能定位到原文，资料不足时拒答，撤权立即生效；上层 Agent 的每一步都可审计。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
 <style>
   :root{
     --ground:#eef1f0; --surface:#fff; --surface-2:#f6f8f8;
-    --ink:#131b1a; --ink-2:#48534f; --ink-3:#7a8683;
+    --ink:#131b1a; --ink-2:#48534f; --ink-3:#6b7774;
     --line:#d6dcda; --line-strong:#b5c0bd;
-    --accent:#0b6e5f; --accent-soft:#dfece8; --flag:#8d5a0c;
+    --accent:#0b6e5f; --accent-soft:#dfece8; --flag:#8d5a0c; --flag-soft:#f6ecdc;
     --sans:"IBM Plex Sans","Noto Sans SC",-apple-system,"PingFang SC",sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
     --ground:#0e1413; --surface:#151d1c; --surface-2:#1a2322;
-    --ink:#e7edeb; --ink-2:#a5b2ae; --ink-3:#7d8986;
+    --ink:#e7edeb; --ink-2:#a5b2ae; --ink-3:#8b9794;
     --line:#29332f; --line-strong:#3d4a46;
-    --accent:#52c9b2; --accent-soft:#113029; --flag:#d9a441;
+    --accent:#52c9b2; --accent-soft:#113029; --flag:#d9a441; --flag-soft:#2a2213;
   }}
+  html[data-lang=en] .zh, html:not([data-lang=en]) .en{display:none}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 90px}
-  header{padding:clamp(44px,7vw,78px) 0 26px;border-bottom:2px solid var(--ink)}
-  .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
-  h1{font-size:clamp(1.9rem,5vw,2.7rem);line-height:1.15;letter-spacing:-.01em;margin:0 0 16px;text-wrap:balance}
-  .lead{max-width:62ch;font-size:1.08rem;color:var(--ink-2);margin:0}
+  html{scroll-behavior:smooth;scroll-padding-top:64px}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+
+  /* top navigation */
+  .nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:20px;height:56px}
+  .brand{font-family:var(--mono);font-weight:500;font-size:.95rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .nav-links{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-size:.88rem;color:var(--ink-2);text-decoration:none;white-space:nowrap}
+  .nav-links a:hover{color:var(--accent)}
+  .lang{font-family:var(--mono);font-size:.8rem;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:6px;padding:5px 10px;cursor:pointer;white-space:nowrap}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,48px);align-items:center;padding:clamp(36px,6vw,72px) 0 36px}
+  .kicker{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+  h1{font-size:clamp(1.8rem,3.6vw,2.5rem);line-height:1.2;letter-spacing:-.01em;margin:0 0 16px;text-wrap:balance}
+  .lead{font-size:1.08rem;color:var(--ink-2);margin:0 0 18px;max-width:58ch}
   .lead b{color:var(--ink);font-weight:600}
-  .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-  .links a{font-family:var(--mono);font-size:.8rem;text-decoration:none;padding:7px 14px;border-radius:6px;border:1px solid var(--line-strong);color:var(--ink-2);background:var(--surface)}
-  .links a.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-  .strip{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line)}
-  .strip div{flex:1 1 140px;padding:14px 18px 14px 0}
-  .strip dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 3px}
-  .strip dd{margin:0;font-family:var(--mono);font-size:1.05rem;font-weight:500;font-variant-numeric:tabular-nums}
-  section{padding-top:clamp(40px,6vw,64px)}
-  .eyebrow{display:flex;align-items:baseline;gap:14px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
+  .stack{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px;padding:0;list-style:none}
+  .stack li{font-family:var(--mono);font-size:.78rem;padding:3px 9px;border:1px solid var(--line-strong);border-radius:99px;background:var(--surface);color:var(--ink-2);margin:0}
+  .buttons{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{font-size:.95rem;text-decoration:none;padding:9px 18px;border-radius:7px;border:1px solid var(--line-strong);color:var(--ink);background:var(--surface);font-weight:500}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .avail{font-size:.85rem;color:var(--ink-3);margin:12px 0 0;max-width:58ch}
+  .hero-shot{margin:0}
+  .hero-shot img{width:100%;height:auto;display:block;border:1px solid var(--line-strong);border-radius:10px;box-shadow:0 18px 40px -24px rgba(0,0,0,.35);cursor:zoom-in}
+  .hero-shot figcaption{font-size:.85rem;color:var(--ink-3);margin-top:8px}
+
+  /* fact cards */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .fact{background:var(--surface);padding:18px 18px 16px}
+  .fact .big{font-family:var(--mono);font-size:clamp(1.6rem,3vw,2.1rem);font-weight:500;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
+  .fact .big small{font-size:.5em;color:var(--ink-3);margin-left:4px}
+  .fact p{font-size:.88rem;margin:8px 0 0;color:var(--ink-2)}
+
+  /* sections */
+  section{padding-top:clamp(52px,7vw,84px)}
+  .eyebrow{display:flex;align-items:baseline;gap:14px;font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
   .eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
-  h2{font-size:clamp(1.35rem,3.4vw,1.8rem);line-height:1.25;margin:0 0 12px;text-wrap:balance}
-  h3{font-size:1.02rem;margin:0 0 6px}
-  p{margin:0 0 14px;max-width:66ch;color:var(--ink-2)}
+  h2{font-size:clamp(1.45rem,3.2vw,1.95rem);line-height:1.25;margin:0 0 12px;text-wrap:balance}
+  h3{font-size:1.05rem;margin:0 0 6px}
+  p{margin:0 0 14px;max-width:70ch;color:var(--ink-2)}
   p b,li b{color:var(--ink);font-weight:600}
-  .scroller{overflow-x:auto;border:1px solid var(--line);background:var(--surface);margin-top:18px;border-radius:8px}
-  table{border-collapse:collapse;width:100%;font-size:.86rem}
-  th{position:sticky;top:0;background:var(--surface-2);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-strong);white-space:nowrap}
+  code{font-family:var(--mono);font-size:.85em;background:var(--surface-2);border:1px solid var(--line);padding:1px 5px;border-radius:3px;color:var(--ink)}
+
+  /* demo */
+  .demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+  .demo{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:0;display:flex;flex-direction:column}
+  .demo img{width:100%;height:auto;display:block;border-bottom:1px solid var(--line);cursor:zoom-in}
+  .demo figcaption{padding:14px 16px 16px}
+  .demo figcaption p{font-size:.9rem;margin:0}
+  details.more{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 16px}
+  details.more summary{cursor:pointer;padding:12px 0;font-size:.92rem;color:var(--accent)}
+  details.more .demos{grid-template-columns:repeat(2,1fr);margin:4px 0 16px}
+
+  /* architecture */
+  .arch{margin-top:22px;display:grid;gap:12px}
+  .arch-row{display:grid;gap:12px;align-items:stretch}
+  .arch-row.two{grid-template-columns:1fr 1fr}
+  .arch-row.three{grid-template-columns:repeat(3,1fr)}
+  .box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .box h3{font-size:.98rem}
+  .box p{font-size:.88rem;margin:0}
+  .box.accent{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+  .box.store{background:var(--surface-2)}
+  .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:4px}
+  .down{text-align:center;font-family:var(--mono);color:var(--accent);line-height:1;font-size:1.1rem}
+  .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .tools code{font-size:.76rem}
+
+  /* feature cards */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:22px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .card .icon{width:34px;height:34px;border-radius:8px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:10px}
+  .card .icon svg{width:18px;height:18px}
+  .card p{font-size:.92rem;margin:0}
+
+  /* evaluation */
+  .bench{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:18px}
+  .bench div{background:var(--surface);padding:14px 16px}
+  .bench .n{font-family:var(--mono);font-size:1.6rem;font-weight:500}
+  .bench .k{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  .bench p{font-size:.85rem;margin:4px 0 0}
+  .pending{display:inline-block;font-family:var(--mono);font-size:.78rem;padding:2px 8px;border-radius:99px;background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .note{border-left:3px solid var(--flag);background:var(--surface);padding:14px 16px;border-radius:0 8px 8px 0;margin-top:18px}
+  .note p{margin:0;font-size:.92rem}
+  .sub{margin-top:34px}
+  .scroller{overflow-x:auto;border:1px solid var(--line);background:var(--surface);margin-top:12px;border-radius:8px}
+  table{border-collapse:collapse;width:100%;font-size:.9rem}
+  th{background:var(--surface-2);font-family:var(--mono);font-size:.74rem;letter-spacing:.05em;color:var(--ink-2);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-strong);white-space:nowrap}
   td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink-2);font-variant-numeric:tabular-nums}
   tr:last-child td{border-bottom:none}
   td.name{font-weight:600;color:var(--ink);white-space:nowrap}
-  td.num{font-family:var(--mono)}
+  td.num{font-family:var(--mono);white-space:nowrap}
   tr.best td{background:var(--accent-soft)}
-  tr.best td.name,tr.best td b{color:var(--accent)}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:18px}
-  .card{background:var(--surface);padding:18px 16px}
-  .card h3{margin-bottom:5px}
-  .card p{font-size:.86rem;margin:0}
-  .shots{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:18px}
-  .shot{background:var(--surface);padding:16px}
-  .shot figcaption{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
-  .shot .step{font-family:var(--mono);font-size:.75rem;font-weight:600;color:var(--accent)}
-  .shot .what{font-size:.86rem;color:var(--ink-2)}
-  .shot img{width:100%;display:block;border:1px solid var(--line);border-radius:6px}
-  .note{border-left:3px solid var(--flag);background:var(--surface);padding:14px 16px;border-radius:0 8px 8px 0;margin-top:18px}
-  .note p{margin:0;font-size:.9rem}
-  .flow{display:grid;grid-template-columns:repeat(7,auto);align-items:center;gap:8px;margin-top:20px;overflow-x:auto;padding-bottom:4px}
-  .flow-node{min-width:105px;padding:12px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);text-align:center;font-size:.8rem;color:var(--ink-2)}
-  .flow-node b{display:block;color:var(--ink);margin-bottom:2px}
-  .flow-arrow{font-family:var(--mono);color:var(--accent);text-align:center}
-  .agent-status{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
-  .agent-status span{font-family:var(--mono);font-size:.72rem;padding:5px 9px;border:1px solid var(--line-strong);border-radius:99px;background:var(--surface)}
-  .agent-status .done{color:var(--accent);border-color:var(--accent)}
-  .tool-list{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
-  .tool-list code{padding:5px 8px}
-  ul{margin:0;padding-left:1.15em}
-  li{margin-bottom:7px;color:var(--ink-2);font-size:.92rem}
-  code{font-family:var(--mono);font-size:.85em;background:var(--surface-2);border:1px solid var(--line);padding:1px 5px;border-radius:3px;color:var(--ink)}
-  footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.72rem;color:var(--ink-3);line-height:1.8}
-  footer a{color:var(--accent)}
-  @media (max-width:640px){.strip div{flex-basis:50%}}
+  .caption{font-size:.88rem;color:var(--ink-3);margin:10px 0 0}
+
+  /* decisions and limits */
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+  ul.limits{margin:16px 0 0;padding-left:1.15em}
+  ul.limits li{margin-bottom:8px;color:var(--ink-2);font-size:.95rem}
+
+  footer{margin:72px 0 0;padding:18px 0 48px;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-3);line-height:1.9}
+
+  /* lightbox */
+  dialog.zoom{border:0;padding:0;background:transparent;max-width:min(1440px,96vw)}
+  dialog.zoom::backdrop{background:rgba(0,0,0,.72)}
+  dialog.zoom img{width:100%;display:block;border-radius:8px}
+  dialog.zoom p{color:#e7edeb;font-size:.9rem;margin:8px 0 0;max-width:none}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .facts,.bench{grid-template-columns:repeat(2,1fr)}
+    .demos,.cols{grid-template-columns:1fr}
+    details.more .demos{grid-template-columns:1fr}
+    .arch-row.two,.arch-row.three{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    .cards{grid-template-columns:1fr}
+    .nav .wrap{gap:12px}
+    .nav-links{gap:14px}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<header>
-  <p class="kicker">Agentic-RAG · RAG → Knowledge Agent</p>
-  <h1>从可核验的企业问答，演化到可审计的知识 Agent</h1>
-  <p class="lead">底层是通过冻结留出集验收的<b>权限感知 RAG</b>；上层 Agent 通过七个受控工具分步查证，并持久化任务、事件与工具轨迹。所有内容读取都重新鉴权，最终回答仍必须回到原文。<b>依据不足时拒答，撤权后已有结果隐藏。</b></p>
-  <div class="links">
-    <a class="primary" href="https://github.com/Mingjie-Mao/Agentic-RAG">源码仓库</a>
-    <a href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md">技术报告</a>
-    <a href="https://github.com/Mingjie-Mao/Agentic-RAG#快速开始">本地运行</a>
+<nav class="nav" aria-label="页面导航">
+  <div class="wrap">
+    <a class="brand" href="#top">Agentic-RAG</a>
+    <div class="nav-links">
+      <a href="#demo"><span class="zh">演示</span><span class="en">Demo</span></a>
+      <a href="#architecture"><span class="zh">架构</span><span class="en">Architecture</span></a>
+      <a href="#features"><span class="zh">核心能力</span><span class="en">Features</span></a>
+      <a href="#evaluation"><span class="zh">评测</span><span class="en">Evaluation</span></a>
+      <a href="#decisions"><span class="zh">取舍与边界</span><span class="en">Decisions</span></a>
+      <a href="https://github.com/Mingjie-Mao/Agentic-RAG">GitHub ↗</a>
+    </div>
+    <button class="lang" id="lang-toggle" type="button" aria-label="切换语言 / Switch language">EN</button>
   </div>
+</nav>
+
+<main class="wrap" id="top">
+
+<header class="hero">
+  <div>
+    <p class="kicker">Enterprise AI · RAG + Agent</p>
+    <h1><span class="zh">只用你有权看的资料回答，每句话都能找到原文</span><span class="en">Answers only from documents you may read — every claim traced to its source</span></h1>
+    <p class="lead"><span class="zh">面向企业内部知识库的问答系统：<b>按用户权限检索</b>，回答<b>逐句附原文出处</b>（PDF 页码与高亮、Word 段落、Excel 单元格），资料不足时<b>拒答</b>，两份资料矛盾时<b>报告冲突</b>；撤权立即生效。上层 Agent 把复杂问题拆成多步查证，每一步的工具调用都可审计。</span><span class="en">A question-answering system for internal enterprise knowledge. It <b>retrieves only what the user is authorized to read</b>, <b>cites the exact source</b> for every claim (PDF page and highlight, Word paragraph, Excel cell), <b>refuses</b> when evidence is insufficient and <b>reports conflicts</b> instead of picking a side. Revoked access takes effect immediately. An Agent layer breaks complex questions into auditable, multi-step lookups.</span></p>
+    <ul class="stack" aria-label="Tech stack">
+      <li>FastAPI</li><li>LangGraph</li><li>PostgreSQL</li><li>OpenSearch</li><li>BGE-M3</li><li>Qwen2.5 7B</li><li>Ollama</li><li>React · TypeScript</li>
+    </ul>
+    <div class="buttons">
+      <a class="btn primary" href="/live"><span class="zh">在线试用 →</span><span class="en">Try it live →</span></a>
+      <a class="btn" href="https://github.com/Mingjie-Mao/Agentic-RAG">GitHub ↗</a>
+      <a class="btn" href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md"><span class="zh">技术报告</span><span class="en">Technical report</span></a>
+    </div>
+    <p class="avail"><span class="zh">在线试用连接作者本机运行的完整系统（访客账号只读、每日限额）；机器离线时无法访问，可先看下方截图。全部资料均为虚构。</span><span class="en">The live demo connects to the full system running on the author's machine (read-only visitor account, daily quota). It is unavailable when that machine is offline — see the screenshots below. All documents are fictional.</span></p>
+  </div>
+  <figure class="hero-shot">
+    <img src="shots/2-answer-and-citation.png" width="1440" height="960" alt="问答界面：回答带编号引用，右侧显示 PDF 原文并标出引用位置" data-zoom>
+    <figcaption><span class="zh">真实界面：回答只引用支持组可见的资料，右侧打开 PDF 原页并标出引用位置。</span><span class="en">Actual UI: the answer cites only documents visible to the support group; the source PDF page opens with the cited passage highlighted.</span></figcaption>
+  </figure>
 </header>
 
-<dl class="strip">
-  <div><dt>留出集正确率</dt><dd id="s-holdout">—</dd></div>
-  <div><dt>越权命中</dt><dd id="s-viol">—</dd></div>
-  <div><dt>冲突精确率</dt><dd id="s-conf">—</dd></div>
-  <div><dt>自动化检查</dt><dd id="s-tests">—</dd></div>
-  <div><dt>发布版本</dt><dd id="s-commit">—</dd></div>
-</dl>
+<div class="facts">
+  <div class="fact"><div class="big">0</div><p><span class="zh">越权命中：所有已运行的评测（含 80 题冻结留出集）中，无一次返回无权查看的资料</span><span class="en">Unauthorized hits across every evaluation run so far, including the 80-question frozen holdout</span></p></div>
+  <div class="fact"><div class="big">7</div><p><span class="zh">个受控工具：Agent 不能直接访问数据库或索引，每次读取都重新鉴权</span><span class="en">Bounded tools: the Agent never touches the database or index directly; every read is re-authorized</span></p></div>
+  <div class="fact"><div class="big">283</div><p><span class="zh">题统一评测包：Dev 47 / Core 70 / Security 16 / External 150，运行前冻结配置</span><span class="en">Tasks in the unified benchmark (Dev 47 / Core 70 / Security 16 / External 150), configurations frozen before runs</span></p></div>
+  <div class="fact"><div class="big">683<small><span class="zh">通过</span><span class="en">passed</span></small></div><p><span class="zh">自动化测试（2026-10-08 实际运行；另 36 项需本机服务，未计入）</span><span class="en">Automated tests actually run on 2026-10-08 (36 more need local services and were skipped, not counted)</span></p></div>
+</div>
 
-<section>
-  <p class="eyebrow">这个系统解决什么</p>
-  <h2>四件企业场景里绕不开的事</h2>
+<section id="demo">
+  <p class="eyebrow"><span class="zh">产品演示</span><span class="en">Product demo</span></p>
+  <h2><span class="zh">三个最能说明问题的界面</span><span class="en">Three screens that show what matters</span></h2>
+  <p><span class="zh">截图来自一份可执行的浏览器走查（<code>make browser</code>）：它对着系统真实操作并断言每一步应展示的内容，结束时清理自己上传的资料。点击图片可放大。</span><span class="en">Screenshots come from an executable browser walkthrough (<code>make browser</code>) that drives the real system, asserts what each step must show and cleans up its uploads. Click to enlarge.</span></p>
+  <div class="demos">
+    <figure class="demo">
+      <img src="shots/2-answer-and-citation.png" width="1440" height="960" loading="lazy" alt="回答与引用" data-zoom>
+      <figcaption><h3><span class="zh">回答可回到原文</span><span class="en">Every answer leads back to the source</span></h3><p><span class="zh">点开引用，PDF 打开对应页面并画出高亮框。</span><span class="en">Opening a citation jumps to the PDF page and draws the highlight box.</span></p></figcaption>
+    </figure>
+    <figure class="demo">
+      <img src="shots/4-permission-boundary.png" width="1440" height="960" loading="lazy" alt="权限边界" data-zoom>
+      <figcaption><h3><span class="zh">没有权限就看不到</span><span class="en">No permission, no visibility</span></h3><p><span class="zh">换成另一个组的账号，私有资料完全不可见，详情接口返回 404。</span><span class="en">Switch to another group's account and the private document disappears; its detail endpoint returns 404.</span></p></figcaption>
+    </figure>
+    <figure class="demo">
+      <img src="shots/5-refusal.png" width="1440" height="960" loading="lazy" alt="依据不足时拒答" data-zoom>
+      <figcaption><h3><span class="zh">没有依据就拒答</span><span class="en">No evidence, no answer</span></h3><p><span class="zh">问一个资料里没有答案的问题，系统明确拒答，引用为空。</span><span class="en">Ask something the documents do not answer: the system refuses explicitly with no citations.</span></p></figcaption>
+    </figure>
+  </div>
+  <details class="more">
+    <summary><span class="zh">再看两张：上传解析与检索调试</span><span class="en">Two more: upload parsing and retrieval inspector</span></summary>
+    <div class="demos">
+      <figure class="demo">
+        <img src="shots/1-upload-and-parse.png" width="1440" height="960" loading="lazy" alt="上传与解析" data-zoom>
+        <figcaption><p><span class="zh">上传一份多页表格 PDF，处理完成后变为可检索，可逐页查看解析结果与分块。</span><span class="en">Upload a multi-page table PDF; once processed it becomes searchable and its parsed pages and chunks can be inspected.</span></p></figcaption>
+      </figure>
+      <figure class="demo">
+        <img src="shots/3-retrieval-inspector.png" width="1440" height="960" loading="lazy" alt="检索调试" data-zoom>
+        <figcaption><p><span class="zh">检索调试页：检索方式、两路名次，以及哪些候选真正进入了模型。</span><span class="en">Retrieval inspector: retrieval mode, rank in each path, and which candidates actually reached the model.</span></p></figcaption>
+      </figure>
+    </div>
+  </details>
+</section>
+
+<section id="architecture">
+  <p class="eyebrow"><span class="zh">系统架构</span><span class="en">Architecture</span></p>
+  <h2><span class="zh">模型只做语言工作，权限、版本和引用由程序把关</span><span class="en">The model handles language; code enforces permissions, versions and citations</span></h2>
+  <div class="arch">
+    <div class="arch-row two">
+      <div class="box"><span class="tag"><span class="zh">入口</span><span class="en">Entry</span></span><h3><span class="zh">问答（单轮 RAG）</span><span class="en">Q&amp;A (single-pass RAG)</span></h3><p><span class="zh">追问按规则补全上下文后直接检索与生成。</span><span class="en">Follow-ups are completed by rules, then retrieved and answered directly.</span></p></div>
+      <div class="box"><span class="tag"><span class="zh">入口</span><span class="en">Entry</span></span><h3><span class="zh">Agent 任务（异步）</span><span class="en">Agent task (async)</span></h3><p><span class="zh">立即返回 queued，后台 worker 以数据库租约领取执行。</span><span class="en">Returns queued at once; a background worker claims it with a database lease.</span></p></div>
+    </div>
+    <div class="down">↓</div>
+    <div class="box accent"><span class="tag">LangGraph</span><h3><span class="zh">编排：固定 Workflow / Hybrid / Planner / Dynamic</span><span class="en">Orchestration: fixed Workflow / Hybrid / Planner / Dynamic</span></h3><p><span class="zh">默认走确定性 Workflow，下一步依赖中间结果时走有界 Hybrid；官方检查点支持中断恢复，累计调用预算由业务层保存。</span><span class="en">Defaults to the deterministic Workflow, or the bounded Hybrid when the next step depends on an observation; official checkpoints allow resumption while cumulative call budgets stay in the application.</span></p>
+      <div class="tools"><code>search_documents</code><code>retrieve_evidence</code><code>open_document</code><code>get_document_version</code><code>compare_versions</code><code>verify_chunk_access</code><code>search_memory</code></div>
+    </div>
+    <div class="down">↓</div>
+    <div class="arch-row three">
+      <div class="box"><span class="tag"><span class="zh">检索</span><span class="en">Retrieve</span></span><h3><span class="zh">权限过滤的混合检索</span><span class="en">Permission-filtered hybrid search</span></h3><p><span class="zh">授权范围写进查询，BM25 与 BGE-M3 向量两路用 RRF 融合。</span><span class="en">Authorization is part of the query; BM25 and BGE-M3 vectors are fused with RRF.</span></p></div>
+      <div class="box"><span class="tag"><span class="zh">生成</span><span class="en">Generate</span></span><h3>Qwen2.5 7B · Ollama</h3><p><span class="zh">模型只能引用带编号的证据片段，不能自己写出处。</span><span class="en">The model may only cite numbered evidence spans; it never writes a source itself.</span></p></div>
+      <div class="box"><span class="tag"><span class="zh">校验</span><span class="en">Verify</span></span><h3><span class="zh">引用校验与再鉴权</span><span class="en">Citation check and re-authorization</span></h3><p><span class="zh">服务端取回原文核对数值、版本与权限；不通过最多局部修复一次，否则判定失败。</span><span class="en">The server re-reads the source to check values, version and access; one bounded local repair, otherwise the answer fails.</span></p></div>
+    </div>
+    <div class="down">↓</div>
+    <div class="arch-row two">
+      <div class="box store"><span class="tag">PostgreSQL</span><p><span class="zh">文档、版本、ACL、任务与工具审计、LangGraph 检查点。决定可见性的是这里，而不是搜索索引。</span><span class="en">Documents, versions, ACLs, tasks, tool audit and LangGraph checkpoints. Visibility is decided here, not by the search index.</span></p></div>
+      <div class="box store"><span class="tag">OpenSearch</span><p><span class="zh">关键词与向量索引；新版本先建索引再发布，切换失败不影响当前版本。</span><span class="en">Keyword and vector index. A new version is indexed before it is published, so a failed switch never affects the live version.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <p class="eyebrow"><span class="zh">核心能力</span><span class="en">Key features</span></p>
+  <h2><span class="zh">四件企业场景里绕不开的事</span><span class="en">Four things enterprise knowledge cannot skip</span></h2>
   <div class="cards">
     <div class="card">
-      <h3>权限进检索，不做事后过滤</h3>
-      <p>授权范围是检索查询的一部分，关键词与向量两路共用同一集合，返回答案前再校验一次。先检索全部再过滤，意味着敏感资料已经进过排序和生成链路。</p>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+      <h3><span class="zh">权限进检索，不做事后过滤</span><span class="en">Permissions inside retrieval, not after it</span></h3>
+      <p><span class="zh">授权范围是检索查询的一部分，返回前再校验一次。先检索再过滤，意味着敏感资料已经进过排序和生成链路。</span><span class="en">The authorized scope is part of the query and is checked again before returning. Filtering afterwards would already have sent sensitive text through ranking and generation.</span></p>
     </div>
     <div class="card">
-      <h3>引用可核验，核验不过就不返回</h3>
-      <p>模型只选带编号的证据片段，服务端取回真实原文、校验版本与权限后才组装引用。<b>校验不通过的答案不会被修复，而是判定失败。</b></p>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg></div>
+      <h3><span class="zh">引用可核验，核验不过就不返回</span><span class="en">Verifiable citations, or no answer</span></h3>
+      <p><span class="zh">服务端取回真实原文，核对数值、单位、版本与权限后才组装引用；不通过时最多局部修复一次，仍不通过就判定失败。</span><span class="en">The server fetches the real source and checks values, units, version and access before assembling citations; one bounded repair, then the answer fails.</span></p>
     </div>
     <div class="card">
-      <h3>撤权立即生效</h3>
-      <p>决定可见性的是业务库而不是搜索索引。撤权提交后的下一个请求就被拒绝，不等待索引清理——连历史记录里的提问文本都会被遮蔽。</p>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg></div>
+      <h3><span class="zh">撤权立即生效</span><span class="en">Revocation takes effect immediately</span></h3>
+      <p><span class="zh">撤权提交后的下一个请求就被拒绝，不等索引清理；引用了失权资料的历史记录连提问文本一起隐藏。</span><span class="en">The next request after revocation is denied without waiting for the index. History entries citing revoked documents are hidden, question text included.</span></p>
     </div>
     <div class="card">
-      <h3>冲突需要拿出证据</h3>
-      <p>只有模型交出分属两份不同文档的两段矛盾原文，系统才报告冲突。加这道门槛之前，冲突判定的精确率是 4.2%。</p>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 8h4M5 12h4M15 8h4M15 12h4"/></svg></div>
+      <h3><span class="zh">冲突要拿出证据</span><span class="en">Conflicts need evidence</span></h3>
+      <p><span class="zh">模型必须交出分属两份文档的两段矛盾原文，系统才报告冲突。加这道门槛前冲突判定精确率只有 4.2%，之后在 147 题开发集上为 11/11。</span><span class="en">A conflict is reported only when the model produces two contradicting passages from two different documents. Precision was 4.2% before this gate and 11/11 on the 147-question dev set after it.</span></p>
     </div>
   </div>
 </section>
 
-<section>
-  <p class="eyebrow">Knowledge Agent · Phase B</p>
-  <h2>异步 Agent 已接入记忆；30 题开发回归全部通过</h2>
-  <p>创建任务在约 32 ms 内返回 queued，worker 用数据库租约执行。动态模式由本地 7B 模型在白名单中选择动作；访客试用固定走低成本路径。短期记忆用于追问改写，工作记忆保存任务轨迹，长期记忆跨会话复用角色与偏好；三者都不能绕过文档权限或充当企业事实证据。</p>
-  <p>长期记忆 30 题成对 A/B：关闭 30/30，开启 29/30，差异不显著（p=1.0）；开启后中位延迟增加 6.0 秒、平均 prompt 增加 428 token。唯一变化暴露了外租户误归属，加入检索前租户预检后定向开／关均通过。因此当前只把长期记忆用于偏好与上下文，不宣称事实正确率收益。</p>
-  <div class="agent-status">
-    <span class="done">✓ 七个受控工具</span><span class="done">✓ 异步 worker + 租约</span><span class="done">✓ 三层记忆</span><span class="done">✓ 固定 workflow</span><span class="done">✓ 动态 policy</span><span class="done">✓ 只读限额试用</span><span class="done">✓ 配对 benchmark</span>
+<section id="evaluation">
+  <p class="eyebrow"><span class="zh">评测</span><span class="en">Evaluation</span></p>
+  <h2><span class="zh">先冻结配置，再看结果</span><span class="en">Freeze first, then measure</span></h2>
+  <p><span class="zh">RAG、Workflow、Dynamic Agent 与 Hybrid 统一用一套评测包比较。只允许在 Dev 上调参；Core 的方法与消融矩阵在第一次运行前注册冻结，看到结果后不能补配置。主指标是 <b>Core 70 题的严格任务成功率</b>：事实完整、条件与版本正确、引用支持、该拒答时拒答、执行安全，全部满足才算通过。</span><span class="en">RAG, Workflow, Dynamic Agent and Hybrid are compared on one benchmark package. Tuning is allowed only on Dev; the Core method and ablation matrix is registered and frozen before its first run. The headline metric is <b>Strict Task Success on the 70 Core tasks</b>: complete facts, correct conditions and versions, supported citations, correct refusals and safe execution must all hold.</span></p>
+  <div class="bench">
+    <div><div class="k">Dev</div><div class="n">47</div><p><span class="zh">唯一允许调参的部分</span><span class="en">The only split used for tuning</span></p></div>
+    <div><div class="k">Core</div><div class="n">70</div><p><span class="zh">七类各 10 题 · </span><span class="en">7 categories × 10 · </span><span class="pending"><span class="zh">待正式运行</span><span class="en">not yet run</span></span></p></div>
+    <div><div class="k">Security</div><div class="n">16</div><p><span class="zh">组权限、跨租户、撤权、版本范围</span><span class="en">Group, tenant, revocation, version scope</span></p></div>
+    <div><div class="k">External</div><div class="n">150</div><p><span class="zh">MultiHop-RAG 固定子集，已用过，只作外部回归</span><span class="en">Fixed MultiHop-RAG subset, already used — regression only</span></p></div>
   </div>
-  <div class="flow" aria-label="Agent 执行架构">
-    <div class="flow-node"><b>Task</b>目标与预算</div><div class="flow-arrow">→</div>
-    <div class="flow-node"><b>Policy</b>workflow / dynamic</div><div class="flow-arrow">→</div>
-    <div class="flow-node"><b>Tool Gateway</b>Schema + ACL</div><div class="flow-arrow">→</div>
-    <div class="flow-node"><b>RAG Core</b>检索与版本</div>
+  <div class="note"><p><span class="zh">Core 正式结果出来之前，本页不给出项目总体正确率。下面是 2026-09 阶段的历史实验，题集与口径不同，只用于说明当时的工程决策。</span><span class="en">Until the Core run is complete this page reports no overall accuracy. The results below are September 2026 experiments with different task sets and scoring; they explain past engineering decisions only.</span></p></div>
+
+  <div class="sub">
+    <h3><span class="zh">历史 · 冻结留出集 80 题（只运行一次）</span><span class="en">History · frozen holdout, 80 questions (run once)</span></h3>
+    <div class="scroller"><table>
+      <thead><tr><th><span class="zh">指标</span><span class="en">Metric</span></th><th><span class="zh">运行前门槛</span><span class="en">Pre-set target</span></th><th><span class="zh">实测</span><span class="en">Measured</span></th></tr></thead>
+      <tbody id="t-holdout"></tbody>
+    </table></div>
+    <p class="caption"><span class="zh">“回答状态正确率”只看该答、该拒、该报冲突的判断是否正确，不等于答案内容的语义正确率；内容层面以字面事实覆盖为准。</span><span class="en">"Answer-state accuracy" only checks whether the system correctly answered, refused or flagged a conflict; it is not semantic answer correctness. Content is measured by literal fact coverage.</span></p>
   </div>
-  <div class="tool-list" id="agent-tools"></div>
-  <div class="scroller"><table>
-    <thead><tr><th>策略与数据集</th><th>正确</th><th>中位延迟</th><th>平均步骤</th><th>禁区泄漏</th></tr></thead>
-    <tbody id="t-agent"></tbody>
-  </table></div>
-  <div class="note" id="agent-notes"><p><b id="agent-decision">—</b> B2 任务参与了本轮修复，因此 100% 只表示开发回归通过；动态行来自修复前的 5 题小集合，分母不同。</p></div>
-</section>
 
-<section>
-  <p class="eyebrow">实测结果</p>
-  <h2>所有数字都来自冻结的评测集</h2>
-  <p>下面每组数字都有仓库内的原始运行产物。开发集参与过选型，留出集<b>只运行一次</b>，验收门槛在运行之前就已写定。</p>
-
-  <h3 style="margin-top:22px">自建开发集 · 147 题</h3>
-  <div class="scroller"><table>
-    <thead><tr><th>检索配置</th><th>Recall@5</th><th>MRR@10</th><th>回答正确率</th></tr></thead>
-    <tbody id="t-dev"></tbody>
-  </table></div>
-  <div class="note"><p><b>混合检索的检索指标低于 BM25，端到端却最高。</b>证据预算只有 4 段时，决定成败的是这 4 个位置被谁占了，而不是金标文档在不在前 10。差异未达统计显著（McNemar p = 0.19），所以准确的说法是<b>实测最优</b>，不是已证明更优。</p></div>
-
-  <h3 style="margin-top:26px">冻结留出集 · 80 题（只跑一次）</h3>
-  <div class="scroller"><table>
-    <thead><tr><th>指标</th><th>门槛</th><th>实测</th></tr></thead>
-    <tbody id="t-holdout"></tbody>
-  </table></div>
-  <p style="margin-top:12px">留出集比它从未参与过的开发集<b>高 0.9 个百分点</b>，没有观察到开发集过拟合。</p>
-
-  <h3 style="margin-top:26px">外部基准 · 39 题</h3>
-  <div class="scroller"><table>
-    <thead><tr><th>检索配置</th><th>Recall@5</th><th>回答正确率</th></tr></thead>
-    <tbody id="t-public"></tbody>
-  </table></div>
-  <p style="margin-top:12px">英文语料 + 100 份干扰文档。<b>这里混合检索的检索优势明显，与内部数据上的排序相反</b>——说明 BM25 在自建语料上的领先来自那批资料的专有名词特征，不能推广。</p>
-</section>
-
-<section>
-  <p class="eyebrow">界面</p>
-  <h2>五个环节，每一步都有断言</h2>
-  <p>下面的截图来自一份<b>可执行走查</b>：它对着当前版本真实操作，断言每一步应当展示的内容，结束时清理自己上传的资料。录像只能证明演示发生过一次，走查每次都跑。</p>
-  <div class="shots" id="shots"></div>
-</section>
-
-<section>
-  <p class="eyebrow">没有采用的方案</p>
-  <h2>三个被数据否决的常见组件</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Cross-encoder 重排</h3>
-      <p>检索指标明显改善（Recall@5 0.935 → 0.968），端到端几乎不动（p = 0.79），同时冲突精确率从 100% 掉到 92.3%、耗时增加 22%。<b>已实现，默认关闭。</b></p>
-    </div>
-    <div class="card">
-      <h3>LLM 查询改写</h3>
-      <p>四组对照显示：不给历史的 LLM 改写与完全不改写<b>逐位完全相同</b>。收益全部来自对话历史，没有一点来自"用模型改写"。最终采用零模型调用的规则拼接。</p>
-    </div>
-    <div class="card">
-      <h3>主题一致性校验</h3>
-      <p>为堵"答非所问"实现，在冻结集上校准后发现：判对回答的重合度 5 分位是 2，判错的无一低于 3——<b>阈值只会误杀正确答案且抓不到任何错误。</b>已完整回退。</p>
-    </div>
+  <div class="sub">
+    <h3><span class="zh">历史 · 检索方式对比（自建开发集 147 题）</span><span class="en">History · retrieval comparison (147-question dev set)</span></h3>
+    <div class="scroller"><table>
+      <thead><tr><th><span class="zh">检索方式</span><span class="en">Retrieval</span></th><th>Recall@5</th><th>MRR@10</th><th><span class="zh">回答状态正确率</span><span class="en">Answer-state acc.</span></th></tr></thead>
+      <tbody id="t-dev"></tbody>
+    </table></div>
+    <p class="caption"><span class="zh">混合检索的检索指标低于 BM25，端到端却最高：证据只有 4 个位置时，关键是谁占了这 4 个位置。差异未达统计显著（McNemar p = 0.19），因此只能说“实测最优”。</span><span class="en">Hybrid retrieval scores below BM25 on retrieval metrics yet best end-to-end: with only four evidence slots, what matters is who occupies them. The difference is not significant (McNemar p = 0.19), so it is "best measured", not "proven better".</span></p>
   </div>
-  <div class="note"><p>保留这些记录，是因为一个系统最终<b>为什么没有</b>采用某个常见组件，本身就是工程结论。</p></div>
+
+  <details class="more">
+    <summary><span class="zh">历史 · 英文外部子集 39 题</span><span class="en">History · English external subset, 39 questions</span></summary>
+    <div class="scroller"><table>
+      <thead><tr><th><span class="zh">检索方式</span><span class="en">Retrieval</span></th><th>Recall@5</th><th><span class="zh">回答状态正确率</span><span class="en">Answer-state acc.</span></th></tr></thead>
+      <tbody id="t-public"></tbody>
+    </table></div>
+    <p class="caption" style="margin-bottom:16px"><span class="zh">英文语料加 100 份干扰文档。这里混合检索的检索优势明显，与自建语料上的排序相反，提示 BM25 的领先可能来自自建资料的专有名词特征。同一运行的字面事实覆盖率接近 0，因此“回答状态正确率”不代表答案内容正确。</span><span class="en">English corpus with 100 distractor documents. Hybrid retrieval clearly leads here, the reverse of the in-house ranking, suggesting BM25's lead may come from proper nouns in the in-house corpus. Literal fact coverage in the same run was near zero, so answer-state accuracy does not mean the answers were correct.</span></p>
+  </details>
 </section>
 
-<section>
-  <p class="eyebrow">边界</p>
-  <h2>这套结果还不能证明什么</h2>
-  <ul id="limits"></ul>
-  <div class="note"><p><b>本页是项目展示，不是可交互的在线系统。</b>系统需要 PostgreSQL、OpenSearch 与本地 7B 模型（约 7 GB），无法在静态托管上运行。要实际试用请按仓库里的 <code>make</code> 步骤在本机启动。</p></div>
+<section id="decisions">
+  <p class="eyebrow"><span class="zh">工程取舍</span><span class="en">Engineering decisions</span></p>
+  <h2><span class="zh">三个被数据否决的常见组件</span><span class="en">Three common components rejected by the data</span></h2>
+  <div class="cols">
+    <div class="card"><h3><span class="zh">Cross-encoder 重排</span><span class="en">Cross-encoder reranking</span></h3><p><span class="zh">Recall@5 从 0.935 升到 0.968，端到端几乎不变（p = 0.79），冲突精确率从 100% 降到 92.3%，耗时增加约 22%。已实现，默认关闭。</span><span class="en">Recall@5 rose from 0.935 to 0.968 while end-to-end barely moved (p = 0.79); conflict precision fell from 100% to 92.3% and latency rose about 22%. Implemented, off by default.</span></p></div>
+    <div class="card"><h3><span class="zh">LLM 查询改写</span><span class="en">LLM query rewriting</span></h3><p><span class="zh">四组对照中，不给历史的 LLM 改写与完全不改写的追问召回相同（0.65）；收益来自对话历史本身。最终采用零模型调用的规则拼接（0.975）。</span><span class="en">Across four arms, LLM rewriting without history matched no rewriting on follow-up recall (0.65); the gain came from the history itself. A zero-call rule-based rewrite was kept (0.975).</span></p></div>
+    <div class="card"><h3><span class="zh">主题一致性校验</span><span class="en">Topic-consistency check</span></h3><p><span class="zh">为拦“答非所问”而实现。校准发现判对回答的重合度 5 分位是 2，判错的无一低于 3：阈值只会误杀正确答案。已完整回退。</span><span class="en">Built to catch off-topic answers. Calibration showed the 5th percentile overlap of correct answers was 2 while no wrong answer fell below 3: the threshold could only reject correct answers. Fully reverted.</span></p></div>
+  </div>
+
+  <h2 style="margin-top:56px"><span class="zh">这套系统还不能证明什么</span><span class="en">What this project does not yet show</span></h2>
+  <ul class="limits">
+    <li><span class="zh"><b>没有总体正确率：</b>Core 70、Security 16 与 External 150 尚未正式运行。</span><span class="en"><b>No overall accuracy:</b> Core 70, Security 16 and External 150 have not been formally run.</span></li>
+    <li><span class="zh"><b>审核不是独立人工：</b>题目与答案由模型审核并如实标注；独立人工标签为 0。</span><span class="en"><b>Reviews are not independent human labels:</b> tasks and answers are model-reviewed and labeled as such; independent human labels: 0.</span></li>
+    <li><span class="zh"><b>复杂推理仍弱：</b>困难英文题的否定方向与整体结论常出错；Agent 还不能稳定利用中间结果决定下一步。</span><span class="en"><b>Hard reasoning is still weak:</b> negation and overall verdicts on hard English questions often fail; the Agent cannot yet reliably use intermediate results to choose its next step.</span></li>
+    <li><span class="zh"><b>本机算力受限：</b>本地 7B 模型解码约 8 token/s，Dev 47 题的 P95 为 78–87 秒；单机单进程，未做压测。</span><span class="en"><b>Local compute:</b> the local 7B model decodes about 8 tokens/s and the Dev 47 P95 is 78–87 s; single machine, no load testing.</span></li>
+    <li><span class="zh"><b>语料与格式：</b>全部资料为自建虚构内容；不支持需要 OCR 的扫描件与 PPTX，无文字层的 PDF 会明确报错而不是被索引成空文档。</span><span class="en"><b>Corpus and formats:</b> all documents are fictional; scanned PDFs needing OCR and PPTX are unsupported, and a PDF without a text layer fails explicitly instead of being indexed empty.</span></li>
+  </ul>
 </section>
 
 <footer>
-  <p>全部示例资料、题目与公司名称均为本项目自建的虚构内容，不代表任何真实机构或制度。</p>
-  <p>RAG 数据：<code>artifacts/s8-release-summary.json</code> · Agent 数据：<code>artifacts/b2-agent-benchmark-final.json</code> · 发布版本 <span id="f-commit">—</span> · <a href="https://github.com/Mingjie-Mao/Agentic-RAG">github.com/Mingjie-Mao/Agentic-RAG</a></p>
+  <span class="zh">历史实验数据：<code>artifacts/s8-release-summary.json</code>，由 <code>make site-data</code> 生成到 <code>site/data.json</code>。完整方法、失败案例与当前进度见 <a href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md">技术报告</a>。全部示例资料、题目与公司名称均为本项目自建的虚构内容。</span>
+  <span class="en">Historical data: <code>artifacts/s8-release-summary.json</code>, generated into <code>site/data.json</code> by <code>make site-data</code>. Methods, failure cases and current status are in the <a href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md">technical report</a> (Chinese). All sample documents, questions and company names are fictional.</span>
 </footer>
 
-</div>
+</main>
+
+<dialog class="zoom" id="zoom"><img alt=""><p></p></dialog>
+
 <script>
-const NAMES = {bm25:"BM25", dense:"向量检索", hybrid:"混合检索（默认）", hybrid_rerank:"混合 + 重排（未启用）"};
-const SHOTS = [
-  ["1-upload-and-parse","上传含标题与表格的 PDF，确认变为可检索并显示解析器与生效版本"],
-  ["2-answer-and-citation","提问并点开引用，PDF 打开对应页面并画出高亮框"],
-  ["3-retrieval-inspector","检索调试页：检索方式、两路名次、以及哪些候选真正进入了模型"],
-  ["4-permission-boundary","换一个组的账号，私有资料完全不可见（详情接口返回 404）"],
-  ["5-refusal","问一个没有依据的问题，明确拒答且引用为空"],
-];
+const root = document.documentElement;
+const toggle = document.getElementById("lang-toggle");
+function setLang(lang, remember) {
+  root.dataset.lang = lang;
+  root.lang = lang === "en" ? "en" : "zh-CN";
+  toggle.textContent = lang === "en" ? "中文" : "EN";
+  document.title = lang === "en"
+    ? "Agentic-RAG · Permission-aware enterprise knowledge QA"
+    : "Agentic-RAG · 权限感知的企业知识问答";
+  if (remember) { try { localStorage.setItem("lang", lang); } catch (e) {} }
+}
+let initial = new URLSearchParams(location.search).get("lang");
+if (!initial) { try { initial = localStorage.getItem("lang"); } catch (e) {} }
+setLang(initial === "en" ? "en" : "zh", false);
+toggle.addEventListener("click", () => setLang(root.dataset.lang === "en" ? "zh" : "en", true));
+
+const zoom = document.getElementById("zoom");
+document.querySelectorAll("img[data-zoom]").forEach(img => img.addEventListener("click", () => {
+  zoom.querySelector("img").src = img.src;
+  zoom.querySelector("img").alt = img.alt;
+  const caption = img.closest("figure")?.querySelector("figcaption");
+  zoom.querySelector("p").textContent = caption ? caption.innerText.trim() : "";
+  zoom.showModal();
+}));
+zoom.addEventListener("click", () => zoom.close());
+
 const pct = v => (v * 100).toFixed(1) + "%";
-const f3 = v => v.toFixed(3);
-
+const both = (zh, en) => `<span class="zh">${zh}</span><span class="en">${en}</span>`;
+const NAMES = {bm25: ["BM25", "BM25"], dense: ["向量检索", "Dense vectors"], hybrid: ["混合检索（默认）", "Hybrid (default)"]};
 fetch("data.json").then(r => r.json()).then(d => {
-  const h = d.holdout.measured;
-  document.getElementById("s-holdout").textContent = pct(h.status_correct);
-  document.getElementById("s-viol").textContent = h.permission_violations + h.hidden_source_leaks;
-  document.getElementById("s-conf").textContent = "100%";
-  document.getElementById("s-commit").textContent = d.commit;
-  document.getElementById("s-tests").textContent = d.tests.collected + " 项";
-  document.getElementById("f-commit").textContent = d.commit;
+  const h = d.holdout, m = h.measured, t = h.targets;
+  document.getElementById("t-holdout").innerHTML = [
+    [both("回答状态正确率", "Answer-state accuracy"), "≥ " + pct(t.status_correct_min), pct(m.status_correct)],
+    [both("字面事实覆盖", "Literal fact coverage"), "≥ " + pct(t.literal_fact_coverage_min), pct(m.literal_fact_coverage)],
+    [both("越权命中", "Unauthorized hits"), String(t.permission_violations_max), String(m.permission_violations)],
+    [both("隐藏文档泄漏", "Hidden-source leaks"), String(t.hidden_source_leaks_max), String(m.hidden_source_leaks)],
+    [both("引用身份校验", "Citation identity check"), both("全部通过", "all valid"), m.citation_identity_all_valid ? both("全部通过", "all valid") : both("未通过", "failed")],
+  ].map(([a, b, c]) => `<tr><td class="name">${a}</td><td class="num">${b}</td><td class="num">${c}</td></tr>`).join("");
 
-  const dev = document.getElementById("t-dev");
-  for (const key of ["bm25", "dense", "hybrid"]) {
-    const r = d.retrieval[key], g = d.dev[key];
-    dev.insertAdjacentHTML("beforeend",
-      `<tr class="${key === "hybrid" ? "best" : ""}"><td class="name">${NAMES[key]}</td>` +
-      `<td class="num">${f3(r.recall_at_5)}</td><td class="num">${f3(r.mrr)}</td>` +
-      `<td class="num"><b>${pct(g.status_correct)}</b></td></tr>`);
-  }
+  document.getElementById("t-dev").innerHTML = ["bm25", "dense", "hybrid"].map(k =>
+    `<tr${k === "hybrid" ? ' class="best"' : ""}><td class="name">${both(...NAMES[k])}</td>` +
+    `<td class="num">${d.retrieval[k].recall_at_5.toFixed(3)}</td><td class="num">${d.retrieval[k].mrr.toFixed(3)}</td>` +
+    `<td class="num">${pct(d.dev[k].status_correct)}</td></tr>`).join("");
 
-  const t = d.holdout.targets, rows = [
-    ["回答状态正确率", "≥ " + pct(t.status_correct_min), pct(h.status_correct)],
-    ["字面事实覆盖", "≥ " + pct(t.literal_fact_coverage_min), pct(h.literal_fact_coverage)],
-    ["越权命中", "0", String(h.permission_violations)],
-    ["隐藏文档泄漏", "0", String(h.hidden_source_leaks)],
-    ["引用身份校验", "全部通过", h.citation_identity_all_valid ? "全部通过" : "存在失败"],
-  ];
-  const ho = document.getElementById("t-holdout");
-  for (const [k, target, actual] of rows)
-    ho.insertAdjacentHTML("beforeend",
-      `<tr><td class="name">${k}</td><td class="num">${target}</td><td class="num"><b>${actual}</b></td></tr>`);
-
-  const pub = document.getElementById("t-public");
-  for (const key of ["bm25", "dense", "hybrid"])
-    pub.insertAdjacentHTML("beforeend",
-      `<tr class="${key === "hybrid" ? "best" : ""}"><td class="name">${NAMES[key]}</td>` +
-      `<td class="num">${f3(d.public.retrieval[key].recall_at_5)}</td>` +
-      `<td class="num">${pct(d.public.end_to_end[key].status_correct)}</td></tr>`);
-
-  const limits = document.getElementById("limits");
-  for (const line of d.not_measured) limits.insertAdjacentHTML("beforeend", `<li>${line}</li>`);
-  limits.insertAdjacentHTML("beforeend",
-    "<li>不支持需要 OCR 的扫描件与 PPTX；没有文字层的 PDF 会显式失败，不会被静默索引成空文档</li>");
-  limits.insertAdjacentHTML("beforeend",
-    "<li>留出集验证的是「同一分布下换一批主题」，不是「换一家公司」</li>");
-  d.agent.not_completed.forEach(line => limits.insertAdjacentHTML("beforeend", `<li>Agent：${line}</li>`));
-
-  const tools = document.getElementById("agent-tools");
-  d.agent.tools.forEach(name => tools.insertAdjacentHTML("beforeend", `<code>${name}</code>`));
-  const agent = document.getElementById("t-agent");
-  const b = d.agent.benchmark;
-  agent.insertAdjacentHTML("beforeend", `<tr><td class="name">单次 RAG · B2 开发回归</td><td class="num">${Math.round(b.rag_accuracy*b.tasks)}/${b.tasks}</td><td class="num">${b.rag_median_seconds.toFixed(1)} s</td><td class="num">1.0</td><td class="num">${b.forbidden_leaks}</td></tr>`);
-  agent.insertAdjacentHTML("beforeend", `<tr><td class="name">固定工作流 · B2 开发回归</td><td class="num">${Math.round(b.workflow_accuracy*b.tasks)}/${b.tasks}</td><td class="num">${b.workflow_median_seconds.toFixed(1)} s</td><td class="num">2.0</td><td class="num">${b.forbidden_leaks}</td></tr>`);
-  const dl = b.dynamic_legacy;
-  agent.insertAdjacentHTML("beforeend", `<tr><td class="name">动态 Agent · B1 首轮</td><td class="num">${Math.round(dl.accuracy*dl.tasks)}/${dl.tasks}</td><td class="num">${dl.median_seconds.toFixed(1)} s</td><td class="num">${dl.mean_steps.toFixed(1)}</td><td class="num">${dl.forbidden_leaks}</td></tr>`);
-  const num = v => (v === null || v === undefined) ? "—" : v;
-  for (const block of [d.agent.hard, d.agent.external]) {
-    if (!block) continue;
-    for (const r of block.rows)
-      agent.insertAdjacentHTML("beforeend",
-        `<tr><td class="name">${r.name}</td><td class="num">${r.correct}</td>` +
-        `<td class="num">${num(r.median_seconds)} s</td><td class="num">${num(r.mean_steps)}</td>` +
-        `<td class="num">${num(r.leaks)}</td></tr>`);
-  }
-  document.getElementById("agent-decision").textContent = b.decision;
-  const agentNotes = document.getElementById("agent-notes");
-  for (const block of [d.agent.hard, d.agent.external])
-    if (block) agentNotes.insertAdjacentHTML("beforeend", `<p>${block.note}</p>`);
-
-  const shots = document.getElementById("shots");
-  SHOTS.forEach(([file, what], i) => shots.insertAdjacentHTML("beforeend",
-    `<figure class="shot"><figcaption><span class="step">0${i + 1}</span>` +
-    `<span class="what">${what}</span></figcaption>` +
-    `<img loading="lazy" src="shots/${file}.png" alt="${what}"></figure>`));
+  const pub = d.public;
+  document.getElementById("t-public").innerHTML = ["bm25", "dense", "hybrid"].map(k =>
+    `<tr><td class="name">${both(...NAMES[k])}</td><td class="num">${pub.retrieval[k].recall_at_5.toFixed(3)}</td>` +
+    `<td class="num">${pct(pub.end_to_end[k].status_correct)}</td></tr>`).join("");
 });
 </script>
 </body>

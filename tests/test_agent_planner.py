@@ -16,6 +16,20 @@ from agent.planner import (
 
 def test_short_question_stays_one_subgoal_and_compound_question_splits():
     assert subgoals("Python SDK 默认最多重试几次？") == ["Python SDK 默认最多重试几次"]
+
+
+def test_numeric_import_coverage_keeps_limit_document_instead_of_row_alarm(monkeypatch):
+    from agent.planner import evidence_coverage
+    from app.config import settings
+    monkeypatch.setattr(settings(), "answer_quality_enabled", True)
+    item = "按这个特征对应的规则，现在单次导入最多允许多少行"
+    evidence = [
+        {"chunk_id":"alarm","title":"导入改进","text":"单个导入任务超过上限时新增导入行数告警。"},
+        {"chunk_id":"limit","title":"导入指南","text":"单次导入任务最多7万行。"},
+        {"chunk_id":"shard","title":"导入指南","text":"导入任务按每片7000行分片提交。"},
+    ]
+    assert evidence_coverage([item], evidence, item)[item] == ["limit"]
+    assert evidence_coverage([item], [evidence[0],evidence[2]], item)[item] == []
     assert subgoals("试点安排 A 和 B 的支持时段是否一致？") == ["试点安排 A 和 B 的支持时段是否一致"]
     assert subgoals("先查询生产数据库 RTO；只有它超过 30 分钟时才继续检查发布回滚的触发条件和目标版本。") == [
         "查询生产数据库 RTO",
@@ -135,3 +149,19 @@ def test_memory_content_never_reaches_the_action_selector():
     )
     assert observation["memories"] == {"count": 1, "usable_as": "preferences_only"}
     assert "CORAL-4826" not in str(observation)
+
+
+def test_a_compared_pair_before_a_colon_resolves_former_and_latter():
+    from agent.planner import subgoals
+
+    assert subgoals("请对照星桥的接口签名和附件处理：前者的时间戳偏差、后者的排队时限分别是多少？") == [
+        "星桥的接口签名的时间戳偏差", "附件处理的排队时限分别是多少",
+    ]
+
+
+def test_respectively_splits_a_pair_but_a_plain_and_does_not():
+    from agent.planner import subgoals
+
+    assert subgoals("生产数据库的 RPO 和 RTO 分别是多少？") == ["生产数据库的 RPO是多少", "RTO是多少"]
+    assert len(subgoals("星桥：调用方和服务端的时钟最多可以相差多久才不影响验签？")) == 1
+    assert subgoals("星桥：调用方和服务端的时钟最多可以相差多久？")[0].startswith("星桥")

@@ -1,0 +1,1150 @@
+{
+  "version": "dynamic-dev-v1",
+  "split": "dev",
+  "tasks": [
+    {
+      "id": "DD01",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-148 中出故障的那个服务，单个请求的超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "10 秒",
+            "10秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-inc-qinghe-inc-148",
+        "qi-svc-qinghe-svc-11"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-inc-qinghe-inc-148",
+        "then_document": "qi-svc-qinghe-svc-11"
+      }
+    },
+    {
+      "id": "DD02",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-731 中出故障的服务由谁负责？此人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "owner",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner",
+          "aliases": [
+            "钱霁"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6934"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-inc-qinghe-inc-731",
+        "qi-svc-qinghe-svc-12",
+        "qi-staff-4f029e"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "qi-inc-qinghe-inc-731",
+        "then_document": "qi-svc-qinghe-svc-12"
+      }
+    },
+    {
+      "id": "DD03",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-210 中出故障的那个服务，单个请求的超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "8 秒",
+            "8秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-inc-qinghe-inc-210",
+        "qi-svc-qinghe-svc-13"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-inc-qinghe-inc-210",
+        "then_document": "qi-svc-qinghe-svc-13"
+      }
+    },
+    {
+      "id": "DD04",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-293 中出故障的服务由谁负责？此人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "owner",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner",
+          "aliases": [
+            "谢若川"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6612"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-inc-qinghe-inc-293",
+        "qi-svc-qinghe-svc-14",
+        "qi-staff-db38ad"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "qi-inc-qinghe-inc-293",
+        "then_document": "qi-svc-qinghe-svc-14"
+      }
+    },
+    {
+      "id": "DD05",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-375 中出故障的那个服务，单个请求的超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "15 秒",
+            "15秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-inc-qinghe-inc-375",
+        "qi-svc-qinghe-svc-15"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-inc-qinghe-inc-375",
+        "then_document": "qi-svc-qinghe-svc-15"
+      }
+    },
+    {
+      "id": "DD06",
+      "dynamic_type": "bridge",
+      "category": "latent_link",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-931 中出故障的服务由谁负责？此人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "owner",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner",
+          "aliases": [
+            "邵棠"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6943"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-inc-qinghe-inc-931",
+        "qi-svc-qinghe-svc-16",
+        "qi-staff-7d6a27"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "qi-inc-qinghe-inc-931",
+        "then_document": "qi-svc-qinghe-svc-16"
+      }
+    },
+    {
+      "id": "DD07",
+      "dynamic_type": "bridge_deep",
+      "category": "latent_link",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-481 中出故障的服务，其负责人休假时由谁代班？代班人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "deputy",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "deputy",
+          "aliases": [
+            "唐珩"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6204"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-inc-qinghe-inc-481",
+        "qi-svc-qinghe-svc-17",
+        "qi-staff-b21a96",
+        "qi-staff-eb477c"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 4,
+      "conditional_transition": {
+        "observe_document": "qi-inc-qinghe-inc-481",
+        "then_document": "qi-svc-qinghe-svc-17"
+      }
+    },
+    {
+      "id": "DD08",
+      "dynamic_type": "bridge_deep",
+      "category": "latent_link",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-366 中出故障的服务，其负责人休假时由谁代班？代班人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "deputy",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "deputy",
+          "aliases": [
+            "钱霁"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6934"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-inc-qinghe-inc-366",
+        "qi-svc-qinghe-svc-11",
+        "qi-staff-bbc6c2",
+        "qi-staff-4f029e"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 4,
+      "conditional_transition": {
+        "observe_document": "qi-inc-qinghe-inc-366",
+        "then_document": "qi-svc-qinghe-svc-11"
+      }
+    },
+    {
+      "id": "DD09",
+      "dynamic_type": "bridge_deep",
+      "category": "latent_link",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-403 中出故障的服务，其负责人休假时由谁代班？代班人的办公分机是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "deputy",
+        "ext"
+      ],
+      "fact_matchers": [
+        {
+          "id": "deputy",
+          "aliases": [
+            "钱清和"
+          ]
+        },
+        {
+          "id": "ext",
+          "aliases": [
+            "6231"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-inc-qinghe-inc-403",
+        "qi-svc-qinghe-svc-12",
+        "qi-staff-4f029e",
+        "qi-staff-8cefcc"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 4,
+      "conditional_transition": {
+        "observe_document": "qi-inc-qinghe-inc-403",
+        "then_document": "qi-svc-qinghe-svc-12"
+      }
+    },
+    {
+      "id": "DD10",
+      "dynamic_type": "alias",
+      "category": "query_recovery",
+      "user": "qi-eng",
+      "goal": "外发单的金额超过多少元时需要更高级别审批？由谁审批？",
+      "expected_status": "answered",
+      "facts": [
+        "amount",
+        "approver"
+      ],
+      "fact_matchers": [
+        {
+          "id": "amount",
+          "aliases": [
+            "5000 元",
+            "5000元",
+            "5,000 元"
+          ]
+        },
+        {
+          "id": "approver",
+          "aliases": [
+            "质量总监"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-glossary",
+        "qi-form-f-81"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-glossary",
+        "then_document": "qi-form-f-81"
+      }
+    },
+    {
+      "id": "DD11",
+      "dynamic_type": "alias",
+      "category": "query_recovery",
+      "user": "qi-eng",
+      "goal": "小蓝单的金额超过多少元时需要更高级别审批？由谁审批？",
+      "expected_status": "answered",
+      "facts": [
+        "amount",
+        "approver"
+      ],
+      "fact_matchers": [
+        {
+          "id": "amount",
+          "aliases": [
+            "8000 元",
+            "8000元",
+            "8,000 元"
+          ]
+        },
+        {
+          "id": "approver",
+          "aliases": [
+            "财务总监"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-glossary",
+        "qi-form-f-72"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-glossary",
+        "then_document": "qi-form-f-72"
+      }
+    },
+    {
+      "id": "DD12",
+      "dynamic_type": "alias",
+      "category": "query_recovery",
+      "user": "qi-eng",
+      "goal": "短工单的金额超过多少元时需要更高级别审批？由谁审批？",
+      "expected_status": "answered",
+      "facts": [
+        "amount",
+        "approver"
+      ],
+      "fact_matchers": [
+        {
+          "id": "amount",
+          "aliases": [
+            "50000 元",
+            "50000元",
+            "50,000 元"
+          ]
+        },
+        {
+          "id": "approver",
+          "aliases": [
+            "供应链总监"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-glossary",
+        "qi-form-f-32"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-glossary",
+        "then_document": "qi-form-f-32"
+      }
+    },
+    {
+      "id": "DD13",
+      "dynamic_type": "alias",
+      "category": "query_recovery",
+      "user": "qi-eng",
+      "goal": "黑单的金额超过多少元时需要更高级别审批？由谁审批？",
+      "expected_status": "answered",
+      "facts": [
+        "amount",
+        "approver"
+      ],
+      "fact_matchers": [
+        {
+          "id": "amount",
+          "aliases": [
+            "5000 元",
+            "5000元",
+            "5,000 元"
+          ]
+        },
+        {
+          "id": "approver",
+          "aliases": [
+            "质量总监"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-glossary",
+        "qi-form-f-71"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-glossary",
+        "then_document": "qi-form-f-71"
+      }
+    },
+    {
+      "id": "DD14",
+      "dynamic_type": "conditional",
+      "category": "conditional_planning",
+      "user": "qi-eng",
+      "goal": "三厂区第三季度退货率是否需要启动升级处理？应由谁牵头或跟进？",
+      "expected_status": "answered",
+      "facts": [
+        "rate",
+        "decision",
+        "lead"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rate",
+          "aliases": [
+            "1.6%"
+          ]
+        },
+        {
+          "id": "decision",
+          "aliases": [
+            "不需要",
+            "不启动"
+          ]
+        },
+        {
+          "id": "lead",
+          "aliases": [
+            "宋子衿"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-quality-q3",
+        "qi-return-escalation",
+        "qi-warehouse-directory"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "qi-quality-q3",
+        "then_document": "qi-warehouse-directory"
+      }
+    },
+    {
+      "id": "DD15",
+      "dynamic_type": "conditional",
+      "category": "conditional_planning",
+      "user": "qi-eng",
+      "goal": "一厂区第三季度退货率是否需要启动升级处理？应由谁牵头或跟进？",
+      "expected_status": "answered",
+      "facts": [
+        "rate",
+        "decision",
+        "lead"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rate",
+          "aliases": [
+            "2.8%"
+          ]
+        },
+        {
+          "id": "decision",
+          "aliases": [
+            "不需要",
+            "不启动"
+          ]
+        },
+        {
+          "id": "lead",
+          "aliases": [
+            "宋舟"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-quality-q3",
+        "qi-return-escalation",
+        "qi-warehouse-directory"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "qi-quality-q3",
+        "then_document": "qi-warehouse-directory"
+      }
+    },
+    {
+      "id": "DD16",
+      "dynamic_type": "conditional",
+      "category": "conditional_planning",
+      "user": "qi-eng",
+      "goal": "东仓第三季度退货率是否需要启动升级处理？应由谁牵头或跟进？",
+      "expected_status": "answered",
+      "facts": [
+        "rate",
+        "decision",
+        "lead"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rate",
+          "aliases": [
+            "4.6%"
+          ]
+        },
+        {
+          "id": "decision",
+          "aliases": [
+            "需要",
+            "需启动"
+          ]
+        },
+        {
+          "id": "lead",
+          "aliases": [
+            "苏南星"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-quality-q3",
+        "qi-return-escalation"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-quality-q3",
+        "then_document": "qi-return-escalation"
+      }
+    },
+    {
+      "id": "DD17",
+      "dynamic_type": "conditional",
+      "category": "conditional_planning",
+      "user": "qi-eng",
+      "goal": "南仓第三季度退货率是否需要启动升级处理？应由谁牵头或跟进？",
+      "expected_status": "answered",
+      "facts": [
+        "rate",
+        "decision",
+        "lead"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rate",
+          "aliases": [
+            "2.8%"
+          ]
+        },
+        {
+          "id": "decision",
+          "aliases": [
+            "不需要",
+            "不启动"
+          ]
+        },
+        {
+          "id": "lead",
+          "aliases": [
+            "钱清和"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-quality-q3",
+        "qi-return-escalation",
+        "qi-warehouse-directory"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "qi-quality-q3",
+        "then_document": "qi-warehouse-directory"
+      }
+    },
+    {
+      "id": "DD18",
+      "dynamic_type": "enumeration",
+      "category": "enumeration",
+      "user": "qi-eng",
+      "goal": "变更冻结规则 R-800 覆盖的服务分别由谁负责？",
+      "expected_status": "answered",
+      "facts": [
+        "owner1",
+        "owner2",
+        "owner3",
+        "svc1",
+        "svc2",
+        "svc3"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner1",
+          "aliases": [
+            "谢若川"
+          ]
+        },
+        {
+          "id": "owner2",
+          "aliases": [
+            "钱清和"
+          ]
+        },
+        {
+          "id": "owner3",
+          "aliases": [
+            "宋子衿"
+          ]
+        },
+        {
+          "id": "svc1",
+          "aliases": [
+            "青鸾对象存储"
+          ]
+        },
+        {
+          "id": "svc2",
+          "aliases": [
+            "帝江排产"
+          ]
+        },
+        {
+          "id": "svc3",
+          "aliases": [
+            "狻猊质检"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-freeze-r-800",
+        "qi-svc-qinghe-svc-14",
+        "qi-svc-qinghe-svc-13",
+        "qi-svc-qinghe-svc-17"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 4,
+      "conditional_transition": {
+        "observe_document": "qi-freeze-r-800",
+        "then_document": "qi-svc-qinghe-svc-14"
+      }
+    },
+    {
+      "id": "DD19",
+      "dynamic_type": "enumeration",
+      "category": "enumeration",
+      "user": "qi-eng",
+      "goal": "变更冻结规则 R-411 覆盖的服务分别由谁负责？",
+      "expected_status": "answered",
+      "facts": [
+        "owner1",
+        "owner2",
+        "svc1",
+        "svc2"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner1",
+          "aliases": [
+            "钱霁"
+          ]
+        },
+        {
+          "id": "owner2",
+          "aliases": [
+            "苏南星"
+          ]
+        },
+        {
+          "id": "svc1",
+          "aliases": [
+            "螭吻报表"
+          ]
+        },
+        {
+          "id": "svc2",
+          "aliases": [
+            "白泽账务"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-freeze-r-411",
+        "qi-svc-qinghe-svc-12",
+        "qi-svc-qinghe-svc-11"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "qi-freeze-r-411",
+        "then_document": "qi-svc-qinghe-svc-12"
+      }
+    },
+    {
+      "id": "DD20",
+      "dynamic_type": "enumeration",
+      "category": "enumeration",
+      "user": "qi-eng",
+      "goal": "变更冻结规则 R-922 覆盖的服务分别由谁负责？",
+      "expected_status": "answered",
+      "facts": [
+        "owner1",
+        "owner2",
+        "svc1",
+        "svc2"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner1",
+          "aliases": [
+            "沈清和"
+          ]
+        },
+        {
+          "id": "owner2",
+          "aliases": [
+            "钱清和"
+          ]
+        },
+        {
+          "id": "svc1",
+          "aliases": [
+            "夔牛结算"
+          ]
+        },
+        {
+          "id": "svc2",
+          "aliases": [
+            "帝江排产"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-freeze-r-922",
+        "qi-svc-qinghe-svc-15",
+        "qi-svc-qinghe-svc-13"
+      ],
+      "max_steps": 10,
+      "min_source_documents": 3,
+      "conditional_transition": {
+        "observe_document": "qi-freeze-r-922",
+        "then_document": "qi-svc-qinghe-svc-15"
+      }
+    },
+    {
+      "id": "DD21",
+      "dynamic_type": "event_version",
+      "category": "temporal_version",
+      "user": "qi-eng",
+      "goal": "行政公告 QINGHE-AN-16 宣布的那次修订生效之前，外包人员门禁卡有效期是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "60 天",
+            "60天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-notice-qinghe-an-16",
+        "qi-policy-0"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-notice-qinghe-an-16",
+        "then_document": "qi-policy-0"
+      }
+    },
+    {
+      "id": "DD22",
+      "dynamic_type": "event_version",
+      "category": "temporal_version",
+      "user": "qi-eng",
+      "goal": "行政公告 QINGHE-AN-16 宣布的那次修订生效之后、下一次修订之前，外包人员门禁卡有效期是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "90 天",
+            "90天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-notice-qinghe-an-16",
+        "qi-policy-0"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-notice-qinghe-an-16",
+        "then_document": "qi-policy-0"
+      }
+    },
+    {
+      "id": "DD23",
+      "dynamic_type": "event_version",
+      "category": "temporal_version",
+      "user": "qi-eng",
+      "goal": "行政公告 QINGHE-AN-63 宣布的那次修订生效之前，外包人员门禁卡有效期是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "90 天",
+            "90天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-notice-qinghe-an-63",
+        "qi-policy-0"
+      ],
+      "max_steps": 8,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "qi-notice-qinghe-an-63",
+        "then_document": "qi-policy-0"
+      }
+    },
+    {
+      "id": "DD24",
+      "dynamic_type": "conflict",
+      "category": "comparison",
+      "user": "qi-eng",
+      "goal": "二厂区的危化品库房单次进入人数上限，作业规范与安全通告不一致时以哪份为准？具体是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value",
+        "source"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "3 人",
+            "3人"
+          ]
+        },
+        {
+          "id": "source",
+          "aliases": [
+            "安全通告第 11 号"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-site-rule-0",
+        "qi-safety-0"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2
+    },
+    {
+      "id": "DD25",
+      "dynamic_type": "conflict",
+      "category": "comparison",
+      "user": "qi-eng",
+      "goal": "一厂区的高温天气室外作业暂停时间，作业规范与安全通告不一致时以哪份为准？具体是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "value",
+        "source"
+      ],
+      "fact_matchers": [
+        {
+          "id": "value",
+          "aliases": [
+            "12:30"
+          ]
+        },
+        {
+          "id": "source",
+          "aliases": [
+            "安全通告第 6 号"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-site-rule-1",
+        "qi-safety-1"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2
+    },
+    {
+      "id": "DD26",
+      "dynamic_type": "control",
+      "category": "efficiency_stopping",
+      "user": "qi-eng",
+      "goal": "白泽账务的单个请求超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "10 秒",
+            "10秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-svc-qinghe-svc-11"
+      ],
+      "max_steps": 4,
+      "min_source_documents": 1,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ]
+    },
+    {
+      "id": "DD27",
+      "dynamic_type": "control",
+      "category": "efficiency_stopping",
+      "user": "qi-eng",
+      "goal": "螭吻报表的服务负责人是谁？",
+      "expected_status": "answered",
+      "facts": [
+        "owner"
+      ],
+      "fact_matchers": [
+        {
+          "id": "owner",
+          "aliases": [
+            "钱霁"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-svc-qinghe-svc-12"
+      ],
+      "max_steps": 4,
+      "min_source_documents": 1,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ]
+    },
+    {
+      "id": "DD28",
+      "dynamic_type": "control",
+      "category": "efficiency_stopping",
+      "user": "qi-eng",
+      "goal": "帝江排产的单个请求超时阈值是多少秒？",
+      "expected_status": "answered",
+      "facts": [
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "8 秒",
+            "8秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "qi-svc-qinghe-svc-13"
+      ],
+      "max_steps": 4,
+      "min_source_documents": 1,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ]
+    },
+    {
+      "id": "DD29",
+      "dynamic_type": "unanswerable",
+      "category": "null_insufficient",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-105 中出故障的服务，其负责人的办公分机是多少？",
+      "expected_status": "insufficient_evidence",
+      "facts": [],
+      "fact_matchers": [],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [],
+      "max_steps": 8,
+      "min_source_documents": 0
+    },
+    {
+      "id": "DD30",
+      "dynamic_type": "unanswerable",
+      "category": "null_insufficient",
+      "user": "qi-eng",
+      "goal": "事故 QINGHE-INC-966 中出故障的服务，其负责人的办公分机是多少？",
+      "expected_status": "insufficient_evidence",
+      "facts": [],
+      "fact_matchers": [],
+      "forbidden": [
+        "6295"
+      ],
+      "scenario_events": [],
+      "expected_evidence_documents": [],
+      "max_steps": 8,
+      "min_source_documents": 0
+    }
+  ],
+  "purpose": "observation-dependent tasks; necessity measured separately"
+}

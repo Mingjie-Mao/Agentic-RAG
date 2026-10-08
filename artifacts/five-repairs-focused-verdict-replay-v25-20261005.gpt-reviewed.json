@@ -1,0 +1,10 @@
+{
+  "scope": "Actual Dev diagnostic; strict completion failed, no benchmark success or P95 claim",
+  "source_artifact_sha256": "932c1e3dd7030fc92e469b6683d2e04bd61fe678847d50322fea3e67c7e348ab",
+  "reviewer_type": "model",
+  "model": "GPT-6 (Codex assistant; exact deployment identifier unavailable)",
+  "independent": false,
+  "method_blinded": false,
+  "passed": false,
+  "reason": "来源聚焦后两方事实已生成，判断器仍只选择Guardian一方的claim1；来源覆盖检查正确降为unclear。必须修复比较证明选择，不能据局部事实正确算最终成功。"
+}

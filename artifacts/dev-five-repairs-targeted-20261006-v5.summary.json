@@ -1,0 +1,41 @@
+{
+  "scope": "Registered targeted Dev diagnostic (6 tasks x 4 methods) after v4; not full Dev, Core or P95.",
+  "changes_tested": [
+    "deterministic pruning of heading/boilerplate quotes in the LangGraph validate node",
+    "readable-but-unretrieved publication provenance check"
+  ],
+  "pruning": {
+    "result": "negative; reverted",
+    "u11_latency": {
+      "dynamic:U11": {
+        "v5_s": 41.9,
+        "v4_s": 66.9
+      },
+      "hybrid:U11": {
+        "v5_s": 23.4,
+        "v4_s": 25.0
+      },
+      "rag:U11": {
+        "v5_s": 31.5,
+        "v4_s": 47.6
+      },
+      "workflow:U11": {
+        "v5_s": 15.9,
+        "v4_s": 51.0
+      }
+    },
+    "u11_strict_success": {
+      "v4": "4/4",
+      "v5": "1/4"
+    },
+    "reason": "Pruned drafts kept other unrelated incident quotes that the model repair used to rewrite away; latency fell but strict citation review failed in RAG/Workflow/Dynamic."
+  },
+  "absent_publication_check": {
+    "result": "kept",
+    "effect": "SF-3f2fcdb94b67 BBC claim citing The Independent now caught in Workflow/Dynamic/Hybrid; bounded repair could not find the BBC article, so the answer safely abstains (verification_failed). RAG returned unclear. Task still fails strict success.",
+    "replay": "artifacts/five-repairs-absent-publication-replay-20261006.json (1 changed claim of 188 answers, reviewer-unsupported)"
+  },
+  "regression_guard": "U14, U22, U23 strict success 4/4 each, same as v4",
+  "review": "artifacts/dev-five-repairs-targeted-20261006-v5.claude-reviewed.json (3 new Claude reviews, 21 reused)",
+  "report": "artifacts/dev-five-repairs-targeted-20261006-v5.reviewed-report.json"
+}

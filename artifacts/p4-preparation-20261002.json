@@ -1,0 +1,18 @@
+{
+  "tasks": 70,
+  "categories": {
+    "efficiency_stopping": 10,
+    "multi_hop": 10,
+    "latent_link": 10,
+    "conditional_planning": 10,
+    "comparison": 10,
+    "temporal_version": 10,
+    "null_insufficient": 10
+  },
+  "documents": 80,
+  "versions": 90,
+  "safety_tasks": 2,
+  "status": "pending_independent_human_review",
+  "formal_runs": 0,
+  "path": "/Users/mingjie/Desktop/Enterprise-RAG/fixtures/unseen_v2"
+}

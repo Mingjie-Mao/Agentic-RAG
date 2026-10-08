@@ -1,0 +1,216 @@
+{
+  "status": "semantic_candidate_not_accepted",
+  "reviewer": {
+    "reviewer_type": "model",
+    "model": "GPT-6 current Codex assistant, exact deployment unavailable",
+    "independent": false
+  },
+  "reason": "Actual Dev composition still misclassifies requested comparison or consent scope, and 27B times out. Literal provenance is not semantic success. No failed candidate enabled; no Core tuning or run.",
+  "latest_review": {
+    "SF-3f2fcdb94b67": "Fail: unclear despite relevant comparison evidence; false abstention.",
+    "SF-43709086f7bb": "Conditional boundary prevents actual-motive inference; source characterization no is supported without asserting opposite real motive.",
+    "SF-66b7ed601d85": "Fail: yes relies on alleged legality and unrelated second subject, not consent obtained for the first filming situation.",
+    "SF-64b127ac198d": "No correctly distinguishes billions from millions and cites original headline about antitrust filing. Full benchmark answer completeness remains unscored here."
+  },
+  "runs": [
+    {
+      "artifact": "artifacts/five-repairs-context-v8-comparison-gptoss-20261004.json",
+      "model": "gpt-oss:20b",
+      "tasks": 4,
+      "verdicts": [
+        {
+          "task_id": "SF-3f2fcdb94b67",
+          "value": "unclear",
+          "seconds": 44.16641370812431,
+          "error": null
+        },
+        {
+          "task_id": "SF-43709086f7bb",
+          "value": "no",
+          "seconds": 34.82555204210803,
+          "error": null
+        },
+        {
+          "task_id": "SF-66b7ed601d85",
+          "value": "no",
+          "seconds": 29.867480042390525,
+          "error": null
+        },
+        {
+          "task_id": "SF-64b127ac198d",
+          "value": "no",
+          "seconds": 28.206430582795292,
+          "error": null
+        }
+      ],
+      "enabled": false,
+      "overall_gate_passed": false
+    },
+    {
+      "artifact": "artifacts/five-repairs-context-v9-medium-gptoss-20261004.json",
+      "model": "gpt-oss:20b",
+      "tasks": 1,
+      "verdicts": [
+        {
+          "task_id": "SF-3f2fcdb94b67",
+          "value": "no",
+          "seconds": 94.25083145825192,
+          "error": null
+        }
+      ],
+      "enabled": false,
+      "overall_gate_passed": false
+    },
+    {
+      "artifact": "artifacts/five-repairs-context-v11-qwen27-off-20261004.json",
+      "model": "qwen3.5:27b",
+      "tasks": 1,
+      "verdicts": [
+        {
+          "task_id": "SF-3f2fcdb94b67",
+          "value": null,
+          "seconds": 180.4810195416212,
+          "error": {
+            "kind": "DependencyError",
+            "stage": "generation"
+          }
+        }
+      ],
+      "enabled": false,
+      "overall_gate_passed": false
+    },
+    {
+      "artifact": "artifacts/five-repairs-context-v12-aspect-gptoss-20261004.json",
+      "model": "gpt-oss:20b",
+      "tasks": 4,
+      "verdicts": [
+        {
+          "task_id": "SF-3f2fcdb94b67",
+          "value": "unclear",
+          "seconds": 164.67508195806295,
+          "error": null
+        },
+        {
+          "task_id": "SF-43709086f7bb",
+          "value": "yes",
+          "seconds": 51.11399087496102,
+          "error": null
+        },
+        {
+          "task_id": "SF-66b7ed601d85",
+          "value": "no",
+          "seconds": 73.20318675041199,
+          "error": null
+        },
+        {
+          "task_id": "SF-64b127ac198d",
+          "value": "no",
+          "seconds": 53.574399624951184,
+          "error": null
+        }
+      ],
+      "enabled": false,
+      "overall_gate_passed": false
+    },
+    {
+      "artifact": "artifacts/five-repairs-context-v13-compact-qwen9-20261004.json",
+      "model": "qwen3.5:9b",
+      "tasks": 4,
+      "verdicts": [
+        {
+          "task_id": "SF-3f2fcdb94b67",
+          "value": "yes",
+          "seconds": 80.87667345907539,
+          "error": null
+        },
+        {
+          "task_id": "SF-43709086f7bb",
+          "value": "yes",
+          "seconds": 70.0930477916263,
+          "error": null
+        },
+        {
+          "task_id": "SF-66b7ed601d85",
+          "value": "no",
+          "seconds": 35.5554095832631,
+          "error": null
+        },
+        {
+          "task_id": "SF-64b127ac198d",
+          "value": "no",
+          "seconds": 44.258474708069116,
+          "error": null
+        }
+      ],
+      "enabled": false,
+      "overall_gate_passed": false
+    },
+    {
+      "artifact": "artifacts/five-repairs-context-v14-boundary-qwen9-20261004.json",
+      "model": "qwen3.5:9b",
+      "tasks": 4,
+      "verdicts": [
+        {
+          "task_id": "SF-3f2fcdb94b67",
+          "value": "yes",
+          "seconds": 53.0627277912572,
+          "error": null
+        },
+        {
+          "task_id": "SF-43709086f7bb",
+          "value": "no",
+          "seconds": 29.37519691698253,
+          "error": null
+        },
+        {
+          "task_id": "SF-66b7ed601d85",
+          "value": "no",
+          "seconds": 13.387002958916128,
+          "error": null
+        },
+        {
+          "task_id": "SF-64b127ac198d",
+          "value": "no",
+          "seconds": 48.241635458078235,
+          "error": null
+        }
+      ],
+      "enabled": false,
+      "overall_gate_passed": false
+    },
+    {
+      "artifact": "artifacts/five-repairs-context-v15-dimension-qwen9-20261004.json",
+      "model": "qwen3.5:9b",
+      "tasks": 4,
+      "verdicts": [
+        {
+          "task_id": "SF-3f2fcdb94b67",
+          "value": "unclear",
+          "seconds": 51.68081008363515,
+          "error": null
+        },
+        {
+          "task_id": "SF-43709086f7bb",
+          "value": "no",
+          "seconds": 49.621389999985695,
+          "error": null
+        },
+        {
+          "task_id": "SF-66b7ed601d85",
+          "value": "yes",
+          "seconds": 34.14214558433741,
+          "error": null
+        },
+        {
+          "task_id": "SF-64b127ac198d",
+          "value": "no",
+          "seconds": 41.61486916569993,
+          "error": null
+        }
+      ],
+      "enabled": false,
+      "overall_gate_passed": false
+    }
+  ],
+  "required_next_step": "Reliable composition model and preregistered component validation, then new frozen Dev and explicit GPT answer audit. No current general semantic completion claim."
+}

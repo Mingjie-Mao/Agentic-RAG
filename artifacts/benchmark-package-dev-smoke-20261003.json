@@ -1,0 +1,1283 @@
+{
+  "date": "2026-10-03",
+  "purpose": "One already-used Dev question, eight methods; end-to-end benchmark infrastructure validation only",
+  "question_id": "U01",
+  "question": "兰亭云 Java SDK 默认失败后重试几次？",
+  "gold_answer": "默认重试 2 次",
+  "headline_eligible": false,
+  "formal_core_runs": 0,
+  "formal_security_runs": 0,
+  "formal_external_runs": 0,
+  "annotation_review_counts": {
+    "core": 70,
+    "security": 16,
+    "external": 0
+  },
+  "package_counts": {
+    "dev": 47,
+    "core": 70,
+    "security": 16,
+    "external": 150
+  },
+  "tests": {
+    "passed": 476,
+    "skipped": 36,
+    "targeted_passed": 27
+  },
+  "live_corpus_verification": {
+    "documents": 631,
+    "users": 3,
+    "search_chunks": 24989,
+    "owner_acl_user_permissions_verified": true
+  },
+  "summary": {
+    "rag": {
+      "tasks": 1,
+      "strict_task_success_rate": {
+        "value": 1,
+        "applicable": 1,
+        "total": 1
+      },
+      "retrieval": {
+        "gold_document_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "gold_fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "evidence_coverage": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "recall_at_k": {
+          "1": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "5": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "10": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          }
+        }
+      },
+      "answer": {
+        "fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "fact_precision": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "citation_correctness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "faithfulness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "answer_completeness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        }
+      },
+      "policy": {
+        "steps": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "tool_calls": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "unnecessary_tool_calls": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "failed_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "invalid_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "failed_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "early_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "late_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "recovery_after_failed_retrieval": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        }
+      },
+      "total_tokens": {
+        "sum": 1140,
+        "mean": 1140,
+        "observed": 1,
+        "total": 1
+      },
+      "latency_ms": {
+        "p50": 33129.4,
+        "p95": 33129.4,
+        "observed": 1,
+        "total": 1
+      },
+      "execution_failures": 0,
+      "forbidden_output_tasks": 0,
+      "acl_canary_output_tasks": 0,
+      "version_scope_violations": 0,
+      "unexercised_security_events": 0,
+      "by_category": {
+        "efficiency_stopping": {
+          "n": 1,
+          "strict_task_success_rate": 1
+        }
+      }
+    },
+    "workflow": {
+      "tasks": 1,
+      "strict_task_success_rate": {
+        "value": 1,
+        "applicable": 1,
+        "total": 1
+      },
+      "retrieval": {
+        "gold_document_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "gold_fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "evidence_coverage": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "recall_at_k": {
+          "1": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "5": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "10": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          }
+        }
+      },
+      "answer": {
+        "fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "fact_precision": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "citation_correctness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "faithfulness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "answer_completeness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        }
+      },
+      "policy": {
+        "steps": {
+          "value": 2,
+          "applicable": 1,
+          "total": 1
+        },
+        "tool_calls": {
+          "value": 2,
+          "applicable": 1,
+          "total": 1
+        },
+        "unnecessary_tool_calls": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "failed_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "invalid_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "failed_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "early_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "late_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "recovery_after_failed_retrieval": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        }
+      },
+      "total_tokens": {
+        "sum": 1160,
+        "mean": 1160,
+        "observed": 1,
+        "total": 1
+      },
+      "latency_ms": {
+        "p50": 21934.5,
+        "p95": 21934.5,
+        "observed": 1,
+        "total": 1
+      },
+      "execution_failures": 0,
+      "forbidden_output_tasks": 0,
+      "acl_canary_output_tasks": 0,
+      "version_scope_violations": 0,
+      "unexercised_security_events": 0,
+      "by_category": {
+        "efficiency_stopping": {
+          "n": 1,
+          "strict_task_success_rate": 1
+        }
+      }
+    },
+    "dynamic": {
+      "tasks": 1,
+      "strict_task_success_rate": {
+        "value": 0,
+        "applicable": 1,
+        "total": 1
+      },
+      "retrieval": {
+        "gold_document_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "gold_fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "evidence_coverage": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "recall_at_k": {
+          "1": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "5": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "10": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          }
+        }
+      },
+      "answer": {
+        "fact_recall": {
+          "value": 0.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "fact_precision": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "citation_correctness": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "faithfulness": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "answer_completeness": {
+          "value": 0.0,
+          "applicable": 1,
+          "total": 1
+        }
+      },
+      "policy": {
+        "steps": {
+          "value": 2,
+          "applicable": 1,
+          "total": 1
+        },
+        "tool_calls": {
+          "value": 2,
+          "applicable": 1,
+          "total": 1
+        },
+        "unnecessary_tool_calls": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "failed_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "invalid_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "failed_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "early_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "late_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "recovery_after_failed_retrieval": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        }
+      },
+      "total_tokens": {
+        "sum": 2987,
+        "mean": 2987,
+        "observed": 1,
+        "total": 1
+      },
+      "latency_ms": {
+        "p50": 59490.9,
+        "p95": 59490.9,
+        "observed": 1,
+        "total": 1
+      },
+      "execution_failures": 0,
+      "forbidden_output_tasks": 0,
+      "acl_canary_output_tasks": 0,
+      "version_scope_violations": 0,
+      "unexercised_security_events": 0,
+      "by_category": {
+        "efficiency_stopping": {
+          "n": 1,
+          "strict_task_success_rate": 0
+        }
+      }
+    },
+    "hybrid": {
+      "tasks": 1,
+      "strict_task_success_rate": {
+        "value": 0,
+        "applicable": 1,
+        "total": 1
+      },
+      "retrieval": {
+        "gold_document_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "gold_fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "evidence_coverage": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "recall_at_k": {
+          "1": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "5": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "10": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          }
+        }
+      },
+      "answer": {
+        "fact_recall": {
+          "value": 0.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "fact_precision": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "citation_correctness": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "faithfulness": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "answer_completeness": {
+          "value": 0.0,
+          "applicable": 1,
+          "total": 1
+        }
+      },
+      "policy": {
+        "steps": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "tool_calls": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "unnecessary_tool_calls": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "failed_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "invalid_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "failed_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "early_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "late_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "recovery_after_failed_retrieval": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        }
+      },
+      "total_tokens": {
+        "sum": 801,
+        "mean": 801,
+        "observed": 1,
+        "total": 1
+      },
+      "latency_ms": {
+        "p50": 10011.5,
+        "p95": 10011.5,
+        "observed": 1,
+        "total": 1
+      },
+      "execution_failures": 0,
+      "forbidden_output_tasks": 0,
+      "acl_canary_output_tasks": 0,
+      "version_scope_violations": 0,
+      "unexercised_security_events": 0,
+      "by_category": {
+        "efficiency_stopping": {
+          "n": 1,
+          "strict_task_success_rate": 0
+        }
+      }
+    },
+    "rag_bm25": {
+      "tasks": 1,
+      "strict_task_success_rate": {
+        "value": 1,
+        "applicable": 1,
+        "total": 1
+      },
+      "retrieval": {
+        "gold_document_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "gold_fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "evidence_coverage": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "recall_at_k": {
+          "1": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "5": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "10": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          }
+        }
+      },
+      "answer": {
+        "fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "fact_precision": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "citation_correctness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "faithfulness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "answer_completeness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        }
+      },
+      "policy": {
+        "steps": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "tool_calls": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "unnecessary_tool_calls": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "failed_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "invalid_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "failed_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "early_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "late_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "recovery_after_failed_retrieval": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        }
+      },
+      "total_tokens": {
+        "sum": 1140,
+        "mean": 1140,
+        "observed": 1,
+        "total": 1
+      },
+      "latency_ms": {
+        "p50": 18736.6,
+        "p95": 18736.6,
+        "observed": 1,
+        "total": 1
+      },
+      "execution_failures": 0,
+      "forbidden_output_tasks": 0,
+      "acl_canary_output_tasks": 0,
+      "version_scope_violations": 0,
+      "unexercised_security_events": 0,
+      "by_category": {
+        "efficiency_stopping": {
+          "n": 1,
+          "strict_task_success_rate": 1
+        }
+      }
+    },
+    "rag_hybrid": {
+      "tasks": 1,
+      "strict_task_success_rate": {
+        "value": 1,
+        "applicable": 1,
+        "total": 1
+      },
+      "retrieval": {
+        "gold_document_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "gold_fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "evidence_coverage": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "recall_at_k": {
+          "1": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "5": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "10": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          }
+        }
+      },
+      "answer": {
+        "fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "fact_precision": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "citation_correctness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "faithfulness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "answer_completeness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        }
+      },
+      "policy": {
+        "steps": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "tool_calls": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "unnecessary_tool_calls": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "failed_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "invalid_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "failed_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "early_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "late_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "recovery_after_failed_retrieval": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        }
+      },
+      "total_tokens": {
+        "sum": 1140,
+        "mean": 1140,
+        "observed": 1,
+        "total": 1
+      },
+      "latency_ms": {
+        "p50": 18371.4,
+        "p95": 18371.4,
+        "observed": 1,
+        "total": 1
+      },
+      "execution_failures": 0,
+      "forbidden_output_tasks": 0,
+      "acl_canary_output_tasks": 0,
+      "version_scope_violations": 0,
+      "unexercised_security_events": 0,
+      "by_category": {
+        "efficiency_stopping": {
+          "n": 1,
+          "strict_task_success_rate": 1
+        }
+      }
+    },
+    "rag_rewrite": {
+      "tasks": 1,
+      "strict_task_success_rate": {
+        "value": 1,
+        "applicable": 1,
+        "total": 1
+      },
+      "retrieval": {
+        "gold_document_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "gold_fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "evidence_coverage": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "recall_at_k": {
+          "1": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "5": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "10": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          }
+        }
+      },
+      "answer": {
+        "fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "fact_precision": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "citation_correctness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "faithfulness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "answer_completeness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        }
+      },
+      "policy": {
+        "steps": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "tool_calls": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "unnecessary_tool_calls": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "failed_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "invalid_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "failed_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "early_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "late_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "recovery_after_failed_retrieval": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        }
+      },
+      "total_tokens": {
+        "sum": 1140,
+        "mean": 1140,
+        "observed": 1,
+        "total": 1
+      },
+      "latency_ms": {
+        "p50": 8820.9,
+        "p95": 8820.9,
+        "observed": 1,
+        "total": 1
+      },
+      "execution_failures": 0,
+      "forbidden_output_tasks": 0,
+      "acl_canary_output_tasks": 0,
+      "version_scope_violations": 0,
+      "unexercised_security_events": 0,
+      "by_category": {
+        "efficiency_stopping": {
+          "n": 1,
+          "strict_task_success_rate": 1
+        }
+      }
+    },
+    "rag_rerank": {
+      "tasks": 1,
+      "strict_task_success_rate": {
+        "value": 1,
+        "applicable": 1,
+        "total": 1
+      },
+      "retrieval": {
+        "gold_document_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "gold_fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "evidence_coverage": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "recall_at_k": {
+          "1": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "5": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          },
+          "10": {
+            "value": 1.0,
+            "applicable": 1,
+            "total": 1
+          }
+        }
+      },
+      "answer": {
+        "fact_recall": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "fact_precision": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "citation_correctness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "faithfulness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        },
+        "answer_completeness": {
+          "value": 1.0,
+          "applicable": 1,
+          "total": 1
+        }
+      },
+      "policy": {
+        "steps": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "tool_calls": {
+          "value": 1,
+          "applicable": 1,
+          "total": 1
+        },
+        "unnecessary_tool_calls": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "failed_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "invalid_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_tool_calls": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "failed_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "repeated_queries": {
+          "value": 0,
+          "applicable": 1,
+          "total": 1
+        },
+        "early_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "late_stop": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        },
+        "recovery_after_failed_retrieval": {
+          "value": null,
+          "applicable": 0,
+          "total": 1
+        }
+      },
+      "total_tokens": {
+        "sum": 1271,
+        "mean": 1271,
+        "observed": 1,
+        "total": 1
+      },
+      "latency_ms": {
+        "p50": 36726.4,
+        "p95": 36726.4,
+        "observed": 1,
+        "total": 1
+      },
+      "execution_failures": 0,
+      "forbidden_output_tasks": 0,
+      "acl_canary_output_tasks": 0,
+      "version_scope_violations": 0,
+      "unexercised_security_events": 0,
+      "by_category": {
+        "efficiency_stopping": {
+          "n": 1,
+          "strict_task_success_rate": 1
+        }
+      }
+    }
+  },
+  "raw_sha256": "2abb7ee7346df5e4e99127033235113222d16e2a48b1642b73d2854b721d3342",
+  "review_source_sha256": "7cac5aaac476adaa4379e87c70b011609302a2197e80adaa4031826e4760d796",
+  "review_provenance": [
+    {
+      "reviewer": "GPT / current Codex session",
+      "reviewer_type": "model",
+      "model": "GPT-6 family, current Codex session; exact serving deployment ID unavailable",
+      "independent": false
+    },
+    {
+      "reviewer": "GPT / current Codex session",
+      "reviewer_type": "model",
+      "model": "GPT-6 family, current Codex session; exact serving deployment ID unavailable",
+      "independent": false
+    },
+    {
+      "reviewer": "GPT / current Codex session",
+      "reviewer_type": "model",
+      "model": "GPT-6 family, current Codex session; exact serving deployment ID unavailable",
+      "independent": false
+    },
+    {
+      "reviewer": "GPT / current Codex session",
+      "reviewer_type": "model",
+      "model": "GPT-6 family, current Codex session; exact serving deployment ID unavailable",
+      "independent": false
+    },
+    {
+      "reviewer": "GPT / current Codex session",
+      "reviewer_type": "model",
+      "model": "GPT-6 family, current Codex session; exact serving deployment ID unavailable",
+      "independent": false
+    },
+    {
+      "reviewer": "GPT / current Codex session",
+      "reviewer_type": "model",
+      "model": "GPT-6 family, current Codex session; exact serving deployment ID unavailable",
+      "independent": false
+    },
+    {
+      "reviewer": "GPT / current Codex session",
+      "reviewer_type": "model",
+      "model": "GPT-6 family, current Codex session; exact serving deployment ID unavailable",
+      "independent": false
+    },
+    {
+      "reviewer": "GPT / current Codex session",
+      "reviewer_type": "model",
+      "model": "GPT-6 family, current Codex session; exact serving deployment ID unavailable",
+      "independent": false
+    }
+  ],
+  "limitations": "Same-session GPT factual review, not independent and not method-blind in practice: reviewer also inspected raw method outputs. Single already-used Dev task; no accuracy or latency generalisation.",
+  "raw_path": ".runtime/benchmark-results/dev-smoke-v1.json",
+  "report_path": ".runtime/benchmark-results/dev-smoke-v1.report-v2.json",
+  "diagnosis": "All eight methods retrieved the required fact. Dynamic and Hybrid abstained. Insufficient-evidence status indicates a generation/evidence-use problem, not by itself a citation-validator failure."
+}

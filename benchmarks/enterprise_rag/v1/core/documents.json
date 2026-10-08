@@ -1,0 +1,1190 @@
+{
+  "tenant": {
+    "id": "unseen-v2",
+    "name": "云岑验收专用组织"
+  },
+  "owner": "uv2-admin",
+  "users": [
+    {
+      "id": "uv2-eng",
+      "username": "uv2-eng",
+      "tenant_id": "unseen-v2",
+      "role": "member",
+      "groups": [
+        "engineering"
+      ]
+    },
+    {
+      "id": "uv2-admin",
+      "username": "uv2-admin",
+      "tenant_id": "unseen-v2",
+      "role": "admin",
+      "groups": [
+        "engineering",
+        "support"
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "document_id": "uv2-service-1",
+      "title": "青岚服务接入规范",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/service-1-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-incident-1",
+      "title": "事件 QL-001 复盘",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/incident-1-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-procedure-1",
+      "title": "青岚应急处理规程",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/procedure-1-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-contact-1",
+      "title": "联络单元 C-01 登记册",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/contact-1-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-observation-1",
+      "title": "青岚灰度观测报告",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/observation-1-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-release-1",
+      "title": "青岚灰度发布准则",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/release-1-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-history-1",
+      "title": "青岚工单响应制度",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/history-1-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen_v2/documents/history-1-v2.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-secret-1",
+      "title": "青岚内部结算附录",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/secret-1-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-service-2",
+      "title": "澄湖服务接入规范",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/service-2-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-incident-2",
+      "title": "事件 QL-002 复盘",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/incident-2-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-procedure-2",
+      "title": "澄湖应急处理规程",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/procedure-2-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-contact-2",
+      "title": "联络单元 C-02 登记册",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/contact-2-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-observation-2",
+      "title": "澄湖灰度观测报告",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/observation-2-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-release-2",
+      "title": "澄湖灰度发布准则",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/release-2-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-history-2",
+      "title": "澄湖工单响应制度",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/history-2-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen_v2/documents/history-2-v2.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-secret-2",
+      "title": "澄湖内部结算附录",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/secret-2-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-service-3",
+      "title": "云杉服务接入规范",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/service-3-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-incident-3",
+      "title": "事件 QL-003 复盘",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/incident-3-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-procedure-3",
+      "title": "云杉应急处理规程",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/procedure-3-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-contact-3",
+      "title": "联络单元 C-03 登记册",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/contact-3-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-observation-3",
+      "title": "云杉灰度观测报告",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/observation-3-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-release-3",
+      "title": "云杉灰度发布准则",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/release-3-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-history-3",
+      "title": "云杉工单响应制度",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/history-3-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen_v2/documents/history-3-v2.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-secret-3",
+      "title": "云杉内部结算附录",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/secret-3-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-service-4",
+      "title": "北辰服务接入规范",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/service-4-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-incident-4",
+      "title": "事件 QL-004 复盘",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/incident-4-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-procedure-4",
+      "title": "北辰应急处理规程",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/procedure-4-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-contact-4",
+      "title": "联络单元 C-04 登记册",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/contact-4-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-observation-4",
+      "title": "北辰灰度观测报告",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/observation-4-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-release-4",
+      "title": "北辰灰度发布准则",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/release-4-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-history-4",
+      "title": "北辰工单响应制度",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/history-4-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen_v2/documents/history-4-v2.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-secret-4",
+      "title": "北辰内部结算附录",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/secret-4-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-service-5",
+      "title": "赤枫服务接入规范",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/service-5-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-incident-5",
+      "title": "事件 QL-005 复盘",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/incident-5-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-procedure-5",
+      "title": "赤枫应急处理规程",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/procedure-5-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-contact-5",
+      "title": "联络单元 C-05 登记册",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/contact-5-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-observation-5",
+      "title": "赤枫灰度观测报告",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/observation-5-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-release-5",
+      "title": "赤枫灰度发布准则",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/release-5-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-history-5",
+      "title": "赤枫工单响应制度",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/history-5-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen_v2/documents/history-5-v2.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-secret-5",
+      "title": "赤枫内部结算附录",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/secret-5-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-service-6",
+      "title": "星帆服务接入规范",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/service-6-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-incident-6",
+      "title": "事件 QL-006 复盘",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/incident-6-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-procedure-6",
+      "title": "星帆应急处理规程",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/procedure-6-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-contact-6",
+      "title": "联络单元 C-06 登记册",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/contact-6-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-observation-6",
+      "title": "星帆灰度观测报告",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/observation-6-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-release-6",
+      "title": "星帆灰度发布准则",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/release-6-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-history-6",
+      "title": "星帆工单响应制度",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/history-6-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen_v2/documents/history-6-v2.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-secret-6",
+      "title": "星帆内部结算附录",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/secret-6-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-service-7",
+      "title": "海松服务接入规范",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/service-7-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-incident-7",
+      "title": "事件 QL-007 复盘",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/incident-7-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-procedure-7",
+      "title": "海松应急处理规程",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/procedure-7-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-contact-7",
+      "title": "联络单元 C-07 登记册",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/contact-7-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-observation-7",
+      "title": "海松灰度观测报告",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/observation-7-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-release-7",
+      "title": "海松灰度发布准则",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/release-7-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-history-7",
+      "title": "海松工单响应制度",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/history-7-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen_v2/documents/history-7-v2.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-secret-7",
+      "title": "海松内部结算附录",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/secret-7-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-service-8",
+      "title": "银杏服务接入规范",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/service-8-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-incident-8",
+      "title": "事件 QL-008 复盘",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/incident-8-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-procedure-8",
+      "title": "银杏应急处理规程",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/procedure-8-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-contact-8",
+      "title": "联络单元 C-08 登记册",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/contact-8-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-observation-8",
+      "title": "银杏灰度观测报告",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/observation-8-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-release-8",
+      "title": "银杏灰度发布准则",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/release-8-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-history-8",
+      "title": "银杏工单响应制度",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/history-8-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen_v2/documents/history-8-v2.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-secret-8",
+      "title": "银杏内部结算附录",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/secret-8-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-service-9",
+      "title": "远山服务接入规范",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/service-9-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-incident-9",
+      "title": "事件 QL-009 复盘",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/incident-9-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-procedure-9",
+      "title": "远山应急处理规程",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/procedure-9-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-contact-9",
+      "title": "联络单元 C-09 登记册",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/contact-9-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-observation-9",
+      "title": "远山灰度观测报告",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/observation-9-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-release-9",
+      "title": "远山灰度发布准则",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/release-9-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-history-9",
+      "title": "远山工单响应制度",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/history-9-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen_v2/documents/history-9-v2.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-secret-9",
+      "title": "远山内部结算附录",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/secret-9-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-service-10",
+      "title": "白鹭服务接入规范",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/service-10-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-incident-10",
+      "title": "事件 QL-010 复盘",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/incident-10-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-procedure-10",
+      "title": "白鹭应急处理规程",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/procedure-10-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-contact-10",
+      "title": "联络单元 C-10 登记册",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/contact-10-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-observation-10",
+      "title": "白鹭灰度观测报告",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/observation-10-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-release-10",
+      "title": "白鹭灰度发布准则",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/release-10-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-history-10",
+      "title": "白鹭工单响应制度",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/history-10-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen_v2/documents/history-10-v2.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "uv2-secret-10",
+      "title": "白鹭内部结算附录",
+      "groups": [
+        "support"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen_v2/documents/secret-10-v1.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    }
+  ]
+}

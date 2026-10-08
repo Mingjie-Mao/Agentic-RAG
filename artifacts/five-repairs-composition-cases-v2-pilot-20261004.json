@@ -1,0 +1,430 @@
+{
+  "protocol": "literal-answer-composition-validation-v1",
+  "cases": [
+    {
+      "id": "composition-v1-00",
+      "label": "supported",
+      "question": "Do both writers attribute the mistake to personal gain?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-0-1",
+          "title": "Writer K",
+          "text": "Writer K explicitly denies that the mistake was driven by personal gain."
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-0-2",
+          "title": "Writer L",
+          "text": "Writer L calls the cause a personal profit motive."
+        }
+      ],
+      "expected_verdict": "no",
+      "expected_complete": true,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-01",
+      "label": "supported",
+      "question": "Did both people approve recording?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-1-1",
+          "title": "Faye",
+          "text": "Faye gave permission to record her presentation."
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-1-2",
+          "title": "Dina",
+          "text": "Dina explicitly declined recording."
+        }
+      ],
+      "expected_verdict": "no",
+      "expected_complete": true,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-02",
+      "label": "supported",
+      "question": "Did either office grant the extension?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-2-1",
+          "title": "Office C",
+          "text": "Office C rejected the extension."
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-2-2",
+          "title": "Office D",
+          "text": "Office D approved the extension."
+        }
+      ],
+      "expected_verdict": "yes",
+      "expected_complete": true,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-03",
+      "label": "supported",
+      "question": "Are the two reports consistent about the opening date?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-3-1",
+          "title": "Report X",
+          "text": "The opening took place on 2036-05-16."
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-3-2",
+          "title": "Report Y",
+          "text": "The opening took place on 2036-05-16."
+        }
+      ],
+      "expected_verdict": "yes",
+      "expected_complete": true,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-04",
+      "label": "supported",
+      "question": "Are their hours the same?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-4-1",
+          "title": "Branch X",
+          "text": "Branch X operates from 07:00 to 15:00."
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-4-2",
+          "title": "Branch Y",
+          "text": "Branch Y operates from 09:00 to 17:00."
+        }
+      ],
+      "expected_verdict": "no",
+      "expected_complete": true,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-05",
+      "label": "supported",
+      "question": "Are both requests still awaiting approval?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-5-1",
+          "title": "Request X",
+          "text": "Request X is pending approval."
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-5-2",
+          "title": "Request Y",
+          "text": "Request Y is pending approval."
+        }
+      ],
+      "expected_verdict": "yes",
+      "expected_complete": true,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-06",
+      "label": "unsupported",
+      "question": "Did the court determine that the money was for personal gain?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-6-1",
+          "title": "Hearing report",
+          "text": "The defense alleges that the funds were for personal gain; no judicial decision has been issued."
+        }
+      ],
+      "expected_verdict": "unclear",
+      "expected_complete": false,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-07",
+      "label": "unsupported",
+      "question": "Which station opens earlier?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-7-1",
+          "title": "Station M",
+          "text": "Station M opens at 08:00."
+        }
+      ],
+      "expected_verdict": "unclear",
+      "expected_complete": false,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-08",
+      "label": "unsupported",
+      "question": "Do both reports say the voyage began in June?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-8-1",
+          "title": "Report A",
+          "text": "Report A says the voyage began in June."
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-8-2",
+          "title": "Report B",
+          "text": "Report B only describes ticket prices."
+        }
+      ],
+      "expected_verdict": "unclear",
+      "expected_complete": false,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-09",
+      "label": "unsupported",
+      "question": "Have both people agreed to filming?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-9-1",
+          "title": "Event report",
+          "text": "One person was asked to agree to filming, but no response is recorded."
+        }
+      ],
+      "expected_verdict": "unclear",
+      "expected_complete": false,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-10",
+      "label": "supported",
+      "question": "两处中心的服务时间是否相同？",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-10-1",
+          "title": "东区中心",
+          "text": "东区中心工作日服务时间为08:30至16:30。"
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-10-2",
+          "title": "西区中心",
+          "text": "西区中心工作日服务时间为08:30至16:30。"
+        }
+      ],
+      "expected_verdict": "yes",
+      "expected_complete": true,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-11",
+      "label": "supported",
+      "question": "两处中心的开放时间是否相同？",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-11-1",
+          "title": "甲中心",
+          "text": "甲中心开放时间为08:00至18:00。"
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-11-2",
+          "title": "乙中心",
+          "text": "乙中心开放时间为10:00至16:00。"
+        }
+      ],
+      "expected_verdict": "no",
+      "expected_complete": true,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-12",
+      "label": "supported",
+      "question": "两份通告是否都已批准延期？",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-12-1",
+          "title": "甲通告",
+          "text": "甲通告已经批准延期。"
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-12-2",
+          "title": "乙通告",
+          "text": "乙通告明确拒绝延期。"
+        }
+      ],
+      "expected_verdict": "no",
+      "expected_complete": true,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-13",
+      "label": "unsupported",
+      "question": "两人是否都授权使用图像？",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-13-1",
+          "title": "授权记录",
+          "text": "第一位参与者已授权使用图像。"
+        }
+      ],
+      "expected_verdict": "unclear",
+      "expected_complete": false,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-14",
+      "label": "supported",
+      "question": "Does the report confirm that the accused took billions rather than millions?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-14-1",
+          "title": "Report Q",
+          "text": "The report says the allegation involves 6 billion dollars, not millions."
+        }
+      ],
+      "expected_verdict": "yes",
+      "expected_complete": true,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    },
+    {
+      "id": "composition-v1-15",
+      "label": "unsupported",
+      "question": "Do both sources establish the same event date?",
+      "evidence": [
+        {
+          "id": "E1",
+          "chunk_id": "fictional-15-1",
+          "title": "Source 1",
+          "text": "The first source states only a publication date of 2037-01-12."
+        },
+        {
+          "id": "E2",
+          "chunk_id": "fictional-15-2",
+          "title": "Source 2",
+          "text": "The second source gives the event date as 2037-01-12."
+        }
+      ],
+      "expected_verdict": "unclear",
+      "expected_complete": false,
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "GPT审核虚构原文：完整关系逐项判定；缺失必要方、观点未获确认和不同时间角色保持不确定。不是人工标签。"
+      }
+    }
+  ],
+  "cases_sha256": "110447ecb248fdd21135f338faf1810250eb23bc7ad0fee5e465da23e8575e8f",
+  "scope": "Dev synthetic component validation, not Core; labels and prompt author not independent",
+  "gates": {
+    "all_registered_cases_correct": true,
+    "transport_or_format_failures_max": 0
+  },
+  "registered_before_first_prediction": true
+}

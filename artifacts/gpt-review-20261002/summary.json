@@ -1,0 +1,43 @@
+{
+  "counts": {
+    "s3": {
+      "relevance": {
+        "irrelevant": 42,
+        "relevant": 8
+      },
+      "coverage": {
+        "supported": 33,
+        "unsupported": 7
+      },
+      "claim": {
+        "supported": 25
+      }
+    },
+    "mh": {
+      "relevance": {
+        "relevant": 28,
+        "irrelevant": 22
+      },
+      "coverage": {
+        "partial": 19,
+        "supported": 14,
+        "unsupported": 7
+      },
+      "claim": {
+        "unsupported": 22,
+        "supported": 17,
+        "partial": 13,
+        "contradicted": 3
+      }
+    }
+  },
+  "source_sha256": "70c14762aaf66630f6373e2fac89c38f8ba57f0c94cac06128cc19647e3b53ff",
+  "scope": {
+    "reviewed_items": 260,
+    "all_development": true,
+    "independent_human_labels": 0,
+    "production_gate_passed": false,
+    "expanded_total": 2419,
+    "expanded_unreviewed": 2159
+  }
+}

@@ -1,0 +1,2817 @@
+{
+  "protocol": "bound-answer-audit-validation-v1",
+  "scope": "Dev component validation; fresh synthetic cases plus unused actual claims; not Core",
+  "cases": [
+    {
+      "id": "fresh-00-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Avery allowed Mina to film for a fee.",
+        "evidence_ids": [
+          "fresh-00-positive"
+        ],
+        "quotes": [
+          "Avery approved Mina filming for an extra fee. Chris refused to be filmed."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-00-positive",
+          "chunk_id": "fresh-00-positive",
+          "document_id": "fresh-doc-0",
+          "version_id": "fresh-v-0",
+          "title": "Controlled fictional source",
+          "text": "Avery approved Mina filming for an extra fee. Chris refused to be filmed."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-00-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Chris approved being filmed.",
+        "evidence_ids": [
+          "fresh-00-negative"
+        ],
+        "quotes": [
+          "Avery approved Mina filming for an extra fee. Chris refused to be filmed."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-00-negative",
+          "chunk_id": "fresh-00-negative",
+          "document_id": "fresh-doc-0",
+          "version_id": "fresh-v-0",
+          "title": "Controlled fictional source",
+          "text": "Avery approved Mina filming for an extra fee. Chris refused to be filmed."
+        }
+      ],
+      "label": "contradicted",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-01-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Ravi alleged possible misuse of funds.",
+        "evidence_ids": [
+          "fresh-01-positive"
+        ],
+        "quotes": [
+          "Ravi testified that the vendor might have misused funds. The court has not decided whether this is true."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-01-positive",
+          "chunk_id": "fresh-01-positive",
+          "document_id": "fresh-doc-1",
+          "version_id": "fresh-v-1",
+          "title": "Controlled fictional source",
+          "text": "Ravi testified that the vendor might have misused funds. The court has not decided whether this is true."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-01-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The court confirmed that the vendor misused funds.",
+        "evidence_ids": [
+          "fresh-01-negative"
+        ],
+        "quotes": [
+          "Ravi testified that the vendor might have misused funds. The court has not decided whether this is true."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-01-negative",
+          "chunk_id": "fresh-01-negative",
+          "document_id": "fresh-doc-1",
+          "version_id": "fresh-v-1",
+          "title": "Controlled fictional source",
+          "text": "Ravi testified that the vendor might have misused funds. The court has not decided whether this is true."
+        }
+      ],
+      "label": "contradicted",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-02-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Firm Y is recruiting senior staff.",
+        "evidence_ids": [
+          "fresh-02-positive"
+        ],
+        "quotes": [
+          "If Uma wants a senior role, firm X is no longer an option. Firm Y is recruiting senior staff."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-02-positive",
+          "chunk_id": "fresh-02-positive",
+          "document_id": "fresh-doc-2",
+          "version_id": "fresh-v-2",
+          "title": "Controlled fictional source",
+          "text": "If Uma wants a senior role, firm X is no longer an option. Firm Y is recruiting senior staff."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-02-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Uma has no interest in a senior role.",
+        "evidence_ids": [
+          "fresh-02-negative"
+        ],
+        "quotes": [
+          "If Uma wants a senior role, firm X is no longer an option. Firm Y is recruiting senior staff."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-02-negative",
+          "chunk_id": "fresh-02-negative",
+          "document_id": "fresh-doc-2",
+          "version_id": "fresh-v-2",
+          "title": "Controlled fictional source",
+          "text": "If Uma wants a senior role, firm X is no longer an option. Firm Y is recruiting senior staff."
+        }
+      ],
+      "label": "unsupported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-03-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Nell faced an allegation of stealing investor money.",
+        "evidence_ids": [
+          "fresh-03-positive"
+        ],
+        "quotes": [
+          "Nell was accused of stealing money from investors."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-03-positive",
+          "chunk_id": "fresh-03-positive",
+          "document_id": "fresh-doc-3",
+          "version_id": "fresh-v-3",
+          "title": "Controlled fictional source",
+          "text": "Nell was accused of stealing money from investors."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-03-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Nell used an assistant as a front to obtain investor money.",
+        "evidence_ids": [
+          "fresh-03-negative"
+        ],
+        "quotes": [
+          "Nell was accused of stealing money from investors."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-03-negative",
+          "chunk_id": "fresh-03-negative",
+          "document_id": "fresh-doc-3",
+          "version_id": "fresh-v-3",
+          "title": "Controlled fictional source",
+          "text": "Nell was accused of stealing money from investors."
+        }
+      ],
+      "label": "unsupported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-04-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Mira had more control over disclosure of personal information than Quinn.",
+        "evidence_ids": [
+          "fresh-04-positive"
+        ],
+        "quotes": [
+          "Mira decides which personal events she makes public. Quinn's private diary was published without her permission."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-04-positive",
+          "chunk_id": "fresh-04-positive",
+          "document_id": "fresh-doc-4",
+          "version_id": "fresh-v-4",
+          "title": "Controlled fictional source",
+          "text": "Mira decides which personal events she makes public. Quinn's private diary was published without her permission."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-04-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Quinn had more control over disclosure of personal information than Mira.",
+        "evidence_ids": [
+          "fresh-04-negative"
+        ],
+        "quotes": [
+          "Mira decides which personal events she makes public. Quinn's private diary was published without her permission."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-04-negative",
+          "chunk_id": "fresh-04-negative",
+          "document_id": "fresh-doc-4",
+          "version_id": "fresh-v-4",
+          "title": "Controlled fictional source",
+          "text": "Mira decides which personal events she makes public. Quinn's private diary was published without her permission."
+        }
+      ],
+      "label": "contradicted",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-05-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The two centers have different weekday windows.",
+        "evidence_ids": [
+          "fresh-05-positive"
+        ],
+        "quotes": [
+          "The North Center's weekday window is 08:30-16:30. The South Center's weekday window is 09:30-17:30."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-05-positive",
+          "chunk_id": "fresh-05-positive",
+          "document_id": "fresh-doc-5",
+          "version_id": "fresh-v-5",
+          "title": "Controlled fictional source",
+          "text": "The North Center's weekday window is 08:30-16:30. The South Center's weekday window is 09:30-17:30."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-05-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The North Center and South Center have the same weekday windows.",
+        "evidence_ids": [
+          "fresh-05-negative"
+        ],
+        "quotes": [
+          "The North Center's weekday window is 08:30-16:30. The South Center's weekday window is 09:30-17:30."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-05-negative",
+          "chunk_id": "fresh-05-negative",
+          "document_id": "fresh-doc-5",
+          "version_id": "fresh-v-5",
+          "title": "Controlled fictional source",
+          "text": "The North Center's weekday window is 08:30-16:30. The South Center's weekday window is 09:30-17:30."
+        }
+      ],
+      "label": "contradicted",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-06-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The reports agree about the response target.",
+        "evidence_ids": [
+          "fresh-06-positive"
+        ],
+        "quotes": [
+          "Aurora News reports a 3-hour response target. Copper News reports a 3-hour response target."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-06-positive",
+          "chunk_id": "fresh-06-positive",
+          "document_id": "fresh-doc-6",
+          "version_id": "fresh-v-6",
+          "title": "Controlled fictional source",
+          "text": "Aurora News reports a 3-hour response target. Copper News reports a 3-hour response target."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-06-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The reports disagree about the response target.",
+        "evidence_ids": [
+          "fresh-06-negative"
+        ],
+        "quotes": [
+          "Aurora News reports a 3-hour response target. Copper News reports a 3-hour response target."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-06-negative",
+          "chunk_id": "fresh-06-negative",
+          "document_id": "fresh-doc-6",
+          "version_id": "fresh-v-6",
+          "title": "Controlled fictional source",
+          "text": "Aurora News reports a 3-hour response target. Copper News reports a 3-hour response target."
+        }
+      ],
+      "label": "contradicted",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-07-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Oliver was convicted of wire fraud by the jury.",
+        "evidence_ids": [
+          "fresh-07-positive"
+        ],
+        "quotes": [
+          "The jury convicted Oliver of wire fraud. The report does not discuss who benefited personally."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-07-positive",
+          "chunk_id": "fresh-07-positive",
+          "document_id": "fresh-doc-7",
+          "version_id": "fresh-v-7",
+          "title": "Controlled fictional source",
+          "text": "The jury convicted Oliver of wire fraud. The report does not discuss who benefited personally."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-07-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The report establishes that Oliver personally benefited from the fraud.",
+        "evidence_ids": [
+          "fresh-07-negative"
+        ],
+        "quotes": [
+          "The jury convicted Oliver of wire fraud. The report does not discuss who benefited personally."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-07-negative",
+          "chunk_id": "fresh-07-negative",
+          "document_id": "fresh-doc-7",
+          "version_id": "fresh-v-7",
+          "title": "Controlled fictional source",
+          "text": "The jury convicted Oliver of wire fraud. The report does not discuss who benefited personally."
+        }
+      ],
+      "label": "unsupported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-08-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The embedded post cannot be displayed in this browser.",
+        "evidence_ids": [
+          "fresh-08-positive"
+        ],
+        "quotes": [
+          "This embedded social-media post cannot be displayed. Enable Javascript to view it."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-08-positive",
+          "chunk_id": "fresh-08-positive",
+          "document_id": "fresh-doc-8",
+          "version_id": "fresh-v-8",
+          "title": "Controlled fictional source",
+          "text": "This embedded social-media post cannot be displayed. Enable Javascript to view it."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-08-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Researcher Iris believes video games should be accessible to everyone.",
+        "evidence_ids": [
+          "fresh-08-negative"
+        ],
+        "quotes": [
+          "This embedded social-media post cannot be displayed. Enable Javascript to view it."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-08-negative",
+          "chunk_id": "fresh-08-negative",
+          "document_id": "fresh-doc-8",
+          "version_id": "fresh-v-8",
+          "title": "Controlled fictional source",
+          "text": "This embedded social-media post cannot be displayed. Enable Javascript to view it."
+        }
+      ],
+      "label": "unsupported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-09-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The company paid billions of dollars to distributors last year.",
+        "evidence_ids": [
+          "fresh-09-positive"
+        ],
+        "quotes": [
+          "The company paid $18.6 billion to distributors last year."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-09-positive",
+          "chunk_id": "fresh-09-positive",
+          "document_id": "fresh-doc-9",
+          "version_id": "fresh-v-9",
+          "title": "Controlled fictional source",
+          "text": "The company paid $18.6 billion to distributors last year."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-09-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The company paid $18.6 million to distributors last year.",
+        "evidence_ids": [
+          "fresh-09-negative"
+        ],
+        "quotes": [
+          "The company paid $18.6 billion to distributors last year."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-09-negative",
+          "chunk_id": "fresh-09-negative",
+          "document_id": "fresh-doc-9",
+          "version_id": "fresh-v-9",
+          "title": "Controlled fictional source",
+          "text": "The company paid $18.6 billion to distributors last year."
+        }
+      ],
+      "label": "contradicted",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-10-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "Approval of the permit is still pending.",
+        "evidence_ids": [
+          "fresh-10-positive"
+        ],
+        "quotes": [
+          "The board did not reject the permit. Its decision on approval is still pending."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-10-positive",
+          "chunk_id": "fresh-10-positive",
+          "document_id": "fresh-doc-10",
+          "version_id": "fresh-v-10",
+          "title": "Controlled fictional source",
+          "text": "The board did not reject the permit. Its decision on approval is still pending."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-10-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The board approved the permit.",
+        "evidence_ids": [
+          "fresh-10-negative"
+        ],
+        "quotes": [
+          "The board did not reject the permit. Its decision on approval is still pending."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-10-negative",
+          "chunk_id": "fresh-10-negative",
+          "document_id": "fresh-doc-10",
+          "version_id": "fresh-v-10",
+          "title": "Controlled fictional source",
+          "text": "The board did not reject the permit. Its decision on approval is still pending."
+        }
+      ],
+      "label": "contradicted",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-11-positive",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The policy takes effect on July 1, 2029.",
+        "evidence_ids": [
+          "fresh-11-positive"
+        ],
+        "quotes": [
+          "Published June 3, 2029. This policy takes effect July 1, 2029."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-11-positive",
+          "chunk_id": "fresh-11-positive",
+          "document_id": "fresh-doc-11",
+          "version_id": "fresh-v-11",
+          "title": "Controlled fictional source",
+          "text": "Published June 3, 2029. This policy takes effect July 1, 2029."
+        }
+      ],
+      "label": "supported",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "id": "fresh-11-negative",
+      "question": "Summarize these statements with citations.",
+      "claim": {
+        "text": "The policy took effect on its June 3, 2029 publication date.",
+        "evidence_ids": [
+          "fresh-11-negative"
+        ],
+        "quotes": [
+          "Published June 3, 2029. This policy takes effect July 1, 2029."
+        ]
+      },
+      "evidence": [
+        {
+          "id": "fresh-11-negative",
+          "chunk_id": "fresh-11-negative",
+          "document_id": "fresh-doc-11",
+          "version_id": "fresh-v-11",
+          "title": "Controlled fictional source",
+          "text": "Published June 3, 2029. This policy takes effect July 1, 2029."
+        }
+      ],
+      "label": "contradicted",
+      "review": {
+        "reviewer_type": "model",
+        "reviewer": "current Codex GPT assistant",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "当前 GPT 明确审核虚构资料的正反例；每个正例由原文支持，每个反例存在缺失关系或明确反证。不是人工金标或外部验收。"
+      },
+      "origin": {
+        "kind": "fresh_GPT_reviewed_fictional_component_case"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "The 'Sporting News' article does not explicitly suggest that Patrick Kane's move was motivated by a lack of interest in joining a playoff contender. Instead, it mentions his connection to the Buffalo Sabres due to being a local native and the team having cap space.",
+        "evidence_ids": [
+          "2d875729-fbaa-5fdb-a10d-124d4b6f4e25",
+          "70253f93-d9c2-517a-96a6-9d1ac88af42d"
+        ],
+        "quotes": [
+          "OK, maybe it's not nearly as big as LeBron James' NBA free agency choice in 2010, but it's close. Kind of. Maybe tens years ago when Kane was in the middle of his prime, but I digress.",
+          "The Sabres have a leg up on everyone when it comes to the Kane sweepstakes. The reason? The winger is a Buffalo native, having grown up in the southern part of the city. He has been connected to the Sabres dating back to last season when the rumors of an inevitable breakup between Kane and the Blackhawks began to surface, and Buffalo has plenty of cap space to sign the wing this time around."
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "2d875729-fbaa-5fdb-a10d-124d4b6f4e25",
+          "document_id": "mh-701367043f51d3ea9fc22404",
+          "version_id": "83484038-751d-4633-b09a-6aea8b84a113",
+          "title": "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger"
+            ],
+            "source_char_start": 0,
+            "line_start": 1,
+            "label": "第 1 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 100,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger"
+                  ],
+                  "source_char_start": 0,
+                  "line_start": 1,
+                  "label": "第 1 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 100
+              },
+              {
+                "start": 101,
+                "end": 205,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger"
+                  ],
+                  "source_char_start": 100,
+                  "line_start": 3,
+                  "label": "第 3 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 104
+              },
+              {
+                "start": 206,
+                "end": 347,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger"
+                  ],
+                  "source_char_start": 204,
+                  "line_start": 5,
+                  "label": "第 5 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 141
+              },
+              {
+                "start": 348,
+                "end": 534,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger"
+                  ],
+                  "source_char_start": 345,
+                  "line_start": 7,
+                  "label": "第 7 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 186
+              }
+            ],
+            "char_start": 0,
+            "char_end": 534,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 137,
+            "token_counter": "cl100k_base"
+          },
+          "text": "# Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger\n\n\nSource: Sporting News · Author: Bryan Murphy · Published: 2023-11-27T22:09:43+00:00 · Category: sports\n\n\nThe NHL's version of \"The Decision\" is almost here, as free agent winger Patrick Kane is closing in on signing with a team for the 2023-24.\n\n\nOK, maybe it's not nearly as big as LeBron James' NBA free agency choice in 2010, but it's close. Kind of. Maybe tens years ago when Kane was in the middle of his prime, but I digress.\n\n",
+          "preview_url": "/api/evidence/2d875729-fbaa-5fdb-a10d-124d4b6f4e25",
+          "original_url": "/api/versions/83484038-751d-4633-b09a-6aea8b84a113/original",
+          "id": "2d875729-fbaa-5fdb-a10d-124d4b6f4e25"
+        },
+        {
+          "chunk_id": "70253f93-d9c2-517a-96a6-9d1ac88af42d",
+          "document_id": "mh-701367043f51d3ea9fc22404",
+          "version_id": "83484038-751d-4633-b09a-6aea8b84a113",
+          "title": "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger"
+            ],
+            "source_char_start": 2214,
+            "line_start": 25,
+            "label": "第 25 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 396,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger"
+                  ],
+                  "source_char_start": 2214,
+                  "line_start": 25,
+                  "label": "第 25 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 396
+              }
+            ],
+            "char_start": 0,
+            "char_end": 396,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 83,
+            "token_counter": "cl100k_base"
+          },
+          "text": "The Sabres have a leg up on everyone when it comes to the Kane sweepstakes. The reason? The winger is a Buffalo native, having grown up in the southern part of the city. He has been connected to the Sabres dating back to last season when the rumors of an inevitable breakup between Kane and the Blackhawks began to surface, and Buffalo has plenty of cap space to sign the wing this time around.\n\n",
+          "preview_url": "/api/evidence/70253f93-d9c2-517a-96a6-9d1ac88af42d",
+          "original_url": "/api/versions/83484038-751d-4633-b09a-6aea8b84a113/original",
+          "id": "70253f93-d9c2-517a-96a6-9d1ac88af42d"
+        }
+      ],
+      "label": "unsupported",
+      "group": [
+        "mh-701367043f51d3ea9fc22404"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "dynamic",
+        "task_id": "SF-43709086f7bb",
+        "review_id": "0bfeef344ea9f0a3057f7d81897ee8fc57d24e5cc055bcf5a7168a1d780adfb8",
+        "claim_index": 0
+      },
+      "id": "593fc20bcfb6641f765c3e5c3d991895fc781323f3057904e61c1956b3d42a97",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "The 'Fortune' article implies that Egypt's policy decisions are driven by the prospect of economic rewards from international and regional partners, particularly in light of its role as a regional powerbroker during the Israel-Hamas conflict.",
+        "evidence_ids": [
+          "823856b9-84aa-5f86-af3b-17f24dfaf6b3",
+          "16a49c5e-f097-56b8-b39b-35664fcb1c06",
+          "16a49c5e-f097-56b8-b39b-35664fcb1c06"
+        ],
+        "quotes": [
+          "The war between Israel and Hamas has turned the spotlight on Egypt’s role as a regional powerbroker, potentially winning it Western support as it tries to escape a grinding economic crisis.",
+          "“Clearly the hope on Israel and the US’s side had been that Egypt would accept economic incentives, at a time when it is suffering an economic crisis, to allow Gazans into Egypt,” said Mirette Mabrouk, director of the Egypt program at the Washington-based Middle East Institute.",
+          "Yet “there is little to no constituency for going against decades of policy on not allowing Palestinian displacement,” she said, while the inducements “might wind up becoming a political liability, especially in an election year.”"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "823856b9-84aa-5f86-af3b-17f24dfaf6b3",
+          "document_id": "mh-54bfef6665d27780cac5f1b9",
+          "version_id": "17a62c95-b3f4-48ad-a1b2-ef3748c73ecb",
+          "title": "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change"
+            ],
+            "source_char_start": 0,
+            "line_start": 1,
+            "label": "第 1 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 128,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change"
+                  ],
+                  "source_char_start": 0,
+                  "line_start": 1,
+                  "label": "第 1 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 128
+              },
+              {
+                "start": 129,
+                "end": 241,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change"
+                  ],
+                  "source_char_start": 128,
+                  "line_start": 3,
+                  "label": "第 3 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 112
+              },
+              {
+                "start": 242,
+                "end": 433,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change"
+                  ],
+                  "source_char_start": 240,
+                  "line_start": 5,
+                  "label": "第 5 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 191
+              }
+            ],
+            "char_start": 0,
+            "char_end": 433,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 104,
+            "token_counter": "cl100k_base"
+          },
+          "text": "# 'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change\n\n\nSource: Fortune · Author: Mirette Magdy, Bloomberg · Published: 2023-10-22T15:15:47+00:00 · Category: business\n\n\nThe war between Israel and Hamas has turned the spotlight on Egypt’s role as a regional powerbroker, potentially winning it Western support as it tries to escape a grinding economic crisis.\n\n",
+          "preview_url": "/api/evidence/823856b9-84aa-5f86-af3b-17f24dfaf6b3",
+          "original_url": "/api/versions/17a62c95-b3f4-48ad-a1b2-ef3748c73ecb/original",
+          "id": "823856b9-84aa-5f86-af3b-17f24dfaf6b3"
+        },
+        {
+          "chunk_id": "16a49c5e-f097-56b8-b39b-35664fcb1c06",
+          "document_id": "mh-54bfef6665d27780cac5f1b9",
+          "version_id": "17a62c95-b3f4-48ad-a1b2-ef3748c73ecb",
+          "title": "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change"
+            ],
+            "source_char_start": 1462,
+            "line_start": 13,
+            "label": "第 13 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 280,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change"
+                  ],
+                  "source_char_start": 1462,
+                  "line_start": 13,
+                  "label": "第 13 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 280
+              },
+              {
+                "start": 281,
+                "end": 513,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change"
+                  ],
+                  "source_char_start": 1742,
+                  "line_start": 15,
+                  "label": "第 15 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 232
+              }
+            ],
+            "char_start": 0,
+            "char_end": 513,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 103,
+            "token_counter": "cl100k_base"
+          },
+          "text": "“Clearly the hope on Israel and the US’s side had been that Egypt would accept economic incentives, at a time when it is suffering an economic crisis, to allow Gazans into Egypt,” said Mirette Mabrouk, director of the Egypt program at the Washington-based Middle East Institute.\n\n\nYet “there is little to no constituency for going against decades of policy on not allowing Palestinian displacement,” she said, while the inducements “might wind up becoming a political liability, especially in an election year.”\n\n",
+          "preview_url": "/api/evidence/16a49c5e-f097-56b8-b39b-35664fcb1c06",
+          "original_url": "/api/versions/17a62c95-b3f4-48ad-a1b2-ef3748c73ecb/original",
+          "id": "16a49c5e-f097-56b8-b39b-35664fcb1c06"
+        },
+        {
+          "chunk_id": "16a49c5e-f097-56b8-b39b-35664fcb1c06",
+          "document_id": "mh-54bfef6665d27780cac5f1b9",
+          "version_id": "17a62c95-b3f4-48ad-a1b2-ef3748c73ecb",
+          "title": "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change"
+            ],
+            "source_char_start": 1462,
+            "line_start": 13,
+            "label": "第 13 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 280,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change"
+                  ],
+                  "source_char_start": 1462,
+                  "line_start": 13,
+                  "label": "第 13 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 280
+              },
+              {
+                "start": 281,
+                "end": 513,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "'Too big to fail' Egypt faces economic crisis but has an anti-Gaza refugee policy. Israel and the U.S. hope that will change"
+                  ],
+                  "source_char_start": 1742,
+                  "line_start": 15,
+                  "label": "第 15 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 232
+              }
+            ],
+            "char_start": 0,
+            "char_end": 513,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 103,
+            "token_counter": "cl100k_base"
+          },
+          "text": "“Clearly the hope on Israel and the US’s side had been that Egypt would accept economic incentives, at a time when it is suffering an economic crisis, to allow Gazans into Egypt,” said Mirette Mabrouk, director of the Egypt program at the Washington-based Middle East Institute.\n\n\nYet “there is little to no constituency for going against decades of policy on not allowing Palestinian displacement,” she said, while the inducements “might wind up becoming a political liability, especially in an election year.”\n\n",
+          "preview_url": "/api/evidence/16a49c5e-f097-56b8-b39b-35664fcb1c06",
+          "original_url": "/api/versions/17a62c95-b3f4-48ad-a1b2-ef3748c73ecb/original",
+          "id": "16a49c5e-f097-56b8-b39b-35664fcb1c06"
+        }
+      ],
+      "label": "unsupported",
+      "group": [
+        "mh-54bfef6665d27780cac5f1b9"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "dynamic",
+        "task_id": "SF-43709086f7bb",
+        "review_id": "0bfeef344ea9f0a3057f7d81897ee8fc57d24e5cc055bcf5a7168a1d780adfb8",
+        "claim_index": 1
+      },
+      "id": "69fd1432581924fcd1976372857b16347e91affc5122017c5a68d20bcf080b61",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "'The Independent - Life and Style' reported on Kevin Federline posting videos without consent of Britney Spears's children.",
+        "evidence_ids": [
+          "42ffae59-fe5e-5c48-9c4c-93a84d35b44f"
+        ],
+        "quotes": [
+          "Following Federline’s comments, Spears’s attorney Mathew Rosengart said in a statement obtained by Variety that Federline has created “legal issues” for himself, after posting private videos of Spears sternly speaking with her children without her consent."
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "42ffae59-fe5e-5c48-9c4c-93a84d35b44f",
+          "document_id": "mh-d202f4693e7ca4b78eac702d",
+          "version_id": "f6b6f70e-8bcb-4417-9062-3c9d1278d7d8",
+          "title": "Britney Spears and Kevin Federline: A complete timeline of their relationship",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "Britney Spears and Kevin Federline: A complete timeline of their relationship"
+            ],
+            "source_char_start": 7008,
+            "line_start": 55,
+            "label": "第 55 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 167,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Britney Spears and Kevin Federline: A complete timeline of their relationship"
+                  ],
+                  "source_char_start": 7008,
+                  "line_start": 55,
+                  "label": "第 55 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 167
+              },
+              {
+                "start": 168,
+                "end": 426,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Britney Spears and Kevin Federline: A complete timeline of their relationship"
+                  ],
+                  "source_char_start": 7175,
+                  "line_start": 57,
+                  "label": "第 57 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 258
+              }
+            ],
+            "char_start": 0,
+            "char_end": 426,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 78,
+            "token_counter": "cl100k_base"
+          },
+          "text": "“There is no validity to his statement regarding the kids distancing themselves and it is irresponsible to make that statement publicly,” Asghari wrote on Instagram.\n\n\nFollowing Federline’s comments, Spears’s attorney Mathew Rosengart said in a statement obtained by Variety that Federline has created “legal issues” for himself, after posting private videos of Spears sternly speaking with her children without her consent.\n\n",
+          "preview_url": "/api/evidence/42ffae59-fe5e-5c48-9c4c-93a84d35b44f",
+          "original_url": "/api/versions/f6b6f70e-8bcb-4417-9062-3c9d1278d7d8/original",
+          "id": "42ffae59-fe5e-5c48-9c4c-93a84d35b44f"
+        }
+      ],
+      "label": "contradicted",
+      "group": [
+        "mh-d202f4693e7ca4b78eac702d"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "dynamic",
+        "task_id": "SF-66b7ed601d85",
+        "review_id": "4279b93163c02298affb7366cc3561c2c6310c8b104da2fb0fd1ea541a4daf7b",
+        "claim_index": 1
+      },
+      "id": "3207534a12d0139d1e2fb49150d79f3cc449bc4d169944e8109201e3319da446",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "Sam Bankman-Fried is the individual that Fortune claims used a colleague as a front for improper financial access.",
+        "evidence_ids": [
+          "e6429e40-1f8e-5e79-a723-067a771fb612",
+          "49214269-597f-5e8b-8150-2fd5c1f58ab7"
+        ],
+        "quotes": [
+          "James’ office previously sued Trump for misusing his own charitable foundation to further his political and business interests. Trump was ordered to pay $2 million to an array of charities as a fine and the charity, the Trump Foundation, was shut down.",
+          "And who was this defendant? Not a crypto “boy” genius, as so many in the media (Fortune included) have written, but a “man” who “stole billions of dollars from thousands of victims,” Rehn said. “You will see the full picture.”"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "e6429e40-1f8e-5e79-a723-067a771fb612",
+          "document_id": "mh-6b9ce77bc6a05805eef30f81",
+          "version_id": "69ec18ca-15df-4510-b4f8-8001e81a2636",
+          "title": "Donald Trump defrauded banks with 'fantasy' to build his real estate empire, judge rules in a major repudiation against the former president",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "Donald Trump defrauded banks with 'fantasy' to build his real estate empire, judge rules in a major repudiation against the former president"
+            ],
+            "source_char_start": 6632,
+            "line_start": 55,
+            "label": "第 55 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 342,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Donald Trump defrauded banks with 'fantasy' to build his real estate empire, judge rules in a major repudiation against the former president"
+                  ],
+                  "source_char_start": 6632,
+                  "line_start": 55,
+                  "label": "第 55 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 342
+              },
+              {
+                "start": 343,
+                "end": 596,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Donald Trump defrauded banks with 'fantasy' to build his real estate empire, judge rules in a major repudiation against the former president"
+                  ],
+                  "source_char_start": 6974,
+                  "line_start": 57,
+                  "label": "第 57 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 253
+              }
+            ],
+            "char_start": 0,
+            "char_end": 596,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 108,
+            "token_counter": "cl100k_base"
+          },
+          "text": "James, who campaigned for office as a Trump critic and watchdog, started scrutinizing his business practices in March 2019 after his former personal lawyer Michael Cohen testified to Congress that Trump exaggerated his wealth on financial statements provided to Deutsche Bank while trying to obtain financing to buy the NFL’s Buffalo Bills.\n\n\nJames’ office previously sued Trump for misusing his own charitable foundation to further his political and business interests. Trump was ordered to pay $2 million to an array of charities as a fine and the charity, the Trump Foundation, was shut down.\n",
+          "preview_url": "/api/evidence/e6429e40-1f8e-5e79-a723-067a771fb612",
+          "original_url": "/api/versions/69ec18ca-15df-4510-b4f8-8001e81a2636/original",
+          "id": "e6429e40-1f8e-5e79-a723-067a771fb612"
+        },
+        {
+          "chunk_id": "49214269-597f-5e8b-8150-2fd5c1f58ab7",
+          "document_id": "mh-d93d06d750604aa69261c8a6",
+          "version_id": "e7fb8f31-0c7f-4b5b-bd96-fdc4ea763d52",
+          "title": "Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand"
+            ],
+            "source_char_start": 2184,
+            "line_start": 21,
+            "label": "第 21 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 220,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand"
+                  ],
+                  "source_char_start": 2184,
+                  "line_start": 21,
+                  "label": "第 21 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 220
+              },
+              {
+                "start": 221,
+                "end": 449,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand"
+                  ],
+                  "source_char_start": 2404,
+                  "line_start": 23,
+                  "label": "第 23 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 228
+              },
+              {
+                "start": 450,
+                "end": 479,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand"
+                  ],
+                  "source_char_start": 2632,
+                  "line_start": 25,
+                  "label": "第 25 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 29
+              }
+            ],
+            "char_start": 0,
+            "char_end": 479,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 109,
+            "token_counter": "cl100k_base"
+          },
+          "text": "Moreover, Bankman-Fried allegedly directed employees to conceal the flow of money into FTX’s coffers and forged financial documents distributed to lenders and investors. “The defendant lied to the world,” Rehn alleged.\n\n\nAnd who was this defendant? Not a crypto “boy” genius, as so many in the media (Fortune included) have written, but a “man” who “stole billions of dollars from thousands of victims,” Rehn said. “You will see the full picture.”\n\n\n…or a well-meaning founder?\n\n",
+          "preview_url": "/api/evidence/49214269-597f-5e8b-8150-2fd5c1f58ab7",
+          "original_url": "/api/versions/e7fb8f31-0c7f-4b5b-bd96-fdc4ea763d52/original",
+          "id": "49214269-597f-5e8b-8150-2fd5c1f58ab7"
+        }
+      ],
+      "label": "unsupported",
+      "group": [
+        "mh-6b9ce77bc6a05805eef30f81",
+        "mh-d93d06d750604aa69261c8a6"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "dynamic",
+        "task_id": "SF-3ea856eeec7b",
+        "review_id": "300b79bc1ba6b602ab91b041618d8d496654c9f0e396728db6ecc1317e580a80",
+        "claim_index": 0
+      },
+      "id": "b23722d218e04826a0ad582b4d5c609b5e56bd960d3acf32ed597d4b0035799a",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "Sam Bankman-Fried has faced allegations by the prosecution of committing fraud for personal gain, as reported by TechCrunch.",
+        "evidence_ids": [
+          "49214269-597f-5e8b-8150-2fd5c1f58ab7"
+        ],
+        "quotes": [
+          "Moreover, Bankman-Fried allegedly directed employees to conceal the flow of money into FTX’s coffers and forged financial documents distributed to lenders and investors. “The defendant lied to the world,” Rehn alleged."
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "49214269-597f-5e8b-8150-2fd5c1f58ab7",
+          "document_id": "mh-d93d06d750604aa69261c8a6",
+          "version_id": "e7fb8f31-0c7f-4b5b-bd96-fdc4ea763d52",
+          "title": "Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand"
+            ],
+            "source_char_start": 2184,
+            "line_start": 21,
+            "label": "第 21 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 220,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand"
+                  ],
+                  "source_char_start": 2184,
+                  "line_start": 21,
+                  "label": "第 21 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 220
+              },
+              {
+                "start": 221,
+                "end": 449,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand"
+                  ],
+                  "source_char_start": 2404,
+                  "line_start": 23,
+                  "label": "第 23 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 228
+              },
+              {
+                "start": 450,
+                "end": 479,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Is Sam Bankman-Fried a bad ‘man’ or a good ‘boy’? Lawyers swap opening statements before first witnesses take the stand"
+                  ],
+                  "source_char_start": 2632,
+                  "line_start": 25,
+                  "label": "第 25 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 29
+              }
+            ],
+            "char_start": 0,
+            "char_end": 479,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 109,
+            "token_counter": "cl100k_base"
+          },
+          "text": "Moreover, Bankman-Fried allegedly directed employees to conceal the flow of money into FTX’s coffers and forged financial documents distributed to lenders and investors. “The defendant lied to the world,” Rehn alleged.\n\n\nAnd who was this defendant? Not a crypto “boy” genius, as so many in the media (Fortune included) have written, but a “man” who “stole billions of dollars from thousands of victims,” Rehn said. “You will see the full picture.”\n\n\n…or a well-meaning founder?\n\n",
+          "preview_url": "/api/evidence/49214269-597f-5e8b-8150-2fd5c1f58ab7",
+          "original_url": "/api/versions/e7fb8f31-0c7f-4b5b-bd96-fdc4ea763d52/original",
+          "id": "49214269-597f-5e8b-8150-2fd5c1f58ab7"
+        }
+      ],
+      "label": "unsupported",
+      "group": [
+        "mh-d93d06d750604aa69261c8a6"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "dynamic",
+        "task_id": "SF-3ea856eeec7b",
+        "review_id": "300b79bc1ba6b602ab91b041618d8d496654c9f0e396728db6ecc1317e580a80",
+        "claim_index": 2
+      },
+      "id": "5bbf15cca913243adec0c7496b5c347e913bce044c1b83603ad6856979765b0a",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "They have faced public scrutiny despite their commitment to remain under the same roof before marriage.",
+        "evidence_ids": [
+          "5955964f-8814-5c29-accc-5165ceca3caa",
+          "8a527b10-5494-5f38-ad3f-c89584e1dba9",
+          "a1c626b0-4445-57aa-b0cb-2a2b1b1b1aa3",
+          "7055f7b7-308c-544e-85f2-e535c8134d43"
+        ],
+        "quotes": [
+          "Jada Pinkett Smith has revealed that she and husband Will Smith have been separated for the last seven years.",
+          "Speaking to The Independent, New York City-based relationship expert Susan Winter highlighted the jarring differences between a separation and divorce. When it comes to divorce, Hollywood couples can notably get involved in lengthy legal processes, from dividing financial assets to creating child custody agreements. Although we don’t know the terms of Jada and Will’s separation, Winter believes that they’re showcasing a non-conventional relationship that’s not familiar to the public. Will and Jada’s dynamic includes living in separate homes, but it could be a choice that’s for the better.",
+          "After a quiet decade and a half making movies and raising their children, Jada took to Facebook to address rumours she and Will were in an open relationship.",
+          "2022: No infidelity statement and Oscars incident"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "5955964f-8814-5c29-accc-5165ceca3caa",
+          "document_id": "mh-7b4dca53eb674cfb87577561",
+          "version_id": "71d28c8a-0280-4665-94a0-d2adb94cd2cd",
+          "title": "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+            ],
+            "source_char_start": 0,
+            "line_start": 1,
+            "label": "第 1 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 82,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 0,
+                  "line_start": 1,
+                  "label": "第 1 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 82
+              },
+              {
+                "start": 83,
+                "end": 233,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 82,
+                  "line_start": 3,
+                  "label": "第 3 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 150
+              },
+              {
+                "start": 234,
+                "end": 395,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 632,
+                  "line_start": 7,
+                  "label": "第 7 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 161
+              },
+              {
+                "start": 396,
+                "end": 507,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 793,
+                  "line_start": 9,
+                  "label": "第 9 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 111
+              }
+            ],
+            "char_start": 0,
+            "char_end": 507,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 117,
+            "token_counter": "cl100k_base"
+          },
+          "text": "# A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation\n\n\nSource: The Independent - Life and Style · Author: Laura Hampson and Meredith Clark · Published: 2023-10-12T18:10:45+00:00 · Category: entertainment\n\n\nLifestyle Edit email {{ #verifyErrors }} {{ message }} {{ /verifyErrors }} {{ ^verifyErrors }} Something went wrong. Please try again later {{ /verifyErrors }}\n\n\nJada Pinkett Smith has revealed that she and husband Will Smith have been separated for the last seven years.\n\n",
+          "preview_url": "/api/evidence/5955964f-8814-5c29-accc-5165ceca3caa",
+          "original_url": "/api/versions/71d28c8a-0280-4665-94a0-d2adb94cd2cd/original",
+          "id": "5955964f-8814-5c29-accc-5165ceca3caa"
+        },
+        {
+          "chunk_id": "8a527b10-5494-5f38-ad3f-c89584e1dba9",
+          "document_id": "mh-8a5d6f73bdb9deb0bc8bc865",
+          "version_id": "786b3eb0-f0f0-4412-8c9f-0434b119aacd",
+          "title": "Jada Pinkett Smith and Will Smith have been separated since 2016 - when should couples just get divorced?",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "Jada Pinkett Smith and Will Smith have been separated since 2016 - when should couples just get divorced?"
+            ],
+            "source_char_start": 3328,
+            "line_start": 23,
+            "label": "第 23 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 597,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Jada Pinkett Smith and Will Smith have been separated since 2016 - when should couples just get divorced?"
+                  ],
+                  "source_char_start": 3328,
+                  "line_start": 23,
+                  "label": "第 23 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 597
+              }
+            ],
+            "char_start": 0,
+            "char_end": 597,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 109,
+            "token_counter": "cl100k_base"
+          },
+          "text": "Speaking to The Independent, New York City-based relationship expert Susan Winter highlighted the jarring differences between a separation and divorce. When it comes to divorce, Hollywood couples can notably get involved in lengthy legal processes, from dividing financial assets to creating child custody agreements. Although we don’t know the terms of Jada and Will’s separation, Winter believes that they’re showcasing a non-conventional relationship that’s not familiar to the public. Will and Jada’s dynamic includes living in separate homes, but it could be a choice that’s for the better.\n\n",
+          "preview_url": "/api/evidence/8a527b10-5494-5f38-ad3f-c89584e1dba9",
+          "original_url": "/api/versions/786b3eb0-f0f0-4412-8c9f-0434b119aacd/original",
+          "id": "8a527b10-5494-5f38-ad3f-c89584e1dba9"
+        },
+        {
+          "chunk_id": "a1c626b0-4445-57aa-b0cb-2a2b1b1b1aa3",
+          "document_id": "mh-7b4dca53eb674cfb87577561",
+          "version_id": "71d28c8a-0280-4665-94a0-d2adb94cd2cd",
+          "title": "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+            ],
+            "source_char_start": 3434,
+            "line_start": 51,
+            "label": "第 51 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 159,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 3434,
+                  "line_start": 51,
+                  "label": "第 51 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 159
+              },
+              {
+                "start": 160,
+                "end": 378,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 3593,
+                  "line_start": 53,
+                  "label": "第 53 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 218
+              },
+              {
+                "start": 379,
+                "end": 417,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 3811,
+                  "line_start": 55,
+                  "label": "第 55 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 38
+              },
+              {
+                "start": 418,
+                "end": 515,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 3849,
+                  "line_start": 57,
+                  "label": "第 57 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 97
+              }
+            ],
+            "char_start": 0,
+            "char_end": 515,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 110,
+            "token_counter": "cl100k_base"
+          },
+          "text": "After a quiet decade and a half making movies and raising their children, Jada took to Facebook to address rumours she and Will were in an open relationship.\n\n\nShe wrote: “Here is how I will change my statement... Will and I BOTH can do WHATEVER we want, because we TRUST each other to do so. This does NOT mean we have an open relationship... this means we have a GROWN one.”\n\n\n2015: Will addresses divorce rumours\n\n\nWill addresses persistent separation rumours by clarifying the pair were not getting a divorce.\n\n",
+          "preview_url": "/api/evidence/a1c626b0-4445-57aa-b0cb-2a2b1b1b1aa3",
+          "original_url": "/api/versions/71d28c8a-0280-4665-94a0-d2adb94cd2cd/original",
+          "id": "a1c626b0-4445-57aa-b0cb-2a2b1b1b1aa3"
+        },
+        {
+          "chunk_id": "7055f7b7-308c-544e-85f2-e535c8134d43",
+          "document_id": "mh-7b4dca53eb674cfb87577561",
+          "version_id": "71d28c8a-0280-4665-94a0-d2adb94cd2cd",
+          "title": "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+            ],
+            "source_char_start": 6703,
+            "line_start": 89,
+            "label": "第 89 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 461,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 6703,
+                  "line_start": 89,
+                  "label": "第 89 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 461
+              },
+              {
+                "start": 462,
+                "end": 513,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 7164,
+                  "line_start": 91,
+                  "label": "第 91 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 51
+              },
+              {
+                "start": 514,
+                "end": 641,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 7215,
+                  "line_start": 93,
+                  "label": "第 93 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 127
+              }
+            ],
+            "char_start": 0,
+            "char_end": 641,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 131,
+            "token_counter": "cl100k_base"
+          },
+          "text": "The next month, Will’s memoir is released which details several issues the couple have had over the years. He wrote they were “suffering the brutal death of our romantic fantasies, the burning away of the idealistic illusion of the perfect marriage and the perfect family. Neither of us wanted a divorce; we knew we loved each other, and some aspects of our union were magical. But the structure of the life that we had established was strangling both of us.”\n\n\n2022: No infidelity statement and Oscars incident\n\n\nDuring an interview on CBS Sunday Morning earlier this month, Will said he and Jada had never accused each other of cheating.\n\n",
+          "preview_url": "/api/evidence/7055f7b7-308c-544e-85f2-e535c8134d43",
+          "original_url": "/api/versions/71d28c8a-0280-4665-94a0-d2adb94cd2cd/original",
+          "id": "7055f7b7-308c-544e-85f2-e535c8134d43"
+        }
+      ],
+      "label": "unsupported",
+      "group": [
+        "mh-7b4dca53eb674cfb87577561",
+        "mh-8a5d6f73bdb9deb0bc8bc865"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "dynamic",
+        "task_id": "SF-3fb3599dcc99",
+        "review_id": "f57e500f4fc203f97c47b79ecb14c8afe44bb5f3e5150fd5f9388962b3f2e7a8",
+        "claim_index": 1
+      },
+      "id": "b8bac5a0a002b0d0bc7dc6229ecc0448d15473d2c5948b6cb6c6e814acdd1fae",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "Their separation has been mentioned at the 2022 Academy Awards, and Will's memoir details their struggles in the relationship.",
+        "evidence_ids": [
+          "8a527b10-5494-5f38-ad3f-c89584e1dba9",
+          "7055f7b7-308c-544e-85f2-e535c8134d43"
+        ],
+        "quotes": [
+          "Speaking to The Independent, New York City-based relationship expert Susan Winter highlighted the jarring differences between a separation and divorce. When it comes to divorce, Hollywood couples can notably get involved in lengthy legal processes, from dividing financial assets to creating child custody agreements. Although we don’t know the terms of Jada and Will’s separation, Winter believes that they’re showcasing a non-conventional relationship that’s not familiar to the public. Will and Jada’s dynamic includes living in separate homes, but it could be a choice that’s for the better.",
+          "2022: No infidelity statement and Oscars incident"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "8a527b10-5494-5f38-ad3f-c89584e1dba9",
+          "document_id": "mh-8a5d6f73bdb9deb0bc8bc865",
+          "version_id": "786b3eb0-f0f0-4412-8c9f-0434b119aacd",
+          "title": "Jada Pinkett Smith and Will Smith have been separated since 2016 - when should couples just get divorced?",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "Jada Pinkett Smith and Will Smith have been separated since 2016 - when should couples just get divorced?"
+            ],
+            "source_char_start": 3328,
+            "line_start": 23,
+            "label": "第 23 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 597,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Jada Pinkett Smith and Will Smith have been separated since 2016 - when should couples just get divorced?"
+                  ],
+                  "source_char_start": 3328,
+                  "line_start": 23,
+                  "label": "第 23 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 597
+              }
+            ],
+            "char_start": 0,
+            "char_end": 597,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 109,
+            "token_counter": "cl100k_base"
+          },
+          "text": "Speaking to The Independent, New York City-based relationship expert Susan Winter highlighted the jarring differences between a separation and divorce. When it comes to divorce, Hollywood couples can notably get involved in lengthy legal processes, from dividing financial assets to creating child custody agreements. Although we don’t know the terms of Jada and Will’s separation, Winter believes that they’re showcasing a non-conventional relationship that’s not familiar to the public. Will and Jada’s dynamic includes living in separate homes, but it could be a choice that’s for the better.\n\n",
+          "preview_url": "/api/evidence/8a527b10-5494-5f38-ad3f-c89584e1dba9",
+          "original_url": "/api/versions/786b3eb0-f0f0-4412-8c9f-0434b119aacd/original",
+          "id": "8a527b10-5494-5f38-ad3f-c89584e1dba9"
+        },
+        {
+          "chunk_id": "7055f7b7-308c-544e-85f2-e535c8134d43",
+          "document_id": "mh-7b4dca53eb674cfb87577561",
+          "version_id": "71d28c8a-0280-4665-94a0-d2adb94cd2cd",
+          "title": "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+            ],
+            "source_char_start": 6703,
+            "line_start": 89,
+            "label": "第 89 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 461,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 6703,
+                  "line_start": 89,
+                  "label": "第 89 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 461
+              },
+              {
+                "start": 462,
+                "end": 513,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 7164,
+                  "line_start": 91,
+                  "label": "第 91 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 51
+              },
+              {
+                "start": 514,
+                "end": 641,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "A timeline of Will Smith and Jada Pinkett Smith’s relationship amid separation"
+                  ],
+                  "source_char_start": 7215,
+                  "line_start": 93,
+                  "label": "第 93 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 127
+              }
+            ],
+            "char_start": 0,
+            "char_end": 641,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 131,
+            "token_counter": "cl100k_base"
+          },
+          "text": "The next month, Will’s memoir is released which details several issues the couple have had over the years. He wrote they were “suffering the brutal death of our romantic fantasies, the burning away of the idealistic illusion of the perfect marriage and the perfect family. Neither of us wanted a divorce; we knew we loved each other, and some aspects of our union were magical. But the structure of the life that we had established was strangling both of us.”\n\n\n2022: No infidelity statement and Oscars incident\n\n\nDuring an interview on CBS Sunday Morning earlier this month, Will said he and Jada had never accused each other of cheating.\n\n",
+          "preview_url": "/api/evidence/7055f7b7-308c-544e-85f2-e535c8134d43",
+          "original_url": "/api/versions/71d28c8a-0280-4665-94a0-d2adb94cd2cd/original",
+          "id": "7055f7b7-308c-544e-85f2-e535c8134d43"
+        }
+      ],
+      "label": "unsupported",
+      "group": [
+        "mh-7b4dca53eb674cfb87577561",
+        "mh-8a5d6f73bdb9deb0bc8bc865"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "dynamic",
+        "task_id": "SF-3fb3599dcc99",
+        "review_id": "f57e500f4fc203f97c47b79ecb14c8afe44bb5f3e5150fd5f9388962b3f2e7a8",
+        "claim_index": 2
+      },
+      "id": "2e998364075f27a50bdccbabf87a6cf395513bec00fd10e24d38f5363de9231b",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "The 'Sporting News' article suggests that Patrick Kane's move was motivated by a lack of interest in joining a playoff contender.",
+        "evidence_ids": [
+          "cab2f008-aa87-5084-8f95-515e08f1bb00"
+        ],
+        "quotes": [
+          "The problem is that the Sabres have not been as good as expected to start the 2023-24 season. Buffalo was viewed as a team that would take the final step out of the rebuild this year, given how close the team was to the postseason last year. If Kane has his eyes set on joining a Stanley Cup contender, the Sabres are no longer atop that list, sitting under .500 and sixth in the Atlantic."
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "cab2f008-aa87-5084-8f95-515e08f1bb00",
+          "document_id": "mh-701367043f51d3ea9fc22404",
+          "version_id": "83484038-751d-4633-b09a-6aea8b84a113",
+          "title": "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger"
+            ],
+            "source_char_start": 3021,
+            "line_start": 29,
+            "label": "第 29 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 391,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger"
+                  ],
+                  "source_char_start": 3021,
+                  "line_start": 29,
+                  "label": "第 29 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 391
+              },
+              {
+                "start": 392,
+                "end": 410,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "Patrick Kane destinations: Sabres, Red Wings among potential landing spots for free agent winger"
+                  ],
+                  "source_char_start": 3412,
+                  "line_start": 31,
+                  "label": "第 31 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 18
+              }
+            ],
+            "char_start": 0,
+            "char_end": 410,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 91,
+            "token_counter": "cl100k_base"
+          },
+          "text": "The problem is that the Sabres have not been as good as expected to start the 2023-24 season. Buffalo was viewed as a team that would take the final step out of the rebuild this year, given how close the team was to the postseason last year. If Kane has his eyes set on joining a Stanley Cup contender, the Sabres are no longer atop that list, sitting under .500 and sixth in the Atlantic.\n\n\nFlorida Panthers\n\n",
+          "preview_url": "/api/evidence/cab2f008-aa87-5084-8f95-515e08f1bb00",
+          "original_url": "/api/versions/83484038-751d-4633-b09a-6aea8b84a113/original",
+          "id": "cab2f008-aa87-5084-8f95-515e08f1bb00"
+        }
+      ],
+      "label": "contradicted",
+      "group": [
+        "mh-701367043f51d3ea9fc22404"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "hybrid",
+        "task_id": "SF-43709086f7bb",
+        "review_id": "57df28bb241f05cb71eed52239e2a4ecdbb6fc5e92239063e70875a52eaad6d4",
+        "claim_index": 0
+      },
+      "id": "2efa66aa4f86ff2e9a8bc579c5091e832b5d8c02746300b97ac40e27a0814ff4",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "开放平台配额超额时返回的状态码是 HTTP 429。",
+        "evidence_ids": [
+          "bdd534c8-73b5-5df5-bd87-1d89b1e22646"
+        ],
+        "quotes": [
+          "超过配额时返回 HTTP 429。"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+          "document_id": "lt-api-quota",
+          "version_id": "d7e63212-1e14-4d2f-86eb-87230ee39041",
+          "title": "开放平台调用配额",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "开放平台调用配额",
+              "超额处理"
+            ],
+            "source_char_start": 118,
+            "line_start": 11,
+            "label": "第 11 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 51,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "开放平台调用配额",
+                    "超额处理"
+                  ],
+                  "source_char_start": 118,
+                  "line_start": 11,
+                  "label": "第 11 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 51
+              }
+            ],
+            "char_start": 0,
+            "char_end": 51,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 44,
+            "token_counter": "cl100k_base"
+          },
+          "text": "## 超额处理\n超过配额时返回 HTTP 429。客户端应按 2 秒、4 秒、8 秒逐次退避后重试。\n",
+          "preview_url": "/api/evidence/bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+          "original_url": "/api/versions/d7e63212-1e14-4d2f-86eb-87230ee39041/original",
+          "id": "bdd534c8-73b5-5df5-bd87-1d89b1e22646"
+        }
+      ],
+      "label": "supported",
+      "group": [
+        "lt-api-quota"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "rag",
+        "task_id": "U08",
+        "review_id": "a6d2f337ba3dd1d672aaed6e7f1a8ab16be75c13042af26914348e2238c4a112",
+        "claim_index": 0
+      },
+      "id": "254892a70c5b07ce35c5a7856dc81f0ac82e1e919c7585a6eee693596e442a6f",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "回调通知的签名头是 X-LT-Signature。",
+        "evidence_ids": [
+          "061e2fc0-20d7-5bd6-8e9f-fef575a9eec7"
+        ],
+        "quotes": [
+          "每次回调都带有签名头 X-LT-Signature，接收方应校验签名后再处理。"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "061e2fc0-20d7-5bd6-8e9f-fef575a9eec7",
+          "document_id": "lt-webhook",
+          "version_id": "7d42efa6-d1e6-4e58-908f-78568aca48f3",
+          "title": "回调通知说明",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "回调通知说明",
+              "签名"
+            ],
+            "source_char_start": 92,
+            "line_start": 8,
+            "label": "第 8 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 46,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "回调通知说明",
+                    "签名"
+                  ],
+                  "source_char_start": 92,
+                  "line_start": 8,
+                  "label": "第 8 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 46
+              }
+            ],
+            "char_start": 0,
+            "char_end": 46,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 37,
+            "token_counter": "cl100k_base"
+          },
+          "text": "## 签名\n每次回调都带有签名头 X-LT-Signature，接收方应校验签名后再处理。\n",
+          "preview_url": "/api/evidence/061e2fc0-20d7-5bd6-8e9f-fef575a9eec7",
+          "original_url": "/api/versions/7d42efa6-d1e6-4e58-908f-78568aca48f3/original",
+          "id": "061e2fc0-20d7-5bd6-8e9f-fef575a9eec7"
+        }
+      ],
+      "label": "supported",
+      "group": [
+        "lt-webhook"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "rag",
+        "task_id": "U08",
+        "review_id": "a6d2f337ba3dd1d672aaed6e7f1a8ab16be75c13042af26914348e2238c4a112",
+        "claim_index": 1
+      },
+      "id": "89b11f8a691af876900beb0d7b9234a1bda7d94bc4513df42aa2e477b2f0b603",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "S1工单的首次响应时限是20分钟。",
+        "evidence_ids": [
+          "f28bb7e8-4508-5e08-a18f-714038098052"
+        ],
+        "quotes": [
+          "| 等级 | 首次响应时限 |\n| --- | --- |\n| S1 | 20 分钟 |\n| S2 | 2 小时 |\n| S3 | 1 个工作日 |"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "f28bb7e8-4508-5e08-a18f-714038098052",
+          "document_id": "lt-support-tiers",
+          "version_id": "fed18768-9443-4682-ad4a-dde20fe78c01",
+          "title": "客户支持分级",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "table",
+            "heading_path": [
+              "客户支持分级",
+              "首次响应时限"
+            ],
+            "source_char_start": 45,
+            "line_start": 5,
+            "label": "第 5 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 86,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "table",
+                  "heading_path": [
+                    "客户支持分级",
+                    "首次响应时限"
+                  ],
+                  "source_char_start": 45,
+                  "line_start": 5,
+                  "label": "第 5 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 86
+              }
+            ],
+            "char_start": 0,
+            "char_end": 86,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 63,
+            "token_counter": "cl100k_base"
+          },
+          "text": "## 首次响应时限\n| 等级 | 首次响应时限 |\n| --- | --- |\n| S1 | 20 分钟 |\n| S2 | 2 小时 |\n| S3 | 1 个工作日 |\n\n",
+          "preview_url": "/api/evidence/f28bb7e8-4508-5e08-a18f-714038098052",
+          "original_url": "/api/versions/fed18768-9443-4682-ad4a-dde20fe78c01/original",
+          "id": "f28bb7e8-4508-5e08-a18f-714038098052"
+        }
+      ],
+      "label": "supported",
+      "group": [
+        "lt-support-tiers"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "rag",
+        "task_id": "U09",
+        "review_id": "cce46e74e2923360d7eed96b8d83e8df2db3e1cf356ec306b3ff13bdafb88058",
+        "claim_index": 0
+      },
+      "id": "24c1c63792f13780f376a9e064120120f29c07be4fe1903607e3bedc032fd25a",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "值班经理每7天轮换一次，交接时间为每周一10:00。",
+        "evidence_ids": [
+          "640ccb70-9431-5001-a3bc-53a7fab98817"
+        ],
+        "quotes": [
+          "值班经理每 7 天轮换一次，交接时间为每周一 10:00。"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "640ccb70-9431-5001-a3bc-53a7fab98817",
+          "document_id": "lt-oncall",
+          "version_id": "8376d0d3-798b-4f1b-b8fe-8ba5e6ad97d6",
+          "title": "值班规则",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "值班规则",
+              "值班经理"
+            ],
+            "source_char_start": 43,
+            "line_start": 5,
+            "label": "第 5 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 39,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "值班规则",
+                    "值班经理"
+                  ],
+                  "source_char_start": 43,
+                  "line_start": 5,
+                  "label": "第 5 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 39
+              }
+            ],
+            "char_start": 0,
+            "char_end": 39,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 37,
+            "token_counter": "cl100k_base"
+          },
+          "text": "## 值班经理\n值班经理每 7 天轮换一次，交接时间为每周一 10:00。\n\n",
+          "preview_url": "/api/evidence/640ccb70-9431-5001-a3bc-53a7fab98817",
+          "original_url": "/api/versions/8376d0d3-798b-4f1b-b8fe-8ba5e6ad97d6/original",
+          "id": "640ccb70-9431-5001-a3bc-53a7fab98817"
+        }
+      ],
+      "label": "supported",
+      "group": [
+        "lt-oncall"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "rag",
+        "task_id": "U09",
+        "review_id": "cce46e74e2923360d7eed96b8d83e8df2db3e1cf356ec306b3ff13bdafb88058",
+        "claim_index": 1
+      },
+      "id": "3d894482f84bcfe747bb3340a8124aeedc227bdc7ffdf4ad3d42ae403a6ddb7e",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "新版本灰度首批分配5%的流量。",
+        "evidence_ids": [
+          "eb556396-2a46-556e-be2b-b59db96dbfff"
+        ],
+        "quotes": [
+          "新版本先向 5% 的流量灰度发布，观察 30 分钟。"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "eb556396-2a46-556e-be2b-b59db96dbfff",
+          "document_id": "lt-release-gate",
+          "version_id": "9a8ddb80-6650-45bb-a4eb-0e7dbd0f53f6",
+          "title": "发布闸门规则",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "发布闸门规则",
+              "灰度"
+            ],
+            "source_char_start": 45,
+            "line_start": 5,
+            "label": "第 5 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 34,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "发布闸门规则",
+                    "灰度"
+                  ],
+                  "source_char_start": 45,
+                  "line_start": 5,
+                  "label": "第 5 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 34
+              }
+            ],
+            "char_start": 0,
+            "char_end": 34,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 30,
+            "token_counter": "cl100k_base"
+          },
+          "text": "## 灰度\n新版本先向 5% 的流量灰度发布，观察 30 分钟。\n\n",
+          "preview_url": "/api/evidence/eb556396-2a46-556e-be2b-b59db96dbfff",
+          "original_url": "/api/versions/9a8ddb80-6650-45bb-a4eb-0e7dbd0f53f6/original",
+          "id": "eb556396-2a46-556e-be2b-b59db96dbfff"
+        }
+      ],
+      "label": "supported",
+      "group": [
+        "lt-release-gate"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "rag",
+        "task_id": "U10",
+        "review_id": "5178beb5f9237b493357d892b447706ce8f4f6c593a7c68d3745e2bf6a96caf7",
+        "claim_index": 0
+      },
+      "id": "a5d95fcf32f646aa187e5afb81a286a09a686a7a151023dce6ff6028b7e5cf77",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "数据库每天02:00做全量备份。",
+        "evidence_ids": [
+          "c0cbcabe-4112-5787-b40a-7ca06571c850"
+        ],
+        "quotes": [
+          "每天 02:00 执行一次全量备份，其余时间持续归档日志。"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "c0cbcabe-4112-5787-b40a-7ca06571c850",
+          "document_id": "lt-db-backup",
+          "version_id": "ad0479df-234c-4c34-aefd-1d7ac2d72d94",
+          "title": "数据库备份与恢复",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "数据库备份与恢复",
+              "备份"
+            ],
+            "source_char_start": 86,
+            "line_start": 8,
+            "label": "第 8 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 36,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "数据库备份与恢复",
+                    "备份"
+                  ],
+                  "source_char_start": 86,
+                  "line_start": 8,
+                  "label": "第 8 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 36
+              }
+            ],
+            "char_start": 0,
+            "char_end": 36,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 33,
+            "token_counter": "cl100k_base"
+          },
+          "text": "## 备份\n每天 02:00 执行一次全量备份，其余时间持续归档日志。\n",
+          "preview_url": "/api/evidence/c0cbcabe-4112-5787-b40a-7ca06571c850",
+          "original_url": "/api/versions/ad0479df-234c-4c34-aefd-1d7ac2d72d94/original",
+          "id": "c0cbcabe-4112-5787-b40a-7ca06571c850"
+        }
+      ],
+      "label": "supported",
+      "group": [
+        "lt-db-backup"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "rag",
+        "task_id": "U10",
+        "review_id": "5178beb5f9237b493357d892b447706ce8f4f6c593a7c68d3745e2bf6a96caf7",
+        "claim_index": 1
+      },
+      "id": "e4ec9c7d60059425d5cd6db0986bffb9a1a6636de6d13336fde759e1036709f5",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "批量导入单次最多5万行。",
+        "evidence_ids": [
+          "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+        ],
+        "quotes": [
+          "单次导入任务最多 5 万行。"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+          "document_id": "lt-import-guide",
+          "version_id": "538af7bf-d6e3-494f-b514-12046a25f518",
+          "title": "批量导入指南",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "批量导入指南",
+              "限制"
+            ],
+            "source_char_start": 45,
+            "line_start": 5,
+            "label": "第 5 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 41,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "批量导入指南",
+                    "限制"
+                  ],
+                  "source_char_start": 45,
+                  "line_start": 5,
+                  "label": "第 5 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 41
+              }
+            ],
+            "char_start": 0,
+            "char_end": 41,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 35,
+            "token_counter": "cl100k_base"
+          },
+          "text": "## 限制\n单次导入任务最多 5 万行。超过 5 万行的数据需要拆成多个任务。\n\n",
+          "preview_url": "/api/evidence/d0177dd0-361c-5001-9b3d-1fe11fb97875",
+          "original_url": "/api/versions/538af7bf-d6e3-494f-b514-12046a25f518/original",
+          "id": "d0177dd0-361c-5001-9b3d-1fe11fb97875"
+        }
+      ],
+      "label": "supported",
+      "group": [
+        "lt-import-guide"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "rag",
+        "task_id": "U11",
+        "review_id": "863b0b86886f99c5cb4fac55dc107e7c67451df6a2f0ac3a9e9f6293f1b948bc",
+        "claim_index": 0
+      },
+      "id": "25ed63ce2e1d621dae9a37183a045a3fb6000536d0ab424e93d0660b80d847a1",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    },
+    {
+      "question": "Is every material clause of each supplied claim supported by its own bound sources?",
+      "claim": {
+        "text": "路由服务单个请求的超时阈值为8秒。",
+        "evidence_ids": [
+          "33427f32-6781-59e7-87fb-96b1c1a8cc7d"
+        ],
+        "quotes": [
+          "单个请求的超时阈值为 8 秒。"
+        ]
+      },
+      "evidence": [
+        {
+          "chunk_id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+          "document_id": "lt-routing-ops",
+          "version_id": "db769968-f5e8-4a35-a947-36f7bde506f8",
+          "title": "路由服务运维手册",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "路由服务运维手册",
+              "超时"
+            ],
+            "source_char_start": 89,
+            "line_start": 8,
+            "label": "第 8 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 23,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "路由服务运维手册",
+                    "超时"
+                  ],
+                  "source_char_start": 89,
+                  "line_start": 8,
+                  "label": "第 8 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 23
+              }
+            ],
+            "char_start": 0,
+            "char_end": 23,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 21,
+            "token_counter": "cl100k_base"
+          },
+          "text": "## 超时\n单个请求的超时阈值为 8 秒。\n\n",
+          "preview_url": "/api/evidence/33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+          "original_url": "/api/versions/db769968-f5e8-4a35-a947-36f7bde506f8/original",
+          "id": "33427f32-6781-59e7-87fb-96b1c1a8cc7d"
+        }
+      ],
+      "label": "supported",
+      "group": [
+        "lt-routing-ops"
+      ],
+      "origin": {
+        "run": "artifacts/dev-repairs-unified-20261004-v4.json",
+        "method": "rag",
+        "task_id": "U11",
+        "review_id": "863b0b86886f99c5cb4fac55dc107e7c67451df6a2f0ac3a9e9f6293f1b948bc",
+        "claim_index": 1
+      },
+      "id": "fa4e47789ec9c7c1917e7e99010de7a0028394de4e1842a2054a96b85a68fe92",
+      "review": {
+        "reviewer_type": "model",
+        "model": "GPT-6 (exact deployment unavailable)",
+        "independent": false,
+        "reason": "复用原始 Dev 断言的 GPT 审核；未用于前16例提示词迭代，但来源文档并不保证独立。"
+      }
+    }
+  ],
+  "cases_sha256": "13d36570aab600c34bde0966acbbc3826bb069f7e99f65f0892a2d999851984b",
+  "gates": {
+    "bad_claim_rejection_min": 0.95,
+    "good_claim_acceptance_min": 0.95,
+    "transport_or_format_failure_max": 0
+  },
+  "labels_independent": false,
+  "registered_before_first_prediction": true
+}

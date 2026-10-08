@@ -1,0 +1,150 @@
+{
+  "reviewer_type": "assistant",
+  "human_reviewed": 0,
+  "scope": "Post-run assistant audit, original literal scores preserved; not independent semantic labels. News excerpts/question text stay in ignored artifacts/local; fingerprints and assistant audit summaries are versionable.",
+  "items": [
+    {
+      "id": "SF-39afc9e691a3",
+      "task_id": "4fe4b9ae-a688-4211-9ab6-96b982dc9e65",
+      "first_context_gold_documents": false,
+      "first_context_gold_fact_proxy": 1,
+      "gold_fact_count": 2,
+      "assistant_review": {
+        "failure_types": [
+          "gold_document_missing",
+          "incomplete_answer"
+        ],
+        "assessment": "首轮少一份金标文档，最终空回答；没有证据证明只是评分误判。",
+        "next_action": "按独立子问绑定来源检索，不把词面覆盖当充分证据。"
+      },
+      "question_sha256": "39afc9e691a32230aae60a4dbe27a436924bdb07f55e9fd98cfa2f8919cfee02",
+      "gold_sha256": "85a39ab345d672ff8ca9b9c6876f3adcacf45ee7c1e2dbd2408fd338bd55e07e",
+      "gold_evidence_sha256": "27cc1c84fbc17d9f628b901adf1f8d08730f1d6259055e8ec538530230b66591",
+      "result_sha256": "025d5947c4800a507cb1301ec8c339cd6f9e3ef982141d8281ee1ffa114678b3",
+      "status": "insufficient_evidence",
+      "verdict": null
+    },
+    {
+      "id": "SF-39d3acb4b2ff",
+      "task_id": "1e988a85-38d4-4870-962b-bd9c687a935d",
+      "first_context_gold_documents": false,
+      "first_context_gold_fact_proxy": 1,
+      "gold_fact_count": 2,
+      "assistant_review": {
+        "failure_types": [
+          "gold_document_missing",
+          "source_time_mismatch",
+          "unsupported_claim_candidate"
+        ],
+        "assessment": "Derrick Henry 的数值有原文；Jordan Love 引用来自另一篇 Sporting News 和 CBS 的文章，不能替代题目对应报道。unclear 不应通过关键词硬改 yes。",
+        "next_action": "按来源/报道时间约束文档，分别检查子问支持。"
+      },
+      "question_sha256": "39d3acb4b2ff4e4b9596d7ca950f2f8939ac7179b51b4938acd7543d47b5ad87",
+      "gold_sha256": "85a39ab345d672ff8ca9b9c6876f3adcacf45ee7c1e2dbd2408fd338bd55e07e",
+      "gold_evidence_sha256": "3ca9e5bb2e65b26cffe8edc972dbfecd3548865af3ea050b7380c7dd6e011d1e",
+      "result_sha256": "6ea921cd6de1545fe44274f556aed8ac0c997c4c4dea92f10de057cef4e6ebbb",
+      "status": "answered",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      }
+    },
+    {
+      "id": "SF-37dd7b5497ad",
+      "task_id": "ad025828-08e1-414d-897b-8a75fe6da57f",
+      "first_context_gold_documents": false,
+      "first_context_gold_fact_proxy": 1,
+      "gold_fact_count": 3,
+      "assistant_review": {
+        "failure_types": [
+          "gold_document_missing",
+          "negation_loss",
+          "subject_attribution_loss",
+          "unsupported_comparison"
+        ],
+        "assessment": "原引文说律师认为 did not adequately protect，回答却沿用题面 adequately protected 的错误前提；转述角色也丢失。另缺 Verge 文档。属于真实回答问题，不仅是裁判误判。",
+        "next_action": "保存说话人和否定事实，先纠正题面错误前提；缺另一来源时不计算比较结论。"
+      },
+      "question_sha256": "37dd7b5497ade8565688f0398d7ae4f75a8663424a04cf562ca6d7d4eb7e9e43",
+      "gold_sha256": "9390298f3fb0c5b160498935d79cb139aef28e1c47358b4bbba61862b9c26e59",
+      "gold_evidence_sha256": "8f29ec52bd2f3271f75931ef85329c01a54a004e804edcf606b95c73943a6719",
+      "result_sha256": "cb16f6c85350ed7fe5db175e94382ef01dd6bf078079fa2c389bab8c142c9dae",
+      "status": "answered",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "evidence_ids": [
+          "1e8fdb98-0bc7-551c-9fc7-c707e9f82c05",
+          "8e54968d-50d4-5fb2-81fe-d27320a939bf"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      }
+    },
+    {
+      "id": "SF-498cac959ebd",
+      "task_id": "32e45536-e878-4a6d-9f26-e9c3ba48a231",
+      "first_context_gold_documents": false,
+      "first_context_gold_fact_proxy": 2,
+      "gold_fact_count": 3,
+      "assistant_review": {
+        "failure_types": [
+          "gold_document_scope_ambiguity",
+          "comparison_conclusion_missing",
+          "generation_or_verdict_review"
+        ],
+        "assessment": "回答给 Google 影响力概述，没有明确回答一致性；金标第三篇发表于12月15日，不在题面10月26/31范围。文档缺失代理会把未取第三篇计为失败，需独立人工裁定金标范围，不能直接当纯召回缺陷。",
+        "next_action": "人工确定必要来源和比较属性；保留旧分数，另记录题面与gold证据范围差异。"
+      },
+      "question_sha256": "498cac959ebdaf89bc4e774dd185a68af5e138d4dc7e8e014f151dd41cf626c3",
+      "gold_sha256": "85a39ab345d672ff8ca9b9c6876f3adcacf45ee7c1e2dbd2408fd338bd55e07e",
+      "gold_evidence_sha256": "a1ceb894b13d6ad9c2a2837e3cb71a1e4496ab398f4bfae765d5daf34f656ed0",
+      "result_sha256": "882680d4912711ec1f3e87aea2659698ea9e651bcf350865c20a7e43438a236b",
+      "status": "answered",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "evidence_ids": [],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      }
+    },
+    {
+      "id": "SF-50978f63027a",
+      "task_id": "87d1036a-67ac-41dd-a4b1-472d9a86fb5f",
+      "first_context_gold_documents": true,
+      "first_context_gold_fact_proxy": 1,
+      "gold_fact_count": 2,
+      "assistant_review": {
+        "failure_types": [
+          "verdict_claim_disagreement",
+          "comparison_dimension_ambiguity",
+          "gold_fact_proxy_missing"
+        ],
+        "assessment": "正文明确写 not consistent，而 claims-only verdict 返回 yes，二者矛盾。引用包含比赛失利，但题目“performance consistent”维度含糊，gold no仍需人工裁定。不能把字面最终失败统一称为生成没答对。",
+        "next_action": "核对最终关系与claim一致性；人工明确表现评价/赛果/赛事是否属于同一比较维度。"
+      },
+      "question_sha256": "50978f63027a8cdf13c43fee0d37d572eae9d24561f61ffae01c74dfd7e25a53",
+      "gold_sha256": "9390298f3fb0c5b160498935d79cb139aef28e1c47358b4bbba61862b9c26e59",
+      "gold_evidence_sha256": "f786509bb9f6d5d50cd6c9cff9a1289e85b55689ece48f544cf62058a10ac629",
+      "result_sha256": "ef0890a77823acfccff53d25026c946a86d09c08ce4e26a26e4c40db5cae993a",
+      "status": "answered",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "evidence_ids": [
+          "e96ca0b4-a781-5c1c-94b9-7e0d2cee5214",
+          "430d4156-c47a-52a6-9905-9bc1852a766b",
+          "9b387c1a-4192-588d-9393-5562e3143eec",
+          "a6e8ae1b-45c8-5723-bf4c-31571c6d509f"
+        ],
+        "method": "claims_only_classifier",
+        "scope": "只读取已通过引用校验的 claims，不接触原文，也不引入新事实"
+      }
+    }
+  ],
+  "local_full_review": "artifacts/local/p0-p2-failure-review-v1.json"
+}

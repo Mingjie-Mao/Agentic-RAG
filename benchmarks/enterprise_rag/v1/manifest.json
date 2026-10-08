@@ -1,0 +1,161 @@
+{
+  "version": "enterprise-rag-benchmark-package-v1",
+  "status": "prepared_core_security_GPT_reviewed_not_frozen",
+  "methods": [
+    "rag",
+    "workflow",
+    "dynamic",
+    "hybrid"
+  ],
+  "main_metric": "core.StrictTaskSuccessRate",
+  "splits": {
+    "core": {
+      "suite_dir": "benchmarks/enterprise_rag/v1/core",
+      "count": 70,
+      "categories": {
+        "efficiency_stopping": 10,
+        "multi_hop": 10,
+        "latent_link": 10,
+        "conditional_planning": 10,
+        "comparison": 10,
+        "temporal_version": 10,
+        "null_insufficient": 10
+      },
+      "allow_tuning": false,
+      "headline_source": true,
+      "historically_used": false,
+      "formal_runs_at_packaging": 0
+    },
+    "security": {
+      "suite_dir": "benchmarks/enterprise_rag/v1/security",
+      "count": 16,
+      "categories": {
+        "security_group_denial": 4,
+        "security_tenant_isolation": 4,
+        "security_revocation": 4,
+        "security_version_scope": 4
+      },
+      "allow_tuning": false,
+      "headline_source": false,
+      "historically_used": false,
+      "formal_runs_at_packaging": 0
+    },
+    "dev": {
+      "suite_dir": ".runtime/benchmark-package/v1/dev",
+      "count": 47,
+      "categories": {
+        "efficiency_stopping": 6,
+        "multi_hop": 7,
+        "latent_link": 5,
+        "conditional_planning": 5,
+        "comparison": 9,
+        "temporal_version": 9,
+        "null_insufficient": 6
+      },
+      "allow_tuning": true,
+      "headline_source": false,
+      "historically_used": true,
+      "formal_runs_at_packaging": 0
+    },
+    "external": {
+      "suite_dir": ".runtime/benchmark-package/v1/external",
+      "count": 150,
+      "categories": {
+        "comparison": 50,
+        "multi_hop": 48,
+        "null_insufficient": 18,
+        "temporal_version": 34
+      },
+      "allow_tuning": false,
+      "headline_source": false,
+      "historically_used": true,
+      "formal_runs_at_packaging": 0
+    }
+  },
+  "sources": {
+    "fixtures/unseen/tasks.json": "7c1255ee323634e72be779c88d287dc0fdaa7e3013a166c0639d844611341154",
+    "fixtures/unseen_v2/tasks.json": "3b5fc5519b3221cb314d2207aabbaaea6f7e5460ec7903c420187fe90deb32d5",
+    "fixtures/source_contract/external-p0-p2-v5-bm25.json": "3cab76b7493ea5afc316b54ed1e88a7248004422beef20cc7af676d3a53d7c07",
+    "fixtures/multihop/subset-r2.json": "19030990b72c231dd0ec3a03162df3fc8d57cddcd1d6bd30cd462b95cf4d628b"
+  },
+  "external_files": {
+    "MultiHopRAG.json": "03cfb4926461f868684903aadc8024447bdda5bb3f6804741424cce338515bff",
+    "corpus.json": "20b61b5ab84de84a927420c5d265b7ec8d859ae49980699958a787ade9e4d28f"
+  },
+  "external_note": "150 legacy external questions were already evaluated and influenced failure analysis; repeats measure fixed-suite generalization, not fresh unseen validation.",
+  "old_security_note": "Original 70 core + 2 safety remain unchanged in fixtures/unseen_v2; package security is a separate 16-case corpus.",
+  "review_policy": "GPT accepted; store actual model, rationale and independence honestly",
+  "freeze_policy": "data+annotations+code+dependencies+models+configuration+indexed corpus; register full method/ablation matrix before test",
+  "ablation_policy": "tune on Dev only; Core ablations must all be pre-registered in the first frozen matrix; no sequential test-driven changes",
+  "registered_matrix": [
+    {
+      "name": "rag",
+      "mode": "rag",
+      "overrides": {}
+    },
+    {
+      "name": "workflow",
+      "mode": "workflow",
+      "overrides": {}
+    },
+    {
+      "name": "dynamic",
+      "mode": "dynamic",
+      "overrides": {}
+    },
+    {
+      "name": "hybrid",
+      "mode": "hybrid",
+      "overrides": {}
+    },
+    {
+      "name": "rag_bm25",
+      "mode": "rag",
+      "overrides": {
+        "retrieval_mode": "bm25",
+        "rewrite_mode": "off",
+        "task_contract_enabled": false,
+        "passage_rerank": false
+      }
+    },
+    {
+      "name": "rag_hybrid",
+      "mode": "rag",
+      "overrides": {
+        "retrieval_mode": "hybrid",
+        "rewrite_mode": "off",
+        "task_contract_enabled": false,
+        "passage_rerank": false
+      }
+    },
+    {
+      "name": "rag_rewrite",
+      "mode": "rag",
+      "overrides": {
+        "retrieval_mode": "hybrid",
+        "rewrite_mode": "rule",
+        "task_contract_enabled": false,
+        "passage_rerank": false
+      }
+    },
+    {
+      "name": "rag_rerank",
+      "mode": "rag",
+      "overrides": {
+        "retrieval_mode": "hybrid",
+        "rewrite_mode": "rule",
+        "task_contract_enabled": true,
+        "passage_rerank": true
+      }
+    }
+  ],
+  "ablation_control": "rag_rewrite -> rag tests the shared task/evidence contract; rag -> rag_rerank tests reranking. Four policy methods retain identical retrieval/contract settings. No slot-semantic-control effect is claimed.",
+  "annotation_reviews": {
+    "core": 70,
+    "security": 16,
+    "external": 0,
+    "reviewer_type": "model",
+    "independent": false,
+    "summary": "benchmarks/enterprise_rag/v1/annotation-review-summary.json"
+  }
+}

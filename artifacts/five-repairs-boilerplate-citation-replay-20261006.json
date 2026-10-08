@@ -1,0 +1,22 @@
+{
+  "scope": "Replay of the deterministic embed/consent boilerplate citation guard on every distinct (claim, quote) pair in two previously model-reviewed Dev runs. Diagnostic only; not a benchmark score.",
+  "guard": "app.qa.boilerplate_quote -> claim code boilerplate_reference (bounded LangGraph local repair, else verification_failed)",
+  "distinct_claim_quote_pairs": 204,
+  "flagged": 1,
+  "flagged_rows": [
+    {
+      "source": "artifacts/dev-repairs-unified-20261004-v4.gpt-reviewed.json",
+      "review_id": "899fbf6afaccf98474f4e878c376423b4c767340c9df8a502fce69f96602413e",
+      "claim_index": 1,
+      "reviewer_claim_verdict": "unsupported",
+      "flagged": true
+    }
+  ],
+  "flagged_reviewer_unsupported": 1,
+  "flagged_reviewer_supported": 0,
+  "limitation": "Only 204 pairs, 1 positive. Measures no observed false rejection on this set, not a calibrated rate; semantic support of non-boilerplate citations is not checked by this rule.",
+  "sources_sha256": {
+    "artifacts/dev-repairs-unified-20261003-v3.gpt-reviewed.json": "b8a9f0e09d684c7768af73291debf7e30cef17721c1a7d3905ac79eb85239c1f",
+    "artifacts/dev-repairs-unified-20261004-v4.gpt-reviewed.json": "41237c8e133120930222b23c6d281da7ad7ffe6cb0179d081643470e04248c22"
+  }
+}

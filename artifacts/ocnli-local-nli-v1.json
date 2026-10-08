@@ -1,0 +1,704 @@
+{
+  "metadata": {
+    "model": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+    "model_revision": "8adb042d524ecd5c26d3e3ba0e3fbcf7e2d0864c",
+    "weights_sha256": "65af59b1ff4450b09ecbf13ca35c840dbf038b26ff8e10e5ea89ca724828ed1e",
+    "runtime": "local_cpu",
+    "tuning": "none",
+    "project_case_human_reviewed": 0,
+    "manifest_sha256": "f5d5957f8402d4f0648bbe7df1c5813efb2323f422c057f34e6a10f0641532ca",
+    "source": "OCNLI dev human-majority labels; external NLI only"
+  },
+  "summary": {
+    "n": 60,
+    "by_gold": {
+      "entailment": 20,
+      "neutral": 20,
+      "contradiction": 20
+    },
+    "three_way_correct": 47,
+    "supported_recall": 0.6,
+    "not_supported_recall": 0.9,
+    "false_accepts": 4,
+    "false_rejects": 8,
+    "confusion": {
+      "entailment": {
+        "neutral": 7,
+        "entailment": 12,
+        "contradiction": 1
+      },
+      "neutral": {
+        "neutral": 16,
+        "entailment": 3,
+        "contradiction": 1
+      },
+      "contradiction": {
+        "contradiction": 19,
+        "entailment": 1
+      }
+    },
+    "elapsed_ms": 22783.9
+  },
+  "records": [
+    {
+      "id": 2089,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0163,
+        "neutral": 0.9834,
+        "contradiction": 0.0003
+      }
+    },
+    {
+      "id": 2088,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9067,
+        "neutral": 0.092,
+        "contradiction": 0.001
+      }
+    },
+    {
+      "id": 1818,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9941,
+        "neutral": 0.0059,
+        "contradiction": 0.0001
+      }
+    },
+    {
+      "id": 535,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9922,
+        "neutral": 0.0074,
+        "contradiction": 0.0005
+      }
+    },
+    {
+      "id": 471,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0852,
+        "neutral": 0.9102,
+        "contradiction": 0.0047
+      }
+    },
+    {
+      "id": 1137,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9424,
+        "neutral": 0.0522,
+        "contradiction": 0.0054
+      }
+    },
+    {
+      "id": 389,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0127,
+        "neutral": 0.9517,
+        "contradiction": 0.0356
+      }
+    },
+    {
+      "id": 1109,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9976,
+        "neutral": 0.0021,
+        "contradiction": 0.0002
+      }
+    },
+    {
+      "id": 223,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0241,
+        "neutral": 0.9751,
+        "contradiction": 0.0008
+      }
+    },
+    {
+      "id": 1046,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.1173,
+        "neutral": 0.3167,
+        "contradiction": 0.5659
+      }
+    },
+    {
+      "id": 1050,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0108,
+        "neutral": 0.9878,
+        "contradiction": 0.0014
+      }
+    },
+    {
+      "id": 1750,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.1335,
+        "neutral": 0.8662,
+        "contradiction": 0.0003
+      }
+    },
+    {
+      "id": 1212,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.998,
+        "neutral": 0.0017,
+        "contradiction": 0.0004
+      }
+    },
+    {
+      "id": 740,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0006,
+        "neutral": 0.9995,
+        "contradiction": 0.0001
+      }
+    },
+    {
+      "id": 418,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0006,
+        "neutral": 0.9985,
+        "contradiction": 0.0008
+      }
+    },
+    {
+      "id": 1560,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0601,
+        "neutral": 0.9307,
+        "contradiction": 0.0093
+      }
+    },
+    {
+      "id": 2252,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0008,
+        "neutral": 0.998,
+        "contradiction": 0.0011
+      }
+    },
+    {
+      "id": 909,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0214,
+        "neutral": 0.9546,
+        "contradiction": 0.0238
+      }
+    },
+    {
+      "id": 1439,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0003,
+        "neutral": 0.9995,
+        "contradiction": 0.0002
+      }
+    },
+    {
+      "id": 215,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0013,
+        "neutral": 0.9985,
+        "contradiction": 0.0003
+      }
+    },
+    {
+      "id": 706,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0011,
+        "neutral": 0.0126,
+        "contradiction": 0.9863
+      }
+    },
+    {
+      "id": 2087,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0015,
+        "neutral": 0.0639,
+        "contradiction": 0.9346
+      }
+    },
+    {
+      "id": 2033,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.003,
+        "neutral": 0.001,
+        "contradiction": 0.9961
+      }
+    },
+    {
+      "id": 1224,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0005,
+        "neutral": 0.0016,
+        "contradiction": 0.998
+      }
+    },
+    {
+      "id": 318,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0003,
+        "neutral": 0.0012,
+        "contradiction": 0.9985
+      }
+    },
+    {
+      "id": 1780,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0001,
+        "neutral": 0.0008,
+        "contradiction": 0.999
+      }
+    },
+    {
+      "id": 203,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0002,
+        "neutral": 0.0002,
+        "contradiction": 0.9995
+      }
+    },
+    {
+      "id": 23,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0073,
+        "neutral": 0.0091,
+        "contradiction": 0.9834
+      }
+    },
+    {
+      "id": 609,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0001,
+        "neutral": 0.0009,
+        "contradiction": 0.999
+      }
+    },
+    {
+      "id": 119,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0002,
+        "neutral": 0.0004,
+        "contradiction": 0.9995
+      }
+    },
+    {
+      "id": 68,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.999,
+        "neutral": 0.001,
+        "contradiction": 0.0001
+      }
+    },
+    {
+      "id": 539,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9893,
+        "neutral": 0.0089,
+        "contradiction": 0.0021
+      }
+    },
+    {
+      "id": 2360,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0631,
+        "neutral": 0.9365,
+        "contradiction": 0.0002
+      }
+    },
+    {
+      "id": 2495,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9131,
+        "neutral": 0.0212,
+        "contradiction": 0.0656
+      }
+    },
+    {
+      "id": 2049,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0028,
+        "neutral": 0.9956,
+        "contradiction": 0.0014
+      }
+    },
+    {
+      "id": 2405,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0004,
+        "neutral": 0.999,
+        "contradiction": 0.0004
+      }
+    },
+    {
+      "id": 1216,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9956,
+        "neutral": 0.0042,
+        "contradiction": 0.0001
+      }
+    },
+    {
+      "id": 2042,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9541,
+        "neutral": 0.0457,
+        "contradiction": 0.0004
+      }
+    },
+    {
+      "id": 1466,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9976,
+        "neutral": 0.0024,
+        "contradiction": 0.0003
+      }
+    },
+    {
+      "id": 1076,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9961,
+        "neutral": 0.004,
+        "contradiction": 0.0001
+      }
+    },
+    {
+      "id": 2959,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0002,
+        "neutral": 0.999,
+        "contradiction": 0.0009
+      }
+    },
+    {
+      "id": 663,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0009,
+        "neutral": 0.9985,
+        "contradiction": 0.0006
+      }
+    },
+    {
+      "id": 803,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0005,
+        "neutral": 0.999,
+        "contradiction": 0.0003
+      }
+    },
+    {
+      "id": 1077,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0003,
+        "neutral": 0.998,
+        "contradiction": 0.0016
+      }
+    },
+    {
+      "id": 2689,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.6738,
+        "neutral": 0.3257,
+        "contradiction": 0.0006
+      }
+    },
+    {
+      "id": 1724,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.001,
+        "neutral": 0.9976,
+        "contradiction": 0.0012
+      }
+    },
+    {
+      "id": 962,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.6206,
+        "neutral": 0.3699,
+        "contradiction": 0.0095
+      }
+    },
+    {
+      "id": 1910,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0134,
+        "neutral": 0.9858,
+        "contradiction": 0.0009
+      }
+    },
+    {
+      "id": 1700,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "neutral",
+      "probabilities": {
+        "entailment": 0.0004,
+        "neutral": 0.9985,
+        "contradiction": 0.0011
+      }
+    },
+    {
+      "id": 143,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0035,
+        "neutral": 0.0022,
+        "contradiction": 0.9941
+      }
+    },
+    {
+      "id": 748,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0003,
+        "neutral": 0.0004,
+        "contradiction": 0.9995
+      }
+    },
+    {
+      "id": 2423,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0253,
+        "neutral": 0.0015,
+        "contradiction": 0.9731
+      }
+    },
+    {
+      "id": 2638,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0004,
+        "neutral": 0.0005,
+        "contradiction": 0.999
+      }
+    },
+    {
+      "id": 1875,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0004,
+        "neutral": 0.0009,
+        "contradiction": 0.9985
+      }
+    },
+    {
+      "id": 2270,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "entailment",
+      "probabilities": {
+        "entailment": 0.9585,
+        "neutral": 0.0329,
+        "contradiction": 0.0085
+      }
+    },
+    {
+      "id": 344,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0003,
+        "neutral": 0.0008,
+        "contradiction": 0.999
+      }
+    },
+    {
+      "id": 2112,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0053,
+        "neutral": 0.1978,
+        "contradiction": 0.7969
+      }
+    },
+    {
+      "id": 2608,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0003,
+        "neutral": 0.0177,
+        "contradiction": 0.9819
+      }
+    },
+    {
+      "id": 2271,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0005,
+        "neutral": 0.0027,
+        "contradiction": 0.9971
+      }
+    },
+    {
+      "id": 2300,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "contradiction",
+      "probabilities": {
+        "entailment": 0.0008,
+        "neutral": 0.0273,
+        "contradiction": 0.9717
+      }
+    }
+  ]
+}

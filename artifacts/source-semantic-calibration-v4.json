@@ -1,0 +1,1089 @@
+{
+  "metadata": {
+    "fixture_sha256": "74812eb5fa7bf4559d5866c0c3701d5dec312b7eed11f264b491a4f1ea087151",
+    "model": "qwen2.5:7b-instruct",
+    "rubric": "source-entailment-v4",
+    "human_reviewed": 0,
+    "api_cost": 0,
+    "scope": "Authored, assistant-labelled contrast cases. No external or independent human accuracy.",
+    "code_sha256": {
+      "app/semantic_review.py": "db80ddbff5e3449adb28300951dc1ceac8a706a5f7d18970f47bec889a1dadd1",
+      "scripts/semantic_scorers.py": "eb7d09dcffbbd455aa848f711f5be8e165132060d28a09d43ce8ef68975fc878"
+    }
+  },
+  "records": [
+    {
+      "id": "C01",
+      "category": "subject",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 402,
+        "completion_tokens": 20
+      },
+      "wall_ms": 12633.6
+    },
+    {
+      "id": "C01",
+      "category": "subject",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "subject": "supported",
+        "modality": "supported",
+        "negation_scope": "not_applicable",
+        "attribute": "supported",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "The evidence directly quotes Dana as arguing the merger would help buyers, which matches the claim."
+      },
+      "usage": {
+        "prompt_tokens": 464,
+        "completion_tokens": 89
+      },
+      "wall_ms": 22496.5
+    },
+    {
+      "id": "C02",
+      "category": "subject",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "not_applicable",
+        "conclusion": "error",
+        "reason": "The evidence only states that Dana argued the merger would help buyers, but does not confirm or deny whether this was independently confirmed by the author."
+      },
+      "usage": {
+        "prompt_tokens": 461,
+        "completion_tokens": 101
+      },
+      "wall_ms": 16524.0
+    },
+    {
+      "id": "C02",
+      "category": "subject",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "off_topic"
+      },
+      "usage": {
+        "prompt_tokens": 399,
+        "completion_tokens": 21
+      },
+      "wall_ms": 9568.3
+    },
+    {
+      "id": "C03",
+      "category": "subject",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 397,
+        "completion_tokens": 20
+      },
+      "wall_ms": 4047.5
+    },
+    {
+      "id": "C03",
+      "category": "subject",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "subject": "supported",
+        "modality": "supported",
+        "negation_scope": "not_applicable",
+        "attribute": "supported",
+        "time": "not_applicable",
+        "conclusion": "supported",
+        "reason": "证据直接引用了律师林的观点，表明他认为交易合法。"
+      },
+      "usage": {
+        "prompt_tokens": 459,
+        "completion_tokens": 82
+      },
+      "wall_ms": 20468.4
+    },
+    {
+      "id": "C04",
+      "category": "subject",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "律师林的观点仅限于交易合法，但未提及如何看待交易。"
+      },
+      "usage": {
+        "prompt_tokens": 458,
+        "completion_tokens": 87
+      },
+      "wall_ms": 14406.7
+    },
+    {
+      "id": "C04",
+      "category": "subject",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "off_topic"
+      },
+      "usage": {
+        "prompt_tokens": 396,
+        "completion_tokens": 17
+      },
+      "wall_ms": 8968.4
+    },
+    {
+      "id": "C05",
+      "category": "modality",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 401,
+        "completion_tokens": 20
+      },
+      "wall_ms": 4025.5
+    },
+    {
+      "id": "C05",
+      "category": "modality",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "error",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "The evidence states that the audit team said Orion may have understated costs, which matches the claim."
+      },
+      "usage": {
+        "prompt_tokens": 463,
+        "completion_tokens": 91
+      },
+      "wall_ms": 21685.9
+    },
+    {
+      "id": "C06",
+      "category": "modality",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "error",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "The evidence only suggests a possible understatement of costs, not a certain one as claimed."
+      },
+      "usage": {
+        "prompt_tokens": 459,
+        "completion_tokens": 91
+      },
+      "wall_ms": 14988.1
+    },
+    {
+      "id": "C06",
+      "category": "modality",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "off_topic"
+      },
+      "usage": {
+        "prompt_tokens": 397,
+        "completion_tokens": 17
+      },
+      "wall_ms": 8981.8
+    },
+    {
+      "id": "C07",
+      "category": "modality",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 390,
+        "completion_tokens": 16
+      },
+      "wall_ms": 3383.5
+    },
+    {
+      "id": "C07",
+      "category": "modality",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "subject": "supported",
+        "modality": "supported",
+        "negation_scope": "not_applicable",
+        "attribute": "supported",
+        "time": "supported",
+        "conclusion": "not_applicable",
+        "reason": "证据明确指出专家周预测成本可能下降，这与声明一致。"
+      },
+      "usage": {
+        "prompt_tokens": 452,
+        "completion_tokens": 84
+      },
+      "wall_ms": 21030.9
+    },
+    {
+      "id": "C08",
+      "category": "modality",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "error",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "证据中的预测是可能下降，并非已经实现的结果，因此不能支持成本已经下降的断言。"
+      },
+      "usage": {
+        "prompt_tokens": 449,
+        "completion_tokens": 90
+      },
+      "wall_ms": 14726.3
+    },
+    {
+      "id": "C08",
+      "category": "modality",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "off_topic"
+      },
+      "usage": {
+        "prompt_tokens": 387,
+        "completion_tokens": 21
+      },
+      "wall_ms": 9202.9
+    },
+    {
+      "id": "C09",
+      "category": "negation_scope",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 392,
+        "completion_tokens": 16
+      },
+      "wall_ms": 3399.8
+    },
+    {
+      "id": "C09",
+      "category": "negation_scope",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "subject": "not_applicable",
+        "modality": "not_applicable",
+        "negation_scope": "supported",
+        "attribute": "not_applicable",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "The excerpt explicitly states it contains no mention of fines, supporting the claim."
+      },
+      "usage": {
+        "prompt_tokens": 454,
+        "completion_tokens": 90
+      },
+      "wall_ms": 21325.3
+    },
+    {
+      "id": "C10",
+      "category": "negation_scope",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "unclear",
+        "subject": "error",
+        "modality": "not_applicable",
+        "negation_scope": "error",
+        "attribute": "not_applicable",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "The excerpt only mentions operating costs, but the claim is about the whole report. There's not enough information to determine if fines are mentioned elsewhere."
+      },
+      "usage": {
+        "prompt_tokens": 452,
+        "completion_tokens": 103
+      },
+      "wall_ms": 17420.2
+    },
+    {
+      "id": "C10",
+      "category": "negation_scope",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 390,
+        "completion_tokens": 20
+      },
+      "wall_ms": 11192.5
+    },
+    {
+      "id": "C11",
+      "category": "negation_scope",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 386,
+        "completion_tokens": 16
+      },
+      "wall_ms": 3512.4
+    },
+    {
+      "id": "C11",
+      "category": "negation_scope",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "subject": "supported",
+        "modality": "error",
+        "negation_scope": "supported",
+        "attribute": "supported",
+        "time": "unclear",
+        "conclusion": "not_applicable",
+        "reason": "证据明确表示政策不要求审批，与声明一致。"
+      },
+      "usage": {
+        "prompt_tokens": 448,
+        "completion_tokens": 80
+      },
+      "wall_ms": 20411.3
+    },
+    {
+      "id": "C12",
+      "category": "negation_scope",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "证据明确表示不需要审批，与声明相矛盾。"
+      },
+      "usage": {
+        "prompt_tokens": 447,
+        "completion_tokens": 80
+      },
+      "wall_ms": 12904.9
+    },
+    {
+      "id": "C12",
+      "category": "negation_scope",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "off_topic"
+      },
+      "usage": {
+        "prompt_tokens": 385,
+        "completion_tokens": 21
+      },
+      "wall_ms": 9142.4
+    },
+    {
+      "id": "C13",
+      "category": "attribute",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 439,
+        "completion_tokens": 16
+      },
+      "wall_ms": 4087.4
+    },
+    {
+      "id": "C13",
+      "category": "attribute",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "subject": "supported",
+        "modality": "supported",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "supported",
+        "conclusion": "unclear",
+        "reason": "The opening dates are the same, but the opening times differ."
+      },
+      "usage": {
+        "prompt_tokens": 501,
+        "completion_tokens": 80
+      },
+      "wall_ms": 21161.7
+    },
+    {
+      "id": "C14",
+      "category": "attribute",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "subject": "supported",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "The claim attributes the difference in opening dates to different hours, but the evidence shows both stores open on the same date."
+      },
+      "usage": {
+        "prompt_tokens": 492,
+        "completion_tokens": 96
+      },
+      "wall_ms": 18102.2
+    },
+    {
+      "id": "C14",
+      "category": "attribute",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "off_topic"
+      },
+      "usage": {
+        "prompt_tokens": 430,
+        "completion_tokens": 17
+      },
+      "wall_ms": 9334.3
+    },
+    {
+      "id": "C15",
+      "category": "attribute",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 16
+      },
+      "wall_ms": 3965.1
+    },
+    {
+      "id": "C15",
+      "category": "attribute",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "两来源都强调选健康球员，但乙明确表示前锋甲无法出场，这与甲的立场不一致。"
+      },
+      "usage": {
+        "prompt_tokens": 482,
+        "completion_tokens": 95
+      },
+      "wall_ms": 22670.9
+    },
+    {
+      "id": "C16",
+      "category": "attribute",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "subject": "not_applicable",
+        "modality": "error",
+        "negation_scope": "supported",
+        "attribute": "supported",
+        "time": "unclear",
+        "conclusion": "not_applicable",
+        "reason": "虽然两来源都提到选人策略一致，但前锋甲的可用性不同导致策略在实际操作中不一致。"
+      },
+      "usage": {
+        "prompt_tokens": 484,
+        "completion_tokens": 93
+      },
+      "wall_ms": 16257.3
+    },
+    {
+      "id": "C16",
+      "category": "attribute",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 422,
+        "completion_tokens": 16
+      },
+      "wall_ms": 9785.7
+    },
+    {
+      "id": "C17",
+      "category": "time",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 463,
+        "completion_tokens": 16
+      },
+      "wall_ms": 4460.0
+    },
+    {
+      "id": "C17",
+      "category": "time",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "subject": "supported",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "supported",
+        "time": "supported",
+        "conclusion": "not_applicable",
+        "reason": "The evidence directly states the limit for September 1 through September 30, 2026 was 15 minutes."
+      },
+      "usage": {
+        "prompt_tokens": 525,
+        "completion_tokens": 97
+      },
+      "wall_ms": 26516.9
+    },
+    {
+      "id": "C18",
+      "category": "time",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "unclear",
+        "conclusion": "not_applicable",
+        "reason": "The evidence does not explicitly state the response limit on September 15, 2026. It only mentions that policy v2 with a 15-minute limit was effective from September 1 to September 30, 2026."
+      },
+      "usage": {
+        "prompt_tokens": 525,
+        "completion_tokens": 124
+      },
+      "wall_ms": 21431.6
+    },
+    {
+      "id": "C18",
+      "category": "time",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 463,
+        "completion_tokens": 16
+      },
+      "wall_ms": 9917.6
+    },
+    {
+      "id": "C19",
+      "category": "time",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 413,
+        "completion_tokens": 16
+      },
+      "wall_ms": 3920.6
+    },
+    {
+      "id": "C19",
+      "category": "time",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "subject": "supported",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "supported",
+        "time": "supported",
+        "conclusion": "not_applicable",
+        "reason": "证据明确指出了政策的生效日期为2026-09-01，与声明一致。"
+      },
+      "usage": {
+        "prompt_tokens": 475,
+        "completion_tokens": 92
+      },
+      "wall_ms": 22678.7
+    },
+    {
+      "id": "C20",
+      "category": "time",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "unclear",
+        "subject": "not_applicable",
+        "modality": "error",
+        "negation_scope": "not_applicable",
+        "attribute": "not_applicable",
+        "time": "error",
+        "conclusion": "not_applicable",
+        "reason": "证据中明确指出政策生效日期为2026-09-01，与声明中的2026-08-20不符。"
+      },
+      "usage": {
+        "prompt_tokens": 475,
+        "completion_tokens": 108
+      },
+      "wall_ms": 18147.1
+    },
+    {
+      "id": "C20",
+      "category": "time",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 413,
+        "completion_tokens": 16
+      },
+      "wall_ms": 8928.8
+    },
+    {
+      "id": "C21",
+      "category": "conclusion",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 423,
+        "completion_tokens": 16
+      },
+      "wall_ms": 3971.3
+    },
+    {
+      "id": "C21",
+      "category": "conclusion",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "supported",
+        "relevance": "related",
+        "subject": "supported",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "supported",
+        "time": "not_applicable",
+        "conclusion": "supported",
+        "reason": "Both reports provide specific release dates for Project Vega, which are different (July 2 and July 3, 2026)."
+      },
+      "usage": {
+        "prompt_tokens": 485,
+        "completion_tokens": 99
+      },
+      "wall_ms": 24795.8
+    },
+    {
+      "id": "C22",
+      "category": "conclusion",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "The release dates given by both reports are different."
+      },
+      "usage": {
+        "prompt_tokens": 473,
+        "completion_tokens": 82
+      },
+      "wall_ms": 14658.8
+    },
+    {
+      "id": "C22",
+      "category": "conclusion",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "off_topic"
+      },
+      "usage": {
+        "prompt_tokens": 411,
+        "completion_tokens": 17
+      },
+      "wall_ms": 9998.0
+    },
+    {
+      "id": "C23",
+      "category": "conclusion",
+      "arm": "legacy",
+      "expected": "supported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 404,
+        "completion_tokens": 20
+      },
+      "wall_ms": 4985.3
+    },
+    {
+      "id": "C23",
+      "category": "conclusion",
+      "arm": "source_v4",
+      "expected": "supported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "supported",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "甲报告确认事件已发生，符合claim。乙报告提到事件可能发生但尚未确认，并未完全否定事件的发生，因此不能说乙报告未确认事件发生。"
+      },
+      "usage": {
+        "prompt_tokens": 466,
+        "completion_tokens": 104
+      },
+      "wall_ms": 24747.5
+    },
+    {
+      "id": "C24",
+      "category": "conclusion",
+      "arm": "source_v4",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "partial",
+        "relevance": "related",
+        "subject": "error",
+        "modality": "not_applicable",
+        "negation_scope": "not_applicable",
+        "attribute": "error",
+        "time": "not_applicable",
+        "conclusion": "not_applicable",
+        "reason": "乙报告未确认事件已发生，因此整体支持不完全。"
+      },
+      "usage": {
+        "prompt_tokens": 462,
+        "completion_tokens": 83
+      },
+      "wall_ms": 15072.6
+    },
+    {
+      "id": "C24",
+      "category": "conclusion",
+      "arm": "legacy",
+      "expected": "unsupported",
+      "label": {
+        "entailment": "unsupported",
+        "relevance": "answers"
+      },
+      "usage": {
+        "prompt_tokens": 400,
+        "completion_tokens": 20
+      },
+      "wall_ms": 9789.4
+    }
+  ],
+  "summary": {
+    "legacy": {
+      "cases": 24,
+      "exact_labels_correct": 20,
+      "false_accepts": 2,
+      "unsafe_cases": 12,
+      "false_rejects": 2,
+      "supported_cases": 12,
+      "unclear": 0,
+      "p50_ms": 8948.6,
+      "prompt_tokens": 9823,
+      "completion_tokens": 427
+    },
+    "source_v4": {
+      "cases": 24,
+      "exact_labels_correct": 14,
+      "false_accepts": 0,
+      "unsafe_cases": 12,
+      "false_rejects": 3,
+      "supported_cases": 12,
+      "unclear": 0,
+      "p50_ms": 20439.8,
+      "prompt_tokens": 11311,
+      "completion_tokens": 2221
+    }
+  },
+  "by_category": {
+    "attribute": {
+      "legacy": {
+        "cases": 4,
+        "exact_labels_correct": 3,
+        "false_accepts": 1,
+        "unsafe_cases": 2,
+        "false_rejects": 0,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 6710.8,
+        "prompt_tokens": 1711,
+        "completion_tokens": 65
+      },
+      "source_v4": {
+        "cases": 4,
+        "exact_labels_correct": 0,
+        "false_accepts": 0,
+        "unsafe_cases": 2,
+        "false_rejects": 2,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 19632.0,
+        "prompt_tokens": 1959,
+        "completion_tokens": 364
+      }
+    },
+    "conclusion": {
+      "legacy": {
+        "cases": 4,
+        "exact_labels_correct": 3,
+        "false_accepts": 0,
+        "unsafe_cases": 2,
+        "false_rejects": 1,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 7387.4,
+        "prompt_tokens": 1638,
+        "completion_tokens": 73
+      },
+      "source_v4": {
+        "cases": 4,
+        "exact_labels_correct": 1,
+        "false_accepts": 0,
+        "unsafe_cases": 2,
+        "false_rejects": 1,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 19910.0,
+        "prompt_tokens": 1886,
+        "completion_tokens": 368
+      }
+    },
+    "modality": {
+      "legacy": {
+        "cases": 4,
+        "exact_labels_correct": 4,
+        "false_accepts": 0,
+        "unsafe_cases": 2,
+        "false_rejects": 0,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 6503.6,
+        "prompt_tokens": 1575,
+        "completion_tokens": 74
+      },
+      "source_v4": {
+        "cases": 4,
+        "exact_labels_correct": 4,
+        "false_accepts": 0,
+        "unsafe_cases": 2,
+        "false_rejects": 0,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 18009.5,
+        "prompt_tokens": 1823,
+        "completion_tokens": 356
+      }
+    },
+    "negation_scope": {
+      "legacy": {
+        "cases": 4,
+        "exact_labels_correct": 3,
+        "false_accepts": 0,
+        "unsafe_cases": 2,
+        "false_rejects": 1,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 6327.4,
+        "prompt_tokens": 1553,
+        "completion_tokens": 73
+      },
+      "source_v4": {
+        "cases": 4,
+        "exact_labels_correct": 4,
+        "false_accepts": 0,
+        "unsafe_cases": 2,
+        "false_rejects": 0,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 18915.8,
+        "prompt_tokens": 1801,
+        "completion_tokens": 353
+      }
+    },
+    "subject": {
+      "legacy": {
+        "cases": 4,
+        "exact_labels_correct": 4,
+        "false_accepts": 0,
+        "unsafe_cases": 2,
+        "false_rejects": 0,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 9268.3,
+        "prompt_tokens": 1594,
+        "completion_tokens": 78
+      },
+      "source_v4": {
+        "cases": 4,
+        "exact_labels_correct": 3,
+        "false_accepts": 0,
+        "unsafe_cases": 2,
+        "false_rejects": 0,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 18496.2,
+        "prompt_tokens": 1842,
+        "completion_tokens": 359
+      }
+    },
+    "time": {
+      "legacy": {
+        "cases": 4,
+        "exact_labels_correct": 3,
+        "false_accepts": 1,
+        "unsafe_cases": 2,
+        "false_rejects": 0,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 6694.4,
+        "prompt_tokens": 1752,
+        "completion_tokens": 64
+      },
+      "source_v4": {
+        "cases": 4,
+        "exact_labels_correct": 2,
+        "false_accepts": 0,
+        "unsafe_cases": 2,
+        "false_rejects": 0,
+        "supported_cases": 2,
+        "unclear": 0,
+        "p50_ms": 22055.2,
+        "prompt_tokens": 2000,
+        "completion_tokens": 421
+      }
+    }
+  },
+  "decision": "shadow_only; assistant authored calibration does not qualify a production semantic gate"
+}

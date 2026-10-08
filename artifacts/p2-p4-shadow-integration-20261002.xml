@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="4.322" timestamp="2026-10-02T03:46:20.974742+10:00" hostname="MingjieMacBook-Air.local"><testcase classname="tests.test_slot_shadow_integration" name="test_post_completion_shadow_has_own_budget_and_no_primary_writes[agent]" time="3.545"><failure message="AssertionError: assert ['true_1'] == ['branch_1']&#10;  &#10;  At index 0 diff: 'true_1' != 'branch_1'&#10;  Use -v to get more diff">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x104b89a70&gt;
+kind = 'agent'
+
+    @pytest.mark.parametrize("kind", ["agent", "answer"])
+    def test_post_completion_shadow_has_own_budget_and_no_primary_writes(monkeypatch, kind):
+        from app import slot_shadow
+        from app.qa import answer_question
+        from app.models import User
+        from agent.controller import create_task, run_task
+    
+        monkeypatch.setattr(settings(), "task_contract_enabled", True)
+        monkeypatch.setattr(settings(), "semantic_slot_shadow_enabled", True)
+        called = []
+        def judge(payload):
+            assert current_budget().state["limits"]["judge"] == 2
+            called.append(payload)
+            first = payload["evidence"][0]
+            return {"output": {"judgments": [{"subgoal_id": s["id"], "status": "supported",
+                "support_refs": [first["id"]], "quote_spans": [{"ref": first["id"], "quote": first["text"]}],
+                "missing_slots": [], "reason_code": "isolation_fixture_only", "confidence": 0}
+                for s in payload["subgoals"]]}, "prompt_tokens": 12, "completion_tokens": 5}
+        class FakeJudgeEvaluator(SlotEvidenceEvaluator):
+            def __init__(self, **kwargs):
+                super().__init__(**kwargs, judge=judge, relevance_scorer=lambda q, texts: [5]*len(texts))
+        monkeypatch.setattr(slot_shadow, "SlotEvidenceEvaluator", FakeJudgeEvaluator)
+        with SessionLocal() as db:
+            user = db.get(User, "xq-engineer")
+            question = "先查生产数据库的RPO，如果它超过30分钟，再给出生产数据库的RTO。"
+            rid = None
+            try:
+                if kind == "agent":
+                    task = create_task(db, user, question, "hybrid", 6, benchmark_execution=True)
+                    rid = task.id
+                    run_task(db, user, task)
+                    primary = task.result
+                    assert task.status == "completed"
+                    assert not db.scalar(select(AgentEvent).where(AgentEvent.task_id == rid,
+                                                                 AgentEvent.event_type == "semantic_coverage_control"))
+                else:
+                    result = answer_question(db, user, question)
+                    rid = result["id"]
+                    primary = db.get(Answer, rid).payload
+                assert primary["usage"]["execution_budget"]["calls"].get("judge", {}).get("attempted", 0) == 0
+                assert primary["status"] == "answered"
+                sidecar = Path(f".runtime/slot-shadow/{kind}/{rid}.json")
+                shadow = json.loads(sidecar.read_text())
+                assert shadow["status"] == "observed"
+                assert shadow["execution_budget"]["calls"]["judge"]["attempted"] == 1
+                assert called and current_budget() is None
+&gt;               assert shadow["report"]["inactive"] == ["branch_1"]
+E               AssertionError: assert ['true_1'] == ['branch_1']
+E                 
+E                 At index 0 diff: 'true_1' != 'branch_1'
+E                 Use -v to get more diff
+
+tests/test_slot_shadow_integration.py:65: AssertionError</failure></testcase><testcase classname="tests.test_slot_shadow_integration" name="test_post_completion_shadow_has_own_budget_and_no_primary_writes[answer]" time="0.374"><failure message="AssertionError: assert ['true_1'] == ['branch_1']&#10;  &#10;  At index 0 diff: 'true_1' != 'branch_1'&#10;  Use -v to get more diff">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10649aea0&gt;
+kind = 'answer'
+
+    @pytest.mark.parametrize("kind", ["agent", "answer"])
+    def test_post_completion_shadow_has_own_budget_and_no_primary_writes(monkeypatch, kind):
+        from app import slot_shadow
+        from app.qa import answer_question
+        from app.models import User
+        from agent.controller import create_task, run_task
+    
+        monkeypatch.setattr(settings(), "task_contract_enabled", True)
+        monkeypatch.setattr(settings(), "semantic_slot_shadow_enabled", True)
+        called = []
+        def judge(payload):
+            assert current_budget().state["limits"]["judge"] == 2
+            called.append(payload)
+            first = payload["evidence"][0]
+            return {"output": {"judgments": [{"subgoal_id": s["id"], "status": "supported",
+                "support_refs": [first["id"]], "quote_spans": [{"ref": first["id"], "quote": first["text"]}],
+                "missing_slots": [], "reason_code": "isolation_fixture_only", "confidence": 0}
+                for s in payload["subgoals"]]}, "prompt_tokens": 12, "completion_tokens": 5}
+        class FakeJudgeEvaluator(SlotEvidenceEvaluator):
+            def __init__(self, **kwargs):
+                super().__init__(**kwargs, judge=judge, relevance_scorer=lambda q, texts: [5]*len(texts))
+        monkeypatch.setattr(slot_shadow, "SlotEvidenceEvaluator", FakeJudgeEvaluator)
+        with SessionLocal() as db:
+            user = db.get(User, "xq-engineer")
+            question = "先查生产数据库的RPO，如果它超过30分钟，再给出生产数据库的RTO。"
+            rid = None
+            try:
+                if kind == "agent":
+                    task = create_task(db, user, question, "hybrid", 6, benchmark_execution=True)
+                    rid = task.id
+                    run_task(db, user, task)
+                    primary = task.result
+                    assert task.status == "completed"
+                    assert not db.scalar(select(AgentEvent).where(AgentEvent.task_id == rid,
+                                                                 AgentEvent.event_type == "semantic_coverage_control"))
+                else:
+                    result = answer_question(db, user, question)
+                    rid = result["id"]
+                    primary = db.get(Answer, rid).payload
+                assert primary["usage"]["execution_budget"]["calls"].get("judge", {}).get("attempted", 0) == 0
+                assert primary["status"] == "answered"
+                sidecar = Path(f".runtime/slot-shadow/{kind}/{rid}.json")
+                shadow = json.loads(sidecar.read_text())
+                assert shadow["status"] == "observed"
+                assert shadow["execution_budget"]["calls"]["judge"]["attempted"] == 1
+                assert called and current_budget() is None
+&gt;               assert shadow["report"]["inactive"] == ["branch_1"]
+E               AssertionError: assert ['true_1'] == ['branch_1']
+E                 
+E                 At index 0 diff: 'true_1' != 'branch_1'
+E                 Use -v to get more diff
+
+tests/test_slot_shadow_integration.py:65: AssertionError</failure></testcase></testsuite></testsuites>

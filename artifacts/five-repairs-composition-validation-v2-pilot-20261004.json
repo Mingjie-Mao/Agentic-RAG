@@ -1,0 +1,1193 @@
+{
+  "protocol": "literal-answer-composition-validation-result-v1",
+  "cases_sha256": "110447ecb248fdd21135f338faf1810250eb23bc7ad0fee5e465da23e8575e8f",
+  "registered_gates": {
+    "all_registered_cases_correct": true,
+    "transport_or_format_failures_max": 0
+  },
+  "model": "qwen3.5:9b",
+  "model_digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "implementation_sha256": "77e48c887a51d47a3df4ea7f39e85bc988096ab9b05a8cb680c28351949f2ab4",
+  "rows": [
+    {
+      "id": "composition-v1-00",
+      "label": "supported",
+      "passed": true,
+      "seconds": 13.82,
+      "budget": {
+        "deadline": 1791094841.058892,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 387,
+            "completion_tokens": 59,
+            "wall_ms": 13818.7
+          }
+        },
+        "judge_tokens_reserved": 446,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 13818.7,
+            "prompt_tokens": 387,
+            "completion_tokens": 59,
+            "server_ms": 13797.5,
+            "load_ms": 3.3,
+            "prompt_eval_ms": 5197.0,
+            "completion_eval_ms": 8207.8
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Writer K explicitly denies that the mistake was driven by personal gain."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Writer L calls the cause a personal profit motive."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "Writer K denies personal gain (claim 1); Writer L asserts it (claim 2). Both attribute? NO. complete=true.",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 387,
+        "completion_tokens": 59,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-01",
+      "label": "supported",
+      "passed": true,
+      "seconds": 13.432,
+      "budget": {
+        "deadline": 1791094854.8795578,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 375,
+            "completion_tokens": 58,
+            "wall_ms": 13430.9
+          }
+        },
+        "judge_tokens_reserved": 433,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 13430.9,
+            "prompt_tokens": 375,
+            "completion_tokens": 58,
+            "server_ms": 13403.0,
+            "load_ms": 1.3,
+            "prompt_eval_ms": 5210.8,
+            "completion_eval_ms": 8185.3
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Faye gave permission to record her presentation."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Dina explicitly declined recording."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "Faye approved (claim 1), but Dina declined (claim 2). Both approved? NO. complete=true.",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 375,
+        "completion_tokens": 58,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-02",
+      "label": "supported",
+      "passed": true,
+      "seconds": 11.27,
+      "budget": {
+        "deadline": 1791094868.3134232,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 373,
+            "completion_tokens": 44,
+            "wall_ms": 11268.7
+          }
+        },
+        "judge_tokens_reserved": 417,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 11268.7,
+            "prompt_tokens": 373,
+            "completion_tokens": 44,
+            "server_ms": 11241.5,
+            "load_ms": 1.4,
+            "prompt_eval_ms": 5149.7,
+            "completion_eval_ms": 6086.2
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Office C rejected the extension."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Office D approved the extension."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "yes",
+        "conclusion": "Office D approved the extension (claim 2), satisfying 'either'.",
+        "conclusion_claim_indices": [
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 373,
+        "completion_tokens": 44,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-03",
+      "label": "supported",
+      "passed": true,
+      "seconds": 13.385,
+      "budget": {
+        "deadline": 1791094879.5842922,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 398,
+            "completion_tokens": 55,
+            "wall_ms": 13384.1
+          }
+        },
+        "judge_tokens_reserved": 453,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 13384.1,
+            "prompt_tokens": 398,
+            "completion_tokens": 55,
+            "server_ms": 13356.7,
+            "load_ms": 1.4,
+            "prompt_eval_ms": 5547.6,
+            "completion_eval_ms": 7799.6
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "The opening took place on 2036-05-16."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "The opening took place on 2036-05-16."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "yes",
+        "conclusion": "Both reports state the opening date is 2036-05-16, establishing consistency.",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 398,
+        "completion_tokens": 55,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-04",
+      "label": "supported",
+      "passed": true,
+      "seconds": 14.905,
+      "budget": {
+        "deadline": 1791094892.970763,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 396,
+            "completion_tokens": 67,
+            "wall_ms": 14904.3
+          }
+        },
+        "judge_tokens_reserved": 463,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 14904.3,
+            "prompt_tokens": 396,
+            "completion_tokens": 67,
+            "server_ms": 14876.1,
+            "load_ms": 2.3,
+            "prompt_eval_ms": 5470.0,
+            "completion_eval_ms": 9398.6
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Branch X operates from 07:00 to 15:00."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Branch Y operates from 09:00 to 17:00."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "Branch X hours (07:00-15:00) differ from Branch Y hours (09:00-17:00).",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 396,
+        "completion_tokens": 67,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-05",
+      "label": "supported",
+      "passed": true,
+      "seconds": 11.484,
+      "budget": {
+        "deadline": 1791094907.876926,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 373,
+            "completion_tokens": 45,
+            "wall_ms": 11482.9
+          }
+        },
+        "judge_tokens_reserved": 418,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 11482.9,
+            "prompt_tokens": 373,
+            "completion_tokens": 45,
+            "server_ms": 11453.9,
+            "load_ms": 1.8,
+            "prompt_eval_ms": 5097.8,
+            "completion_eval_ms": 6350.5
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Request X is pending approval."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Request Y is pending approval."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "yes",
+        "conclusion": "Both requests are pending approval per claims 1 and 2.",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 373,
+        "completion_tokens": 45,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-06",
+      "label": "unsupported",
+      "passed": false,
+      "seconds": 12.526,
+      "budget": {
+        "deadline": 1791094919.429823,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 364,
+            "completion_tokens": 52,
+            "wall_ms": 12524.8
+          }
+        },
+        "judge_tokens_reserved": 416,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 12524.8,
+            "prompt_tokens": 364,
+            "completion_tokens": 52,
+            "server_ms": 12497.9,
+            "load_ms": 2.1,
+            "prompt_eval_ms": 5188.9,
+            "completion_eval_ms": 7300.8
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "The defense alleges that the funds were for personal gain; no judicial decision has been issued."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "unclear",
+        "conclusion": "No court determination exists as no judicial decision was issued; the claim is an allegation, not a ruling.",
+        "conclusion_claim_indices": [
+          1
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 364,
+        "completion_tokens": 52,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-07",
+      "label": "unsupported",
+      "passed": false,
+      "seconds": 0.0,
+      "budget": {
+        "deadline": 1791094931.956578,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {},
+        "judge_tokens_reserved": 0,
+        "model_call_records": []
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Station M opens at 08:00."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "unclear",
+        "conclusion": "",
+        "conclusion_claim_indices": []
+      },
+      "usage": {
+        "model": null,
+        "scope": "literal_provenance_only; task_completeness_requires_offline_review",
+        "model_calls": 0
+      }
+    },
+    {
+      "id": "composition-v1-08",
+      "label": "unsupported",
+      "passed": false,
+      "seconds": 13.584,
+      "budget": {
+        "deadline": 1791094931.95731,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 380,
+            "completion_tokens": 60,
+            "wall_ms": 13582.8
+          }
+        },
+        "judge_tokens_reserved": 440,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 13582.8,
+            "prompt_tokens": 380,
+            "completion_tokens": 60,
+            "server_ms": 13555.4,
+            "load_ms": 3.8,
+            "prompt_eval_ms": 5102.6,
+            "completion_eval_ms": 8444.7
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Report A says the voyage began in June."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "Report B only describes ticket prices."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "Report A affirms June start; Report B is silent on the date. Both say it began in June? NO. complete=true.",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 380,
+        "completion_tokens": 60,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-09",
+      "label": "unsupported",
+      "passed": false,
+      "seconds": 12.033,
+      "budget": {
+        "deadline": 1791094945.541975,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 355,
+            "completion_tokens": 51,
+            "wall_ms": 12032.0
+          }
+        },
+        "judge_tokens_reserved": 406,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 12032.0,
+            "prompt_tokens": 355,
+            "completion_tokens": 51,
+            "server_ms": 12004.6,
+            "load_ms": 2.4,
+            "prompt_eval_ms": 4742.4,
+            "completion_eval_ms": 7254.7
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "One person was asked to agree to filming, but no response is recorded."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "unclear",
+        "conclusion": "No agreement is established; one person's response is unrecorded.",
+        "conclusion_claim_indices": [
+          1
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 355,
+        "completion_tokens": 51,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-10",
+      "label": "supported",
+      "passed": true,
+      "seconds": 12.953,
+      "budget": {
+        "deadline": 1791094957.575902,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 398,
+            "completion_tokens": 53,
+            "wall_ms": 12951.9
+          }
+        },
+        "judge_tokens_reserved": 451,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 12951.9,
+            "prompt_tokens": 398,
+            "completion_tokens": 53,
+            "server_ms": 12924.0,
+            "load_ms": 2.4,
+            "prompt_eval_ms": 5513.0,
+            "completion_eval_ms": 7402.7
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "东区中心工作日服务时间为08:30至16:30。"
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "西区中心工作日服务时间为08:30至16:30。"
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "yes",
+        "conclusion": "Both centers have identical weekday service hours (08:30-16:30).",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 398,
+        "completion_tokens": 53,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-11",
+      "label": "supported",
+      "passed": true,
+      "seconds": 16.897,
+      "budget": {
+        "deadline": 1791094970.5300329,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 395,
+            "completion_tokens": 76,
+            "wall_ms": 16895.9
+          }
+        },
+        "judge_tokens_reserved": 471,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 16895.9,
+            "prompt_tokens": 395,
+            "completion_tokens": 76,
+            "server_ms": 16855.2,
+            "load_ms": 1.9,
+            "prompt_eval_ms": 5468.0,
+            "completion_eval_ms": 11379.5
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "甲中心开放时间为08:00至18:00。"
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "乙中心开放时间为10:00至16:00。"
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "Claim 1 states Center A opens 08:00-18:00; Claim 2 states Center B opens 10:00-16:00. The times differ.",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 395,
+        "completion_tokens": 76,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-12",
+      "label": "supported",
+      "passed": true,
+      "seconds": 15.057,
+      "budget": {
+        "deadline": 1791094987.4277928,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 376,
+            "completion_tokens": 58,
+            "wall_ms": 15056.1
+          }
+        },
+        "judge_tokens_reserved": 434,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 15056.1,
+            "prompt_tokens": 376,
+            "completion_tokens": 58,
+            "server_ms": 15025.7,
+            "load_ms": 3.0,
+            "prompt_eval_ms": 6051.5,
+            "completion_eval_ms": 8963.6
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "甲通告已经批准延期。"
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "乙通告明确拒绝延期。"
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "no",
+        "conclusion": "两份通告均已提及，但一份批准、一份拒绝延期，因此并非都已批准。",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 376,
+        "completion_tokens": 58,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-13",
+      "label": "unsupported",
+      "passed": true,
+      "seconds": 14.869,
+      "budget": {
+        "deadline": 1791095002.487336,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 347,
+            "completion_tokens": 49,
+            "wall_ms": 14868.5
+          }
+        },
+        "judge_tokens_reserved": 396,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 14868.5,
+            "prompt_tokens": 347,
+            "completion_tokens": 49,
+            "server_ms": 14840.6,
+            "load_ms": 2.6,
+            "prompt_eval_ms": 6652.0,
+            "completion_eval_ms": 8179.1
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "第一位参与者已授权使用图像。"
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": false,
+        "verdict": "unclear",
+        "conclusion": "仅有一位参与者被确认授权使用图像，另一位未知。",
+        "conclusion_claim_indices": [
+          1
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 347,
+        "completion_tokens": 49,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-14",
+      "label": "supported",
+      "passed": true,
+      "seconds": 14.036,
+      "budget": {
+        "deadline": 1791095017.3580842,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 360,
+            "completion_tokens": 53,
+            "wall_ms": 14034.8
+          }
+        },
+        "judge_tokens_reserved": 413,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 14034.8,
+            "prompt_tokens": 360,
+            "completion_tokens": 53,
+            "server_ms": 14007.5,
+            "load_ms": 2.5,
+            "prompt_eval_ms": 5528.5,
+            "completion_eval_ms": 8470.7
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "The report says the allegation involves 6 billion dollars, not millions."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "yes",
+        "conclusion": "Claim 1 states the report says the allegation involves 6 billion dollars, not millions.",
+        "conclusion_claim_indices": [
+          1
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 360,
+        "completion_tokens": 53,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    },
+    {
+      "id": "composition-v1-15",
+      "label": "unsupported",
+      "passed": false,
+      "seconds": 18.984,
+      "budget": {
+        "deadline": 1791095031.3950322,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "judge": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 406,
+            "completion_tokens": 65,
+            "wall_ms": 18983.1
+          }
+        },
+        "judge_tokens_reserved": 471,
+        "model_call_records": [
+          {
+            "role": "judge",
+            "status": "ok",
+            "wall_ms": 18983.1,
+            "prompt_tokens": 406,
+            "completion_tokens": 65,
+            "server_ms": 18956.5,
+            "load_ms": 2.1,
+            "prompt_eval_ms": 6589.5,
+            "completion_eval_ms": 12359.6
+          }
+        ]
+      },
+      "audit": {
+        "checks": [
+          {
+            "claim_index": 1,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "The first source states only a publication date of 2037-01-12."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          },
+          {
+            "claim_index": 2,
+            "source_indices": [
+              1
+            ],
+            "source_excerpts": [
+              "The second source gives the event date as 2037-01-12."
+            ],
+            "reason": "Exact authorized quoted statement; relevance evaluated separately.",
+            "support": "supported"
+          }
+        ],
+        "question_complete": true,
+        "verdict": "unclear",
+        "conclusion": "Source 1 provides a publication date; Source 2 provides an event date. Neither explicitly confirms they are the same date, so the relation is unclear.",
+        "conclusion_claim_indices": [
+          1,
+          2
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 406,
+        "completion_tokens": 65,
+        "model": "qwen3.5:9b",
+        "independent": false,
+        "scope": "literal_facts_plus_model_composition"
+      }
+    }
+  ],
+  "completed": 16,
+  "independent": false
+}

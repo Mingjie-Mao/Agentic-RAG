@@ -1,0 +1,26 @@
+{
+  "measured_at": "2026-10-06 08:2x local",
+  "server": "project Ollama 0.11.10 on 11436 restarted with identical env (NUM_PARALLEL=1, MAX_LOADED_MODELS=2, nice 5) after orphaned runners from 2026-09-15 and full swap (21.3/22.5 GB) were observed",
+  "before_restart_decode_tok_s_range": [
+    1.6,
+    9.1
+  ],
+  "after_restart": {
+    "prefill_tok_s": [
+      85,
+      88,
+      89
+    ],
+    "decode_tok_s": [
+      8.4,
+      8.2,
+      8.1
+    ]
+  },
+  "v2_baseline_from_telemetry": {
+    "decode_tok_s_median": 7.7,
+    "prefill_uncached_tok_s_median": 109.2
+  },
+  "concurrent_host_load": "one Android emulator (qemu-system-aarch64) and replayd still running; prefill about 20% slower than v2 median",
+  "note": "Earlier statement that normal decode is about 18 tok/s was an unverified assumption and is wrong; v2 telemetry shows 7.7 tok/s."
+}

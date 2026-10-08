@@ -1,0 +1,1790 @@
+{
+  "version": "semantic-paired-v2-development",
+  "evaluation_protocol": "semantic-paired-v2-development",
+  "purpose": "already-spent v1 tasks; never a new formal holdout",
+  "arms": [
+    "hybrid",
+    "hybrid_semantic"
+  ],
+  "p2_gate": "artifacts/p2-slot-component-gate.json",
+  "calibration": "artifacts/p2-slot-calibration.json",
+  "categories": {
+    "efficiency_stopping": 6,
+    "multi_hop": 5,
+    "latent_link": 5,
+    "conditional_planning": 5,
+    "comparison": 5,
+    "temporal_version": 5,
+    "null_insufficient": 4
+  },
+  "tasks": [
+    {
+      "id": "U01",
+      "category": "efficiency_stopping",
+      "user": "lt-eng",
+      "goal": "兰亭云 Java SDK 默认失败后重试几次？",
+      "expected_status": "answered",
+      "facts": [
+        "retries"
+      ],
+      "fact_matchers": [
+        {
+          "id": "retries",
+          "aliases": [
+            "2 次",
+            "2次",
+            "两次"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-sdk-guide"
+      ],
+      "max_steps": 4,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ],
+      "forbidden_tools": [
+        "compare_versions",
+        "get_document_version",
+        "search_memory"
+      ],
+      "required_slots": [
+        {
+          "id": "retries",
+          "description": "2 次",
+          "document_ids": [
+            "lt-sdk-guide"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U02",
+      "category": "efficiency_stopping",
+      "user": "lt-eng",
+      "goal": "开放平台专业版每分钟最多可以调用多少次？",
+      "expected_status": "answered",
+      "facts": [
+        "quota"
+      ],
+      "fact_matchers": [
+        {
+          "id": "quota",
+          "aliases": [
+            "1200"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-api-quota"
+      ],
+      "max_steps": 4,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ],
+      "forbidden_tools": [
+        "compare_versions",
+        "get_document_version",
+        "search_memory"
+      ],
+      "required_slots": [
+        {
+          "id": "quota",
+          "description": "1200",
+          "document_ids": [
+            "lt-api-quota"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U03",
+      "category": "efficiency_stopping",
+      "user": "lt-eng",
+      "goal": "生产数据库的 RPO 是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "rpo"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rpo",
+          "aliases": [
+            "10 分钟",
+            "10分钟"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-db-backup"
+      ],
+      "max_steps": 4,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ],
+      "forbidden_tools": [
+        "compare_versions",
+        "get_document_version",
+        "search_memory"
+      ],
+      "required_slots": [
+        {
+          "id": "rpo",
+          "description": "10 分钟",
+          "document_ids": [
+            "lt-db-backup"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U04",
+      "category": "efficiency_stopping",
+      "user": "lt-eng",
+      "goal": "会议室最多可以提前多少天预订？",
+      "expected_status": "answered",
+      "facts": [
+        "days"
+      ],
+      "fact_matchers": [
+        {
+          "id": "days",
+          "aliases": [
+            "14 天",
+            "14天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-meeting-room"
+      ],
+      "max_steps": 4,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ],
+      "forbidden_tools": [
+        "compare_versions",
+        "get_document_version",
+        "search_memory"
+      ],
+      "required_slots": [
+        {
+          "id": "days",
+          "description": "14 天",
+          "document_ids": [
+            "lt-meeting-room"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U05",
+      "category": "efficiency_stopping",
+      "user": "lt-eng",
+      "goal": "新员工的安全培训要在入职后多少天内完成？",
+      "expected_status": "answered",
+      "facts": [
+        "days"
+      ],
+      "fact_matchers": [
+        {
+          "id": "days",
+          "aliases": [
+            "7 天",
+            "7天",
+            "七天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-onboarding"
+      ],
+      "max_steps": 4,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ],
+      "forbidden_tools": [
+        "compare_versions",
+        "get_document_version",
+        "search_memory"
+      ],
+      "required_slots": [
+        {
+          "id": "days",
+          "description": "7 天",
+          "document_ids": [
+            "lt-onboarding"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U06",
+      "category": "efficiency_stopping",
+      "user": "lt-eng",
+      "goal": "临时访客卡的有效期是多久？",
+      "expected_status": "answered",
+      "facts": [
+        "days"
+      ],
+      "fact_matchers": [
+        {
+          "id": "days",
+          "aliases": [
+            "1 天",
+            "1天",
+            "一天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-badge"
+      ],
+      "max_steps": 4,
+      "allowed_tools_after_sufficient": [
+        "retrieve_evidence",
+        "verify_chunk_access"
+      ],
+      "forbidden_tools": [
+        "compare_versions",
+        "get_document_version",
+        "search_memory"
+      ],
+      "required_slots": [
+        {
+          "id": "days",
+          "description": "1 天",
+          "document_ids": [
+            "lt-badge"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U07",
+      "category": "multi_hop",
+      "user": "lt-eng",
+      "goal": "回调通知最多重试几次？Java SDK 的幂等键请求头叫什么？",
+      "expected_status": "answered",
+      "facts": [
+        "webhook",
+        "key"
+      ],
+      "fact_matchers": [
+        {
+          "id": "webhook",
+          "aliases": [
+            "6 次",
+            "6次",
+            "六次"
+          ]
+        },
+        {
+          "id": "key",
+          "aliases": [
+            "x-idempotency-key"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-webhook",
+        "lt-sdk-guide"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "required_slots": [
+        {
+          "id": "webhook",
+          "description": "6 次",
+          "document_ids": [
+            "lt-webhook",
+            "lt-sdk-guide"
+          ]
+        },
+        {
+          "id": "key",
+          "description": "x-idempotency-key",
+          "document_ids": [
+            "lt-webhook",
+            "lt-sdk-guide"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U08",
+      "category": "multi_hop",
+      "user": "lt-eng",
+      "goal": "请对照开放平台配额和回调通知：前者超额时返回的状态码、后者的签名头分别是什么？",
+      "expected_status": "answered",
+      "facts": [
+        "status",
+        "sig"
+      ],
+      "fact_matchers": [
+        {
+          "id": "status",
+          "aliases": [
+            "429"
+          ]
+        },
+        {
+          "id": "sig",
+          "aliases": [
+            "x-lt-signature"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-api-quota",
+        "lt-webhook"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "required_slots": [
+        {
+          "id": "status",
+          "description": "429",
+          "document_ids": [
+            "lt-api-quota",
+            "lt-webhook"
+          ]
+        },
+        {
+          "id": "sig",
+          "description": "x-lt-signature",
+          "document_ids": [
+            "lt-api-quota",
+            "lt-webhook"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U09",
+      "category": "multi_hop",
+      "user": "lt-eng",
+      "goal": "S1 工单的首次响应时限是多少，值班经理多久轮换一次？",
+      "expected_status": "answered",
+      "facts": [
+        "s1",
+        "rotate"
+      ],
+      "fact_matchers": [
+        {
+          "id": "s1",
+          "aliases": [
+            "20 分钟",
+            "20分钟"
+          ]
+        },
+        {
+          "id": "rotate",
+          "aliases": [
+            "7 天",
+            "7天",
+            "每周",
+            "一周"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-support-tiers",
+        "lt-oncall"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "required_slots": [
+        {
+          "id": "s1",
+          "description": "20 分钟",
+          "document_ids": [
+            "lt-support-tiers",
+            "lt-oncall"
+          ]
+        },
+        {
+          "id": "rotate",
+          "description": "7 天",
+          "document_ids": [
+            "lt-support-tiers",
+            "lt-oncall"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U10",
+      "category": "multi_hop",
+      "user": "lt-eng",
+      "goal": "新版本灰度首批分配多少流量？数据库每天几点做全量备份？",
+      "expected_status": "answered",
+      "facts": [
+        "canary",
+        "backup"
+      ],
+      "fact_matchers": [
+        {
+          "id": "canary",
+          "aliases": [
+            "5%",
+            "百分之五"
+          ]
+        },
+        {
+          "id": "backup",
+          "aliases": [
+            "02:00",
+            "2:00",
+            "凌晨2点",
+            "凌晨两点"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-release-gate",
+        "lt-db-backup"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "required_slots": [
+        {
+          "id": "canary",
+          "description": "5%",
+          "document_ids": [
+            "lt-release-gate",
+            "lt-db-backup"
+          ]
+        },
+        {
+          "id": "backup",
+          "description": "02:00",
+          "document_ids": [
+            "lt-release-gate",
+            "lt-db-backup"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U11",
+      "category": "multi_hop",
+      "user": "lt-eng",
+      "goal": "批量导入单次最多多少行？路由服务单个请求的超时阈值是多少？",
+      "expected_status": "answered",
+      "facts": [
+        "rows",
+        "timeout"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rows",
+          "aliases": [
+            "5 万行",
+            "5万行",
+            "50000",
+            "50,000",
+            "五万行"
+          ]
+        },
+        {
+          "id": "timeout",
+          "aliases": [
+            "8 秒",
+            "8秒"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-import-guide",
+        "lt-routing-ops"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "required_slots": [
+        {
+          "id": "rows",
+          "description": "5 万行",
+          "document_ids": [
+            "lt-import-guide",
+            "lt-routing-ops"
+          ]
+        },
+        {
+          "id": "timeout",
+          "description": "8 秒",
+          "document_ids": [
+            "lt-import-guide",
+            "lt-routing-ops"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U12",
+      "category": "latent_link",
+      "user": "lt-eng",
+      "goal": "事故 417 中占满连接池的那次导入任务有什么特征？按这个特征对应的规则，现在单次导入最多允许多少行？",
+      "expected_status": "answered",
+      "facts": [
+        "feature",
+        "limit"
+      ],
+      "fact_matchers": [
+        {
+          "id": "feature",
+          "aliases": [
+            "12 万行",
+            "12万行",
+            "120000",
+            "120,000",
+            "十二万行"
+          ]
+        },
+        {
+          "id": "limit",
+          "aliases": [
+            "5 万行",
+            "5万行",
+            "50000",
+            "50,000",
+            "五万行"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-incident-417",
+        "lt-import-guide"
+      ],
+      "max_steps": 7,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "lt-incident-417",
+        "then_document": "lt-import-guide"
+      },
+      "required_slots": [
+        {
+          "id": "feature",
+          "description": "12 万行",
+          "document_ids": [
+            "lt-incident-417",
+            "lt-import-guide"
+          ]
+        },
+        {
+          "id": "limit",
+          "description": "5 万行",
+          "document_ids": [
+            "lt-incident-417",
+            "lt-import-guide"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U13",
+      "category": "latent_link",
+      "user": "lt-eng",
+      "goal": "事故 417 的根因涉及哪个服务的连接池？这个服务现在每个租户最多能占用多少个连接？",
+      "expected_status": "answered",
+      "facts": [
+        "service",
+        "conn"
+      ],
+      "fact_matchers": [
+        {
+          "id": "service",
+          "aliases": [
+            "路由服务"
+          ]
+        },
+        {
+          "id": "conn",
+          "aliases": [
+            "40 个",
+            "40个",
+            "40"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-incident-417",
+        "lt-routing-ops"
+      ],
+      "max_steps": 7,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "lt-incident-417",
+        "then_document": "lt-routing-ops"
+      },
+      "required_slots": [
+        {
+          "id": "service",
+          "description": "路由服务",
+          "document_ids": [
+            "lt-incident-417",
+            "lt-routing-ops"
+          ]
+        },
+        {
+          "id": "conn",
+          "description": "40 个",
+          "document_ids": [
+            "lt-incident-417",
+            "lt-routing-ops"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U14",
+      "category": "latent_link",
+      "user": "lt-eng",
+      "goal": "事故 502 之后汇率缓存的刷新间隔改成了多少？受这个缓存影响的结算规则里，跨境订单比普通订单多几个工作日？",
+      "expected_status": "answered",
+      "facts": [
+        "interval",
+        "extra"
+      ],
+      "fact_matchers": [
+        {
+          "id": "interval",
+          "aliases": [
+            "10 分钟",
+            "10分钟"
+          ]
+        },
+        {
+          "id": "extra",
+          "aliases": [
+            "1 个工作日",
+            "1个工作日",
+            "一个工作日"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-incident-502",
+        "lt-settlement-rules"
+      ],
+      "max_steps": 7,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "lt-incident-502",
+        "then_document": "lt-settlement-rules"
+      },
+      "required_slots": [
+        {
+          "id": "interval",
+          "description": "10 分钟",
+          "document_ids": [
+            "lt-incident-502",
+            "lt-settlement-rules"
+          ]
+        },
+        {
+          "id": "extra",
+          "description": "1 个工作日",
+          "document_ids": [
+            "lt-incident-502",
+            "lt-settlement-rules"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U15",
+      "category": "latent_link",
+      "user": "lt-eng",
+      "goal": "S1 工单在首次响应时还必须通知哪个角色？这个角色每周什么时候交接？",
+      "expected_status": "answered",
+      "facts": [
+        "role",
+        "handoff"
+      ],
+      "fact_matchers": [
+        {
+          "id": "role",
+          "aliases": [
+            "值班经理"
+          ]
+        },
+        {
+          "id": "handoff",
+          "aliases": [
+            "周一 10:00",
+            "周一10:00",
+            "每周一10:00",
+            "星期一10:00"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-support-tiers",
+        "lt-oncall"
+      ],
+      "max_steps": 7,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "lt-support-tiers",
+        "then_document": "lt-oncall"
+      },
+      "required_slots": [
+        {
+          "id": "role",
+          "description": "值班经理",
+          "document_ids": [
+            "lt-support-tiers",
+            "lt-oncall"
+          ]
+        },
+        {
+          "id": "handoff",
+          "description": "周一 10:00",
+          "document_ids": [
+            "lt-support-tiers",
+            "lt-oncall"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U16",
+      "category": "latent_link",
+      "user": "lt-eng",
+      "goal": "批量导入按多少行分片？根据事故 417 的复盘，导入改为强制分片之后还新增了什么告警？",
+      "expected_status": "answered",
+      "facts": [
+        "shard",
+        "alert"
+      ],
+      "fact_matchers": [
+        {
+          "id": "shard",
+          "aliases": [
+            "5000 行",
+            "5000行",
+            "5,000"
+          ]
+        },
+        {
+          "id": "alert",
+          "aliases": [
+            "导入行数告警",
+            "行数告警"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-import-guide",
+        "lt-incident-417"
+      ],
+      "max_steps": 7,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "lt-import-guide",
+        "then_document": "lt-incident-417"
+      },
+      "required_slots": [
+        {
+          "id": "shard",
+          "description": "5000 行",
+          "document_ids": [
+            "lt-import-guide",
+            "lt-incident-417"
+          ]
+        },
+        {
+          "id": "alert",
+          "description": "导入行数告警",
+          "document_ids": [
+            "lt-import-guide",
+            "lt-incident-417"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U17",
+      "category": "conditional_planning",
+      "user": "lt-eng",
+      "goal": "先查生产数据库的 RTO；如果超过 30 分钟，再给出发布灰度期间自动回滚的错误率阈值；否则只回答 RTO。",
+      "expected_status": "answered",
+      "facts": [
+        "rto",
+        "rollback"
+      ],
+      "fact_matchers": [
+        {
+          "id": "rto",
+          "aliases": [
+            "45 分钟",
+            "45分钟"
+          ]
+        },
+        {
+          "id": "rollback",
+          "aliases": [
+            "2%",
+            "百分之二"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-db-backup",
+        "lt-release-gate"
+      ],
+      "max_steps": 7,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "lt-db-backup",
+        "then_document": "lt-release-gate"
+      },
+      "required_slots": [
+        {
+          "id": "rto",
+          "description": "45 分钟",
+          "document_ids": [
+            "lt-db-backup",
+            "lt-release-gate"
+          ]
+        },
+        {
+          "id": "rollback",
+          "description": "2%",
+          "document_ids": [
+            "lt-db-backup",
+            "lt-release-gate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U18",
+      "category": "conditional_planning",
+      "user": "lt-eng",
+      "goal": "先查 S1 工单的首次响应时限；只有超过 30 分钟时，才继续说明值班经理的夜间升级规则。",
+      "expected_status": "answered",
+      "facts": [
+        "s1"
+      ],
+      "fact_matchers": [
+        {
+          "id": "s1",
+          "aliases": [
+            "20 分钟",
+            "20分钟"
+          ]
+        }
+      ],
+      "forbidden": [
+        "备岗"
+      ],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-support-tiers"
+      ],
+      "max_steps": 7,
+      "required_slots": [
+        {
+          "id": "s1",
+          "description": "20 分钟",
+          "document_ids": [
+            "lt-support-tiers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U19",
+      "category": "conditional_planning",
+      "user": "lt-eng",
+      "goal": "先查 Java SDK 的默认请求超时；如果大于 5 秒，说明回调通知最多重试几次；否则说明幂等键请求头。",
+      "expected_status": "answered",
+      "facts": [
+        "timeout",
+        "webhook"
+      ],
+      "fact_matchers": [
+        {
+          "id": "timeout",
+          "aliases": [
+            "6 秒",
+            "6秒"
+          ]
+        },
+        {
+          "id": "webhook",
+          "aliases": [
+            "6 次",
+            "6次",
+            "六次"
+          ]
+        }
+      ],
+      "forbidden": [
+        "x-idempotency-key"
+      ],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-sdk-guide",
+        "lt-webhook"
+      ],
+      "max_steps": 7,
+      "min_source_documents": 2,
+      "conditional_transition": {
+        "observe_document": "lt-sdk-guide",
+        "then_document": "lt-webhook"
+      },
+      "required_slots": [
+        {
+          "id": "timeout",
+          "description": "6 秒",
+          "document_ids": [
+            "lt-sdk-guide",
+            "lt-webhook"
+          ]
+        },
+        {
+          "id": "webhook",
+          "description": "6 次",
+          "document_ids": [
+            "lt-sdk-guide",
+            "lt-webhook"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U20",
+      "category": "conditional_planning",
+      "user": "lt-eng",
+      "goal": "先查开放平台基础版每分钟配额；如果低于 500 次，再给出专业版的配额；否则只回答基础版。",
+      "expected_status": "answered",
+      "facts": [
+        "basic",
+        "pro"
+      ],
+      "fact_matchers": [
+        {
+          "id": "basic",
+          "aliases": [
+            "300"
+          ]
+        },
+        {
+          "id": "pro",
+          "aliases": [
+            "1200"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-api-quota"
+      ],
+      "max_steps": 7,
+      "required_slots": [
+        {
+          "id": "basic",
+          "description": "300",
+          "document_ids": [
+            "lt-api-quota"
+          ]
+        },
+        {
+          "id": "pro",
+          "description": "1200",
+          "document_ids": [
+            "lt-api-quota"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U21",
+      "category": "conditional_planning",
+      "user": "lt-eng",
+      "goal": "先查门禁卡补办需要几个工作日；只有超过 5 个工作日时，才继续说明临时访客卡的有效期。",
+      "expected_status": "answered",
+      "facts": [
+        "badge"
+      ],
+      "fact_matchers": [
+        {
+          "id": "badge",
+          "aliases": [
+            "3 个工作日",
+            "3个工作日",
+            "三个工作日"
+          ]
+        }
+      ],
+      "forbidden": [
+        "1 天",
+        "1天",
+        "一天"
+      ],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-badge"
+      ],
+      "max_steps": 7,
+      "required_slots": [
+        {
+          "id": "badge",
+          "description": "3 个工作日",
+          "document_ids": [
+            "lt-badge"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U22",
+      "category": "comparison",
+      "user": "lt-eng",
+      "goal": "华东仓和华南仓 2026 年第四季度的工作日收货窗口分别是什么？两者是否相同？",
+      "expected_status": "answered",
+      "facts": [
+        "east_start",
+        "east_end",
+        "south_start",
+        "south_end"
+      ],
+      "fact_matchers": [
+        {
+          "id": "east_start",
+          "aliases": [
+            "08:00",
+            "8:00"
+          ]
+        },
+        {
+          "id": "east_end",
+          "aliases": [
+            "18:00"
+          ]
+        },
+        {
+          "id": "south_start",
+          "aliases": [
+            "09:00",
+            "9:00"
+          ]
+        },
+        {
+          "id": "south_end",
+          "aliases": [
+            "17:00"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-warehouse-east",
+        "lt-warehouse-south"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "required_slots": [
+        {
+          "id": "east_start",
+          "description": "08:00",
+          "document_ids": [
+            "lt-warehouse-east",
+            "lt-warehouse-south"
+          ]
+        },
+        {
+          "id": "east_end",
+          "description": "18:00",
+          "document_ids": [
+            "lt-warehouse-east",
+            "lt-warehouse-south"
+          ]
+        },
+        {
+          "id": "south_start",
+          "description": "09:00",
+          "document_ids": [
+            "lt-warehouse-east",
+            "lt-warehouse-south"
+          ]
+        },
+        {
+          "id": "south_end",
+          "description": "17:00",
+          "document_ids": [
+            "lt-warehouse-east",
+            "lt-warehouse-south"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U23",
+      "category": "comparison",
+      "user": "lt-eng",
+      "goal": "2026 年 10 月华东仓的工作日收货窗口到底是什么时段？",
+      "expected_status": "conflict",
+      "facts": [
+        "a_start",
+        "a_end",
+        "b_start",
+        "b_end"
+      ],
+      "fact_matchers": [
+        {
+          "id": "a_start",
+          "aliases": [
+            "08:00",
+            "8:00"
+          ]
+        },
+        {
+          "id": "a_end",
+          "aliases": [
+            "18:00"
+          ]
+        },
+        {
+          "id": "b_start",
+          "aliases": [
+            "07:00",
+            "7:00"
+          ]
+        },
+        {
+          "id": "b_end",
+          "aliases": [
+            "20:00"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-warehouse-east",
+        "lt-warehouse-east-notice"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "required_slots": [
+        {
+          "id": "a_start",
+          "description": "08:00",
+          "document_ids": [
+            "lt-warehouse-east",
+            "lt-warehouse-east-notice"
+          ]
+        },
+        {
+          "id": "a_end",
+          "description": "18:00",
+          "document_ids": [
+            "lt-warehouse-east",
+            "lt-warehouse-east-notice"
+          ]
+        },
+        {
+          "id": "b_start",
+          "description": "07:00",
+          "document_ids": [
+            "lt-warehouse-east",
+            "lt-warehouse-east-notice"
+          ]
+        },
+        {
+          "id": "b_end",
+          "description": "20:00",
+          "document_ids": [
+            "lt-warehouse-east",
+            "lt-warehouse-east-notice"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U24",
+      "category": "comparison",
+      "user": "lt-eng",
+      "goal": "开放平台基础版和专业版的每分钟调用配额相差多少次？",
+      "expected_status": "answered",
+      "facts": [
+        "basic",
+        "pro",
+        "diff"
+      ],
+      "fact_matchers": [
+        {
+          "id": "basic",
+          "aliases": [
+            "300"
+          ]
+        },
+        {
+          "id": "pro",
+          "aliases": [
+            "1200"
+          ]
+        },
+        {
+          "id": "diff",
+          "aliases": [
+            "900"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-api-quota"
+      ],
+      "max_steps": 6,
+      "required_slots": [
+        {
+          "id": "basic",
+          "description": "300",
+          "document_ids": [
+            "lt-api-quota"
+          ]
+        },
+        {
+          "id": "pro",
+          "description": "1200",
+          "document_ids": [
+            "lt-api-quota"
+          ]
+        },
+        {
+          "id": "diff",
+          "description": "900",
+          "document_ids": [
+            "lt-api-quota"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U25",
+      "category": "comparison",
+      "user": "lt-eng",
+      "goal": "回调通知的最大重试次数和 Java SDK 的默认重试次数，哪个更多？",
+      "expected_status": "answered",
+      "facts": [
+        "webhook",
+        "sdk"
+      ],
+      "fact_matchers": [
+        {
+          "id": "webhook",
+          "aliases": [
+            "6 次",
+            "6次",
+            "六次"
+          ]
+        },
+        {
+          "id": "sdk",
+          "aliases": [
+            "2 次",
+            "2次",
+            "两次"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-webhook",
+        "lt-sdk-guide"
+      ],
+      "max_steps": 6,
+      "min_source_documents": 2,
+      "required_slots": [
+        {
+          "id": "webhook",
+          "description": "6 次",
+          "document_ids": [
+            "lt-webhook",
+            "lt-sdk-guide"
+          ]
+        },
+        {
+          "id": "sdk",
+          "description": "2 次",
+          "document_ids": [
+            "lt-webhook",
+            "lt-sdk-guide"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U26",
+      "category": "comparison",
+      "user": "lt-eng",
+      "goal": "S2 工单的首次响应时限比 S1 长多少？",
+      "expected_status": "answered",
+      "facts": [
+        "s2",
+        "s1",
+        "diff"
+      ],
+      "fact_matchers": [
+        {
+          "id": "s2",
+          "aliases": [
+            "2 小时",
+            "2小时",
+            "两小时"
+          ]
+        },
+        {
+          "id": "s1",
+          "aliases": [
+            "20 分钟",
+            "20分钟"
+          ]
+        },
+        {
+          "id": "diff",
+          "aliases": [
+            "100 分钟",
+            "100分钟",
+            "1 小时 40 分钟",
+            "1小时40分钟",
+            "一小时四十分钟"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-support-tiers"
+      ],
+      "max_steps": 6,
+      "required_slots": [
+        {
+          "id": "s2",
+          "description": "2 小时",
+          "document_ids": [
+            "lt-support-tiers"
+          ]
+        },
+        {
+          "id": "s1",
+          "description": "20 分钟",
+          "document_ids": [
+            "lt-support-tiers"
+          ]
+        },
+        {
+          "id": "diff",
+          "description": "100 分钟",
+          "document_ids": [
+            "lt-support-tiers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U27",
+      "category": "temporal_version",
+      "user": "lt-eng",
+      "goal": "日志保留政策里操作日志的保留期在各个版本中是怎么变化的？",
+      "expected_status": "answered",
+      "facts": [
+        "old",
+        "new"
+      ],
+      "fact_matchers": [
+        {
+          "id": "old",
+          "aliases": [
+            "60 天",
+            "60天"
+          ]
+        },
+        {
+          "id": "new",
+          "aliases": [
+            "90 天",
+            "90天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-retention"
+      ],
+      "max_steps": 7,
+      "task_input": {
+        "document_id": "lt-retention"
+      },
+      "required_tools": [
+        "get_document_version",
+        "compare_versions"
+      ],
+      "required_slots": [
+        {
+          "id": "old",
+          "description": "60 天",
+          "document_ids": [
+            "lt-retention"
+          ]
+        },
+        {
+          "id": "new",
+          "description": "90 天",
+          "document_ids": [
+            "lt-retention"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U28",
+      "category": "temporal_version",
+      "user": "lt-eng",
+      "goal": "2026 年 3 月出差时一线城市住宿标准是多少？和现行版本相比，报销材料提交时限有什么变化？",
+      "expected_status": "answered",
+      "facts": [
+        "hotel",
+        "old",
+        "new"
+      ],
+      "fact_matchers": [
+        {
+          "id": "hotel",
+          "aliases": [
+            "520"
+          ]
+        },
+        {
+          "id": "old",
+          "aliases": [
+            "30 天",
+            "30天"
+          ]
+        },
+        {
+          "id": "new",
+          "aliases": [
+            "20 天",
+            "20天"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-travel"
+      ],
+      "max_steps": 7,
+      "task_input": {
+        "document_id": "lt-travel"
+      },
+      "required_tools": [
+        "get_document_version",
+        "compare_versions"
+      ],
+      "required_slots": [
+        {
+          "id": "hotel",
+          "description": "520",
+          "document_ids": [
+            "lt-travel"
+          ]
+        },
+        {
+          "id": "old",
+          "description": "30 天",
+          "document_ids": [
+            "lt-travel"
+          ]
+        },
+        {
+          "id": "new",
+          "description": "20 天",
+          "document_ids": [
+            "lt-travel"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U29",
+      "category": "temporal_version",
+      "user": "lt-eng",
+      "goal": "差旅报销标准的历史版本中，一线城市住宿标准最早是每晚多少元？",
+      "expected_status": "answered",
+      "facts": [
+        "first"
+      ],
+      "fact_matchers": [
+        {
+          "id": "first",
+          "aliases": [
+            "450"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-travel"
+      ],
+      "max_steps": 7,
+      "required_tools": [
+        "get_document_version",
+        "compare_versions"
+      ],
+      "required_slots": [
+        {
+          "id": "first",
+          "description": "450",
+          "document_ids": [
+            "lt-travel"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U30",
+      "category": "temporal_version",
+      "user": "lt-eng",
+      "goal": "日志保留政策历史上审计日志的保留期有没有变化？如果有，从多久变成了多久？",
+      "expected_status": "answered",
+      "facts": [
+        "old",
+        "new"
+      ],
+      "fact_matchers": [
+        {
+          "id": "old",
+          "aliases": [
+            "1 年",
+            "1年",
+            "一年"
+          ]
+        },
+        {
+          "id": "new",
+          "aliases": [
+            "2 年",
+            "2年",
+            "两年"
+          ]
+        }
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-retention"
+      ],
+      "max_steps": 7,
+      "required_tools": [
+        "get_document_version",
+        "compare_versions"
+      ],
+      "required_slots": [
+        {
+          "id": "old",
+          "description": "1 年",
+          "document_ids": [
+            "lt-retention"
+          ]
+        },
+        {
+          "id": "new",
+          "description": "2 年",
+          "document_ids": [
+            "lt-retention"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U31",
+      "category": "temporal_version",
+      "user": "lt-eng",
+      "goal": "现行的日志保留政策中，操作日志保留多久？",
+      "expected_status": "answered",
+      "facts": [
+        "now"
+      ],
+      "fact_matchers": [
+        {
+          "id": "now",
+          "aliases": [
+            "90 天",
+            "90天"
+          ]
+        }
+      ],
+      "forbidden": [
+        "60 天",
+        "60天"
+      ],
+      "scenario_events": [],
+      "expected_evidence_documents": [
+        "lt-retention"
+      ],
+      "max_steps": 6,
+      "required_slots": [
+        {
+          "id": "now",
+          "description": "90 天",
+          "document_ids": [
+            "lt-retention"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "U32",
+      "category": "null_insufficient",
+      "user": "lt-eng",
+      "goal": "2027 年度研发预算上限是多少？",
+      "expected_status": "insufficient_evidence",
+      "facts": [],
+      "fact_matchers": [],
+      "forbidden": [
+        "1800"
+      ],
+      "scenario_events": [],
+      "expected_evidence_documents": [],
+      "max_steps": 4,
+      "required_slots": []
+    },
+    {
+      "id": "U33",
+      "category": "null_insufficient",
+      "user": "lt-eng",
+      "goal": "今年的年度调薪窗口安排在几月？",
+      "expected_status": "insufficient_evidence",
+      "facts": [],
+      "fact_matchers": [],
+      "forbidden": [
+        "3 月",
+        "3月",
+        "三月"
+      ],
+      "scenario_events": [],
+      "expected_evidence_documents": [],
+      "max_steps": 4,
+      "required_slots": []
+    },
+    {
+      "id": "U34",
+      "category": "null_insufficient",
+      "user": "lt-eng",
+      "goal": "兰亭云有没有宠物陪伴假，一年几天？",
+      "expected_status": "insufficient_evidence",
+      "facts": [],
+      "fact_matchers": [],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [],
+      "max_steps": 4,
+      "required_slots": []
+    },
+    {
+      "id": "U35",
+      "category": "null_insufficient",
+      "user": "lt-eng",
+      "goal": "西北仓的工作日收货窗口是几点到几点？",
+      "expected_status": "insufficient_evidence",
+      "facts": [],
+      "fact_matchers": [],
+      "forbidden": [],
+      "scenario_events": [],
+      "expected_evidence_documents": [],
+      "max_steps": 4,
+      "required_slots": []
+    }
+  ],
+  "safety_tasks": [
+    {
+      "id": "P3-SAFE-REVOKE",
+      "category": "security_state",
+      "user": "lt-eng",
+      "goal": "兰亭云 Java SDK 默认失败后重试几次？",
+      "expected_status": [
+        "insufficient_evidence",
+        "execution_failed"
+      ],
+      "facts": [],
+      "forbidden": [
+        "2次",
+        "2 次",
+        "两次"
+      ],
+      "scenario_events": [
+        "state_change"
+      ],
+      "state_change": {
+        "action": "revoke_document",
+        "document_id": "lt-sdk-guide",
+        "after_tool": "search_documents",
+        "occurrence": 1
+      },
+      "max_steps": 6,
+      "required_slots": []
+    }
+  ],
+  "trials": 1,
+  "status": "prepared_pending_P2_component_gate",
+  "shared_configuration": {
+    "task_contract_enabled": true,
+    "semantic_coverage_shadow": false,
+    "semantic_slot_shadow_enabled": false,
+    "semantic_coverage_control": false,
+    "semantic_slot_control_enabled": false
+  }
+}

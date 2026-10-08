@@ -1,0 +1,198 @@
+[
+  {
+    "measured_at": "2026-10-08T04:27:44+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1265,
+    "prefill_tok_s": 82.2,
+    "decode_tok_s": 8.5,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "warmup"
+  },
+  {
+    "measured_at": "2026-10-08T04:28:01+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1266,
+    "prefill_tok_s": 91.0,
+    "decode_tok_s": 8.6,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "before"
+  },
+  {
+    "measured_at": "2026-10-08T04:40:03+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1262,
+    "prefill_tok_s": 84.5,
+    "decode_tok_s": 7.2,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "during"
+  },
+  {
+    "measured_at": "2026-10-08T04:56:05+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1265,
+    "prefill_tok_s": 85.5,
+    "decode_tok_s": 8.5,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "during"
+  },
+  {
+    "measured_at": "2026-10-08T05:07:47+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1265,
+    "prefill_tok_s": 87.7,
+    "decode_tok_s": 8.6,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "during"
+  },
+  {
+    "measured_at": "2026-10-08T05:26:15+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1265,
+    "prefill_tok_s": 78.5,
+    "decode_tok_s": 5.4,
+    "meets_baseline": false,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "during"
+  },
+  {
+    "measured_at": "2026-10-08T05:27:36+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1263,
+    "prefill_tok_s": 68.4,
+    "decode_tok_s": 7.5,
+    "meets_baseline": false,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "during"
+  },
+  {
+    "measured_at": "2026-10-08T05:27:53+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1266,
+    "prefill_tok_s": 88.7,
+    "decode_tok_s": 8.5,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "after"
+  },
+  {
+    "measured_at": "2026-10-08T05:28:29+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1265,
+    "prefill_tok_s": 87.5,
+    "decode_tok_s": 8.7,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "warmup"
+  },
+  {
+    "measured_at": "2026-10-08T05:28:45+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1263,
+    "prefill_tok_s": 89.9,
+    "decode_tok_s": 8.7,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "before_snapshot_resume"
+  },
+  {
+    "measured_at": "2026-10-08T05:40:45+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1265,
+    "prefill_tok_s": 86.5,
+    "decode_tok_s": 8.6,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "during"
+  },
+  {
+    "measured_at": "2026-10-08T05:48:32+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1266,
+    "prefill_tok_s": 87.9,
+    "decode_tok_s": 8.5,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "during"
+  },
+  {
+    "measured_at": "2026-10-08T05:58:25+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1267,
+    "prefill_tok_s": 88.2,
+    "decode_tok_s": 8.4,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "during"
+  },
+  {
+    "measured_at": "2026-10-08T06:05:29+1100",
+    "model": "qwen2.5:7b-instruct",
+    "base_url": "http://127.0.0.1:11436",
+    "prompt_tokens": 1266,
+    "prefill_tok_s": 88.8,
+    "decode_tok_s": 8.7,
+    "meets_baseline": true,
+    "thresholds": {
+      "decode_tok_s": 7.0,
+      "prefill_tok_s": 80.0
+    },
+    "phase": "after"
+  }
+]

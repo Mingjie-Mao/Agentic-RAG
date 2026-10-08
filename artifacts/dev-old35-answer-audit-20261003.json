@@ -1,0 +1,87 @@
+{
+  "scope": "Qualitative GPT audit of selected changed/failing answers; not a complete strict review of all 140 answers; no legacy score overrides",
+  "reviewer": {
+    "kind": "model",
+    "model": "Current Codex GPT, GPT-6 family per system identity; exact serving deployment unavailable",
+    "independent": false,
+    "method_blind": false,
+    "reason": "Same assistant inspected method-labeled old and new output during implementation and regression analysis."
+  },
+  "inputs": {
+    "baseline_sha256": "0d2857e2e2ea2143032f5790a70701d16efeb0db24d348d8b8ceb71ae96972e6",
+    "current_sha256": "bbbb693d3ad4092d7b1c0fb0a5cfdb1eb1a7026032e9e17968f15acbc77b9d14",
+    "extracted_answers_sha256": "08d78c2d929281f792eb4e338b6bc215fe7dada7785e2a165e9143b226859247"
+  },
+  "cases": [
+    {
+      "task_id": "U01",
+      "methods": [
+        "hybrid"
+      ],
+      "finding": "real_improvement",
+      "reason": "历史错误拒答变为回答默认重试 2 次，引用原文直接支持；全套旧口径唯一旧错新对案例。"
+    },
+    {
+      "task_id": "U02",
+      "methods": [
+        "rag",
+        "workflow",
+        "dynamic",
+        "hybrid"
+      ],
+      "finding": "correct_with_complete_table_quote",
+      "reason": "四路均正确回答专业版 1200 次，并绑定完整表头及基础/专业版两行。旧 35 题原运行也答对，不能另算新增通过。"
+    },
+    {
+      "task_id": "U15",
+      "methods": [
+        "rag",
+        "workflow",
+        "dynamic",
+        "hybrid"
+      ],
+      "finding": "legacy_matcher_sensitivity",
+      "reason": "四路均回答当班值班经理及每周一 10:00，并有对应原文。RAG/Workflow/Hybrid 因时间措辞分开而漏匹配；Dynamic 措辞命中。保留原分，不将其解释为真实错误或真实提升。"
+    },
+    {
+      "task_id": "U24",
+      "methods": [
+        "rag",
+        "workflow",
+        "dynamic",
+        "hybrid"
+      ],
+      "finding": "legacy_completeness_requirement",
+      "reason": "差值 900 次正确，完整表格引用支持 1200-300；旧规则要求正文另外复述 300/1200，故四路扣分。没有修改 required_facts 或分数。"
+    },
+    {
+      "task_id": "U26",
+      "methods": [
+        "rag",
+        "workflow",
+        "dynamic",
+        "hybrid"
+      ],
+      "finding": "legacy_completeness_requirement",
+      "reason": "差值 1 小时 40 分钟正确，完整表格引用支持 2 小时-20 分钟；旧规则要求正文另外复述两项输入时限，故四路扣分。"
+    },
+    {
+      "task_id": "U28",
+      "methods": [
+        "workflow"
+      ],
+      "finding": "real_regression_generator_abstention",
+      "reason": "历史答对，本轮主动拒答。生成上下文包含 2026-01-15 的 520 元/30 天和 2026-07-01 的 520 元/20 天及生效日期；answer_validation.reason=generator_abstained。没有把这一失败描述为检索不到或引用校验失败，也没有证明是哪项代码改动造成。"
+    },
+    {
+      "task_id": "U30",
+      "methods": [
+        "hybrid"
+      ],
+      "finding": "citation_support_regression_hidden_by_legacy_score",
+      "reason": "新旧答案都声称审计日志从 1 年变 2 年，旧事实分均通过。但旧引用包含 1 年及 2 年原文，新引用只有 1 年原文及生效日期，缺少支持 2 年的绑定摘录。说明字面通过不能代替严格引用审核。"
+    }
+  ],
+  "full_strict_task_success": null,
+  "headline_eligible": false
+}

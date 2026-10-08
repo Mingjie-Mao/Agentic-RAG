@@ -1,0 +1,8 @@
+{
+  "freeze": ".runtime/benchmark-package/v1/dev-repairs-20261004-v4/freeze.json",
+  "indexed_corpus_sha256": "494072c1f6b61c2ae4c69919c000b7fdbb2986feaba140420b3f2da985294b75",
+  "post_run_unchanged": true,
+  "documents": 631,
+  "users": 3,
+  "search_chunks": 24989
+}

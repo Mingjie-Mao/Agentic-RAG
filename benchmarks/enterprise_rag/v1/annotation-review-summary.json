@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-03",
+  "reviewer_type": "model",
+  "model": "GPT-6 family, current Codex session; exact serving deployment ID unavailable",
+  "independent": false,
+  "splits": {
+    "core": {
+      "reviewed": 70,
+      "approved": 70,
+      "review_sha256": "e734e9023f091c597809248d261929fd194050154447e4843aa6425521613dfd",
+      "by_category": {
+        "efficiency_stopping": 10,
+        "multi_hop": 10,
+        "latent_link": 10,
+        "conditional_planning": 10,
+        "comparison": 10,
+        "temporal_version": 10,
+        "null_insufficient": 10
+      }
+    },
+    "security": {
+      "reviewed": 16,
+      "approved": 16,
+      "review_sha256": "8618fac1f0e57683b2421ff6ea79daa3cc7f5a9f51a14bfc38bb008fcf4b1eba",
+      "by_category": {
+        "security_group_denial": 4,
+        "security_tenant_isolation": 4,
+        "security_revocation": 4,
+        "security_version_scope": 4
+      }
+    }
+  },
+  "external": "pending; fixed upstream selection previously used",
+  "fixes": [
+    "Removed gold document_id seed from all package task_input",
+    "Separate authorized historical reads from final version-scope violations",
+    "Both historical versions plus change judgment required",
+    "Core uncertainty grouped by ten entity families"
+  ],
+  "formal_core_runs": 0,
+  "system_accuracy": null
+}

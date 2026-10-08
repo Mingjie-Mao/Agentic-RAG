@@ -1,0 +1,286 @@
+{
+  "scope": "Gold-stratified development challenge; exploratory treatment probes after baseline. No pre-registered promotion gate, answer quality test or independent human review.",
+  "manifest_sha256": "13f1163f7df597f63f467769ad6ca9fb722329b3d0a9a8a6e0f520431eb64c76",
+  "probes": {
+    "source_facet_document": {
+      "artifact_sha256": "ce28205f739344a739de9ac33cda3596a49eb5c0c56386500776d23eea54fd52",
+      "overall": {
+        "all_gold_documents": [
+          4,
+          4
+        ],
+        "gold_documents_found": [
+          21,
+          22
+        ],
+        "gold_documents_in_candidates": [
+          27,
+          27
+        ],
+        "gold_facts_delivered_proxy": [
+          18,
+          18
+        ],
+        "p50_retrieval_ms": [
+          451.2,
+          520.7
+        ]
+      },
+      "by_stage": {
+        "candidate_missing": {
+          "all_gold_documents": [
+            0,
+            0
+          ],
+          "gold_documents_found": [
+            7,
+            7
+          ],
+          "gold_documents_in_candidates": [
+            7,
+            7
+          ],
+          "gold_facts_delivered_proxy": [
+            4,
+            4
+          ],
+          "p50_retrieval_ms": [
+            416.2,
+            747.2
+          ]
+        },
+        "fact_proxy_reached": {
+          "all_gold_documents": [
+            4,
+            4
+          ],
+          "gold_documents_found": [
+            8,
+            8
+          ],
+          "gold_documents_in_candidates": [
+            8,
+            8
+          ],
+          "gold_facts_delivered_proxy": [
+            8,
+            8
+          ],
+          "p50_retrieval_ms": [
+            416.2,
+            433.0
+          ]
+        },
+        "quota_blocked": {
+          "all_gold_documents": [
+            0,
+            0
+          ],
+          "gold_documents_found": [
+            6,
+            7
+          ],
+          "gold_documents_in_candidates": [
+            12,
+            12
+          ],
+          "gold_facts_delivered_proxy": [
+            6,
+            6
+          ],
+          "p50_retrieval_ms": [
+            456.5,
+            1195.5
+          ]
+        }
+      }
+    },
+    "document_quota_one": {
+      "artifact_sha256": "93e5b3a3f7f1408652748f3e3d3a0d003c70cbec6df1b3f8c5cfdd7bcaa6a869",
+      "overall": {
+        "all_gold_documents": [
+          4,
+          6
+        ],
+        "gold_documents_found": [
+          21,
+          23
+        ],
+        "gold_documents_in_candidates": [
+          27,
+          27
+        ],
+        "gold_facts_delivered_proxy": [
+          18,
+          15
+        ],
+        "p50_retrieval_ms": [
+          456.0,
+          410.3
+        ]
+      },
+      "by_stage": {
+        "candidate_missing": {
+          "all_gold_documents": [
+            0,
+            0
+          ],
+          "gold_documents_found": [
+            7,
+            7
+          ],
+          "gold_documents_in_candidates": [
+            7,
+            7
+          ],
+          "gold_facts_delivered_proxy": [
+            4,
+            3
+          ],
+          "p50_retrieval_ms": [
+            425.5,
+            386.9
+          ]
+        },
+        "fact_proxy_reached": {
+          "all_gold_documents": [
+            4,
+            4
+          ],
+          "gold_documents_found": [
+            8,
+            8
+          ],
+          "gold_documents_in_candidates": [
+            8,
+            8
+          ],
+          "gold_facts_delivered_proxy": [
+            8,
+            6
+          ],
+          "p50_retrieval_ms": [
+            423.3,
+            411.9
+          ]
+        },
+        "quota_blocked": {
+          "all_gold_documents": [
+            0,
+            2
+          ],
+          "gold_documents_found": [
+            6,
+            8
+          ],
+          "gold_documents_in_candidates": [
+            12,
+            12
+          ],
+          "gold_facts_delivered_proxy": [
+            6,
+            6
+          ],
+          "p50_retrieval_ms": [
+            497.7,
+            443.1
+          ]
+        }
+      }
+    },
+    "article_first": {
+      "artifact_sha256": "aee6692e21d2c34235d55ac14c94dcffbb6332876e9a1cc3a01975d75d25988e",
+      "overall": {
+        "all_gold_documents": [
+          4,
+          5
+        ],
+        "gold_documents_found": [
+          21,
+          22
+        ],
+        "gold_documents_in_candidates": [
+          27,
+          30
+        ],
+        "gold_facts_delivered_proxy": [
+          18,
+          17
+        ],
+        "p50_retrieval_ms": [
+          448.4,
+          690.8
+        ]
+      },
+      "by_stage": {
+        "candidate_missing": {
+          "all_gold_documents": [
+            0,
+            0
+          ],
+          "gold_documents_found": [
+            7,
+            7
+          ],
+          "gold_documents_in_candidates": [
+            7,
+            10
+          ],
+          "gold_facts_delivered_proxy": [
+            4,
+            3
+          ],
+          "p50_retrieval_ms": [
+            413.6,
+            551.0
+          ]
+        },
+        "fact_proxy_reached": {
+          "all_gold_documents": [
+            4,
+            4
+          ],
+          "gold_documents_found": [
+            8,
+            8
+          ],
+          "gold_documents_in_candidates": [
+            8,
+            8
+          ],
+          "gold_facts_delivered_proxy": [
+            8,
+            8
+          ],
+          "p50_retrieval_ms": [
+            415.5,
+            680.7
+          ]
+        },
+        "quota_blocked": {
+          "all_gold_documents": [
+            0,
+            1
+          ],
+          "gold_documents_found": [
+            6,
+            7
+          ],
+          "gold_documents_in_candidates": [
+            12,
+            12
+          ],
+          "gold_facts_delivered_proxy": [
+            6,
+            6
+          ],
+          "p50_retrieval_ms": [
+            492.7,
+            886.6
+          ]
+        }
+      }
+    }
+  },
+  "retrieval_code_sha256": "aae8d7ba4947485d0af0ebc601bfab66cf134e3e884dfef04df6ee202bd8243d"
+}

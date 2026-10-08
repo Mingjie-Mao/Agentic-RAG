@@ -1,0 +1,77 @@
+{
+  "scope": "Post-run assistant review; no frozen label or model output changed. Independent human adjudication=0.",
+  "human_reviewed": 0,
+  "rows": [
+    {
+      "id": "C04",
+      "expected": "unsupported",
+      "observed": "partial",
+      "review_type": "unsafe_detected_but_three_way_label_requires_review",
+      "basis": "The frozen expected label is retained. Partial versus unsupported is a diagnostic distinction; both are rejected by a support-only gate. Compound causal claims can contain a true subordinate fact and require independent label adjudication."
+    },
+    {
+      "id": "C13",
+      "expected": "supported",
+      "observed": "partial",
+      "review_type": "supported_rejected_due_to_wrong_dimension_or_negation",
+      "basis": "Known correct relation/source statement was rejected. Do not enable a semantic gate from low false-accept counts alone."
+    },
+    {
+      "id": "C14",
+      "expected": "unsupported",
+      "observed": "partial",
+      "review_type": "unsafe_detected_but_three_way_label_requires_review",
+      "basis": "The frozen expected label is retained. Partial versus unsupported is a diagnostic distinction; both are rejected by a support-only gate. Compound causal claims can contain a true subordinate fact and require independent label adjudication."
+    },
+    {
+      "id": "C15",
+      "expected": "supported",
+      "observed": "partial",
+      "review_type": "supported_rejected_due_to_wrong_dimension_or_negation",
+      "basis": "Known correct relation/source statement was rejected. Do not enable a semantic gate from low false-accept counts alone."
+    },
+    {
+      "id": "C16",
+      "expected": "unsupported",
+      "observed": "partial",
+      "review_type": "unsafe_detected_but_three_way_label_requires_review",
+      "basis": "The frozen expected label is retained. Partial versus unsupported is a diagnostic distinction; both are rejected by a support-only gate. Compound causal claims can contain a true subordinate fact and require independent label adjudication."
+    },
+    {
+      "id": "C18",
+      "expected": "unsupported",
+      "observed": "partial",
+      "review_type": "unsafe_detected_but_three_way_label_requires_review",
+      "basis": "The frozen expected label is retained. Partial versus unsupported is a diagnostic distinction; both are rejected by a support-only gate. Compound causal claims can contain a true subordinate fact and require independent label adjudication."
+    },
+    {
+      "id": "C20",
+      "expected": "unsupported",
+      "observed": "partial",
+      "review_type": "unsafe_detected_but_three_way_label_requires_review",
+      "basis": "The frozen expected label is retained. Partial versus unsupported is a diagnostic distinction; both are rejected by a support-only gate. Compound causal claims can contain a true subordinate fact and require independent label adjudication."
+    },
+    {
+      "id": "C22",
+      "expected": "unsupported",
+      "observed": "partial",
+      "review_type": "unsafe_detected_but_three_way_label_requires_review",
+      "basis": "The frozen expected label is retained. Partial versus unsupported is a diagnostic distinction; both are rejected by a support-only gate. Compound causal claims can contain a true subordinate fact and require independent label adjudication."
+    },
+    {
+      "id": "C23",
+      "expected": "supported",
+      "observed": "partial",
+      "review_type": "supported_rejected_due_to_wrong_dimension_or_negation",
+      "basis": "Known correct relation/source statement was rejected. Do not enable a semantic gate from low false-accept counts alone."
+    },
+    {
+      "id": "C24",
+      "expected": "unsupported",
+      "observed": "partial",
+      "review_type": "unsafe_detected_but_three_way_label_requires_review",
+      "basis": "The frozen expected label is retained. Partial versus unsupported is a diagnostic distinction; both are rejected by a support-only gate. Compound causal claims can contain a true subordinate fact and require independent label adjudication."
+    }
+  ],
+  "default_decision": "offline_diagnostics_only"
+}

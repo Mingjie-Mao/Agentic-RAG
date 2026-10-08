@@ -1,0 +1,247 @@
+{
+  "version": "slot-shadow-v2-development-smoke",
+  "source_sha256": "3f681a1f0d3d7d453e033fd7693aaebed8b0138ad6ef22bfd03d08421300473b",
+  "tasks": 2,
+  "isolation_passed": true,
+  "quality_claim": null,
+  "results": [
+    {
+      "run_id": "00e060ba-02a5-44a0-a4e4-b52b5d07686b",
+      "primary_sha256": "306082f1422b4824872adb45c4af98ef5341b64f6a1be7454465e30484bf6d43",
+      "primary_unchanged": true,
+      "shadow": {
+        "version": "slot-shadow-v2",
+        "kind": "agent",
+        "run_id": "00e060ba-02a5-44a0-a4e4-b52b5d07686b",
+        "status": "observed",
+        "affects_control": false,
+        "payload_sha256": "453acc9d343dfcbd74dbc53610b26add449a897fe2797dfbed60388294e8ec45",
+        "evidence_hash": "a04c40e6e3b3cfc3327713ef46d4706b7ea1de1e7623814732239e2053e71d9c",
+        "slots": [
+          {
+            "id": "s1",
+            "text": "查明事故 092 中阻塞队列的输入特征"
+          },
+          {
+            "id": "s2",
+            "text": "根据该特征核对当前限制"
+          },
+          {
+            "id": "s3",
+            "text": "说明事故后用于降低同类风险的三项机制"
+          }
+        ],
+        "judgments": [
+          {
+            "subgoal_id": "s1",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [],
+            "reason_code": "citation_or_quote_invalid",
+            "confidence": 0.0,
+            "source": "judge_unavailable",
+            "evaluation_validity": "unknown",
+            "quote_spans": []
+          },
+          {
+            "subgoal_id": "s2",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [],
+            "reason_code": "relevance_cut_unvalidated",
+            "confidence": 0.0,
+            "source": "judge_unavailable",
+            "evaluation_validity": "unknown",
+            "quote_spans": []
+          },
+          {
+            "subgoal_id": "s3",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [],
+            "reason_code": "relevance_cut_unvalidated",
+            "confidence": 0.0,
+            "source": "judge_unavailable",
+            "evaluation_validity": "unknown",
+            "quote_spans": []
+          }
+        ],
+        "report": {
+          "complete": [],
+          "partial": [],
+          "missing": [],
+          "contradicted": [],
+          "unknown": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "inactive": [],
+          "ready": false
+        },
+        "lexical_covered": {
+          "s1": true,
+          "s2": false,
+          "s3": false
+        },
+        "judge_usage": {
+          "calls": 1,
+          "prompt_tokens": 597,
+          "completion_tokens": 106,
+          "wall_ms": 40238.5,
+          "skipped_by_cascade": 0,
+          "attempted": 1,
+          "succeeded": 1,
+          "failed": 0
+        },
+        "cache_hits": 0,
+        "shadow_wall_ms": 56306.7,
+        "execution_budget": {
+          "deadline": 1790876773.9262562,
+          "limits": {
+            "policy": 12,
+            "judge": 2,
+            "generation": 12,
+            "judge_tokens": 32000
+          },
+          "calls": {
+            "judge": {
+              "attempted": 1,
+              "succeeded": 1,
+              "failed": 0,
+              "prompt_tokens": 597,
+              "completion_tokens": 106,
+              "wall_ms": 40238.4
+            }
+          },
+          "judge_tokens_reserved": 703
+        }
+      }
+    },
+    {
+      "run_id": "b9d6705f-814f-476e-9605-cb50faa02cb0",
+      "primary_sha256": "19ac08e94c7cf03ce9bac0c1f33edbf6bf736b44c968729a34dcba1910a7a3a4",
+      "primary_unchanged": true,
+      "shadow": {
+        "version": "slot-shadow-v2",
+        "kind": "agent",
+        "run_id": "b9d6705f-814f-476e-9605-cb50faa02cb0",
+        "status": "observed",
+        "affects_control": false,
+        "payload_sha256": "0db33850b4a0f215bc67b7aad3b7d7a3baf2b2f26d0b530c7a39e274aef6def3",
+        "evidence_hash": "2a98b606d1cc5d2c22a07ae73e4cbd1f296745348d5f25a47a714fa2b1b9f201",
+        "slots": [
+          {
+            "id": "s1",
+            "text": "从工单 218 确定重复处理的失败机制和记录保留期"
+          },
+          {
+            "id": "s2",
+            "text": "根据其中提到的投递机制查服务端恢复策略，给出重试次数"
+          },
+          {
+            "id": "s3",
+            "text": "退避计划和客户端去重字段"
+          }
+        ],
+        "judgments": [
+          {
+            "subgoal_id": "s1",
+            "status": "supported",
+            "support_refs": [
+              "9407bdbe-2d57-5977-ace9-7660b17b8d63"
+            ],
+            "missing_slots": [],
+            "reason_code": "value_present",
+            "confidence": 0.95,
+            "source": "judge",
+            "evaluation_validity": "evaluated",
+            "quote_spans": [
+              {
+                "chunk_id": "9407bdbe-2d57-5977-ace9-7660b17b8d63",
+                "quote": "按 event_id 建立去重表，并保留去重记录 7 天。"
+              }
+            ]
+          },
+          {
+            "subgoal_id": "s2",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [
+              "退避计划和客户端去重字段"
+            ],
+            "reason_code": "topic_only",
+            "confidence": 0.8,
+            "source": "judge",
+            "evaluation_validity": "evaluated",
+            "quote_spans": []
+          },
+          {
+            "subgoal_id": "s3",
+            "status": "unsupported",
+            "support_refs": [],
+            "missing_slots": [
+              "退避计划和客户端去重字段"
+            ],
+            "reason_code": "topic_only",
+            "confidence": 0.8,
+            "source": "judge",
+            "evaluation_validity": "evaluated",
+            "quote_spans": []
+          }
+        ],
+        "report": {
+          "complete": [
+            "s1"
+          ],
+          "partial": [],
+          "missing": [
+            "s2",
+            "s3"
+          ],
+          "contradicted": [],
+          "unknown": [],
+          "inactive": [],
+          "ready": false
+        },
+        "lexical_covered": {
+          "s1": true,
+          "s2": false,
+          "s3": true
+        },
+        "judge_usage": {
+          "calls": 1,
+          "prompt_tokens": 821,
+          "completion_tokens": 242,
+          "wall_ms": 53915.7,
+          "skipped_by_cascade": 0,
+          "attempted": 1,
+          "succeeded": 1,
+          "failed": 0
+        },
+        "cache_hits": 0,
+        "shadow_wall_ms": 55893.0,
+        "execution_budget": {
+          "deadline": 1790876830.266755,
+          "limits": {
+            "policy": 12,
+            "judge": 2,
+            "generation": 12,
+            "judge_tokens": 32000
+          },
+          "calls": {
+            "judge": {
+              "attempted": 1,
+              "succeeded": 1,
+              "failed": 0,
+              "prompt_tokens": 821,
+              "completion_tokens": 242,
+              "wall_ms": 53915.7
+            }
+          },
+          "judge_tokens_reserved": 1063
+        }
+      }
+    }
+  ]
+}

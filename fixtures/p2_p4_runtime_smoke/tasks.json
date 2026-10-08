@@ -1,0 +1,29 @@
+{
+  "version": "p2-p4-three-arm-development-smoke",
+  "categories": {
+    "conditional_planning": 1
+  },
+  "tasks": [
+    {
+      "id": "runtime-smoke",
+      "user": "xq-engineer",
+      "goal": "先查生产数据库的RPO，如果它超过30分钟，再给出生产数据库的RTO。",
+      "expected_status": "answered",
+      "facts": [
+        "15分钟"
+      ],
+      "forbidden": [],
+      "scenario_events": [],
+      "category": "conditional_planning",
+      "expected_evidence_documents": [
+        "seed-db-backup"
+      ],
+      "max_steps": 6
+    }
+  ],
+  "arms": [
+    "rag",
+    "workflow",
+    "hybrid"
+  ]
+}

@@ -162,7 +162,8 @@ class _MemoryFlag:
 class ScenarioTools:
     """Keep deterministic benchmark faults outside production tool code."""
 
-    def __init__(self, db, user, task, models):
+    def __init__(self, db, user, task, models, execution_task_id=None):
+        self.execution_task_id = execution_task_id
         self.db, self.user, self.task = db, user, task
         self.base = KnowledgeTools(db, user, models=models)
         self.memory = _MemoryFlag(bool(task.get("memory_fixture")))
@@ -213,6 +214,11 @@ class ScenarioTools:
         else:
             result = self.base.call(name, arguments)
         self._apply_state_change(name)
+        if self.execution_task_id:
+            from app.models import AgentTask
+            durable = self.db.get(AgentTask, self.execution_task_id)
+            durable.input = {**durable.input, "_benchmark_scenario_events": dict(self.scenario_events)}
+            self.db.commit()
         return result
 
     def restore(self):
@@ -368,20 +374,31 @@ def score_task(
     }
 
 
-def run_arm(db, user, task, arm):
+def run_arm(db, user, task, arm, *, on_created=None, benchmark_run_token=None, score_fn=None):
     if arm == "rag" and is_controlled(task):
         return {"task_id": task["id"], "category": task["category"], "controlled": True,
                 "skipped": True, "reason": "controlled scenario requires the agent tool boundary"}
     started = time.monotonic()
     execution_error = execution_error_kind = None
     if arm == "rag":
-        payload = answer_question(db, user, task["goal"])
+        try:
+            options = {"benchmark_run_token": benchmark_run_token} if benchmark_run_token else {}
+            payload = answer_question(db, user, task["goal"], **options)
+        except Exception as exc:
+            db.rollback()
+            execution_error = f"{type(exc).__name__}: {exc}"
+            execution_error_kind = "unexpected"
+            payload = {"status": "execution_failed", "claims": [], "citations": [], "usage": {"execution_budget": getattr(exc, "execution_budget", {})}}
         observable, trace, steps, run_id, scenario_events = payload, [], 1, None, {}
     else:
         task_input = {"use_memory": bool(task.get("memory_fixture")), "benchmark_id": task["id"]}
         task_input.update(task.get("task_input", {}))
-        row = create_task(db, user, task["goal"], arm, task.get("max_steps", 8), task_input)
-        tools = ScenarioTools(db, user, task, models=None)
+        if benchmark_run_token:
+            task_input["benchmark_run_token"] = benchmark_run_token
+        row = create_task(db, user, task["goal"], arm, task.get("max_steps", 8), task_input, benchmark_execution=True)
+        if on_created:
+            on_created(row.id)
+        tools = ScenarioTools(db, user, task, models=None, execution_task_id=row.id)
         try:
             run_task(db, user, row, tools=tools)
         except Exception as exc:
@@ -398,12 +415,13 @@ def run_arm(db, user, task, arm):
             payload = observable["result"] or {
                 "status": "execution_failed", "claims": [], "citations": []
             }
+            payload["usage"] = {**payload.get("usage", {}), "execution_budget": row.input.get("_execution_budget", {})}
             steps, trace = observable["step_no"], _tool_trace(db, row.id)
             scenario_events = dict(tools.scenario_events)
         finally:
             tools.restore()
         run_id = row.id
-    result = score_task(
+    result = (score_fn or score_task)(
         task, payload, trace, steps, (time.monotonic() - started) * 1000,
         observable_payload=observable, scenario_events=scenario_events,
         execution_error_kind=execution_error_kind,
@@ -484,7 +502,7 @@ def summarize_arm(rows):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--tasks", default=DEFAULT_TASKS)
-    parser.add_argument("--arms", nargs="+", choices=["rag", "workflow", "dynamic"])
+    parser.add_argument("--arms", nargs="+", choices=["rag", "workflow", "dynamic", "hybrid"])
     parser.add_argument("--limit", type=int)
     parser.add_argument("--ids", nargs="+")
     parser.add_argument("--out", default="artifacts/agent-hard-benchmark-v2.json")

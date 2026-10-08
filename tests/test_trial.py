@@ -7,6 +7,7 @@ from app.config import settings
 from app.models import Base, Tenant, TrialRequest, User
 from app.trial import (
     is_trial_user,
+    require_trial_login,
     require_trial_read_only,
     reserve_trial_request,
     reset_trial,
@@ -81,3 +82,18 @@ def test_trial_allows_only_one_active_agent_and_can_be_reset(monkeypatch):
     assert result["tasks"] == 1
     assert db.scalar(select(func.count()).select_from(TrialRequest)) == 0
     assert trial_status(db, user)["remaining"] == 10
+
+
+def test_public_trial_only_lets_listed_visitors_sign_in(monkeypatch):
+    enable_trial(monkeypatch)
+    require_trial_login("visitor@example.test")
+    try:
+        require_trial_login("admin@example.test")
+    except HTTPException as exc:
+        assert exc.status_code == 401
+    else:
+        raise AssertionError("non-trial accounts must not sign in while the trial is public")
+
+    monkeypatch.setattr(settings(), "trial_mode", False)
+    require_trial_login("admin@example.test")
+

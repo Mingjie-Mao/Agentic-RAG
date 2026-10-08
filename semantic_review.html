@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>独立证据审核</title>
+<style>
+body{font:16px/1.6 system-ui,sans-serif;background:#f3f5f7;color:#182333;margin:0}
+main{max-width:1040px;margin:24px auto;padding:0 20px}h1{font-size:25px;margin:0}
+.card{background:white;padding:22px;border:1px solid #d8dfe8;border-radius:12px;margin:16px 0}
+input[type=text],textarea,select{font:inherit;box-sizing:border-box;width:100%;padding:9px;border:1px solid #aeb9c6;border-radius:6px}
+textarea{min-height:100px}button{font:inherit;padding:9px 18px;border:1px solid #aeb9c6;background:#fff;border-radius:6px;cursor:pointer}
+button.primary{background:#185ac0;color:white;border-color:#185ac0}button:disabled{opacity:.4;cursor:default}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.muted{color:#5b6c7e;font-size:14px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font:15px/1.7 system-ui,sans-serif;margin:0}
+label{display:block;margin:12px 0 5px}.quote{border-left:3px solid #185ac0;padding:12px 18px;background:#f7f9fc;margin:12px 0}
+#error{color:#a72424}#question{font-size:18px}#status{font-weight:600}progress{width:100%}details{margin-top:12px}
+</style>
+<main>
+<h1>独立证据审核</h1>
+<p class="muted">仅用于 relevance、coverage、claim 和影子分歧审核。文件只在本地浏览器处理，不上传。界面不提供预测标签；尚未审核的条目不会被自动填写。</p>
+<section class="card">
+<label for="file">选择原始审核包，或上次导出的审核文件</label><input type="file" id="file" accept="application/json,.json">
+<label for="reviewer">真实审核者姓名或可追溯身份</label><input id="reviewer" type="text" autocomplete="off" placeholder="请由实际审核者填写">
+<label><input id="independent" type="checkbox"> 我是实际参与阅读来源的人工审核者，并独立于样本编写和模型预测作出判断。</label>
+<p id="error" role="alert"></p><p id="status">尚未载入审核包</p><progress id="progress" value="0" max="1"></progress>
+<p class="muted">导出文件不会覆盖原始资料。部分审核可以导出用于续审；正式门槛仍要求完整审核和争议复核。</p>
+</section>
+<section class="card" id="work" hidden>
+<p id="position" class="muted"></p><p id="question"></p><p id="slot"></p><div id="evidence"></div>
+<details><summary>来源、版本及原始输入</summary><pre id="raw"></pre></details>
+<label for="label">审核标签（无默认答案）</label><select id="label"><option value="">请选择</option></select>
+<p class="muted" id="help"></p><label for="reason">判断理由：说明必答内容、引用及适用范围</label>
+<textarea id="reason" placeholder="不能只写“正确”；说明原文如何支持、部分支持或反驳该要求。"></textarea>
+<div class="row" style="margin-top:18px"><button id="previous">上一条</button><button id="save" class="primary">保存这一条</button><button id="next">下一条</button><button id="pending">下一个待审核</button></div>
+<div class="row" style="margin-top:12px"><button id="download">导出审核文件</button><span class="muted">导出后保存文件，再载入即可续审。</span></div>
+</section>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const labels={relevance:['relevant','irrelevant','unclear'],coverage:['supported','partial','unsupported','contradicted','unclear'],claim:['supported','partial','unsupported','contradicted','unclear'],disagreement:['lexical_early_stop','semantic_false_rejection','splitter_error','judge_context_omission','citation_mismatch','missing_evidence','unclear']};
+const help={relevance:'relevant：帮助回答该槽位；irrelevant：只有主题相似或无关；unclear：无法判定。',coverage:'supported：完整回答；partial：只回答一部分；unsupported：未回答；contradicted：同主体、属性、时间范围内存在冲突；unclear：要求或范围不清。',claim:'仅用该断言自己的引用。supported：完整蕴含；partial：复合断言仅部分支持；unsupported：缺支持；contradicted：明确反证；unclear：歧义。',disagreement:'这些类别是归因判断，需要阅读实际上下文。证据不足时选择 unclear。'};
+let source=null,index=0,filename='reviewed.json',dirty=false,editing=false,reviewerRendered='';
+function fail(message){$('error').textContent=message;return false;}
+function ownReview(item){return source.reviews.find(r=>r.id===item.id&&r.reviewer===$('reviewer').value.trim());}
+function refreshProgress(){
+ const reviewed=new Set(source.reviews.map(r=>r.id));
+ $('progress').max=source.items.length;$('progress').value=reviewed.size;
+ $('status').textContent=`${source.items.length} 条输入，${reviewed.size} 条已有审核，${source.items.length-reviewed.size} 条待审核。争议仍需独立复核。`;
+}
+function render(){
+ if(!source)return;
+ $('error').textContent='';const item=source.items[index];
+ $('position').textContent=`${index+1} / ${source.items.length} · ${item.kind} · ${item.corpus||''} · ${item.id}`;
+ $('question').textContent=item.question||item.slot?.query||'请结合下方原始输入审核。';
+ $('slot').textContent='当前要求 / 断言：'+(item.slot?.text||item.slot?.query||'见原始输入');
+ $('raw').textContent=JSON.stringify(item,null,2);$('evidence').replaceChildren();
+ const passages=item.evidence||Object.values(item.judge_context||{});
+ for(const p of passages){const node=document.createElement('div');node.className='quote';
+  const title=document.createElement('p');title.className='muted';title.textContent=`${p.title||p.source||''} · ${p.chunk_id||p.id||''} · 版本 ${p.version_id||'未提供'}`;
+  const body=document.createElement('pre');body.textContent=p.text||'';node.append(title,body);$('evidence').append(node);}
+ $('label').replaceChildren(new Option('请选择',''));for(const l of labels[item.kind])$('label').add(new Option(l,l));
+ const previous=ownReview(item);$('label').value=previous?.label||'';$('reason').value=previous?.reason||'';
+ $('help').textContent=help[item.kind];$('previous').disabled=index===0;$('next').disabled=index===source.items.length-1;
+ editing=false;reviewerRendered=$('reviewer').value.trim();refreshProgress();
+}
+function saveCurrent(){
+ if(!source)return fail('先载入审核包。');
+ const reviewer=$('reviewer').value.trim(),label=$('label').value,reason=$('reason').value.trim();
+ if(!reviewer||!$('independent').checked)return fail('保存标签需要实际审核者身份和独立性声明。');
+ if(!label||!reason)return fail('请选择标签，并写明判断理由。');
+ const item=source.items[index];
+ source.reviews=source.reviews.filter(r=>r.id!==item.id||r.reviewer!==reviewer);
+ source.reviews.push({id:item.id,reviewer,reviewer_type:'human',independent:true,label,reason});
+ dirty=true;editing=false;$('error').textContent='';refreshProgress();return true;
+}
+function navigate(target){if(editing&&!saveCurrent())return;index=target;render();}
+$('file').addEventListener('change',async event=>{
+ try{
+  if((dirty||editing)&&!confirm('当前审核尚未导出。继续载入会丢失这些修改，是否继续？'))return;
+  const file=event.target.files[0];if(!file)return;const value=JSON.parse(await file.text());
+  if(!Array.isArray(value.items)||!value.items.length||!value.source_sha256||value.items.some(r=>!r.id||!labels[r.kind]))throw Error('请选择组件或影子分歧审核包；本界面不处理正式题目与答案审核。');
+  if(new Set(value.items.map(r=>r.id)).size!==value.items.length)throw Error('审核输入存在重复 ID。');
+  if(value.reviews!==undefined&&!Array.isArray(value.reviews))throw Error('reviews 字段必须是数组。');
+  const byId=new Map(value.items.map(r=>[r.id,r])),seen=new Set();
+  for(const r of value.reviews||[]){const item=byId.get(r.id),key=JSON.stringify([r.id,r.reviewer]);
+   if(!item||r.reviewer_type!=='human'||r.independent!==true||!r.reviewer?.trim()||!r.reason?.trim()||!labels[item.kind].includes(r.label)||seen.has(key))throw Error('已有审核记录无效，或包含非独立人工标签；请先核对原始文件。');
+   seen.add(key);}
+  source=structuredClone(value);source.reviews??=[];index=0;dirty=false;filename=file.name.replace(/\.json$/,'-reviewed.json');
+  $('work').hidden=false;render();
+ }catch(error){fail(error.message);}
+});
+$('reviewer').addEventListener('change',()=>{if(editing&&reviewerRendered){$('reviewer').value=reviewerRendered;fail('请先保存或重新载入当前条目，再切换身份。');return;}if(editing){reviewerRendered=$('reviewer').value.trim();return;}render();});
+for(const id of ['label','reason'])$(id).addEventListener('input',()=>editing=true);
+$('save').onclick=saveCurrent;$('previous').onclick=()=>navigate(Math.max(0,index-1));$('next').onclick=()=>navigate(Math.min(source.items.length-1,index+1));
+$('pending').onclick=()=>{if(editing&&!saveCurrent())return;for(let n=1;n<=source.items.length;n++){let next=(index+n)%source.items.length;if(!ownReview(source.items[next])){index=next;render();return;}}fail('当前身份已审核全部输入；导出后仍需检查是否存在争议。');};
+$('download').onclick=()=>{
+ if(editing&&!saveCurrent())return;
+ const result=structuredClone(source);result.status='pending_validation';
+ const url=URL.createObjectURL(new Blob([JSON.stringify(result,null,2)+'\n'],{type:'application/json'}));
+ const link=document.createElement('a');link.href=url;link.download=filename;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);dirty=false;
+};
+addEventListener('beforeunload',event=>{if(dirty||editing){event.preventDefault();event.returnValue='';}});
+</script>
+</html>

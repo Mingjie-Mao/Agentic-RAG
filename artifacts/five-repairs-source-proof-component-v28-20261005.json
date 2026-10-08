@@ -1,0 +1,223 @@
+{
+  "scope": "Local source-proof component; no benchmark accuracy or P95",
+  "model": "qwen2.5:7b-instruct",
+  "registered_cases_sha256": "2ed2a4754cd8cfae0cfa81548fd725d6b8d573b0e0ba9b516f78e10f9138b622",
+  "implementation_sha256": "c5f0821f34c90a27c1b8dfca52db2af8f3d04da082780533156048367cdd4619",
+  "rows": [
+    {
+      "id": "equal",
+      "expected": "yes",
+      "verdict": {
+        "value": "yes",
+        "claim_index": 1,
+        "claim_indices": [
+          1,
+          2
+        ],
+        "evidence_ids": [
+          "c1",
+          "c2"
+        ],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "opening hours",
+        "propositions": [
+          {
+            "question_span": "Are opening hours consistent across Paper Alpha and Paper Beta",
+            "truth": "supported",
+            "claim_indices": [
+              1,
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 699,
+        "completion_tokens": 81,
+        "model_duration_ms": 33182.4,
+        "prompt_eval_ms": 9240.8,
+        "completion_eval_ms": 23853.7
+      },
+      "passed": true,
+      "seconds": 33.25509229069576,
+      "budget": {
+        "deadline": 1791131377.5976279,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "generation": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 699,
+            "completion_tokens": 81,
+            "wall_ms": 33248.2
+          }
+        },
+        "judge_tokens_reserved": 0,
+        "model_call_records": [
+          {
+            "role": "generation",
+            "status": "ok",
+            "wall_ms": 33248.2,
+            "prompt_tokens": 699,
+            "completion_tokens": 81,
+            "server_ms": 33182.4,
+            "load_ms": 75.9,
+            "prompt_eval_ms": 9240.8,
+            "completion_eval_ms": 23853.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "different",
+      "expected": "no",
+      "verdict": {
+        "value": "no",
+        "claim_index": 1,
+        "claim_indices": [
+          1,
+          2
+        ],
+        "evidence_ids": [
+          "c1",
+          "c2"
+        ],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "comparison",
+        "question_complete": true,
+        "comparison_dimension": "opening hours",
+        "propositions": [
+          {
+            "question_span": "Are opening hours consistent across Paper Alpha and Paper Beta",
+            "truth": "contradicted",
+            "claim_indices": [
+              1,
+              2
+            ]
+          }
+        ],
+        "validation_issues": []
+      },
+      "usage": {
+        "prompt_tokens": 699,
+        "completion_tokens": 81,
+        "model_duration_ms": 18970.5,
+        "prompt_eval_ms": 1010.3,
+        "completion_eval_ms": 17829.3
+      },
+      "passed": true,
+      "seconds": 19.024957458022982,
+      "budget": {
+        "deadline": 1791131410.8546932,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "generation": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 699,
+            "completion_tokens": 81,
+            "wall_ms": 19016.5
+          }
+        },
+        "judge_tokens_reserved": 0,
+        "model_call_records": [
+          {
+            "role": "generation",
+            "status": "ok",
+            "wall_ms": 19016.5,
+            "prompt_tokens": 699,
+            "completion_tokens": 81,
+            "server_ms": 18970.5,
+            "load_ms": 117.8,
+            "prompt_eval_ms": 1010.3,
+            "completion_eval_ms": 17829.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "unknown",
+      "expected": "unclear",
+      "verdict": {
+        "value": "unclear",
+        "claim_index": null,
+        "claim_indices": [],
+        "evidence_ids": [],
+        "method": "structured_claims_classifier",
+        "scope": "仅组合已校验 claims；结构校验不等于原文蕴含校验",
+        "operator": "atomic",
+        "question_complete": false,
+        "comparison_dimension": "opening hours",
+        "propositions": [
+          {
+            "question_span": "Are opening hours consistent across Paper Alpha and Paper Beta",
+            "truth": "unknown",
+            "claim_indices": []
+          }
+        ],
+        "validation_issues": [
+          "incomplete_question"
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 684,
+        "completion_tokens": 77,
+        "model_duration_ms": 17011.5,
+        "prompt_eval_ms": 1259.5,
+        "completion_eval_ms": 15666.2
+      },
+      "passed": true,
+      "seconds": 17.049869999755174,
+      "budget": {
+        "deadline": 1791131429.880843,
+        "limits": {
+          "policy": 12,
+          "judge": 8,
+          "generation": 12,
+          "judge_tokens": 24000
+        },
+        "calls": {
+          "generation": {
+            "attempted": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "prompt_tokens": 684,
+            "completion_tokens": 77,
+            "wall_ms": 17045.1
+          }
+        },
+        "judge_tokens_reserved": 0,
+        "model_call_records": [
+          {
+            "role": "generation",
+            "status": "ok",
+            "wall_ms": 17045.1,
+            "prompt_tokens": 684,
+            "completion_tokens": 77,
+            "server_ms": 17011.5,
+            "load_ms": 79.5,
+            "prompt_eval_ms": 1259.5,
+            "completion_eval_ms": 15666.2
+          }
+        ]
+      }
+    }
+  ]
+}

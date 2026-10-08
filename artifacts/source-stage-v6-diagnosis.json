@@ -1,0 +1,156 @@
+{
+  "manifest_sha256": "13f1163f7df597f63f467769ad6ca9fb722329b3d0a9a8a6e0f520431eb64c76",
+  "run_sha256": "4c8febaa860b2e560660423253b60caf7ec1a90bb6d7d172964e4ae08d6f8c9e",
+  "by_frozen_stage": {
+    "candidate_missing": {
+      "tasks": 4,
+      "literal_correct": 2,
+      "false_refusals": 0,
+      "first_context_all_gold_documents": 0,
+      "first_context_gold_facts_delivered_proxy": 4,
+      "gold_facts": 13,
+      "execution_errors": 0,
+      "total_tokens": 10361
+    },
+    "quota_blocked": {
+      "tasks": 4,
+      "literal_correct": 3,
+      "false_refusals": 0,
+      "first_context_all_gold_documents": 1,
+      "first_context_gold_facts_delivered_proxy": 7,
+      "gold_facts": 12,
+      "execution_errors": 0,
+      "total_tokens": 14281
+    },
+    "fact_proxy_reached": {
+      "tasks": 4,
+      "literal_correct": 2,
+      "false_refusals": 0,
+      "first_context_all_gold_documents": 4,
+      "first_context_gold_facts_delivered_proxy": 8,
+      "gold_facts": 8,
+      "execution_errors": 0,
+      "total_tokens": 11495
+    }
+  },
+  "observed_failure_layers": {
+    "document_or_passage_missing": 3,
+    "correct": 7,
+    "answer_or_scoring_review": 2
+  },
+  "fact_complete_but_wrong_ids": [
+    "SV6-42b90af83720",
+    "SV6-42d8e8ba963a"
+  ],
+  "records": [
+    {
+      "id": "SV6-3ea78fadb120",
+      "target_stage": "candidate_missing",
+      "freeze_fact_proxy_reached": 0,
+      "first_context_facts_complete": false,
+      "answer_correct": false,
+      "status": "answered",
+      "failure_layer": "document_or_passage_missing"
+    },
+    {
+      "id": "SV6-401f3d01eeb0",
+      "target_stage": "candidate_missing",
+      "freeze_fact_proxy_reached": 2,
+      "first_context_facts_complete": false,
+      "answer_correct": true,
+      "status": "answered",
+      "failure_layer": "correct"
+    },
+    {
+      "id": "SV6-42ba0a39fd6c",
+      "target_stage": "candidate_missing",
+      "freeze_fact_proxy_reached": 1,
+      "first_context_facts_complete": false,
+      "answer_correct": false,
+      "status": "answered",
+      "failure_layer": "document_or_passage_missing"
+    },
+    {
+      "id": "SV6-42e435687379",
+      "target_stage": "candidate_missing",
+      "freeze_fact_proxy_reached": 1,
+      "first_context_facts_complete": false,
+      "answer_correct": true,
+      "status": "answered",
+      "failure_layer": "correct"
+    },
+    {
+      "id": "SV6-40ff12f83c0e",
+      "target_stage": "quota_blocked",
+      "freeze_fact_proxy_reached": 1,
+      "first_context_facts_complete": false,
+      "answer_correct": true,
+      "status": "answered",
+      "failure_layer": "correct"
+    },
+    {
+      "id": "SV6-4211483dd9be",
+      "target_stage": "quota_blocked",
+      "freeze_fact_proxy_reached": 1,
+      "first_context_facts_complete": false,
+      "answer_correct": false,
+      "status": "conflict",
+      "failure_layer": "document_or_passage_missing"
+    },
+    {
+      "id": "SV6-442e95a99f69",
+      "target_stage": "quota_blocked",
+      "freeze_fact_proxy_reached": 3,
+      "first_context_facts_complete": false,
+      "answer_correct": true,
+      "status": "answered",
+      "failure_layer": "correct"
+    },
+    {
+      "id": "SV6-464fd5c58352",
+      "target_stage": "quota_blocked",
+      "freeze_fact_proxy_reached": 1,
+      "first_context_facts_complete": true,
+      "answer_correct": true,
+      "status": "answered",
+      "failure_layer": "correct"
+    },
+    {
+      "id": "SV6-42b90af83720",
+      "target_stage": "fact_proxy_reached",
+      "freeze_fact_proxy_reached": 2,
+      "first_context_facts_complete": true,
+      "answer_correct": false,
+      "status": "answered",
+      "failure_layer": "answer_or_scoring_review"
+    },
+    {
+      "id": "SV6-42d8e8ba963a",
+      "target_stage": "fact_proxy_reached",
+      "freeze_fact_proxy_reached": 2,
+      "first_context_facts_complete": true,
+      "answer_correct": false,
+      "status": "answered",
+      "failure_layer": "answer_or_scoring_review"
+    },
+    {
+      "id": "SV6-433b16f84a1d",
+      "target_stage": "fact_proxy_reached",
+      "freeze_fact_proxy_reached": 2,
+      "first_context_facts_complete": true,
+      "answer_correct": true,
+      "status": "answered",
+      "failure_layer": "correct"
+    },
+    {
+      "id": "SV6-451c417c6ee8",
+      "target_stage": "fact_proxy_reached",
+      "freeze_fact_proxy_reached": 2,
+      "first_context_facts_complete": true,
+      "answer_correct": true,
+      "status": "answered",
+      "failure_layer": "correct"
+    }
+  ],
+  "note": "Gold fact delivery uses word-4gram overlap, not semantic support. A fact-complete wrong answer still needs source and scoring review; it is not automatically a model reasoning error."
+}

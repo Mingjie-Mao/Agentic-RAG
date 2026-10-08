@@ -11,18 +11,20 @@ from sqlalchemy import func, or_, select
 from agent.planner import (
     carry_forward_query,
     checklist,
-    compact_observation,
-    recovery_query,
-    retrieval_quality,
+    evidence_coverage,
     repair_question,
     subgoals,
     uncovered_items,
+    version_depth,
     version_pairs,
+    version_points,
 )
 from agent.tools import KnowledgeTools, ToolResult
-from app.clients import DependencyError, Models
+from agent.workflow_state import WorkflowState
+from app.clients import Models
 from app.config import conflict_check_enabled, settings
 from app.db import SessionLocal
+from app.execution_budget import BudgetExceeded, ExecutionBudget, TaskCancelled, current_budget, use_budget
 from app.models import AgentEvent, AgentTask, ToolExecution, User, now, uid
 from app.qa import (
     answer_verdict,
@@ -31,12 +33,11 @@ from app.qa import (
     shadow_scores,
     validate_claims,
 )
-from app.security import require_chunk
+from app.security import require_chunk, require_document
 from app.task_analysis import (
-    acceptance_items,
     conflict_intent,
-    multi_source_intent,
     version_intent,
+    historical_route_intent,
 )
 
 
@@ -57,16 +58,27 @@ def _event(db, task, event_type, *, tool_name=None, payload=None, refs=None):
     return row
 
 
-def create_task(db, user, goal, mode="workflow", max_steps=6, task_input=None):
+def create_task(db, user, goal, mode="workflow", max_steps=6, task_input=None, *, benchmark_execution=False):
     task = AgentTask(
         tenant_id=user.tenant_id,
         user_id=user.id,
         goal=goal,
-        input=task_input or {},
+        input={key: value for key, value in (task_input or {}).items() if key not in
+               {"_workflow_state", "_execution_route", "_execution_budget", "_hybrid_state", "_task_contract", "_benchmark_execution", "_benchmark_scenario_events", "_langgraph_state", "_langgraph_config", "_planner_historical", "_planner_values"}},
         mode=mode,
         max_steps=max_steps,
         status="queued",
     )
+    if benchmark_execution:
+        task.input = {**task.input, "_benchmark_execution": True}
+        task.status = "running"
+    if mode == 'workflow' and settings().adaptive_routing_enabled:
+        from app.routing import execution_route
+        route = execution_route(goal, document_id=task.input.get('document_id'))
+        # Explicit workflow always remains deterministic. Auto can select dynamic
+        # in the API; only server-derived direct routing is persisted here.
+        task.input = {**task.input, '_execution_route': route if route['mode'] == 'workflow'
+                      else {'mode': 'workflow', 'reason': 'explicit_workflow'}}
     db.add(task)
     db.commit()
     _event(db, task, "task_created", payload={"mode": mode, "max_steps": max_steps})
@@ -92,9 +104,19 @@ def _safe_summary(result):
 
 
 def _execute(db, task, tools, name, arguments, *, reuse=False):
+    if current_budget():
+        current_budget().check()
     request_hash = hashlib.sha256(
         json.dumps({"tool": name, "arguments": arguments}, sort_keys=True, ensure_ascii=False).encode()
     ).hexdigest()
+    previous = db.scalar(
+        select(ToolExecution).where(
+            ToolExecution.task_id == task.id, ToolExecution.request_hash == request_hash
+        )
+    )
+    if task.step_no >= task.max_steps and not (reuse and previous and previous.status == "succeeded"):
+        _event(db, task, "tool_rejected", tool_name=name, payload={"error_code": "step_budget_exhausted"})
+        return None
     if name == "compare_versions" and not (
         task.input.get("document_id") or version_intent(task.goal)
     ):
@@ -110,18 +132,18 @@ def _execute(db, task, tools, name, arguments, *, reuse=False):
         task.updated_at = now()
         db.commit()
         return None
-    previous = db.scalar(
-        select(ToolExecution).where(
-            ToolExecution.task_id == task.id, ToolExecution.request_hash == request_hash
-        )
-    )
     if previous and previous.status == "succeeded":
         if reuse:
+            if arguments.get("document_id"):
+                document = require_document(db, tools.user, arguments["document_id"])
+                checkpoint_active = (previous.result or {}).get("checkpoint_data", {}).get("active_version_id")
+                if checkpoint_active and checkpoint_active != document.active_version_id:
+                    raise HTTPException(409, "任务恢复期间文档版本已变化，请新建任务")
             for chunk_id in previous.evidence_chunk_ids:
-                require_chunk(db, tools.user, chunk_id)
+                require_chunk(db, tools.user, chunk_id, active_only=name != "compare_versions")
             return ToolResult(
                 "ok",
-                {},
+                (previous.result or {}).get("checkpoint_data", {}),
                 previous.evidence_chunk_ids,
                 {"checked_now": True, "replayed_from_checkpoint": True},
             )
@@ -150,7 +172,12 @@ def _execute(db, task, tools, name, arguments, *, reuse=False):
     result = tools.call(name, arguments)
     wall_ms = round((time.monotonic() - started) * 1000, 1)
     execution.status = "succeeded" if result.status == "ok" else "failed"
-    execution.result = {**_safe_summary(result), "wall_ms": wall_ms, "usage": result.usage or {}}
+    execution.result = {
+        **_safe_summary(result), "wall_ms": wall_ms, "usage": result.usage or {},
+        "checkpoint_data": {key: result.data[key] for key in (
+            "matches", "versions", "active_version_id", "document_id"
+        ) if key in result.data},
+    }
     execution.evidence_chunk_ids = result.evidence_refs
     execution.error = result.error_code
     execution.completed_at = now()
@@ -170,6 +197,11 @@ def _execute(db, task, tools, name, arguments, *, reuse=False):
 
 
 def _uses_historical_versions(db, task):
+    if task.input.get("_task_contract", {}).get("intent") == "history" and task.input["_task_contract"].get("version_chain_complete"):
+        return True
+    # Set only by the planner after it selected a dated version (never by user input).
+    if task.mode == "planner" and task.input.get("_planner_historical"):
+        return True
     if not (task.input.get("document_id") or version_intent(task.goal)):
         return False
     return bool(
@@ -185,7 +217,7 @@ def _uses_historical_versions(db, task):
     )
 
 
-def _evidence_from_refs(db, user, refs, *, allow_historical=False):
+def _evidence_from_refs(db, user, refs, *, allow_historical=False, limit=8):
     authorized = []
     for chunk_id in dict.fromkeys(refs):
         chunk, version, document = require_chunk(
@@ -199,8 +231,11 @@ def _evidence_from_refs(db, user, refs, *, allow_historical=False):
                 "chunk_id": chunk.id,
                 "document_id": document.id,
                 "version_id": version.id,
+                # Match shared retrieval's source identity. Decorating a current
+                # title made the local generator abstain on otherwise identical
+                # supported Dev inputs. Historical sources keep their scope label.
                 "title": (
-                    f"{document.title} · 当前版本"
+                    document.title
                     if is_active
                     else f"{document.title} · 历史版本 {version.created_at.date().isoformat()}"
                 ),
@@ -210,18 +245,20 @@ def _evidence_from_refs(db, user, refs, *, allow_historical=False):
                 "is_active": is_active,
             }
         )
+    if limit is None:
+        return [dict(row, id=f"E{i}") for i, row in enumerate(authorized, 1)]
     # Active evidence wins. Within it, round-robin documents so one version or long
     # document cannot consume all eight final slots before a conflicting source.
     buckets = {}
     for row in sorted(authorized, key=lambda item: not item["is_active"]):
         buckets.setdefault(row["document_id"], []).append(row)
     selected = []
-    while buckets and len(selected) < 8:
+    while buckets and len(selected) < limit:
         for document_id in list(buckets):
             selected.append(buckets[document_id].pop(0))
             if not buckets[document_id]:
                 del buckets[document_id]
-            if len(selected) == 8:
+            if len(selected) == limit:
                 break
     evidence = []
     for row in selected:
@@ -240,7 +277,7 @@ def _merge_usage(usage, extra):
     return usage
 
 
-def _repair_coverage(db, user, task, models, tools, items, claims, evidence, pool, usage):
+def _repair_coverage(db, user, task, models, tools, items, claims, evidence, pool, usage, *, facts=None):
     """Answer the subgoals the first pass left open, and nothing else.
 
     A weak policy model tends to restate a conditional request instead of executing it,
@@ -279,14 +316,24 @@ def _repair_coverage(db, user, task, models, tools, items, claims, evidence, poo
             pool.update({row["chunk_id"]: row for row in focused})
     if not focused:
         return claims, usage
-    generated, extra = models.generate(
-        repair_question(items, missing),
-        focused,
-        acceptance_items_override=checklist(missing),
-        check_conflict=False,
-        max_output_tokens=400,
-    )
+    if settings().passage_window_enabled:
+        from app.passages import prepare_passages
+        focused, trace = prepare_passages(db, user, repair_question(items, missing), focused,
+                                          settings(), historical=_uses_historical_versions(db, task))
+        pool.update({row['chunk_id']: row for row in focused})
+        _event(db, task, 'passage_selection', payload=trace,
+               refs=[row['chunk_id'] for row in focused])
+    _event(db, task, 'generation_context', payload={'stage': 'coverage_repair'},
+           refs=[row['chunk_id'] for row in focused])
+    options={'acceptance_items_override':checklist(missing),'check_conflict':False,'max_output_tokens':400}
+    if settings().answer_quality_enabled:
+        from app.answer_quality import recover_answer
+        generated,extra=recover_answer(models,repair_question(items,missing),focused,options=options)
+    else:
+        generated,extra=models.generate(repair_question(items,missing),focused,**options)
     added, status = validate_claims(generated, focused)
+    if extra.get('quality_validation_failed'):
+        added,status=[],'verification_failed'
     _event(
         db,
         task,
@@ -295,51 +342,234 @@ def _repair_coverage(db, user, task, models, tools, items, claims, evidence, poo
     )
     if status != "answered":
         return claims, _merge_usage(usage, extra)
+    if facts is not None:
+        from app.source_facts import public_facts
+        facts.extend(public_facts(generated.facts, added))
     seen = {claim["text"] for claim in claims}
     return claims + [claim for claim in added if claim["text"] not in seen], _merge_usage(usage, extra)
 
 
-def _finish(db, user, task, models, refs, memory_context=None, tools=None, started=None):
+def _workflow_snapshot(db, task, *, evidence=None, claims=None, status=None, phase, blocked=False):
+    if task.mode != "workflow":
+        return None
+    items = subgoals(task.goal)
+    state = WorkflowState.restore(task.input.get("_workflow_state", {}), items)
+    if evidence is not None:
+        state.observe(evidence_coverage(items, evidence, task.goal), blocked=blocked)
+    if claims is not None:
+        # Apply the same coverage proxy to single-item asks too; the older compound
+        # checker deliberately skips those and cannot certify a single answer.
+        covered = evidence_coverage(items, [
+            {"chunk_id": str(index), "text": claim["text"]}
+            for index, claim in enumerate(claims, 1)
+        ], task.goal)
+        missing = set(uncovered_items(items, claims, task.goal))
+        missing.update(item for item in items if not covered[item])
+        state.check_answers(list(missing), claims, valid=status in {"answered", "conflict"})
+    snapshot = state.snapshot()
+    task.input = {**task.input, "_workflow_state": snapshot}
+    task.state_version += 1
+    refs = list(dict.fromkeys(ref for row in state.items for ref in row["evidence_refs"]))
+    _event(db, task, "subgoal_state", payload={"phase": phase, **snapshot}, refs=refs)
+    return state
+
+
+def _workflow_versions(db, task, tools, document_id):
+    refs = []
+    if task.step_no >= task.max_steps:
+        return refs
+    result = _execute(db, task, tools, "get_document_version", {"document_id": document_id}, reuse=True)
+    if result is None or result.status != "ok":
+        _event(db, task, "version_route", payload={"status": "blocked", "reason": "version_lookup_failed"})
+        return refs
+    versions = result.data.get("versions", [])
+    selection = None
+    if settings().focused_generation_enabled:
+        from app.temporal import select_effective_versions
+        selection = select_effective_versions(task.goal, versions)
+        _event(db, task, "effective_selection", payload=selection)
+    pairs = version_pairs(versions, task.goal, task.max_steps - task.step_no)
+    selected_pairs = None
+    if selection and selection['status'] == 'selected':
+        wanted = {row['version_id'] for row in selection['selections']}
+        positions = [index for index, row in enumerate(versions) if row['version_id'] in wanted]
+        low, high = min(positions), max(positions)
+        if low == high:
+            low, high = (low, low + 1) if low + 1 < len(versions) else (max(0, low - 1), low)
+        selected_pairs = [(versions[index + 1]['version_id'], versions[index]['version_id'])
+                          for index in range(low, high)]
+        pairs = selected_pairs[:max(0, task.max_steps - task.step_no)]
+    if not pairs and len(versions) >= 2:
+        pairs = [(task.input.get("from_version_id"), task.input.get("to_version_id"))]
+    # Explicit dates/labels must not shrink merely because a requested version is
+    # absent. A generic history request can cover the whole available short chain.
+    requested = (max(version_points(task.goal) - 1, version_depth(task.goal))
+                 if version_points(task.goal) > 1
+                 else min(version_depth(task.goal), max(0, len(versions) - 1)))
+    if selected_pairs is not None:
+        requested = len(selected_pairs)
+    _event(db, task, "version_plan", payload={
+        "document_id": document_id, "pairs": len(pairs), "requested_pairs": requested,
+        "budget_limited": len(pairs) < min(requested, max(0, len(versions) - 1)),
+        "chain_limited": max(0, len(versions) - 1) < requested,
+    })
+    completed_pairs = 0
+    for older, newer in pairs:
+        if task.step_no >= task.max_steps:
+            break
+        comparison = _execute(db, task, tools, "compare_versions", {
+            "document_id": document_id, "from_version_id": older, "to_version_id": newer,
+        }, reuse=True)
+        if comparison and comparison.status == "ok":
+            refs.extend(comparison.evidence_refs)
+            completed_pairs += 1
+    _event(db, task, "version_route", payload={
+        "status": "complete" if requested and completed_pairs == requested else "unresolved",
+        "requested_pairs": requested, "completed_pairs": completed_pairs,
+        "reason": "version_chain_checked" if completed_pairs == requested and requested
+        else "incomplete_version_chain",
+    }, refs=refs)
+    return refs
+
+
+def _finish(db, user, task, models, refs, memory_context=None, tools=None, started=None,
+            contract=None, prepared_evidence=None, preparation_trace=None):
+    if current_budget():
+        current_budget().check()
     allow_historical = _uses_historical_versions(db, task)
-    evidence = _evidence_from_refs(db, user, refs, allow_historical=allow_historical)
-    if not evidence:
+    if contract and contract.intent == "history":
+        allow_historical = contract.version_chain_complete
+    evidence = prepared_evidence if prepared_evidence is not None else _evidence_from_refs(db, user, refs, allow_historical=allow_historical)
+    passage_trace = None
+    if settings().passage_window_enabled and evidence and not contract:
+        from app.passages import prepare_passages
+        evidence, passage_trace = prepare_passages(
+            db, user, task.goal, evidence, settings(), historical=allow_historical)
+        _event(db, task, "passage_selection", payload=passage_trace,
+               refs=[row['chunk_id'] for row in evidence])
+    _workflow_snapshot(db, task, evidence=evidence, phase="before_generation")
+    # The hybrid mode walks versions with the same routine, so it gets the same guard:
+    # an incompletely read history is refused, never answered from the current version.
+    needs_history = task.mode in {"workflow", "hybrid"} and bool(
+        task.input.get("document_id") or historical_route_intent(task.goal)
+    )
+    version_plan = db.scalar(select(AgentEvent).where(
+        AgentEvent.task_id == task.id, AgentEvent.event_type == "version_plan"
+    ).order_by(AgentEvent.sequence.desc())) if needs_history else None
+    version_route = db.scalar(select(AgentEvent).where(
+        AgentEvent.task_id == task.id, AgentEvent.event_type == "version_route"
+    ).order_by(AgentEvent.sequence.desc())) if needs_history else None
+    incomplete_history = needs_history and (
+        not allow_historical or bool(version_plan and version_plan.payload.get("budget_limited"))
+        or bool(version_route and version_route.payload.get("status") in {"blocked", "unresolved"})
+    )
+    effective_selection = db.scalar(select(AgentEvent).where(
+        AgentEvent.task_id == task.id, AgentEvent.event_type == 'effective_selection'
+    ).order_by(AgentEvent.sequence.desc())) if settings().focused_generation_enabled else None
+    if effective_selection:
+        selected = effective_selection.payload
+        incomplete_history |= selected['status'] == 'unresolved'
+        if selected['status'] == 'selected':
+            wanted = {row['version_id'] for row in selected['selections']}
+            evidence = [dict(row, metadata={**(row.get('metadata') or {}),
+                        'requested_effective_dates': [item['date'] for item in selected['selections']
+                                                     if item['version_id'] == row['version_id']]})
+                        for row in evidence if row['version_id'] in wanted]
+    if contract:
+        incomplete_history = contract.intent == "history" and not contract.version_chain_complete
+    if not evidence or incomplete_history:
         payload = {
             "status": "insufficient_evidence",
             "claims": [],
             "citations": [],
-            "message": "Agent 在预算内没有找到足够依据。",
+            "message": "未能唯一定位并完整读取所需历史版本，不能用当前资料代替历史答案。"
+            if incomplete_history else "Agent 在预算内没有找到足够依据。",
             "usage": {},
         }
     else:
+        if settings().answer_quality_enabled and not allow_historical:
+            scope_trace=None
+            from app.evidence_scope import attach_scope
+            evidence, scope_trace = attach_scope(db,user,task.goal,evidence)
         # Evidence can be re-selected by the coverage step; a chunk that was already
         # cited must keep its citation, so every row seen stays available here.
         pool = {row["chunk_id"]: row for row in evidence}
         items = subgoals(task.goal)
-        compound = len(items) > 1 and not conflict_intent(task.goal)
+        compound = len(items) > 1 and not conflict_intent(task.goal) and not contract
         # The first pass is left exactly as the single-turn path runs it. Handing the
         # model its own subgoal checklist here was measured in a paired A/B
         # (`make checklist-ab`) and changed nothing, while a splitter that cuts an
         # enumeration short would hand the model a list shorter than the question.
         # No measured gain, non-zero risk, so the subgoals only drive the step below.
         options = {"memory_context": memory_context} if memory_context else {}
+        if task.mode == "planner" and task.input.get("_planner_values"):
+            # Program-verified bridge values (literal spans), mapped to this context's ids.
+            ids = {row["chunk_id"]: row["id"] for row in evidence}
+            options["verified_steps"] = [
+                {"what": v["what"], "values": v["values"], "source_quote": v["quote"], "evidence_id": ids.get(v["chunk_id"])}
+                for v in task.input["_planner_values"] if v["chunk_id"] in ids]
         if not conflict_check_enabled(task.tenant_id):
             options["check_conflict"] = False
         generated_started = time.monotonic()
-        generated, usage = models.generate(task.goal, evidence, **options)
+        _event(db, task, 'generation_context', payload={'stage': 'first'},
+               refs=[row['chunk_id'] for row in evidence])
+        if contract:
+            from app.task_contract import contract_generate
+            generated, usage = contract_generate(models, task.goal, evidence, contract=contract, options=options)
+            usage["contract_preparation"] = preparation_trace
+        elif settings().task_contract_enabled and task.mode != "planner":
+            # The planner already resolved versions and branches from its own steps;
+            # a keyword contract would re-demand a full version chain it never needed.
+            from app.task_contract import contract_generate
+            generated, usage = contract_generate(models, task.goal, evidence, options=options)
+        else:
+            if settings().answer_quality_enabled:
+                from app.answer_quality import recover_answer
+                generated, usage = recover_answer(models, task.goal, evidence, options=options)
+            else:
+                generated, usage = models.generate(task.goal, evidence, **options)
+        if passage_trace is not None:
+            usage['passage_selection'] = passage_trace
+        if settings().answer_quality_enabled and not allow_historical:
+            usage['scope_preparation']=scope_trace
         usage["generation_wall_ms"] = round((time.monotonic() - generated_started) * 1000, 1)
+        usage['generation_context_chunk_ids'] = [row['chunk_id'] for row in evidence]
+        if task.mode == "planner" and task.input.get("_planner_values") and generated.answerable:
+            from agent.planned import cite_bridges
+            generated, usage["bridge_citations_added"] = cite_bridges(
+                task.goal, generated, evidence, task.input["_planner_values"])
         claims, status = validate_claims(generated, evidence)
+        if usage.get('quality_validation_failed'):
+            claims,status=[],'verification_failed'
+        usage["answer_validation"] = {
+            "generated_answerable": generated.answerable,
+            "generated_claim_count": len(generated.claims),
+            "validated_claim_count": len(claims),
+            "status": status,
+            "reason": (('contract_' + usage['task_contract']['status'])
+                       if not generated.answerable and contract else
+                       "generator_abstained" if not generated.answerable else
+                       "claim_validation_failed" if status == "verification_failed" else "validated"),
+        }
+        facts = list(generated.facts)
         if status == "answered" and usage.get("answer_status") == "conflict":
             status = "conflict"
-        if compound and status == "answered" and claims:
+        _workflow_snapshot(db, task, claims=claims, status=status, phase="first_answer_check")
+        if compound and status == "answered" and claims and usage.get('evidence_scope',{}).get('status')!='bound_window_comparison':
             repair_started = time.monotonic()
             claims, usage = _repair_coverage(
-                db, user, task, models, tools, items, claims, evidence, pool, usage
+                db, user, task, models, tools, items, claims, evidence, pool, usage,
+                facts=facts if settings().source_facts_enabled else None,
             )
             usage["coverage_repair_wall_ms"] = round((time.monotonic() - repair_started) * 1000, 1)
-        if status == "answered" and claims:
+            usage['final_coverage'] = {'missing': uncovered_items(items, claims, task.goal),
+                'tool_budget_exhausted': task.step_no >= task.max_steps,
+                'basis': 'lexical_diagnostic; strict correctness assessed offline'}
+        if status == "answered" and claims and not contract:
             exact_started = time.monotonic()
             claims, usage = repair_exact_values(
-                models, task.goal, list(pool.values()), claims, usage
+                models, task.goal, list(pool.values()), claims, usage,
+                facts=facts if settings().source_facts_enabled else None,
             )
             if usage.get("exact_value_slots_missing_first_pass"):
                 usage["exact_value_repair_wall_ms"] = round((time.monotonic() - exact_started) * 1000, 1)
@@ -354,8 +584,19 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None, start
         # A judgment question gets its verdict as a field. It is read out of the claims
         # the pipeline already validated, so it restates a conclusion without adding a
         # fact, and it is the last step: repaired claims are included.
-        verdict, verdict_usage = answer_verdict(models, task.goal, claims, status)
+        from app.source_facts import public_facts
+        facts = public_facts(facts, claims)
+        if contract:
+            verdict, verdict_usage = None, {}
+        else:
+            verdict, verdict_usage = answer_verdict(models, task.goal, claims, status,
+                                                    evidence=evidence,
+                                                    verified_verdict=usage.get('verified_verdict') or usage.get('evidence_scope',{}).get('verdict'),
+                                                    facts=facts if settings().source_facts_enabled
+                                                    and not usage.get('extraction_fallback') else None)
         usage = merge_verdict_usage(usage, verdict_usage)
+        if settings().focused_generation_enabled or settings().adaptive_routing_enabled:
+            usage['execution_route'] = task.input.get('_execution_route', {'mode': task.mode})
         policy_usage = getattr(models, "agent_policy_usage", None)
         if policy_usage:
             usage["agent_policy_prompt_tokens"] = policy_usage["prompt_tokens"]
@@ -366,8 +607,9 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None, start
             usage["total_completion_tokens"] = (
                 usage.get("completion_tokens") or 0
             ) + policy_usage["completion_tokens"]
-            for key in ("wall_ms", "model_duration_ms", "prompt_eval_ms", "completion_eval_ms"):
-                usage[f"agent_policy_{key}"] = policy_usage.get(key, 0)
+            for key in ("wall_ms", "model_duration_ms", "model_load_ms", "prompt_eval_ms", "completion_eval_ms"):
+                # Unreported server timings stay null, not a fabricated 0 ms.
+                usage[f"agent_policy_{key}"] = policy_usage.get(key)
         executions = db.scalars(select(ToolExecution).where(ToolExecution.task_id == task.id)).all()
         usage["tool_wall_ms"] = round(
             sum((row.result or {}).get("wall_ms", 0) for row in executions), 1
@@ -395,8 +637,11 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None, start
             "status": status,
             "claims": claims,
             "verdict": verdict,
+            **({"facts": facts} if settings().source_facts_enabled else {}),
             "citations": citations,
-            "message": "" if claims else "Agent 找到了资料，但最终答案未通过引用校验。",
+            "message": ("" if claims else "未能确认所需条件或历史事实，资料不足以支持完整回答。"
+                        if contract and status == 'insufficient_evidence' else "Agent 找到了资料，但生成器未能依据这些资料给出完整回答。"
+                        if status == "insufficient_evidence" else "Agent 找到了资料，但最终答案未通过引用校验。"),
             "usage": usage,
             "shadow_scores": (
                 shadow_scores(task.goal, evidence, claims, semantic=settings().semantic_shadow_enabled)
@@ -416,6 +661,14 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None, start
     db.refresh(task)
     if task.status == "cancelled":
         return task
+    state = _workflow_snapshot(db, task, evidence=evidence, claims=payload.get("claims", []),
+                               status=payload["status"], phase="final_answer_check")
+    if state:
+        _event(db, task, "workflow_stop", payload={
+            "reason": "answer_items_covered" if all(row["state"] == "answer_covered" for row in state.items)
+            else "bounded_plan_finished_with_unresolved_items",
+            "basis": "lexical_coverage_proxy; not semantic correctness",
+        })
     task.status = "completed"
     task.result = payload
     task.evidence_chunk_ids = [row["chunk_id"] for row in evidence]
@@ -428,6 +681,56 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None, start
 
 
 def run_task(db, user, task, *, models=None, tools=None):
+    from agent.graph_runtime import graph_identity
+    db.refresh(user)
+    graph_identity(task, user)
+    result = _budgeted_run_task(db, user, task, models=models, tools=tools)
+    if settings().semantic_slot_shadow_enabled and result.status == "completed":
+        from app.slot_shadow import schedule_completed
+        schedule_completed("agent", result.id, user.id)
+    return result
+
+
+def _budgeted_run_task(db, user, task, *, models=None, tools=None):
+    if task.status in {"completed", "cancelled"}:
+        return _run_task(db, user, task, models=models, tools=tools)
+
+    def persist(snapshot):
+        if task.lease_token and task.status == "running":
+            task.lease_until = now() + timedelta(seconds=max(settings().agent_lease_seconds, settings().model_timeout_seconds + 5))
+        task.input = {**task.input, "_execution_budget": snapshot}
+        db.commit()
+
+    def cancelled():
+        return db.scalar(select(AgentTask.status).where(AgentTask.id == task.id)) == "cancelled"
+
+    budget = ExecutionBudget(settings(), task.input.get("_execution_budget"),
+                             persist=persist, cancelled=cancelled)
+    try:
+        with use_budget(budget):
+            return _run_task(db, user, task, models=models, tools=tools)
+    except TaskCancelled:
+        task.status = "cancelled"
+        task.lease_until = task.lease_token = None
+        db.commit()
+        return task
+    except BudgetExceeded as exc:
+        db.rollback()
+        task.status, task.error = "failed", exc.reason
+        task.lease_until = task.lease_token = None
+        task.updated_at = now()
+        db.commit()
+        _event(db, task, "budget_exhausted", payload={"reason": exc.reason})
+        raise
+    finally:
+        db.rollback()
+        if task.result:
+            task.result = {**task.result, "usage": {**task.result.get("usage", {}),
+                                                   "execution_budget": budget.snapshot()}}
+        persist(budget.snapshot())
+
+
+def _run_task(db, user, task, *, models=None, tools=None):
     started = time.monotonic()
     if task.status == "cancelled":
         raise HTTPException(409, "任务已取消")
@@ -440,230 +743,25 @@ def run_task(db, user, task, *, models=None, tools=None):
     task.updated_at = now()
     db.commit()
     _event(db, task, "task_started", payload={"resumed": task.step_no > 0})
-    refs, observations = [], []
     try:
-        memory_context = []
-        memory_adapter = getattr(tools, "memory", None)
-        if task.input.get("use_memory", False) and memory_adapter and memory_adapter.enabled:
-            memory = _execute(
-                db,
-                task,
-                tools,
-                "search_memory",
-                {"query": task.goal, "limit": 3},
-                reuse=True,
-            )
-            if memory and memory.status == "ok":
-                memory_context = memory.data.get("memories", [])
-                observations.append(
-                    compact_observation("search_memory", _safe_summary(memory), memory.data, [])
-                )
-        if task.mode == "workflow":
-            document_id = task.input.get("document_id")
-            if document_id:
-                version_result = _execute(
-                    db,
-                    task,
-                    tools,
-                    "get_document_version",
-                    {"document_id": document_id},
-                    reuse=True,
-                )
-                observations.append(_safe_summary(version_result))
-                # A question about two dates is one transition; a question about three
-                # is two. Diffing only the newest pair silently drops the oldest
-                # version, which is exactly the period such a question asks about.
-                listed = (version_result.data.get("versions", []) if version_result else []) or []
-                pairs = version_pairs(listed, task.goal, task.max_steps - task.step_no) or [
-                    (task.input.get("from_version_id"), task.input.get("to_version_id"))
-                ]
-                _event(
-                    db,
-                    task,
-                    "version_plan",
-                    payload={"document_id": document_id, "pairs": len(pairs)},
-                )
-                for from_version_id, to_version_id in pairs:
-                    if task.step_no >= task.max_steps:
-                        break
-                    comparison = _execute(
-                        db,
-                        task,
-                        tools,
-                        "compare_versions",
-                        {
-                            "document_id": document_id,
-                            "from_version_id": from_version_id,
-                            "to_version_id": to_version_id,
-                        },
-                        reuse=True,
-                    )
-                    if comparison:
-                        refs.extend(comparison.evidence_refs)
-            else:
-                # A goal that names several sources has to bring back several
-                # documents, so it gets the full evidence budget; the per-document
-                # quota in retrieval then keeps one long document from taking it all.
-                search = _execute(
-                    db,
-                    task,
-                    tools,
-                    "search_documents",
-                    {"query": task.goal, "top_k": 8 if multi_source_intent(task.goal) else 6},
-                    reuse=True,
-                )
-                # CRAG-style bounded correction: a truly empty result and an
-                # obviously off-topic result are different observations. Neither an
-                # ACL error nor a dependency error is a query miss.
-                quality = (
-                    retrieval_quality(task.goal, search.evidence_refs, search.data.get("matches", []))
-                    if search is not None and search.status == "ok"
-                    else "tool_error"
-                )
-                _event(db, task, "retrieval_assessment", payload={"quality": quality})
-                if (
-                    search is not None
-                    and search.status == "ok"
-                    and quality in {"empty", "irrelevant"}
-                    and task.step_no < task.max_steps
-                ):
-                    retry = recovery_query(task.goal, task.goal)
-                    if retry:
-                        _event(db, task, "query_recovery", payload={"retry_query": retry, "reason": quality})
-                        search = _execute(
-                            db,
-                            task,
-                            tools,
-                            "search_documents",
-                            {"query": retry, "top_k": 6},
-                            reuse=True,
-                        )
-                if search:
-                    refs.extend(search.evidence_refs)
-                    items = subgoals(task.goal)
-                    if search.status == "ok" and len(items) > 1 and refs:
-                        # A compound request can retrieve its first article while
-                        # leaving the other subquestion without a useful passage.
-                        # Grade each item conservatively, then spend at most two
-                        # extra searches on items that are plainly off-topic.
-                        matches = search.data.get("matches", [])
-                        targeted = 0
-                        for item in items:
-                            grade = retrieval_quality(item, search.evidence_refs, matches)
-                            _event(db, task, "subgoal_evidence_assessment", payload={
-                                "subgoal": item, "quality": grade,
-                            })
-                            if grade not in {"empty", "irrelevant"} or targeted >= 2 or task.step_no >= task.max_steps - 1:
-                                continue
-                            supplement = _execute(
-                                db, task, tools, "search_documents",
-                                {"query": item, "top_k": 4}, reuse=True,
-                            )
-                            targeted += 1
-                            if supplement and supplement.status == "ok":
-                                refs = list(dict.fromkeys(supplement.evidence_refs + refs))
-                    if refs and task.step_no < task.max_steps:
-                        detail = _execute(
-                            db,
-                            task,
-                            tools,
-                            "retrieve_evidence",
-                            {"chunk_ids": refs[:8]},
-                            reuse=True,
-                        )
-                        if detail:
-                            refs = detail.evidence_refs
-        else:
-            idle_steps = 0
-            while task.step_no < task.max_steps:
-                db.refresh(task)
-                if task.status == "cancelled":
-                    return task
-                # The policy needs the goal and the last few observations, not the
-                # full text of every match it has ever seen. Replaying whole tool
-                # payloads is what made the dynamic prompt grow without bound.
-                try:
-                    decision = models.decide_agent_action(
-                        task.goal, observations[-3:], task.step_no + 1
-                    )
-                except DependencyError as exc:
-                    if exc.stage != "agent_policy":
-                        raise
-                    # One malformed action is a wasted step, not a reason to lose a
-                    # durable task and the evidence it already holds.
-                    _event(
-                        db,
-                        task,
-                        "policy_rejected",
-                        payload={"error_code": "unparseable_action"},
-                    )
-                    task.step_no += 1
-                    task.state_version += 1
-                    task.updated_at = now()
-                    db.commit()
-                    observations.append({"status": "error", "error_code": "unparseable_action"})
-                    idle_steps += 1
-                    if idle_steps >= 2:
-                        _event(db, task, "deterministic_stop", payload={"reason": "no_new_evidence"})
-                        break
-                    continue
-                _event(
-                    db,
-                    task,
-                    "policy_decision",
-                    payload={"action": decision.action, "purpose": decision.purpose},
-                )
-                if decision.action == "final":
-                    break
-                known = set(refs)
-                result = _execute(db, task, tools, decision.action, decision.arguments)
-                if result is None:
-                    observations.append({"status": "error", "error_code": "repeated_call"})
-                    idle_steps += 1
-                    if idle_steps >= 2:
-                        _event(db, task, "deterministic_stop", payload={"reason": "no_new_evidence"})
-                        break
-                    continue
-                refs.extend(result.evidence_refs)
-                if decision.action in {"retrieve_evidence", "open_document", "compare_versions"}:
-                    refs = result.evidence_refs + refs
-                observations.append(
-                    compact_observation(
-                        decision.action, _safe_summary(result), result.data, result.evidence_refs
-                    )
-                )
-                # Two actions in a row that add no evidence is a loop, not progress.
-                idle_steps = 0 if set(refs) - known else idle_steps + 1
-                if idle_steps >= 2 and refs:
-                    _event(db, task, "deterministic_stop", payload={"reason": "no_new_evidence"})
-                    break
-            # A dynamic policy may stop after answering only the first half of a
-            # compound request. Use any remaining step for one deterministic,
-            # ACL-scoped coverage retrieval over the original goal. Generation
-            # still has to cite and validate the returned chunks.
-            if len(acceptance_items(task.goal)) > 1 and task.step_no < task.max_steps:
-                coverage = _execute(
-                    db,
-                    task,
-                    tools,
-                    "search_documents",
-                    {"query": task.goal, "top_k": 8},
-                    reuse=True,
-                )
-                if coverage:
-                    refs = coverage.evidence_refs + refs
-                    _event(
-                        db,
-                        task,
-                        "coverage_retrieval",
-                        payload={
-                            "acceptance_items": acceptance_items(task.goal),
-                            "evidence_count": len(coverage.evidence_refs),
-                        },
-                        refs=coverage.evidence_refs,
-                    )
-        return _finish(db, user, task, models, refs, memory_context, tools=tools, started=started)
+        from agent.graph import invoke_agent_graph
+        from app.retrieval import routing_goal
+
+        with routing_goal(task.goal, fuse=task.mode in {"dynamic", "hybrid", "planner"}):
+            return invoke_agent_graph(db, user, task, models, tools, started)
+    except TaskCancelled:
+        task.status = "cancelled"
+        task.lease_until = None
+        task.lease_token = None
+        db.commit()
+        return task
     except Exception as exc:
+        db.rollback()
+        db.refresh(task)
+        # The answer may already be committed when a checkpoint write fails.
+        # Preserve that terminal result rather than enqueueing a second generation.
+        if task.status == "completed":
+            return task
         task.status = "failed"
         task.error = str(exc)[:1000]
         task.lease_until = None
@@ -776,6 +874,7 @@ def claim_agent_task():
                 AgentTask.status == "running",
                 AgentTask.lease_until < now(),
                 AgentTask.attempts >= 3,
+                AgentTask.input["_benchmark_execution"].as_boolean().is_not(True),
             )
             .with_for_update(skip_locked=True)
         ).all()
@@ -793,6 +892,7 @@ def claim_agent_task():
                     (AgentTask.status == "running") & (AgentTask.lease_until < now()),
                 ),
                 AgentTask.attempts < 3,
+                AgentTask.input["_benchmark_execution"].as_boolean().is_not(True),
             )
             .order_by(AgentTask.created_at)
             .with_for_update(skip_locked=True)

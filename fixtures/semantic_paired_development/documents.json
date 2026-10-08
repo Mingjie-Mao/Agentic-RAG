@@ -1,0 +1,317 @@
+{
+  "tenant": {
+    "id": "lanting",
+    "name": "兰亭云物流"
+  },
+  "users": [
+    {
+      "id": "lt-eng",
+      "tenant_id": "lanting",
+      "username": "engineer@lanting.unseen",
+      "display_name": "兰亭云 · 工程",
+      "role": "member",
+      "groups": [
+        "engineering"
+      ]
+    },
+    {
+      "id": "lt-admin",
+      "tenant_id": "lanting",
+      "username": "admin@lanting.unseen",
+      "display_name": "兰亭云 · 管理者",
+      "role": "admin",
+      "groups": [
+        "engineering",
+        "finance",
+        "hr"
+      ]
+    }
+  ],
+  "owner": "lt-admin",
+  "documents": [
+    {
+      "document_id": "lt-incident-417",
+      "title": "事故 417 复盘：路由服务超时",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-incident-417.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-import-guide",
+      "title": "批量导入指南",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-import-guide.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-routing-ops",
+      "title": "路由服务运维手册",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-routing-ops.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-incident-502",
+      "title": "事故 502 复盘：结算延迟",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-incident-502.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-settlement-rules",
+      "title": "结算规则",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-settlement-rules.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-support-tiers",
+      "title": "客户支持分级",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-support-tiers.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-oncall",
+      "title": "值班规则",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-oncall.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-api-quota",
+      "title": "开放平台调用配额",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-api-quota.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-sdk-guide",
+      "title": "Java SDK 使用说明",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-sdk-guide.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-webhook",
+      "title": "回调通知说明",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-webhook.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-warehouse-east",
+      "title": "华东仓收货时间",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-warehouse-east.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-warehouse-east-notice",
+      "title": "华东仓收货时间临时通知",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-warehouse-east-notice.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-warehouse-south",
+      "title": "华南仓收货时间",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-warehouse-south.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-badge",
+      "title": "门禁卡管理",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-badge.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-release-gate",
+      "title": "发布闸门规则",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-release-gate.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-db-backup",
+      "title": "数据库备份与恢复",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-db-backup.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-meeting-room",
+      "title": "会议室预订规则",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-meeting-room.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-onboarding",
+      "title": "新员工入职清单",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-onboarding.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-budget-2027",
+      "title": "2027 年度预算口径",
+      "groups": [
+        "finance"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-budget-2027.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-compensation",
+      "title": "年度调薪窗口",
+      "groups": [
+        "hr"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-compensation.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-retention",
+      "title": "日志保留政策",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-retention-v1.md",
+          "effective_from": "2025-07-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen/documents/lt-retention-v2.md",
+          "effective_from": "2026-01-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen/documents/lt-retention-v3.md",
+          "effective_from": "2026-08-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "document_id": "lt-travel",
+      "title": "差旅报销标准",
+      "groups": [],
+      "tenant_public": true,
+      "versions": [
+        {
+          "path": "fixtures/unseen/documents/lt-travel-v1.md",
+          "effective_from": "2025-04-01T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen/documents/lt-travel-v2.md",
+          "effective_from": "2026-01-15T00:00:00Z"
+        },
+        {
+          "path": "fixtures/unseen/documents/lt-travel-v3.md",
+          "effective_from": "2026-07-01T00:00:00Z"
+        }
+      ]
+    }
+  ]
+}

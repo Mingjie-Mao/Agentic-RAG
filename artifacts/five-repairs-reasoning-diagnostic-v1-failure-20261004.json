@@ -1,0 +1,15 @@
+{
+  "scope": "Dev saved-fact diagnostic; reasoning mode not enabled",
+  "model": "qwen3.5:9b",
+  "model_options": {
+    "think": true,
+    "num_predict": 1024,
+    "num_ctx": 8192
+  },
+  "observed_error": "DependencyError",
+  "stage": "answer_composition",
+  "reason": "Reasoning consumed the output budget; no JSON answer returned",
+  "task_id": "SF-43709086f7bb",
+  "passed": false,
+  "score": null
+}

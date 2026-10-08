@@ -1,0 +1,53 @@
+{
+  "version": "p2-p4-validation-status",
+  "independent_human_labels": 0,
+  "P2": {
+    "engineering": "implemented",
+    "pilot_counts": {
+      "relevance": 100,
+      "coverage": 80,
+      "claim": 80
+    },
+    "expanded_counts": {
+      "claim": 1696,
+      "coverage": 663,
+      "relevance": 1058
+    },
+    "calibration": "blocked",
+    "activation": false,
+    "blockers": [
+      "independent human labels missing",
+      "Chinese document families leave no separate dev calibration inputs"
+    ],
+    "review_path": ".runtime/semantic-slot-v2/review-r2"
+  },
+  "P3": {
+    "engineering": "implemented",
+    "primary_isolation": "passed_2_real_development_runs",
+    "paired_runtime": "prepared_not_run_pending_P2",
+    "activation": false,
+    "disagreement_review": ".runtime/semantic-slot-v2/shadow-disagreements-final-20261002.json",
+    "controlled_safety_cases_prepared": 1
+  },
+  "P4": {
+    "engineering": "implemented",
+    "main_tasks": 70,
+    "categories": 7,
+    "tasks_per_category": 10,
+    "documents": 80,
+    "versions": 90,
+    "controlled_safety_tasks": 2,
+    "formal_runs": 0,
+    "freeze": "blocked_pending_independent_review",
+    "activation": false
+  },
+  "verification": {
+    "unit_passed": 406,
+    "unit_skipped": 25,
+    "real_integration_passed": 7,
+    "final_cache_integration_passed": 2,
+    "three_arm_smoke_passed": 3,
+    "unreviewed_freeze_rejected": true,
+    "unreviewed_ingestion_rejected": true
+  }
+}

@@ -1,0 +1,765 @@
+{
+  "metadata": {
+    "manifest_sha256": "f5d5957f8402d4f0648bbe7df1c5813efb2323f422c057f34e6a10f0641532ca",
+    "rubric_sha256": "32549e70f084c85e8aa6d3f6892ebfa1ba4efd01a62df750f2cdb6ea0e1bb0aa",
+    "model": "qwen2.5:7b-instruct",
+    "human_label_source": "OCNLI dev majority of five annotators, >=4 agree",
+    "project_case_human_reviewed": 0,
+    "scope": "External sentence-pair NLI only; potential model pretraining overlap; no QA relevance or citation validation"
+  },
+  "records": [
+    {
+      "id": 2089,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "partial",
+      "reason": "证据提到了降低成本和销售粮食，但没有明确指出除此之外还有其他事情要做。因此，证据支持部分陈述，但不完全支持整个陈述。",
+      "usage": {
+        "prompt_tokens": 240,
+        "completion_tokens": 61
+      },
+      "wall_ms": 21492.1
+    },
+    {
+      "id": 2088,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据表明我国存在关于年龄（60岁以上人口）的统计数据，支持了陈述。",
+      "usage": {
+        "prompt_tokens": 236,
+        "completion_tokens": 48
+      },
+      "wall_ms": 10107.6
+    },
+    {
+      "id": 1818,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据表明加强了农业的基础地位并全面发展中农村经济，这支持了农业和农村问题受到重视的陈述。",
+      "usage": {
+        "prompt_tokens": 235,
+        "completion_tokens": 57
+      },
+      "wall_ms": 14015.5
+    },
+    {
+      "id": 535,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据明确指出，政府工作报告需要政协委员提出意见。",
+      "usage": {
+        "prompt_tokens": 251,
+        "completion_tokens": 43
+      },
+      "wall_ms": 10433.7
+    },
+    {
+      "id": 471,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "unclear",
+      "reason": "陈述是关于工作的大方向是否正确，而证据提到了具体的工作内容和措施，两者之间没有直接联系。",
+      "usage": {
+        "prompt_tokens": 243,
+        "completion_tokens": 57
+      },
+      "wall_ms": 9726.5
+    },
+    {
+      "id": 1137,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据表明正在进行督查以推动政策落实，这支持了陈述中的观点。",
+      "usage": {
+        "prompt_tokens": 238,
+        "completion_tokens": 48
+      },
+      "wall_ms": 8241.9
+    },
+    {
+      "id": 389,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "partial",
+      "reason": "证据仅表明务工收入对农民增收的重要性，但并未直接说明种植土地不再是农民唯一的劳动方式。",
+      "usage": {
+        "prompt_tokens": 235,
+        "completion_tokens": 52
+      },
+      "wall_ms": 8843.6
+    },
+    {
+      "id": 1109,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据中的'进一步构建平等、团结、互助、和谐的社会主义民族关系'直接支持了陈述中提到的目标。",
+      "usage": {
+        "prompt_tokens": 253,
+        "completion_tokens": 58
+      },
+      "wall_ms": 8604.0
+    },
+    {
+      "id": 223,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "unclear",
+      "reason": "证据提到了互联网在政务服务中的应用和提升，但没有直接说明互联网的普及程度。",
+      "usage": {
+        "prompt_tokens": 247,
+        "completion_tokens": 57
+      },
+      "wall_ms": 8262.2
+    },
+    {
+      "id": 1046,
+      "genre": "gov",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据说明了各级政府有明确的权限和职责，这支持了政府内部是分级的这一陈述。",
+      "usage": {
+        "prompt_tokens": 239,
+        "completion_tokens": 55
+      },
+      "wall_ms": 7410.1
+    },
+    {
+      "id": 1050,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据提到的是清理和规范收费，但没有提供具体的费用水平或证明收费确实高昂。",
+      "usage": {
+        "prompt_tokens": 234,
+        "completion_tokens": 49
+      },
+      "wall_ms": 6996.0
+    },
+    {
+      "id": 1750,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据仅表明有关于国际形势和外交工作的内容，并未明确指出上级下发了指示。",
+      "usage": {
+        "prompt_tokens": 237,
+        "completion_tokens": 56
+      },
+      "wall_ms": 10133.5
+    },
+    {
+      "id": 1212,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据未提供关于展播活动是否在电视上进行的具体信息。",
+      "usage": {
+        "prompt_tokens": 248,
+        "completion_tokens": 47
+      },
+      "wall_ms": 9102.8
+    },
+    {
+      "id": 740,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "partial",
+      "reason": "虽然证据表明有广泛的朋友圈，但这并不能直接支持或证明待人好是原因。",
+      "usage": {
+        "prompt_tokens": 234,
+        "completion_tokens": 49
+      },
+      "wall_ms": 6797.3
+    },
+    {
+      "id": 418,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据未提供具体的企业财务状况，无法支持或反驳陈述。",
+      "usage": {
+        "prompt_tokens": 236,
+        "completion_tokens": 46
+      },
+      "wall_ms": 6180.1
+    },
+    {
+      "id": 1560,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据未提供关于存在专门管理中小学教育的机构或部门的具体信息。",
+      "usage": {
+        "prompt_tokens": 236,
+        "completion_tokens": 47
+      },
+      "wall_ms": 7309.0
+    },
+    {
+      "id": 2252,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据仅说明了集体林权制度改革的推行情况，但未提供关于林业公司利益的具体信息。",
+      "usage": {
+        "prompt_tokens": 242,
+        "completion_tokens": 53
+      },
+      "wall_ms": 7363.2
+    },
+    {
+      "id": 909,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据与主张的主题不一致，一个是关于绿色出行的倡导，另一个是关于循环经济和清洁能源的发展。",
+      "usage": {
+        "prompt_tokens": 230,
+        "completion_tokens": 54
+      },
+      "wall_ms": 7077.2
+    },
+    {
+      "id": 1439,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据提到的是控制全年零售物价上涨幅度的措施，但未具体说明这些措施是否包括通过发展科学技术降低生产成本。",
+      "usage": {
+        "prompt_tokens": 263,
+        "completion_tokens": 62
+      },
+      "wall_ms": 8803.3
+    },
+    {
+      "id": 215,
+      "genre": "gov",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据仅说明了提高存款准备金率的措施，并未直接支持或反驳当前是否存在通货膨胀现象。",
+      "usage": {
+        "prompt_tokens": 242,
+        "completion_tokens": 58
+      },
+      "wall_ms": 8019.0
+    },
+    {
+      "id": 706,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据提到的是对‘对外投资渠道’的支持和拓宽，但并未直接说明企业没有对外投资渠道。因此，证据不支持该陈述，且问题的明确性也有待提高。",
+      "usage": {
+        "prompt_tokens": 239,
+        "completion_tokens": 70
+      },
+      "wall_ms": 10084.0
+    },
+    {
+      "id": 2087,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据仅表明需要加强打击力度，但并未支持或反驳书刊、音像盗版活动是否合理合法。",
+      "usage": {
+        "prompt_tokens": 245,
+        "completion_tokens": 55
+      },
+      "wall_ms": 8509.0
+    },
+    {
+      "id": 2033,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据提到无论是经济手段还是行政手段都需要制定法规，但并未直接支持或反驳采取的手段既不是经济也不是行政。",
+      "usage": {
+        "prompt_tokens": 250,
+        "completion_tokens": 60
+      },
+      "wall_ms": 12124.5
+    },
+    {
+      "id": 1224,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据提到的是加强国家安全能力建设，但并未说明是否之前有过建设。因此，该陈述缺乏直接支持或反驳的证据。",
+      "usage": {
+        "prompt_tokens": 233,
+        "completion_tokens": 59
+      },
+      "wall_ms": 9688.3
+    },
+    {
+      "id": 318,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据表明我国仍处于重要的战略机遇期，这与陈述中提到的没有发现历史机遇相矛盾。",
+      "usage": {
+        "prompt_tokens": 241,
+        "completion_tokens": 56
+      },
+      "wall_ms": 8787.9
+    },
+    {
+      "id": 1780,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据未直接支持或反对该陈述，提供的信息不足以判断中国是否将不再向发展中国家提供资金协助。",
+      "usage": {
+        "prompt_tokens": 253,
+        "completion_tokens": 56
+      },
+      "wall_ms": 9595.4
+    },
+    {
+      "id": 203,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "",
+      "usage": {
+        "prompt_tokens": 234,
+        "completion_tokens": 34
+      },
+      "wall_ms": 6420.5
+    },
+    {
+      "id": 23,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据讨论的是出口政策和通关便利化，未涉及外来货物入境是否需要经过海关的问题。",
+      "usage": {
+        "prompt_tokens": 243,
+        "completion_tokens": 53
+      },
+      "wall_ms": 10974.9
+    },
+    {
+      "id": 609,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据提到科技人员参与研发产品，但并未明确指出他们的作用仅限于此。",
+      "usage": {
+        "prompt_tokens": 247,
+        "completion_tokens": 48
+      },
+      "wall_ms": 23583.3
+    },
+    {
+      "id": 119,
+      "genre": "gov",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据表明今年的进出口总额预期增长，这与陈述中的“全面停止进出口贸易”相矛盾。因此，证据不支持该陈述。此外，问题是否包含所有要求的信息也不明确。",
+      "usage": {
+        "prompt_tokens": 236,
+        "completion_tokens": 70
+      },
+      "wall_ms": 45600.3
+    },
+    {
+      "id": 68,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据表明在亚美尼亚存在武器，并且发生了涉及武器的袭击和破坏设施的事件，这支持了陈述中关于亚美尼亚境内存在武器装备的说法。",
+      "usage": {
+        "prompt_tokens": 247,
+        "completion_tokens": 65
+      },
+      "wall_ms": 38044.3
+    },
+    {
+      "id": 539,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "partial",
+      "reason": "证据仅支持中年人说了第一句话，但无法确定他是否说了不止一句话。",
+      "usage": {
+        "prompt_tokens": 257,
+        "completion_tokens": 51
+      },
+      "wall_ms": 33056.6
+    },
+    {
+      "id": 2360,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据表明对方回复了信件并提供了地址，这支持了陈述中的观点。",
+      "usage": {
+        "prompt_tokens": 237,
+        "completion_tokens": 50
+      },
+      "wall_ms": 26097.3
+    },
+    {
+      "id": 2495,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "unsupported",
+      "reason": "证据描述了他对杨学宗批评的反应，但没有直接表明他是否嗤之以鼻。",
+      "usage": {
+        "prompt_tokens": 262,
+        "completion_tokens": 58
+      },
+      "wall_ms": 37240.9
+    },
+    {
+      "id": 2049,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据表明美国政府已向国会提出请求，这支持了国会听从美国政府意见的陈述。",
+      "usage": {
+        "prompt_tokens": 249,
+        "completion_tokens": 51
+      },
+      "wall_ms": 22800.9
+    },
+    {
+      "id": 2405,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "unsupported",
+      "reason": "证据仅提供了部分图书的销售情况，并未提及这些图书是否有作者或编者。因此，证据不支持该陈述。",
+      "usage": {
+        "prompt_tokens": 255,
+        "completion_tokens": 57
+      },
+      "wall_ms": 8567.0
+    },
+    {
+      "id": 1216,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据描述了楼下的人们因为发生了某些事情而感到害怕，这支持了陈述中的‘楼下发生了吓人的事’。",
+      "usage": {
+        "prompt_tokens": 245,
+        "completion_tokens": 59
+      },
+      "wall_ms": 8852.0
+    },
+    {
+      "id": 2042,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "unsupported",
+      "reason": "证据仅描述了现在里脊、排骨等食材的食用情况，未提供过去不常吃的证据。",
+      "usage": {
+        "prompt_tokens": 265,
+        "completion_tokens": 54
+      },
+      "wall_ms": 9594.9
+    },
+    {
+      "id": 1466,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "unsupported",
+      "reason": "证据未提供关于说话人身份的信息，无法支持或反驳其是否为知情人的陈述。",
+      "usage": {
+        "prompt_tokens": 245,
+        "completion_tokens": 53
+      },
+      "wall_ms": 9315.2
+    },
+    {
+      "id": 1076,
+      "genre": "news",
+      "gold": "entailment",
+      "predicted": "supported",
+      "reason": "证据表明有把握且成功的改革开放措施存在，支持了陈述。",
+      "usage": {
+        "prompt_tokens": 254,
+        "completion_tokens": 43
+      },
+      "wall_ms": 7662.3
+    },
+    {
+      "id": 2959,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据未提供关于疫情影响或会议形式的信息。",
+      "usage": {
+        "prompt_tokens": 242,
+        "completion_tokens": 43
+      },
+      "wall_ms": 7792.7
+    },
+    {
+      "id": 663,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据未提供关于大卡车的所有权信息，仅说明了大卡车对演出的增益。",
+      "usage": {
+        "prompt_tokens": 238,
+        "completion_tokens": 52
+      },
+      "wall_ms": 8744.6
+    },
+    {
+      "id": 803,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "supported",
+      "reason": "证据提到水泥桥栏上有石雕龙头，虽然没有明确指出数量为10个，但可以认为支持了存在石雕龙头这一事实。",
+      "usage": {
+        "prompt_tokens": 266,
+        "completion_tokens": 64
+      },
+      "wall_ms": 10185.9
+    },
+    {
+      "id": 1077,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据未提及天气情况，无法支持抢险当天下着大雨这一陈述。",
+      "usage": {
+        "prompt_tokens": 264,
+        "completion_tokens": 50
+      },
+      "wall_ms": 8051.1
+    },
+    {
+      "id": 2689,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "supported",
+      "reason": "证据说明了消极对待工作和以借口推诿会导致‘脱不了贪污受贿之嫌’，这支持了陈述中的原因部分。",
+      "usage": {
+        "prompt_tokens": 268,
+        "completion_tokens": 62
+      },
+      "wall_ms": 9571.4
+    },
+    {
+      "id": 1724,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "supported",
+      "reason": "证据提供了说话人的身份和他们所说的内容，支持了陈述中的信息。",
+      "usage": {
+        "prompt_tokens": 244,
+        "completion_tokens": 45
+      },
+      "wall_ms": 7085.9
+    },
+    {
+      "id": 962,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据中提到的国家列表不包括东德，因此无法支持或反驳他会去东德的说法。",
+      "usage": {
+        "prompt_tokens": 248,
+        "completion_tokens": 53
+      },
+      "wall_ms": 8387.1
+    },
+    {
+      "id": 1910,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据描述了政治稳定、民主与法制建设的进步，但未直接支持中国发展进程加快的陈述。",
+      "usage": {
+        "prompt_tokens": 246,
+        "completion_tokens": 54
+      },
+      "wall_ms": 8776.8
+    },
+    {
+      "id": 1700,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据描述了想看的样子，但没有提供关于其外观的具体信息来支持或反驳像火烈鸟的说法。",
+      "usage": {
+        "prompt_tokens": 234,
+        "completion_tokens": 58
+      },
+      "wall_ms": 9259.3
+    },
+    {
+      "id": 143,
+      "genre": "news",
+      "gold": "neutral",
+      "predicted": "unsupported",
+      "reason": "证据描述了掌声之后的情况，而非之前。因此不支持陈述。",
+      "usage": {
+        "prompt_tokens": 232,
+        "completion_tokens": 48
+      },
+      "wall_ms": 6859.3
+    },
+    {
+      "id": 748,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据明确指出党的十四大提出了经济体制改革的具体目标，与陈述中提到的‘含糊地指出了’相矛盾。因此，证据不支持该陈述。",
+      "usage": {
+        "prompt_tokens": 248,
+        "completion_tokens": 65
+      },
+      "wall_ms": 9639.5
+    },
+    {
+      "id": 2423,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据表明沈乐满去年销量为8万台，未达到10万台。",
+      "usage": {
+        "prompt_tokens": 247,
+        "completion_tokens": 48
+      },
+      "wall_ms": 9078.5
+    },
+    {
+      "id": 2638,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "unclear",
+      "reason": "证据未明确说明是否存在其他城市，仅描述了本地入口处的情况。",
+      "usage": {
+        "prompt_tokens": 237,
+        "completion_tokens": 47
+      },
+      "wall_ms": 7205.8
+    },
+    {
+      "id": 1875,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据表明第五届中日围棋擂台赛正在继续进行，这与陈述相矛盾。",
+      "usage": {
+        "prompt_tokens": 243,
+        "completion_tokens": 48
+      },
+      "wall_ms": 8034.0
+    },
+    {
+      "id": 2270,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "supported",
+      "reason": "证据表明城监部门人员确实与唐某进行了交涉，这支持了陈述。虽然没有明确表示说服成功，但交涉行为本身是支持的。",
+      "usage": {
+        "prompt_tokens": 251,
+        "completion_tokens": 64
+      },
+      "wall_ms": 11734.5
+    },
+    {
+      "id": 344,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据描述了人群正在向某个方向移动，并未直接说明天安门广场整体空荡。",
+      "usage": {
+        "prompt_tokens": 250,
+        "completion_tokens": 54
+      },
+      "wall_ms": 10732.2
+    },
+    {
+      "id": 2112,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据提到的是安政府主张明确规定停火日，而关于从停火到大选的期限应在以后由安所有政治力量共同商定，并未直接支持或反对陈述中所述的‘停火到大选的期限由安政府决定就足够了’。",
+      "usage": {
+        "prompt_tokens": 263,
+        "completion_tokens": 91
+      },
+      "wall_ms": 15560.5
+    },
+    {
+      "id": 2608,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据显示萨达姆在下午16点50分出现在电视节目中，这与陈述中提到的仅早上出现相矛盾。因此，证据不支持该陈述。",
+      "usage": {
+        "prompt_tokens": 252,
+        "completion_tokens": 66
+      },
+      "wall_ms": 9388.8
+    },
+    {
+      "id": 2271,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "证据没有提供关于物品是否原本就未损坏的信息，而是讨论了为什么还没有修理。",
+      "usage": {
+        "prompt_tokens": 231,
+        "completion_tokens": 50
+      },
+      "wall_ms": 6985.6
+    },
+    {
+      "id": 2300,
+      "genre": "news",
+      "gold": "contradiction",
+      "predicted": "unsupported",
+      "reason": "",
+      "usage": {
+        "prompt_tokens": 256,
+        "completion_tokens": 30
+      },
+      "wall_ms": 4901.1
+    }
+  ],
+  "summary": {
+    "n": 60,
+    "by_label": {
+      "entailment": 20,
+      "neutral": 20,
+      "contradiction": 20
+    },
+    "supported_recall": 0.55,
+    "not_supported_recall": 0.9,
+    "false_accepts": 4,
+    "false_rejects": 9,
+    "three_label_confusion": {
+      "entailment": {
+        "partial": 3,
+        "supported": 11,
+        "unclear": 2,
+        "unsupported": 4
+      },
+      "neutral": {
+        "unsupported": 16,
+        "partial": 1,
+        "supported": 3
+      },
+      "contradiction": {
+        "unsupported": 18,
+        "unclear": 1,
+        "supported": 1
+      }
+    },
+    "p50_wall_ms": 8965.2,
+    "prompt_tokens": 14716,
+    "completion_tokens": 3251
+  }
+}

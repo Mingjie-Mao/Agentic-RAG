@@ -1,0 +1,16 @@
+{
+  "scope": "Structural readiness only; no semantic or required-source labels inferred",
+  "semantic": {
+    "items": 24,
+    "content_unchanged": true,
+    "labels_complete": 0,
+    "independent_human_reviewed": 0
+  },
+  "required_documents": {
+    "questions": 10,
+    "sources": 26,
+    "content_unchanged": true,
+    "labels_complete": 0,
+    "independent_human_reviewed": 0
+  }
+}

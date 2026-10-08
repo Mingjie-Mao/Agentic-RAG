@@ -1,0 +1,57 @@
+{
+  "status": "dev_only_not_registered_for_core",
+  "matrix": [
+    {
+      "name": "rag_bm25",
+      "mode": "rag",
+      "overrides": {
+        "retrieval_mode": "bm25",
+        "rewrite_mode": "off",
+        "passage_rerank": false
+      }
+    },
+    {
+      "name": "rag_hybrid",
+      "mode": "rag",
+      "overrides": {
+        "retrieval_mode": "hybrid",
+        "rewrite_mode": "off",
+        "passage_rerank": false
+      }
+    },
+    {
+      "name": "rag_rewrite",
+      "mode": "rag",
+      "overrides": {
+        "retrieval_mode": "hybrid",
+        "rewrite_mode": "rule",
+        "passage_rerank": false
+      }
+    },
+    {
+      "name": "rag_rerank",
+      "mode": "rag",
+      "overrides": {
+        "retrieval_mode": "hybrid",
+        "rewrite_mode": "rule",
+        "passage_rerank": true
+      }
+    },
+    {
+      "name": "workflow",
+      "mode": "workflow",
+      "overrides": {}
+    },
+    {
+      "name": "dynamic",
+      "mode": "dynamic",
+      "overrides": {}
+    },
+    {
+      "name": "hybrid",
+      "mode": "hybrid",
+      "overrides": {}
+    }
+  ],
+  "note": "Retrieval ablations change one factor at a time. Workflow/Dynamic/Hybrid compare policies with identical retrieval; evidence control needs a separately calibrated dev candidate, never enabled merely for this table."
+}

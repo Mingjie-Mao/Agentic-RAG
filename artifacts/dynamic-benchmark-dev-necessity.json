@@ -1,0 +1,305 @@
+{
+  "split": "dev",
+  "rule": "needs_dynamic = one-shot retrieval of the question misses a gold document",
+  "summary_needs_dynamic": {
+    "bridge": "6/6",
+    "bridge_deep": "3/3",
+    "alias": "4/4",
+    "conditional": "2/4",
+    "enumeration": "3/3",
+    "event_version": "0/3",
+    "conflict": "0/2",
+    "control": "0/3"
+  },
+  "rows": [
+    {
+      "task_id": "DD01",
+      "dynamic_type": "bridge",
+      "gold": 2,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-inc-qinghe-inc-148"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD02",
+      "dynamic_type": "bridge",
+      "gold": 3,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-staff-4f029e",
+        "qi-svc-qinghe-svc-12"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD03",
+      "dynamic_type": "bridge",
+      "gold": 2,
+      "one_shot_gold_found": 0,
+      "missing": [
+        "qi-inc-qinghe-inc-210",
+        "qi-svc-qinghe-svc-13"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD04",
+      "dynamic_type": "bridge",
+      "gold": 3,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-staff-db38ad",
+        "qi-svc-qinghe-svc-14"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD05",
+      "dynamic_type": "bridge",
+      "gold": 2,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-inc-qinghe-inc-375"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD06",
+      "dynamic_type": "bridge",
+      "gold": 3,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-staff-7d6a27",
+        "qi-svc-qinghe-svc-16"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD07",
+      "dynamic_type": "bridge_deep",
+      "gold": 4,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-staff-b21a96",
+        "qi-staff-eb477c",
+        "qi-svc-qinghe-svc-17"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD08",
+      "dynamic_type": "bridge_deep",
+      "gold": 4,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-staff-4f029e",
+        "qi-staff-bbc6c2",
+        "qi-svc-qinghe-svc-11"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD09",
+      "dynamic_type": "bridge_deep",
+      "gold": 4,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-staff-4f029e",
+        "qi-staff-8cefcc",
+        "qi-svc-qinghe-svc-12"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD10",
+      "dynamic_type": "alias",
+      "gold": 2,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-glossary"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD11",
+      "dynamic_type": "alias",
+      "gold": 2,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-glossary"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD12",
+      "dynamic_type": "alias",
+      "gold": 2,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-glossary"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD13",
+      "dynamic_type": "alias",
+      "gold": 2,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-glossary"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD14",
+      "dynamic_type": "conditional",
+      "gold": 3,
+      "one_shot_gold_found": 2,
+      "missing": [
+        "qi-warehouse-directory"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD15",
+      "dynamic_type": "conditional",
+      "gold": 3,
+      "one_shot_gold_found": 2,
+      "missing": [
+        "qi-warehouse-directory"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD16",
+      "dynamic_type": "conditional",
+      "gold": 2,
+      "one_shot_gold_found": 2,
+      "missing": [],
+      "needs_dynamic": false
+    },
+    {
+      "task_id": "DD17",
+      "dynamic_type": "conditional",
+      "gold": 3,
+      "one_shot_gold_found": 3,
+      "missing": [],
+      "needs_dynamic": false
+    },
+    {
+      "task_id": "DD18",
+      "dynamic_type": "enumeration",
+      "gold": 4,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-svc-qinghe-svc-13",
+        "qi-svc-qinghe-svc-14",
+        "qi-svc-qinghe-svc-17"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD19",
+      "dynamic_type": "enumeration",
+      "gold": 3,
+      "one_shot_gold_found": 2,
+      "missing": [
+        "qi-svc-qinghe-svc-12"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD20",
+      "dynamic_type": "enumeration",
+      "gold": 3,
+      "one_shot_gold_found": 1,
+      "missing": [
+        "qi-svc-qinghe-svc-13",
+        "qi-svc-qinghe-svc-15"
+      ],
+      "needs_dynamic": true
+    },
+    {
+      "task_id": "DD21",
+      "dynamic_type": "event_version",
+      "gold": 2,
+      "one_shot_gold_found": 2,
+      "missing": [],
+      "needs_dynamic": false
+    },
+    {
+      "task_id": "DD22",
+      "dynamic_type": "event_version",
+      "gold": 2,
+      "one_shot_gold_found": 2,
+      "missing": [],
+      "needs_dynamic": false
+    },
+    {
+      "task_id": "DD23",
+      "dynamic_type": "event_version",
+      "gold": 2,
+      "one_shot_gold_found": 2,
+      "missing": [],
+      "needs_dynamic": false
+    },
+    {
+      "task_id": "DD24",
+      "dynamic_type": "conflict",
+      "gold": 2,
+      "one_shot_gold_found": 2,
+      "missing": [],
+      "needs_dynamic": false
+    },
+    {
+      "task_id": "DD25",
+      "dynamic_type": "conflict",
+      "gold": 2,
+      "one_shot_gold_found": 2,
+      "missing": [],
+      "needs_dynamic": false
+    },
+    {
+      "task_id": "DD26",
+      "dynamic_type": "control",
+      "gold": 1,
+      "one_shot_gold_found": 1,
+      "missing": [],
+      "needs_dynamic": false
+    },
+    {
+      "task_id": "DD27",
+      "dynamic_type": "control",
+      "gold": 1,
+      "one_shot_gold_found": 1,
+      "missing": [],
+      "needs_dynamic": false
+    },
+    {
+      "task_id": "DD28",
+      "dynamic_type": "control",
+      "gold": 1,
+      "one_shot_gold_found": 1,
+      "missing": [],
+      "needs_dynamic": false
+    },
+    {
+      "task_id": "DD29",
+      "dynamic_type": "unanswerable",
+      "gold": 0,
+      "one_shot_gold_found": 0,
+      "missing": [],
+      "needs_dynamic": null
+    },
+    {
+      "task_id": "DD30",
+      "dynamic_type": "unanswerable",
+      "gold": 0,
+      "one_shot_gold_found": 0,
+      "missing": [],
+      "needs_dynamic": null
+    }
+  ]
+}

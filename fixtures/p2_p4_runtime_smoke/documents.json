@@ -1,0 +1,26 @@
+{
+  "version": "p0-p1-runtime-development-smoke-v2",
+  "users": [
+    {
+      "id": "xq-engineer",
+      "role": "member",
+      "groups": [
+        "engineering"
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "document_id": "seed-db-backup",
+      "groups": [
+        "engineering"
+      ],
+      "tenant_public": false,
+      "versions": [
+        {
+          "path": "fixtures/documents/db-backup.md"
+        }
+      ]
+    }
+  ]
+}

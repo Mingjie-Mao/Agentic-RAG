@@ -12,6 +12,7 @@ from sqlalchemy import func, select, text
 from sqlalchemy.orm import Session
 
 from app.clients import DependencyError
+from app.execution_budget import BudgetExceeded
 from app.config import settings
 from app.db import get_db
 from app.lifecycle import add_version, purge, readable_chunk, set_access, soft_delete
@@ -34,6 +35,7 @@ from agent.memory_adapter import LongTermMemoryAdapter, MemoryUnavailable
 from app.models import AgentTask
 from app.trial import (
     is_trial_user,
+    require_trial_login,
     require_trial_read_only,
     reserve_trial_request,
     trial_status,
@@ -96,6 +98,12 @@ async def dependency_error(_, exc):
     )
 
 
+@app.exception_handler(BudgetExceeded)
+async def execution_budget_error(_, exc):
+    return JSONResponse({"detail": "本次请求已达到执行预算，请缩小问题范围后重新提问。",
+                         "stage": "execution_budget", "reason": exc.reason}, status_code=503)
+
+
 class LoginBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
     username: str = Field(min_length=1, max_length=100)
@@ -120,7 +128,7 @@ class QuestionBody(BaseModel):
 class AgentTaskBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
     goal: str = Field(min_length=4, max_length=1500)
-    mode: Literal["auto", "workflow", "dynamic"] = "auto"
+    mode: Literal["auto", "workflow", "dynamic", "hybrid", "planner"] = "auto"
     max_steps: int = Field(default=6, ge=2, le=8)
     document_id: str | None = Field(default=None, max_length=64)
     from_version_id: str | None = Field(default=None, max_length=64)
@@ -177,6 +185,7 @@ def demo_accounts(db: DB):
 
 @app.post("/api/auth/login")
 def login(body: LoginBody, response: Response, db: DB):
+    require_trial_login(body.username)
     user, token = authenticate(db, body.username, body.password)
     response.set_cookie(
         COOKIE,
@@ -465,7 +474,7 @@ def chat(body: QuestionBody, user: Identity, db: DB, request: Request):
 @app.post("/api/agent/tasks", status_code=202)
 def start_agent_task(body: AgentTaskBody, user: Identity, db: DB):
     """Run a bounded read-only knowledge task and retain its auditable trajectory."""
-    if is_trial_user(user) and body.mode == "dynamic":
+    if is_trial_user(user) and body.mode in {"dynamic", "hybrid", "planner"}:
         raise HTTPException(403, "访客试用不开放高延迟动态模式，请使用自动路由")
     reserve_trial_request(db, user, "agent")
     task_input = {
@@ -479,11 +488,23 @@ def start_agent_task(body: AgentTaskBody, user: Identity, db: DB):
         if value is not None
     }
     requested_mode = body.mode
-    # Current benchmark shows no quality gain from free-form planning. Auto therefore
-    # selects the deterministic workflow; dynamic remains available as an experiment.
+    # Free-form planning showed no quality gain. Auto selects the deterministic workflow,
+    # or the bounded Hybrid agent when the next step depends on an observation; dynamic
+    # remains available only when explicitly requested, as an experimental control.
     mode = "workflow" if requested_mode == "auto" else requested_mode
+    if requested_mode == 'auto' and settings().adaptive_routing_enabled:
+        from app.routing import execution_route
+        route = execution_route(body.goal, document_id=body.document_id)
+        mode = route['mode']
+        if is_trial_user(user) and mode in {'dynamic', 'hybrid'}:
+            mode = 'workflow'
+            route = {'mode': mode, 'reason': 'public_trial_fixed_workflow'}
+        task_input['_execution_route'] = route
     task_input["requested_mode"] = requested_mode
     task = create_task(db, user, body.goal.strip(), mode, body.max_steps, task_input)
+    if requested_mode == 'auto' and settings().adaptive_routing_enabled:
+        task.input = {**task.input, '_execution_route': route}
+        db.commit()
     return task_payload(db, user, task)
 
 

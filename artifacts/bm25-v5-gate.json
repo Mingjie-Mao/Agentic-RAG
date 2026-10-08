@@ -1,0 +1,36 @@
+{
+  "manifest_sha256": "3cab76b7493ea5afc316b54ed1e88a7248004422beef20cc7af676d3a53d7c07",
+  "retrieval_sha256": "7a7d284e6cee3d265025f8a7d6531b5778db30dbab1c03f4f0f7b2a2c1c56b27",
+  "answers_sha256": "0ef080424b0245f98b843fede144541a6ebd157f71636224b23decad17c2194a",
+  "retrieval_checks": {
+    "all_gold_documents": true,
+    "gold_document_count": false,
+    "gold_fact_proxy": true,
+    "p50_retrieval_latency": true
+  },
+  "retrieval_passed": false,
+  "answer_gate": {
+    "decision": "keep_default_off",
+    "checks": {
+      "correct_gain": false,
+      "no_additional_false_refusals": false,
+      "no_additional_false_answers_on_null": true,
+      "p50_budget": true,
+      "p95_budget": true,
+      "token_budget": true,
+      "no_execution_errors": true
+    },
+    "paired_accuracy_delta": 0.0,
+    "paired_bootstrap_ci95": [
+      -0.25,
+      0.25
+    ],
+    "improved": 1,
+    "regressed": 1,
+    "default_enabled": false,
+    "note": "Small screened sample, literal v3 accuracy, independent human semantic review=0. A pass permits larger validation; it never flips the production default."
+  },
+  "answer_passed": false,
+  "decision": "keep_default_off",
+  "note": "Literal v3 answer scoring and lexical fact proxy; project-case independent human review=0. Even passing both gates would require larger validation before enabling by default."
+}

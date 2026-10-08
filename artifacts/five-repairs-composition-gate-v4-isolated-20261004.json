@@ -1,0 +1,13 @@
+{
+  "protocol": "literal-answer-composition-gate-v1",
+  "passed": true,
+  "scope": "Only literal source facts plus bounded model judgment; NOT an arbitrary-claim entailment gate",
+  "implementation_sha256": "b25e9596faccdce641db316aa3d469d50dcbabf26a285d0c8e508da3ab150d29",
+  "model": "qwen3.5:9b",
+  "model_digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "result_path": "artifacts/five-repairs-composition-validation-v4-isolated-20261004.json",
+  "cases_path": "artifacts/five-repairs-composition-cases-v4-isolated-20261004.json",
+  "result_sha256": "db4abe5859a00ef028fb61226aeb9b02e8697e814daf514a83336d31a8642fa5",
+  "cases_packet_sha256": "b93759639100e63f18912a44480174530f434a6920e074de312939abff99a126",
+  "independent": false
+}

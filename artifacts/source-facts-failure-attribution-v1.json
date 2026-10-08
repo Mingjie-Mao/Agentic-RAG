@@ -1,0 +1,213 @@
+{
+  "scope": "Mechanical failure-layer attribution only; document coverage and literal scores are not semantic proof.",
+  "human_reviewed": 0,
+  "counts": {
+    "legacy": {
+      "literal_pass_semantics_unreviewed": 7,
+      "relation_unresolved": 2,
+      "conclusion_or_source_interpretation_needs_review": 1,
+      "gold_document_missing": 2
+    },
+    "source_facts": {
+      "no_relevant_structured_facts": 2,
+      "source_field_or_schema_rejected": 4,
+      "gold_document_missing": 4,
+      "literal_pass_semantics_unreviewed": 2
+    }
+  },
+  "rows": [
+    {
+      "id": "SF-2b0d715cf3dd",
+      "arm": "legacy",
+      "task_id": "d52dd0e8-5136-41d1-bf9b-a287a6b642f4",
+      "classification": "literal_pass_semantics_unreviewed",
+      "answer_correct": true,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2b0d715cf3dd",
+      "arm": "source_facts",
+      "task_id": "dc95d23e-c467-461d-9908-e81fb6a80955",
+      "classification": "no_relevant_structured_facts",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2ce18087c78c",
+      "arm": "source_facts",
+      "task_id": "616fd25e-d2cf-41d8-bd07-25dd0ead8305",
+      "classification": "source_field_or_schema_rejected",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2ce18087c78c",
+      "arm": "legacy",
+      "task_id": "1fbf600a-692c-41f5-906a-7e4fddb1a025",
+      "classification": "relation_unresolved",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2cd2e207dd8f",
+      "arm": "legacy",
+      "task_id": "45d47bfb-707b-43c3-9fe7-08c8041cb2bf",
+      "classification": "relation_unresolved",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2cd2e207dd8f",
+      "arm": "source_facts",
+      "task_id": "ae9f261b-843f-4fdc-8bad-343f69a06405",
+      "classification": "source_field_or_schema_rejected",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2d607f4cf710",
+      "arm": "source_facts",
+      "task_id": "2eb5b473-936f-4970-a5ff-c939000b35d3",
+      "classification": "no_relevant_structured_facts",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2d607f4cf710",
+      "arm": "legacy",
+      "task_id": "6a2d3480-81f5-4d17-970c-0da5864155ea",
+      "classification": "literal_pass_semantics_unreviewed",
+      "answer_correct": true,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-39f7b8eb4a3e",
+      "arm": "legacy",
+      "task_id": "7bbd739a-dceb-4763-a00d-e4d7e1f5b5fe",
+      "classification": "literal_pass_semantics_unreviewed",
+      "answer_correct": true,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-39f7b8eb4a3e",
+      "arm": "source_facts",
+      "task_id": "f8c0c8b1-3c37-494e-b985-8b57877a67b9",
+      "classification": "gold_document_missing",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-3a0194728516",
+      "arm": "source_facts",
+      "task_id": "02be64a5-6056-462c-83a4-15b1264e79b0",
+      "classification": "source_field_or_schema_rejected",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-3a0194728516",
+      "arm": "legacy",
+      "task_id": "5f0bfbc1-0c32-48b1-8700-166a3a35182b",
+      "classification": "literal_pass_semantics_unreviewed",
+      "answer_correct": true,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-3b531339f028",
+      "arm": "legacy",
+      "task_id": "41e33fa3-6bce-451c-b49d-6139ee47ad5c",
+      "classification": "conclusion_or_source_interpretation_needs_review",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-3b531339f028",
+      "arm": "source_facts",
+      "task_id": "9f613725-b50e-4875-ac72-280e7b8b7031",
+      "classification": "source_field_or_schema_rejected",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-3d0e1bd5c45c",
+      "arm": "source_facts",
+      "task_id": "d55fa504-a52a-4eaa-8864-531b3033c28a",
+      "classification": "gold_document_missing",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-3d0e1bd5c45c",
+      "arm": "legacy",
+      "task_id": "8b5c796c-6039-4610-a4e9-f55c6f574dae",
+      "classification": "gold_document_missing",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2d7db1426b8a",
+      "arm": "legacy",
+      "task_id": "bc588f47-092c-4360-8580-b5709aece039",
+      "classification": "literal_pass_semantics_unreviewed",
+      "answer_correct": true,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2d7db1426b8a",
+      "arm": "source_facts",
+      "task_id": "0503be12-4d22-4234-b591-9a6c71af76b6",
+      "classification": "gold_document_missing",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2dafe134840c",
+      "arm": "source_facts",
+      "task_id": "c73575a2-6197-49f8-84c0-a6b3aca6e5c3",
+      "classification": "gold_document_missing",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-2dafe134840c",
+      "arm": "legacy",
+      "task_id": "deb99373-a0fc-40ec-8aec-70f75e046583",
+      "classification": "gold_document_missing",
+      "answer_correct": false,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-32090feed961",
+      "arm": "legacy",
+      "task_id": "1c4e536e-1f39-4b93-9c11-4cdef65debb5",
+      "classification": "literal_pass_semantics_unreviewed",
+      "answer_correct": true,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-32090feed961",
+      "arm": "source_facts",
+      "task_id": "4c1cb338-4999-4a31-9e19-b27001d126fb",
+      "classification": "literal_pass_semantics_unreviewed",
+      "answer_correct": true,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-329a2bd95355",
+      "arm": "source_facts",
+      "task_id": "11c4bc02-9541-437d-b4fb-ba8eed44c25e",
+      "classification": "literal_pass_semantics_unreviewed",
+      "answer_correct": true,
+      "independent_semantic_label": null
+    },
+    {
+      "id": "SF-329a2bd95355",
+      "arm": "legacy",
+      "task_id": "07b3eb0c-d056-4c72-a720-f19f49a6e151",
+      "classification": "literal_pass_semantics_unreviewed",
+      "answer_correct": true,
+      "independent_semantic_label": null
+    }
+  ],
+  "training_use": "none; source/format/retrieval errors are not policy failures"
+}
