@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agentic-RAG · English technical overview</title>
+<meta name="description" content="Architecture, Agent strategies, evaluation protocol and limitations of a verifiable enterprise knowledge Agent.">
+<style>
+:root{font-family:system-ui,sans-serif;color:#182b25;background:#eef1f0;line-height:1.75}*{box-sizing:border-box}body{margin:0}a{color:#0b6e5f}nav{display:flex;flex-wrap:wrap;gap:20px;padding:20px max(20px,calc((100% - 1000px)/2));background:#fff;border-bottom:1px solid #d6dcda}main{max-width:1000px;margin:auto;padding:44px 24px 70px}h1{font-size:clamp(30px,5vw,44px);line-height:1.2;margin:10px 0 20px}h2{font-size:24px;margin-top:0}p{max-width:76ch}.kicker{font-size:13px;letter-spacing:.1em;color:#50675c}.lead{font-size:19px}.links{display:flex;flex-wrap:wrap;gap:14px;margin:25px 0}.links a{padding:9px 14px;border:1px solid #b5c0bd;background:#fff;border-radius:7px;text-decoration:none}section{background:#fff;border:1px solid #d6dcda;border-radius:10px;padding:25px;margin-top:22px}code{font-size:14px;background:#eef1f0;padding:2px 5px}ul{padding-left:22px}li{margin:8px 0}.muted{font-size:14px;color:#50675c}a:focus-visible{outline:2px solid #0b6e5f;outline-offset:4px}.scroller{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid #d6dcda}th{background:#eef1f0}@media(max-width:640px){main{padding:28px 16px}section{padding:18px}table{min-width:580px}}
+</style></head><body>
+<nav aria-label="Page navigation"><strong>Agentic-RAG</strong><a href="/?lang=en">Project showcase</a><a href="/live#agent">Read-only demo</a><a href="/replay.html">Recorded execution</a><a href="https://github.com/Mingjie-Mao/Agentic-RAG">GitHub ↗</a></nav>
+<main><span class="kicker">ENTERPRISE KNOWLEDGE · ENGINEERING OVERVIEW</span>
+<h1>A verifiable enterprise knowledge Agent</h1>
+<p class="lead">An end-to-end knowledge service that combines retrieval, Agent orchestration, document access control and inspectable citations. It is designed to make both the answer and the execution trace reviewable.</p>
+<div class="links"><a href="/live#agent">Try a business task →</a><a href="/replay.html">Inspect a recorded run →</a><a href="/verification.html">Delivery verification</a></div>
+<p class="muted">All companies, documents, questions and roles in the demo are fictional. Public visitors can ask questions, run Agent tasks and inspect cited evidence, sharing a daily quota of 10 requests. Document editing and memory writes are unavailable in the public demo. The API depends on the author's local server; recorded runs remain available independently.</p>
+<section><h2>System architecture</h2>
+<p>FastAPI exposes the knowledge and task APIs. PostgreSQL stores documents, versions, access rules, tasks and tool audit records. OpenSearch supplies BM25 and BGE-M3 vector retrieval, fused with reciprocal rank fusion. The current local generator is Qwen2.5 7B through Ollama; React and TypeScript provide the product interface.</p>
+<p>LangGraph provides node scheduling, conditional transitions and execution checkpoints. Application code retains the business rules: tenant boundaries, live permissions, document version semantics, cumulative call budgets, evidence binding and audit. Resuming a checkpoint does not restore revoked access.</p></section>
+<section><h2>Choosing an execution strategy</h2><div class="scroller"><table><thead><tr><th>Strategy</th><th>Decision process</th><th>Current scope</th></tr></thead><tbody>
+<tr><td>RAG</td><td>Retrieve once, generate an answer and verify its citations.</td><td>Public knowledge Q&amp;A.</td></tr>
+<tr><td>Workflow</td><td>Code determines retrieval, bounded recovery, evidence preparation and stopping.</td><td>Default. Public visitor auto routing also follows this path.</td></tr>
+<tr><td>Hybrid</td><td>The model proposes an evidence-seeking intent; code binds it to validated tool arguments.</td><td>Local experiment; not shown in the current recorded run.</td></tr>
+<tr><td>Dynamic Agent</td><td>The model chooses subsequent tools and arguments within server-enforced limits.</td><td>Local experiment; no claim of superiority over Workflow.</td></tr>
+</tbody></table></div>
+<p>The public recording shows a real fixed Workflow with <code>search_documents</code>, <code>retrieve_evidence</code>, five evidence spans and a cited answer about API quotas. It does not demonstrate a version-comparison tool call or autonomous tool selection.</p></section>
+<section><h2>Reliability and access boundaries</h2><ul>
+<li>Authorization is applied inside retrieval and checked again when evidence is read or returned.</li>
+<li>Citations bind to real document versions and source locations. The UI opens source text or a PDF with parser-derived highlight coordinates.</li>
+<li>Historical and effective versions are handled explicitly; insufficient evidence and conflicting sources have distinct outcomes.</li>
+<li>Tool calls are audited and bounded. Cancellation takes effect at execution boundaries; stopping a browser wait does not terminate an ongoing model call.</li>
+</ul></section>
+<section><h2>Evaluation and engineering decisions</h2>
+<p>The constructed benchmark contains Dev 47, Core 70, Security 16 and External 150 tasks. Only Dev is used for tuning. The Core method and ablation matrix must be frozen before the first formal run; the headline metric is reviewed Core Strict Task Success. That result is currently <strong>pending</strong>.</p>
+<p>The showcase separates historical development experiments and an older 80-question holdout from the current benchmark. Model-assisted reviews are labelled as such and are not independent human annotations. Test counts describe engineering validation, not task accuracy.</p>
+<p>Earlier experiments motivated keeping reranking off by default, using rule-based follow-up context instead of an extra rewrite call, and reverting an ineffective topic-overlap check. These are historical decisions on specific task sets, not universal conclusions about those methods.</p></section>
+<section><h2>Current limitations</h2>
+<p>The system uses a local 7B model and a single-machine deployment without load-test evidence. Difficult multi-hop reasoning remains unreliable, and formal Core acceptance is incomplete. Scanned PDFs requiring OCR and PPTX are unsupported. Public visitors cannot use dynamic strategies or long-term memory.</p>
+<p>For implementation details and historical experiments, see the <a href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md">technical report (Chinese)</a> and the <a href="https://github.com/Mingjie-Mao/Agentic-RAG">repository</a>.</p></section>
+<p class="muted">Overview prepared 10 October 2026 (Australia/Sydney). Capability descriptions reflect the implementation; availability and evidence limits are stated separately.</p>
+</main></body></html>

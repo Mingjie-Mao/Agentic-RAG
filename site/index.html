@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agentic-RAG · 权限感知的企业知识问答</title>
-<meta name="description" content="企业知识问答系统：只检索用户有权查看的资料，每句回答都能定位到原文，资料不足时拒答，撤权立即生效；上层 Agent 的每一步都可审计。">
+<title>Agentic-RAG · 可验证的企业知识 Agent</title>
+<meta name="description" content="基于 LangGraph 与混合检索的企业知识 Agent：跨文档查证、权限隔离、版本管理、可追溯引用与真实工具执行回放。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
 <style>
   :root{
     --ground:#eef1f0; --surface:#fff; --surface-2:#f6f8f8;
-    --ink:#131b1a; --ink-2:#48534f; --ink-3:#6b7774;
+    --ink:#131b1a; --ink-2:#48534f; --ink-3:#5c6964;
     --line:#d6dcda; --line-strong:#b5c0bd;
     --accent:#0b6e5f; --accent-soft:#dfece8; --flag:#8d5a0c; --flag-soft:#f6ecdc;
     --sans:"IBM Plex Sans","Noto Sans SC",-apple-system,"PingFang SC",sans-serif;
@@ -74,7 +74,7 @@
   code{font-family:var(--mono);font-size:.85em;background:var(--surface-2);border:1px solid var(--line);padding:1px 5px;border-radius:3px;color:var(--ink)}
 
   /* demo */
-  .demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+  .demos{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:22px}
   .demo{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:0;display:flex;flex-direction:column}
   .demo img{width:100%;height:auto;display:block;border-bottom:1px solid var(--line);cursor:zoom-in}
   .demo figcaption{padding:14px 16px 16px}
@@ -137,6 +137,24 @@
   dialog.zoom::backdrop{background:rgba(0,0,0,.72)}
   dialog.zoom img{width:100%;display:block;border-radius:8px}
   dialog.zoom p{color:#e7edeb;font-size:.9rem;margin:8px 0 0;max-width:none}
+  .zoom-close{display:block;margin:0 0 10px auto;border:1px solid #fff;background:#fff;color:#131b1a;border-radius:6px;padding:10px 16px;font:inherit;cursor:pointer}
+  .shot-open{display:block;width:100%;padding:0;border:0;background:transparent;color:inherit;cursor:zoom-in}
+  .shot-open:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+  .detail-shot{overflow:hidden;background:var(--surface-2);max-height:300px}
+  .detail-shot img{width:180%;max-width:none;transform:translateX(-44%);height:auto}
+  .fact-groups{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:22px 0 34px}
+  .fact-groups .facts{grid-template-columns:1fr 1fr}
+  .execution-demo{grid-column:1/-1;padding:24px}
+  .run-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;margin-top:18px}
+  .run-steps{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .run-steps li{border-left:3px solid var(--accent);background:var(--surface-2);padding:12px 15px}
+  .run-steps strong{display:block;font-size:15px}
+  .run-steps small{display:block;font-size:13px;color:var(--ink-2)}
+  .run-result{background:var(--accent-soft);border:1px solid var(--line);border-radius:8px;padding:20px}
+  .run-result p{font-size:16px}.run-meta{font-size:13px;color:var(--ink-3)}
+  .mode-table th,.mode-table td{white-space:normal;vertical-align:top;min-width:150px}
+  .mode-table td:first-child{min-width:110px;color:var(--ink);font-weight:600}
+  .mode-table .pending{font-size:12px}
 
   @media (max-width:900px){
     .hero{grid-template-columns:1fr}
@@ -147,9 +165,25 @@
   }
   @media (max-width:640px){
     .cards{grid-template-columns:1fr}
+    .facts,.bench,.fact-groups,.fact-groups .facts,.run-layout{grid-template-columns:1fr}
+    .execution-demo{padding:18px}
+    .mode-table{min-width:680px}
     .nav .wrap{gap:12px}
     .nav-links{gap:14px}
   }
+
+  #nav-menu{display:none;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:7px 10px;font:inherit;font-size:13px;cursor:pointer}
+  .scenario-links{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
+  .scenario-links a{display:block;padding:22px;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink-2)}
+  .scenario-links b{display:block;margin-bottom:8px;color:var(--ink);font-size:17px}
+  .scenario-links a:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .fact .k{font-size:13px;color:var(--ink-2);margin-bottom:10px}
+  #evaluation>.facts{margin-bottom:35px}
+  .hero-shot img{object-fit:contain;object-position:center}
+  details>section{margin-top:22px} details summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+  @media(max-width:760px){.scenario-links{grid-template-columns:1fr}#nav-menu{display:block;margin-left:auto}.nav-links{display:none;position:absolute;left:0;right:0;top:56px;background:var(--surface);padding:18px 24px;border-bottom:1px solid var(--line);flex-direction:column;gap:16px}.nav-links.open{display:flex}.hero{padding-top:30px}.hero-shot{margin-top:4px}.lead{font-size:16px}.hero .buttons .btn{padding:10px 14px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
 </style>
 </head>
 <body>
@@ -157,10 +191,11 @@
 <nav class="nav" aria-label="页面导航">
   <div class="wrap">
     <a class="brand" href="#top">Agentic-RAG</a>
-    <div class="nav-links">
+    <button id="nav-menu" aria-label="打开导航菜单 / Open navigation" aria-expanded="false" aria-controls="nav-links">菜单 / Menu</button>
+    <div class="nav-links" id="nav-links">
       <a href="#demo"><span class="zh">演示</span><span class="en">Demo</span></a>
-      <a href="#architecture"><span class="zh">架构</span><span class="en">Architecture</span></a>
       <a href="#features"><span class="zh">核心能力</span><span class="en">Features</span></a>
+      <a href="#architecture"><span class="zh">架构</span><span class="en">Architecture</span></a>
       <a href="#evaluation"><span class="zh">评测</span><span class="en">Evaluation</span></a>
       <a href="#decisions"><span class="zh">取舍与边界</span><span class="en">Decisions</span></a>
       <a href="https://github.com/Mingjie-Mao/Agentic-RAG">GitHub ↗</a>
@@ -174,48 +209,41 @@
 <header class="hero">
   <div>
     <p class="kicker">Enterprise AI · RAG + Agent</p>
-    <h1><span class="zh">只用你有权看的资料回答，每句话都能找到原文</span><span class="en">Answers only from documents you may read — every claim traced to its source</span></h1>
-    <p class="lead"><span class="zh">面向企业内部知识库的问答系统：<b>按用户权限检索</b>，回答<b>逐句附原文出处</b>（PDF 页码与高亮、Word 段落、Excel 单元格），资料不足时<b>拒答</b>，两份资料矛盾时<b>报告冲突</b>；撤权立即生效。上层 Agent 把复杂问题拆成多步查证，每一步的工具调用都可审计。</span><span class="en">A question-answering system for internal enterprise knowledge. It <b>retrieves only what the user is authorized to read</b>, <b>cites the exact source</b> for every claim (PDF page and highlight, Word paragraph, Excel cell), <b>refuses</b> when evidence is insufficient and <b>reports conflicts</b> instead of picking a side. Revoked access takes effect immediately. An Agent layer breaks complex questions into auditable, multi-step lookups.</span></p>
-    <ul class="stack" aria-label="Tech stack">
-      <li>FastAPI</li><li>LangGraph</li><li>PostgreSQL</li><li>OpenSearch</li><li>BGE-M3</li><li>Qwen2.5 7B</li><li>Ollama</li><li>React · TypeScript</li>
-    </ul>
+    <h1><span class="zh">面向企业知识库的可验证 AI Agent</span><span class="en">A verifiable AI Agent for enterprise knowledge</span></h1>
+    <p class="lead"><span class="zh">基于 LangGraph 与混合检索，跨文档查证答案、对照政策变化，并将执行步骤和回答追溯到原文。</span><span class="en">Built with LangGraph and hybrid retrieval to check facts across documents, compare policy changes, and trace tool calls and answers to their sources.</span></p>
+    <ul class="stack" aria-label="Core technologies"><li>LangGraph</li><li>Hybrid Retrieval</li><li>ACL</li><li>Citation Verification</li></ul>
+
     <div class="buttons">
-      <a class="btn primary" href="/live"><span class="zh">在线试用 →</span><span class="en">Try it live →</span></a>
+      <a class="btn primary" href="/live"><span class="zh">在线体验 →</span><span class="en">Try the live demo →</span></a>
       <a class="btn" href="https://github.com/Mingjie-Mao/Agentic-RAG">GitHub ↗</a>
-      <a class="btn" href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md"><span class="zh">技术报告</span><span class="en">Technical report</span></a>
+      <a class="btn" href="/replay.html"><span class="zh">查看真实执行回放</span><span class="en">Replay a real run</span></a>
     </div>
-    <p class="avail"><span class="zh">在线试用连接作者本机运行的完整系统（访客账号只读、每日限额）；机器离线时无法访问，可先看下方截图。演示以虚构公司「星桥软件」运行，界面中的「星桥知识库」是它的工作空间，全部资料均为虚构。</span><span class="en">The live demo connects to the full system running on the author's machine (read-only visitor account, daily quota). It is unavailable when that machine is offline — see the screenshots below. The demo runs as a fictional company, Xingqiao Software, so the UI shows its workspace name 星桥知识库 (Xingqiao Knowledge Base); all documents are fictional.</span></p>
+    <p class="avail"><span class="zh">虚构企业资料 · 可体验问答、Agent 查证与原文核验 · 共享每日额度。<span id="live-status">正在检查实时服务…</span> 本机离线时仍可查看执行回放。</span><span class="en">Fictional enterprise documents · ask questions, run Agent tasks and inspect cited evidence · shared daily quota. Recorded runs remain available when the local server is offline.</span></p>
   </div>
   <figure class="hero-shot">
-    <img src="shots/2-answer-and-citation.png" width="1440" height="960" alt="问答界面：回答带编号引用，右侧显示 PDF 原文并标出引用位置" data-zoom>
-    <figcaption><span class="zh">真实界面：回答只引用支持组可见的资料，右侧打开 PDF 原页并标出引用位置。</span><span class="en">Actual UI: the answer cites only documents visible to the support group; the source PDF page opens with the cited passage highlighted.</span></figcaption>
+    <img src="shots/agent-demonstration-20261010.png" width="1280" height="720" alt="真实 Agent 固定工作流：任务目标、原文引用与实际执行步骤" data-zoom>
+    <figcaption><span class="zh">真实 Agent 执行：先查资料与证据，再返回附引用的答案。点击可放大。</span><span class="en">A real Agent run: authorized document lookup, evidence retrieval, and a cited answer. Click to enlarge.</span></figcaption>
   </figure>
 </header>
 
-<div class="facts">
-  <div class="fact"><div class="big">0</div><p><span class="zh">越权命中：所有已运行的评测（含 80 题冻结留出集）中，无一次返回无权查看的资料</span><span class="en">Unauthorized hits across every evaluation run so far, including the 80-question frozen holdout</span></p></div>
-  <div class="fact"><div class="big">7</div><p><span class="zh">个受控工具：Agent 不能直接访问数据库或索引，每次读取都重新鉴权</span><span class="en">Bounded tools: the Agent never touches the database or index directly; every read is re-authorized</span></p></div>
-  <div class="fact"><div class="big">283</div><p><span class="zh">题统一评测包：Dev 47 / Core 70 / Security 16 / External 150，运行前冻结配置</span><span class="en">Tasks in the unified benchmark (Dev 47 / Core 70 / Security 16 / External 150), configurations frozen before runs</span></p></div>
-  <div class="fact"><div class="big">683<small><span class="zh">通过</span><span class="en">passed</span></small></div><p><span class="zh">自动化测试（2026-10-08 实际运行；另 36 项需本机服务，未计入）</span><span class="en">Automated tests actually run on 2026-10-08 (36 more need local services and were skipped, not counted)</span></p></div>
-</div>
+
+
+
 
 <section id="demo">
   <p class="eyebrow"><span class="zh">产品演示</span><span class="en">Product demo</span></p>
-  <h2><span class="zh">三个最能说明问题的界面</span><span class="en">Three screens that show what matters</span></h2>
-  <p><span class="zh">截图来自一份可执行的浏览器走查（<code>make browser</code>）：它对着系统真实操作并断言每一步应展示的内容，结束时清理自己上传的资料。点击图片可放大。</span><span class="en">Screenshots come from an executable browser walkthrough (<code>make browser</code>) that drives the real system, asserts what each step must show and cleans up its uploads. Click to enlarge.</span></p>
-  <div class="demos">
-    <figure class="demo">
-      <img src="shots/2-answer-and-citation.png" width="1440" height="960" loading="lazy" alt="回答与引用" data-zoom>
-      <figcaption><h3><span class="zh">回答可回到原文</span><span class="en">Every answer leads back to the source</span></h3><p><span class="zh">点开引用，PDF 打开对应页面并画出高亮框。</span><span class="en">Opening a citation jumps to the PDF page and draws the highlight box.</span></p></figcaption>
-    </figure>
-    <figure class="demo">
-      <img src="shots/4-permission-boundary.png" width="1440" height="960" loading="lazy" alt="权限边界" data-zoom>
-      <figcaption><h3><span class="zh">没有权限就看不到</span><span class="en">No permission, no visibility</span></h3><p><span class="zh">换成另一个组的账号，私有资料完全不可见，详情接口返回 404。</span><span class="en">Switch to another group's account and the private document disappears; its detail endpoint returns 404.</span></p></figcaption>
-    </figure>
-    <figure class="demo">
-      <img src="shots/5-refusal.png" width="1440" height="960" loading="lazy" alt="依据不足时拒答" data-zoom>
-      <figcaption><h3><span class="zh">没有依据就拒答</span><span class="en">No evidence, no answer</span></h3><p><span class="zh">问一个资料里没有答案的问题，系统明确拒答，引用为空。</span><span class="en">Ask something the documents do not answer: the system refuses explicitly with no citations.</span></p></figcaption>
-    </figure>
+  <h2><span class="zh">先选一个场景，看看系统如何查证</span><span class="en">Choose a scenario and inspect the evidence</span></h2>
+  <div class="scenario-links">
+<a href="/live#agent"><b><span class="zh">01 Agent 多步查证</span><span class="en">01 Multi-step Agent</span></b><span class="zh">跨资料检索 → 提取证据 → 核验答案</span><span class="en">Search → evidence → verified output</span></a>
+<a href="/live#chat"><b><span class="zh">02 回答与原文核验</span><span class="en">02 Inspect a citation</span></b><span class="zh">点击引用，阅读原文片段与 PDF 高亮</span><span class="en">Open a citation and read its source</span></a>
+<a href="/replay.html#permissions"><b><span class="zh">03 对照权限边界</span><span class="en">03 Compare access</span></b><span class="zh">对比支持组与工程组的资料访问范围</span><span class="en">Compare document access across teams</span></a>
+</div><p><a href="/replay.html"><span class="zh">无需本机在线：打开真实执行回放 →</span><span class="en">Offline-ready: replay a real run →</span></a></p>
+<div class="demos">
+    <article class="demo execution-demo"><h3><span class="zh">01 · 一次真实 Agent 执行</span><span class="en">01 · A real Agent execution</span></h3>
+    <!-- recorded-run:start --><p class="run-meta"><span class="zh">真实执行回放</span><span class="en">Recorded execution</span> · Workflow</p><p><span class="zh">任务</span><span class="en">Task</span>: 星桥标准套餐每分钟允许多少次 API 请求？超过配额会返回什么 HTTP 状态码？</p><div class="run-layout"><ol class="run-steps" aria-label="Recorded task events"><li><strong>search_documents</strong><small><span class="zh">5 条证据</span><span class="en">5 evidence spans</span></small></li><li><strong>retrieve_evidence</strong><small><span class="zh">5 条证据</span><span class="en">5 evidence spans</span></small></li><li><strong><span class="zh">准备生成所需证据</span><span class="en">Prepare generation evidence</span></strong></li><li><strong><span class="zh">检查问题覆盖情况</span><span class="en">Check answer coverage</span></strong></li><li><strong><span class="zh">返回核验结果</span><span class="en">Return the verified result</span></strong></li></ol><div class="run-result"><h3><span class="zh">最终回答</span><span class="en">Final answer</span></h3><p>星桥标准套餐每分钟允许120次API请求。</p><p>超过配额返回HTTP 429状态码。</p><p><span class="zh">来源</span><span class="en">Source</span>: API 调用配额说明 · 第 5 行起</p><a href="/replay.html"><span class="zh">逐步回放与原文</span><span class="en">Replay steps and source</span></a></div></div><!-- recorded-run:end -->
+    </article>
+    <figure class="demo"><div class="detail-shot"><img src="shots/2-answer-and-citation.png" width="1440" height="960" loading="lazy" alt="回答、PDF 原文与引用高亮" data-zoom></div><figcaption><h3><span class="zh">02 · 回到原文核验</span><span class="en">02 · Inspect the original source</span></h3><p><span class="zh">引用定位到 PDF 原文，关键句高亮显示。</span><span class="en">Citations locate and highlight supporting sentences in the original PDF.</span></p></figcaption></figure>
+    <figure class="demo"><img src="shots/permission-comparison-20261009.png" width="1110" height="367" loading="lazy" alt="同一份虚构文档在支持组与工程组下的允许和拒绝对照" data-zoom><figcaption><h3><span class="zh">对照权限边界</span><span class="en">Compare role boundaries</span></h3><p><span class="zh">同一份资料，不同团队的访问权限不同。</span><span class="en">The same document is accessible only to authorized teams.</span></p></figcaption></figure>
   </div>
   <details class="more">
     <summary><span class="zh">再看两张：上传解析与检索调试</span><span class="en">Two more: upload parsing and retrieval inspector</span></summary>
@@ -232,36 +260,12 @@
   </details>
 </section>
 
-<section id="architecture">
-  <p class="eyebrow"><span class="zh">系统架构</span><span class="en">Architecture</span></p>
-  <h2><span class="zh">模型只做语言工作，权限、版本和引用由程序把关</span><span class="en">The model handles language; code enforces permissions, versions and citations</span></h2>
-  <div class="arch">
-    <div class="arch-row two">
-      <div class="box"><span class="tag"><span class="zh">入口</span><span class="en">Entry</span></span><h3><span class="zh">问答（单轮 RAG）</span><span class="en">Q&amp;A (single-pass RAG)</span></h3><p><span class="zh">追问按规则补全上下文后直接检索与生成。</span><span class="en">Follow-ups are completed by rules, then retrieved and answered directly.</span></p></div>
-      <div class="box"><span class="tag"><span class="zh">入口</span><span class="en">Entry</span></span><h3><span class="zh">Agent 任务（异步）</span><span class="en">Agent task (async)</span></h3><p><span class="zh">立即返回 queued，后台 worker 以数据库租约领取执行。</span><span class="en">Returns queued at once; a background worker claims it with a database lease.</span></p></div>
-    </div>
-    <div class="down">↓</div>
-    <div class="box accent"><span class="tag">LangGraph</span><h3><span class="zh">编排：固定 Workflow / Hybrid / Planner / Dynamic</span><span class="en">Orchestration: fixed Workflow / Hybrid / Planner / Dynamic</span></h3><p><span class="zh">默认走确定性 Workflow，下一步依赖中间结果时走有界 Hybrid；官方检查点支持中断恢复，累计调用预算由业务层保存。</span><span class="en">Defaults to the deterministic Workflow, or the bounded Hybrid when the next step depends on an observation; official checkpoints allow resumption while cumulative call budgets stay in the application.</span></p>
-      <div class="tools"><code>search_documents</code><code>retrieve_evidence</code><code>open_document</code><code>get_document_version</code><code>compare_versions</code><code>verify_chunk_access</code><code>search_memory</code></div>
-    </div>
-    <div class="down">↓</div>
-    <div class="arch-row three">
-      <div class="box"><span class="tag"><span class="zh">检索</span><span class="en">Retrieve</span></span><h3><span class="zh">权限过滤的混合检索</span><span class="en">Permission-filtered hybrid search</span></h3><p><span class="zh">授权范围写进查询，BM25 与 BGE-M3 向量两路用 RRF 融合。</span><span class="en">Authorization is part of the query; BM25 and BGE-M3 vectors are fused with RRF.</span></p></div>
-      <div class="box"><span class="tag"><span class="zh">生成</span><span class="en">Generate</span></span><h3>Qwen2.5 7B · Ollama</h3><p><span class="zh">模型只能引用带编号的证据片段，不能自己写出处。</span><span class="en">The model may only cite numbered evidence spans; it never writes a source itself.</span></p></div>
-      <div class="box"><span class="tag"><span class="zh">校验</span><span class="en">Verify</span></span><h3><span class="zh">引用校验与再鉴权</span><span class="en">Citation check and re-authorization</span></h3><p><span class="zh">服务端取回原文核对数值、版本与权限；不通过最多局部修复一次，否则判定失败。</span><span class="en">The server re-reads the source to check values, version and access; one bounded local repair, otherwise the answer fails.</span></p></div>
-    </div>
-    <div class="down">↓</div>
-    <div class="arch-row two">
-      <div class="box store"><span class="tag">PostgreSQL</span><p><span class="zh">文档、版本、ACL、任务与工具审计、LangGraph 检查点。决定可见性的是这里，而不是搜索索引。</span><span class="en">Documents, versions, ACLs, tasks, tool audit and LangGraph checkpoints. Visibility is decided here, not by the search index.</span></p></div>
-      <div class="box store"><span class="tag">OpenSearch</span><p><span class="zh">关键词与向量索引；新版本先建索引再发布，切换失败不影响当前版本。</span><span class="en">Keyword and vector index. A new version is indexed before it is published, so a failed switch never affects the live version.</span></p></div>
-    </div>
-  </div>
-</section>
-
 <section id="features">
   <p class="eyebrow"><span class="zh">核心能力</span><span class="en">Key features</span></p>
-  <h2><span class="zh">四件企业场景里绕不开的事</span><span class="en">Four things enterprise knowledge cannot skip</span></h2>
+  <h2><span class="zh">从 Agent 编排到可核验的企业答案</span><span class="en">From Agent orchestration to verifiable enterprise answers</span></h2>
   <div class="cards">
+    <div class="card"><span class="tag">LangGraph</span><h3><span class="zh">多步编排与工具审计</span><span class="en">Multi-step orchestration and tool audit</span></h3><p><span class="zh">LangGraph 管理节点、条件转移与检查点。固定工作流组织检索、取证与生成，实际工具、耗时和证据数量可在任务轨迹中检查。</span><span class="en">LangGraph handles nodes, conditional transitions and checkpoints. The Workflow coordinates retrieval, evidence and generation, with actual tools, timing and evidence counts in the task trace.</span></p></div>
+    <div class="card"><span class="tag">Retrieval + Versions</span><h3><span class="zh">跨文档查证与版本语义</span><span class="en">Cross-document evidence and version semantics</span></h3><p><span class="zh">BM25 与 BGE-M3 经 RRF 融合检索，多份资料进入同一次查证；版本工具区分历史与生效内容。Hybrid 可依据中间证据补查，效果仍须正式评测。</span><span class="en">BM25 and BGE-M3 are fused with RRF to gather evidence across documents. Version tools distinguish historical and effective content; experimental Hybrid can request follow-up evidence.</span></p></div>
     <div class="card">
       <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
       <h3><span class="zh">权限进检索，不做事后过滤</span><span class="en">Permissions inside retrieval, not after it</span></h3>
@@ -285,23 +289,75 @@
   </div>
 </section>
 
+<section id="architecture">
+<ul class="stack" aria-label="Tech stack">
+      <li>FastAPI</li><li>LangGraph</li><li>PostgreSQL</li><li>OpenSearch</li><li>BGE-M3</li><li>Qwen2.5 7B</li><li>Ollama</li><li>React · TypeScript</li>
+    </ul>
+  <p class="eyebrow"><span class="zh">系统架构</span><span class="en">Architecture</span></p>
+  <h2><span class="zh">模型只做语言工作，权限、版本和引用由程序把关</span><span class="en">The model handles language; code enforces permissions, versions and citations</span></h2>
+  <div class="arch">
+    <div class="arch-row two">
+      <div class="box"><span class="tag"><span class="zh">入口</span><span class="en">Entry</span></span><h3><span class="zh">问答（单轮 RAG）</span><span class="en">Q&amp;A (single-pass RAG)</span></h3><p><span class="zh">追问按规则补全上下文后直接检索与生成。</span><span class="en">Follow-ups are completed by rules, then retrieved and answered directly.</span></p></div>
+      <div class="box"><span class="tag"><span class="zh">入口</span><span class="en">Entry</span></span><h3><span class="zh">Agent 任务（异步）</span><span class="en">Agent task (async)</span></h3><p><span class="zh">立即返回 queued，后台 worker 以数据库租约领取执行。</span><span class="en">Returns queued at once; a background worker claims it with a database lease.</span></p></div>
+    </div>
+    <div class="down">↓</div>
+    <div class="box accent"><span class="tag">LangGraph</span><h3><span class="zh">编排：固定 Workflow / Hybrid / Planner / Dynamic</span><span class="en">Orchestration: fixed Workflow / Hybrid / Planner / Dynamic</span></h3><p><span class="zh">默认走确定性 Workflow，下一步依赖中间结果时走有界 Hybrid；官方检查点支持中断恢复，累计调用预算由业务层保存。</span><span class="en">Defaults to the deterministic Workflow, or the bounded Hybrid when the next step depends on an observation; official checkpoints allow resumption while cumulative call budgets stay in the application.</span></p>
+      <div class="tools"><code>search_documents</code><code>retrieve_evidence</code><code>open_document</code><code>get_document_version</code><code>compare_versions</code><code>verify_chunk_access</code><code>search_memory</code></div>
+    </div>
+    <div class="down">↓</div>
+    <div class="arch-row three">
+      <div class="box"><span class="tag"><span class="zh">检索</span><span class="en">Retrieve</span></span><h3><span class="zh">权限过滤的混合检索</span><span class="en">Permission-filtered hybrid search</span></h3><p><span class="zh">授权范围写进查询，BM25 与 BGE-M3 向量两路用 RRF 融合。</span><span class="en">Authorization is part of the query; BM25 and BGE-M3 vectors are fused with RRF.</span></p></div>
+      <div class="box"><span class="tag"><span class="zh">生成</span><span class="en">Generate</span></span><h3>Qwen2.5 7B · Ollama</h3><p><span class="zh">模型只能引用带编号的证据片段，不能自己写出处。</span><span class="en">The model may only cite numbered evidence spans; it never writes a source itself.</span></p></div>
+      <div class="box"><span class="tag"><span class="zh">校验</span><span class="en">Verify</span></span><h3><span class="zh">引用校验与再鉴权</span><span class="en">Citation check and re-authorization</span></h3><p><span class="zh">服务端取回原文核对数值、版本与权限；不通过最多局部修复一次，否则判定失败。</span><span class="en">The server re-reads the source to check values, version and access; one bounded local repair, otherwise the answer fails.</span></p></div>
+    </div>
+    <div class="down">↓</div>
+    <div class="arch-row two">
+      <div class="box store"><span class="tag">PostgreSQL</span><p><span class="zh">文档、版本、ACL、任务与工具审计、LangGraph 检查点。决定可见性的是这里，而不是搜索索引。</span><span class="en">Documents, versions, ACLs, tasks, tool audit and LangGraph checkpoints. Visibility is decided here, not by the search index.</span></p></div>
+      <div class="box store"><span class="tag">OpenSearch</span><p><span class="zh">关键词与向量索引；新版本先建索引再发布，切换失败不影响当前版本。</span><span class="en">Keyword and vector index. A new version is indexed before it is published, so a failed switch never affects the live version.</span></p></div>
+    </div>
+  </div>
+  <div class="sub" id="execution-modes">
+    <h3><span class="zh">RAG 与三种 Agent 策略，分别做什么？</span><span class="en">RAG and three Agent strategies: when to use each</span></h3>
+    <p><span class="zh">自主程度是设计选择，不是效果排名。各模式共用授权工具、累计预算与引用校验；正式质量对比仍等待冻结 Core 评测。</span><span class="en">Autonomy is a design choice, not a quality ranking. Modes share authorized tools, cumulative budgets and citation checks; the formal Core comparison is pending.</span></p>
+    <div class="scroller"><table class="mode-table"><thead><tr><th><span class="zh">模式</span><span class="en">Mode</span></th><th><span class="zh">适合任务与决策方式</span><span class="en">Task and decision process</span></th><th><span class="zh">怎么检查执行</span><span class="en">Execution evidence</span></th><th><span class="zh">当前范围</span><span class="en">Availability</span></th></tr></thead><tbody>
+    <tr><td>RAG</td><td><span class="zh">一次检索即可回答；直接检索、生成与核验。</span><span class="en">One retrieval pass can answer the question; retrieve, generate and verify.</span></td><td><span class="zh">检索结果与原文引用。</span><span class="en">Retrieved evidence and source citations.</span></td><td><span class="zh">公开知识问答</span><span class="en">Public Q&amp;A</span></td></tr>
+    <tr><td>Workflow</td><td><span class="zh">步骤明确的查证；程序决定检索、补查、取证与停止。</span><span class="en">Known task stages; code controls retrieval, bounded recovery, evidence and stopping.</span></td><td><a href="/replay.html"><span class="zh">真实固定流程、两次工具调用与最终结果</span><span class="en">Recorded flow, two tool calls and a final result</span></a></td><td><span class="zh">默认；访客自动路由也使用此模式</span><span class="en">Default; visitor auto routing also uses this mode</span></td></tr>
+    <tr><td>Hybrid</td><td><span class="zh">下一步依赖中间证据；模型提出查证意图，程序绑定合法工具与参数。</span><span class="en">Next steps depend on evidence; the model proposes an intent and code binds valid tools and arguments.</span></td><td><span class="zh">条件分支、意图绑定和工具审计；当前回放不含本模式。</span><span class="en">Conditional branches, intent binding and tool audit; absent from the current replay.</span></td><td><span class="pending"><span class="zh">本地实验</span><span class="en">Local experiment</span></span></td></tr>
+    <tr><td>Dynamic Agent</td><td><span class="zh">模型选择后续工具和参数；调用预算、权限与输出校验仍由服务端约束。</span><span class="en">The model selects tools and arguments; server-side budgets, permissions and output checks still apply.</span></td><td><span class="zh">实际工具选择、拒绝原因与审计轨迹；当前回放不含本模式。</span><span class="en">Actual tool decisions, rejection reasons and audit; absent from the current replay.</span></td><td><span class="pending"><span class="zh">本地实验；未证明优于 Workflow</span><span class="en">Local experiment; no proven advantage over Workflow</span></span></td></tr>
+    </tbody></table></div>
+  </div>
+</section>
+
 <section id="evaluation">
   <p class="eyebrow"><span class="zh">评测</span><span class="en">Evaluation</span></p>
   <h2><span class="zh">先冻结配置，再看结果</span><span class="en">Freeze first, then measure</span></h2>
+  <div class="fact-groups">
+    <div><h3><span class="zh">历史已验证结果</span><span class="en">Historical measured results</span></h3><div class="facts">
+      <div class="fact"><div class="k"><span class="zh">80 题冻结留出集</span><span class="en">80-task frozen holdout</span></div><div class="big">0</div><p><span class="zh">越权命中。限定当次运行，不代表未知场景全部安全。</span><span class="en">Unauthorized hits in that run; not a guarantee for unseen scenarios.</span></p></div>
+      <div class="fact"><div class="k"><span class="zh">当前主正确率</span><span class="en">Current headline accuracy</span></div><span class="pending">pending</span><p><span class="zh">Core Strict Task Success 尚未正式运行与审核，不用历史成绩替代。</span><span class="en">Core Strict Task Success awaits a frozen, reviewed run; historical scores do not substitute.</span></p></div>
+    </div><p class="caption"><a href="data.json"><span class="zh">查看历史数据与来源</span><span class="en">Historical data and provenance</span></a></p></div>
+    <div><h3><span class="zh">工程规模</span><span class="en">Engineering scope</span></h3><div class="facts">
+      <div class="fact"><div class="k"><span class="zh">授权工具</span><span class="en">Authorized tools</span></div><div class="big">7</div><p><span class="zh">受控工具，每次读取都重新鉴权；数量不是性能成绩。</span><span class="en">Bounded tools that re-authorize each read; a count, not a performance result.</span></p></div>
+      <div class="fact"><div class="k"><span class="zh">已构建评测包</span><span class="en">Constructed benchmark package</span></div><div class="big">283</div><p><span class="zh">Dev 47 / Core 70 / Security 16 / External 150；不代表全部正式测试完成。</span><span class="en">Dev 47 / Core 70 / Security 16 / External 150; not all formally evaluated.</span></p></div>
+    </div></div>
+  </div>
+  <p class="caption"><a href="/verification.html"><span class="zh">网站验收记录 ↗</span><span class="en">Website verification ↗</span></a></p>
+  <details class="more"><summary><span class="zh">评测方法与口径</span><span class="en">Evaluation method and scoring</span></summary>
   <p><span class="zh">RAG、Workflow、Dynamic Agent 与 Hybrid 统一用一套评测包比较。只允许在 Dev 上调参；Core 的方法与消融矩阵在第一次运行前注册冻结，看到结果后不能补配置。主指标是 <b>Core 70 题的严格任务成功率</b>：事实完整、条件与版本正确、引用支持、该拒答时拒答、执行安全，全部满足才算通过。</span><span class="en">RAG, Workflow, Dynamic Agent and Hybrid are compared on one benchmark package. Tuning is allowed only on Dev; the Core method and ablation matrix is registered and frozen before its first run. The headline metric is <b>Strict Task Success on the 70 Core tasks</b>: complete facts, correct conditions and versions, supported citations, correct refusals and safe execution must all hold.</span></p>
+  </details>
   <div class="bench">
     <div><div class="k">Dev</div><div class="n">47</div><p><span class="zh">唯一允许调参的部分</span><span class="en">The only split used for tuning</span></p></div>
     <div><div class="k">Core</div><div class="n">70</div><p><span class="zh">七类各 10 题 · </span><span class="en">7 categories × 10 · </span><span class="pending"><span class="zh">待正式运行</span><span class="en">not yet run</span></span></p></div>
     <div><div class="k">Security</div><div class="n">16</div><p><span class="zh">组权限、跨租户、撤权、版本范围</span><span class="en">Group, tenant, revocation, version scope</span></p></div>
     <div><div class="k">External</div><div class="n">150</div><p><span class="zh">MultiHop-RAG 固定子集，已用过，只作外部回归</span><span class="en">Fixed MultiHop-RAG subset, already used — regression only</span></p></div>
   </div>
-  <div class="note"><p><span class="zh">Core 正式结果出来之前，本页不给出项目总体正确率。下面是 2026-09 阶段的历史实验，题集与口径不同，只用于说明当时的工程决策。</span><span class="en">Until the Core run is complete this page reports no overall accuracy. The results below are September 2026 experiments with different task sets and scoring; they explain past engineering decisions only.</span></p></div>
 
+  <details class="more"><summary><span class="zh">历史实验详情（不同题集与口径）</span><span class="en">Historical experiments (different task sets and scoring)</span></summary>
   <div class="sub">
     <h3><span class="zh">历史 · 冻结留出集 80 题（只运行一次）</span><span class="en">History · frozen holdout, 80 questions (run once)</span></h3>
     <div class="scroller"><table>
       <thead><tr><th><span class="zh">指标</span><span class="en">Metric</span></th><th><span class="zh">运行前门槛</span><span class="en">Pre-set target</span></th><th><span class="zh">实测</span><span class="en">Measured</span></th></tr></thead>
-      <tbody id="t-holdout"></tbody>
+      <tbody id="t-holdout"><tr><td><span class="zh">回答状态正确率</span><span class="en">Answer-state accuracy</span></td><td>≥ 80.0%</td><td>90.0%</td></tr><tr><td><span class="zh">字面事实覆盖</span><span class="en">Literal fact coverage</span></td><td>≥ 80.0%</td><td>81.9%</td></tr><tr><td><span class="zh">越权命中</span><span class="en">Unauthorized hits</span></td><td>0</td><td>0</td></tr><tr><td><span class="zh">隐藏文档泄漏</span><span class="en">Hidden-source leaks</span></td><td>0</td><td>0</td></tr><tr><td><span class="zh">引用身份校验</span><span class="en">Citation identity check</span></td><td><span class="zh">全部通过</span><span class="en">all valid</span></td><td><span class="zh">全部通过</span><span class="en">all valid</span></td></tr></tbody>
     </table></div>
     <p class="caption"><span class="zh">“回答状态正确率”只看该答、该拒、该报冲突的判断是否正确，不等于答案内容的语义正确率；内容层面以字面事实覆盖为准。</span><span class="en">"Answer-state accuracy" only checks whether the system correctly answered, refused or flagged a conflict; it is not semantic answer correctness. Content is measured by literal fact coverage.</span></p>
   </div>
@@ -310,7 +366,7 @@
     <h3><span class="zh">历史 · 检索方式对比（自建开发集 147 题）</span><span class="en">History · retrieval comparison (147-question dev set)</span></h3>
     <div class="scroller"><table>
       <thead><tr><th><span class="zh">检索方式</span><span class="en">Retrieval</span></th><th>Recall@5</th><th>MRR@10</th><th><span class="zh">回答状态正确率</span><span class="en">Answer-state acc.</span></th></tr></thead>
-      <tbody id="t-dev"></tbody>
+      <tbody id="t-dev"><tr><td><span class="zh">BM25</span><span class="en">BM25</span></td><td>0.984</td><td>0.927</td><td>84.4%</td></tr><tr><td><span class="zh">向量检索</span><span class="en">Dense vectors</span></td><td>0.903</td><td>0.840</td><td>85.0%</td></tr><tr><td><span class="zh">混合检索（默认）</span><span class="en">Hybrid (default)</span></td><td>0.935</td><td>0.900</td><td>89.1%</td></tr></tbody>
     </table></div>
     <p class="caption"><span class="zh">混合检索的检索指标低于 BM25，端到端却最高：证据只有 4 个位置时，关键是谁占了这 4 个位置。差异未达统计显著（McNemar p = 0.19），因此只能说“实测最优”。</span><span class="en">Hybrid retrieval scores below BM25 on retrieval metrics yet best end-to-end: with only four evidence slots, what matters is who occupies them. The difference is not significant (McNemar p = 0.19), so it is "best measured", not "proven better".</span></p>
   </div>
@@ -319,22 +375,56 @@
     <summary><span class="zh">历史 · 英文外部子集 39 题</span><span class="en">History · English external subset, 39 questions</span></summary>
     <div class="scroller"><table>
       <thead><tr><th><span class="zh">检索方式</span><span class="en">Retrieval</span></th><th>Recall@5</th><th><span class="zh">回答状态正确率</span><span class="en">Answer-state acc.</span></th></tr></thead>
-      <tbody id="t-public"></tbody>
+      <tbody id="t-public"><tr><td><span class="zh">BM25</span><span class="en">BM25</span></td><td>0.897</td><td>84.6%</td></tr><tr><td><span class="zh">向量检索</span><span class="en">Dense vectors</span></td><td>0.897</td><td>74.4%</td></tr><tr><td><span class="zh">混合检索（默认）</span><span class="en">Hybrid (default)</span></td><td>0.974</td><td>84.6%</td></tr></tbody>
     </table></div>
     <p class="caption" style="margin-bottom:16px"><span class="zh">英文语料加 100 份干扰文档。这里混合检索的检索优势明显，与自建语料上的排序相反，提示 BM25 的领先可能来自自建资料的专有名词特征。同一运行的字面事实覆盖率接近 0，因此“回答状态正确率”不代表答案内容正确。</span><span class="en">English corpus with 100 distractor documents. Hybrid retrieval clearly leads here, the reverse of the in-house ranking, suggesting BM25's lead may come from proper nouns in the in-house corpus. Literal fact coverage in the same run was near zero, so answer-state accuracy does not mean the answers were correct.</span></p>
   </details>
+</details>
 </section>
 
 <section id="decisions">
   <p class="eyebrow"><span class="zh">工程取舍</span><span class="en">Engineering decisions</span></p>
   <h2><span class="zh">三个被数据否决的常见组件</span><span class="en">Three common components rejected by the data</span></h2>
+  <details class="more"><summary><span class="zh">展开三组对照实验与选择理由</span><span class="en">Expand three ablations and their decisions</span></summary>
   <div class="cols">
     <div class="card"><h3><span class="zh">Cross-encoder 重排</span><span class="en">Cross-encoder reranking</span></h3><p><span class="zh">Recall@5 从 0.935 升到 0.968，端到端几乎不变（p = 0.79），冲突精确率从 100% 降到 92.3%，耗时增加约 22%。已实现，默认关闭。</span><span class="en">Recall@5 rose from 0.935 to 0.968 while end-to-end barely moved (p = 0.79); conflict precision fell from 100% to 92.3% and latency rose about 22%. Implemented, off by default.</span></p></div>
     <div class="card"><h3><span class="zh">LLM 查询改写</span><span class="en">LLM query rewriting</span></h3><p><span class="zh">四组对照中，不给历史的 LLM 改写与完全不改写的追问召回相同（0.65）；收益来自对话历史本身。最终采用零模型调用的规则拼接（0.975）。</span><span class="en">Across four arms, LLM rewriting without history matched no rewriting on follow-up recall (0.65); the gain came from the history itself. A zero-call rule-based rewrite was kept (0.975).</span></p></div>
     <div class="card"><h3><span class="zh">主题一致性校验</span><span class="en">Topic-consistency check</span></h3><p><span class="zh">为拦“答非所问”而实现。校准发现判对回答的重合度 5 分位是 2，判错的无一低于 3：阈值只会误杀正确答案。已完整回退。</span><span class="en">Built to catch off-topic answers. Calibration showed the 5th percentile overlap of correct answers was 2 while no wrong answer fell below 3: the threshold could only reject correct answers. Fully reverted.</span></p></div>
   </div>
 
-  <h2 style="margin-top:56px"><span class="zh">这套系统还不能证明什么</span><span class="en">What this project does not yet show</span></h2>
+  </details>
+  <details class="more"><summary><span class="zh">设计动机：权限、证据与执行边界</span><span class="en">Design rationale: access, evidence and execution</span></summary><section id="why-build">
+  <p class="eyebrow"><span class="zh">设计动机</span><span class="en">Design rationale</span></p>
+  <h2><span class="zh">为什么不直接用 Codex？</span><span class="en">Why build workflows and agents instead of using Codex directly?</span></h2>
+  <p><span class="zh">个人查阅文件、修改代码或处理一次性任务，直接使用 Codex 往往更省事。它也能通过 <a href="https://learn.chatgpt.com/docs/codex-sdk">官方 SDK</a> 集成到应用与工作流。本项目选择维护一套<b>面向多用户的企业知识库服务</b>，将业务规则放在服务端统一执行。</span><span class="en">For personal file lookup, code changes or one-off tasks, using Codex directly can be simpler. Its <a href="https://learn.chatgpt.com/docs/codex-sdk">official SDK</a> also supports integration into applications and workflows. This project builds a <b>knowledge service for multiple enterprise users</b>, with business rules enforced by the server.</span></p>
+  <div class="cards">
+    <div class="card">
+      <h3><span class="zh">权限与版本是业务规则</span><span class="en">Access and versions are business rules</span></h3>
+      <p><span class="zh">检索、读取和任务恢复都检查当前授权，处理租户隔离、撤权及版本范围。这些规则必须在工具与数据层执行，不能只依赖提示词。</span><span class="en">Retrieval, reads and resumed tasks check current access, tenant boundaries, revocation and version scope. Tools and data access enforce these rules; prompts alone are insufficient.</span></p>
+    </div>
+    <div class="card">
+      <h3><span class="zh">回答需要可核验的证据</span><span class="en">Answers need inspectable evidence</span></h3>
+      <p><span class="zh">引用绑定真实文档、版本与原文位置，返回前再次校验。证据不足、资料冲突及失权引用，也有明确的处理路径。</span><span class="en">Citations bind to real documents, versions and source locations and are checked before return. Insufficient evidence, conflicting sources and revoked citations have explicit handling paths.</span></p>
+    </div>
+    <div class="card">
+      <h3><span class="zh">执行过程需要受控且可评测</span><span class="en">Execution needs controls and evaluation</span></h3>
+      <p><span class="zh">受控工具、累计预算、审计和持久化状态约束每次执行。RAG、Workflow 与 Agent 用同一套评测比较质量、调用量和延迟。</span><span class="en">Bounded tools, cumulative budgets, audit logs and persisted state constrain each run. RAG, Workflow and Agent methods share an evaluation package for quality, calls and latency.</span></p>
+    </div>
+    <div class="card">
+      <h3><span class="zh">保留部署与模型选择</span><span class="en">Choose deployment and models</span></h3>
+      <p><span class="zh">当前采用 Ollama 本地推理，自主管理文档、索引及模型部署。这个选择也需要承担本地模型能力和单机延迟的限制。</span><span class="en">The current implementation uses local Ollama inference and manages its documents, indexes and model deployment. This choice also carries local-model quality and single-machine latency limits.</span></p>
+    </div>
+  </div>
+  <div class="box accent" style="margin-top:22px">
+    <h3><span class="zh">为什么同时保留 Workflow 和 Agent？</span><span class="en">Why keep both Workflow and Agent modes?</span></h3>
+    <p><span class="zh">固定 Workflow 明确组织检索、生成与核验；Agent 模式允许依据中间证据补查或比较版本。两者共用授权工具，按任务需求与评测选择。节点调度、循环和检查点直接复用 LangGraph，项目主要实现企业业务规则。</span><span class="en">A fixed Workflow organizes retrieval, generation and verification explicitly. Agent modes can request more evidence or compare versions based on intermediate results. Both share authorized tools and are chosen by task needs and evaluation. LangGraph supplies scheduling, loops and checkpoints; project code implements enterprise business rules.</span></p>
+  </div>
+  <p class="caption"><span class="zh">当前尚未接入 Codex；未来即使采用它作为执行者，仍需经过同样的授权工具与输出校验。正式 Core 验收尚未完成，本项目不声称自建 Agent 比 Codex 更强。</span><span class="en">Codex is not integrated today. A future Codex executor would still need the same authorized tools and output checks. Formal Core acceptance is pending; this project makes no claim that its Agent outperforms Codex.</span></p>
+</section></details>
+</section>
+<section id="limitations">
+  <p class="eyebrow"><span class="zh">已知边界</span><span class="en">Limitations</span></p>
+  <h2><span class="zh">这套系统还不能证明什么</span><span class="en">What this project does not yet show</span></h2>
   <ul class="limits">
     <li><span class="zh"><b>没有总体正确率：</b>Core 70、Security 16 与 External 150 尚未正式运行。</span><span class="en"><b>No overall accuracy:</b> Core 70, Security 16 and External 150 have not been formally run.</span></li>
     <li><span class="zh"><b>审核不是独立人工：</b>题目与答案由模型审核并如实标注；独立人工标签为 0。</span><span class="en"><b>Reviews are not independent human labels:</b> tasks and answers are model-reviewed and labeled as such; independent human labels: 0.</span></li>
@@ -345,13 +435,13 @@
 </section>
 
 <footer>
-  <span class="zh">历史实验数据：<code>artifacts/s8-release-summary.json</code>，由 <code>make site-data</code> 生成到 <code>site/data.json</code>。完整方法、失败案例与当前进度见 <a href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md">技术报告</a>。全部示例资料、题目与公司名称均为本项目自建的虚构内容。</span>
-  <span class="en">Historical data: <code>artifacts/s8-release-summary.json</code>, generated into <code>site/data.json</code> by <code>make site-data</code>. Methods, failure cases and current status are in the <a href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md">technical report</a> (Chinese). All sample documents, questions and company names are fictional.</span>
+  <span class="zh">全部示例资料与企业名称均为虚构。<a href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md">技术报告 ↗</a></span>
+  <span class="en">All sample documents and company names are fictional. <a href="https://github.com/Mingjie-Mao/Agentic-RAG/blob/main/PROJECT_REPORT.md">Technical report ↗</a></span>
 </footer>
 
 </main>
 
-<dialog class="zoom" id="zoom"><img alt=""><p></p></dialog>
+<dialog class="zoom" id="zoom" aria-label="完整截图 / Full screenshot"><button class="zoom-close" type="button" autofocus><span class="zh">关闭全图 ×</span><span class="en">Close image ×</span></button><img alt=""><p></p></dialog>
 
 <script>
 const root = document.documentElement;
@@ -361,8 +451,8 @@ function setLang(lang, remember) {
   root.lang = lang === "en" ? "en" : "zh-CN";
   toggle.textContent = lang === "en" ? "中文" : "EN";
   document.title = lang === "en"
-    ? "Agentic-RAG · Permission-aware enterprise knowledge QA"
-    : "Agentic-RAG · 权限感知的企业知识问答";
+    ? "Agentic-RAG · A verifiable enterprise knowledge Agent"
+    : "Agentic-RAG · 可验证的企业知识 Agent";
   if (remember) { try { localStorage.setItem("lang", lang); } catch (e) {} }
 }
 let initial = new URLSearchParams(location.search).get("lang");
@@ -371,38 +461,31 @@ setLang(initial === "en" ? "en" : "zh", false);
 toggle.addEventListener("click", () => setLang(root.dataset.lang === "en" ? "zh" : "en", true));
 
 const zoom = document.getElementById("zoom");
-document.querySelectorAll("img[data-zoom]").forEach(img => img.addEventListener("click", () => {
-  zoom.querySelector("img").src = img.src;
-  zoom.querySelector("img").alt = img.alt;
-  const caption = img.closest("figure")?.querySelector("figcaption");
-  zoom.querySelector("p").textContent = caption ? caption.innerText.trim() : "";
-  zoom.showModal();
-}));
-zoom.addEventListener("click", () => zoom.close());
-
-const pct = v => (v * 100).toFixed(1) + "%";
-const both = (zh, en) => `<span class="zh">${zh}</span><span class="en">${en}</span>`;
-const NAMES = {bm25: ["BM25", "BM25"], dense: ["向量检索", "Dense vectors"], hybrid: ["混合检索（默认）", "Hybrid (default)"]};
-fetch("data.json").then(r => r.json()).then(d => {
-  const h = d.holdout, m = h.measured, t = h.targets;
-  document.getElementById("t-holdout").innerHTML = [
-    [both("回答状态正确率", "Answer-state accuracy"), "≥ " + pct(t.status_correct_min), pct(m.status_correct)],
-    [both("字面事实覆盖", "Literal fact coverage"), "≥ " + pct(t.literal_fact_coverage_min), pct(m.literal_fact_coverage)],
-    [both("越权命中", "Unauthorized hits"), String(t.permission_violations_max), String(m.permission_violations)],
-    [both("隐藏文档泄漏", "Hidden-source leaks"), String(t.hidden_source_leaks_max), String(m.hidden_source_leaks)],
-    [both("引用身份校验", "Citation identity check"), both("全部通过", "all valid"), m.citation_identity_all_valid ? both("全部通过", "all valid") : both("未通过", "failed")],
-  ].map(([a, b, c]) => `<tr><td class="name">${a}</td><td class="num">${b}</td><td class="num">${c}</td></tr>`).join("");
-
-  document.getElementById("t-dev").innerHTML = ["bm25", "dense", "hybrid"].map(k =>
-    `<tr${k === "hybrid" ? ' class="best"' : ""}><td class="name">${both(...NAMES[k])}</td>` +
-    `<td class="num">${d.retrieval[k].recall_at_5.toFixed(3)}</td><td class="num">${d.retrieval[k].mrr.toFixed(3)}</td>` +
-    `<td class="num">${pct(d.dev[k].status_correct)}</td></tr>`).join("");
-
-  const pub = d.public;
-  document.getElementById("t-public").innerHTML = ["bm25", "dense", "hybrid"].map(k =>
-    `<tr><td class="name">${both(...NAMES[k])}</td><td class="num">${pub.retrieval[k].recall_at_5.toFixed(3)}</td>` +
-    `<td class="num">${pct(pub.end_to_end[k].status_correct)}</td></tr>`).join("");
+let zoomTrigger = null;
+document.querySelectorAll("img[data-zoom]").forEach(img => {
+  const button = document.createElement("button");
+  button.type = "button"; button.className = "shot-open";
+  button.setAttribute("aria-label", `打开完整截图 / Open full screenshot: ${img.alt}`);
+  button.setAttribute("aria-haspopup", "dialog");
+  img.before(button); button.append(img);
+  button.addEventListener("click", () => {
+    zoomTrigger = button;
+    zoom.querySelector("img").src = img.src;
+    zoom.querySelector("img").alt = img.alt;
+    const caption = img.closest("figure")?.querySelector("figcaption");
+    zoom.querySelector("p").textContent = caption ? caption.innerText.trim() : "";
+    zoom.showModal();
+  });
 });
+zoom.querySelector(".zoom-close").addEventListener("click", () => zoom.close());
+zoom.addEventListener("click", event => {if(event.target===zoom)zoom.close();});
+zoom.addEventListener("close", () => zoomTrigger?.focus({preventScroll:true}));
+
+const liveStatus = document.getElementById("live-status");
+fetch("/api/demo/status", {signal:AbortSignal.timeout(8000),cache:"no-store"}).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(d=>{liveStatus.textContent=d.visitor_enabled?"实时服务可连接。":"实时服务暂未开放。";}).catch(()=>{liveStatus.textContent="实时服务暂时不可用，可查看回放。";});
+const menu = document.getElementById("nav-menu");
+menu.addEventListener("click",()=>{const opened=menu.getAttribute("aria-expanded")!=="true";menu.setAttribute("aria-expanded",String(opened));document.querySelector(".nav-links").classList.toggle("open",opened);});
+document.querySelectorAll(".nav-links a").forEach(link=>link.addEventListener("click",()=>{menu.setAttribute("aria-expanded","false");document.querySelector(".nav-links").classList.remove("open");}));
 </script>
 </body>
 </html>

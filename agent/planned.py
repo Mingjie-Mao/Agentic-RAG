@@ -120,12 +120,17 @@ def make_plan(models, goal, known=None, failures=None):
 
 
 @bounded_model("policy")
-def extract_value(models, goal, step, passages):
+def extract_value(models, goal, step, passages, *, complete_passages=False):
     """Short free-form answer. Structured decoding made the local 7B return empty quotes
     even when a plain question was answered correctly, so the program locates the span."""
+    if complete_passages:
+        payload = {'question': goal, 'step': step.model_dump(), 'passages': passages}
+        if len(json.dumps(payload, ensure_ascii=False)) > 11000:
+            raise ValueError('Complete extraction payload too large')
     cfg = settings()
     started = time.monotonic()
-    material = "\n".join(f"资料{i}（{p['title']}）：{p['text'][:700]}" for i, p in enumerate(passages, 1))
+    material = "\n".join(f"资料{i}（{p['title']}）：{p['text'] if complete_passages else p['text'][:700]}"
+                         for i, p in enumerate(passages, 1))
     question = f"{step.extract.description}？只回答{KIND_WORDS[step.extract.kind]}。"
     body = {"model": cfg.agent_policy_model, "stream": False, "keep_alive": "30m",
             "messages": [{"role": "system", "content": EXTRACT_SYSTEM},

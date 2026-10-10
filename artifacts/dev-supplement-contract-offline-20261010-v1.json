@@ -1,0 +1,15 @@
+{
+  "version": "supplement-contract-dev-v1",
+  "stage": "offline",
+  "split": "dev",
+  "valid": false,
+  "status": "failed",
+  "run_id": "2539bc37dfe049fd83efb38449425255",
+  "rows": null,
+  "summaries": null,
+  "strict_task_success": null,
+  "error": {
+    "stage": "preflight",
+    "type": "FileNotFoundError"
+  }
+}

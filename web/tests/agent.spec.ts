@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 
 test('Agent 页面公开执行模式、工具边界与可审计轨迹', async ({ page }) => {
   await page.goto('/');

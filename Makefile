@@ -2,7 +2,7 @@ PY := .venv/bin/python
 
 .PHONY: setup infra models models-cpu migrate seed web run test integration browser \
 	s3-retrieval s3-generate s3-public s3-freeze s3-validate s5-dialogues rerank-model \
-	check-docs agent-benchmark trial-reset agent-hard-setup agent-hard-validate agent-hard-benchmark \
+	demo check-docs agent-benchmark trial-reset agent-hard-setup agent-hard-validate agent-hard-benchmark \
 	checklist-ab multihop-subset multihop-ingest multihop-eval multihop-diagnose \
 	multihop-reprocess multihop-retrieval-eval generation-ceiling \
 	multihop-retrieval-ablation multihop-yes-bias semantic-annotation-set \
@@ -37,6 +37,9 @@ seed:
 
 web:
 	npm --prefix web run build
+
+demo:
+	$(PY) -m scripts.run_public_demo
 
 run:
 	$(PY) scripts/run.py

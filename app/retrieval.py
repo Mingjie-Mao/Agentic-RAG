@@ -26,7 +26,7 @@ _READABLE_SOURCES: ContextVar[tuple[frozenset, frozenset] | None] = ContextVar("
 _TASK_GOAL: ContextVar[str | None] = ContextVar("task_goal", default=None)
 
 
-_FUSE_GOAL: ContextVar[bool] = ContextVar("fuse_goal", default=False)
+_FUSE_GOAL: ContextVar = ContextVar("fuse_goal", default=False)  # bool or a zero-argument callable
 
 
 @contextmanager
@@ -155,18 +155,15 @@ def _publication_bounds(text):
     return bounds
 
 
-def route_sources(query: str, documents, *, strict_dates=False) -> list[dict]:
-    """Which named publications a question asks about, one group per mention.
+def source_mentions(question: str, authorized_documents) -> list[dict]:
+    """Exact legacy alias occurrences, without document/publication deduplication.
 
-    Only document metadata that the caller can already read is consulted. A date or a
-    clock time written after a mention (and before the next one) narrows that group to
-    the articles published then, when there are any; otherwise the group keeps every
-    article of that publication. Documents without a `source` produce no groups, so the
-    Chinese corpus is untouched.
+    Only caller-authorized metadata is consulted. The original offsets and the
+    complete authorized candidate documents are retained for each occurrence.
     """
     by_alias: dict[str, list] = {}
     spelled: dict[str, str] = {}
-    for document in documents:
+    for document in authorized_documents:
         source = (document.metadata_json or {}).get("source")
         if source:
             for alias in _source_aliases(source):
@@ -179,20 +176,35 @@ def route_sources(query: str, documents, *, strict_dates=False) -> list[dict]:
         pattern = r"(?<!\w)" + re.escape(alias) + r"(?!\w)"
         found.extend(
             (m.start(), m.end(), alias)
-            for m in re.finditer(pattern, query, re.IGNORECASE)
+            for m in re.finditer(pattern, question, re.IGNORECASE)
             if m.group(0) == spelled[alias] or _written_as_name(m.group(0))
         )
     mentions, cursor = [], -1
     for start, end, alias in sorted(found, key=lambda row: (row[0], -(row[1] - row[0]))):
         if start >= cursor:
-            mentions.append((start, end, alias))
+            mentions.append({"start": start, "end": end, "mention": alias,
+                             "documents": by_alias[alias]})
             cursor = end
+    return mentions
+
+
+def route_sources(query: str, documents, *, strict_dates=False) -> list[dict]:
+    """Which named publications a question asks about, one group per mention.
+
+    Only document metadata that the caller can already read is consulted. A date or a
+    clock time written after a mention (and before the next one) narrows that group to
+    the articles published then, when there are any; otherwise the group keeps every
+    article of that publication. Documents without a `source` produce no groups, so the
+    Chinese corpus is untouched.
+    """
+    mentions = source_mentions(query, documents)
     groups = []
-    for index, (start, end, alias) in enumerate(mentions):
-        stop = mentions[index + 1][0] if index + 1 < len(mentions) else len(query)
+    for index, occurrence in enumerate(mentions):
+        start, end, alias = occurrence["start"], occurrence["end"], occurrence["mention"]
+        stop = mentions[index + 1]["start"] if index + 1 < len(mentions) else len(query)
         days, clocks = (_publication_dates(query[end:stop]) if strict_dates
                         else _dates_in(query[end:stop]))
-        members = by_alias[alias]
+        members = occurrence["documents"]
 
         def published(document):
             return str((document.metadata_json or {}).get("published_at") or "")
@@ -353,8 +365,10 @@ def retrieve_authorized(
             if tuple(group["key"]) not in keys:
                 groups.append(group)
                 keys.add(tuple(group["key"]))
+    fuse = _FUSE_GOAL.get()
+    fuse = fuse() if callable(fuse) else fuse  # adaptive tasks switch once they escalate
     missing = (missing_constraints(goal, query)
-               if goal and goal != query and _FUSE_GOAL.get() else [])
+               if goal and goal != query and fuse else [])
     diversify = bool(groups) or needs_document_diversity(query) or multi_source_intent(query)
     search_limit = min(limit * 3, 24) if diversify else limit
     planned_queries, plan_vectors = [], []
@@ -373,8 +387,17 @@ def retrieve_authorized(
             planning_error = 'invalid_search_plan'
         planning_ms = round((time.monotonic() - planning_started) * 1000, 1)
 
+    candidate_depth = getattr(cfg, "retrieval_candidate_depth", 0)
+
     def run(scope, size, text=query, embedding=vector):
+        size = max(size, candidate_depth)
         if cfg.retrieval_mode == "hybrid":
+            # Hybrid otherwise searches 50 hits per route. An explicit larger
+            # candidate pool must widen those routes too, not only the fused slice.
+            if candidate_depth > 50:
+                return search.retrieve_hybrid(
+                    text, embedding, user.tenant_id, scope, size, depth=candidate_depth,
+                )
             return search.retrieve_hybrid(text, embedding, user.tenant_id, scope, size)
         if embedding is not None:
             return search.retrieve(embedding, user.tenant_id, scope, size)
@@ -464,6 +487,11 @@ def retrieve_authorized(
         goal_vector = models.embed([goal])[0] if vector is not None else None
         lanes.append(("goal", run(versions, max(depth or 0, search_limit), goal, goal_vector)))
     lanes.append(("global", run(versions, max(depth or 0, search_limit))))
+    # Record each lane's retrieved order after its query merging, before expansion
+    # or reranking. Expanded passages have no retrieval rank. Copies keep a hit
+    # shared by multiple lanes from acquiring another lane's rank.
+    lanes = [(lane, [{**hit, "retrieval_rank": rank} for rank, hit in enumerate(hits, 1)])
+             for lane, hits in lanes]
     if rerank_on:
         expand = getattr(cfg, "passage_expand_documents", 0)
         if expand:
@@ -495,6 +523,8 @@ def retrieve_authorized(
         candidate = {
             "chunk_id": chunk.id,
             "rank": rank,
+            "retrieval_rank": hit.get("retrieval_rank"),
+            "rerank_score": hit.get("rerank_score"),
             "title": document.title,
             "document_id": document.id,
             "version_id": version.id,

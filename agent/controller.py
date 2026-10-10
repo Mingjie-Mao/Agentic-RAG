@@ -58,13 +58,23 @@ def _event(db, task, event_type, *, tool_name=None, payload=None, refs=None):
     return row
 
 
+def workflow_like(task):
+    """Workflow, or the first (cheap) pass of an adaptive task before any escalation."""
+    return task.mode == "workflow" or (task.mode == "adaptive" and not task.input.get("_cascade_escalated"))
+
+
+def planner_active(task):
+    """Planner, or an adaptive task after its escalation to the planner."""
+    return task.mode == "planner" or (task.mode == "adaptive" and bool(task.input.get("_cascade_escalated")))
+
+
 def create_task(db, user, goal, mode="workflow", max_steps=6, task_input=None, *, benchmark_execution=False):
     task = AgentTask(
         tenant_id=user.tenant_id,
         user_id=user.id,
         goal=goal,
         input={key: value for key, value in (task_input or {}).items() if key not in
-               {"_workflow_state", "_execution_route", "_execution_budget", "_hybrid_state", "_task_contract", "_benchmark_execution", "_benchmark_scenario_events", "_langgraph_state", "_langgraph_config", "_planner_historical", "_planner_values"}},
+               {"_workflow_state", "_execution_route", "_execution_budget", "_hybrid_state", "_task_contract", "_benchmark_execution", "_benchmark_scenario_events", "_langgraph_state", "_langgraph_config", "_planner_historical", "_planner_values", "_cascade_escalated", "_configured_max_steps"}},
         mode=mode,
         max_steps=max_steps,
         status="queued",
@@ -72,7 +82,7 @@ def create_task(db, user, goal, mode="workflow", max_steps=6, task_input=None, *
     if benchmark_execution:
         task.input = {**task.input, "_benchmark_execution": True}
         task.status = "running"
-    if mode == 'workflow' and settings().adaptive_routing_enabled:
+    if mode in {'workflow', 'adaptive'} and settings().adaptive_routing_enabled:
         from app.routing import execution_route
         route = execution_route(goal, document_id=task.input.get('document_id'))
         # Explicit workflow always remains deterministic. Auto can select dynamic
@@ -200,7 +210,7 @@ def _uses_historical_versions(db, task):
     if task.input.get("_task_contract", {}).get("intent") == "history" and task.input["_task_contract"].get("version_chain_complete"):
         return True
     # Set only by the planner after it selected a dated version (never by user input).
-    if task.mode == "planner" and task.input.get("_planner_historical"):
+    if planner_active(task) and task.input.get("_planner_historical"):
         return True
     if not (task.input.get("document_id") or version_intent(task.goal)):
         return False
@@ -350,7 +360,7 @@ def _repair_coverage(db, user, task, models, tools, items, claims, evidence, poo
 
 
 def _workflow_snapshot(db, task, *, evidence=None, claims=None, status=None, phase, blocked=False):
-    if task.mode != "workflow":
+    if not workflow_like(task):
         return None
     items = subgoals(task.goal)
     state = WorkflowState.restore(task.input.get("_workflow_state", {}), items)
@@ -450,7 +460,7 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None, start
     _workflow_snapshot(db, task, evidence=evidence, phase="before_generation")
     # The hybrid mode walks versions with the same routine, so it gets the same guard:
     # an incompletely read history is refused, never answered from the current version.
-    needs_history = task.mode in {"workflow", "hybrid"} and bool(
+    needs_history = (workflow_like(task) or task.mode == "hybrid") and bool(
         task.input.get("document_id") or historical_route_intent(task.goal)
     )
     version_plan = db.scalar(select(AgentEvent).where(
@@ -502,7 +512,7 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None, start
         # enumeration short would hand the model a list shorter than the question.
         # No measured gain, non-zero risk, so the subgoals only drive the step below.
         options = {"memory_context": memory_context} if memory_context else {}
-        if task.mode == "planner" and task.input.get("_planner_values"):
+        if planner_active(task) and task.input.get("_planner_values"):
             # Program-verified bridge values (literal spans), mapped to this context's ids.
             ids = {row["chunk_id"]: row["id"] for row in evidence}
             options["verified_steps"] = [
@@ -517,7 +527,7 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None, start
             from app.task_contract import contract_generate
             generated, usage = contract_generate(models, task.goal, evidence, contract=contract, options=options)
             usage["contract_preparation"] = preparation_trace
-        elif settings().task_contract_enabled and task.mode != "planner":
+        elif settings().task_contract_enabled and not planner_active(task):
             # The planner already resolved versions and branches from its own steps;
             # a keyword contract would re-demand a full version chain it never needed.
             from app.task_contract import contract_generate
@@ -534,7 +544,7 @@ def _finish(db, user, task, models, refs, memory_context=None, tools=None, start
             usage['scope_preparation']=scope_trace
         usage["generation_wall_ms"] = round((time.monotonic() - generated_started) * 1000, 1)
         usage['generation_context_chunk_ids'] = [row['chunk_id'] for row in evidence]
-        if task.mode == "planner" and task.input.get("_planner_values") and generated.answerable:
+        if planner_active(task) and task.input.get("_planner_values") and generated.answerable:
             from agent.planned import cite_bridges
             generated, usage["bridge_citations_added"] = cite_bridges(
                 task.goal, generated, evidence, task.input["_planner_values"])
@@ -747,7 +757,8 @@ def _run_task(db, user, task, *, models=None, tools=None):
         from agent.graph import invoke_agent_graph
         from app.retrieval import routing_goal
 
-        with routing_goal(task.goal, fuse=task.mode in {"dynamic", "hybrid", "planner"}):
+        # Model-written queries only: Dynamic/Hybrid/Planner, and Adaptive once escalated.
+        with routing_goal(task.goal, fuse=lambda: task.mode in {"dynamic", "hybrid"} or planner_active(task)):
             return invoke_agent_graph(db, user, task, models, tools, started)
     except TaskCancelled:
         task.status = "cancelled"

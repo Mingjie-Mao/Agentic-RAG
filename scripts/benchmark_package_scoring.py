@@ -215,10 +215,15 @@ def assess(task, row, review=None):
     return {"retrieval": retrieval, "policy": policy, "answer": answer}
 
 
-def report(raw, suite, reviewed=None):
+def report(raw, suite, reviewed=None, *, baseline_method="workflow", pending_task_ids=()):
     tasks = {t["id"]: t for t in suite["tasks"]}
     if set(raw["results"]) != set(suite["arms"]):
         raise ValueError("all registered methods required")
+    pending = set(pending_task_ids)
+    if pending and suite["split"] != "dev":
+        raise ValueError("pending annotation overrides are Dev-only")
+    if not pending <= tasks.keys() or baseline_method not in raw["results"]:
+        raise ValueError("pending task or baseline comparator is not registered")
     reviews = validate_reviews(answer_review_packet(raw, suite), reviewed) if reviewed else {}
     by_method, details = {}, {}
     for method, rows in raw["results"].items():
@@ -228,13 +233,22 @@ def report(raw, suite, reviewed=None):
         for row in rows:
             rid = digest([method, row["task_id"], row.get("run_id")])
             details[method][row["task_id"]] = assess(tasks[row["task_id"]], row, reviews.get(rid))
+            if row["task_id"] in pending or row.get('not_observed'):
+                result = details[method][row["task_id"]]
+                result["annotation_status"] = "pending" if row["task_id"] in pending else "not_observed"
+                for key in ("strict_task_success", "fact_recall", "fact_precision",
+                            "citation_correctness", "faithfulness", "answer_completeness"):
+                    result["answer"][key] = None
+                result["policy"]["task_success"] = None
+                result['retrieval']['gold_fact_recall'] = None
+                result['retrieval']['evidence_coverage'] = None
         scored = list(details[method].values())
         def mean(layer, field):
             observed = [r[layer][field] for r in scored if r[layer].get(field) is not None]
             return {"value": statistics.mean(observed) if observed else None, "applicable": len(observed), "total": len(rows)}
         latencies = [r["latency_ms"] for r in rows if r.get("latency_ms") is not None]
         def token_total(row):
-            usage = row.get("usage", {})
+            usage = row.get("usage") or {}
             calls = usage.get("execution_budget", {}).get("calls")
             if calls is not None:
                 return sum((v.get("prompt_tokens") or 0) + (v.get("completion_tokens") or 0) for v in calls.values())
@@ -271,14 +285,19 @@ def report(raw, suite, reviewed=None):
                 statistics.mean(selected) if all(v is not None for v in selected) else None}
     paired = {}
     if reviewed:
-        baseline = details["workflow"]
+        baseline = details[baseline_method]
         for method in suite["arms"]:
-            if method == "workflow":
+            if method == baseline_method:
                 continue
-            delta = [int(details[method][tid]["answer"]["strict_task_success"]) - int(baseline[tid]["answer"]["strict_task_success"]) for tid in sorted(tasks)]
-            groups = [tasks[tid].get("family_id", tid) for tid in sorted(tasks)]
-            paired[method] = {"baseline": "workflow", "n": len(delta), "independent_groups": len(set(groups)),
-                              "difference": statistics.mean(delta), "ci95": paired_ci(delta, groups=groups),
+            observed = [tid for tid in sorted(tasks) if
+                        details[method][tid]["answer"]["strict_task_success"] is not None
+                        and baseline[tid]["answer"]["strict_task_success"] is not None]
+            delta = [int(details[method][tid]["answer"]["strict_task_success"]) - int(baseline[tid]["answer"]["strict_task_success"]) for tid in observed]
+            groups = [tasks[tid].get("family_id", tid) for tid in observed]
+            paired[method] = {"baseline": baseline_method, "n": len(delta), "total": len(tasks),
+                              "pending_pairs": len(tasks) - len(delta), "independent_groups": len(set(groups)),
+                              "difference": statistics.mean(delta) if delta else None,
+                              "ci95": paired_ci(delta, groups=groups) if delta else None,
                               "bootstrap_unit": "task_family"}
     registration = raw.get("registration", {})
     frozen_verified = False

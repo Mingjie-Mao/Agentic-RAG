@@ -20,10 +20,10 @@ MODELS = {
 }
 
 
-def runtime_env():
+def runtime_env(host="127.0.0.1:11436"):
     return {
         **os.environ,
-        "OLLAMA_HOST": "127.0.0.1:11436",
+        "OLLAMA_HOST": host,
         "OLLAMA_MODELS": str(ROOT / ".runtime/ollama-models"),
         "OLLAMA_NUM_PARALLEL": "1",
         "OLLAMA_MAX_LOADED_MODELS": "2",

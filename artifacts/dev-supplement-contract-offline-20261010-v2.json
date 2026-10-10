@@ -1,0 +1,15 @@
+{
+  "version": "supplement-contract-dev-v1",
+  "stage": "offline",
+  "split": "dev",
+  "valid": false,
+  "status": "failed",
+  "run_id": "229c2426e0e74178a4f44e990d144a30",
+  "rows": null,
+  "summaries": null,
+  "strict_task_success": null,
+  "error": {
+    "stage": "preflight",
+    "type": "TypeError"
+  }
+}

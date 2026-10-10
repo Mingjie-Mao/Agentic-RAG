@@ -985,6 +985,7 @@ class Models:
                                 ),
                             },
                             ensure_ascii=False,
+                            separators=(",", ":") if cfg.compact_prompt_json else None,
                         ),
                     },
                 ],

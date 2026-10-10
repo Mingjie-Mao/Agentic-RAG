@@ -28,6 +28,11 @@ def authenticate(db: Session, username: str, password: str) -> tuple[User, str]:
         valid = False
     if not valid:
         raise HTTPException(401, "账号或密码不正确")
+    return user, create_session(db, user)
+
+
+def create_session(db: Session, user: User) -> str:
+    """Issue the same bounded browser session for password and visitor entry."""
     token = token_urlsafe(40)
     db.add(
         LoginSession(
@@ -37,7 +42,7 @@ def authenticate(db: Session, username: str, password: str) -> tuple[User, str]:
         )
     )
     db.commit()
-    return user, token
+    return token
 
 
 def current_user(request: Request, db: Session = Depends(get_db)) -> User:

@@ -1,0 +1,272 @@
+{
+  "recorded_at": "2026-10-09T07:23:49.377221+00:00",
+  "kind": "recorded_real_execution",
+  "notice": "虚构星桥资料的真实历史执行；点击回放不会调用模型，也不代表当前实时执行或正式评测成绩。",
+  "model": "qwen2.5:7b-instruct",
+  "scenarios": [
+    {
+      "title": "Agent 多步查证",
+      "goal": "星桥标准套餐每分钟允许多少次 API 请求？超过配额会返回什么 HTTP 状态码？",
+      "mode": "workflow",
+      "task_id": "0e50c06e-2e87-4b2a-a2cc-aa78de15117a",
+      "created_at": "2026-10-09T07:23:49.492914+00:00",
+      "updated_at": "2026-10-09T07:24:23.844831+00:00",
+      "events": [
+        {
+          "sequence": 1,
+          "event_type": "task_created",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:23:49.499018+00:00",
+          "evidence_count": 0,
+          "wall_ms": null
+        },
+        {
+          "sequence": 2,
+          "event_type": "task_started",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:23:50.449910+00:00",
+          "evidence_count": 0,
+          "wall_ms": null
+        },
+        {
+          "sequence": 3,
+          "event_type": "subgoal_state",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:23:50.523020+00:00",
+          "evidence_count": 0,
+          "wall_ms": null
+        },
+        {
+          "sequence": 4,
+          "event_type": "tool_completed",
+          "tool_name": "search_documents",
+          "created_at": "2026-10-09T07:23:50.948527+00:00",
+          "evidence_count": 5,
+          "wall_ms": 359.0
+        },
+        {
+          "sequence": 5,
+          "event_type": "retrieval_assessment",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:23:50.954893+00:00",
+          "evidence_count": 0,
+          "wall_ms": null
+        },
+        {
+          "sequence": 6,
+          "event_type": "subgoal_state",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:23:50.983688+00:00",
+          "evidence_count": 2,
+          "wall_ms": null
+        },
+        {
+          "sequence": 7,
+          "event_type": "workflow_stop",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:23:50.988630+00:00",
+          "evidence_count": 5,
+          "wall_ms": null
+        },
+        {
+          "sequence": 8,
+          "event_type": "tool_completed",
+          "tool_name": "retrieve_evidence",
+          "created_at": "2026-10-09T07:23:51.022465+00:00",
+          "evidence_count": 5,
+          "wall_ms": 7.9
+        },
+        {
+          "sequence": 9,
+          "event_type": "subgoal_state",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:23:51.051147+00:00",
+          "evidence_count": 2,
+          "wall_ms": null
+        },
+        {
+          "sequence": 10,
+          "event_type": "generation_context",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:23:51.055874+00:00",
+          "evidence_count": 5,
+          "wall_ms": null
+        },
+        {
+          "sequence": 11,
+          "event_type": "subgoal_state",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:24:23.773033+00:00",
+          "evidence_count": 2,
+          "wall_ms": null
+        },
+        {
+          "sequence": 12,
+          "event_type": "coverage_check",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:24:23.788940+00:00",
+          "evidence_count": 0,
+          "wall_ms": null
+        },
+        {
+          "sequence": 13,
+          "event_type": "subgoal_state",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:24:23.823403+00:00",
+          "evidence_count": 2,
+          "wall_ms": null
+        },
+        {
+          "sequence": 14,
+          "event_type": "workflow_stop",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:24:23.836298+00:00",
+          "evidence_count": 0,
+          "wall_ms": null
+        },
+        {
+          "sequence": 15,
+          "event_type": "task_completed",
+          "tool_name": null,
+          "created_at": "2026-10-09T07:24:23.861888+00:00",
+          "evidence_count": 5,
+          "wall_ms": null
+        }
+      ],
+      "status": "answered",
+      "claims": [
+        {
+          "text": "星桥标准套餐每分钟允许120次API请求。",
+          "evidence_ids": [
+            "0f37d546-103a-53ff-8e24-02c7d06e6f5e"
+          ],
+          "quotes": [
+            "星桥 API 标准套餐每分钟最多允许 120 次请求。"
+          ]
+        },
+        {
+          "text": "超过配额返回HTTP 429状态码。",
+          "evidence_ids": [
+            "0f37d546-103a-53ff-8e24-02c7d06e6f5e"
+          ],
+          "quotes": [
+            "超过配额返回 HTTP 429。"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "title": "API 调用配额说明",
+          "text": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "API 调用配额说明",
+              "标准套餐"
+            ],
+            "source_char_start": 49,
+            "line_start": 5,
+            "label": "第 5 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 52,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "API 调用配额说明",
+                    "标准套餐"
+                  ],
+                  "source_char_start": 49,
+                  "line_start": 5,
+                  "label": "第 5 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 52
+              }
+            ],
+            "char_start": 0,
+            "char_end": 52,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 48,
+            "token_counter": "cl100k_base"
+          }
+        }
+      ]
+    },
+    {
+      "title": "回答与原文核验",
+      "goal": "星桥标准套餐每分钟可以调用多少次 API？",
+      "status": "answered",
+      "claims": [
+        {
+          "text": "星桥标准套餐每分钟最多允许120次请求。",
+          "evidence_ids": [
+            "0f37d546-103a-53ff-8e24-02c7d06e6f5e"
+          ],
+          "quotes": [
+            "星桥 API 标准套餐每分钟最多允许 120 次请求。"
+          ]
+        }
+      ],
+      "message": "",
+      "elapsed_seconds": 62.1593,
+      "evidence": [
+        {
+          "title": "API 调用配额说明",
+          "text": "## 标准套餐\n星桥 API 标准套餐每分钟最多允许 120 次请求。超过配额返回 HTTP 429。\n",
+          "locator": {
+            "kind": "markdown",
+            "block_type": "paragraph",
+            "heading_path": [
+              "API 调用配额说明",
+              "标准套餐"
+            ],
+            "source_char_start": 49,
+            "line_start": 5,
+            "label": "第 5 行起",
+            "kind_for_source": "markdown",
+            "sources": [
+              {
+                "start": 0,
+                "end": 52,
+                "locator": {
+                  "kind": "markdown",
+                  "block_type": "paragraph",
+                  "heading_path": [
+                    "API 调用配额说明",
+                    "标准套餐"
+                  ],
+                  "source_char_start": 49,
+                  "line_start": 5,
+                  "label": "第 5 行起"
+                },
+                "overlap_start": 0,
+                "overlap_end": 52
+              }
+            ],
+            "char_start": 0,
+            "char_end": 52,
+            "chunk_strategy": "structure",
+            "token_count_estimate": 48,
+            "token_counter": "cl100k_base"
+          }
+        }
+      ],
+      "events": []
+    },
+    {
+      "title": "依据不足时拒答",
+      "goal": "公司去火星出差的补贴是多少？",
+      "status": "insufficient_evidence",
+      "claims": [],
+      "message": "在你有权访问的资料中，未找到足够依据。",
+      "elapsed_seconds": 36.2828,
+      "evidence": [],
+      "events": []
+    }
+  ]
+}

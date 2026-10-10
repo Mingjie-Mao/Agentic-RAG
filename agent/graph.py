@@ -23,6 +23,7 @@ class RunState(TypedDict, total=False):
     preparation_trace: dict
     hybrid: dict
     planner: dict
+    escalation: dict | None
     workflow_search: dict
     workflow_ready: bool
     supplement_index: int
@@ -45,7 +46,7 @@ def build_agent_graph(db, user, task, models, tools, started):
         guard()
         c._workflow_snapshot(db, task, phase="started_or_resumed")
         # The planner owns version and branch steps itself; a keyword contract must not preempt it.
-        if not c.settings().task_contract_enabled or task.mode == "planner":
+        if not c.settings().task_contract_enabled or c.planner_active(task):
             return {"contract": None}
         from app.task_contract import build_contract
         from app.task_contract_runtime import prepare_contract
@@ -257,17 +258,44 @@ def build_agent_graph(db, user, task, models, tools, started):
 
     def finish(state):
         guard()
-        contract = TaskContract.model_validate(state["contract"]) if state.get("contract") else None
+        contract = (TaskContract.model_validate(state["contract"])
+                    if state.get("contract") and not c.planner_active(task) else None)
         evidence = (c._evidence_from_refs(db, user, state["refs"], limit=None,
                     allow_historical=contract.intent == "history" and contract.version_chain_complete)
                     if contract else None)
-        if task.mode == "planner":
+        if c.planner_active(task):
             # Hop order matters and a selected historical version must survive to generation.
             evidence = c._evidence_from_refs(db, user, state["refs"], limit=12,
                                              allow_historical=bool(state.get("planner", {}).get("historical")))
         c._finish(db, user, task, models, state["refs"], state.get("memory_context"), tools=tools, started=started,
                   contract=contract, prepared_evidence=evidence, preparation_trace=state.get("preparation_trace"))
         return {}
+
+    def assess_escalation(state):
+        """Adaptive only: after the cheap pass has answered, look for an observable gap."""
+        guard()
+        if c.planner_active(task):
+            return {"escalation": None}  # the planner pass already ran; never loop
+        from agent.adaptive import escalation_reason
+        evidence = c._evidence_from_refs(db, user, state.get("refs", []), limit=None,
+                                         allow_historical=c._uses_historical_versions(db, task))
+        return {"escalation": escalation_reason(task.goal, task.result, evidence)}
+
+    def escalate(state):
+        guard()
+        first = task.result or {}
+        # The planner gets its own tool-step allowance (the configured one); model-call
+        # and generation budgets stay cumulative across both passes.
+        allowance = task.input.get("_configured_max_steps", task.max_steps)
+        task.input = {**task.input, "_cascade_escalated": True, "_configured_max_steps": allowance}
+        task.max_steps = task.step_no + allowance
+        c._event(db, task, "cascade_escalation", payload={
+            **state["escalation"], "first_pass_status": first.get("status"),
+            "first_pass_claims": [cl.get("text") for cl in first.get("claims", [])][:6],
+            "planner_step_allowance": allowance})
+        db.commit()
+        # The first pass's keyword contract must not shape the planner's generation.
+        return {"refs": [], "planner": {}, "escalation": None, "contract": None, "preparation_trace": None}
 
     from agent.hybrid import build_hybrid_graph
     def authorize(state):
@@ -298,7 +326,7 @@ def build_agent_graph(db, user, task, models, tools, started):
             evidence_from_refs=c._evidence_from_refs, walk_versions=c._workflow_versions,
             uses_history=c._uses_historical_versions, authorize=authorize)
         graph.add_node("hybrid", hybrid.compile())
-    if task.mode == "planner":
+    if task.mode in {"planner", "adaptive"}:
         from agent.planned import build_planned_graph
         planned = build_planned_graph(db, user, task, models, tools, execute=c._execute, event=c._event,
                                       evidence_from_refs=c._evidence_from_refs)
@@ -307,7 +335,7 @@ def build_agent_graph(db, user, task, models, tools, started):
     graph.add_conditional_edges("prepare", lambda s: "finish" if s.get("contract") else "memory")
     graph.add_conditional_edges("memory", lambda s: "hybrid" if task.mode == "hybrid"
                                 else "planner" if task.mode == "planner"
-                                else "workflow_search" if task.mode == "workflow" else dynamic_route(s))
+                                else "workflow_search" if c.workflow_like(task) else dynamic_route(s))
     graph.add_conditional_edges("workflow_search", lambda s: "finish" if task.input.get("document_id") else recovery_route(s))
     graph.add_edge("workflow_recover", "workflow_assess")
     graph.add_conditional_edges("workflow_assess", supplement_route)
@@ -318,9 +346,16 @@ def build_agent_graph(db, user, task, models, tools, started):
     graph.add_edge("dynamic_coverage", "finish")
     if task.mode == "hybrid":
         graph.add_edge("hybrid", "finish")
-    if task.mode == "planner":
+    if task.mode in {"planner", "adaptive"}:
         graph.add_edge("planner", "finish")
-    graph.add_edge("finish", END)
+    if task.mode == "adaptive":
+        graph.add_node("assess_escalation", checked(assess_escalation))
+        graph.add_node("escalate", checked(escalate))
+        graph.add_edge("finish", "assess_escalation")
+        graph.add_conditional_edges("assess_escalation", lambda s: "escalate" if s.get("escalation") else END)
+        graph.add_edge("escalate", "planner")
+    else:
+        graph.add_edge("finish", END)
     return graph
 
 

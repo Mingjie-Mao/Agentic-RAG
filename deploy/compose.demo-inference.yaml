@@ -1,0 +1,17 @@
+# Dedicated NVIDIA host. Bind only localhost; reach it through SSH, not a public Ollama API.
+# docker compose -f deploy/compose.demo-inference.yaml up -d
+services:
+  demo-inference:
+    image: ollama/ollama:0.11.10
+    gpus: all
+    restart: unless-stopped
+    environment:
+      OLLAMA_HOST: 0.0.0.0:11434
+      OLLAMA_NUM_PARALLEL: "1"
+      OLLAMA_MAX_LOADED_MODELS: "2"
+    ports:
+      - "127.0.0.1:11438:11434"
+    volumes:
+      - demo-models:/root/.ollama
+volumes:
+  demo-models:

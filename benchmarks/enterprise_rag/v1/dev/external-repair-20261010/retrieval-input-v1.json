@@ -1,0 +1,34 @@
+{
+  "version": "external-repair-input-v1",
+  "split": "dev",
+  "input_bytes_sha256": [
+    "b03cf43592a370927059bab1eccf8c5c3442b5129bcfcf07c9a688bf55cce5ab",
+    "51c31f0d3139ccf18f434006f1cc84c6006c1d0d0961e5b3593dd35b59fc7a99",
+    "3ebdd372139b0e24a7237b9db99475a5306a717d4b114236f9b67b905a7c74e6",
+    "ca0ee70698caca8a0fd04df6b83f411b744ee3070e6ad5dae0c882be05c0731a",
+    "894a7074c7fb69ab677809885da5e36de26d4b20c05ab5b4b218e494873ce8ee",
+    "498f9c9f69d87d354e45aed6c934d4a0ed345c744d54f6811821baffca8a6f0d"
+  ],
+  "profiles": [
+    "baseline",
+    "aspect",
+    "control",
+    "treatment"
+  ],
+  "query_policy": "least_query_word_coverage_late_tie_no_semantic_claim",
+  "ranking": "BGE_all_eligible_pairs_per_aspect_no_cross_query_score_comparison",
+  "limits": {
+    "chunks": 8,
+    "tokens": 5000,
+    "aspects": 8,
+    "search_per_arm": 1,
+    "shared_policy_calls": 2,
+    "seconds": 180
+  },
+  "scope": "exact_question_source_version_bindings_no_global_lane_widening",
+  "union": "old_new_round_robin_rank_only",
+  "arm_order": "task_index_parity",
+  "choice": "native_per_reference_no_loss_then_revised_upstream_delivery_then_profile_order",
+  "gold_access": "post_execution_evaluator_only",
+  "answer_correctness": null
+}

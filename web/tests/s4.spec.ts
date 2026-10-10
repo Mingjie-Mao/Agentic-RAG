@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 import path from 'node:path';
 
 // Seed documents were ingested before the layout parser, so they carry no

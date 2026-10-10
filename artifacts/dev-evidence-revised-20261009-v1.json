@@ -1,0 +1,16 @@
+{
+  "version": "revised-evidence-dev-v1",
+  "split": "dev",
+  "subset": false,
+  "run_id": "55d627e3e2074595b618986c20517d2c",
+  "valid": false,
+  "status": "failed",
+  "error": {
+    "type": "ValueError",
+    "stage": "preflight_duplicate_context_normalization"
+  },
+  "rows": null,
+  "summaries": null,
+  "strict_task_success": null,
+  "semantic_recall": null
+}

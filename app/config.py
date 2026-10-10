@@ -14,6 +14,11 @@ class Settings(BaseSettings):
     ollama_url: str = "http://127.0.0.1:11436"
     embed_model: str = "bge-m3:567m"
     chat_model: str = "qwen2.5:7b-instruct"
+    # Public launch profile only; default experiment behaviour remains unchanged.
+    public_demo_runtime: bool = False
+    compact_prompt_json: bool = False
+    demo_answer_cache_enabled: bool = False
+    demo_answer_cache_seconds: int = Field(default=3600, ge=1, le=86400)
     agent_policy_model: str = "qwen2.5:7b-instruct"
     # Optional separate Ollama endpoint for the dynamic Agent's action choice only, for
     # a policy model the pinned runtime cannot serve. Empty: same endpoint as generation.
@@ -47,6 +52,8 @@ class Settings(BaseSettings):
     chunk_chars: int = 700
     chunk_overlap: int = 100
     top_k: int = 4
+    # Opt-in candidate pool size, independent of the final context budget.
+    retrieval_candidate_depth: int = Field(default=0, ge=0, le=100)
     min_similarity: float = 0.35
     model_timeout_seconds: float = 180
     chunk_strategy: str = "structure"

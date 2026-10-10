@@ -1,0 +1,358 @@
+{
+  "kind": "dev_generation_input_probe_not_quality_benchmark",
+  "split": "dev",
+  "task_ids": [
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18",
+    "U19",
+    "U20",
+    "U21",
+    "U22",
+    "U23",
+    "U24",
+    "U25",
+    "U26",
+    "U27",
+    "U28",
+    "U29",
+    "U30",
+    "U31",
+    "U32",
+    "U33",
+    "U34",
+    "U35",
+    "SF-3e8219f58317",
+    "SF-3f2fcdb94b67",
+    "SF-4345a2fc43c9",
+    "SF-43709086f7bb",
+    "SF-56d3160a9c64",
+    "SF-59679085cc4a",
+    "SF-64b127ac198d",
+    "SF-66b7ed601d85",
+    "SF-3ea856eeec7b",
+    "SF-3fb3599dcc99",
+    "SF-41b203e453a6",
+    "SF-4252bdaf5890"
+  ],
+  "suite_sha256": "b03cf43592a370927059bab1eccf8c5c3442b5129bcfcf07c9a688bf55cce5ab",
+  "minimum_mean_token_reduction": 0.15,
+  "token_counter": "cl100k_base_estimate_not_Qwen_actual",
+  "policy": "No removal of source text, scope, conditions or instructions; no Core",
+  "completed_tasks": 47,
+  "generation_calls": 0,
+  "compared_inputs": 34,
+  "mean_estimated_token_reduction": 0.10983056053298951,
+  "all_json_values_preserved": true,
+  "latency_ms": null,
+  "quality_score": null,
+  "decision": "reject_before_generation_insufficient_input_reduction",
+  "rows": [
+    {
+      "task_id": "U01",
+      "generation_requested": true,
+      "original_tokens_estimate": 778,
+      "compact_tokens_estimate": 678,
+      "lossless": true
+    },
+    {
+      "task_id": "U02",
+      "generation_requested": true,
+      "original_tokens_estimate": 811,
+      "compact_tokens_estimate": 708,
+      "lossless": true
+    },
+    {
+      "task_id": "U03",
+      "generation_requested": true,
+      "original_tokens_estimate": 790,
+      "compact_tokens_estimate": 686,
+      "lossless": true
+    },
+    {
+      "task_id": "U04",
+      "generation_requested": true,
+      "original_tokens_estimate": 793,
+      "compact_tokens_estimate": 693,
+      "lossless": true
+    },
+    {
+      "task_id": "U05",
+      "generation_requested": true,
+      "original_tokens_estimate": 817,
+      "compact_tokens_estimate": 722,
+      "lossless": true
+    },
+    {
+      "task_id": "U06",
+      "generation_requested": true,
+      "original_tokens_estimate": 769,
+      "compact_tokens_estimate": 673,
+      "lossless": true
+    },
+    {
+      "task_id": "U07",
+      "generation_requested": true,
+      "original_tokens_estimate": 608,
+      "compact_tokens_estimate": 530,
+      "lossless": true
+    },
+    {
+      "task_id": "U08",
+      "generation_requested": true,
+      "original_tokens_estimate": 705,
+      "compact_tokens_estimate": 623,
+      "lossless": true
+    },
+    {
+      "task_id": "U09",
+      "generation_requested": true,
+      "original_tokens_estimate": 819,
+      "compact_tokens_estimate": 724,
+      "lossless": true
+    },
+    {
+      "task_id": "U10",
+      "generation_requested": true,
+      "original_tokens_estimate": 946,
+      "compact_tokens_estimate": 828,
+      "lossless": true
+    },
+    {
+      "task_id": "U11",
+      "generation_requested": true,
+      "original_tokens_estimate": 940,
+      "compact_tokens_estimate": 828,
+      "lossless": true
+    },
+    {
+      "task_id": "U12",
+      "generation_requested": true,
+      "original_tokens_estimate": 823,
+      "compact_tokens_estimate": 729,
+      "lossless": true
+    },
+    {
+      "task_id": "U13",
+      "generation_requested": true,
+      "original_tokens_estimate": 674,
+      "compact_tokens_estimate": 602,
+      "lossless": true
+    },
+    {
+      "task_id": "U14",
+      "generation_requested": true,
+      "original_tokens_estimate": 775,
+      "compact_tokens_estimate": 689,
+      "lossless": true
+    },
+    {
+      "task_id": "U15",
+      "generation_requested": true,
+      "original_tokens_estimate": 695,
+      "compact_tokens_estimate": 614,
+      "lossless": true
+    },
+    {
+      "task_id": "U16",
+      "generation_requested": true,
+      "original_tokens_estimate": 612,
+      "compact_tokens_estimate": 540,
+      "lossless": true
+    },
+    {
+      "task_id": "U17",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U18",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U19",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U20",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U21",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U22",
+      "generation_requested": true,
+      "original_tokens_estimate": 698,
+      "compact_tokens_estimate": 619,
+      "lossless": true
+    },
+    {
+      "task_id": "U23",
+      "generation_requested": true,
+      "original_tokens_estimate": 937,
+      "compact_tokens_estimate": 821,
+      "lossless": true
+    },
+    {
+      "task_id": "U24",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U25",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U26",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U27",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U28",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U29",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U30",
+      "generation_requested": false
+    },
+    {
+      "task_id": "U31",
+      "generation_requested": true,
+      "original_tokens_estimate": 726,
+      "compact_tokens_estimate": 630,
+      "lossless": true
+    },
+    {
+      "task_id": "U32",
+      "generation_requested": true,
+      "original_tokens_estimate": 1034,
+      "compact_tokens_estimate": 905,
+      "lossless": true
+    },
+    {
+      "task_id": "U33",
+      "generation_requested": true,
+      "original_tokens_estimate": 907,
+      "compact_tokens_estimate": 793,
+      "lossless": true
+    },
+    {
+      "task_id": "U34",
+      "generation_requested": true,
+      "original_tokens_estimate": 878,
+      "compact_tokens_estimate": 774,
+      "lossless": true
+    },
+    {
+      "task_id": "U35",
+      "generation_requested": true,
+      "original_tokens_estimate": 610,
+      "compact_tokens_estimate": 532,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "generation_requested": true,
+      "original_tokens_estimate": 1931,
+      "compact_tokens_estimate": 1753,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "generation_requested": true,
+      "original_tokens_estimate": 2386,
+      "compact_tokens_estimate": 2183,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "generation_requested": true,
+      "original_tokens_estimate": 2606,
+      "compact_tokens_estimate": 2386,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "generation_requested": true,
+      "original_tokens_estimate": 2093,
+      "compact_tokens_estimate": 1906,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-56d3160a9c64",
+      "generation_requested": true,
+      "original_tokens_estimate": 1138,
+      "compact_tokens_estimate": 1033,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "generation_requested": true,
+      "original_tokens_estimate": 2224,
+      "compact_tokens_estimate": 1985,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-64b127ac198d",
+      "generation_requested": true,
+      "original_tokens_estimate": 2018,
+      "compact_tokens_estimate": 1842,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "generation_requested": true,
+      "original_tokens_estimate": 1082,
+      "compact_tokens_estimate": 999,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-3ea856eeec7b",
+      "generation_requested": true,
+      "original_tokens_estimate": 2361,
+      "compact_tokens_estimate": 2173,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-3fb3599dcc99",
+      "generation_requested": true,
+      "original_tokens_estimate": 1210,
+      "compact_tokens_estimate": 1119,
+      "lossless": true
+    },
+    {
+      "task_id": "SF-41b203e453a6",
+      "generation_requested": false
+    },
+    {
+      "task_id": "SF-4252bdaf5890",
+      "generation_requested": true,
+      "original_tokens_estimate": 2308,
+      "compact_tokens_estimate": 2138,
+      "lossless": true
+    }
+  ],
+  "local_raw_capture": ".runtime/demo-performance/720a2e02-bd3d-492e-87ca-9f2f5255ac5f"
+}

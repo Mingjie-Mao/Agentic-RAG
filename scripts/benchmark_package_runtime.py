@@ -16,8 +16,8 @@ def method_matrix(suite):
     if not set(METHODS) <= set(mapping) or any(mapping[m] != {"name": m, "mode": m, "overrides": {}} for m in METHODS):
         raise ValueError("four main methods must share unchanged conditions")
     for row in rows:
-        # "planner" is an experimental extra arm, never one of the four headline methods.
-        if row["mode"] not in METHODS + ("planner",):
+        # "planner"/"adaptive" are experimental extra arms, never headline methods.
+        if row["mode"] not in METHODS + ("planner", "adaptive"):
             raise ValueError("invalid execution mode")
         for key, value in row["overrides"].items():
             if key in {"passage_rerank", "task_contract_enabled"}:

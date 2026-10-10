@@ -1,0 +1,102 @@
+{
+  "kind": "website_final_acceptance_not_core_benchmark",
+  "checked_at": "2026-10-09T09:48:46.597823+00:00",
+  "release": {
+    "revision": "3dffa7d-working-tree",
+    "built_at": "2026-10-09T09:37:16Z"
+  },
+  "deployment": "https://c4330829.agentic-rag.pages.dev",
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "d9ff8baa25fe9daab1e37559e913d28c19dc2091e7e613ed562ae8cbe1fefb64",
+      "matches_stage": true
+    },
+    {
+      "path": "live/index.html",
+      "status": 200,
+      "sha256": "e5c2245f148632904fe820ecec25d408a22669e50b4c3910a0bb82d68197336c",
+      "matches_stage": true
+    },
+    {
+      "path": "release.json",
+      "status": 200,
+      "sha256": "b32c46200414629f1f6090b95f3cabb532505fb00a1feee8086cc1f8b51e5e9d",
+      "matches_stage": true
+    },
+    {
+      "path": "replay.html",
+      "status": 200,
+      "sha256": "3903b21b5bbaea1787906d0798b3a685349e97893cfd5e423b8cab05e8526f22",
+      "matches_stage": true
+    },
+    {
+      "path": "replay-20261009T072349Z.json",
+      "status": 200,
+      "sha256": "b4c5f89e471f486a73643d3ed37966865664d79536f58a644391dbcf4d025248",
+      "matches_stage": true
+    },
+    {
+      "path": "permission-demo-20261009.json",
+      "status": 200,
+      "sha256": "6ae1bf243daddcae4d4580817b77901354ceea1c162e78bf544822fc3f15c3b9",
+      "matches_stage": true
+    },
+    {
+      "path": "assets/PdfEvidence-scVdE1bD.js",
+      "status": 200,
+      "sha256": "5a7dda06b4b062c4ea9c9f819589381c8e00baaf3e93efae4125721ed644c5fd",
+      "matches_stage": true
+    },
+    {
+      "path": "assets/index-Bsr5yedA.css",
+      "status": 200,
+      "sha256": "40d36b73d1bc9cd2659e284a5161bcc886174d7fcfcf8be8dc13aaf15bbc04ba",
+      "matches_stage": true
+    },
+    {
+      "path": "assets/index-CxTNdgFl.js",
+      "status": 200,
+      "sha256": "edd050391bfe72e290b81ad49e3e82617d37e0d96a50bcbf880279121382ea03",
+      "matches_stage": true
+    },
+    {
+      "path": "assets/pdf.worker.min-yatZIOMy.mjs",
+      "status": 200,
+      "sha256": "1baa1844c89c80a5b2797c916e75ab29254be46d8e9cb53cb6364d7aad84be36",
+      "matches_stage": true
+    },
+    {
+      "path": "cmaps/78-EUC-V.bcmap",
+      "status": 200,
+      "sha256": "61670bebc4e4827b67230c054fd0d820d6e30c3584d02e386804e62bbedc032a",
+      "matches_stage": true
+    },
+    {
+      "path": "standard_fonts/FoxitDingbats.pfb",
+      "status": 200,
+      "sha256": "845c752392b6c914fb989c75a08b7792b88f542d2499042ef2889f8c814a16ed",
+      "matches_stage": true
+    }
+  ],
+  "tests": {
+    "pytest_passed": 1164,
+    "pytest_skipped": 36,
+    "pytest_warnings": 1,
+    "node_passed": 8,
+    "fixture_source_and_consumer_regression_passed": 200
+  },
+  "core_status": "pending",
+  "verification_type": "local_acceptance_not_independent_ci",
+  "public_authorization": {
+    "member_role_preserved": true,
+    "groups_preserved": true,
+    "cookie_flags": {
+      "secure": true,
+      "httponly": true,
+      "samesite_strict": true
+    },
+    "visible_documents": 21
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "recorded_at": "2026-10-09T07:21:02.235080+00:00",
+  "source": "app.security.can_read against seeded fictional documents",
+  "kind": "recorded_permission_check",
+  "rows": [
+    {
+      "title": "支持组交接清单",
+      "scope": [
+        "support"
+      ],
+      "roles": [
+        {
+          "role": "xq-engineer",
+          "allowed": false
+        },
+        {
+          "role": "xq-support",
+          "allowed": true
+        }
+      ]
+    },
+    {
+      "title": "数据库备份与恢复目标",
+      "scope": [
+        "engineering"
+      ],
+      "roles": [
+        {
+          "role": "xq-engineer",
+          "allowed": true
+        },
+        {
+          "role": "xq-support",
+          "allowed": false
+        }
+      ]
+    }
+  ]
+}

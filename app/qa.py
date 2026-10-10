@@ -320,18 +320,25 @@ def answer_question(db, user, question, history=None, *, benchmark_run_token=Non
     budget = ExecutionBudget(settings())
     try:
         with use_budget(budget):
-            result = _answer_question(db, user, question, history, benchmark_run_token=benchmark_run_token)
+            from app.demo_cache import cache_key, reuse_answer, store_key
+            key = cache_key(db, user, question, history, benchmark_run_token=benchmark_run_token)
+            result = reuse_answer(db, user, question, key)
+            if result is None:
+                result = _answer_question(db, user, question, history, benchmark_run_token=benchmark_run_token)
+                store_key(db, user, question, key, result)
     except Exception as exc:
         exc.execution_budget = budget.snapshot()
         raise
-    if settings().semantic_slot_shadow_enabled:
+    if settings().semantic_slot_shadow_enabled and not result.get("trace", {}).get("demo_cache", {}).get("hit"):
         from app.slot_shadow import schedule_completed
         schedule_completed("answer", result["id"], user.id)
     return result
 
 
 def _answer_question(db, user, question, history=None, *, benchmark_run_token=None):
+    from app.chat_progress import report_stage
     started = time.monotonic()
+    report_stage("retrieval")
     cfg = settings()
     # Rewriting produces a retrieval query and nothing else: it is not stored, never
     # crosses a session, and never becomes evidence.
@@ -421,6 +428,7 @@ def _answer_question(db, user, question, history=None, *, benchmark_run_token=No
     context_tokens = passage_trace['context_tokens'] if passage_trace else found.context_tokens
     if found.searchable_documents:
         if evidence:
+            report_stage("generation")
             t = time.monotonic()
             # Only a tenant with the check switched off changes the call at all.
             options = {} if conflict_check_enabled(user.tenant_id) else {"check_conflict": False}
@@ -440,6 +448,7 @@ def _answer_question(db, user, question, history=None, *, benchmark_run_token=No
                 usage['scope_preparation']=scope_trace
             generation_ms = (time.monotonic() - t) * 1000
             usage['generation_context_chunk_ids']=[item['chunk_id'] for item in evidence]
+            report_stage("verification")
             claims, status = validate_claims(generated, evidence)
             if usage.get('quality_validation_failed'):
                 claims,status=[],'verification_failed'
@@ -467,6 +476,7 @@ def _answer_question(db, user, question, history=None, *, benchmark_run_token=No
         claims, status = [], "no_readable_documents"
     else:
         claims, status = [], "documents_processing"
+    report_stage("authorization")
     # No cached or historical content is provided to the model in this S1 path.
     for item in candidates:
         require_chunk(db, user, item["chunk_id"], active_only=not (

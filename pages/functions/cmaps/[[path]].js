@@ -1,3 +1,1 @@
-import { proxy } from "../../proxy.js";
-
-export const onRequest = (context) => proxy(context);
+export const onRequest = ({ request, env }) => env.ASSETS.fetch(request);

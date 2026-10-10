@@ -3,6 +3,8 @@ from pathlib import Path
 from typing import Annotated, Literal
 import json
 import re
+from uuid import UUID, uuid4
+from statistics import median
 
 from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, Response, UploadFile
 from fastapi.responses import FileResponse, JSONResponse
@@ -23,6 +25,7 @@ from app.observability import Timer, answer_record, log_request, request_id
 from app.security import (
     COOKIE,
     authenticate,
+    create_session,
     current_user,
     hash_token,
     readable_documents,
@@ -40,7 +43,9 @@ from app.trial import (
     reserve_trial_request,
     trial_status,
     trial_usernames,
+    visitor_user,
 )
+from app.chat_progress import chat_progress, complete_chat, track_chat
 
 
 @asynccontextmanager
@@ -128,7 +133,7 @@ class QuestionBody(BaseModel):
 class AgentTaskBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
     goal: str = Field(min_length=4, max_length=1500)
-    mode: Literal["auto", "workflow", "dynamic", "hybrid", "planner"] = "auto"
+    mode: Literal["auto", "workflow", "dynamic", "hybrid", "planner", "adaptive"] = "auto"
     max_steps: int = Field(default=6, ge=2, le=8)
     document_id: str | None = Field(default=None, max_length=64)
     from_version_id: str | None = Field(default=None, max_length=64)
@@ -196,6 +201,22 @@ def login(body: LoginBody, response: Response, db: DB):
         max_age=settings().session_hours * 3600,
         path="/",
     )
+    return user_info(user, db)
+
+
+@app.get("/api/demo/status")
+def demo_status():
+    return {"visitor_enabled": settings().demo_mode and settings().trial_mode,
+            "daily_limit": max(1, settings().trial_daily_limit),
+            "notice": "星桥软件模拟企业环境 · 全部资料为虚构 · 访客只读，共享每日额度（UTC 零点重置）"}
+
+
+@app.post("/api/auth/visitor")
+def enter_visitor(response: Response, db: DB):
+    user = visitor_user(db)
+    response.set_cookie(COOKIE, create_session(db, user), httponly=True,
+                        samesite="strict", secure=settings().cookie_secure,
+                        max_age=settings().session_hours * 3600, path="/")
     return user_info(user, db)
 
 
@@ -457,8 +478,14 @@ def chat(body: QuestionBody, user: Identity, db: DB, request: Request):
     if len(question) < 2:
         raise HTTPException(422, "请输入至少两个字符的问题")
     history = [line.strip()[:1000] for line in body.history if line.strip()]
-    reserve_trial_request(db, user, "chat")
-    payload = answer_question(db, user, question, history)
+    try:
+        identifier = str(UUID(request.headers.get("X-Chat-Request", str(uuid4()))))
+    except ValueError as exc:
+        raise HTTPException(422, "请求标识无效") from exc
+    with track_chat(user, identifier) as progress:
+        reserve_trial_request(db, user, "chat")
+        payload = answer_question(db, user, question, history)
+        complete_chat(progress, payload["id"])
     # Costs and stage timings are recorded; the question and the evidence are not.
     log_request(
         request_id=getattr(request.state, "request_id", None),
@@ -471,10 +498,33 @@ def chat(body: QuestionBody, user: Identity, db: DB, request: Request):
     return payload
 
 
+@app.get("/api/chat/progress/{identifier}")
+def get_chat_progress(identifier: UUID, user: Identity):
+    return chat_progress(user, str(identifier))
+
+
+@app.get("/api/chat/timings")
+def chat_timings(user: Identity, db: DB):
+    rows = db.scalars(select(Answer).where(Answer.user_id == user.id,
+        Answer.tenant_id == user.tenant_id).order_by(Answer.created_at.desc()).limit(20)).all()
+    values = []
+    cached_values = []
+    for row in rows:
+        payload = visible_answer(db, user, row)
+        duration = (payload.get("trace") or {}).get("total_ms")
+        if isinstance(duration, (int, float)) and duration > 0:
+            target = cached_values if payload.get("trace", {}).get("demo_cache", {}).get("hit") else values
+            target.append(duration / 1000)
+    return {"samples": len(values), "median_seconds": round(median(values), 1) if values else None,
+            "latest_at": rows[0].created_at.isoformat() if values else None,
+            "cached_samples": len(cached_values),
+            "cache_median_seconds": round(median(cached_values), 3) if cached_values else None}
+
+
 @app.post("/api/agent/tasks", status_code=202)
 def start_agent_task(body: AgentTaskBody, user: Identity, db: DB):
     """Run a bounded read-only knowledge task and retain its auditable trajectory."""
-    if is_trial_user(user) and body.mode in {"dynamic", "hybrid", "planner"}:
+    if is_trial_user(user) and body.mode in {"dynamic", "hybrid", "planner", "adaptive"}:
         raise HTTPException(403, "访客试用不开放高延迟动态模式，请使用自动路由")
     reserve_trial_request(db, user, "agent")
     task_input = {

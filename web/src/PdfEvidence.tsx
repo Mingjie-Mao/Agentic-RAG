@@ -11,8 +11,16 @@ export type Bbox = {
   b: number;
   coord_origin?: string;
 };
-export type Provenance = { page: number; bbox: Bbox; charspan?: [number, number] };
-export type PdfLocator = { label: string; page?: number; provenance?: Provenance[] };
+export type Provenance = {
+  page: number;
+  bbox: Bbox;
+  charspan?: [number, number];
+};
+export type PdfLocator = {
+  label: string;
+  page?: number;
+  provenance?: Provenance[];
+};
 
 type Rect = { left: number; top: number; width: number; height: number };
 
@@ -43,13 +51,32 @@ export default function PdfEvidence({
 }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const holderRef = useRef<HTMLDivElement | null>(null);
+  const [holderWidth, setHolderWidth] = useState(420);
+  const [zoom, setZoom] = useState(1);
   const [rects, setRects] = useState<Rect[]>([]);
-  const [size, setSize] = useState<{ width: number; height: number } | null>(null);
+  const [size, setSize] = useState<{ width: number; height: number } | null>(
+    null,
+  );
   const [pages, setPages] = useState(0);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const page = locator.page ?? 1;
 
+  useEffect(() => {
+    const holder = holderRef.current;
+    if (!holder) return;
+    const observer = new ResizeObserver((entries) =>
+      setHolderWidth(entries[0].contentRect.width),
+    );
+    observer.observe(holder);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!loading && rects.length)
+      holderRef.current
+        ?.querySelector(".pdf-mark")
+        ?.scrollIntoView({ block: "center", inline: "center" });
+  }, [loading, rects]);
   useEffect(() => {
     let cancelled = false;
     let task: pdfjs.PDFDocumentLoadingTask | null = null;
@@ -73,7 +100,7 @@ export default function PdfEvidence({
         const target = Math.min(Math.max(page, 1), doc.numPages);
         const pdfPage = await doc.getPage(target);
         if (cancelled) return;
-        const width = holderRef.current?.clientWidth || 420;
+        const width = Math.max(1, holderWidth) * zoom;
         const base = pdfPage.getViewport({ scale: 1 });
         const scale = width / base.width;
         const viewport = pdfPage.getViewport({ scale });
@@ -88,12 +115,16 @@ export default function PdfEvidence({
         await pdfPage.render({ canvasContext: context, viewport }).promise;
         if (cancelled) return;
         setSize({ width: viewport.width, height: viewport.height });
-        const spans = (locator.provenance ?? []).filter((item) => item.page === target);
+        const spans = (locator.provenance ?? []).filter(
+          (item) => item.page === target,
+        );
         setRects(toRects(spans, viewport));
         setLoading(false);
       } catch (exception) {
         if (cancelled) return;
-        setError(exception instanceof Error ? exception.message : "无法打开原文");
+        setError(
+          exception instanceof Error ? exception.message : "无法打开原文",
+        );
         setLoading(false);
       }
     })();
@@ -101,7 +132,7 @@ export default function PdfEvidence({
       cancelled = true;
       task?.destroy();
     };
-  }, [url, page, locator]);
+  }, [url, page, locator, holderWidth, zoom]);
 
   return (
     <div className="pdf-evidence" ref={holderRef} data-testid="pdf-evidence">
@@ -114,11 +145,40 @@ export default function PdfEvidence({
             已标出 {rects.length} 处引用位置
           </span>
         ) : (
-          !loading && !error && <span className="pdf-hit muted">本页无坐标信息</span>
+          !loading &&
+          !error && <span className="pdf-hit muted">本页无坐标信息</span>
         )}
       </div>
-      <div className="pdf-stage" style={size ? { height: size.height } : undefined}>
-        <canvas ref={canvasRef} style={size ? { width: size.width, height: size.height } : undefined} />
+      <div className="pdf-zoom">
+        <button
+          className="secondary"
+          aria-label="缩小原文"
+          disabled={zoom <= 1}
+          onClick={() => setZoom((v) => Math.max(1, v - 0.25))}
+        >
+          −
+        </button>
+        <span>{Math.round(zoom * 100)}%</span>
+        <button
+          className="secondary"
+          aria-label="放大原文"
+          disabled={zoom >= 2.5}
+          onClick={() => setZoom((v) => Math.min(2.5, v + 0.25))}
+        >
+          ＋
+        </button>
+        <button className="secondary" onClick={() => setZoom(1)}>
+          适合宽度
+        </button>
+      </div>
+      <div
+        className="pdf-stage"
+        style={size ? { height: size.height } : undefined}
+      >
+        <canvas
+          ref={canvasRef}
+          style={size ? { width: size.width, height: size.height } : undefined}
+        />
         {rects.map((rect, index) => (
           <span
             key={index}

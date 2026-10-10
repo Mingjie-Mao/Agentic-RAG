@@ -2,7 +2,9 @@ import json
 from datetime import date
 from types import SimpleNamespace
 
-from agent.planned import (Plan, build_planned_graph, choose_version, fill, literal_values, parse_day,
+import pytest
+
+from agent.planned import (Plan, build_planned_graph, choose_version, extract_value, fill, literal_values, parse_day,
                            validate_plan)
 
 
@@ -62,6 +64,39 @@ class FakeModels:
         content = reply if isinstance(reply, str) else json.dumps(reply, ensure_ascii=False)
         return {"message": {"content": content},
                 "prompt_eval_count": 10, "eval_count": 5}
+
+
+def extraction_step():
+    return plan({'id': 's1', 'purpose': 'Find carrier', 'query': 'Order A-1 carrier',
+                 'extract': {'name': 'carrier', 'kind': 'entity', 'description': 'Order A-1 carrier'}}).steps[0]
+
+
+def test_complete_extraction_passes_late_literal_without_changing_legacy_default():
+    text = 'Background. '*70 + 'Order A-1 carrier Acme.'
+    passages = [{'chunk_id': 'late', 'title': 'Orders', 'text': text}]
+    legacy = FakeModels(['Acme'])
+    extract_value(legacy, 'Find carrier', extraction_step(), passages)
+    assert 'Acme' not in legacy.payloads[0]
+    complete = FakeModels(['Acme'])
+    value = extract_value(complete, 'Find carrier', extraction_step(), passages, complete_passages=True)
+    assert text in complete.payloads[0]
+    assert literal_values(value, passages, 'entity')[:2] == (['Acme'], 'late')
+    assert literal_values('Imaginary', passages, 'entity') == (None, None, None)
+    assert literal_values('無', passages, 'entity') == (None, None, None)
+
+
+def test_complete_extraction_rejects_serialized_payload_before_transport_and_accounts_attempt():
+    from app.execution_budget import ExecutionBudget, use_budget
+    models = FakeModels(['Acme'])
+    allocation = ExecutionBudget(SimpleNamespace(agent_task_timeout_seconds=180,
+        agent_policy_max_calls=2, agent_judge_max_calls=0, agent_generation_max_calls=0,
+        agent_judge_token_budget=0))
+    passages = [{'chunk_id': 'large', 'title': 'Orders', 'text': 'x'*11000}]
+    with use_budget(allocation), pytest.raises(ValueError, match='payload'):
+        extract_value(models, 'Find carrier', extraction_step(), passages, complete_passages=True)
+    assert models.payloads == []
+    assert allocation.state['calls']['policy']['attempted'] == 1
+    assert allocation.state['calls']['policy']['failed'] == 1
 
 
 def run_planner(replies, corpus, search):

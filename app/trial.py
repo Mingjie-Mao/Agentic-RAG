@@ -1,6 +1,8 @@
 """Server-side limits for an ephemeral public interview trial."""
 
 from datetime import timezone
+from secrets import token_urlsafe
+from uuid import NAMESPACE_URL, uuid5
 
 from fastapi import HTTPException
 from sqlalchemy import delete, func, select
@@ -20,7 +22,41 @@ from app.models import (
 
 
 def trial_usernames() -> set[str]:
-    return {item.strip() for item in settings().trial_usernames.split(",") if item.strip()}
+    return {item.strip() for item in settings().trial_usernames.split(",") if item.strip()} | {VISITOR_USERNAME}
+
+
+VISITOR_USERNAME = "visitor@xingqiao.demo"
+
+
+def visitor_user(db) -> User:
+    """A stable member account has its own quota and owns no test documents."""
+    cfg = settings()
+    if not (cfg.demo_mode and cfg.trial_mode):
+        raise HTTPException(404)
+    configured = trial_usernames() - {VISITOR_USERNAME}
+    source = db.scalar(select(User).where(
+        User.username.in_(configured), User.active.is_(True), User.role == "member"
+    ).order_by(User.id))
+    if source is None:
+        raise HTTPException(503, "只读演示身份尚未配置")
+    identity = str(uuid5(NAMESPACE_URL, f"agentic-rag:visitor:{source.tenant_id}"))
+    user = db.get(User, identity)
+    if user is None:
+        user = User(id=identity, tenant_id=source.tenant_id, username=VISITOR_USERNAME,
+                    display_name="演示访客", role="member", groups=list(source.groups),
+                    password_hash=token_urlsafe(64), active=True)
+        try:
+            with db.begin_nested():
+                db.add(user)
+                db.flush()
+            db.commit()
+        except IntegrityError:
+            db.rollback()
+            user = db.get(User, identity)
+    if (user is None or not user.active or user.role != "member"
+            or user.tenant_id != source.tenant_id or not set(user.groups) <= set(source.groups)):
+        raise HTTPException(503, "只读演示身份需要检查")
+    return user
 
 
 def is_trial_user(user: User) -> bool:
