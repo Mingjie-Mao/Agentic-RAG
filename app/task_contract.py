@@ -290,6 +290,225 @@ def build_contract(question):
                         for i, item in enumerate(question_slots(question), 1)])
 
 
+def _literal_guard_reason(spec, quote, *, source_text=None, strict=False):
+    """Conservative local shape check over an existing binder's original quote.
+
+    Topic cooccurrence cannot supply the subject of another entity's metric.
+    Explicit example/hypothetical numbers cannot establish an actual setting.
+    Qualifications are checked over the whole original row because a binder's
+    quote may omit the preamble. Numeric predicates and target table cells share
+    a small literal grammar. Scoped headings/tables require the complete row to
+    have that simple shape; complex valid prose may remain unverified. This is
+    not an exhaustive classifier of hypothetical/semantic context.
+    """
+    if strict:
+        return _strict_literal_guard_reason(spec, quote, source_text=source_text)
+    if re.search(r'示例|例如|例子|假设|假定|待确认|未确认|'
+                 r'\b(?:examples?|hypothetical|assumptions?|suppose)\b',
+                 source_text if source_text is not None else quote, re.I):
+        return 'qualified_literal_not_verified'
+    _, pattern = _metric(spec.query)
+    if not pattern or not spec.subject:
+        return 'subject_metric_binding_unverified'
+    if source_text is not None:
+        start = source_text.find(quote)
+        if start < 0:
+            return 'literal_quote_context_unverified'
+        preceding = source_text[:start].rstrip(' \t')
+        following = source_text[start + len(quote):].lstrip(' \t')
+        # The base binder splits comma clauses. A continuation cannot silently
+        # lose an unknown qualifier merely because it fell outside its quote.
+        boundaries = '。.!?！？；;\n\r'
+        if ((preceding and preceding[-1] not in boundaries)
+                or (following and following[0] not in boundaries)):
+            return 'literal_quote_continuation_unverified'
+    direct = re.match(r'\s*' + re.escape(spec.subject) +
+                      r'\s*(?:的\s*)?(?:' + pattern + ')', quote, re.I)
+    numeric_tail = (r'\s*(?:为|是|设置为|设为|等于|is|equals|[:：=])?\s*' +
+                    _VALUE.pattern + r'\s*[。.!]?\s*')
+    if direct and spec.value_type == 'number':
+        direct = re.fullmatch(numeric_tail, quote[direct.end():], re.I)
+    complete_scope = source_text is None or source_text.strip() == quote.strip()
+    table = False
+    lines = quote.splitlines()
+    if complete_scope and len(lines) >= 3 and all(line.strip().startswith('|') and
+                                                  line.strip().endswith('|') for line in lines):
+        cells = [[cell.strip() for cell in line.strip().strip('|').split('|')] for line in lines]
+        columns = [i for i, cell in enumerate(cells[0]) if re.fullmatch(pattern, cell, re.I)]
+        targets = [line for line in cells[2:] if line and
+                   spec.subject.casefold() == line[0].casefold()]
+        # Only this subject's metric column is checked. A literal in another
+        # product row cannot certify a qualified/unknown target value cell.
+        # This conservative table shape places the subject in its first cell;
+        # a subject named in a note column cannot lend that row's value to it.
+        if (len(columns) == len(targets) == 1 and columns[0] != 0
+                and all(len(line) == len(cells[0]) for line in cells)
+                and all(re.fullmatch(r':?-{3,}:?', cell) for cell in cells[1])):
+            table = (spec.value_type != 'number' or
+                     bool(re.fullmatch(numeric_tail, targets[0][columns[0]], re.I)))
+    heading = (complete_scope and re.match(r'\s*#{1,6}[ \t]+' + re.escape(spec.subject) +
+                                          r'[ \t]*\n\s*(?:' + pattern + ')', quote, re.I))
+    if heading and spec.value_type == 'number':
+        heading = re.fullmatch(numeric_tail, quote[heading.end():], re.I)
+    return None if direct or table or heading else 'subject_metric_binding_unverified'
+
+
+def _strict_literal_guard_reason(spec, quote, *, source_text=None):
+    """Opt-in complete predicate grammar; the reviewed selector stays unchanged."""
+    reason = _literal_guard_reason(spec, quote, source_text=source_text)
+    if reason:
+        return reason
+    _, pattern = _metric(spec.query)
+    value = (_VALUE.pattern if spec.value_type == "number" else _ENUM.pattern
+             if spec.value_type == "enum" else
+             r"(?:\d{4}-\d{2}-\d{2}|\d{4}年\d{1,2}月\d{1,2}日)"
+             if spec.value_type == "date" else r"(?!)")
+    tail = r"\s*(?:为|是|设置为|设为|等于|is|equals|[:：=])?\s*" + value + r"\s*[。.!]?\s*"
+    direct = re.match(r"\s*" + re.escape(spec.subject) +
+                      r"\s*(?:的\s*)?(?:" + pattern + ")", quote, re.I)
+    if direct and re.fullmatch(tail, quote[direct.end():], re.I):
+        # Every surrounding sentence must itself be a complete literal setting.
+        # Unknown preambles cannot disappear when the binder splits its quote.
+        if source_text is not None:
+            for sentence in re.split(r"[。!！？?；;\n]", source_text):
+                if not sentence.strip() or sentence.strip() == quote.strip():
+                    continue
+                other = _slot(sentence, "context")
+                if not other.subject or _strict_literal_guard_reason(other, sentence):
+                    return "literal_context_not_verified"
+        return None
+    if source_text is not None and source_text.strip() != quote.strip():
+        return "literal_context_not_verified"
+    heading = re.match(r"\s*#{1,6}[ \t]+" + re.escape(spec.subject) +
+                       r"[ \t]*\n\s*(?:" + pattern + ")", quote, re.I)
+    if heading and re.fullmatch(tail, quote[heading.end():], re.I):
+        return None
+    lines = quote.splitlines()
+    if len(lines) >= 3 and all(line.strip().startswith('|') and
+                               line.strip().endswith('|') for line in lines):
+        cells = [[c.strip() for c in line.strip().strip('|').split('|')] for line in lines]
+        # Extra notes/qualifiers have no proof of current scope in this grammar.
+        if len(cells[0]) == 2 and re.fullmatch(pattern, cells[0][1], re.I):
+            targets = [line for line in cells[2:] if line and
+                       line[0].casefold() == spec.subject.casefold()]
+            if len(targets) == 1 and re.fullmatch(tail, targets[0][1], re.I):
+                return None
+    return "literal_predicate_not_verified"
+
+
+def _ordinary_slots_generate(models, question, evidence, contract, trace, options, *,
+                             literal_fallback=False):
+    """Answer all explicit ordinary literals, or delegate one complete checklist."""
+    from app.clients import GeneratedAnswer
+
+    pieces = [p.strip() for p in re.split(r"[？?；;]", question) if p.strip()]
+    slots = ([_slot(piece, f"slot_{i}") for i, piece in enumerate(pieces, 1)]
+             if len(pieces) > 1 else contract.slots)
+    contract = contract.model_copy(update={"slots": slots})
+    trace = trace | {"contract": contract.model_dump(),
+                     "slot_states": {slot.slot_id: "unknown" for slot in slots},
+                     "slot_reasons": {slot.slot_id: "model_checklist_only" for slot in slots}}
+    pure_literal = bool(slots) and all(slot.value_type in {"number", "date", "enum"}
+                                       for slot in slots)
+    # Literal generation accepts a complete direct ask, not only its first
+    # recognized metric. Unfamiliar scope qualifiers and compound requests
+    # remain unresolved; no title or active-version inference fills those gaps.
+    unresolved = pure_literal and any(not _literal_question_complete(slot) for slot in slots)
+    if pure_literal and (unresolved or len(slots) > 8):
+        reason = "ordinary_scope_unresolved" if unresolved else "ordinary_slot_budget"
+        trace["slot_reasons"] = {slot.slot_id: reason for slot in slots}
+        if literal_fallback:
+            return _ordinary_checklist_generate(models, question, evidence, slots, trace, options,
+                literal_fallback=True, literal_incomplete=True)
+        return GeneratedAnswer(answerable=False, claims=[]), {
+            "task_contract": trace | {"status": "ordinary_slot_incomplete"}}
+    if pure_literal:
+        bound = []
+        for slot in slots:
+            values = bind_values(slot, evidence)
+            reason = "unbound_or_ambiguous_literal"
+            if len(values) == 1:
+                # Recheck every row witness, not only the binder's first coherent
+                # representative, so a later qualified copy cannot be hidden.
+                rows_with_values = [(row, bind_values(slot, [row])) for row in evidence]
+                _, pattern = _metric(slot.query)
+                unbound_scope = any(not found and slot.subject and
+                                    _subject_matches(slot.subject, row.get('title', ''), row['text']) and
+                                    re.search(pattern, row['text'], re.I)
+                                    for row, found in rows_with_values)
+                candidates = [(v, row) for row, found in rows_with_values for v in found]
+                reason = next((reason for value, row in candidates
+                               if (reason := _literal_guard_reason(
+                                   slot, value.quote, source_text=row['text'], strict=True))), None)
+                if unbound_scope:
+                    reason = "unbound_or_ambiguous_literal"
+                # Full binding drops conflicting version groups. A surviving
+                # group cannot erase other versions' individually bound values.
+                surviving = (values[0].version_id, unit_value(values[0].value, values[0].unit))
+                if any((value.version_id, unit_value(value.value, value.unit)) != surviving
+                       for value, _ in candidates):
+                    reason = "conflicting_literal_candidates"
+                requested_unit = re.search(rf"(?:多少|几)\s*({_UNIT})", slot.query, re.I)
+                if (requested_unit and slot.value_type == 'number' and
+                        unit_value('1', requested_unit[1])[0] !=
+                        unit_value(values[0].value, values[0].unit)[0]):
+                    reason = "literal_unit_mismatch"
+                if reason is None:
+                    bound.append(values[0])
+                    trace["slot_states"][slot.slot_id] = "supported"
+                    reason = "coherent_literal_witness"
+            trace["slot_reasons"][slot.slot_id] = reason
+        trace["bound_values"] = [value.model_dump() for value in bound]
+        if any((slot.required or literal_fallback) and
+               trace["slot_states"][slot.slot_id] != "supported" for slot in slots):
+            if literal_fallback:
+                return _ordinary_checklist_generate(models, question, evidence, slots, trace, options,
+                    literal_fallback=True, literal_incomplete=True)
+            return GeneratedAnswer(answerable=False, claims=[]), {
+                "task_contract": trace | {"status": "ordinary_slot_incomplete"}}
+        return GeneratedAnswer(answerable=True, claims=[value_claim(value, evidence) for value in bound]), {
+            "task_contract": trace | {"status": "ordinary_literal_complete"}}
+    return _ordinary_checklist_generate(models, question, evidence, slots, trace, options,
+                                       literal_fallback=literal_fallback)
+
+
+def _ordinary_checklist_generate(models, question, evidence, slots, trace, options, *,
+                                 literal_fallback=False, literal_incomplete=False):
+    """Delegate the complete request once; model output never proves literal slots."""
+    items = [slot.query for slot in slots]
+    if literal_fallback:
+        # Keep the original request even when the bounded split/cleaner drops a
+        # clause or scope. Caller-supplied requirements also remain in the list.
+        items = list(dict.fromkeys([question, *items,
+                                    *(options.get("acceptance_items_override") or [])]))
+        trace = trace | {"slot_states": {slot.slot_id: "unknown" for slot in slots},
+                         "bound_values": []}
+        if literal_incomplete:
+            trace["literal_status"] = "ordinary_slot_incomplete"
+    checklist_options = options | {"acceptance_items_override": items}
+    from app.config import settings
+    if settings().answer_quality_enabled:
+        from app.answer_quality import recover_answer
+        answer, usage = recover_answer(models, question, evidence, options=checklist_options)
+    else:
+        answer, usage = models.generate(question, evidence, **checklist_options)
+    usage["task_contract"] = trace | {"status": "model_checklist_only"}
+    return answer, usage
+
+
+def _literal_question_complete(slot):
+    """Bounded request grammar with no implicit temporal/environment scope."""
+    if not slot.subject or not slot.attribute:
+        return False
+    direct = re.match(r"\s*" + re.escape(slot.subject) + r"\s*(?:的\s*)?" +
+                      re.escape(slot.attribute), slot.query, re.I)
+    if not direct:
+        return False
+    request = (rf"(?:是|为)?\s*(?:多少|几|多久)\s*(?:{_UNIT})?"
+               if slot.value_type == 'number' else r"(?:是|为)?\s*什么")
+    return bool(re.fullmatch(r"\s*(?:" + request + r")?\s*", slot.query[direct.end():], re.I))
+
+
 def _subject_matches(subject, title, sentence):
     def clean(text):
         return "".join(text.casefold().split())
@@ -436,15 +655,21 @@ def value_claim(value, evidence):
                  evidence_ids=[source["id"]], quotes=[value.quote])
 
 
-def contract_generate(models, question, evidence, *, contract=None, options=None):
+def contract_generate(models, question, evidence, *, contract=None, options=None,
+                      ordinary_policy: Literal["legacy", "literal_slots", "literal_fallback"] = "legacy"):
     """Shared generation entry. Deterministic answers require literal local bindings."""
     from app.clients import GeneratedAnswer
 
+    if ordinary_policy not in ("legacy", "literal_slots", "literal_fallback"):
+        raise ValueError("Invalid ordinary_policy")
     contract = contract or build_contract(question)
     trace = {"version": "task-contract-v1", "contract": contract.model_dump(), "condition": None,
              "bound_values": [], "status": "ordinary",
              "slot_states": {slot.slot_id: "unknown" for slot in contract.slots}}
     options = dict(options or {})
+    if ordinary_policy in ("literal_slots", "literal_fallback") and contract.intent == "ordinary":
+        return _ordinary_slots_generate(models, question, evidence, contract, trace, options,
+                                       literal_fallback=ordinary_policy == "literal_fallback")
     if contract.intent == "conditional":
         state = evaluate_condition(contract, evidence)
         trace["condition"] = state.model_dump()

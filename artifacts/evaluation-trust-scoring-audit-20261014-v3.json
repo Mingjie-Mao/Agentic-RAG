@@ -1,0 +1,2960 @@
+{
+  "version": "evaluation-trust-scoring-audit-v3",
+  "status": "complete_tools_semantics_pending_human",
+  "diagnostic_positions": 308,
+  "diagnostic_tasks": 77,
+  "literal_vs_model_disagreements": 30,
+  "disagreement_cell_ids": [
+    "U16:D",
+    "U16:B",
+    "U16:C",
+    "U21:A",
+    "U21:B",
+    "U21:C",
+    "U21:D",
+    "U22:B",
+    "SF-3e8219f58317:D",
+    "SF-3e8219f58317:A",
+    "SF-3e8219f58317:B",
+    "SF-3e8219f58317:C",
+    "SF-3f2fcdb94b67:A",
+    "SF-3f2fcdb94b67:B",
+    "SF-3f2fcdb94b67:C",
+    "SF-3f2fcdb94b67:D",
+    "SF-43709086f7bb:D",
+    "SF-43709086f7bb:A",
+    "SF-43709086f7bb:B",
+    "SF-59679085cc4a:A",
+    "SF-59679085cc4a:B",
+    "SF-66b7ed601d85:B",
+    "SF-3fb3599dcc99:B",
+    "DD14:D",
+    "DD17:D",
+    "DD17:C",
+    "DD24:A",
+    "DD25:D",
+    "DD25:A",
+    "DD25:B"
+  ],
+  "source_bound_rejudgment_proposals": [
+    "DD24:A",
+    "SF-3f2fcdb94b67:A",
+    "SF-3f2fcdb94b67:B"
+  ],
+  "human_confirmed_rejudgments": 0,
+  "clear_equivalence_proposals": [
+    "DD25:A",
+    "DD25:B",
+    "DD25:D",
+    "U16:B",
+    "U16:C",
+    "U16:D",
+    "U21:A",
+    "U21:B",
+    "U21:C",
+    "U21:D"
+  ],
+  "pending_annotation_task_ids": [
+    "SF-3e8219f58317",
+    "SF-3ea856eeec7b",
+    "SF-3fb3599dcc99",
+    "SF-56d3160a9c64",
+    "SF-59679085cc4a",
+    "U12",
+    "U22"
+  ],
+  "latest_experiment_positions_preserved": 48,
+  "existing_complete_dev_replay": {
+    "positions": 188,
+    "strict_changes": 0,
+    "correct_to_wrong": 0,
+    "review_source": "artifacts/dev-five-repairs-unified-20261007-v6.claude-reviewed.json",
+    "provenance_conflict": "Stored reviews are125 GPT and63 Claude rows, all non-independent; historical filename/prose flatten a mixed source. Keep per-row identities, audit actual original provenance, and do not claim the full set is GPT or human reviewed.",
+    "rag_tokens_before": {
+      "sum": 77362,
+      "mean": 1681.7826086956522,
+      "observed": 46,
+      "total": 47
+    },
+    "rag_tokens_after": {
+      "sum": null,
+      "observed_sum": 77362,
+      "mean": 1681.7826086956522,
+      "observed": 46,
+      "total": 47
+    },
+    "recorded_review_models": {
+      "GPT-6 (Codex assistant; exact deployment identifier unavailable)": 125,
+      "Claude Opus 5.5 (claude-opus-5-5)": 63
+    }
+  },
+  "rules_version": "enterprise-strict-scoring-v2",
+  "new_inference_calls": 0,
+  "human_labels": 0,
+  "private_audit_sha256": "076979da10030c9a03b8aed93ffb7af958b5d6966464a99c7ad9eb2d01270cff",
+  "raw_and_review_sha256": {
+    ".runtime/generation-diagnostic-20261013/v1/raw.json": "4e50aee10d17182c49139db530b7790f3317abbcd3c6982f6169076f8756025f",
+    ".runtime/generation-diagnostic-20261013/v1/review-scored-v2.json": "572fb27edc54970647498eae9c98d336391c65b2516d9930fe8c48d3e17d8377",
+    ".runtime/generation-diagnostic-20261013/v1/review-packet-v2.json": "c272ca3775f3b37f811c5266fd5b80d26dddf07a98b7b0e14d8bea1660fb48ca",
+    ".runtime/generation-diagnostic-20261013/v1/review-key-v2.json": "3a80f9f6598821f345a04bd0d571beb1551fbabf3d8703452725169967e04f83"
+  },
+  "decision": "Tool bugs fixed. Semantic proposals remain human-pending; historical grades and negative results preserved. Core not started.",
+  "per_case": [
+    {
+      "cell_id": "U01:A",
+      "task_id": "U01",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U01:B",
+      "task_id": "U01",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U01:C",
+      "task_id": "U01",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U01:D",
+      "task_id": "U01",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U02:B",
+      "task_id": "U02",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U02:C",
+      "task_id": "U02",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U02:D",
+      "task_id": "U02",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U02:A",
+      "task_id": "U02",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U03:C",
+      "task_id": "U03",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U03:D",
+      "task_id": "U03",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U03:A",
+      "task_id": "U03",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U03:B",
+      "task_id": "U03",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U04:D",
+      "task_id": "U04",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U04:A",
+      "task_id": "U04",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U04:B",
+      "task_id": "U04",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U04:C",
+      "task_id": "U04",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U05:A",
+      "task_id": "U05",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U05:B",
+      "task_id": "U05",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U05:C",
+      "task_id": "U05",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U05:D",
+      "task_id": "U05",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U06:B",
+      "task_id": "U06",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U06:C",
+      "task_id": "U06",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U06:D",
+      "task_id": "U06",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U06:A",
+      "task_id": "U06",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U07:C",
+      "task_id": "U07",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U07:D",
+      "task_id": "U07",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U07:A",
+      "task_id": "U07",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U07:B",
+      "task_id": "U07",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U08:D",
+      "task_id": "U08",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U08:A",
+      "task_id": "U08",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U08:B",
+      "task_id": "U08",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U08:C",
+      "task_id": "U08",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U09:A",
+      "task_id": "U09",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U09:B",
+      "task_id": "U09",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U09:C",
+      "task_id": "U09",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U09:D",
+      "task_id": "U09",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U10:B",
+      "task_id": "U10",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U10:C",
+      "task_id": "U10",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U10:D",
+      "task_id": "U10",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U10:A",
+      "task_id": "U10",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U11:C",
+      "task_id": "U11",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U11:D",
+      "task_id": "U11",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U11:A",
+      "task_id": "U11",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U11:B",
+      "task_id": "U11",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U12:D",
+      "task_id": "U12",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "prior_source_or_direction_failure_reason_available",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U12:A",
+      "task_id": "U12",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U12:B",
+      "task_id": "U12",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U12:C",
+      "task_id": "U12",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "prior_source_or_direction_failure_reason_available",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U13:A",
+      "task_id": "U13",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U13:B",
+      "task_id": "U13",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U13:C",
+      "task_id": "U13",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U13:D",
+      "task_id": "U13",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U14:B",
+      "task_id": "U14",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U14:C",
+      "task_id": "U14",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U14:D",
+      "task_id": "U14",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U14:A",
+      "task_id": "U14",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U15:C",
+      "task_id": "U15",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U15:D",
+      "task_id": "U15",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U15:A",
+      "task_id": "U15",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U15:B",
+      "task_id": "U15",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U16:D",
+      "task_id": "U16",
+      "suggested_strict": true,
+      "categories": [
+        "literal_equivalence_disagreement"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U16:A",
+      "task_id": "U16",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U16:B",
+      "task_id": "U16",
+      "suggested_strict": true,
+      "categories": [
+        "literal_equivalence_disagreement"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U16:C",
+      "task_id": "U16",
+      "suggested_strict": true,
+      "categories": [
+        "literal_equivalence_disagreement"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U17:A",
+      "task_id": "U17",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U17:B",
+      "task_id": "U17",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U17:C",
+      "task_id": "U17",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U17:D",
+      "task_id": "U17",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U18:B",
+      "task_id": "U18",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U18:C",
+      "task_id": "U18",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U18:D",
+      "task_id": "U18",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U18:A",
+      "task_id": "U18",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U19:C",
+      "task_id": "U19",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U19:D",
+      "task_id": "U19",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U19:A",
+      "task_id": "U19",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U19:B",
+      "task_id": "U19",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U20:D",
+      "task_id": "U20",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U20:A",
+      "task_id": "U20",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U20:B",
+      "task_id": "U20",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U20:C",
+      "task_id": "U20",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U21:A",
+      "task_id": "U21",
+      "suggested_strict": true,
+      "categories": [
+        "literal_equivalence_disagreement"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U21:B",
+      "task_id": "U21",
+      "suggested_strict": true,
+      "categories": [
+        "literal_equivalence_disagreement"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U21:C",
+      "task_id": "U21",
+      "suggested_strict": true,
+      "categories": [
+        "literal_equivalence_disagreement"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U21:D",
+      "task_id": "U21",
+      "suggested_strict": true,
+      "categories": [
+        "literal_equivalence_disagreement"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U22:B",
+      "task_id": "U22",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U22:C",
+      "task_id": "U22",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U22:D",
+      "task_id": "U22",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U22:A",
+      "task_id": "U22",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U23:C",
+      "task_id": "U23",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U23:D",
+      "task_id": "U23",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U23:A",
+      "task_id": "U23",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U23:B",
+      "task_id": "U23",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U24:D",
+      "task_id": "U24",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U24:A",
+      "task_id": "U24",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U24:B",
+      "task_id": "U24",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U24:C",
+      "task_id": "U24",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U25:A",
+      "task_id": "U25",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U25:B",
+      "task_id": "U25",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U25:C",
+      "task_id": "U25",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U25:D",
+      "task_id": "U25",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U26:B",
+      "task_id": "U26",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U26:C",
+      "task_id": "U26",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U26:D",
+      "task_id": "U26",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U26:A",
+      "task_id": "U26",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U27:C",
+      "task_id": "U27",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U27:D",
+      "task_id": "U27",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U27:A",
+      "task_id": "U27",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U27:B",
+      "task_id": "U27",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U28:D",
+      "task_id": "U28",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U28:A",
+      "task_id": "U28",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U28:B",
+      "task_id": "U28",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U28:C",
+      "task_id": "U28",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U29:A",
+      "task_id": "U29",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U29:B",
+      "task_id": "U29",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U29:C",
+      "task_id": "U29",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U29:D",
+      "task_id": "U29",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U30:B",
+      "task_id": "U30",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U30:C",
+      "task_id": "U30",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U30:D",
+      "task_id": "U30",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U30:A",
+      "task_id": "U30",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U31:C",
+      "task_id": "U31",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U31:D",
+      "task_id": "U31",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U31:A",
+      "task_id": "U31",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U31:B",
+      "task_id": "U31",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U32:D",
+      "task_id": "U32",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U32:A",
+      "task_id": "U32",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U32:B",
+      "task_id": "U32",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U32:C",
+      "task_id": "U32",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U33:A",
+      "task_id": "U33",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U33:B",
+      "task_id": "U33",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U33:C",
+      "task_id": "U33",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U33:D",
+      "task_id": "U33",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U34:B",
+      "task_id": "U34",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U34:C",
+      "task_id": "U34",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U34:D",
+      "task_id": "U34",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U34:A",
+      "task_id": "U34",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U35:C",
+      "task_id": "U35",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U35:D",
+      "task_id": "U35",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U35:A",
+      "task_id": "U35",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "U35:B",
+      "task_id": "U35",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3e8219f58317:D",
+      "task_id": "SF-3e8219f58317",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3e8219f58317:A",
+      "task_id": "SF-3e8219f58317",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3e8219f58317:B",
+      "task_id": "SF-3e8219f58317",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3e8219f58317:C",
+      "task_id": "SF-3e8219f58317",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3f2fcdb94b67:A",
+      "task_id": "SF-3f2fcdb94b67",
+      "suggested_strict": false,
+      "categories": [
+        "subject_age_and_comparison_support",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3f2fcdb94b67:B",
+      "task_id": "SF-3f2fcdb94b67",
+      "suggested_strict": false,
+      "categories": [
+        "comparison_source_support",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3f2fcdb94b67:C",
+      "task_id": "SF-3f2fcdb94b67",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3f2fcdb94b67:D",
+      "task_id": "SF-3f2fcdb94b67",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-4345a2fc43c9:B",
+      "task_id": "SF-4345a2fc43c9",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-4345a2fc43c9:C",
+      "task_id": "SF-4345a2fc43c9",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-4345a2fc43c9:D",
+      "task_id": "SF-4345a2fc43c9",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-4345a2fc43c9:A",
+      "task_id": "SF-4345a2fc43c9",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-43709086f7bb:C",
+      "task_id": "SF-43709086f7bb",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-43709086f7bb:D",
+      "task_id": "SF-43709086f7bb",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-43709086f7bb:A",
+      "task_id": "SF-43709086f7bb",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-43709086f7bb:B",
+      "task_id": "SF-43709086f7bb",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-56d3160a9c64:D",
+      "task_id": "SF-56d3160a9c64",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-56d3160a9c64:A",
+      "task_id": "SF-56d3160a9c64",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-56d3160a9c64:B",
+      "task_id": "SF-56d3160a9c64",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-56d3160a9c64:C",
+      "task_id": "SF-56d3160a9c64",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-59679085cc4a:A",
+      "task_id": "SF-59679085cc4a",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-59679085cc4a:B",
+      "task_id": "SF-59679085cc4a",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-59679085cc4a:C",
+      "task_id": "SF-59679085cc4a",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-59679085cc4a:D",
+      "task_id": "SF-59679085cc4a",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-64b127ac198d:B",
+      "task_id": "SF-64b127ac198d",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-64b127ac198d:C",
+      "task_id": "SF-64b127ac198d",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-64b127ac198d:D",
+      "task_id": "SF-64b127ac198d",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-64b127ac198d:A",
+      "task_id": "SF-64b127ac198d",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-66b7ed601d85:C",
+      "task_id": "SF-66b7ed601d85",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-66b7ed601d85:D",
+      "task_id": "SF-66b7ed601d85",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-66b7ed601d85:A",
+      "task_id": "SF-66b7ed601d85",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-66b7ed601d85:B",
+      "task_id": "SF-66b7ed601d85",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3ea856eeec7b:D",
+      "task_id": "SF-3ea856eeec7b",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3ea856eeec7b:A",
+      "task_id": "SF-3ea856eeec7b",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3ea856eeec7b:B",
+      "task_id": "SF-3ea856eeec7b",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3ea856eeec7b:C",
+      "task_id": "SF-3ea856eeec7b",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3fb3599dcc99:A",
+      "task_id": "SF-3fb3599dcc99",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3fb3599dcc99:B",
+      "task_id": "SF-3fb3599dcc99",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "prior_source_or_direction_failure_reason_available",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3fb3599dcc99:C",
+      "task_id": "SF-3fb3599dcc99",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-3fb3599dcc99:D",
+      "task_id": "SF-3fb3599dcc99",
+      "suggested_strict": null,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "annotation_pending_override"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-41b203e453a6:B",
+      "task_id": "SF-41b203e453a6",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-41b203e453a6:C",
+      "task_id": "SF-41b203e453a6",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-41b203e453a6:D",
+      "task_id": "SF-41b203e453a6",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-41b203e453a6:A",
+      "task_id": "SF-41b203e453a6",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-4252bdaf5890:C",
+      "task_id": "SF-4252bdaf5890",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-4252bdaf5890:D",
+      "task_id": "SF-4252bdaf5890",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-4252bdaf5890:A",
+      "task_id": "SF-4252bdaf5890",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "SF-4252bdaf5890:B",
+      "task_id": "SF-4252bdaf5890",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD01:D",
+      "task_id": "DD01",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD01:A",
+      "task_id": "DD01",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD01:B",
+      "task_id": "DD01",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD01:C",
+      "task_id": "DD01",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD02:A",
+      "task_id": "DD02",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD02:B",
+      "task_id": "DD02",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD02:C",
+      "task_id": "DD02",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD02:D",
+      "task_id": "DD02",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD03:B",
+      "task_id": "DD03",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD03:C",
+      "task_id": "DD03",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD03:D",
+      "task_id": "DD03",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD03:A",
+      "task_id": "DD03",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD04:C",
+      "task_id": "DD04",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD04:D",
+      "task_id": "DD04",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD04:A",
+      "task_id": "DD04",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD04:B",
+      "task_id": "DD04",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD05:D",
+      "task_id": "DD05",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD05:A",
+      "task_id": "DD05",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD05:B",
+      "task_id": "DD05",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD05:C",
+      "task_id": "DD05",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD06:A",
+      "task_id": "DD06",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD06:B",
+      "task_id": "DD06",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD06:C",
+      "task_id": "DD06",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD06:D",
+      "task_id": "DD06",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD07:B",
+      "task_id": "DD07",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD07:C",
+      "task_id": "DD07",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD07:D",
+      "task_id": "DD07",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD07:A",
+      "task_id": "DD07",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD08:C",
+      "task_id": "DD08",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD08:D",
+      "task_id": "DD08",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD08:A",
+      "task_id": "DD08",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD08:B",
+      "task_id": "DD08",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD09:D",
+      "task_id": "DD09",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD09:A",
+      "task_id": "DD09",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD09:B",
+      "task_id": "DD09",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD09:C",
+      "task_id": "DD09",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD10:A",
+      "task_id": "DD10",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD10:B",
+      "task_id": "DD10",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD10:C",
+      "task_id": "DD10",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD10:D",
+      "task_id": "DD10",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD11:B",
+      "task_id": "DD11",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD11:C",
+      "task_id": "DD11",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD11:D",
+      "task_id": "DD11",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD11:A",
+      "task_id": "DD11",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD12:C",
+      "task_id": "DD12",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD12:D",
+      "task_id": "DD12",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD12:A",
+      "task_id": "DD12",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD12:B",
+      "task_id": "DD12",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD13:D",
+      "task_id": "DD13",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD13:A",
+      "task_id": "DD13",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD13:B",
+      "task_id": "DD13",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD13:C",
+      "task_id": "DD13",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD14:A",
+      "task_id": "DD14",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD14:B",
+      "task_id": "DD14",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD14:C",
+      "task_id": "DD14",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD14:D",
+      "task_id": "DD14",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD15:B",
+      "task_id": "DD15",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD15:C",
+      "task_id": "DD15",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD15:D",
+      "task_id": "DD15",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD15:A",
+      "task_id": "DD15",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD16:C",
+      "task_id": "DD16",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD16:D",
+      "task_id": "DD16",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD16:A",
+      "task_id": "DD16",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD16:B",
+      "task_id": "DD16",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD17:D",
+      "task_id": "DD17",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD17:A",
+      "task_id": "DD17",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD17:B",
+      "task_id": "DD17",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD17:C",
+      "task_id": "DD17",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "explicit_final_verdict_requires_separate_body_consistency_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD18:A",
+      "task_id": "DD18",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD18:B",
+      "task_id": "DD18",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD18:C",
+      "task_id": "DD18",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD18:D",
+      "task_id": "DD18",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD19:B",
+      "task_id": "DD19",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD19:C",
+      "task_id": "DD19",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD19:D",
+      "task_id": "DD19",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD19:A",
+      "task_id": "DD19",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD20:C",
+      "task_id": "DD20",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD20:D",
+      "task_id": "DD20",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD20:A",
+      "task_id": "DD20",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD20:B",
+      "task_id": "DD20",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD21:D",
+      "task_id": "DD21",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD21:A",
+      "task_id": "DD21",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD21:B",
+      "task_id": "DD21",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD21:C",
+      "task_id": "DD21",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD22:A",
+      "task_id": "DD22",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD22:B",
+      "task_id": "DD22",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD22:C",
+      "task_id": "DD22",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD22:D",
+      "task_id": "DD22",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD23:B",
+      "task_id": "DD23",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD23:C",
+      "task_id": "DD23",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD23:D",
+      "task_id": "DD23",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD23:A",
+      "task_id": "DD23",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD24:C",
+      "task_id": "DD24",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD24:D",
+      "task_id": "DD24",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD24:A",
+      "task_id": "DD24",
+      "suggested_strict": false,
+      "categories": [
+        "number_own_citation_support"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD24:B",
+      "task_id": "DD24",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD25:D",
+      "task_id": "DD25",
+      "suggested_strict": true,
+      "categories": [
+        "literal_equivalence_disagreement"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD25:A",
+      "task_id": "DD25",
+      "suggested_strict": true,
+      "categories": [
+        "literal_equivalence_disagreement"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD25:B",
+      "task_id": "DD25",
+      "suggested_strict": true,
+      "categories": [
+        "literal_equivalence_disagreement"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD25:C",
+      "task_id": "DD25",
+      "suggested_strict": false,
+      "categories": [
+        "retained_model_reference_for_independent_review",
+        "prior_source_or_direction_failure_reason_available"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD26:A",
+      "task_id": "DD26",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD26:B",
+      "task_id": "DD26",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD26:C",
+      "task_id": "DD26",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD26:D",
+      "task_id": "DD26",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD27:B",
+      "task_id": "DD27",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD27:C",
+      "task_id": "DD27",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD27:D",
+      "task_id": "DD27",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD27:A",
+      "task_id": "DD27",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD28:C",
+      "task_id": "DD28",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD28:D",
+      "task_id": "DD28",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD28:A",
+      "task_id": "DD28",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD28:B",
+      "task_id": "DD28",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD29:D",
+      "task_id": "DD29",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD29:A",
+      "task_id": "DD29",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD29:B",
+      "task_id": "DD29",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD29:C",
+      "task_id": "DD29",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD30:A",
+      "task_id": "DD30",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD30:B",
+      "task_id": "DD30",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD30:C",
+      "task_id": "DD30",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    },
+    {
+      "cell_id": "DD30:D",
+      "task_id": "DD30",
+      "suggested_strict": true,
+      "categories": [
+        "retained_model_reference_for_independent_review"
+      ],
+      "human_confirmation": "pending"
+    }
+  ],
+  "supersedes_summary_sha256": "1a83aed2c12071ac714c3f698a4ffb705a32356cb9a3dfc1f8381a7b536793e6",
+  "hash_metadata_correction": "Per-answer hash now binds each actual answer. V1 accidentally labelled the source raw-file hash as answer hash. Scores and proposals unchanged.",
+  "dev_v6_blind_packet_sha256": "3522dc6161b4fd8a04a6f5acca5d05c85613f321ebfe9b74c6e441d167675941",
+  "review_identity_correction": "Full188-row metadata census replaces first-row identity generalization; scores and semantic proposals unchanged."
+}

@@ -1,0 +1,37 @@
+{
+  "version": "roadmap-workspace-snapshot-v2",
+  "date": "2026-10-13",
+  "status": "complete",
+  "head": "5dfd1bbafdeda846d5fbd0d3a8c35c942e6256b5",
+  "files": 1836,
+  "private_snapshot": ".runtime/roadmap-0-2-20261013/v1/snapshot-after",
+  "private_manifest": ".runtime/roadmap-0-2-20261013/v1/manifest-after.json",
+  "manifest_sha256": "74e74e4abe7127be325e837402d3a2a0a5abeb2a2decd9dbd40c82f7e4d3d660",
+  "initial_snapshot": "artifacts/roadmap-workspace-snapshot-20261013-v1.json",
+  "changed_or_new_files": [
+    "PROJECT_REPORT.md",
+    "app/answer_quality.py",
+    "app/clients.py",
+    "app/qa.py",
+    "app/verdict.py",
+    "artifacts/dev-claim-rejection-20261013-v1.json",
+    "artifacts/dev-claim-rejection-review-20261013-v1.json",
+    "artifacts/dev-judgment-repair-20261013-v1.json",
+    "artifacts/dev-judgment-repair-20261013-v1.review.json",
+    "artifacts/roadmap-0-2-completion-20261013-v1.json",
+    "artifacts/roadmap-workspace-snapshot-20261013-v1.json",
+    "benchmarks/enterprise_rag/v1/dev/generation-diagnostic-20261013/judgment-repair-registration-v1.json",
+    "docs/problem-analysis-and-roadmap-20261012.md",
+    "scripts/run_claim_rejection_dev.py",
+    "scripts/run_judgment_repair_dev.py",
+    "tests/test_dev_judgment_repair.py"
+  ],
+  "prior_artifact_and_benchmark_files_preserved": 672,
+  "original_text_scan": {
+    "basis": "same bounded known Dev external question and source-prefix scan on changed nonignored text",
+    "matches": []
+  },
+  "git_commit_created": false,
+  "self_summary_not_in_snapshot": true,
+  "private_logs_and_original_text": "Retained under .runtime; intentionally excluded from public-file snapshot."
+}

@@ -1,0 +1,406 @@
+{
+  "version": "grounding-attribution-dev-v1",
+  "split": "dev",
+  "status": "complete",
+  "registration_sha256": "1760c894ade382c94032dfc76e806b1a61a0c4ccfea933baf5ae2c0cfa917016",
+  "rows": [
+    {
+      "task_id": "U16",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 53819.3,
+      "status": "answered",
+      "value": null,
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 1666,
+        "completion_tokens": 71
+      },
+      "drafts_sha256": "a75341a4635e18dc68ff3f3a216da7c74f2ee84d11b0e65dc37420e5789de0b5",
+      "issues": []
+    },
+    {
+      "task_id": "U16",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 49445.2,
+      "status": "insufficient_evidence",
+      "value": null,
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 2169,
+        "completion_tokens": 22
+      },
+      "drafts_sha256": "65e93153013e8b490fde462dfca1d1030f81dbe74791b554b17fd3c99a3e0081",
+      "issues": []
+    },
+    {
+      "task_id": "U22",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 77811.0,
+      "status": "answered",
+      "value": "unclear",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 2270,
+        "completion_tokens": 158
+      },
+      "drafts_sha256": "a0f57301c3d40c117c38d670c253ffebf85aec8bd60ac91297f51bfbbf548d15",
+      "issues": []
+    },
+    {
+      "task_id": "U22",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 78955.3,
+      "status": "answered",
+      "value": "unclear",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 1778,
+        "completion_tokens": 158
+      },
+      "drafts_sha256": "8e37261d11abecc3e981b07c2b3daa0a9b8368f6bab9f7209181bf8c3a58b985",
+      "issues": []
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 126078.2,
+      "status": "answered",
+      "value": "yes",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 3205,
+        "completion_tokens": 178
+      },
+      "drafts_sha256": "0c57abc362385aa27807e9abea21b1edfb7c451634498cfae3aeeae1e3782076",
+      "issues": []
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 128631.3,
+      "status": "answered",
+      "value": "yes",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 3786,
+        "completion_tokens": 140
+      },
+      "drafts_sha256": "62eff361ac114b7b47f6789fdf79cad82979cde882aff0a47e3bb2886ee9c706",
+      "issues": []
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 115986.3,
+      "status": "answered",
+      "value": "yes",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 3753,
+        "completion_tokens": 107
+      },
+      "drafts_sha256": "4f419e43fd773ac1a96460f15dc0fbfb8cecf2b73d5263ff623ab3fd0b7a04ac",
+      "issues": []
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 96882.8,
+      "status": "answered",
+      "value": "yes",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 3171,
+        "completion_tokens": 98
+      },
+      "drafts_sha256": "1f1816b39bce36a96818dffb97f7a66602bbc78b4abb279d1d39406a4a22eb07",
+      "issues": []
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 102142.4,
+      "status": "answered",
+      "value": "no",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 3421,
+        "completion_tokens": 111
+      },
+      "drafts_sha256": "8a32f77fb44285abba62211d51285caa6f511579f5080cc11bb5f182fcd99bc9",
+      "issues": []
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 91658.7,
+      "status": "insufficient_evidence",
+      "value": null,
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 3733,
+        "completion_tokens": 38
+      },
+      "drafts_sha256": "d7b3517bff3f95b315651cb7a042edd19211950a43d89d655a31831e53d42ae5",
+      "issues": []
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 104013.1,
+      "status": "answered",
+      "value": "yes",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 3550,
+        "completion_tokens": 136
+      },
+      "drafts_sha256": "5e4c3a3ba50137a104868bd07b4ed00bdbf0caeecd844c3a55743bd7ebdfd94a",
+      "issues": []
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 125077.2,
+      "status": "answered",
+      "value": "yes",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 2990,
+        "completion_tokens": 206
+      },
+      "drafts_sha256": "3d1fb5b3ecd39c6e1cf5f1aac0e39ab503656f7f385637fd849316128f494502",
+      "issues": []
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 122996.3,
+      "status": "answered",
+      "value": "yes",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 3215,
+        "completion_tokens": 183
+      },
+      "drafts_sha256": "139fce71683029aaeec7f816e13de9d9e25e16d6822ee9e01c0b6ece9c02efd6",
+      "issues": []
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "grounding_feedback",
+      "error_kind": "BudgetExceeded",
+      "latency_ms": 180010.2,
+      "status": "execution_failed",
+      "value": null,
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": null,
+        "completion_tokens": null
+      },
+      "drafts_sha256": "e8e87294752737f46ffb0ad1f3efc5ef64a24a108ffa3dbc75fb812ead1b123e",
+      "issues": null
+    },
+    {
+      "task_id": "SF-64b127ac198d",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 173591.7,
+      "status": "insufficient_evidence",
+      "value": null,
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 7156,
+        "completion_tokens": 210
+      },
+      "drafts_sha256": "4b0732792698eeff7eef6b607a6ae0ebe8aad2621b7b4d91f4924ec76049efbe",
+      "issues": []
+    },
+    {
+      "task_id": "SF-64b127ac198d",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 169905.5,
+      "status": "verification_failed",
+      "value": null,
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 5337,
+        "completion_tokens": 344
+      },
+      "drafts_sha256": "81d74eb9dc475586a7da2aee18d88c9c52b80e61a1a63bb94e845a9590ad7c8e",
+      "issues": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_date"
+          ]
+        },
+        {
+          "claim_index": 1,
+          "codes": [
+            "unsupported_cited_date"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "DD14",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 67852.3,
+      "status": "verification_failed",
+      "value": null,
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 2421,
+        "completion_tokens": 170
+      },
+      "drafts_sha256": "8a038242c40dbb44835115967f0ca78ccccfcceabe5a2868f533702b3e6f4117",
+      "issues": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_quantity"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "DD14",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 50937.7,
+      "status": "answered",
+      "value": "yes",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 1781,
+        "completion_tokens": 94
+      },
+      "drafts_sha256": "bc7be73b417a02d5781b211448966d746c38413f58326d130471e81eaa8aae2e",
+      "issues": []
+    },
+    {
+      "task_id": "DD16",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 61926.0,
+      "status": "answered",
+      "value": "yes",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 1807,
+        "completion_tokens": 111
+      },
+      "drafts_sha256": "f8cdf0927ff6478a58547a17da7bd7f6c7d27d0189ae6c23ec3e1e25885a8fdd",
+      "issues": []
+    },
+    {
+      "task_id": "DD16",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 86523.9,
+      "status": "answered",
+      "value": "yes",
+      "cost": {
+        "physical_calls": 3,
+        "prompt_tokens": 2654,
+        "completion_tokens": 180
+      },
+      "drafts_sha256": "ced47959a44c75088e49540cccc30e270eeb478e3aca3d3a88b5fec7d59027d5",
+      "issues": []
+    },
+    {
+      "task_id": "DD17",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 81754.0,
+      "status": "verification_failed",
+      "value": null,
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 2492,
+        "completion_tokens": 177
+      },
+      "drafts_sha256": "e13059022f5ef49b13cbe1884476dc88ee523dd9b20ad12a7dff66071e19aa17",
+      "issues": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_quantity"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "DD17",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 66678.2,
+      "status": "answered",
+      "value": "no",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 1861,
+        "completion_tokens": 123
+      },
+      "drafts_sha256": "7c96a58b27d8332529389c5806fa3ccdc3374f969c179723e7449665cd443ef5",
+      "issues": []
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "grounding_feedback",
+      "error_kind": null,
+      "latency_ms": 134878.4,
+      "status": "answered",
+      "value": "no",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 3572,
+        "completion_tokens": 99
+      },
+      "drafts_sha256": "72c3fec00ea3073d414f88577e05af36cb83bea488675652653a5a4bee5cb301",
+      "issues": []
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "existing_recovery",
+      "error_kind": null,
+      "latency_ms": 106669.9,
+      "status": "answered",
+      "value": "no",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 3025,
+        "completion_tokens": 101
+      },
+      "drafts_sha256": "816ff1ae5102579bb0b0fe6091832984edfbc5cde61dc0d4188bb3b3ee702e00",
+      "issues": []
+    }
+  ],
+  "strict_success": null,
+  "review": "pending",
+  "default": "legacy",
+  "adopted": false,
+  "private_raw_sha256": "6ad5f005413757f050248254b98fe374778bd80bc449cabb8093c7ab60914352",
+  "drift": {
+    "code": false,
+    "inputs": false,
+    "settings": false,
+    "model": false
+  }
+}

@@ -74,7 +74,7 @@ def create_task(db, user, goal, mode="workflow", max_steps=6, task_input=None, *
         user_id=user.id,
         goal=goal,
         input={key: value for key, value in (task_input or {}).items() if key not in
-               {"_workflow_state", "_execution_route", "_execution_budget", "_hybrid_state", "_task_contract", "_benchmark_execution", "_benchmark_scenario_events", "_langgraph_state", "_langgraph_config", "_planner_historical", "_planner_values", "_cascade_escalated", "_configured_max_steps"}},
+               {"_workflow_state", "_execution_route", "_execution_budget", "_hybrid_state", "_task_contract", "_benchmark_execution", "_benchmark_scenario_events", "_langgraph_state", "_langgraph_config", "_planner_historical", "_planner_values", "_cascade_escalated", "_configured_max_steps", "_executed_path"}},
         mode=mode,
         max_steps=max_steps,
         status="queued",
@@ -845,7 +845,15 @@ def task_payload(db, user, task):
         "created_at": task.created_at.isoformat(),
         "updated_at": task.updated_at.isoformat(),
         "events": [public_event(row) for row in events],
+        "execution": execution_record(task),
     }
+
+
+def execution_record(task):
+    """Requested vs selected mode, the route reason and the graph nodes actually run."""
+    route = task.input.get("_execution_route") or {}
+    return {"requested_mode": task.input.get("requested_mode", task.mode), "selected_mode": task.mode,
+            "route_reason": route.get("reason"), "executed_path": task.input.get("_executed_path")}
 
 
 def cancel_task(db, user, task_id):

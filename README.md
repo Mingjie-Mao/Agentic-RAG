@@ -29,6 +29,12 @@
 
 即使将来接入 Codex 作为执行者，同样需要经过这套授权工具与输出校验。当前尚未接入 Codex；本项目也尚未完成正式 Core 验收，不据此声称自建 Agent 比 Codex 更强。
 
+## 评测状态
+
+正式Core 70主正确率仍为 **pending**。External150题原文参考与300个历史答案位置已完成AI-assisted审核，22个参考判断未决；模型身份、原文依据、分歧及评分版本保留，人工审核是可选未来增强。Core尚缺文档/索引与权限环境验证及最终正式冻结快照。
+
+[评测协议](benchmarks/enterprise_rag/v1/README.md) · [审核结果与冻结清单](docs/ai-assisted-evaluation-and-freeze-20261014.md) · [后续路线图](docs/problem-analysis-and-roadmap-20261012.md)
+
 ## 技术栈
 
 | 层次 | 技术 |

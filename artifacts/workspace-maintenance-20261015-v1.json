@@ -1,0 +1,100 @@
+{
+  "version": "workspace-maintenance-20261015-v1",
+  "date": "2026-10-15 Australia/Sydney",
+  "status": "completed",
+  "scope": "Synchronize current project documentation, benchmark usage and local showcase with saved AI-assisted evaluation; clean unreferenced committed old test reports. Historical protocols/results not rewritten.",
+  "updated_files": [
+    "Makefile",
+    "PROJECT_REPORT.md",
+    "RAG_AND_MEMORY.md",
+    "README.md",
+    "benchmarks/enterprise_rag/v1/README.md",
+    "docs/problem-analysis-and-roadmap-20261012.md",
+    "scripts/check_docs.py",
+    "site/index.html",
+    "site/overview.html"
+  ],
+  "deleted_files": [
+    {
+      "path": "artifacts/five-repairs-integration-20261007.xml",
+      "bytes": 1907,
+      "sha256": "516b225d598a345ef19e999afe82005ee409f059c82114d5d4828d7222f85d7c",
+      "git_blob": "b0f9d28d560f2b86aab5cd0d93fa02d7a890741d",
+      "recover_command": "git show HEAD:artifacts/five-repairs-integration-20261007.xml",
+      "local_backup": ".runtime/workspace-maintenance-20261015/v1/removed/artifacts/five-repairs-integration-20261007.xml",
+      "references": [],
+      "kind": "unreferenced_committed_old_standalone_test_report",
+      "benchmark_result": false
+    },
+    {
+      "path": "artifacts/s1-tests.xml",
+      "bytes": 24356,
+      "sha256": "4de5a4933f5efbe2fad7af5f940b6dc82ec80093a76a72a21e44433cfcfcec13",
+      "git_blob": "afba3b04f29c5db09a3aa5bc39831164dfa1b3e2",
+      "recover_command": "git show HEAD:artifacts/s1-tests.xml",
+      "local_backup": ".runtime/workspace-maintenance-20261015/v1/removed/artifacts/s1-tests.xml",
+      "references": [],
+      "kind": "unreferenced_committed_old_standalone_test_report",
+      "benchmark_result": false
+    }
+  ],
+  "deleted_bytes": 26263,
+  "cleanup_boundary": "Only unreferenced, previously committed old XML test reports removed. Referenced runs and companion probes, failed/interrupted runs and local original-source audits retained.",
+  "production_code_changed_this_round": false,
+  "original_Benchmark_gold_changed": false,
+  "historical_evaluation_results_changed": false,
+  "active_evaluation_policy_or_frozen_scoring_changed": false,
+  "legacy_default_changed": false,
+  "formal_Core_run_started": false,
+  "commit_push_deploy": false,
+  "current_evaluation": {
+    "review_kind": "AI-assisted",
+    "human": false,
+    "independent": false,
+    "source_questions_reviewed": 150,
+    "answer_positions_reviewed": 300,
+    "unresolved_source_cases": 22,
+    "metrics_source": "artifacts/external-ai-assisted-review-20261014-v1.json",
+    "metrics_source_sha256": "afb78b61bf358d8edf317b7d1c382ae0f66a266077311a4ffb9369f5a1b1ce31",
+    "formal_core_ready": false,
+    "human_gold_required": false,
+    "readiness_inspection": "File-only; no services, model calls, index writes or freeze writes. October14 runtime preflight is retained as historical evidence."
+  },
+  "tool_fixes": [
+    "make integration writes a unique ignored local report directory; directory creation failure prevents running tests.",
+    "Existing documentation checker verifies current report/roadmap AI-assisted strict counts and optional human review against active policy and saved summary."
+  ],
+  "validation": {
+    "related_tests": 110,
+    "test_log": ".runtime/workspace-maintenance-20261015/v1/related-tests-v1.log",
+    "ruff": "passed",
+    "documentation_check": "passed",
+    "git_diff_check": "passed",
+    "site_HTML_structure": "passed",
+    "integration_recipe": "make dry-run and sh -n; not executed against services"
+  },
+  "git_recovery": "Each deletion has an original Git blob and identical local backup. Historical completion records bind their own dated snapshots; new mutable document hashes recorded here.",
+  "sha256": {
+    "Makefile": "197ddabffc542e652e033e83561915faa09956dde40aff3e914cb6f696690ea6",
+    "PROJECT_REPORT.md": "f3a40f11dfb1e6e11a6e5ccc709a33964773eccd02b78f640d50f5e8da136c08",
+    "RAG_AND_MEMORY.md": "921c8ba1f3fb0d103d451b05c5820348ee5ffc1104a9072080d704d125f62c6d",
+    "README.md": "5e7f6f9d7b921293de269ead355349977e7e7968da4f45549da29f1a1c59ba0d",
+    "benchmarks/enterprise_rag/v1/README.md": "4a9de2ea6b0c550883d935d43da329b71644eb7afac681e8a0e8eaeda12e7fe3",
+    "docs/problem-analysis-and-roadmap-20261012.md": "548d6bc791ee092a436ee4fc868d955c3ec9b1b7f47d4f5b69f01faa4a93c3f8",
+    "scripts/check_docs.py": "8900cfb61b9d3c9674d51662cf9f3fe76a8134a2e91b36048bca4f5d83015faf",
+    "site/index.html": "cdeec143d1db7fd47168d2b806e28e8038f4bfe38b9d547f4283fcb3ab48aca5",
+    "site/overview.html": "6e7663e5ef775bc12a862984dc3616c3ff41e74bf270baedc092f40b7d97ef7b",
+    ".runtime/workspace-maintenance-20261015/v1/manifest-before.json": "72d9c15f2c5c797730cfe17ac855b9edceb470303cbeab11b07f7cf15468b6c3",
+    ".runtime/workspace-maintenance-20261015/v1/manifest-after-final.json": "de2aa3410fbc4d16dedb1e678f29140ae4537403dab0b62592f26b76fcf1f86a",
+    ".runtime/workspace-maintenance-20261015/v1/deletion-record-v1.json": "5d2474060bbbe074a3ee1fa9d4fe2fbe4a1e75fe30c5876b511daa17ddd2e4b7",
+    ".runtime/workspace-maintenance-20261015/v1/preservation-verification-v1.json": "3b8a0dd17dd4953f2fb75fcb007591511b1f9949b3e04de7fe8c254d2d2ae494",
+    ".runtime/workspace-maintenance-20261015/v1/related-tests-v1.log": "6856446c24ca6f882ae0396d4680e4cfaf7c155255c15843ec7dd5ada63fcbe3",
+    ".runtime/workspace-maintenance-20261015/v1/docs-check-final.log": "0e31eb9abe6d8503148d44b48b2fe5446f935e26f861894d2fb574eedfd4e3fc",
+    ".runtime/workspace-maintenance-20261015/v1/ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".runtime/workspace-maintenance-20261015/v1/diff-check-closure.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".runtime/workspace-maintenance-20261015/v1/readiness-file-only-v1.json": "de0ddb7fe50c90ab98c8652ac800fb0801ed1f9689684e97465fc451ebf48b7a",
+    ".runtime/workspace-maintenance-20261015/v1/integration-command-final.log": "ed99afd8264d7b2980c33fb9dd65a0708acf045df5598edc7f7b5dec73c99ec9",
+    ".runtime/workspace-maintenance-20261015/v1/failure-ledger-v1.json": "466127847909450f1bde1ed2a37b3d08e7541068fbdeaff64fc0fffe838bb8c3"
+  },
+  "local_maintenance_directory": ".runtime/workspace-maintenance-20261015/v1"
+}

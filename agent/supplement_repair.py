@@ -19,7 +19,7 @@ from agent.supplement_proposal import (
 from agent.tools import SearchArgs
 from app.chunking import token_count
 from app.evidence_selection import select_slot_evidence
-from app.execution_budget import use_budget
+from app.execution_budget import BudgetExceeded, TaskCancelled, use_budget
 from app.supplement_contract import assess_slot_presence, public_presence
 
 
@@ -32,7 +32,7 @@ class RepairState(TypedDict, total=False):
 
 def run_repair(contract, seed, candidates, *, models, reauthorize, search,
                validate_scope, budget, caps=None, order=('control', 'treatment'),
-               proposal_provider=None, evidence_selector=None):
+               proposal_provider=None, evidence_selector=None, active_arms=None):
     """Run the shared graph with optional trusted experiment adapters.
 
     Injected providers/selectors own their model accounting. The graph continues
@@ -40,6 +40,11 @@ def run_repair(contract, seed, candidates, *, models, reauthorize, search,
     """
     if tuple(order) not in {('control', 'treatment'), ('treatment', 'control')}:
         raise ValueError('Invalid arm order')
+    if active_arms is not None:
+        if tuple(active_arms) not in {('treatment',), ('control', 'treatment'), ('treatment', 'control')}:
+            raise ValueError('Invalid active arms')
+        order = tuple(a for a in order if a in active_arms)
+    single = len(order) == 1
     caps = {'limit': 8, 'token_budget': 5000, 'document_quota': 2, 'source_quota': None, **(caps or {})}
     if (set(caps) != {'limit', 'token_budget', 'document_quota', 'source_quota'}
             or type(caps['limit']) is not int or not 1 <= caps['limit'] <= 8
@@ -52,10 +57,13 @@ def run_repair(contract, seed, candidates, *, models, reauthorize, search,
     trace = {'status': 'pending', 'mode': contract.mode, 'contract': contract.public_summary(),
              'order': list(order), 'errors': [], 'rejections': [], 'arms': {},
              'shared_policy_cost': 'charge_each_arm_in_runner', 'physical_cost': 'delegated_to_caller'}
+    if single:
+        trace['active_arms'] = list(order)
+        trace['shared_policy_cost'] = 'single_arm_actual_dispatch'
     before = budget.snapshot()
     budget.state['deadline'] = min(budget.state['deadline'], budget.clock() + 180)
     for role in ('policy', 'search'):
-        budget.state['limits'][role] = min(budget.state['limits'].get(role, 2), 2)
+        budget.state['limits'][role] = min(budget.state['limits'].get(role, 2), 1 if single and role == 'search' else 2)
     if budget.persist:
         budget.persist(budget.snapshot())
 
@@ -69,7 +77,15 @@ def run_repair(contract, seed, candidates, *, models, reauthorize, search,
         return {'stopped': True}
 
     def fail(stage, exc, name=None):
-        trace['errors'].append({'stage': stage, 'type': type(exc).__name__, 'arm': name})
+        if single and isinstance(exc, TaskCancelled):
+            raise exc
+        error = {'stage': stage, 'type': type(exc).__name__, 'arm': name}
+        if single:
+            error['reason'] = exc.reason if isinstance(exc, BudgetExceeded) else (
+                'source_identity_or_acl_changed' if isinstance(exc, _IntegrityError) else 'operational_failure')
+            if isinstance(exc, _NoBridge):
+                trace['rejections'].append(exc.public())
+        trace['errors'].append(error)
         for a in ([name] if name else arms):
             if arms[a]['status'] == 'pending':
                 arms[a].update(status='failed', evidence=None)
@@ -123,7 +139,7 @@ def run_repair(contract, seed, candidates, *, models, reauthorize, search,
 
     def independent(state):
         p = state['proposal']
-        return {'queries': {'control': contract.question, 'treatment': p.query.strip()}}
+        return {'queries': {a: contract.question if a == 'control' else p.query.strip() for a in order}}
 
     def bridge(state):
         try:
@@ -150,9 +166,8 @@ def run_repair(contract, seed, candidates, *, models, reauthorize, search,
             p = state['proposal']
             trace.update(bridge_chunk_sha256=_hash(source), bridge_source_sha256=actual['source_sha256'],
                          value_sha256=_hash(values[0]), quote_sha256=_hash(quote))
-            return {'source': source, 'queries': {
-                'control': (p.followup_prefix + p.followup_suffix).strip(),
-                'treatment': (p.followup_prefix + values[0] + p.followup_suffix).strip()}}
+            return {'source': source, 'queries': {a: (p.followup_prefix +
+                (values[0] if a == 'treatment' else '') + p.followup_suffix).strip() for a in order}}
         except _NoBridge as exc:
             return stop('binding_rejected', exc)
         except Exception as exc:
@@ -163,7 +178,9 @@ def run_repair(contract, seed, candidates, *, models, reauthorize, search,
             queries = state['queries']
             if any(not q.strip() or len(q) > 500 or '{' in q or '}' in q for q in queries.values()):
                 return stop('query_rejected', _NoBridge(('query_length_or_placeholder',), stage='query'))
-            if queries['control'] == queries['treatment']:
+            if single:
+                trace['controlled_query_equals_original'] = queries['treatment'] == contract.question
+            if not single and queries['control'] == queries['treatment']:
                 return stop('indistinguishable_pair')
             if not all(validate_scope(contract.question, queries[a]) is True for a in order):
                 return stop('scope_mismatch', _NoBridge(('scope_changed',), stage='scope'))
@@ -224,7 +241,7 @@ def run_repair(contract, seed, candidates, *, models, reauthorize, search,
     graph = StateGraph(RepairState)
     for name, node in [('gate', gate), ('proposal', planning), ('independent', independent),
                        ('bridge', bridge), ('validate', validation),
-                       ('first_search', dispatch(order[0])), ('second_search', dispatch(order[1])), ('select', selection)]:
+                       ('first_search', dispatch(order[0])), ('select', selection)]:
         graph.add_node(name, node)
     graph.add_edge(START, 'gate')
     graph.add_conditional_edges('gate', lambda s: 'end' if s.get('stopped') else 'next', {'end': END, 'next': 'proposal'})
@@ -233,8 +250,12 @@ def run_repair(contract, seed, candidates, *, models, reauthorize, search,
     for node in ('independent', 'bridge'):
         graph.add_conditional_edges(node, lambda s: 'end' if s.get('stopped') else 'next', {'end': END, 'next': 'validate'})
     graph.add_conditional_edges('validate', lambda s: 'end' if s.get('stopped') else 'next', {'end': END, 'next': 'first_search'})
-    graph.add_edge('first_search', 'second_search')
-    graph.add_edge('second_search', 'select')
+    if single:
+        graph.add_edge('first_search', 'select')
+    else:
+        graph.add_node('second_search', dispatch(order[1]))
+        graph.add_edge('first_search', 'second_search')
+        graph.add_edge('second_search', 'select')
     graph.add_edge('select', END)
     try:
         with use_budget(budget):

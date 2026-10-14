@@ -1,0 +1,133 @@
+{
+  "version": "generation-diagnostic-v1",
+  "tier": "diagnostic",
+  "split": "dev",
+  "suites": {
+    "dev47": 47,
+    "dynamic_dev": 30
+  },
+  "cells": {
+    "A": {
+      "generator": "base",
+      "context": "current"
+    },
+    "B": {
+      "generator": "base",
+      "context": "gold"
+    },
+    "C": {
+      "generator": "candidate",
+      "context": "current"
+    },
+    "D": {
+      "generator": "candidate",
+      "context": "gold"
+    }
+  },
+  "models": {
+    "base": {
+      "model": "qwen2.5:7b-instruct",
+      "url": "http://127.0.0.1:11436",
+      "path": "production_default",
+      "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+    },
+    "candidate": {
+      "model": "qwen3.5:9b",
+      "url": "http://127.0.0.1:11437",
+      "path": "chat_backend_think_off",
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7"
+    }
+  },
+  "generation": {
+    "protocol": "shared_contract",
+    "limits": "generate_answer_defaults_generation3_180s",
+    "embedding_calls": 0,
+    "candidate_request_overrides": {
+      "think": false
+    }
+  },
+  "contexts": {
+    "current_dev47": "policy-contexts-20261012-v1/baseline",
+    "current_dynamic": "dynamic-dev-six-arms-20261009-v2/rag.retrieved_evidence",
+    "gold": "reference_chunks_first_then_current_fill",
+    "caps": {
+      "rows": 8,
+      "tokens": 5000
+    },
+    "gold_cap_deviation": "gold_chunks_bounded_by_tokens_only_row_cap_excess_reported"
+  },
+  "order": "cells_rotated_by_task_index",
+  "inputs_sha256": {
+    ".runtime/benchmark-package/v1/dev/tasks.json": "b03cf43592a370927059bab1eccf8c5c3442b5129bcfcf07c9a688bf55cce5ab",
+    ".runtime/dev-evidence-repair-20261009/accepted-annotation-v1.json": "894a7074c7fb69ab677809885da5e36de26d4b20c05ab5b4b218e494873ce8ee",
+    "benchmarks/enterprise_rag/v1/dynamic/dev/tasks.json": "972037e87aaeb980d6a58e5ec5a9c31330f5ee7e2ad1aeb72ee1dda47c5f83cd",
+    "artifacts/dynamic-dev-six-arms-20261009-v2.json": "230b382fd10ffd9aca4704201f40d8cbd691fbb72c65c0b951b125657f91bdd8",
+    "scripts/run_generation_diagnostic_dev.py": "79f5cd6ef173b0b974a6f314a0b6090b0f4a42020af59c48267c86f0e75425f9",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-3e8219f58317.json": "4307358e20eb6ebce60256f762ef50c0f67c411b68347b93215b35edfc0559b9",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-3ea856eeec7b.json": "e2ce4c28196eb93211e3b4fc3803616d26da073291d6e6be3dc89c0a5e3107df",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-3f2fcdb94b67.json": "324bd7ed55a36f82f10c9c5d22cff2a4b694befd1cdbbbd7682fa0bfb9cc4380",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-3fb3599dcc99.json": "32ab6dad7d2291ac645b6da537f75844e08368e180fb666683dc4eb8767df8fe",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-41b203e453a6.json": "ea3f14ef47fba7c022482543a955e867c1560058348280c524705f36e5276979",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-4252bdaf5890.json": "96772f67383c7515388d1ff77ae94a67b855d9af9ab8c0806fd38c35aed36e91",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-4345a2fc43c9.json": "9c11570e39553ea619704bd9ade884acb0641d56665de395010c93dbf933bf40",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-43709086f7bb.json": "d017cbf1a0943901b140dd0a8b71d67dd092b6cd1ed5ccff5c8f35a86a9b6d88",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-56d3160a9c64.json": "7b92ebf3a826db55856b42915688f1fd5a7d5b406f8b408157faf9ef945099d5",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-59679085cc4a.json": "c6d4329115e96af825bc0803e55937c9c70809bed1495cf8acf4d4ac2bc4208f",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-64b127ac198d.json": "3fef109d3077d8c079f22d696c3494b4fb25c903b503be044059627cc22dd058",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/SF-66b7ed601d85.json": "c158f926263d63cf2ff9e3b8d3e256aaf2ca8dc86d2aab05fab7cb42e95af804",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U01.json": "ce39a183b1ca4c1ec71e7426107a4f9b894c08ff26dc28a91a79f2da30f2db10",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U02.json": "623e64b9627c5972886086ef0d424e56d5dcb9be64330ec00534c536462eb46b",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U03.json": "afc79a239df916ae2e94a00382144d9e0afd4825c59749541b3c136bbb743e1d",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U04.json": "78dd3ad2d06b8913949aa0dda5b5f76b8344a35b928706ddd432e7a3dc8c812c",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U05.json": "fbc535772cb8d3d56e95539fb93f3a33d6cde15c9ea76c78b9d11ab4d1971dd9",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U06.json": "50cb3fbc9f81e200391a130dae6b4ab4d1af2c276a5fa59025d3916520fe59f2",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U07.json": "020d0999204d31e6b356d06f9a58c1b6bc2befc77f38e81d6e5ddae118bced2c",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U08.json": "cff050636e9a5d32620f494c8fed6f814bb6bec390fc98a0ed54353276a1ebd5",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U09.json": "70f3e19bb91c66791805db6c9174a252ad8b3d40aa0c3b342170dccf7dc724b7",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U10.json": "d169bad2fe1ea2b5ab1cde415b5457530e42b37dd42887340beddf9d3ef8bdd7",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U11.json": "f00733d1aacd34d68e554cb976d8b07dfd3ca8388ab217ca9617c906c51ec2e4",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U12.json": "641a02ef2ff6899453151486d8af68428a7e1e17afd51b99217a8a71f4bb5bfa",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U13.json": "2c0fe50504324c0558533fb665dd869a96e675a120d7fbfd1c78b6715ede114f",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U14.json": "5ba4311a7343a6d04dfcae6dcb2df00861ed7f172f756f5dbdc9d0f71be8ce4c",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U15.json": "d868efc1976fe69620d1d7c6630f326772bcacb9383412df23a996f066b29953",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U16.json": "78d77b0e8dc5db0981b2b9d3c3d10fd7d9add89ac480fe54fbd9190015a20b51",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U17.json": "b56e67d02f1377093b81f9ab17a178d6996a07e9aa8111187ace7d7869f0c260",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U18.json": "68d31fc54000a2a3d2a072384a7f359d1b2ebc1f97fc36da4d32c2dbaf4cc66e",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U19.json": "8186ecba7826266c9a7b7333b6c81f250e2952491c4599e2e2e746f8f1680bf2",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U20.json": "2314ceb4454ecb2e8932492f94cedf4d79c99a6b222672c3e666a7a78327f0a1",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U21.json": "005988da4120416d7e34fb7a0dcbb87cce823739a4269db0de99831e6e891d8e",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U22.json": "f0c7e2e3eeed19fdb1eb9d8a6c29089066c84217b50341cee666a1a05b3b67d1",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U23.json": "8f11b92143cf94934a32e7ba917776363f3375350db0bd9c42c4b8e3b7de4b01",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U24.json": "3f807ba0ac666a4b8b0f0dafa9a14ec95ad50f4c5f520cfca6cb85ec4c1d488a",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U25.json": "a46a3029d59794ce779bdb172ecd25dac38d2fdd94ae9ca62a2a7b4e27ebf803",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U26.json": "43ba67b208c9158bef217c23b24780c6097f1bc6c01a9e710036ad3de41f166e",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U27.json": "14d90ae72e4eb59709b4f7e493a7f44b03ec5a8bdb1055398c5df2c0e131c98a",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U28.json": "7f30c0a4372906c24046926d9eb85b65d6db823069cb7e838c6078ff71060498",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U29.json": "0fb882d34cc4491e2ed726181ad6eec7c07324080a92b4b6a180eadfd02b66fb",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U30.json": "b609cba2a1db3334e899f4baef29cff8f8289574eca468a58cc07777119e74a9",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U31.json": "b4ec3d27526fb912d1fb9b32bbcc436b005fa1ad6a5cb016c36b344fa6e09a52",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U32.json": "a90e53394dcfdcb2cbaa9080ac761f805e29af4a6527528a0ecd69d265c6e9f4",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U33.json": "9854b91fec88ef117e5012acfa2c2f727684f8e794fd03c135dc7490078f718c",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U34.json": "36a21d91a87135398896e7e913bdb2371d7a0bafb5151c1ce814dc6f61ec1ff8",
+    ".runtime/evidence-first-20261011/policy-contexts-20261012-v1/U35.json": "12208d5aec1fc84f7f8d65ba6d803fd8e526610623c2293df227e070cd5b0408"
+  },
+  "decision_rule": {
+    "primary_comparison": "C_vs_A_on_reviewed_dev47_primary_tasks",
+    "switch_default_generator_only_if_all": [
+      "net_strict_success_gain_gt_0_after_semantic_review",
+      "zero_tasks_correct_in_A_wrong_in_C",
+      "zero_required_fact_loss_C_vs_A",
+      "no_safety_regression_forbidden_output_or_unanswerable_answered",
+      "C_p95_latency_le_1.5x_A_p95_latency_same_run"
+    ],
+    "otherwise": "keep_qwen2.5_7b_default",
+    "descriptive_only": [
+      "B_minus_A_selection_layer_size",
+      "D_minus_C",
+      "dynamic_dev_all_cells",
+      "literal_provisional_scores"
+    ],
+    "gold_context_status": "diagnostic_not_upper_bound_not_a_method",
+    "review": "blind_model_review_after_all_dispatch_reviewer_identity_recorded_independent_false"
+  }
+}

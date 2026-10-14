@@ -2,13 +2,16 @@
 
 目录名与 manifest 中的 `enterprise-rag-benchmark-package-v1` 是早期命名，已被历次冻结运行的哈希引用，因此保留不改。
 
-本包是之后 RAG / Workflow / Dynamic Agent / Hybrid 的统一评测协议。唯一主表来源为 **Core 70 题的 Strict Task Success Rate**。当前完成数据整理和评测基础设施；**Core 70 与 Security 16 的题目标注已由当前 GPT 会话审核，尚未正式冻结、执行或产生系统正确率**。GPT 审核已获用户授权，保存模型家族、具体服务版本未知的说明、理由和独立性，不要求把模型标签伪装成人工金标。External 150 的新协议标注审核尚未完成。
+本包是之后 RAG / Workflow / Dynamic Agent / Hybrid 的统一评测协议。唯一主表来源为 **Core 70 题的 Strict Task Success Rate**。当前完成数据整理和评测基础设施；**Core 70 与 Security 16 的题目标注已由当前 GPT 会话审核，尚未正式冻结、执行或产生系统正确率**。GPT 审核已获用户授权，保存模型家族、具体服务版本未知的说明、理由和独立性，不要求把模型标签伪装成人工金标。External150的AI-assisted参考与答案审核现已完成，未决记录见新协议。
 
-## 当前状态（2026-10-08）
+## 当前状态（2026-10-15同步，10-14 AI-assisted协议生效）
 
-- **Core 70 / Security 16 / External 150：正式运行 0 次**，主表为 pending。External 150 的新协议标注审核未完成。
-- **Dev 47：** 已多次冻结运行用于开发。最新 v6（2026-10-07）严格成功 RAG 38、Workflow 38、Dynamic 38、Hybrid 37。2026-10-06 之后的新答案由 Claude Opus 5.5 审核（`independent=false`），不符合本协议规定的 GPT 审核，只作开发诊断；GPT 审核请求包已生成未执行。
-- 修复经过、逐轮结果与问题清单统一记录在[项目报告 §20.1 与 §20.26–20.29](../../../PROJECT_REPORT.md#201-现状总览已完成当前问题与计划2026-10-08)。
+- 正式Core70/Security16及新协议External运行均未启动，Core主表pending。
+- 独立人工金标准改为可选未来增强；当前使用 `evaluation-policy-v2-ai-assisted.json` 与 `scoring-rules-v3-ai-assisted.json`。旧v2规则、人工准备包和§20.39历史条件保留。
+- External150原文参考与已有300答案位置AI审核完成：112可答、16支持语料范围拒答、22源文未决；RAG严格29/143、Workflow25/143，各7严格未决。全部AI-assisted，非人工、非独立；4个原运行身份不唯一但所有匹配候选结果不变。原Benchmark gold不覆盖。
+- Dev188历史评分回放零变化；Legacy默认不改。10-14审核轮94项相关回归通过。
+- Core Not Ready：10-14实际预检记录Core/Security所需语料未发布；完整索引/ACL环境验证及三组正式freeze和最终不可变配置/代码快照未完成；不因缺人工而阻塞，不自动运行Core。
+- [完整新协议、分母与冻结清单](../../../docs/ai-assisted-evaluation-and-freeze-20261014.md)、[审核汇总](../../../artifacts/external-ai-assisted-review-20261014-v1.json)、[readiness](../../../artifacts/benchmark-freeze-readiness-20261014-v8-ai-assisted.json)。
 
 | Split | 数量 | 用途 | 调参 |
 | --- | ---: | --- | --- |
@@ -47,11 +50,11 @@ External 150 题曾经运行，其错误也已被分析。因此，本包重复�
 
 **Agent Policy**：steps、tool calls、失败与非法调用、重复调用/查询、空或失败查询、过早/过晚停止、证据充分后的无效调用、失败检索后的恢复、耗时，以及 generation/policy/judge 的实测 tokens（不包含尚未记录的 embedding tokens）。语义停止诊断需要检查 trace 和事实覆盖，不凭“找到 gold 文档”认定证据充分。没有测量的字段保留 `null`；合法执行路径不影响严格正确率。
 
-**Final Answer**：一题仅当所有 required facts 得到支持、没有关键错误、条件及版本正确、每条 claim/citation 得到支持、应拒答时拒答、执行安全且规定安全事件实际触发，才记 Strict Task Success=1；否则为 0。执行失败进入完整分母，不能删去失败题提高成绩。授权变化场景允许规定的拒答/授权终止，意外崩溃不通过。ACL canary 检查全部用户可见输出；已获授权的历史内容不因工具读取就算 ACL 泄漏，版本范围违约检查最终断言和引用。
+**Final Answer**：一题仅当所有 required facts 得到支持、没有关键错误、条件及版本正确、每条 claim/citation 得到支持、应拒答时拒答、执行安全且规定安全事件实际触发，才记 Strict Task Success=1；有明确失败项为0，无明确失败但必要审核项unclear或未审核则null。执行失败进入完整分母，不能删去失败题提高成绩。授权变化场景允许规定的拒答/授权终止，意外崩溃不通过。ACL canary 检查全部用户可见输出；已获授权的历史内容不因工具读取就算 ACL 泄漏，版本范围违约检查最终断言和引用。
 
 同时报告事实召回、Fact Precision、citation correctness、faithfulness、完整性和七类拆分。Fact Precision 需要 GPT 将答案全部原子事实拆成 `answer_facts`，逐项绑定真实 claim 的下标并记录支持判断，明确 `atomic_facts_complete=true`；未做原子事实审核时 precision 保留 `null`。Faithfulness 按 claim 条数统计，一条长 claim 中任何重要错误使整条不 supported。事实召回按 required fact 个数计算。组件指标为适用题目的宏平均，均附适用分母；没有事实或引用的合法拒答题不作为 100% 计入这些平均值。
 
-答案审核包隐藏方法名称，不把执行路径作为答案正确依据。模型审核填写每个 fact/claim/citation 的语义判断和五个严格布尔检查；不得只打 1–5 分。失败分析另看原始 tool trace，保持模型来源与缺测信息。模型评测是模型评测，不宣称独立人工准确率。
+答案审核包隐藏方法名称和实现元数据，不把执行路径作为答案正确依据。审核填写每个fact/claim/citation的语义判断和五个严格布尔检查；无法确定的检查显式null，缺字段不接受；不得只打1–5分。失败分析另看原始tool trace，保持模型来源与缺测信息。模型评测是模型评测，不宣称独立人工准确率。当前规则见 `scoring-rules-v3-ai-assisted.json`；旧 `scoring-rules-v2.json`及人工准备流程作为历史保留。
 
 ## 公平条件与消融
 
@@ -87,9 +90,9 @@ External 150 题曾经运行，其错误也已被分析。因此，本包重复�
 
 Dev 下一轮可以 `--freeze --refresh-dev-freeze`，使用新的结果文件。该参数不能用于 Core/Security/External。
 
-Dev 确定方案后，核验各测试 split 的 `review.json` 与 `reviewed.json`，给每项保存 named reviewer、model（未知部署版本须明示）、`independent`、理由和 required checks。Core/Security 已完成此次标注审核，External 仍待审核。未通过的任务先修订并重新审核/生成版本；不可带着拒绝或缺项冻结。修改题目、标注或原文会使旧审核失效。
+Dev确定方案后核验Core/Security的 `review.json` / `reviewed.json` 和External AI-assisted参考sidecar，保存named reviewer、实际model（未知部署版本须明示）、`independent`、原文依据及不确定性。Core/Security已有模型题目标注审核；External150源文参考和300历史答案位置已审核，未决按新policy显式列出，不覆盖原gold。独立人工审核可选，不是Core强制门槛。任何原文、题面或规则变更都要版本化并重新绑定审核哈希；不能看Core结果后改方法或标注追分。
 
-以 Core 为例，审核通过后入库，再冻结真实环境并只运行完整矩阵一次：
+当前Core Not Ready。以下仅是未来明确授权启动后使用的命令；须先补齐文档发布、索引/ACL和最终正式冻结环境，不在本次文件整理中执行：
 
 ```bash
 .venv/bin/python scripts/setup_unseen_benchmark.py --suite-dir benchmarks/enterprise_rag/v1/core
@@ -99,7 +102,7 @@ Dev 确定方案后，核验各测试 split 的 `review.json` 与 `reviewed.json
 
 Security、External 使用 manifest 中的各自 suite 路径及独立结果文件。第一次启动在原 suite 旁保存唯一运行登记。换 `--output` 不能绕过；中断仅允许同一冻结状态/输出的 `--resume`，已有完成结果不重做。进程中断且无法确认结果的尝试记录为失败或缺失遥测，不重抽答案。
 
-运行后输出原始结果和匿名 `.answer-review.json`。GPT 完成逐事实/引用审核后生成最终报告：
+运行后输出原始结果和匿名 `.answer-review.json`。按当前v3协议完成AI-assisted逐事实、引用、条件和版本审核后生成最终报告：
 
 ```bash
 .venv/bin/python scripts/benchmark_package.py report --raw .runtime/benchmark-results/core-v1.json --review .runtime/benchmark-results/core-v1.answer-reviewed.json --output .runtime/benchmark-results/core-v1.report.json

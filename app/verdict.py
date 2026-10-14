@@ -8,6 +8,24 @@ from app.task_analysis import acceptance_items
 from app.answer_contract import comparison_dimension
 
 
+EXPLICIT_NEGATION_PREFIX = "Is it false that the answer to the following yes/no question is yes: "
+
+
+def judgment_expression(question: str) -> tuple[str, bool]:
+    """Recognize one explicit outer NOT; do not reinterpret natural negation scope."""
+    if question.startswith(EXPLICIT_NEGATION_PREFIX):
+        inner = question[len(EXPLICIT_NEGATION_PREFIX):].strip()
+        if inner:
+            return inner, True
+    return question, False
+
+
+def negate_verdict(result: dict) -> dict:
+    """Three-valued NOT leaves unknown and source bindings unchanged."""
+    return {**result, "value": {"yes": "no", "no": "yes", "unclear": "unclear"}[result["value"]],
+            "base_value": result["value"], "outer_operator": "not"}
+
+
 def source_assertion_question(span: str) -> bool:
     """Reporting/characterization is a different proposition from actual world truth.
 

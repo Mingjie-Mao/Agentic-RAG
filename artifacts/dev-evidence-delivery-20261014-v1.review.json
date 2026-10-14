@@ -1,0 +1,503 @@
+{
+  "version": "evidence-delivery-dev-review-v1",
+  "status": "complete",
+  "split": "dev",
+  "private_raw_sha256": "2aa1224ad024e98ca7d02d42e3ffc5265a46b93a92d292f9c8e5238f98c7341c",
+  "summary": {
+    "legacy_current": {
+      "primary_tasks": 7,
+      "strict_success": 1,
+      "required_facts": 14,
+      "required_fact_expression": 3,
+      "required_fact_citation_support": 2,
+      "primary_evidence_complete": 5,
+      "primary_mechanical_pass": 3,
+      "direction_known": 2,
+      "direction_correct": 2,
+      "physical_calls": 14,
+      "prompt_tokens": 18160,
+      "completion_tokens": 1202,
+      "p50_seconds": 76.7655,
+      "p95_seconds": 119.27210000000001,
+      "latency_n": 8,
+      "latency_scope": "all_8_positions_including_pending; actual_generation_verification_Legacy_wall",
+      "status_counts": {
+        "answered": 4,
+        "verification_failed": 4
+      }
+    },
+    "necessary_evidence_only": {
+      "primary_tasks": 7,
+      "strict_success": 1,
+      "required_facts": 14,
+      "required_fact_expression": 3,
+      "required_fact_citation_support": 2,
+      "primary_evidence_complete": 7,
+      "primary_mechanical_pass": 3,
+      "direction_known": 2,
+      "direction_correct": 2,
+      "physical_calls": 13,
+      "prompt_tokens": 18767,
+      "completion_tokens": 1092,
+      "p50_seconds": 72.7981,
+      "p95_seconds": 132.5021,
+      "latency_n": 8,
+      "latency_scope": "all_8_positions_including_pending; actual_generation_verification_Legacy_wall",
+      "status_counts": {
+        "answered": 3,
+        "verification_failed": 5
+      }
+    }
+  },
+  "details": [
+    {
+      "task_id": "SF-64b127ac198d",
+      "arm": "legacy_current",
+      "runtime_status": "verification_failed",
+      "strict": false,
+      "required_fact_expression": {
+        "answer": false
+      },
+      "required_fact_support": {
+        "answer": false
+      },
+      "direction_correct": null,
+      "evidence_complete": false,
+      "mechanical_pass": false,
+      "source_error": true,
+      "object_error": false,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": true,
+      "review_reason": "A缺指定来源却推整篇未提及；B原文金额写billions而草稿写millions，日期头在上下文却未选入各断言引用；两路机械拒绝。"
+    },
+    {
+      "task_id": "SF-64b127ac198d",
+      "arm": "necessary_evidence_only",
+      "runtime_status": "verification_failed",
+      "strict": false,
+      "required_fact_expression": {
+        "answer": false
+      },
+      "required_fact_support": {
+        "answer": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": false,
+      "source_error": true,
+      "object_error": false,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": true,
+      "date_binding_error": true,
+      "review_reason": "A缺指定来源却推整篇未提及；B原文金额写billions而草稿写millions，日期头在上下文却未选入各断言引用；两路机械拒绝。"
+    },
+    {
+      "task_id": "DD14",
+      "arm": "necessary_evidence_only",
+      "runtime_status": "verification_failed",
+      "strict": false,
+      "required_fact_expression": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "required_fact_support": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": false,
+      "source_error": false,
+      "object_error": false,
+      "condition_binding_error": true,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "名录补入后仍未输出具体负责人；观测1.6与阈值3.0比较数值方向正确，但阈值不在自身引用，不升级规则被绑定到>分支。"
+    },
+    {
+      "task_id": "DD14",
+      "arm": "legacy_current",
+      "runtime_status": "verification_failed",
+      "strict": false,
+      "required_fact_expression": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "required_fact_support": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "direction_correct": null,
+      "evidence_complete": false,
+      "mechanical_pass": false,
+      "source_error": false,
+      "object_error": false,
+      "condition_binding_error": true,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "名录补入后仍未输出具体负责人；观测1.6与阈值3.0比较数值方向正确，但阈值不在自身引用，不升级规则被绑定到>分支。"
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "legacy_current",
+      "runtime_status": "answered",
+      "strict": null,
+      "required_fact_expression": {
+        "answer": false
+      },
+      "required_fact_support": {
+        "answer": false
+      },
+      "direction_correct": null,
+      "evidence_complete": "unknown",
+      "mechanical_pass": true,
+      "source_error": true,
+      "object_error": false,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "A只引用TechCrunch，未支持跨来源一致性；B两个媒体范围混写，Search广告收入并非两个来源都说AI损害新闻出版商；日期头未绑定。pending未改。"
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "necessary_evidence_only",
+      "runtime_status": "verification_failed",
+      "strict": null,
+      "required_fact_expression": {
+        "answer": false
+      },
+      "required_fact_support": {
+        "answer": false
+      },
+      "direction_correct": null,
+      "evidence_complete": "unknown",
+      "mechanical_pass": false,
+      "source_error": true,
+      "object_error": false,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": true,
+      "review_reason": "A只引用TechCrunch，未支持跨来源一致性；B两个媒体范围混写，Search广告收入并非两个来源都说AI损害新闻出版商；日期头未绑定。pending未改。"
+    },
+    {
+      "task_id": "U16",
+      "arm": "necessary_evidence_only",
+      "runtime_status": "answered",
+      "strict": false,
+      "required_fact_expression": {
+        "shard": true,
+        "alert": false
+      },
+      "required_fact_support": {
+        "shard": true,
+        "alert": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "source_error": false,
+      "object_error": false,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "分片事实有正确引用，告警原文已交付但未表达；两路相同。"
+    },
+    {
+      "task_id": "U16",
+      "arm": "legacy_current",
+      "runtime_status": "answered",
+      "strict": false,
+      "required_fact_expression": {
+        "shard": true,
+        "alert": false
+      },
+      "required_fact_support": {
+        "shard": true,
+        "alert": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "source_error": false,
+      "object_error": false,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "分片事实有正确引用，告警原文已交付但未表达；两路相同。"
+    },
+    {
+      "task_id": "DD17",
+      "arm": "legacy_current",
+      "runtime_status": "verification_failed",
+      "strict": false,
+      "required_fact_expression": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "required_fact_support": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": false,
+      "source_error": false,
+      "object_error": false,
+      "condition_binding_error": true,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "所有必要原文已交付；观测2.8与阈值3.0计算方向正确，阈值缺自身引用，不升级句引用>分支；名录已选却未写姓名。"
+    },
+    {
+      "task_id": "DD17",
+      "arm": "necessary_evidence_only",
+      "runtime_status": "verification_failed",
+      "strict": false,
+      "required_fact_expression": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "required_fact_support": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": false,
+      "source_error": false,
+      "object_error": false,
+      "condition_binding_error": true,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "所有必要原文已交付；观测2.8与阈值3.0计算方向正确，阈值缺自身引用，不升级句引用>分支；名录已选却未写姓名。"
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "necessary_evidence_only",
+      "runtime_status": "answered",
+      "strict": false,
+      "required_fact_expression": {
+        "answer": true
+      },
+      "required_fact_support": {
+        "answer": false
+      },
+      "direction_correct": true,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "source_error": true,
+      "object_error": true,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "方向No但只引用Sporting的England与South Africa，缺WWOS的Wallabies事实，整篇缺某断言不能由片段确证。"
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "legacy_current",
+      "runtime_status": "answered",
+      "strict": false,
+      "required_fact_expression": {
+        "answer": true
+      },
+      "required_fact_support": {
+        "answer": false
+      },
+      "direction_correct": true,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "source_error": true,
+      "object_error": true,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "方向No但只引用Sporting的England与South Africa，缺WWOS的Wallabies事实，整篇缺某断言不能由片段确证。"
+    },
+    {
+      "task_id": "DD16",
+      "arm": "legacy_current",
+      "runtime_status": "verification_failed",
+      "strict": false,
+      "required_fact_expression": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "required_fact_support": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": false,
+      "source_error": false,
+      "object_error": false,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "观测4.6>3.0与牵头人草稿语义方向正确，比较断言只引用观测表，阈值在另一断言的引文；机械拒绝。"
+    },
+    {
+      "task_id": "DD16",
+      "arm": "necessary_evidence_only",
+      "runtime_status": "verification_failed",
+      "strict": false,
+      "required_fact_expression": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "required_fact_support": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": false,
+      "source_error": false,
+      "object_error": false,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "观测4.6>3.0与牵头人草稿语义方向正确，比较断言只引用观测表，阈值在另一断言的引文；机械拒绝。"
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "necessary_evidence_only",
+      "runtime_status": "answered",
+      "strict": true,
+      "required_fact_expression": {
+        "answer": true
+      },
+      "required_fact_support": {
+        "answer": true
+      },
+      "direction_correct": true,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "source_error": false,
+      "object_error": false,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "两原文出处与已核对的发表日期允许时间顺序反证；No与正文一致，引用覆盖双方，不把事件日期替代发布日期。"
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "legacy_current",
+      "runtime_status": "answered",
+      "strict": true,
+      "required_fact_expression": {
+        "answer": true
+      },
+      "required_fact_support": {
+        "answer": true
+      },
+      "direction_correct": true,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "source_error": false,
+      "object_error": false,
+      "condition_binding_error": false,
+      "numeric_reasoning_error": false,
+      "date_binding_error": false,
+      "review_reason": "两原文出处与已核对的发表日期允许时间顺序反证；No与正文一致，引用覆盖双方，不把事件日期替代发布日期。"
+    }
+  ],
+  "paired": [
+    {
+      "task_id": "SF-64b127ac198d",
+      "strict_A": false,
+      "strict_B": false,
+      "evidence_A": false,
+      "evidence_B": true,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "DD14",
+      "strict_A": false,
+      "strict_B": false,
+      "evidence_A": false,
+      "evidence_B": true,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "strict_A": null,
+      "strict_B": null,
+      "evidence_A": "unknown",
+      "evidence_B": "unknown",
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "U16",
+      "strict_A": false,
+      "strict_B": false,
+      "evidence_A": true,
+      "evidence_B": true,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "DD17",
+      "strict_A": false,
+      "strict_B": false,
+      "evidence_A": true,
+      "evidence_B": true,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "strict_A": false,
+      "strict_B": false,
+      "evidence_A": true,
+      "evidence_B": true,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "DD16",
+      "strict_A": false,
+      "strict_B": false,
+      "evidence_A": true,
+      "evidence_B": true,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "strict_A": true,
+      "strict_B": true,
+      "evidence_A": true,
+      "evidence_B": true,
+      "facts_gained": [],
+      "facts_lost": []
+    }
+  ],
+  "strict_gains": 0,
+  "strict_losses": 0,
+  "reviewer": {
+    "family": "GPT-6/Codex same session",
+    "exact_serving_variant": "unavailable",
+    "blind": false,
+    "independent": false,
+    "human_labels": 0,
+    "method": "manual actual source/claim inspection plus recomputed literal and Decimal checks; no automatic LLM-only category labels"
+  },
+  "conclusion": "Primary complete evidence 5/7 to7/7, strict remains1/7. Delivery gaps exist, but after filling them, extraction/branch/attribution errors remain. Do not enlarge context again. One existing source-rendering candidate only, no prompt tuning."
+}

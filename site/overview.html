@@ -29,6 +29,7 @@
 </ul></section>
 <section><h2>Evaluation and engineering decisions</h2>
 <p>The constructed benchmark contains Dev 47, Core 70, Security 16 and External 150 tasks. Only Dev is used for tuning. The Core method and ablation matrix must be frozen before the first formal run; the headline metric is reviewed Core Strict Task Success. That result is currently <strong>pending</strong>.</p>
+<p>External 150 questions and 300 historical answer positions have completed AI-assisted review, with 22 unresolved source references. Actual model provenance, original-source evidence and disagreements are retained. Independent human review is an optional future enhancement; these results are not human gold labels. Core remains Not Ready until corpus publication, index/access checks and the final environment, code, model and configuration freeze are complete.</p>
 <p>The showcase separates historical development experiments and an older 80-question holdout from the current benchmark. Model-assisted reviews are labelled as such and are not independent human annotations. Test counts describe engineering validation, not task accuracy.</p>
 <p>Earlier experiments motivated keeping reranking off by default, using rule-based follow-up context instead of an extra rewrite call, and reverting an ineffective topic-overlap check. These are historical decisions on specific task sets, not universal conclusions about those methods.</p></section>
 <section><h2>Current limitations</h2>

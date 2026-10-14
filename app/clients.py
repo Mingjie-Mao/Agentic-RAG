@@ -839,6 +839,12 @@ class Models:
         }
 
     def embed(self, texts: list[str]) -> list[list[float]]:
+        budget = current_budget()
+        # Frozen generation experiments explicitly forbid embedding. Preserve
+        # legacy transport accounting when the role has no zero-call cap.
+        if budget is not None and budget.state["limits"].get("embedding") == 0:
+            with budget.call("embedding"):
+                pass
         cfg = settings()
         result = self._post(
             "/api/embed",
@@ -863,6 +869,7 @@ class Models:
         _allow_facts: bool = True,
         repair_context: dict | None = None,
         verified_steps: list[dict] | None = None,
+        grounding_requirements: dict | None = None,
     ) -> tuple[GeneratedAnswer, dict]:
         """Generate a cited answer.
 
@@ -947,6 +954,15 @@ class Models:
                     "每项包含 item_index（从1开始）和 source_ids；没有依据的那项 source_ids 为空。"
                     "同一段原文可以支持多项；不能用第一项的资料代替第二项。只在每项都有依据时选 answered。"
                 )
+        if grounding_requirements is not None:
+            system += (
+                "逐项执行 grounding_requirements 检查，但该清单不是事实或支持判定。"
+                "每条claim的source_ids须覆盖它所说的全部必要事实；数值比较同时引用观测值和阈值。"
+                "按真实条件引用对应分支，不得用相反分支；负责人必须引用具体姓名的依据。"
+                "日期必须有原文依据，区分发布日期、事件日和生效范围；只适用一个月不能推广到整个季度。"
+                "指定来源的比较逐一引用各方相关事实，不能用无关对象或另一来源代替。"
+                "保留说话者、if条件和可能性。缺必要证据就说明不足，不能删掉问题限定或伪造支持。"
+            )
         result = self._chat(
             {
                 "model": cfg.chat_model,
@@ -960,6 +976,8 @@ class Models:
                         "content": json.dumps(
                             {
                                 "question": question,
+                                **({"grounding_requirements": grounding_requirements}
+                                   if grounding_requirements is not None else {}),
                                 **({"repair": repair_context} if repair_context else {}),
                                 **({"verified_intermediate_results": verified_steps,
                                     "verified_note": "以上中间结果已由程序逐字核对原文；回答时仍须引用 evidence 中对应原文，不得只引用本说明。"}
@@ -1401,6 +1419,8 @@ class Models:
                 **({"question_contract": question_contract(question)} if cfg.answer_contract_enabled else {}),
                 "claims": [
                     {"index": number, "text": claim["text"],
+                     **({"bound_sources": claim["bound_sources"]}
+                        if structured and "bound_sources" in claim else {}),
                      **({"sources": claim["sources"]} if claim.get("sources") else {})}
                     for number, claim in enumerate(claims, 1)
                 ],
@@ -1434,6 +1454,9 @@ class Models:
                                 "无法分解的复杂嵌套问题填 false。unknown 可以不引用。"
                                 "不要给总体结论，系统按逻辑组合。只输出指定 JSON。"
                                 "claims.sources 是服务器从已校验引用复制的来源标签，可用于识别是哪份报道；不能据标签推断未写出的事实。"
+                                "若给出 bound_sources，只用该条断言绑定的引文核对命题方向，不能借用其他断言的引文；"
+                                "断言正文不是已证明的事实。引文不支持断言、观点归属不清或缺少所问属性时填 unknown。"
+                                "数值比较需要观测值和阈值，日期比较要区分事件时间与报道时间。"
                             )
                             if structured
                             else (

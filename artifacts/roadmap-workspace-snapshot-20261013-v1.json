@@ -1,0 +1,15 @@
+{
+  "version": "roadmap-workspace-snapshot-v1",
+  "date": "2026-10-13",
+  "head": "5dfd1bbafdeda846d5fbd0d3a8c35c942e6256b5",
+  "files": 1826,
+  "snapshot_manifest_sha256": "d378a7584230ff03d24ae5344276608fb18f9e921acb89af28a9efdf614e16e0",
+  "private_snapshot": ".runtime/roadmap-0-2-20261013/v1/snapshot-before",
+  "modified_or_untracked_entries": 82,
+  "original_text_scan": {
+    "basis": "exact current Dev external question and 120-character source-prefix checks on nonignored changed text files; bounded scan, not a complete privacy proof",
+    "matches": []
+  },
+  "historical_artifacts_policy": "preserve_all_existing_files",
+  "commit_status": "local_recoverable_snapshot_not_git_commit"
+}

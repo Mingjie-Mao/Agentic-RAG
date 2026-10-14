@@ -323,3 +323,505 @@ def test_history_change_predicate_is_computed_only_after_complete_chain(changed)
     assert answer.answerable
     assert usage["task_contract"]["condition"]["result"] == ("true" if changed else "false")
     assert ("变为" in answer.claims[-1].text) == changed
+
+
+class RecordingOrdinaryModel:
+    def __init__(self):
+        self.calls = []
+
+    def generate(self, question, evidence, **options):
+        from app.clients import Claim, GeneratedAnswer
+        self.calls.append((question, evidence, options))
+        return GeneratedAnswer(answerable=True, claims=[Claim(
+            text=evidence[0]['text'], evidence_ids=[evidence[0]['id']],
+            quotes=[evidence[0]['text']])]), {'prompt_tokens': 3}
+
+
+@pytest.mark.parametrize('separator', ['？', '?', ';', '；'])
+def test_ordinary_literal_policy_renders_every_explicit_numeric_ask(separator):
+    q = f'日志服务的超时阈值是多少秒{separator}通知服务的超时阈值是多少秒？'
+    evidence = [row('日志服务的超时阈值为9秒。', 'log'),
+                row('通知服务的超时阈值为12秒。', 'notice')]
+    evidence[1]['id'] = 'E2'
+    answer, usage = contract_generate(NoGeneration(), q, evidence, ordinary_policy='literal_slots')
+    assert answer.answerable and len(answer.claims) == 2
+    assert [c.evidence_ids for c in answer.claims] == [['E1'], ['E2']]
+    assert [c.quotes for c in answer.claims] == [[r['text'][:-1]] for r in evidence]
+    assert all(s == 'supported' for s in usage['task_contract']['slot_states'].values())
+    assert usage['task_contract']['status'] == 'ordinary_literal_complete'
+    assert validate_claims(answer, evidence)[1] == 'answered'
+
+
+@pytest.mark.parametrize('second', [None, '通知服务的超时阈值为12秒。通知服务的超时阈值为14秒。',
+                                    '其他服务的超时阈值为12秒。'])
+def test_ordinary_literal_policy_refuses_missing_conflicting_wrong_subject_slots(second):
+    q = '日志服务的超时阈值是多少秒？通知服务的超时阈值是多少秒？'
+    evidence = [row('日志服务的超时阈值为9秒。')]
+    if second:
+        evidence.append(row(second, 'other'))
+    answer, usage = contract_generate(NoGeneration(), q, evidence, ordinary_policy='literal_slots')
+    assert not answer.answerable and not answer.claims
+    assert usage['task_contract']['status'] == 'ordinary_slot_incomplete'
+    assert usage['task_contract']['slot_states']['slot_2'] == 'unknown'
+    assert usage['task_contract']['slot_reasons']['slot_2']
+
+
+@pytest.mark.parametrize('text', [
+    '日志服务讨论通知服务的超时阈值为9秒。',
+    '例如日志服务的超时阈值为9秒。', '日志服务的超时阈值为9秒（示例）。',
+    '假设日志服务的超时阈值为9秒。', '日志服务的超时阈值暂定为9秒。',
+    '日志服务的超时阈值不是9秒。', '日志服务的超时阈值未设置为9秒。',
+    '日志服务的超时阈值为9秒，待确认。', '历史记录：日志服务的超时阈值为9秒。',
+    '# 日志服务\n超时阈值为9秒（历史值）。',
+])
+def test_ordinary_literal_policy_rejects_unverified_predicates(text):
+    answer, usage = contract_generate(NoGeneration(), '日志服务的超时阈值是多少秒？',
+                                      [row(text)], ordinary_policy='literal_slots')
+    assert not answer.answerable and not answer.claims
+    assert usage['task_contract']['slot_states'] == {'slot_1': 'unknown'}
+
+
+def test_ordinary_literal_policy_does_not_claim_undelimited_multi_subject_completion():
+    q = '日志服务的超时阈值和通知服务的超时阈值是多少秒？'
+    answer, usage = contract_generate(NoGeneration(), q, [row('日志服务的超时阈值为9秒。')],
+                                      ordinary_policy='literal_slots')
+    assert not answer.answerable and not answer.claims
+    assert set(usage['task_contract']['slot_states'].values()) == {'unknown'}
+
+
+@pytest.mark.parametrize('query,text,value', [
+    ('日志服务的状态是什么？', '日志服务的状态为已启用。', '已启用'),
+    ('日志服务的生效日期是什么？', '日志服务的生效日期为2026年5月1日。', '2026-05-01'),
+])
+def test_ordinary_literal_policy_accepts_complete_enum_and_date_predicates(query, text, value):
+    answer, _ = contract_generate(NoGeneration(), query, [row(text)], ordinary_policy='literal_slots')
+    assert answer.answerable and value in answer.claims[0].text
+    assert answer.claims[0].quotes == [text[:-1]]
+
+
+@pytest.mark.parametrize('query,text', [
+    ('日志服务的状态是什么？', '日志服务的状态未启用。'),
+    ('日志服务的状态是什么？', '日志服务的状态为已启用（待确认）。'),
+    ('日志服务的生效日期是什么？', '日志服务的生效日期暂定为2026年5月1日。'),
+    ('日志服务的生效日期是什么？', '日志服务的生效日期原为2026年5月1日。'),
+    ('日志服务的生效日期是什么？', '# 日志服务\n生效日期为2026年5月1日（旧版）。'),
+])
+def test_ordinary_literal_policy_does_not_turn_qualified_date_enum_into_current_fact(query, text):
+    answer, _ = contract_generate(NoGeneration(), query, [row(text)], ordinary_policy='literal_slots')
+    assert not answer.answerable and not answer.claims
+
+
+@pytest.mark.parametrize('quality', [False, True])
+def test_ordinary_mixed_requests_use_one_complete_checklist_and_unknown_support(monkeypatch, quality):
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', quality)
+    q = '日志服务的超时阈值是多少秒？通知服务由谁负责？日志服务由谁维护？'
+    evidence = [row('日志服务的超时阈值为9秒。通知服务由值班负责。日志服务由运营维护。')]
+    model = RecordingOrdinaryModel()
+    recovery_calls = []
+    def recover(models, question, rows, *, options):
+        recovery_calls.append(question)
+        return models.generate(question, rows, **options)
+    monkeypatch.setattr('app.answer_quality.recover_answer', recover)
+    answer, usage = contract_generate(model, q, evidence, ordinary_policy='literal_slots',
+                                      options={'max_output_tokens': 321, 'check_conflict': False})
+    assert answer.answerable and len(model.calls) == 1
+    assert len(recovery_calls) == int(quality)
+    assert model.calls[0][2] == {'max_output_tokens': 321, 'check_conflict': False,
+        'acceptance_items_override': ['日志服务的超时阈值是多少秒', '通知服务由谁负责', '日志服务由谁维护']}
+    assert set(usage['task_contract']['slot_states'].values()) == {'unknown'}
+    assert usage['task_contract']['status'] == 'model_checklist_only'
+
+
+def test_ordinary_literal_policy_never_truncates_explicit_asks_to_claim_limit():
+    q = '？'.join(f'通知{i}服务的超时阈值是多少秒' for i in range(9)) + '？'
+    evidence = [row(f'通知{i}服务的超时阈值为9秒。', str(i)) for i in range(9)]
+    answer, usage = contract_generate(NoGeneration(), q, evidence, ordinary_policy='literal_slots')
+    assert not answer.answerable and len(usage['task_contract']['slot_states']) == 9
+
+
+def test_invalid_ordinary_policy_fails_before_any_generation():
+    with pytest.raises(ValueError, match='ordinary_policy'):
+        contract_generate(NoGeneration(), '日志服务由谁负责？', [], ordinary_policy='guess')
+
+
+def test_legacy_ordinary_generation_keeps_existing_parser_and_options(monkeypatch):
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', False)
+    q = '日志服务的超时阈值是多少秒？通知服务的超时阈值是多少秒？'
+    evidence = [row('日志服务的超时阈值为9秒。')]
+    default, explicit = RecordingOrdinaryModel(), RecordingOrdinaryModel()
+    expected = contract_generate(default, q, evidence, options={'max_output_tokens': 321})
+    actual = contract_generate(explicit, q, evidence, ordinary_policy='legacy', options={'max_output_tokens': 321})
+    assert actual == expected and default.calls == explicit.calls
+    assert len(build_contract(q).slots) == 1
+
+
+def test_ordinary_policy_preserves_conditional_gates_and_earlier_history_versions():
+    q = '先查RPO，如果它超过30分钟，再给出回滚超时。'
+    evidence = [row('RPO为20分钟。回滚超时为90秒。')]
+    assert contract_generate(NoGeneration(), q, evidence, ordinary_policy='literal_slots') == contract_generate(NoGeneration(), q, evidence)
+    unknown = '如果恢复状态满足正式验收标准再给出超时'
+    assert not contract_generate(NoGeneration(), unknown, evidence, ordinary_policy='literal_slots')[0].answerable
+    history = build_contract('最早版本的操作日志保留多久？')
+    history.version_chain_complete, history.version_ids = True, ['old', 'new']
+    versions = [row('操作日志保留3年。', 'a', 'old'), row('操作日志保留5年。', 'b', 'new')]
+    versions[1]['id'] = 'E2'
+    assert contract_generate(NoGeneration(), history.question, versions, contract=history, ordinary_policy='literal_slots') == contract_generate(NoGeneration(), history.question, versions, contract=history)
+
+
+@pytest.mark.parametrize('ambiguous', [
+    '日志服务的超时阈值为10秒。日志服务的超时阈值为11秒。',
+    '日志服务的超时阈值为10秒或11秒。',
+    '日志服务的超时阈值未设置为10秒。',
+])
+def test_ordinary_literal_policy_does_not_hide_an_unbound_conflicting_version(ambiguous):
+    evidence = [row('日志服务的超时阈值为9秒。', 'safe', 'one'),
+                row(ambiguous, 'conflict', 'two')]
+    answer, _ = contract_generate(NoGeneration(), '日志服务的超时阈值是多少秒？', evidence,
+                                  ordinary_policy='literal_slots')
+    assert not answer.answerable and not answer.claims
+
+
+def test_ordinary_literal_policy_checks_requested_unit_dimension():
+    answer, _ = contract_generate(NoGeneration(), '日志服务的超时阈值是多少秒？',
+                                  [row('日志服务的超时阈值为9年。')], ordinary_policy='literal_slots')
+    assert not answer.answerable
+
+
+def test_ordinary_literal_policy_does_not_drop_safe_quotes_in_a_multi_fact_chunk():
+    text = '日志服务的超时阈值为9秒。通知服务的超时阈值为12秒。'
+    answer, _ = contract_generate(NoGeneration(),
+        '日志服务的超时阈值是多少秒？通知服务的超时阈值是多少秒？', [row(text)],
+        ordinary_policy='literal_slots')
+    assert answer.answerable and len(answer.claims) == 2
+    assert [c.quotes for c in answer.claims] == [['日志服务的超时阈值为9秒'], ['通知服务的超时阈值为12秒']]
+
+
+@pytest.mark.parametrize('policy', ['', None, [], {}])
+def test_invalid_ordinary_policy_types_fail_explicitly(policy):
+    with pytest.raises(ValueError, match='ordinary_policy'):
+        contract_generate(NoGeneration(), '日志服务的状态是什么？', [], ordinary_policy=policy)
+
+
+def test_ordinary_text_checklist_keeps_more_than_four_explicit_requests(monkeypatch):
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', False)
+    queries = [f'通知{i}服务由谁负责' for i in range(6)]
+    model = RecordingOrdinaryModel()
+    _, usage = contract_generate(model, '；'.join(queries), [row('通知服务由值班负责。')],
+                                ordinary_policy='literal_slots')
+    assert len(model.calls) == 1
+    assert model.calls[0][2]['acceptance_items_override'] == queries
+    assert len(usage['task_contract']['slot_states']) == 6
+    assert set(usage['task_contract']['slot_states'].values()) == {'unknown'}
+
+
+@pytest.mark.parametrize('separator', ['，', ',', '、', '并请给出'])
+def test_ordinary_literal_policy_refuses_unrecognized_multiask_boundaries(separator):
+    q = f'日志服务的超时阈值{separator}通知服务的超时阈值是多少秒？'
+    evidence = [row('日志服务的超时阈值为9秒。', 'log'),
+                row('通知服务的超时阈值为12秒。', 'notice')]
+    answer, usage = contract_generate(NoGeneration(), q, evidence, ordinary_policy='literal_slots')
+    assert not answer.answerable and not answer.claims
+    assert usage['task_contract']['status'] == 'ordinary_slot_incomplete'
+    assert set(usage['task_contract']['slot_states'].values()) == {'unknown'}
+
+
+@pytest.mark.parametrize('qualifier', ['在2026年', '在生产环境下', '在新租户中', '发生故障后'])
+def test_ordinary_literal_policy_refuses_unproven_question_constraints(qualifier):
+    q = f'日志服务的超时阈值{qualifier}是多少秒？'
+    evidence = [row('日志服务的超时阈值为9秒。', title='2026年生产环境新租户配置')]
+    answer, usage = contract_generate(NoGeneration(), q, evidence, ordinary_policy='literal_slots')
+    assert not answer.answerable and not answer.claims
+    assert usage['task_contract']['status'] == 'ordinary_slot_incomplete'
+    assert set(usage['task_contract']['slot_states'].values()) == {'unknown'}
+
+
+@pytest.mark.parametrize('mixed', [False, True])
+def test_ordinary_model_checklist_preserves_nine_explicit_requests(monkeypatch, mixed):
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', False)
+    queries = [f'通知{i}服务由谁负责' for i in range(9)]
+    if mixed:
+        queries[0] = '日志服务的超时阈值是多少秒'
+    model = RecordingOrdinaryModel()
+    _, usage = contract_generate(model, '？'.join(queries) + '？',
+        [row('日志服务的超时阈值为9秒。通知服务由值班负责。')], ordinary_policy='literal_slots')
+    assert len(model.calls) == 1
+    assert model.calls[0][2]['acceptance_items_override'] == queries
+    assert len(usage['task_contract']['slot_states']) == 9
+    assert set(usage['task_contract']['slot_states'].values()) == {'unknown'}
+    assert usage['task_contract']['status'] == 'model_checklist_only'
+
+
+@pytest.mark.parametrize('last_value', ['11秒', '11年'])
+def test_ordinary_literal_policy_preserves_conflicting_versions_split_across_rows(last_value):
+    evidence = [row('日志服务的超时阈值为9秒。', 'safe', 'v1'),
+                row('日志服务的超时阈值为10秒。', 'conflict-a', 'v2'),
+                row(f'日志服务的超时阈值为{last_value}。', 'conflict-b', 'v2')]
+    answer, usage = contract_generate(NoGeneration(), '日志服务的超时阈值是多少秒？',
+                                      evidence, ordinary_policy='literal_slots')
+    assert not answer.answerable and not answer.claims
+    assert usage['task_contract']['slot_states'] == {'slot_1': 'unknown'}
+    assert usage['task_contract']['status'] == 'ordinary_slot_incomplete'
+
+
+@pytest.mark.parametrize('unbound_text', [
+    '超时阈值为10秒或11秒。', '超时阈值不是10秒。',
+])
+def test_ordinary_literal_policy_refuses_title_scoped_discarded_ambiguous_rows(unbound_text):
+    evidence = [row('日志服务的超时阈值为9秒。', 'safe', 'v1'),
+                row(unbound_text, 'unbound', 'v2', title='日志服务')]
+    answer, usage = contract_generate(NoGeneration(), '日志服务的超时阈值是多少秒？',
+                                      evidence, ordinary_policy='literal_slots')
+    assert not answer.answerable and not answer.claims
+    assert usage['task_contract']['slot_states'] == {'slot_1': 'unknown'}
+    assert usage['task_contract']['status'] == 'ordinary_slot_incomplete'
+
+
+@pytest.mark.parametrize('question', [
+    '日志服务的超时阈值和通知服务的超时阈值是多少秒？',
+    '日志服务的超时阈值是多少秒，并说明通知服务在生产环境的超时设置？',
+    '日志服务的超时阈值是多少秒。2026年通知服务在测试环境的超时设置是什么？',
+    '日志服务在生产环境的超时阈值是多少秒？',
+])
+def test_literal_fallback_preserves_whole_uncertain_request_in_one_checklist(monkeypatch, question):
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', False)
+    evidence = [row('日志服务的超时阈值为9秒。')]
+    model = RecordingOrdinaryModel()
+    answer, usage = contract_generate(model, question, evidence, ordinary_policy='literal_fallback',
+        options={'max_output_tokens': 321, 'acceptance_items_override': ['保留调用者的全部要求']})
+    assert answer.answerable and len(model.calls) == 1
+    actual_question, actual_evidence, options = model.calls[0]
+    assert actual_question == question and actual_evidence == evidence
+    assert question in options['acceptance_items_override']
+    assert '保留调用者的全部要求' in options['acceptance_items_override']
+    assert options['max_output_tokens'] == 321
+    trace = usage['task_contract']
+    assert trace['status'] == 'model_checklist_only'
+    assert trace['literal_status'] == 'ordinary_slot_incomplete'
+    assert set(trace['slot_states'].values()) == {'unknown'}
+    assert set(trace['slot_reasons'].values()) == {'ordinary_scope_unresolved'}
+    assert not trace['bound_values']
+
+
+@pytest.mark.parametrize('question,text', [
+    ('日志服务的超时阈值是多少秒？', '例如日志服务的超时阈值为9秒。'),
+    ('日志服务的超时阈值是多少秒？', '日志服务的超时阈值为9秒，待确认。'),
+    ('日志服务的超时阈值是多少秒？', '日志服务的超时阈值暂定为9秒。'),
+    ('日志服务的状态是什么？', '日志服务的状态未启用。'),
+    ('日志服务的生效日期是什么？', '日志服务的生效日期原为2026年5月1日。'),
+])
+def test_literal_fallback_retains_unknown_source_reasons(monkeypatch, question, text):
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', False)
+    evidence = [row(text)]
+    _, frozen = contract_generate(NoGeneration(), question, evidence, ordinary_policy='literal_slots')
+    model = RecordingOrdinaryModel()
+    answer, usage = contract_generate(model, question, evidence, ordinary_policy='literal_fallback')
+    assert answer.answerable and len(model.calls) == 1
+    assert usage['task_contract']['slot_states'] == frozen['task_contract']['slot_states']
+    assert usage['task_contract']['slot_reasons'] == frozen['task_contract']['slot_reasons']
+    assert not usage['task_contract']['bound_values']
+    assert usage['task_contract']['status'] == 'model_checklist_only'
+
+
+@pytest.mark.parametrize('second', [None, '通知服务的超时阈值为12秒或14秒。',
+    '通知服务的超时阈值为12秒。通知服务的超时阈值为14秒。'])
+def test_literal_fallback_delegates_all_slots_when_second_value_fails(monkeypatch, second):
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', False)
+    question = '日志服务的超时阈值是多少秒？通知服务的超时阈值是多少秒？'
+    evidence = [row('日志服务的超时阈值为9秒。')]
+    if second:
+        evidence.append(row(second, 'second'))
+    _, frozen = contract_generate(NoGeneration(), question, evidence, ordinary_policy='literal_slots')
+    model = RecordingOrdinaryModel()
+    answer, usage = contract_generate(model, question, evidence, ordinary_policy='literal_fallback')
+    assert answer.answerable and len(model.calls) == 1
+    assert model.calls[0][2]['acceptance_items_override'] == [question,
+        '日志服务的超时阈值是多少秒', '通知服务的超时阈值是多少秒']
+    assert usage['task_contract']['slot_states'] == {'slot_1': 'unknown', 'slot_2': 'unknown'}
+    assert usage['task_contract']['slot_reasons'] == frozen['task_contract']['slot_reasons']
+    assert not usage['task_contract']['bound_values']
+
+
+def test_literal_fallback_delegates_nine_literals_without_truncation(monkeypatch):
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', False)
+    queries = [f'通知{i}服务的超时阈值是多少秒' for i in range(9)]
+    question = '？'.join(queries) + '？'
+    evidence = [row(f'通知{i}服务的超时阈值为9秒。', str(i)) for i in range(9)]
+    model = RecordingOrdinaryModel()
+    _, usage = contract_generate(model, question, evidence, ordinary_policy='literal_fallback')
+    assert len(model.calls) == 1
+    assert model.calls[0][2]['acceptance_items_override'] == [question, *queries]
+    assert len(usage['task_contract']['slot_states']) == 9
+    assert set(usage['task_contract']['slot_reasons'].values()) == {'ordinary_slot_budget'}
+    assert set(usage['task_contract']['slot_states'].values()) == {'unknown'}
+
+
+@pytest.mark.parametrize('question,text', [
+    ('日志服务的超时阈值是多少秒？', '日志服务的超时阈值为9秒。'),
+    ('日志服务的状态是什么？', '日志服务的状态为已启用。'),
+    ('日志服务的生效日期是什么？', '日志服务的生效日期为2026年5月1日。'),
+    ('日志服务的超时阈值是多少秒？通知服务的超时阈值是多少秒？',
+     '日志服务的超时阈值为9秒。通知服务的超时阈值为12秒。'),
+])
+def test_literal_fallback_preserves_safe_literal_fast_path(question, text):
+    evidence = [row(text)]
+    assert contract_generate(NoGeneration(), question, evidence, ordinary_policy='literal_fallback') == (
+        contract_generate(NoGeneration(), question, evidence, ordinary_policy='literal_slots'))
+
+
+@pytest.mark.parametrize('question', [
+    '通知服务由谁负责？',
+    '日志服务的超时阈值是多少秒？通知服务由谁负责？',
+])
+def test_literal_fallback_text_and_mixed_asks_use_model_without_rule_proof(monkeypatch, question):
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', False)
+    evidence = [row('日志服务的超时阈值为9秒。通知服务由值班负责。')]
+    model = RecordingOrdinaryModel()
+    _, usage = contract_generate(model, question, evidence, ordinary_policy='literal_fallback')
+    assert len(model.calls) == 1
+    assert question in model.calls[0][2]['acceptance_items_override']
+    assert usage['task_contract']['status'] == 'model_checklist_only'
+    assert set(usage['task_contract']['slot_states'].values()) == {'unknown'}
+    assert not usage['task_contract']['bound_values']
+
+
+@pytest.mark.parametrize('question', [
+    '先查RPO，如果它超过30分钟，再给出回滚超时。',
+    '如果RPO足够低，再给出回滚超时。',
+    '星河基础版和专业版的响应时限相差多少？',
+    '最早版本的RPO是多少分钟？',
+])
+def test_literal_fallback_preserves_nonordinary_contracts(question):
+    evidence = [row('RPO为20分钟。回滚超时为90秒。基础版首次响应为90分钟。专业版首次响应为60分钟。')]
+    assert contract_generate(NoGeneration(), question, evidence, ordinary_policy='literal_fallback') == (
+        contract_generate(NoGeneration(), question, evidence))
+
+
+@pytest.mark.parametrize('quality', [False, True])
+def test_literal_fallback_model_refusal_does_not_start_another_attempt(monkeypatch, quality):
+    from app.clients import GeneratedAnswer
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', quality)
+
+    class RefusingModel(RecordingOrdinaryModel):
+        def generate(self, question, evidence, **options):
+            self.calls.append((question, evidence, options))
+            return GeneratedAnswer(answerable=False, claims=[]), {'prompt_tokens': 7}
+
+    model = RefusingModel()
+    answer, usage = contract_generate(model, '日志服务的超时阈值是多少秒？',
+        [row('日志服务的超时阈值暂定为9秒。')], ordinary_policy='literal_fallback')
+    assert not answer.answerable and not answer.claims
+    assert len(model.calls) == 1 and usage['prompt_tokens'] == 7
+    assert usage['task_contract']['slot_states'] == {'slot_1': 'unknown'}
+    if quality:
+        assert usage['answer_recovery']['repair_attempts'] == 0
+
+
+def test_literal_fallback_reuses_existing_single_repair_path(monkeypatch):
+    from app.clients import Claim, GeneratedAnswer
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', True)
+    evidence = [row('日志服务的超时阈值暂定为9秒。')]
+
+    class RepairModel(RecordingOrdinaryModel):
+        def generate(self, question, evidence, **options):
+            self.calls.append((question, evidence, options))
+            text = '日志服务的超时阈值为99秒。' if len(self.calls) == 1 else evidence[0]['text']
+            return GeneratedAnswer(answerable=True, claims=[Claim(text=text,
+                evidence_ids=['E1'], quotes=[evidence[0]['text']])]), {'prompt_tokens': 3}
+
+    model = RepairModel()
+    answer, usage = contract_generate(model, '日志服务的超时阈值是多少秒？', evidence,
+        ordinary_policy='literal_fallback')
+    assert answer.answerable and len(model.calls) == 2
+    assert usage['answer_recovery']['repair_attempts'] == 1
+    assert not usage['quality_validation_failed']
+    assert usage['prompt_tokens'] == 6
+    assert all(call[0] == '日志服务的超时阈值是多少秒？' for call in model.calls)
+    assert model.calls[0][2]['acceptance_items_override'] == model.calls[1][2]['acceptance_items_override']
+    assert usage['task_contract']['slot_states'] == {'slot_1': 'unknown'}
+
+
+@pytest.mark.parametrize('quality', [False, True])
+def test_literal_fallback_preserves_cumulative_model_budget(monkeypatch, quality):
+    from app.execution_budget import BudgetExceeded, ExecutionBudget, bounded_model, use_budget
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', quality)
+    monkeypatch.setattr(settings(), 'agent_generation_max_calls', 1)
+
+    class BudgetedModel(RecordingOrdinaryModel):
+        @bounded_model('generation')
+        def generate(self, *args, **kwargs):
+            return super().generate(*args, **kwargs)
+
+    question = '日志服务的超时阈值是多少秒？'
+    evidence = [row('日志服务的超时阈值暂定为9秒。')]
+    budget = ExecutionBudget(settings())
+    model = BudgetedModel()
+    with use_budget(budget):
+        contract_generate(model, question, evidence, ordinary_policy='literal_fallback')
+    saved = budget.snapshot()
+    resumed = ExecutionBudget(settings(), saved)
+    with use_budget(resumed), pytest.raises(BudgetExceeded, match='generation_call_budget_exhausted'):
+        contract_generate(model, question, evidence, ordinary_policy='literal_fallback')
+    assert len(model.calls) == 1
+    assert resumed.snapshot()['calls']['generation']['attempted'] == 1
+
+
+@pytest.mark.parametrize('quality', [False, True])
+def test_literal_fallback_propagates_model_failure_without_new_generation(monkeypatch, quality):
+    from app.clients import DependencyError
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', quality)
+
+    class FailingModel(RecordingOrdinaryModel):
+        def generate(self, question, evidence, **options):
+            self.calls.append((question, evidence, options))
+            raise DependencyError('model unavailable', retryable=False)
+
+    model = FailingModel()
+    with pytest.raises(DependencyError, match='model unavailable'):
+        contract_generate(model, '日志服务的超时阈值是多少秒？',
+            [row('日志服务的超时阈值暂定为9秒。')], ordinary_policy='literal_fallback')
+    assert len(model.calls) == 1
+
+
+@pytest.mark.parametrize('mixed', [False, True])
+def test_literal_fallback_delegates_unknown_optional_requested_slots(monkeypatch, mixed):
+    from app.clients import GeneratedAnswer
+    monkeypatch.setattr(settings(), 'answer_quality_enabled', False)
+    question = ('日志服务的超时阈值是多少秒以及通知服务的超时阈值是多少秒？'
+                if mixed else '通知服务的超时阈值是多少秒？')
+    contract = build_contract(question)
+    contract.slots[-1].required = False
+    evidence = [row('日志服务的超时阈值为9秒。')] if mixed else []
+
+    class RefusingModel(RecordingOrdinaryModel):
+        def generate(self, question, evidence, **options):
+            self.calls.append((question, evidence, options))
+            return GeneratedAnswer(answerable=False, claims=[]), {'prompt_tokens': 7}
+
+    frozen, frozen_usage = contract_generate(NoGeneration(), question, evidence, contract=contract,
+        ordinary_policy='literal_slots')
+    assert frozen.answerable and len(frozen.claims) == int(mixed)
+    assert frozen_usage['task_contract']['status'] == 'ordinary_literal_complete'
+    model = RefusingModel()
+    answer, usage = contract_generate(model, question, evidence, contract=contract,
+        ordinary_policy='literal_fallback')
+    assert len(model.calls) == 1
+    assert not answer.answerable and not answer.claims
+    assert model.calls[0][2]['acceptance_items_override'] == [question,
+        *(slot.query for slot in contract.slots)]
+    assert usage['task_contract']['status'] == 'model_checklist_only'
+    assert usage['task_contract']['literal_status'] == 'ordinary_slot_incomplete'
+    assert set(usage['task_contract']['slot_states'].values()) == {'unknown'}
+    assert usage['task_contract']['slot_reasons'] == frozen_usage['task_contract']['slot_reasons']
+    assert not usage['task_contract']['bound_values']
+
+
+def test_literal_fallback_verified_optional_slot_keeps_zero_call_fast_path():
+    question = '通知服务的超时阈值是多少秒？'
+    contract = build_contract(question)
+    contract.slots[0].required = False
+    evidence = [row('通知服务的超时阈值为12秒。')]
+    answer, usage = contract_generate(NoGeneration(), question, evidence, contract=contract,
+        ordinary_policy='literal_fallback')
+    assert answer.answerable and len(answer.claims) == 1
+    assert usage['task_contract']['status'] == 'ordinary_literal_complete'
+    assert usage['task_contract']['slot_states'] == {'slot_1': 'supported'}

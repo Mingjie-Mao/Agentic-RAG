@@ -77,6 +77,26 @@ def inputs():
     for path in [ROOT / "pyproject.toml", *ROOT.glob("requirements*.lock")]:
         files[path.relative_to(ROOT).as_posix()] = sha(path)
     suite = json.loads(TASKS.read_text())
+    if suite.get('evaluation_protocol') == 'enterprise-benchmark-v1':
+        from scripts.benchmark_package_scoring import EVALUATION_POLICY, SCORING_RULES
+        files[SCORING_RULES] = sha(ROOT / SCORING_RULES)
+        policy_path = ROOT / EVALUATION_POLICY
+        if policy_path.exists():
+            files[EVALUATION_POLICY] = sha(policy_path)
+            policy = json.loads(policy_path.read_text())
+            for key in ('external_review_path', 'external_summary_path'):
+                path = ROOT / policy[key]
+                if path.exists():
+                    files[path.relative_to(ROOT).as_posix()] = sha(path)
+            summary_path = ROOT / policy['external_summary_path']
+            if summary_path.exists():
+                # The snapshot worker repeats the audit gate. Carry its complete
+                # local receipt chain, not just a summary pointing outside it.
+                for name, expected in json.loads(summary_path.read_text()).get('local_receipts', {}).items():
+                    receipt = ROOT / name
+                    if not receipt.is_file() or sha(receipt) != expected:
+                        raise ValueError('External AI audit receipt changed before freeze')
+                    files[name] = expected
     for key in (
         "review_packet",
         "reviewed_packet",
@@ -442,6 +462,15 @@ def main():
         matrix = method_matrix(suite)
         if suite["split"] != "dev":
             require_task_review(suite, spec, ROOT)
+        if suite['split'] == 'core':
+            from scripts.benchmark_package import external_ai_review_readiness
+            from scripts.benchmark_package_scoring import EVALUATION_POLICY, SCORING_RULES
+
+            policy = json.loads((ROOT / EVALUATION_POLICY).read_text())
+            gate = external_ai_review_readiness(policy, ROOT)
+            if (gate['blocking_reasons'] or policy['scoring_rules_sha256'] != sha(ROOT / SCORING_RULES)):
+                raise SystemExit('Core AI-assisted evaluation gate is not satisfied; '
+                                 + ', '.join(gate['blocking_reasons']))
     if args.freeze:
         if FREEZE.exists() and not args.refresh_dev_freeze:
             raise SystemExit("already frozen; the freeze is not rewritten")

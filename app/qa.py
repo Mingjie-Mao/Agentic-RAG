@@ -184,13 +184,26 @@ def answer_verdict(models, question, claims, status, *, facts=None, verified_ver
         ]
     try:
         cfg = settings()
+        from app.verdict import judgment_expression
+
+        inner_question, outer_not = (judgment_expression(question)
+                                     if cfg.verdict_protocol == "structured" else (question, False))
+        if cfg.verdict_protocol == "structured" and evidence:
+            by_chunk = {row["chunk_id"]: row for row in evidence}
+            verdict_claims = [{**claim, "bound_sources": [
+                {"quote": quote, "source": (by_chunk[ref].get("metadata") or {}).get("source"),
+                 "title": by_chunk[ref].get("title")}
+                for ref, quote in zip(claim["evidence_ids"], claim.get("quotes", []))
+                if ref in by_chunk and normalize_quote(quote)
+                and normalize_quote(quote) in normalize_quote(by_chunk[ref]["text"])
+            ]} for claim in verdict_claims]
         proof_groups = []
         if (cfg.answer_quality_enabled and evidence and cfg.verdict_protocol == "structured"
                 and cfg.verdict_span_mode == "constrained"):
             from app.answer_contract import verdict_proof_groups
-            proof_groups = verdict_proof_groups(question, evidence, claims)
+            proof_groups = verdict_proof_groups(inner_question, evidence, claims)
         verdict, usage = models.decide_verdict(
-            question, verdict_claims, **({"proof_groups": proof_groups} if proof_groups else {})
+            inner_question, verdict_claims, **({"proof_groups": proof_groups} if proof_groups else {})
         )
     except DependencyError as exc:
         return None, {
@@ -203,14 +216,17 @@ def answer_verdict(models, question, claims, status, *, facts=None, verified_ver
 
     if isinstance(verdict, StructuredVerdict):
         result = resolve_verdict(
-            verdict, question, claims, constrained=settings().verdict_span_mode == "constrained"
+            verdict, inner_question, claims, constrained=settings().verdict_span_mode == "constrained"
         )
         if settings().claim_consistency_enabled:
             from app.claim_consistency import reconcile_verdict
-            result = reconcile_verdict(question, claims, result)
+            result = reconcile_verdict(inner_question, claims, result)
         if settings().answer_quality_enabled and evidence:
             from app.answer_contract import bind_verdict_source_groups
-            result = bind_verdict_source_groups(question, result, evidence, claims)
+            result = bind_verdict_source_groups(inner_question, result, evidence, claims)
+        if outer_not:
+            from app.verdict import negate_verdict
+            result = negate_verdict(result)
         return result, usage
     index = verdict.claim_index if 1 <= verdict.claim_index <= len(claims) else None
     value = verdict.verdict if index or verdict.verdict == "unclear" else "unclear"

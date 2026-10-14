@@ -1,0 +1,1587 @@
+{
+  "version": "bound-citation-authored-contrasts-v1",
+  "label_author": "assistant",
+  "human_gold": false,
+  "purpose": "synthetic_component_contrasts_not_dev_accuracy",
+  "source_origin": "plain_public_synthetic_authored_sources",
+  "inference_status": "not_run",
+  "accuracy": null,
+  "scoring_rule": "Record mechanical block separately; only dispatched schema-valid audit rejection is semantic detection. No Dev or human accuracy claim.",
+  "source_identity": "synthetic_caller_owned_identity_not_verified_full_source_bytes",
+  "pairs": [
+    {
+      "contrast": "wrong_subject",
+      "faithful": {
+        "question": "Who approved filming?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-wrong_subject",
+            "document_id": "document-wrong_subject",
+            "version_id": "v1",
+            "source_sha256": "5ba84f5063b488f5c8394ae44ca67f7b0890ee6bb04631d4926963fe8953b08e",
+            "title": "Authored notice wrong_subject",
+            "text": "Ari approved filming.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari approved filming.",
+              "evidence_ids": [
+                "synthetic-wrong_subject"
+              ],
+              "quotes": [
+                "Ari approved filming."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-wrong_subject",
+              "document_id": "document-wrong_subject",
+              "version_id": "v1",
+              "source_sha256": "5ba84f5063b488f5c8394ae44ca67f7b0890ee6bb04631d4926963fe8953b08e",
+              "title": "Authored notice wrong_subject",
+              "text": "Ari approved filming.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "Who approved filming?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-wrong_subject",
+            "document_id": "document-wrong_subject",
+            "version_id": "v1",
+            "source_sha256": "5ba84f5063b488f5c8394ae44ca67f7b0890ee6bb04631d4926963fe8953b08e",
+            "title": "Authored notice wrong_subject",
+            "text": "Ari approved filming.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Bo approved filming.",
+              "evidence_ids": [
+                "synthetic-wrong_subject"
+              ],
+              "quotes": [
+                "Ari approved filming."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-wrong_subject",
+              "document_id": "document-wrong_subject",
+              "version_id": "v1",
+              "source_sha256": "5ba84f5063b488f5c8394ae44ca67f7b0890ee6bb04631d4926963fe8953b08e",
+              "title": "Authored notice wrong_subject",
+              "text": "Ari approved filming.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "wrong_value",
+      "faithful": {
+        "question": "What is the capacity?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-wrong_value",
+            "document_id": "document-wrong_value",
+            "version_id": "v1",
+            "source_sha256": "2adf5bd8c4bca000ae8d5a44832892a516ee82b7b45b510eb5b4c1d1a225d8b1",
+            "title": "Authored notice wrong_value",
+            "text": "Ari hall has capacity of 9 units.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari hall has capacity of 9 units.",
+              "evidence_ids": [
+                "synthetic-wrong_value"
+              ],
+              "quotes": [
+                "Ari hall has capacity of 9 units."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-wrong_value",
+              "document_id": "document-wrong_value",
+              "version_id": "v1",
+              "source_sha256": "2adf5bd8c4bca000ae8d5a44832892a516ee82b7b45b510eb5b4c1d1a225d8b1",
+              "title": "Authored notice wrong_value",
+              "text": "Ari hall has capacity of 9 units.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "What is the capacity?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-wrong_value",
+            "document_id": "document-wrong_value",
+            "version_id": "v1",
+            "source_sha256": "2adf5bd8c4bca000ae8d5a44832892a516ee82b7b45b510eb5b4c1d1a225d8b1",
+            "title": "Authored notice wrong_value",
+            "text": "Ari hall has capacity of 9 units.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari hall has capacity of 12 units.",
+              "evidence_ids": [
+                "synthetic-wrong_value"
+              ],
+              "quotes": [
+                "Ari hall has capacity of 9 units."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-wrong_value",
+              "document_id": "document-wrong_value",
+              "version_id": "v1",
+              "source_sha256": "2adf5bd8c4bca000ae8d5a44832892a516ee82b7b45b510eb5b4c1d1a225d8b1",
+              "title": "Authored notice wrong_value",
+              "text": "Ari hall has capacity of 9 units.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "mechanical_or_semantic"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "wrong_unit",
+      "faithful": {
+        "question": "What is the distance?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-wrong_unit",
+            "document_id": "document-wrong_unit",
+            "version_id": "v1",
+            "source_sha256": "7795fb246a830e1ccad850ff0149c0813b51307c1be5cb83a12a995108dd203e",
+            "title": "Authored notice wrong_unit",
+            "text": "Ari hall is 9 kilometers away.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari hall is 9 kilometers away.",
+              "evidence_ids": [
+                "synthetic-wrong_unit"
+              ],
+              "quotes": [
+                "Ari hall is 9 kilometers away."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-wrong_unit",
+              "document_id": "document-wrong_unit",
+              "version_id": "v1",
+              "source_sha256": "7795fb246a830e1ccad850ff0149c0813b51307c1be5cb83a12a995108dd203e",
+              "title": "Authored notice wrong_unit",
+              "text": "Ari hall is 9 kilometers away.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "What is the distance?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-wrong_unit",
+            "document_id": "document-wrong_unit",
+            "version_id": "v1",
+            "source_sha256": "7795fb246a830e1ccad850ff0149c0813b51307c1be5cb83a12a995108dd203e",
+            "title": "Authored notice wrong_unit",
+            "text": "Ari hall is 9 kilometers away.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari hall is 9 miles away.",
+              "evidence_ids": [
+                "synthetic-wrong_unit"
+              ],
+              "quotes": [
+                "Ari hall is 9 kilometers away."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-wrong_unit",
+              "document_id": "document-wrong_unit",
+              "version_id": "v1",
+              "source_sha256": "7795fb246a830e1ccad850ff0149c0813b51307c1be5cb83a12a995108dd203e",
+              "title": "Authored notice wrong_unit",
+              "text": "Ari hall is 9 kilometers away.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "mechanical_or_semantic"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "background",
+      "faithful": {
+        "question": "What does the notice establish about Ari?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-background",
+            "document_id": "document-background",
+            "version_id": "v1",
+            "source_sha256": "6e350021455f882a05e2c24e9b6992876a7b44aca8f167e846937dde4b0495dc",
+            "title": "Authored notice background",
+            "text": "Ari previously worked in theater.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari previously worked in theater.",
+              "evidence_ids": [
+                "synthetic-background"
+              ],
+              "quotes": [
+                "Ari previously worked in theater."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-background",
+              "document_id": "document-background",
+              "version_id": "v1",
+              "source_sha256": "6e350021455f882a05e2c24e9b6992876a7b44aca8f167e846937dde4b0495dc",
+              "title": "Authored notice background",
+              "text": "Ari previously worked in theater.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "What does the notice establish about Ari?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-background",
+            "document_id": "document-background",
+            "version_id": "v1",
+            "source_sha256": "6e350021455f882a05e2c24e9b6992876a7b44aca8f167e846937dde4b0495dc",
+            "title": "Authored notice background",
+            "text": "Ari previously worked in theater.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari approved the current film.",
+              "evidence_ids": [
+                "synthetic-background"
+              ],
+              "quotes": [
+                "Ari previously worked in theater."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-background",
+              "document_id": "document-background",
+              "version_id": "v1",
+              "source_sha256": "6e350021455f882a05e2c24e9b6992876a7b44aca8f167e846937dde4b0495dc",
+              "title": "Authored notice background",
+              "text": "Ari previously worked in theater.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "hypothetical_intent",
+      "faithful": {
+        "question": "What does the notice establish about Ari wanting a role?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-hypothetical_intent",
+            "document_id": "document-hypothetical_intent",
+            "version_id": "v1",
+            "source_sha256": "84636b4d8dbe8b893fd0371af4931563418650568262cb204d96a87326515c0e",
+            "title": "Authored notice hypothetical_intent",
+            "text": "If Ari wants a senior role, firm X is no longer an option.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "The notice makes a conditional statement about Ari wanting a senior role.",
+              "evidence_ids": [
+                "synthetic-hypothetical_intent"
+              ],
+              "quotes": [
+                "If Ari wants a senior role, firm X is no longer an option."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-hypothetical_intent",
+              "document_id": "document-hypothetical_intent",
+              "version_id": "v1",
+              "source_sha256": "84636b4d8dbe8b893fd0371af4931563418650568262cb204d96a87326515c0e",
+              "title": "Authored notice hypothetical_intent",
+              "text": "If Ari wants a senior role, firm X is no longer an option.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "What does the notice establish about Ari wanting a role?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-hypothetical_intent",
+            "document_id": "document-hypothetical_intent",
+            "version_id": "v1",
+            "source_sha256": "84636b4d8dbe8b893fd0371af4931563418650568262cb204d96a87326515c0e",
+            "title": "Authored notice hypothetical_intent",
+            "text": "If Ari wants a senior role, firm X is no longer an option.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari had no interest in a senior role.",
+              "evidence_ids": [
+                "synthetic-hypothetical_intent"
+              ],
+              "quotes": [
+                "If Ari wants a senior role, firm X is no longer an option."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-hypothetical_intent",
+              "document_id": "document-hypothetical_intent",
+              "version_id": "v1",
+              "source_sha256": "84636b4d8dbe8b893fd0371af4931563418650568262cb204d96a87326515c0e",
+              "title": "Authored notice hypothetical_intent",
+              "text": "If Ari wants a senior role, firm X is no longer an option.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "requesting_consent",
+      "faithful": {
+        "question": "What happened concerning consent?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-requesting_consent",
+            "document_id": "document-requesting_consent",
+            "version_id": "v1",
+            "source_sha256": "ab809f48d88393cedb0f71bf64973214ffa2c1571fc954bc31868c41dc450bd5",
+            "title": "Authored notice requesting_consent",
+            "text": "The producer asked Nora for filming consent.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "The producer asked Nora for filming consent.",
+              "evidence_ids": [
+                "synthetic-requesting_consent"
+              ],
+              "quotes": [
+                "The producer asked Nora for filming consent."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-requesting_consent",
+              "document_id": "document-requesting_consent",
+              "version_id": "v1",
+              "source_sha256": "ab809f48d88393cedb0f71bf64973214ffa2c1571fc954bc31868c41dc450bd5",
+              "title": "Authored notice requesting_consent",
+              "text": "The producer asked Nora for filming consent.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "What happened concerning consent?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-requesting_consent",
+            "document_id": "document-requesting_consent",
+            "version_id": "v1",
+            "source_sha256": "ab809f48d88393cedb0f71bf64973214ffa2c1571fc954bc31868c41dc450bd5",
+            "title": "Authored notice requesting_consent",
+            "text": "The producer asked Nora for filming consent.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Nora granted filming consent.",
+              "evidence_ids": [
+                "synthetic-requesting_consent"
+              ],
+              "quotes": [
+                "The producer asked Nora for filming consent."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-requesting_consent",
+              "document_id": "document-requesting_consent",
+              "version_id": "v1",
+              "source_sha256": "ab809f48d88393cedb0f71bf64973214ffa2c1571fc954bc31868c41dc450bd5",
+              "title": "Authored notice requesting_consent",
+              "text": "The producer asked Nora for filming consent.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "accusation_gain",
+      "faithful": {
+        "question": "What does the notice establish about Lee?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-accusation_gain",
+            "document_id": "document-accusation_gain",
+            "version_id": "v1",
+            "source_sha256": "9ffa6c90f885151d693fdd9b6801e214240b50ac35d24dab2ab252dc93e2cd33",
+            "title": "Authored notice accusation_gain",
+            "text": "Lee was accused of stealing money.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Lee was accused of stealing money.",
+              "evidence_ids": [
+                "synthetic-accusation_gain"
+              ],
+              "quotes": [
+                "Lee was accused of stealing money."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-accusation_gain",
+              "document_id": "document-accusation_gain",
+              "version_id": "v1",
+              "source_sha256": "9ffa6c90f885151d693fdd9b6801e214240b50ac35d24dab2ab252dc93e2cd33",
+              "title": "Authored notice accusation_gain",
+              "text": "Lee was accused of stealing money.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "What does the notice establish about Lee?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-accusation_gain",
+            "document_id": "document-accusation_gain",
+            "version_id": "v1",
+            "source_sha256": "9ffa6c90f885151d693fdd9b6801e214240b50ac35d24dab2ab252dc93e2cd33",
+            "title": "Authored notice accusation_gain",
+            "text": "Lee was accused of stealing money.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Lee personally gained money from theft.",
+              "evidence_ids": [
+                "synthetic-accusation_gain"
+              ],
+              "quotes": [
+                "Lee was accused of stealing money."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-accusation_gain",
+              "document_id": "document-accusation_gain",
+              "version_id": "v1",
+              "source_sha256": "9ffa6c90f885151d693fdd9b6801e214240b50ac35d24dab2ab252dc93e2cd33",
+              "title": "Authored notice accusation_gain",
+              "text": "Lee was accused of stealing money.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "source_attribution",
+      "faithful": {
+        "question": "Which publication reports that Ari approved filming?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-source_attribution",
+            "document_id": "document-source_attribution",
+            "version_id": "v1",
+            "source_sha256": "b26ec71dd4d33dd427d8acbae7af0d9a410764923c8790a9d46c4ba15d77e50a",
+            "title": "Authored notice source_attribution",
+            "text": "Ari approved filming.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic West",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Synthetic West reports that Ari approved filming.",
+              "evidence_ids": [
+                "synthetic-source_attribution"
+              ],
+              "quotes": [
+                "Ari approved filming."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-source_attribution",
+              "document_id": "document-source_attribution",
+              "version_id": "v1",
+              "source_sha256": "b26ec71dd4d33dd427d8acbae7af0d9a410764923c8790a9d46c4ba15d77e50a",
+              "title": "Authored notice source_attribution",
+              "text": "Ari approved filming.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic West",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "Which publication reports that Ari approved filming?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-source_attribution",
+            "document_id": "document-source_attribution",
+            "version_id": "v1",
+            "source_sha256": "b26ec71dd4d33dd427d8acbae7af0d9a410764923c8790a9d46c4ba15d77e50a",
+            "title": "Authored notice source_attribution",
+            "text": "Ari approved filming.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic West",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Synthetic East reports that Ari approved filming.",
+              "evidence_ids": [
+                "synthetic-source_attribution"
+              ],
+              "quotes": [
+                "Ari approved filming."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-source_attribution",
+              "document_id": "document-source_attribution",
+              "version_id": "v1",
+              "source_sha256": "b26ec71dd4d33dd427d8acbae7af0d9a410764923c8790a9d46c4ba15d77e50a",
+              "title": "Authored notice source_attribution",
+              "text": "Ari approved filming.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic West",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "publication_event_date",
+      "faithful": {
+        "question": "When did filming occur?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-publication_event_date",
+            "document_id": "document-publication_event_date",
+            "version_id": "v1",
+            "source_sha256": "dd6146ebe5b6e3f4984bf8f795fd67d5c64b8a7fa74da82e5d6e1fa0cd625c17",
+            "title": "Authored notice publication_event_date",
+            "text": "Filming occurred on 2026-01-19.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Filming occurred on 2026-01-19.",
+              "evidence_ids": [
+                "synthetic-publication_event_date"
+              ],
+              "quotes": [
+                "Filming occurred on 2026-01-19."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-publication_event_date",
+              "document_id": "document-publication_event_date",
+              "version_id": "v1",
+              "source_sha256": "dd6146ebe5b6e3f4984bf8f795fd67d5c64b8a7fa74da82e5d6e1fa0cd625c17",
+              "title": "Authored notice publication_event_date",
+              "text": "Filming occurred on 2026-01-19.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "When did filming occur?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-publication_event_date",
+            "document_id": "document-publication_event_date",
+            "version_id": "v1",
+            "source_sha256": "dd6146ebe5b6e3f4984bf8f795fd67d5c64b8a7fa74da82e5d6e1fa0cd625c17",
+            "title": "Authored notice publication_event_date",
+            "text": "Filming occurred on 2026-01-19.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Filming occurred on 2026-01-20.",
+              "evidence_ids": [
+                "synthetic-publication_event_date"
+              ],
+              "quotes": [
+                "Filming occurred on 2026-01-19."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-publication_event_date",
+              "document_id": "document-publication_event_date",
+              "version_id": "v1",
+              "source_sha256": "dd6146ebe5b6e3f4984bf8f795fd67d5c64b8a7fa74da82e5d6e1fa0cd625c17",
+              "title": "Authored notice publication_event_date",
+              "text": "Filming occurred on 2026-01-19.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "mechanical_or_semantic"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "omitted_second_slot",
+      "faithful": {
+        "question": "What did Ari and Bo each decide about filming?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-omission",
+            "document_id": "document-omission",
+            "version_id": "v1",
+            "source_sha256": "6a50dc6c6b27a6c333fea521b0d6c05f3b8a33473eb153c7ae3e186b5fda85be",
+            "title": "Authored notice omission",
+            "text": "Ari approved filming and Bo declined filming.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari approved filming and Bo declined filming.",
+              "evidence_ids": [
+                "synthetic-omission"
+              ],
+              "quotes": [
+                "Ari approved filming and Bo declined filming."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-omission",
+              "document_id": "document-omission",
+              "version_id": "v1",
+              "source_sha256": "6a50dc6c6b27a6c333fea521b0d6c05f3b8a33473eb153c7ae3e186b5fda85be",
+              "title": "Authored notice omission",
+              "text": "Ari approved filming and Bo declined filming.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "What did Ari and Bo each decide about filming?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-omission",
+            "document_id": "document-omission",
+            "version_id": "v1",
+            "source_sha256": "6a50dc6c6b27a6c333fea521b0d6c05f3b8a33473eb153c7ae3e186b5fda85be",
+            "title": "Authored notice omission",
+            "text": "Ari approved filming and Bo declined filming.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari approved filming.",
+              "evidence_ids": [
+                "synthetic-omission"
+              ],
+              "quotes": [
+                "Ari approved filming and Bo declined filming."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-omission",
+              "document_id": "document-omission",
+              "version_id": "v1",
+              "source_sha256": "6a50dc6c6b27a6c333fea521b0d6c05f3b8a33473eb153c7ae3e186b5fda85be",
+              "title": "Authored notice omission",
+              "text": "Ari approved filming and Bo declined filming.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": false,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "joint_comparison",
+      "faithful": {
+        "question": "Does A hall have greater capacity than B hall?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-comparison-a",
+            "document_id": "document-comparison-a",
+            "version_id": "v1",
+            "source_sha256": "5715afb10b6347c80fa79045997bb5e8ea783d99815dce7cf92b8a834e9a2860",
+            "title": "Authored notice comparison-a",
+            "text": "A hall has capacity of 9 units.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          },
+          {
+            "chunk_id": "synthetic-comparison-b",
+            "document_id": "document-comparison-b",
+            "version_id": "v1",
+            "source_sha256": "56d657f9c062dddbf76a6c34aeee7de09b41cd1be7a4f5e1d59d4a8d2c43a482",
+            "title": "Authored notice comparison-b",
+            "text": "B hall has capacity of 5 units.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "A hall has capacity of 9 units and B hall has capacity of 5 units; A has greater capacity.",
+              "evidence_ids": [
+                "synthetic-comparison-a",
+                "synthetic-comparison-b"
+              ],
+              "quotes": [
+                "A hall has capacity of 9 units.",
+                "B hall has capacity of 5 units."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-comparison-a",
+              "document_id": "document-comparison-a",
+              "version_id": "v1",
+              "source_sha256": "5715afb10b6347c80fa79045997bb5e8ea783d99815dce7cf92b8a834e9a2860",
+              "title": "Authored notice comparison-a",
+              "text": "A hall has capacity of 9 units.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            },
+            {
+              "chunk_id": "synthetic-comparison-b",
+              "document_id": "document-comparison-b",
+              "version_id": "v1",
+              "source_sha256": "56d657f9c062dddbf76a6c34aeee7de09b41cd1be7a4f5e1d59d4a8d2c43a482",
+              "title": "Authored notice comparison-b",
+              "text": "B hall has capacity of 5 units.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": {
+            "value": "yes"
+          }
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "Does A hall have greater capacity than B hall?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-comparison-a",
+            "document_id": "document-comparison-a",
+            "version_id": "v1",
+            "source_sha256": "5715afb10b6347c80fa79045997bb5e8ea783d99815dce7cf92b8a834e9a2860",
+            "title": "Authored notice comparison-a",
+            "text": "A hall has capacity of 9 units.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          },
+          {
+            "chunk_id": "synthetic-comparison-b",
+            "document_id": "document-comparison-b",
+            "version_id": "v1",
+            "source_sha256": "56d657f9c062dddbf76a6c34aeee7de09b41cd1be7a4f5e1d59d4a8d2c43a482",
+            "title": "Authored notice comparison-b",
+            "text": "B hall has capacity of 5 units.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "A hall has a higher service fee than B hall.",
+              "evidence_ids": [
+                "synthetic-comparison-a",
+                "synthetic-comparison-b"
+              ],
+              "quotes": [
+                "A hall has capacity of 9 units.",
+                "B hall has capacity of 5 units."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-comparison-a",
+              "document_id": "document-comparison-a",
+              "version_id": "v1",
+              "source_sha256": "5715afb10b6347c80fa79045997bb5e8ea783d99815dce7cf92b8a834e9a2860",
+              "title": "Authored notice comparison-a",
+              "text": "A hall has capacity of 9 units.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            },
+            {
+              "chunk_id": "synthetic-comparison-b",
+              "document_id": "document-comparison-b",
+              "version_id": "v1",
+              "source_sha256": "56d657f9c062dddbf76a6c34aeee7de09b41cd1be7a4f5e1d59d4a8d2c43a482",
+              "title": "Authored notice comparison-b",
+              "text": "B hall has capacity of 5 units.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": {
+            "value": "yes"
+          }
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    },
+    {
+      "contrast": "cross_claim_borrowing",
+      "faithful": {
+        "question": "What happened concerning Ari and Bo filming?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-borrowing-a",
+            "document_id": "document-borrowing-a",
+            "version_id": "v1",
+            "source_sha256": "022168cc5411ed456bf75e20d034ab21c103154ffb3976baadc086521de9d9b0",
+            "title": "Authored notice borrowing-a",
+            "text": "Ari requested filming.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          },
+          {
+            "chunk_id": "synthetic-borrowing-b",
+            "document_id": "document-borrowing-b",
+            "version_id": "v1",
+            "source_sha256": "bff8e3288bbadfc897c7ff8b22f0eed64c0c871f772d7cf0d1c502dd81365c25",
+            "title": "Authored notice borrowing-b",
+            "text": "Bo approved filming.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari requested filming.",
+              "evidence_ids": [
+                "synthetic-borrowing-a"
+              ],
+              "quotes": [
+                "Ari requested filming."
+              ]
+            },
+            {
+              "text": "Bo approved filming.",
+              "evidence_ids": [
+                "synthetic-borrowing-b"
+              ],
+              "quotes": [
+                "Bo approved filming."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-borrowing-a",
+              "document_id": "document-borrowing-a",
+              "version_id": "v1",
+              "source_sha256": "022168cc5411ed456bf75e20d034ab21c103154ffb3976baadc086521de9d9b0",
+              "title": "Authored notice borrowing-a",
+              "text": "Ari requested filming.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            },
+            {
+              "chunk_id": "synthetic-borrowing-b",
+              "document_id": "document-borrowing-b",
+              "version_id": "v1",
+              "source_sha256": "bff8e3288bbadfc897c7ff8b22f0eed64c0c871f772d7cf0d1c502dd81365c25",
+              "title": "Authored notice borrowing-b",
+              "text": "Bo approved filming.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": true,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      },
+      "contrast_case": {
+        "question": "What happened concerning Ari and Bo filming?",
+        "evidence": [
+          {
+            "chunk_id": "synthetic-borrowing-a",
+            "document_id": "document-borrowing-a",
+            "version_id": "v1",
+            "source_sha256": "022168cc5411ed456bf75e20d034ab21c103154ffb3976baadc086521de9d9b0",
+            "title": "Authored notice borrowing-a",
+            "text": "Ari requested filming.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          },
+          {
+            "chunk_id": "synthetic-borrowing-b",
+            "document_id": "document-borrowing-b",
+            "version_id": "v1",
+            "source_sha256": "bff8e3288bbadfc897c7ff8b22f0eed64c0c871f772d7cf0d1c502dd81365c25",
+            "title": "Authored notice borrowing-b",
+            "text": "Bo approved filming.",
+            "locator": {
+              "paragraph": 1
+            },
+            "metadata": {
+              "source": "Synthetic Gazette",
+              "published_at": "2026-01-20"
+            }
+          }
+        ],
+        "payload": {
+          "status": "answered",
+          "claims": [
+            {
+              "text": "Ari approved filming.",
+              "evidence_ids": [
+                "synthetic-borrowing-a"
+              ],
+              "quotes": [
+                "Ari requested filming."
+              ]
+            },
+            {
+              "text": "Bo approved filming.",
+              "evidence_ids": [
+                "synthetic-borrowing-b"
+              ],
+              "quotes": [
+                "Bo approved filming."
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "chunk_id": "synthetic-borrowing-a",
+              "document_id": "document-borrowing-a",
+              "version_id": "v1",
+              "source_sha256": "022168cc5411ed456bf75e20d034ab21c103154ffb3976baadc086521de9d9b0",
+              "title": "Authored notice borrowing-a",
+              "text": "Ari requested filming.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            },
+            {
+              "chunk_id": "synthetic-borrowing-b",
+              "document_id": "document-borrowing-b",
+              "version_id": "v1",
+              "source_sha256": "bff8e3288bbadfc897c7ff8b22f0eed64c0c871f772d7cf0d1c502dd81365c25",
+              "title": "Authored notice borrowing-b",
+              "text": "Bo approved filming.",
+              "locator": {
+                "paragraph": 1
+              },
+              "metadata": {
+                "source": "Synthetic Gazette",
+                "published_at": "2026-01-20"
+              }
+            }
+          ],
+          "verdict": null
+        },
+        "expected": {
+          "assertions_supported": false,
+          "question_complete": true,
+          "stage": "semantic_observation"
+        },
+        "label_basis": "assistant_authored_relation_contrast_not_observed_model_judgment"
+      }
+    }
+  ]
+}

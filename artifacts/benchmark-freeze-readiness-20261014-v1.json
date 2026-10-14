@@ -1,0 +1,397 @@
+{
+  "version": "enterprise-freeze-readiness-v1",
+  "status": "blocked",
+  "formal_core_ready": false,
+  "formal_run_started": false,
+  "freeze_written": false,
+  "validation": {
+    "version": "enterprise-rag-benchmark-package-v1",
+    "counts": {
+      "dev": 47,
+      "core": 70,
+      "security": 16,
+      "external": 150
+    },
+    "exact_question_overlap": 0,
+    "private_not_materialized": [],
+    "core_status": "candidate_not_run",
+    "external": "historically_used_locked_selection"
+  },
+  "sha256": {
+    "benchmarks/enterprise_rag/v1/core/tasks.json": "71177d9d4a555d11a0156bda0a2ed051fa627187673df828695ea727f621d3e0",
+    "benchmarks/enterprise_rag/v1/core/documents.json": "76ccca2a503f70c216c414fff67133302cd2f63fc82c6546ee3094bbf6af1991",
+    "benchmarks/enterprise_rag/v1/core/review.json": "22769f40ce81ab6d09adba849abab83bffcf667917dafdfae8d019e1ab796bc7",
+    "benchmarks/enterprise_rag/v1/security/tasks.json": "a1ca3946d7189a1410d3b4e37fd63bac904a43f13a6386512ada97212514f237",
+    "benchmarks/enterprise_rag/v1/security/documents.json": "1c813f9d7581aaa41c7e2f13fe5c7a2df83771cd5c6026e0896de9e9db6ebb27",
+    "benchmarks/enterprise_rag/v1/security/review.json": "d222a29e7555d935c6b11b15f62899c6a517cac17bd5c765a722d63b131d85a2",
+    ".runtime/benchmark-package/v1/dev/tasks.json": "b03cf43592a370927059bab1eccf8c5c3442b5129bcfcf07c9a688bf55cce5ab",
+    ".runtime/benchmark-package/v1/dev/documents.json": "c375164ca25bed5d78be1cffc95b7712dfe9f0035bad31dcea89d06a9615d222",
+    ".runtime/benchmark-package/v1/dev/review.json": "5cc919b77b58dad98088d324f5fca6079b9e29eea482c4b972c83d722a261344",
+    ".runtime/benchmark-package/v1/external/tasks.json": "c083c1f9b3442288caa5c6c854bb4cfb18aa710036e52ac77e0ddc7ef859e1c4",
+    ".runtime/benchmark-package/v1/external/documents.json": "4d954751f517b123c9c468abc95049434a8f577ff9f04aa80e4c327f596ef19c",
+    ".runtime/benchmark-package/v1/external/review.json": "c539d20a37a9a56103f4a248d259b60b8e9bf2decad2e35ab8a736776aa508b4",
+    "benchmarks/enterprise_rag/v1/manifest.json": "6cd94390f57b2fc9285c7def8948b06509a68230fa2eb9e120c3abeaa425b669",
+    "benchmarks/enterprise_rag/v1/scoring-rules-v2.json": "850dd477920de0ca1d709ff5d70c5fa2ebe9ccbc12b6674a5abdc0aca34b6c63",
+    "pyproject.toml": "09c72050721c5d28696de001821eb66cbc7daff3c54ef1fdc90c5ac672fed80a",
+    "requirements.lock": "f743769535ffc0f665e4efaf3e9e97be5064abc9ac236369a9b53b1be53448b8"
+  },
+  "splits": {
+    "core": {
+      "count": 70,
+      "purpose": "all_70_held_out_headline_test",
+      "allow_tuning": false,
+      "historically_used": false,
+      "task_review": "approved_with_recorded_provenance",
+      "freeze_file_exists": false,
+      "environment_verified_this_check": false,
+      "formal_run_started_this_check": false,
+      "registered_matrix": [
+        {
+          "name": "rag",
+          "mode": "rag",
+          "overrides": {}
+        },
+        {
+          "name": "workflow",
+          "mode": "workflow",
+          "overrides": {}
+        },
+        {
+          "name": "dynamic",
+          "mode": "dynamic",
+          "overrides": {}
+        },
+        {
+          "name": "hybrid",
+          "mode": "hybrid",
+          "overrides": {}
+        },
+        {
+          "name": "rag_bm25",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "bm25",
+            "rewrite_mode": "off",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_hybrid",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "off",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_rewrite",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "rule",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_rerank",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "rule",
+            "task_contract_enabled": true,
+            "passage_rerank": true
+          }
+        }
+      ]
+    },
+    "security": {
+      "count": 16,
+      "purpose": "security_test_separate",
+      "allow_tuning": false,
+      "historically_used": false,
+      "task_review": "approved_with_recorded_provenance",
+      "freeze_file_exists": false,
+      "environment_verified_this_check": false,
+      "formal_run_started_this_check": false,
+      "registered_matrix": [
+        {
+          "name": "rag",
+          "mode": "rag",
+          "overrides": {}
+        },
+        {
+          "name": "workflow",
+          "mode": "workflow",
+          "overrides": {}
+        },
+        {
+          "name": "dynamic",
+          "mode": "dynamic",
+          "overrides": {}
+        },
+        {
+          "name": "hybrid",
+          "mode": "hybrid",
+          "overrides": {}
+        },
+        {
+          "name": "rag_bm25",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "bm25",
+            "rewrite_mode": "off",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_hybrid",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "off",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_rewrite",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "rule",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_rerank",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "rule",
+            "task_contract_enabled": true,
+            "passage_rerank": true
+          }
+        }
+      ]
+    },
+    "dev": {
+      "count": 47,
+      "purpose": "development_only",
+      "allow_tuning": true,
+      "historically_used": true,
+      "task_review": "pending",
+      "freeze_file_exists": false,
+      "environment_verified_this_check": false,
+      "formal_run_started_this_check": false,
+      "registered_matrix": [
+        {
+          "name": "rag",
+          "mode": "rag",
+          "overrides": {}
+        },
+        {
+          "name": "workflow",
+          "mode": "workflow",
+          "overrides": {}
+        },
+        {
+          "name": "dynamic",
+          "mode": "dynamic",
+          "overrides": {}
+        },
+        {
+          "name": "hybrid",
+          "mode": "hybrid",
+          "overrides": {}
+        },
+        {
+          "name": "rag_bm25",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "bm25",
+            "rewrite_mode": "off",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_hybrid",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "off",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_rewrite",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "rule",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_rerank",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "rule",
+            "task_contract_enabled": true,
+            "passage_rerank": true
+          }
+        }
+      ]
+    },
+    "external": {
+      "count": 150,
+      "purpose": "separate_fixed_external_comparison",
+      "allow_tuning": false,
+      "historically_used": true,
+      "task_review": "pending",
+      "freeze_file_exists": false,
+      "environment_verified_this_check": false,
+      "formal_run_started_this_check": false,
+      "registered_matrix": [
+        {
+          "name": "rag",
+          "mode": "rag",
+          "overrides": {}
+        },
+        {
+          "name": "workflow",
+          "mode": "workflow",
+          "overrides": {}
+        },
+        {
+          "name": "dynamic",
+          "mode": "dynamic",
+          "overrides": {}
+        },
+        {
+          "name": "hybrid",
+          "mode": "hybrid",
+          "overrides": {}
+        },
+        {
+          "name": "rag_bm25",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "bm25",
+            "rewrite_mode": "off",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_hybrid",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "off",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_rewrite",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "rule",
+            "task_contract_enabled": false,
+            "passage_rerank": false
+          }
+        },
+        {
+          "name": "rag_rerank",
+          "mode": "rag",
+          "overrides": {
+            "retrieval_mode": "hybrid",
+            "rewrite_mode": "rule",
+            "task_contract_enabled": true,
+            "passage_rerank": true
+          }
+        }
+      ]
+    }
+  },
+  "effective_legacy_configuration": {
+    "chat_model": "qwen2.5:7b-instruct",
+    "embed_model": "bge-m3:567m",
+    "agent_policy_model": "qwen2.5:7b-instruct",
+    "semantic_judge_model": "qwen2.5:7b-instruct",
+    "rerank_model": "BAAI/bge-reranker-v2-m3",
+    "verdict_protocol": "legacy",
+    "retrieval_mode": "hybrid",
+    "rewrite_mode": "rule",
+    "passage_rerank": false,
+    "task_contract_enabled": true,
+    "answer_quality_enabled": false,
+    "answer_contract_enabled": false,
+    "answer_extractive_enabled": false,
+    "answer_semantic_audit_enabled": false,
+    "focused_generation_enabled": false,
+    "claim_consistency_enabled": false,
+    "context_token_budget": 5000,
+    "model_timeout_seconds": 180.0,
+    "agent_task_timeout_seconds": 600.0,
+    "agent_policy_max_calls": 12,
+    "agent_judge_max_calls": 8,
+    "agent_judge_token_budget": 24000,
+    "agent_generation_max_calls": 12
+  },
+  "python": "3.13.9",
+  "libraries": {
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "tokenizers": "0.23.2",
+    "httpx": "0.28.1",
+    "pydantic": "2.13.5",
+    "sqlalchemy": "2.0.43",
+    "langgraph": "1.2.12",
+    "langgraph-checkpoint-postgres": "3.1.2",
+    "langgraph-checkpoint-sqlite": "3.1.1",
+    "tiktoken": "0.14.0"
+  },
+  "working_tree_changed_paths": 124,
+  "blockers": [
+    "core_environment_and_index_not_frozen",
+    "security_environment_and_index_not_frozen",
+    "external_task_annotation_review_pending",
+    "external_environment_and_index_not_frozen",
+    "external_independent_human_annotation_and_adjudication_pending",
+    "scoring_v2_not_formally_frozen",
+    "historical_GPT_answer_review_gaps",
+    "formal_environment_index_and_model_digests_not_verified_this_check",
+    "final_snapshot_selection_pending"
+  ],
+  "scoring_rules": "benchmarks/enterprise_rag/v1/scoring-rules-v2.json",
+  "randomness": "Generator/policy legacy requests temperature=0, seed=42; request options and model digests still need the actual formal freeze. Do not claim deterministic serving.",
+  "failure_policy": "Existing one-shot ledger and CheckpointStore; same-snapshot/same-output resume only. Transport/schema attempts count toward cumulative budgets. Failed attempts preserved; no answer resampling.",
+  "telemetry": "Token full totals null when any position unmeasured; measured subtotals and observed/total denominators explicit. P50 median/P95 nearest-rank recorded wall time, including observed failures.",
+  "environment_freeze_entrypoints": [
+    "scripts.run_unseen_benchmark.inputs",
+    "scripts.run_unseen_benchmark.configuration",
+    "scripts.benchmark_package_runtime.indexed_corpus",
+    "scripts.benchmark_package_runtime.reserve_test_run"
+  ],
+  "commands": {
+    "readiness": ".venv/bin/python scripts/benchmark_package.py readiness --output NEW_PATH.json",
+    "annotation_prepare": ".venv/bin/python scripts/prepare_source_human_review.py --external-suite .runtime/benchmark-package/v1/external/tasks.json --external-spec .runtime/benchmark-package/v1/external/documents.json --output NEW_LOCAL_RUNTIME_DIR"
+  },
+  "limitations": [
+    "File inspection is not a verified service/index/model freeze.",
+    "Human reviewer packets prepared with no returned human judgments.",
+    "Existing Core/Security model annotation approval is non-independent, not human gold."
+  ]
+}

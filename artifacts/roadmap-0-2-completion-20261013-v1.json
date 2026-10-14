@@ -1,0 +1,75 @@
+{
+  "version": "roadmap-0-2-completion-v1",
+  "date": "2026-10-13",
+  "status": "complete",
+  "phases": {
+    "0": "local_initial_trial_and_final_recoverable_snapshots; existing_artifacts_preserved; no_git_commit",
+    "1": "four_new_drafts_inspected; all_rejections_justified_in_these_samples",
+    "2": "one_registered_trial_complete_and_reviewed; candidate_not_adopted"
+  },
+  "proof_sha256": {
+    "artifacts/roadmap-workspace-snapshot-20261013-v1.json": "7acb8a64e6bc4e96fcaa5aa52af19c0895154630918d9a91d4d8f2e1184c6a35",
+    "artifacts/dev-claim-rejection-20261013-v1.json": "7f3326f028ca85e02cc9147f281a6e9f19facfe23470b37fb94e5a9708146412",
+    "artifacts/dev-claim-rejection-review-20261013-v1.json": "686df526b49716db36c7e7bda73e089a80fff298dd6c5cf058c31195c54c39b3",
+    "artifacts/dev-judgment-repair-20261013-v1.json": "ef8dd968e847a046c1b11f355e6ec807dabd908c535636b63668d7548a916c07",
+    "artifacts/dev-judgment-repair-20261013-v1.review.json": "ad096bc52eff2aecee12a0e5fdd0a2b0a607c9cb42085a2be16c2cd33b4b6154",
+    ".runtime/roadmap-0-2-20261013/v1/review-packet.json": "54e6dc4981344f30efe33f713f1b21ea1995d4e453ab614d6b61766d8df48331",
+    ".runtime/roadmap-0-2-20261013/v1/review-key.json": "6b960ab1d3a2c82832114d379986a7bf22aad2bb49483ea7e23512edb12879f8",
+    ".runtime/roadmap-0-2-20261013/v1/review-judgments.json": "e606c8ab0ed12b7499600e9f9b4547ed84c6f45f9c1852bb20b845742e60c288",
+    ".runtime/roadmap-0-2-20261013/v1/claim-rejection/raw.json": "5ce50aa09c781dc6c04ff31fc5061a7e7346de5cf49d4f7da3f2eb7938883f9e",
+    ".runtime/roadmap-0-2-20261013/v1/judgment-trial/raw.json": "115e5af065bccbb878ba1aba87d9938b66eb2b23439fb546e921d5670448a971",
+    ".runtime/roadmap-0-2-20261013/v1/full-tests.xml": "2fa2f812810b0ab7d42e53b06f86401969c3ee41b888107b87f9a11fc97b6d16",
+    ".runtime/roadmap-0-2-20261013/v1/access-integration.xml": "aabf57902f713e08bc76cc98f8c17c2d9ec16cec44bdb2a4292b0d1f89c4876a",
+    ".runtime/roadmap-0-2-20261013/v1/docs-check.log": "eba1a37c69df3ac45b408828196d3bd4cc09b2c7b09640f7bf7a5d644f60fb2e"
+  },
+  "previous_files_changed_by_this_task": [
+    "PROJECT_REPORT.md",
+    "app/answer_quality.py",
+    "app/clients.py",
+    "app/qa.py",
+    "app/verdict.py",
+    "docs/problem-analysis-and-roadmap-20261012.md"
+  ],
+  "no_original_artifact_or_annotation_overwrite": true,
+  "formal_test_runs_in_this_task": 0,
+  "production_protocol": "legacy",
+  "semantic_gate_enabled_by_this_task": false,
+  "review_basis": "same-session GPT family; not independent or fully blind; exact serving variant unavailable; human labels zero",
+  "tests": {
+    "ruff": "passed",
+    "full_tests": {
+      "passed": 2185,
+      "skipped": 36,
+      "xfailed": 3
+    },
+    "access_integration_passed": 4,
+    "docs_consistency": "passed",
+    "original_artifact_and_benchmark_files_unchanged": 672,
+    "drift": {
+      "code": false,
+      "inputs": false,
+      "settings": false,
+      "model": false
+    }
+  },
+  "judgment_original_primary": {
+    "n": 4,
+    "legacy_strict": 1,
+    "candidate_strict": 1,
+    "legacy_direction": 3,
+    "candidate_direction": 3
+  },
+  "repair": {
+    "n": 4,
+    "baseline_visible_strict": 0,
+    "mechanically_accepted": 1,
+    "candidate_strict": 0,
+    "body_required_facts_supported": 3,
+    "body_required_facts_total": 10,
+    "calls": 5,
+    "prompt_tokens": 7565,
+    "completion_tokens": 369
+  },
+  "monetary_and_review_cost": null,
+  "snapshot_after_summary": "artifacts/roadmap-workspace-snapshot-20261013-v2.json"
+}

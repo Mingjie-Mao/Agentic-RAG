@@ -1,0 +1,778 @@
+{
+  "version": "grounding-source-review-dev-20261014-v1",
+  "split": "dev",
+  "status": "complete",
+  "proof": {
+    "raw_sha256": "6ad5f005413757f050248254b98fe374778bd80bc449cabb8093c7ab60914352",
+    "review_notes_sha256": "e2132a9a5d6f810139558bbcc3ae0f2a5a141ed136e20e022bcd8ce5f60c66d3",
+    "review_protocol_sha256": "b421d2e2044ec896565bd2321fab67449790fad409ef80789354152674b02ac8"
+  },
+  "reviewer": {
+    "type": "model",
+    "model": "GPT-6/Codex family; exact serving variant unavailable",
+    "independent": false,
+    "fully_blind": false,
+    "human_labels": 0
+  },
+  "drift": {
+    "code": false,
+    "inputs": false,
+    "settings": false,
+    "model": false
+  },
+  "metrics": {
+    "existing_recovery": {
+      "primary_n": 9,
+      "strict_success": 2,
+      "strict_rate": 0.2222222222222222,
+      "current_context_complete_n": 7,
+      "current_context_complete_strict": 2,
+      "required_fact_citation_coverage": {
+        "supported": 5,
+        "total": 16,
+        "rate": 0.3125
+      },
+      "supported_visible_claims": {
+        "supported": 9,
+        "total": 15
+      },
+      "literal_quote_coverage": {
+        "matched": 35,
+        "total": 35,
+        "rate": 1.0
+      },
+      "current_routable_source_group_identity_coverage": {
+        "covered": 10,
+        "total": 13,
+        "rate": 0.7692307692307693
+      },
+      "status_counts": {
+        "answered": 9,
+        "verification_failed": 3
+      },
+      "execution_errors": 0,
+      "physical_calls": 24,
+      "prompt_tokens": 35375,
+      "completion_tokens": 1977,
+      "latency_ms": {
+        "n": 12,
+        "p50": 99512.6,
+        "p95": 169905.5,
+        "p95_definition": "nearest_rank"
+      },
+      "repair_attempts": 4
+    },
+    "grounding_feedback": {
+      "primary_n": 9,
+      "strict_success": 2,
+      "strict_rate": 0.2222222222222222,
+      "current_context_complete_n": 7,
+      "current_context_complete_strict": 2,
+      "required_fact_citation_coverage": {
+        "supported": 6,
+        "total": 16,
+        "rate": 0.375
+      },
+      "supported_visible_claims": {
+        "supported": 6,
+        "total": 14
+      },
+      "literal_quote_coverage": {
+        "matched": 28,
+        "total": 28,
+        "rate": 1.0
+      },
+      "current_routable_source_group_identity_coverage": {
+        "covered": 8,
+        "total": 13,
+        "rate": 0.6153846153846154
+      },
+      "status_counts": {
+        "insufficient_evidence": 3,
+        "answered": 8,
+        "execution_failed": 1
+      },
+      "execution_errors": 1,
+      "physical_calls": 22,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "latency_ms": {
+        "n": 12,
+        "p50": 97835.9,
+        "p95": 180010.2,
+        "p95_definition": "nearest_rank"
+      },
+      "repair_attempts": 1
+    }
+  },
+  "paired": {
+    "n": 9,
+    "strict_gains": [],
+    "strict_losses": [],
+    "required_fact_losses": {
+      "U16": [
+        "shard"
+      ]
+    },
+    "pending_changes_diagnostic_only": [
+      {
+        "task_id": "U22",
+        "baseline_strict": null,
+        "candidate_strict": null,
+        "fact_gains": [
+          "east_start",
+          "east_end"
+        ],
+        "fact_losses": []
+      },
+      {
+        "task_id": "SF-3e8219f58317",
+        "baseline_strict": null,
+        "candidate_strict": null,
+        "fact_gains": [],
+        "fact_losses": []
+      },
+      {
+        "task_id": "SF-59679085cc4a",
+        "baseline_strict": null,
+        "candidate_strict": null,
+        "fact_gains": [],
+        "fact_losses": []
+      }
+    ]
+  },
+  "details": [
+    {
+      "task_id": "U16",
+      "arm": "existing_recovery",
+      "strict": false,
+      "fact_support": {
+        "shard": true,
+        "alert": false
+      },
+      "claim_support": [
+        true
+      ],
+      "reason": "The 5000-row claim quotes its own source; the visible answer omits the explicit alert in current E1.",
+      "runtime_status": "answered",
+      "verdict": null,
+      "literal_bindings": {
+        "matched": 1,
+        "total": 1,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "payload_sha256": "c927640e4f96438242a3fea8df128b065b0b7677b19178f6ec48e13f3136a68d"
+    },
+    {
+      "task_id": "U16",
+      "arm": "grounding_feedback",
+      "strict": false,
+      "fact_support": {
+        "shard": false,
+        "alert": false
+      },
+      "claim_support": [],
+      "reason": "Generated insufficiency with empty claims despite both required facts present in current E1/E2; generator false refusal, not validator rejection.",
+      "runtime_status": "insufficient_evidence",
+      "verdict": null,
+      "literal_bindings": {
+        "matched": 0,
+        "total": 0,
+        "rate": null
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "payload_sha256": "025d5947c4800a507cb1301ec8c339cd6f9e3ef982141d8281ee1ffa114678b3"
+    },
+    {
+      "task_id": "U22",
+      "arm": "grounding_feedback",
+      "strict": null,
+      "fact_support": {
+        "east_start": true,
+        "east_end": true,
+        "south_start": true,
+        "south_end": true
+      },
+      "claim_support": [
+        true,
+        true
+      ],
+      "reason": "Default Q4 windows have own scope and time quotes; overlapping October notice still omitted, and final Legacy value unclear. No strict score due pending annotation.",
+      "runtime_status": "answered",
+      "verdict": "unclear",
+      "literal_bindings": {
+        "matched": 4,
+        "total": 4,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "payload_sha256": "4c03d23641e35de28f2af4c98c0be4e0bb2d857b9ad8a2aa82dcf31c5a97ef06"
+    },
+    {
+      "task_id": "U22",
+      "arm": "existing_recovery",
+      "strict": null,
+      "fact_support": {
+        "east_start": false,
+        "east_end": false,
+        "south_start": true,
+        "south_end": true
+      },
+      "claim_support": [
+        false,
+        true
+      ],
+      "reason": "Only October supports the east window; the claim extends it to all Q4. Pending annotation unchanged.",
+      "runtime_status": "answered",
+      "verdict": "unclear",
+      "literal_bindings": {
+        "matched": 4,
+        "total": 4,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "payload_sha256": "93c875ddf7ec3fb41acc8357aaf1368945417a656cb5bc81262f070878b02155"
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "arm": "existing_recovery",
+      "strict": null,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [
+        true,
+        false
+      ],
+      "reason": "Polygon supports the innovation/vibrancy fact, with extraneous citations. The BBC own quotation omits the Sophie identity sentence and does not establish a change rather than a desire for accessibility; pending remains null.",
+      "runtime_status": "answered",
+      "verdict": "yes",
+      "literal_bindings": {
+        "matched": 7,
+        "total": 7,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "payload_sha256": "f52c559946652a76c789e0e906eb99a30026f8e1a60b5792bed7ebe83ddf9ad8"
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "arm": "grounding_feedback",
+      "strict": null,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [
+        true,
+        false
+      ],
+      "reason": "Polygon supports the innovation/vibrancy fact, with extraneous citations. The BBC own quotation omits the Sophie identity sentence and does not establish a change rather than a desire for accessibility; pending remains null.",
+      "runtime_status": "answered",
+      "verdict": "yes",
+      "literal_bindings": {
+        "matched": 5,
+        "total": 5,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "payload_sha256": "8e3ed1729329d11396db1c806ce70244dd69a923cd230cca262d1225138d5fd4"
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "arm": "grounding_feedback",
+      "strict": false,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [
+        false
+      ],
+      "reason": "The own Guardian quote omits the age-16 privacy evidence in the same source. BBC citations do not establish the implied comparative agency. Candidate additionally cites a photograph caption, which does not repair support.",
+      "runtime_status": "answered",
+      "verdict": "yes",
+      "literal_bindings": {
+        "matched": 4,
+        "total": 4,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "payload_sha256": "42871781e9842e36e5eedc2c24b0a9d47a103093e7c678405a17585d39aebb13"
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "arm": "existing_recovery",
+      "strict": false,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [
+        false
+      ],
+      "reason": "The own Guardian quote omits the age-16 privacy evidence in the same source. BBC citations do not establish the implied comparative agency. Candidate additionally cites a photograph caption, which does not repair support.",
+      "runtime_status": "answered",
+      "verdict": "yes",
+      "literal_bindings": {
+        "matched": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "payload_sha256": "d6d7b0f6bbcfac1d0765fa049bbd0465f4409f3e190f4145e6de79777ec0f548"
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "existing_recovery",
+      "strict": false,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [
+        false
+      ],
+      "reason": "Both relevant sources are in context. Baseline cites England plus South Africa, not the required Australian source, and asserts document-wide absence. Candidate declares insufficiency despite relevant excerpts present; no strict gain.",
+      "runtime_status": "answered",
+      "verdict": "no",
+      "literal_bindings": {
+        "matched": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 1,
+        "total": 2,
+        "rate": 0.5
+      },
+      "payload_sha256": "c44ee6ff5abd00377c189e9a1f85355a51cd12fdf36a3796945a47332410dfbe"
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "grounding_feedback",
+      "strict": false,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [],
+      "reason": "Both relevant sources are in context. Baseline cites England plus South Africa, not the required Australian source, and asserts document-wide absence. Candidate declares insufficiency despite relevant excerpts present; no strict gain.",
+      "runtime_status": "insufficient_evidence",
+      "verdict": null,
+      "literal_bindings": {
+        "matched": 0,
+        "total": 0,
+        "rate": null
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 2,
+        "rate": 0.0
+      },
+      "payload_sha256": "025d5947c4800a507cb1301ec8c339cd6f9e3ef982141d8281ee1ffa114678b3"
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "arm": "grounding_feedback",
+      "strict": false,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [
+        false,
+        false
+      ],
+      "reason": "Baseline fails to quote the direct Cup-motivation counterexample, uses unbounded article absence/conditional inference and returns yes. Candidate quotes that direct counterexample but reverses its motivation. Fortune attribution and modality are incomplete. Both fail the annotated no.",
+      "runtime_status": "answered",
+      "verdict": "yes",
+      "literal_bindings": {
+        "matched": 4,
+        "total": 4,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "payload_sha256": "1f501ac59018ed3d197095fbdd6e4d24422fa4500425e339592d791cd188abfc"
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "arm": "existing_recovery",
+      "strict": false,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [
+        false,
+        false
+      ],
+      "reason": "Baseline fails to quote the direct Cup-motivation counterexample, uses unbounded article absence/conditional inference and returns yes. Candidate quotes that direct counterexample but reverses its motivation. Fortune attribution and modality are incomplete. Both fail the annotated no.",
+      "runtime_status": "answered",
+      "verdict": "yes",
+      "literal_bindings": {
+        "matched": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "payload_sha256": "da8f49074aeb9265a2eb7be58228247fe91b07503da635e855ca1753027322a1"
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "existing_recovery",
+      "strict": null,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [
+        true,
+        true,
+        true
+      ],
+      "reason": "Baseline supports several TechCrunch facts but omits The Age from the visible answer. The current Age alternative passage includes dispute/denial/retraction, so missing reference does not prove total evidence absence. Candidate times out during repair after an unsupported-date draft; pending stays null.",
+      "runtime_status": "answered",
+      "verdict": "yes",
+      "literal_bindings": {
+        "matched": 9,
+        "total": 9,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 1,
+        "total": 2,
+        "rate": 0.5
+      },
+      "payload_sha256": "33fc302d45d6349629d883ac94c47e2bce66cdbe8b49581d52f8a6d88c63b3e4"
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "grounding_feedback",
+      "strict": null,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [],
+      "reason": "Baseline supports several TechCrunch facts but omits The Age from the visible answer. The current Age alternative passage includes dispute/denial/retraction, so missing reference does not prove total evidence absence. Candidate times out during repair after an unsupported-date draft; pending stays null.",
+      "runtime_status": "execution_failed",
+      "verdict": null,
+      "literal_bindings": {
+        "matched": 0,
+        "total": 0,
+        "rate": null
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 2,
+        "rate": 0.0
+      },
+      "payload_sha256": "7d414f98dd646c8c43f524e8f5d55eb99d524e9372aa85ed05e00aab978339b2"
+    },
+    {
+      "task_id": "SF-64b127ac198d",
+      "arm": "grounding_feedback",
+      "strict": false,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [],
+      "reason": "The specified October report is absent from current context. Baseline remains mechanically rejected. Candidate binds the December date to an original header but initially fabricates the October premise, then returns insufficiency. No cross-report strict success.",
+      "runtime_status": "insufficient_evidence",
+      "verdict": null,
+      "literal_bindings": {
+        "matched": 0,
+        "total": 0,
+        "rate": null
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 1,
+        "rate": 0.0
+      },
+      "payload_sha256": "025d5947c4800a507cb1301ec8c339cd6f9e3ef982141d8281ee1ffa114678b3"
+    },
+    {
+      "task_id": "SF-64b127ac198d",
+      "arm": "existing_recovery",
+      "strict": false,
+      "fact_support": {
+        "answer": false
+      },
+      "claim_support": [],
+      "reason": "The specified October report is absent from current context. Baseline remains mechanically rejected. Candidate binds the December date to an original header but initially fabricates the October premise, then returns insufficiency. No cross-report strict success.",
+      "runtime_status": "verification_failed",
+      "verdict": null,
+      "literal_bindings": {
+        "matched": 0,
+        "total": 0,
+        "rate": null
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 1,
+        "rate": 0.0
+      },
+      "payload_sha256": "1cca975f04cdeabd5a929d3fcadfe8195711d014fb804916ab0cf4875ab053ff"
+    },
+    {
+      "task_id": "DD14",
+      "arm": "existing_recovery",
+      "strict": false,
+      "fact_support": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "claim_support": [],
+      "reason": "Final answer is withheld: the comparison still cites only the rate table. Retained rule claim quotes the opposite branch. Specific warehouse lead is absent from current context; retrieval/selection stage unknown.",
+      "runtime_status": "verification_failed",
+      "verdict": null,
+      "literal_bindings": {
+        "matched": 0,
+        "total": 0,
+        "rate": null
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "payload_sha256": "1cca975f04cdeabd5a929d3fcadfe8195711d014fb804916ab0cf4875ab053ff"
+    },
+    {
+      "task_id": "DD14",
+      "arm": "grounding_feedback",
+      "strict": false,
+      "fact_support": {
+        "rate": true,
+        "decision": false,
+        "lead": false
+      },
+      "claim_support": [
+        false,
+        false
+      ],
+      "reason": "The 1.6% observation is supported, but the same claim says no escalation while citing only the table, deleting the threshold rather than binding the rule. Generic warehouse manager is not the required concrete name, absent from context. Legacy yes contradicts the body.",
+      "runtime_status": "answered",
+      "verdict": "yes",
+      "literal_bindings": {
+        "matched": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "payload_sha256": "397f09059a40c31cbaf99f8fcba1a9386f2533d50a9768f80150b52ee2ef8c9f"
+    },
+    {
+      "task_id": "DD16",
+      "arm": "grounding_feedback",
+      "strict": true,
+      "fact_support": {
+        "rate": true,
+        "decision": true,
+        "lead": true
+      },
+      "claim_support": [
+        true,
+        true
+      ],
+      "reason": "The complete answer binds the east-warehouse 4.6% observation and the >3.0% escalation rule to the decision claim; the rule names the quality director. 4.6 > 3.0 is directly checkable. Legacy yes agrees with body. Baseline needs one repair; candidate initial generation succeeds.",
+      "runtime_status": "answered",
+      "verdict": "yes",
+      "literal_bindings": {
+        "matched": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "payload_sha256": "240da405b398bbf3bedd1bd720d6a2229cd7929d4275107692a1961e36998c92"
+    },
+    {
+      "task_id": "DD16",
+      "arm": "existing_recovery",
+      "strict": true,
+      "fact_support": {
+        "rate": true,
+        "decision": true,
+        "lead": true
+      },
+      "claim_support": [
+        true,
+        true
+      ],
+      "reason": "The complete answer binds the east-warehouse 4.6% observation and the >3.0% escalation rule to the decision claim; the rule names the quality director. 4.6 > 3.0 is directly checkable. Legacy yes agrees with body. Baseline needs one repair; candidate initial generation succeeds.",
+      "runtime_status": "answered",
+      "verdict": "yes",
+      "literal_bindings": {
+        "matched": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "payload_sha256": "9d98d7738652eee8319583b65ec925a1ee9cb44f9b261af5534045d31eb890b4"
+    },
+    {
+      "task_id": "DD17",
+      "arm": "existing_recovery",
+      "strict": false,
+      "fact_support": {
+        "rate": false,
+        "decision": false,
+        "lead": false
+      },
+      "claim_support": [],
+      "reason": "Final answer withheld after comparison again lacks its own threshold quote; the retained negative-branch assertion cites the > rule. The supplied directory is not used to express the requested actual lead.",
+      "runtime_status": "verification_failed",
+      "verdict": null,
+      "literal_bindings": {
+        "matched": 0,
+        "total": 0,
+        "rate": null
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "payload_sha256": "1cca975f04cdeabd5a929d3fcadfe8195711d014fb804916ab0cf4875ab053ff"
+    },
+    {
+      "task_id": "DD17",
+      "arm": "grounding_feedback",
+      "strict": false,
+      "fact_support": {
+        "rate": true,
+        "decision": false,
+        "lead": false
+      },
+      "claim_support": [
+        false,
+        false
+      ],
+      "reason": "The 2.8% observation is supported, but the cited >3.0% rule does not establish the <= branch: denying the antecedent is insufficient. The claim assigns the warehouse manager to the hypothetical escalation branch, contradicting the director rule. Name presence and correct Legacy no do not repair branch attribution.",
+      "runtime_status": "answered",
+      "verdict": "no",
+      "literal_bindings": {
+        "matched": 4,
+        "total": 4,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 0,
+        "total": 0,
+        "rate": null
+      },
+      "payload_sha256": "4fc83b3200f2b73923c84b1fb312e1fc3b841901d8f1193cd8818bee53648c1f"
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "grounding_feedback",
+      "strict": true,
+      "fact_support": {
+        "answer": true
+      },
+      "claim_support": [
+        true
+      ],
+      "reason": "The cited sources identify the two reports. Their trusted publication metadata places TechCrunch before Independent, falsifying after irrespective of the ambiguous consent premise. No event date is substituted for publication time. Legacy no agrees with the body; same alternative proof accepted in both arms.",
+      "runtime_status": "answered",
+      "verdict": "no",
+      "literal_bindings": {
+        "matched": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "payload_sha256": "c1e8c697c2333af812eb5ec9af92b9acd8261630d31b2435b46131c29e5e981e"
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "existing_recovery",
+      "strict": true,
+      "fact_support": {
+        "answer": true
+      },
+      "claim_support": [
+        true
+      ],
+      "reason": "The cited sources identify the two reports. Their trusted publication metadata places TechCrunch before Independent, falsifying after irrespective of the ambiguous consent premise. No event date is substituted for publication time. Legacy no agrees with the body; same alternative proof accepted in both arms.",
+      "runtime_status": "answered",
+      "verdict": "no",
+      "literal_bindings": {
+        "matched": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "source_groups": {
+        "covered": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "payload_sha256": "e3cc4b96b6a97226a548c6d8de0f0b7f980314b5f8b05148be5ffdbbb63a0963"
+    }
+  ],
+  "adopted": false,
+  "default": "legacy",
+  "structured_verdict_changed": false,
+  "formal_Core_run": false,
+  "monetary_cost": null,
+  "review_token_cost": null,
+  "limitations": [
+    "12 selected tasks; 9 annotation-valid; not full Dev47 or held-out evaluation.",
+    "Both arms use existing recovery; not production E2E comparison.",
+    "Fixed current contexts; no retrieval; two source-passage gaps and DD14 missing owner cannot be repaired by citation binding.",
+    "Same-session model source inspection, not independent or human labels.",
+    "Citation substring and source identity coverage do not establish semantic support.",
+    "One sample per arm, rotating order, no isolation from background host load or model prompt cache."
+  ]
+}

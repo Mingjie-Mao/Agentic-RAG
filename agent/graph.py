@@ -381,4 +381,17 @@ def invoke_agent_graph(db, user, task, models, tools, started):
         # Let the framework finish each checkpoint before advancing to the next
         # node; no application-managed checkpoint flush or write queue is needed.
         graph.invoke(initial, config, durability="sync")
+        task.input = {**task.input, "_executed_path": executed_path(graph, config)}
+        db.commit()
     return task
+
+
+def executed_path(graph, config):
+    """Nodes actually run, in order, read from LangGraph's own checkpoint history.
+
+    The history spans resumes of the same thread. A subgraph (hybrid, planner)
+    appears under its parent node name; a mode label alone cannot show that a
+    contract short-circuit skipped the agent subgraph, this path can.
+    """
+    history = reversed(list(graph.get_state_history(config)))
+    return [node for snapshot in history for node in snapshot.next if node != "__start__"]

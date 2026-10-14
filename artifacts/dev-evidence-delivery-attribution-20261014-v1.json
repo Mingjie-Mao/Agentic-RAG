@@ -1,0 +1,717 @@
+{
+  "version": "evidence-delivery-attribution-dev-20261014-v1",
+  "split": "dev",
+  "source_input_sha256": "45c1fa45df8a5ad698ffc124677666c8d9a6d640211fbc2067b614e2d8a5e0f6",
+  "source_relevance_artifact_sha256": "ca0ee70698caca8a0fd04df6b83f411b744ee3070e6ad5dae0c882be05c0731a",
+  "private_full_evidence_sha256": "1ab14ae64f62588f395f902ac7df79786a640f974511496626c7b96311e07f91",
+  "rows": [
+    {
+      "task_id": "SF-64b127ac198d",
+      "corpus_required_evidence_present": true,
+      "raw_file_checks": [
+        {
+          "document_id": "mh-52e40f9e52c88c7f6e69526f",
+          "source_sha256": "c2050b4aae10008108c74bfef16d7df867ca598b0bc7a56579c5d9408ffd1bf1",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        },
+        {
+          "document_id": "mh-6bb4cc76e6d5c4e82422e47c",
+          "source_sha256": "4003a4e531d446d35ecd2352f6e90f20cfc8c36d9a06277bee23184f0709ce51",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        },
+        {
+          "document_id": "mh-477a7be7ac0328ef42e40c04",
+          "source_sha256": "e8cd1dcea2b012c9abbcf265fc01bb7436b1d5a6cbaa0a94d2e7e72d7c4b7b8a",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        }
+      ],
+      "candidate_pool_preserved": true,
+      "candidate_chunk_ids": [
+        "cd42bbad-32f5-52c4-9223-8c0627c2aafd",
+        "1fbaf60f-ee29-555f-9b8b-2a94f4893b32",
+        "271276a6-4501-5eb7-8658-0a6ff38910c4",
+        "161bfeb8-2d57-5be3-9382-51feb081ab34",
+        "5dd4540b-162b-50c8-b5e4-ff0d0bfe2bbc",
+        "8d88c591-3cb1-5a50-b6f1-6824dcecbb56",
+        "ba72e6a1-7a38-525e-80b3-575b8beee464",
+        "43825f41-c37d-5e69-a041-9f27009bebe9",
+        "5a0de16a-7347-5674-b092-42d0cae0c3de",
+        "52c971ca-c3d7-5ae3-9616-8a87e396f83c",
+        "e7f83b02-7ecf-5dcb-b966-c0ac22d86056",
+        "ba903fd1-3bad-57cc-bf9f-d2dc21bdf9d9",
+        "cc47d81a-a02f-5df4-8d64-ea26ce4f5fc8",
+        "095bea81-e99c-5bfc-a262-4bccbc4b9408",
+        "bd217a73-a863-5db3-952c-f2aa154920df",
+        "db5e84dc-b82e-5827-af62-dac58cd399ed",
+        "8186c387-553b-5750-8d96-850349fe0985",
+        "eccaf85b-a2e4-5561-a20a-655d7e3bc48c",
+        "eb5f300d-75e4-5684-a9e4-5555df9945c7",
+        "75fff95b-2cfc-537d-9f9e-13a9f1a199a2",
+        "25ae870c-2225-5772-89e6-4c50b007e4a6",
+        "7c0c979a-435f-57ab-899a-c9c2f1a385de",
+        "9e24171e-e84b-5923-82cf-2141db32f266",
+        "ec866d90-f75e-59ca-962a-9cec1430f905",
+        "140fdd06-8246-574a-93c5-be0a5bd89bd5",
+        "444dae94-d630-581d-b6ec-b34460684fe8",
+        "89698d6e-6bed-51a4-a613-68609f8374ce",
+        "33b26bfb-1adc-59a3-9d8f-609ef391ebdd",
+        "0f1ccc21-0dda-5425-8281-863531941d8a",
+        "c275d3bc-b9af-5324-ba69-0726972af7fd",
+        "573e8583-b20f-5803-ad00-35485703368d",
+        "a9ba3c43-389e-532d-b7df-db43117fae0c",
+        "e2aea925-4fda-51fa-8dde-d8372dfff922",
+        "cd13d532-f360-573d-953b-c2088a868450",
+        "625a5495-9c93-58b3-bc77-36a1b7aa35cb",
+        "1c1d1b86-545d-57c7-90af-65c0320a3e94",
+        "c34f28ce-5798-5d1b-bd25-484b311e01cd",
+        "53dbb728-dfd9-5fac-ac90-7e8fd297d2a0",
+        "1f6d3ccb-3ad9-5aeb-9b28-f75a15acb2fc",
+        "17886fab-668a-570f-90e1-d476733e345c",
+        "1cac8424-fd29-5c3f-87ab-8d4b7f2f9550",
+        "8cbfb927-234c-534b-be02-f3d91c0e8f86",
+        "7ba1e4a5-4b40-5e1d-ab40-79455218efc1",
+        "4a8fff56-d229-5543-af3e-c9bc4eb94ca6",
+        "18334ff0-2045-5ea0-8d31-edb73ea9ded3",
+        "5f5ab4c8-ede0-5604-bdf1-eec2f1a40b23",
+        "44fe70ac-fbcb-5e22-b6bd-78d46d4defbe",
+        "1b8dd532-33a3-5583-a9fc-0a37e528b521",
+        "d471a69b-216b-5357-bf6d-1f7318470c66",
+        "a3824858-8fa0-5ebf-a96e-0c073f77b89f",
+        "481a4154-c450-55bf-975a-3d626f195ca3",
+        "4a6f28b1-25e5-5fcc-a859-1b7f4403a080",
+        "8d734676-6f27-56e2-9c37-777943782605",
+        "22f181ef-c050-56ba-9099-f2904531234a",
+        "f0cd76b3-329d-51fe-bf86-09da7f030fdd",
+        "53f274fd-bfb0-5bbc-9b30-5bb50779b3b3",
+        "6349ebd0-7b5b-5b6d-9466-f9a6e29686f8",
+        "499f03a4-5c55-5932-89fa-c9db521a7814",
+        "b46d0632-70b2-5e95-a631-9af71a00f93b",
+        "cd3466b0-bfcc-5040-8314-d91ebd3dae2f",
+        "f84ba955-f1f2-518a-aa2e-90f1cd14c060",
+        "fd6ce744-2722-5598-bdda-011e7550f5ba",
+        "411cf5f2-a068-5ce7-8db1-0f5d7749187b",
+        "f98c705c-a1e5-5735-82ce-7a91adf19de7",
+        "ddc41b23-a4ae-5003-b942-d656eb3852aa",
+        "3d0c9ab5-cd83-55c3-b6c6-32acdfa8df06",
+        "542e1963-c155-5c7e-9f01-b09993a374cf",
+        "004e7be0-8a2a-5d42-8ac7-971a776f6a0a",
+        "08fe4708-9c62-5456-af79-e746d5683dc6",
+        "0b5554f7-90be-5cf7-b4fe-be54dd1d3cd5",
+        "453aec65-c169-5501-8d99-ca2eb4da2f8e",
+        "9500821e-0450-5b12-9310-dbe8df5870c1",
+        "a710b211-d5b1-5b65-baf3-57d0d25cfd19",
+        "7d96d4a7-d478-5dfe-af1f-ab4da35960f8",
+        "8566b449-1735-5b1d-92c4-b7c4d694cb67"
+      ],
+      "final_context_chunk_ids": [
+        "cd42bbad-32f5-52c4-9223-8c0627c2aafd",
+        "1fbaf60f-ee29-555f-9b8b-2a94f4893b32",
+        "271276a6-4501-5eb7-8658-0a6ff38910c4",
+        "161bfeb8-2d57-5be3-9382-51feb081ab34",
+        "5dd4540b-162b-50c8-b5e4-ff0d0bfe2bbc",
+        "8d88c591-3cb1-5a50-b6f1-6824dcecbb56",
+        "ba72e6a1-7a38-525e-80b3-575b8beee464",
+        "43825f41-c37d-5e69-a041-9f27009bebe9"
+      ],
+      "confirmed_missing_necessary_evidence": true,
+      "current_completeness": "incomplete",
+      "primary_layer": "context_selection",
+      "layers": [
+        "context_selection",
+        "citation_binding",
+        "fact_extraction"
+      ],
+      "mechanical_codes": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_date"
+          ]
+        },
+        {
+          "claim_index": 1,
+          "codes": [
+            "unsupported_cited_date"
+          ]
+        }
+      ],
+      "verifier_false_rejection_confirmed": false,
+      "finding": "必需报道及其发布头均已在历史候选。最终 relevant_doc 放松 document quota 后仍按整问相关性填满8块；正确金额段及发布头以 top_k_full 排除。parent document_quota 是更早阶段，不能当最终上下文丢失的唯一原因。",
+      "unknown": "旧被拒草稿未保存；10-13新复现样本不是原草稿。尚未重跑现行端到端检索。",
+      "injection_provenance": [
+        {
+          "chunk_id": "25ae870c-2225-5772-89e6-4c50b007e4a6",
+          "document_id": "mh-6bb4cc76e6d5c4e82422e47c",
+          "version_id": "2aaee60c-6d42-4c37-9fad-fc6b207c02fe",
+          "source_sha256": "4003a4e531d446d35ecd2352f6e90f20cfc8c36d9a06277bee23184f0709ce51",
+          "acquisition": "original_candidate",
+          "candidate_occurrences": 2,
+          "source_text_sha256": "9f17f2a8a435f4b7c4821dfbfe9808f0f789eef7eab9be1e46310213e959e044",
+          "actual_final_reject": [
+            {
+              "chunk_id": "25ae870c-2225-5772-89e6-4c50b007e4a6",
+              "reasons": [
+                "top_k_full"
+              ]
+            }
+          ]
+        },
+        {
+          "chunk_id": "8186c387-553b-5750-8d96-850349fe0985",
+          "document_id": "mh-6bb4cc76e6d5c4e82422e47c",
+          "version_id": "2aaee60c-6d42-4c37-9fad-fc6b207c02fe",
+          "source_sha256": "4003a4e531d446d35ecd2352f6e90f20cfc8c36d9a06277bee23184f0709ce51",
+          "acquisition": "original_candidate",
+          "candidate_occurrences": 2,
+          "source_text_sha256": "255894a9da23403047ced16b0ac4980dc55da0a9c86edfee4174d1add02a9307",
+          "actual_final_reject": [
+            {
+              "chunk_id": "8186c387-553b-5750-8d96-850349fe0985",
+              "reasons": [
+                "top_k_full"
+              ]
+            }
+          ]
+        }
+      ],
+      "final_selection_method": "cached_original_question_relevance_v1",
+      "required_fact_ids": [
+        "answer"
+      ]
+    },
+    {
+      "task_id": "DD14",
+      "corpus_required_evidence_present": true,
+      "raw_file_checks": [
+        {
+          "document_id": "qi-quality-q3",
+          "source_sha256": "bb72161725afc8bf477fe2723a6372b98e4b027189979f9a03c11198bc3892a7",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        },
+        {
+          "document_id": "qi-return-escalation",
+          "source_sha256": "0b57f708f9e283212b22a3efa214d9b2a53444323fcee458d0b8e2629205eee9",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        },
+        {
+          "document_id": "qi-warehouse-directory",
+          "source_sha256": "82f999081cf30ed5bd4af13c15c56f5ca45b6025d76da21e94213b1b474294e5",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        }
+      ],
+      "candidate_pool_preserved": false,
+      "candidate_chunk_ids": null,
+      "final_context_chunk_ids": [
+        "1f1a9faa-8e8c-5126-be2a-436cd809bc65",
+        "b9d4c15a-babe-5156-b31b-c81b68eee7d4",
+        "eb1f07ba-7cc6-55ae-87ba-d2d0dd30defc",
+        "1b2ffa5b-1bb8-5f67-9323-3f3d40ec0d53",
+        "8afc17d6-6b29-57c1-8e21-bacc604d32fa"
+      ],
+      "confirmed_missing_necessary_evidence": true,
+      "current_completeness": "incomplete",
+      "primary_layer": "delivery_unknown_then_binding_and_condition",
+      "layers": [
+        "citation_binding",
+        "condition_reasoning",
+        "retrieval_stage_unknown"
+      ],
+      "mechanical_codes": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_quantity"
+          ]
+        }
+      ],
+      "verifier_false_rejection_confirmed": false,
+      "finding": "观测、两个规则分支均已交付，具体负责人名录未交付但真实存在。复现的数值比较未绑定自身阈值；不升级结论引用了升级分支。",
+      "unknown": "Dynamic仅保存最终retrieved_evidence，原候选及每次查询未保存；不确认名录是否曾检索到。",
+      "injection_provenance": [
+        {
+          "chunk_id": "8e0852da-1a0c-50ed-9165-7716db6c8e71",
+          "document_id": "qi-warehouse-directory",
+          "version_id": "0340633a-01cd-4f07-b342-a6c6b7b92bbc",
+          "source_sha256": "82f999081cf30ed5bd4af13c15c56f5ca45b6025d76da21e94213b1b474294e5",
+          "acquisition": "extra_corpus_fetch_original_candidate_unknown",
+          "candidate_occurrences": 0,
+          "source_text_sha256": "396d7d560c20b683f132e7b9bca81257d7609cbbdab3e160c5a0e158f935e72f",
+          "actual_final_reject": []
+        }
+      ],
+      "final_selection_method": null,
+      "required_fact_ids": [
+        "rate",
+        "decision",
+        "lead"
+      ]
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "corpus_required_evidence_present": true,
+      "raw_file_checks": [
+        {
+          "document_id": "mh-d033e126e1ca1e4e5a1e9139",
+          "source_sha256": "ec9bcbfddaf095a80fd676d2309a3f1165fd18885ebcf9a184fb63c05d13abeb",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        },
+        {
+          "document_id": "mh-563b2bc8a5b3994824dafd59",
+          "source_sha256": "38628c98aa333ae26f5186963786333159ae10c00f41f77102a8ff70cb34634a",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        },
+        {
+          "document_id": "mh-477a7be7ac0328ef42e40c04",
+          "source_sha256": "e8cd1dcea2b012c9abbcf265fc01bb7436b1d5a6cbaa0a94d2e7e72d7c4b7b8a",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        }
+      ],
+      "candidate_pool_preserved": true,
+      "candidate_chunk_ids": [
+        "542e1963-c155-5c7e-9f01-b09993a374cf",
+        "1fbaf60f-ee29-555f-9b8b-2a94f4893b32",
+        "b079d3b5-3dc3-5a84-9cbd-f9bbc59c70a4",
+        "43825f41-c37d-5e69-a041-9f27009bebe9",
+        "411cf5f2-a068-5ce7-8db1-0f5d7749187b",
+        "095bea81-e99c-5bfc-a262-4bccbc4b9408",
+        "4a6f28b1-25e5-5fcc-a859-1b7f4403a080",
+        "8d88c591-3cb1-5a50-b6f1-6824dcecbb56",
+        "7975dcd2-f957-5e2e-8396-845c49085acf",
+        "cd42bbad-32f5-52c4-9223-8c0627c2aafd",
+        "004e7be0-8a2a-5d42-8ac7-971a776f6a0a",
+        "5dd4540b-162b-50c8-b5e4-ff0d0bfe2bbc",
+        "beac2ac2-9f47-5897-af90-ecee90117354",
+        "e7f83b02-7ecf-5dcb-b966-c0ac22d86056",
+        "a710b211-d5b1-5b65-baf3-57d0d25cfd19",
+        "52c971ca-c3d7-5ae3-9616-8a87e396f83c",
+        "9500821e-0450-5b12-9310-dbe8df5870c1",
+        "271276a6-4501-5eb7-8658-0a6ff38910c4",
+        "9cc914e6-6514-53c5-b800-0b5b0cdd3308",
+        "ba903fd1-3bad-57cc-bf9f-d2dc21bdf9d9",
+        "3d0c9ab5-cd83-55c3-b6c6-32acdfa8df06",
+        "bd217a73-a863-5db3-952c-f2aa154920df",
+        "7cfc071d-8b1f-540d-a5e9-b13a4ea76cc6",
+        "ba72e6a1-7a38-525e-80b3-575b8beee464",
+        "2ba727e9-3860-5e1b-992b-a7d289b1d35d",
+        "161bfeb8-2d57-5be3-9382-51feb081ab34",
+        "2b939ce3-1382-533d-a373-be60b806a925",
+        "75759686-c6b9-5957-a0ee-9a519f4dbe7b",
+        "8566b449-1735-5b1d-92c4-b7c4d694cb67",
+        "44fe70ac-fbcb-5e22-b6bd-78d46d4defbe",
+        "7d96d4a7-d478-5dfe-af1f-ab4da35960f8",
+        "ac326ee4-29f6-5de6-99db-eb733557805c",
+        "a410605e-edd0-5269-b8d1-5a0d04803919",
+        "fc048915-22b7-509d-bfd8-9d0f57b64b50",
+        "a3824858-8fa0-5ebf-a96e-0c073f77b89f",
+        "c8dfcf8b-15cf-54a2-8215-4dced6a30b4b",
+        "c658d14c-4caa-5715-88b8-1904b91d1dfb",
+        "3cdd39dd-3870-52d2-8704-be27e2efd06a",
+        "793b9df2-3c3d-5013-9653-01d3c27792e3",
+        "5974743a-e136-50c5-8031-27e306d0d190",
+        "5a0de16a-7347-5674-b092-42d0cae0c3de",
+        "eb5f300d-75e4-5684-a9e4-5555df9945c7",
+        "8186c387-553b-5750-8d96-850349fe0985",
+        "f0cd76b3-329d-51fe-bf86-09da7f030fdd",
+        "2b022e42-b7bc-5a64-aacc-644eb0d63774",
+        "b781bb75-8e22-5afa-bec4-a27e6b9566e3",
+        "db5e84dc-b82e-5827-af62-dac58cd399ed",
+        "140fdd06-8246-574a-93c5-be0a5bd89bd5",
+        "481a4154-c450-55bf-975a-3d626f195ca3",
+        "25ae870c-2225-5772-89e6-4c50b007e4a6",
+        "92539ac9-61c5-530d-8aaf-b3211e850a99",
+        "89698d6e-6bed-51a4-a613-68609f8374ce",
+        "75fff95b-2cfc-537d-9f9e-13a9f1a199a2",
+        "33242944-2f06-5217-be6f-e9a39d570dc9",
+        "fd6ce744-2722-5598-bdda-011e7550f5ba",
+        "b46d0632-70b2-5e95-a631-9af71a00f93b",
+        "846f9b4a-df2c-534a-9c54-92c0a26f8a50",
+        "f84ba955-f1f2-518a-aa2e-90f1cd14c060",
+        "3bf727dd-3d5d-526e-9b86-bd9bbfebfb7f",
+        "0b5554f7-90be-5cf7-b4fe-be54dd1d3cd5",
+        "dccf0be4-6bc1-502f-a4db-082c360ad832",
+        "f98c705c-a1e5-5735-82ce-7a91adf19de7",
+        "a5d53b79-51d9-5035-a1a6-9e00bd782d39",
+        "49515a6f-5ce9-52da-a607-b4ec214fa390",
+        "0998ff0e-ba5a-5ecd-bbd0-94186b2027c3",
+        "5c0810b5-dc84-5e21-afcf-cc01a60a770a",
+        "73e692ed-51da-5811-aa4a-7554dfaff1cc",
+        "468350b3-26ef-5bcf-9d27-3f10b4389a08",
+        "bbd095b1-d160-5e2a-82e4-6af0a8296ab1"
+      ],
+      "final_context_chunk_ids": [
+        "1fbaf60f-ee29-555f-9b8b-2a94f4893b32",
+        "43825f41-c37d-5e69-a041-9f27009bebe9",
+        "095bea81-e99c-5bfc-a262-4bccbc4b9408",
+        "8d88c591-3cb1-5a50-b6f1-6824dcecbb56",
+        "cd42bbad-32f5-52c4-9223-8c0627c2aafd",
+        "5dd4540b-162b-50c8-b5e4-ff0d0bfe2bbc",
+        "e7f83b02-7ecf-5dcb-b966-c0ac22d86056",
+        "542e1963-c155-5c7e-9f01-b09993a374cf"
+      ],
+      "confirmed_missing_necessary_evidence": false,
+      "current_completeness": "unknown_alternative",
+      "primary_layer": "citation_attribution_and_possible_delivery_gap",
+      "layers": [
+        "context_selection",
+        "citation_binding",
+        "evidence_sufficiency_unknown"
+      ],
+      "mechanical_codes": [],
+      "verifier_false_rejection_confirmed": false,
+      "finding": "指定Grey段及发布头在历史候选，最终相关性选择以top_k_full排除；已有替代片段包含Search广告收入叙述、否认及撤稿，所以参考缺失不是全部缺证据。旧答案只引用TechCrunch。",
+      "unknown": "原标注待审；替代证据足以支持哪种一致性结论仍unknown；不算主严格成功。",
+      "injection_provenance": [
+        {
+          "chunk_id": "b079d3b5-3dc3-5a84-9cbd-f9bbc59c70a4",
+          "document_id": "mh-563b2bc8a5b3994824dafd59",
+          "version_id": "9551a5b7-4f8d-46ec-abdb-dedf302eb142",
+          "source_sha256": "38628c98aa333ae26f5186963786333159ae10c00f41f77102a8ff70cb34634a",
+          "acquisition": "original_candidate",
+          "candidate_occurrences": 1,
+          "source_text_sha256": "c4a1b3d7c4ac63f87638e9300cb04fe2f4a8d31654023df447db56e4ca872471",
+          "actual_final_reject": [
+            {
+              "chunk_id": "b079d3b5-3dc3-5a84-9cbd-f9bbc59c70a4",
+              "reasons": [
+                "top_k_full"
+              ]
+            }
+          ]
+        },
+        {
+          "chunk_id": "8566b449-1735-5b1d-92c4-b7c4d694cb67",
+          "document_id": "mh-563b2bc8a5b3994824dafd59",
+          "version_id": "9551a5b7-4f8d-46ec-abdb-dedf302eb142",
+          "source_sha256": "38628c98aa333ae26f5186963786333159ae10c00f41f77102a8ff70cb34634a",
+          "acquisition": "original_candidate",
+          "candidate_occurrences": 2,
+          "source_text_sha256": "e1fa9719a704691b3b4bd5cc686fb2807a6626f510171f18c859b832cd46603a",
+          "actual_final_reject": [
+            {
+              "chunk_id": "8566b449-1735-5b1d-92c4-b7c4d694cb67",
+              "reasons": [
+                "top_k_full"
+              ]
+            }
+          ]
+        }
+      ],
+      "final_selection_method": "cached_original_question_relevance_v1",
+      "required_fact_ids": [
+        "answer"
+      ]
+    },
+    {
+      "task_id": "U16",
+      "corpus_required_evidence_present": true,
+      "raw_file_checks": [
+        {
+          "document_id": "lt-import-guide",
+          "source_sha256": "2f6ed3e53ab3f5cafa4200b2b9f3bb0a28f0affa4390675614efc55f19ef8f2b",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        },
+        {
+          "document_id": "lt-incident-417",
+          "source_sha256": "855a12dda577f991df27ef3c2e80b3f779073e0d8e69abc6968e3efe4d306798",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        }
+      ],
+      "candidate_pool_preserved": true,
+      "candidate_chunk_ids": [
+        "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+        "e012e8f9-9dcb-5192-a9ae-1c7bc7deafa2",
+        "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+        "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+        "a206e830-63df-5116-8c42-da66fffd3207",
+        "22897e39-4101-5cef-9dde-832ed43e6bbc",
+        "aa649ef9-12e7-5922-b9ae-1b4aaeef0ddb",
+        "14ee309a-33c6-567d-80d3-1b6a81d278ad",
+        "2ece6e95-bcbf-58a8-8039-c3655b688aa0",
+        "aa1fbc60-3898-5d82-aa44-081f707cb874",
+        "ae8528c4-214c-5c85-a71b-08d31ed41e54",
+        "bdd534c8-73b5-5df5-bd87-1d89b1e22646",
+        "061e2fc0-20d7-5bd6-8e9f-fef575a9eec7",
+        "6c3a7a75-ffc6-51d9-b205-43a35fc8509a",
+        "36147703-6eea-5e23-8b77-2bffc319919f",
+        "13f57a55-ec76-5726-8cf7-d3dbbef23175",
+        "eb556396-2a46-556e-be2b-b59db96dbfff",
+        "fdb878b8-2018-5080-ae4d-5d82585f6e9c",
+        "c6bca396-592d-5445-9c00-6b7d66206afb",
+        "7101e22e-cc40-5760-942c-4f713ae01bb4",
+        "c0cbcabe-4112-5787-b40a-7ca06571c850",
+        "0b3d1822-1e9f-5221-9128-79825dc95650",
+        "59a88721-6370-5e31-b842-4fa2d4de3781",
+        "17e16650-4b23-5677-aeb2-0a5196223c0d",
+        "824347e8-f03c-587a-9e07-206c668f13fc",
+        "a25e8fd8-c88d-5e84-8adc-0fd40778f5f7",
+        "73fb594c-040b-5d11-b8c8-249a8c395205",
+        "33427f32-6781-59e7-87fb-96b1c1a8cc7d",
+        "0475763c-187a-5286-8b7c-020b48cd70b7",
+        "35c4b497-c0ec-510f-b7f1-26fa57bee268",
+        "07c1dfdd-cdfb-5b91-a5fb-4d0e0e56b35b",
+        "f28bb7e8-4508-5e08-a18f-714038098052",
+        "26464540-218c-5ac2-b231-fc3f54aeb201",
+        "0dc72485-17ce-51fd-8ac4-7fdc4f22a874",
+        "20acdd48-814d-59e1-b27b-bc3fdb0b4440",
+        "d4cf3b2b-b1e7-5416-9df7-01ad601bc08e",
+        "c1236e0a-f8ae-5cf2-928f-93964e1f94cb",
+        "caa9b0c9-04e6-5acf-b8ec-70f802909dad",
+        "710c4309-9ffe-54a5-b9be-9be173204893",
+        "640ccb70-9431-5001-a3bc-53a7fab98817",
+        "e438b463-232c-501d-b6af-82b9d20fb6a5",
+        "b2ad42e8-109b-5c3a-9e5f-7877f6f36e0a",
+        "5dbd7686-87a2-5a29-9d1d-af13aa29ddc2",
+        "c145be38-4641-570b-a683-927343f1459b",
+        "f86240f1-15be-59d5-a7e5-1c9e19307356",
+        "dc7e5a9a-7d7e-5977-870d-ce47795308eb",
+        "f2384f6a-f79d-52ee-b230-24bf0776338d",
+        "1fded0e5-73ad-553b-b3ad-31af8065e13a",
+        "48050bb8-a8ae-558f-8db2-a4788b20d4c9",
+        "070a1892-f01c-5901-87e1-0706791d7a8c"
+      ],
+      "final_context_chunk_ids": [
+        "e619afa4-df60-5c51-a2ea-ab921dbcbc81",
+        "e012e8f9-9dcb-5192-a9ae-1c7bc7deafa2",
+        "b51c898f-8657-5bb8-9b81-2998df9d5fa0",
+        "d0177dd0-361c-5001-9b3d-1fe11fb97875",
+        "a206e830-63df-5116-8c42-da66fffd3207",
+        "22897e39-4101-5cef-9dde-832ed43e6bbc",
+        "14ee309a-33c6-567d-80d3-1b6a81d278ad",
+        "2ece6e95-bcbf-58a8-8039-c3655b688aa0"
+      ],
+      "confirmed_missing_necessary_evidence": false,
+      "current_completeness": "complete",
+      "primary_layer": "fact_extraction_omission",
+      "layers": [
+        "fact_extraction"
+      ],
+      "mechanical_codes": [],
+      "verifier_false_rejection_confirmed": false,
+      "finding": "分片及新增告警两项原文均已交付，旧生成只回答第一项。不是检索或上下文缺口。",
+      "unknown": "现象证明遗漏，不能只据一次结果区分注意力、任务清单分解或生成能力。",
+      "injection_provenance": [],
+      "final_selection_method": "cached_original_question_relevance_v1",
+      "required_fact_ids": [
+        "shard",
+        "alert"
+      ]
+    },
+    {
+      "task_id": "DD17",
+      "corpus_required_evidence_present": true,
+      "raw_file_checks": [
+        {
+          "document_id": "qi-quality-q3",
+          "source_sha256": "bb72161725afc8bf477fe2723a6372b98e4b027189979f9a03c11198bc3892a7",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        },
+        {
+          "document_id": "qi-return-escalation",
+          "source_sha256": "0b57f708f9e283212b22a3efa214d9b2a53444323fcee458d0b8e2629205eee9",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        },
+        {
+          "document_id": "qi-warehouse-directory",
+          "source_sha256": "82f999081cf30ed5bd4af13c15c56f5ca45b6025d76da21e94213b1b474294e5",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        }
+      ],
+      "candidate_pool_preserved": false,
+      "candidate_chunk_ids": null,
+      "final_context_chunk_ids": [
+        "1f1a9faa-8e8c-5126-be2a-436cd809bc65",
+        "b9d4c15a-babe-5156-b31b-c81b68eee7d4",
+        "8e0852da-1a0c-50ed-9165-7716db6c8e71",
+        "eb1f07ba-7cc6-55ae-87ba-d2d0dd30defc",
+        "1b2ffa5b-1bb8-5f67-9323-3f3d40ec0d53"
+      ],
+      "confirmed_missing_necessary_evidence": false,
+      "current_completeness": "complete",
+      "primary_layer": "claim_binding_and_conditional_reasoning",
+      "layers": [
+        "citation_binding",
+        "condition_reasoning",
+        "fact_extraction"
+      ],
+      "mechanical_codes": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_quantity"
+          ]
+        }
+      ],
+      "verifier_false_rejection_confirmed": false,
+      "finding": "观测、显式<=分支、名录均已交付。复现阈值缺自身引用；Grounding候选机械通过但以>分支推出不升级，并将不适用的升级条件绑定仓库主管。",
+      "unknown": "不能因号码或姓名在引文出现便认定支持；新鲜对照可能有随机/服务差异。",
+      "injection_provenance": [],
+      "final_selection_method": null,
+      "required_fact_ids": [
+        "rate",
+        "decision",
+        "lead"
+      ]
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "corpus_required_evidence_present": true,
+      "raw_file_checks": [
+        {
+          "document_id": "mh-fc008475c67160d95003b72a",
+          "source_sha256": "5bbd9679c92623f7039e045e64e8b0ec905363d7907047af4d412dc9a8702ae9",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        },
+        {
+          "document_id": "mh-9142047f753bd7ec285e4809",
+          "source_sha256": "63a0ec77514d71e7fc7117d8a3ed0cb7b737a47868e7ca4c6c0e4ea62eab6aec",
+          "local_file_present": true,
+          "local_file_hash_matches": true
+        }
+      ],
+      "candidate_pool_preserved": true,
+      "candidate_chunk_ids": [
+        "8fc33d78-318c-512f-8950-eca4a55f9d78",
+        "91241641-964f-5975-99ba-6f07a6afdb5e",
+        "bedbf7a3-0514-5b92-b589-1d0eb9aa3a92",
+        "a936376c-e93c-53f2-8807-acdde6b1d0b7",
+        "59ee3d5f-6d64-5041-bf8a-a03609fd0d64",
+        "f4c29a51-adae-5949-9211-1beeefccb384",
+        "00eea1d8-1cd8-5484-9d25-ab46f5f6fc97",
+        "ae4c88e9-8798-54f1-a666-6dd09f2585f2",
+        "4024cc53-e5c0-502e-b08f-d87232b6c303",
+        "450e889e-37b1-5390-ae65-95f84cf44120",
+        "b91695a8-16db-5e8a-bad9-2766a25bc436",
+        "1e2a20af-3619-5eec-865f-df9c99c96568",
+        "00ede672-e17d-5f34-8a05-a4c071d8ef1b",
+        "5607de67-9ad8-5a67-8a9c-856509f915ef",
+        "3f62c3aa-d84e-5dd9-956f-e02c8fe1c3ac",
+        "e210aa7f-9631-5d96-a2d0-cff6e559395a",
+        "ff3cf9a3-5239-5fe0-9fe7-d6a1fe2bcd3b",
+        "7c0a4a37-8070-5ca5-94cf-f2eec7003ac6",
+        "f347bc86-6641-5e01-baad-ab7c2dd05b5e",
+        "1d9f3e55-2381-5e66-a407-0593dc7a5699",
+        "5452cdcc-8514-5122-a7c3-be6ecde28bc1",
+        "e2ac5036-5ff0-5e9d-8252-3d491b937643",
+        "c7e9651f-c4a5-5f58-aa33-4eb70133af9a",
+        "125597d6-2928-5a1e-b966-4023e6584bbd",
+        "391329d0-7934-58dd-969f-72677a3b0fd0",
+        "0c41ad05-f710-5d1b-b555-2a13c2633f50",
+        "626ae29d-0a85-5f83-80c8-46649bdbbc34",
+        "fae1e3ef-ed92-567a-9a4b-2ab11d340daa",
+        "8b925faf-b1b7-5b7e-ba90-1e9dd8a364d2",
+        "b7235ea1-3461-5bf2-8160-39bf8d944a8b",
+        "d6dd9526-cadc-5c9c-97d6-9cd52af1fda6",
+        "8726a843-aa83-54ab-92e7-917b2eccfd06",
+        "ea4801d1-d52e-5691-90a1-755142ee54d6",
+        "81e1c5bb-9a98-5ec2-aa3f-df51f9c43778",
+        "3e0409f1-9742-5419-a2a0-29f1b77a094c",
+        "cfd0072a-8380-5637-a0d6-97f81936daf3",
+        "8e358614-f774-574f-a67d-2673bb2c2ecc",
+        "b71560a8-7656-52b5-958d-addc4feffb5e",
+        "e5afb8b8-819a-5041-8b0c-f609838805a4",
+        "030e4426-002e-5c73-8e18-d0ffd7c7f9cc",
+        "9ece595c-0238-5d09-9995-bcaf0673f7ba",
+        "18cbb669-e292-5a28-993b-d4109bf18b8d",
+        "cc960358-ffec-56b0-b1d8-98501c94d87b",
+        "2d1f1126-da33-535a-bd22-09f01dac7f80",
+        "2649128a-6645-548e-8ed8-3f910c1d91ae",
+        "7f38043f-dd5f-5da2-b636-0b5c895ddd90",
+        "b0facc11-1c33-5af3-a481-c3f2253aa721",
+        "26adf57c-facf-5096-84d0-58ff1ebae28c",
+        "59ec38d2-b56b-5b93-aad2-3879317ded5b",
+        "68d61a85-856e-5dc2-a6d4-d2da36ec1f27",
+        "3a225be5-3ebb-5c6c-a010-c87dbd77bbd0",
+        "7dc257f0-c4aa-5676-8374-45f4a17c8463",
+        "ce68ef61-1f95-576b-a8f8-7e29b829471a",
+        "afec9c72-f891-5280-a3f7-07d7d8a063bc",
+        "0dd259c5-2634-5cd6-bf4d-151d492c833d",
+        "1393cac0-0834-5b5b-addd-16754fffb7a6",
+        "d3f5e645-ce65-507e-a349-7cd1eadf0a4c",
+        "34e43898-5f94-556f-8a6b-37c4d8b5e86f",
+        "750a61a4-1121-5ff9-93e2-f93ebea82437",
+        "6b5fdc17-3dd5-555a-afca-c6e98b84d240",
+        "08aa6e01-083e-5c0f-9e21-22976df31cd2",
+        "72fee354-56a6-5c60-b8d3-6348894f7108",
+        "48992149-565f-5236-a11d-afbc5a3f84ce",
+        "68db4473-011e-5bea-af81-b5d354b4ee22",
+        "5ce37080-3bf9-5063-b8e1-6a1f70d6169a",
+        "909dc76a-7c65-56ba-8290-d92097c58a61",
+        "75425373-5a9a-58f6-aa71-ec4ff4e054f4",
+        "7476ee4a-b0ea-5b47-82b6-9ee5971a22c7",
+        "86b36fda-bf8d-5a89-9fed-c1fcb59ac65c",
+        "655afcf7-05fc-5fe3-ae56-ed070a677335",
+        "bff811a2-a0d2-599b-adff-c9e8b33a441e",
+        "9070006f-081d-529d-93e3-6b06f7453c47",
+        "4cae5f18-9d59-5e05-bc08-152077ec4add",
+        "196aba7c-b6b0-50e2-ab11-6e6c4b3a80aa",
+        "7c0c9317-7ad7-565f-befc-265d7742e447",
+        "7da297a0-7e29-52a7-9de3-a833ed0ced85",
+        "7dd08ce8-511d-5579-81e5-2ecf09f7a3c8",
+        "c00adb2a-3b64-5834-a76f-d89522ff4a15",
+        "5c80a1aa-c081-57fc-b4db-653064c8e8d0",
+        "ee0c6ff8-3ba8-5643-b3e4-5639026ce153",
+        "d59a7f1c-d9ef-5611-9935-8d4d44d9e88a",
+        "d6e423cb-fcb8-586a-a425-d75e2a3d99b9",
+        "7d70e8b6-688a-52d1-b4ec-6d6bfb4b4b99",
+        "5ec47905-3844-5682-a772-06e7dead1e4c",
+        "fe4311be-0ea3-5fde-b53a-509788d9e25e"
+      ],
+      "final_context_chunk_ids": [
+        "91241641-964f-5975-99ba-6f07a6afdb5e",
+        "8fc33d78-318c-512f-8950-eca4a55f9d78",
+        "bedbf7a3-0514-5b92-b589-1d0eb9aa3a92",
+        "08aa6e01-083e-5c0f-9e21-22976df31cd2",
+        "a936376c-e93c-53f2-8807-acdde6b1d0b7",
+        "59ee3d5f-6d64-5041-bf8a-a03609fd0d64",
+        "00eea1d8-1cd8-5484-9d25-ab46f5f6fc97",
+        "72fee354-56a6-5c60-b8d3-6348894f7108"
+      ],
+      "confirmed_missing_necessary_evidence": false,
+      "current_completeness": "complete",
+      "primary_layer": "object_and_citation_attribution",
+      "layers": [
+        "citation_binding",
+        "fact_extraction"
+      ],
+      "mechanical_codes": [],
+      "verifier_false_rejection_confirmed": false,
+      "finding": "England事实、Wallabies依赖Fiji-Portugal事实已交付；旧比较引用England及South Africa，漏WWOS、对象错配且断言整篇没说。",
+      "unknown": "仅片段不能证明整篇文章缺某断言；比赛阶段术语需如实保留不等同四分之一/半决赛。",
+      "injection_provenance": [],
+      "final_selection_method": "cached_original_question_relevance_v1",
+      "required_fact_ids": [
+        "answer"
+      ]
+    }
+  ],
+  "counts": {
+    "confirmed_current_missing": 2,
+    "current_complete": 3,
+    "unknown_alternative": 1,
+    "confirmed_retrieval_absence": 0
+  },
+  "reviewer": {
+    "family": "GPT-6/Codex same session",
+    "exact_serving_variant": "unavailable",
+    "independent": false,
+    "blind": false,
+    "human_labels": 0,
+    "basis": "actual source inspection, saved provenance and deterministic source hash / ID / numeric checks"
+  },
+  "provenance_correction": "Frozen baseline is relevant_doc final selection, not original parent retrieval admitted list. Both inserted external publication headers are in the historical candidate pool despite preliminary input acquisition text; authoritative classification is this row-level proof. No input text changes."
+}

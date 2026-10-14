@@ -291,6 +291,40 @@ def question_contract(question: str) -> dict:
     }
 
 
+def grounding_requirements(question: str, evidence: list[dict]) -> dict:
+    """Question/source checklist for an opt-in Dev candidate, never proof of support.
+
+    Use the existing source router and subquestions. Missing attributes, dates or
+    source groups are not filled from the question, metadata or another claim.
+    Routing only records available identities; it does not prove completeness.
+    """
+    from app.task_analysis import acceptance_items
+
+    _, scope = source_scoped_evidence(question, evidence)
+    return {
+        **question_contract(question),
+        "acceptance_items": acceptance_items(question),
+        "evidence_ids": [row["id"] for row in evidence],
+        "available_source_groups": [
+            {"mention": group["mention"], "evidence_ids": [
+                row["id"] for row in evidence
+                if row.get("document_id", row["id"]) in group["key"]
+            ]}
+            for group in scope["groups"]
+        ],
+        "not_a_support_verdict": True,
+        "checks": [
+            "Each requested fact needs its own supporting source_ids; another claim's citations do not support this claim.",
+            "A numeric comparison must cite both the observed value and the threshold, with the correct entity, unit and condition branch.",
+            "Preserve the scope and role of each time: publication, event and effective dates differ; a month does not establish a quarter.",
+            "Publication metadata identifies a source but does not replace a quoted date or a missing passage. Never invent source text.",
+            "Named-source comparisons need the relevant facts from each named source, or explicitly attributed alternative evidence.",
+            "Preserve the speaker's identity, uncertainty and conditional language; do not infer actual motivation from an if-clause.",
+            "If a required fact is absent, report insufficiency; do not delete the requested scope or add unrelated citations to appear complete.",
+        ],
+    }
+
+
 def attribution_cues(text: str) -> list[str]:
     return list(dict.fromkeys(match.group() for match in _REPORTING.finditer(text)))[:6]
 

@@ -426,11 +426,11 @@
   <p class="eyebrow"><span class="zh">已知边界</span><span class="en">Limitations</span></p>
   <h2><span class="zh">这套系统还不能证明什么</span><span class="en">What this project does not yet show</span></h2>
   <ul class="limits">
-    <li><span class="zh"><b>没有总体正确率：</b>Core 70、Security 16 与 External 150 尚未正式运行。</span><span class="en"><b>No overall accuracy:</b> Core 70, Security 16 and External 150 have not been formally run.</span></li>
-    <li><span class="zh"><b>审核不是独立人工：</b>题目与答案由模型审核并如实标注；独立人工标签为 0。</span><span class="en"><b>Reviews are not independent human labels:</b> tasks and answers are model-reviewed and labeled as such; independent human labels: 0.</span></li>
+    <li><span class="zh"><b>主正确率仍待验收：</b>Core 70 与 Security 16 尚未正式运行；External 150 已有历史运行和AI-assisted复核，不作Core主成绩。</span><span class="en"><b>Headline accuracy is pending:</b> Core 70 and Security 16 await formal runs. External 150 has historical runs and AI-assisted review; it is reported separately.</span></li>
+    <li><span class="zh"><b>AI辅助审核：</b>External 150题及300个历史答案位置已核对，22个参考未决；保留真实模型来源与分歧。人工审核可选，不称为人工金标准。</span><span class="en"><b>AI-assisted evaluation:</b> all 150 External questions and 300 historical answer positions were reviewed, with 22 unresolved references. Model provenance and disagreements are retained; human review is optional, and no human gold standard is claimed.</span></li>
     <li><span class="zh"><b>复杂推理仍弱：</b>困难英文题的否定方向与整体结论常出错；Agent 还不能稳定利用中间结果决定下一步。</span><span class="en"><b>Hard reasoning is still weak:</b> negation and overall verdicts on hard English questions often fail; the Agent cannot yet reliably use intermediate results to choose its next step.</span></li>
     <li><span class="zh"><b>本机算力受限：</b>本地 7B 模型解码约 8 token/s，Dev 47 题的 P95 为 78–87 秒；单机单进程，未做压测。</span><span class="en"><b>Local compute:</b> the local 7B model decodes about 8 tokens/s and the Dev 47 P95 is 78–87 s; single machine, no load testing.</span></li>
-    <li><span class="zh"><b>语料与格式：</b>全部资料为自建虚构内容；不支持需要 OCR 的扫描件与 PPTX，无文字层的 PDF 会明确报错而不是被索引成空文档。</span><span class="en"><b>Corpus and formats:</b> all documents are fictional; scanned PDFs needing OCR and PPTX are unsupported, and a PDF without a text layer fails explicitly instead of being indexed empty.</span></li>
+    <li><span class="zh"><b>语料与格式：</b>演示资料为自建虚构内容；外部评测另用第三方新闻，仅本地保存。不支持需要 OCR 的扫描件与 PPTX，无文字层的 PDF 会明确报错而不是被索引成空文档。</span><span class="en"><b>Corpus and formats:</b> demo documents are fictional; External evaluation also uses third-party articles kept locally. Scanned PDFs needing OCR and PPTX are unsupported, and a PDF without a text layer fails explicitly instead of being indexed empty.</span></li>
   </ul>
 </section>
 

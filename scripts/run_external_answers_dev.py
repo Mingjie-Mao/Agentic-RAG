@@ -25,15 +25,32 @@ from scripts.run_retrieval_quality_dev import ROOT, SELECTION, _publish, code_fi
 ARMS = ('baseline', 'treatment')
 
 
-def generate_answer(question, evidence, *, models, cfg, check_conflict):
+def generate_answer(question, evidence, *, models, cfg, check_conflict, protocol='direct',
+                    enforce_zero_embedding=False):
     """Only original question/source evidence, never benchmark labels."""
-    budget = ExecutionBudget(cfg, saved={'limits': {'generation': 3, 'policy': 0,
-        'search': 0, 'judge': 0, 'judge_tokens': 0}})
+    if protocol not in ('direct', 'shared_contract', 'literal_slots', 'literal_fallback'):
+        raise ValueError('Invalid generation protocol')
+    if type(enforce_zero_embedding) is not bool:
+        raise ValueError('Invalid enforce_zero_embedding flag')
+    limits = {'generation': 3, 'policy': 0, 'search': 0, 'judge': 0, 'judge_tokens': 0}
+    if enforce_zero_embedding or protocol == 'literal_fallback':
+        limits['embedding'] = 0
+    budget = ExecutionBudget(cfg, saved={'limits': limits})
     budget.state['deadline'] = min(budget.state['deadline'], budget.clock()+180)
-    supplied = [dict(r, id=r['chunk_id']) for r in evidence]
+    # Match retrieve_authorized/prepare_passages rather than exposing UUIDs to
+    # the generation schema. Validation maps these short aliases back to actual
+    # chunk IDs; original evidence bytes and identities remain unchanged.
+    supplied = [dict(r, id=f'E{i}') for i, r in enumerate(evidence, 1)]
+    models.answer_budget = budget
     with use_budget(budget):
-        generated, usage = models.generate(question, supplied, max_output_tokens=700,
-                                           check_conflict=check_conflict)
+        options = {'max_output_tokens': 700, 'check_conflict': check_conflict}
+        if protocol == 'direct':
+            generated, usage = models.generate(question, supplied, **options)
+        else:
+            from app.task_contract import contract_generate
+            generated, usage = contract_generate(models, question, supplied,
+                ordinary_policy='legacy' if protocol == 'shared_contract' else protocol,
+                options=options)
         claims, status = validate_claims(generated, supplied)
         if status == 'answered' and usage.get('answer_status') == 'conflict':
             status = 'conflict'
@@ -48,11 +65,16 @@ def generate_answer(question, evidence, *, models, cfg, check_conflict):
 def registration_for(args):
     tasks = json.loads(Path(args.suite).read_bytes())['tasks']
     contexts = private_root(args.context_root)
+    cfg = settings()
+    generator_cfg = cfg.model_copy(update={'agent_policy_model': cfg.chat_model, 'agent_policy_url': ''})
     return {'version': 'external-answers-input-v1', 'split': 'dev', 'arms': list(ARMS),
+        'settings_sha256': digest(cfg.model_dump(mode='json')),
+        'generator_identity': supplement.active_model_identity(generator_cfg)['policy'],
         'inputs_sha256': [sha(Path(p).read_bytes()) for p in
             (args.suite, args.retrieval, args.source_audit, args.parent, SELECTION)],
         'context_bytes_sha256': {t['id']: sha((contexts / (t['id']+'.json')).read_bytes()) for t in tasks},
         'context_profile': 'treatment', 'generator': 'unchanged_Models_generate_and_binding_verdict',
+        'evidence_aliases': 'production_E1_E2_ordered_aliases_back_to_source_chunk_ids',
         'generation_limits': {'calls': 3, 'first_output_tokens': 700, 'conflict_tokens': 200,
             'verdict_max_tokens': 500, 'seconds': 180},
         'order': 'task_index_parity', 'review': 'method_blind_named_model_after_generation',
@@ -112,7 +134,7 @@ def execute(args, reservation):
                     raise ValueError('Private context task differs')
                 for name in ARMS if offset % 2 == 0 else reversed(ARMS):
                     models = supplement.MeteredModels()
-                    started, err, usage = time.monotonic(), None, None
+                    started, err, usage, interrupted = time.monotonic(), None, None, False
                     contexts = original['contexts'][name]
                     if contexts is None:
                         raise ValueError('Missing source context')
@@ -127,8 +149,12 @@ def execute(args, reservation):
                             check_conflict=users[task['user']].tenant_id not in cfg.conflict_check_disabled_tenants)
                         if replay.rebind_rows(db, users[task['user']], evidence, corpus) != evidence:
                             raise ValueError('Post-generation source binding changed')
-                    except Exception as exc:
+                    except BaseException as exc:
                         err = type(exc).__name__
+                        interrupted = isinstance(exc, (KeyboardInterrupt, SystemExit))
+                        if getattr(models, 'answer_budget', None) is not None:
+                            usage = {'business_budget': models.answer_budget.snapshot(),
+                                     'result_status': 'interrupted' if interrupted else 'failed'}
                         payload = {'status': 'execution_failed', 'claims': [], 'citations': [], 'verdict': None}
                     elapsed = (time.monotonic()-started)*1000
                     # Contexts are replayed, not freshly retrieved here. Do not
@@ -141,12 +167,16 @@ def execute(args, reservation):
                         trace_complete=False, tool_trace=trace, generation_usage=usage,
                         retrieval_provenance='immutable_registered_context_replay',
                         usage=supplement.event_summary(models.events))
+                    if interrupted:
+                        row['not_observed'] = True
                     raw['results'][name].append(row)
                     public['rows'].append({'task_id': task['id'], 'arm': name, 'status': payload['status'],
                         'answer_sha256': digest(payload), 'error': err, 'latency_ms': elapsed,
                         'physical_generation': supplement.event_summary(models.events)})
                     atomic_json(runtime / 'raw.json', raw)
                     print(json.dumps({'task_id': task['id'], 'arm': name, 'status': payload['status']}), flush=True)
+                    if interrupted:
+                        raise KeyboardInterrupt()
             _, final_records, final_corpus = active_scope(db)
             drift = {'code': code_fingerprints() != code, 'configuration': supplement.live_configuration() != configuration,
                 'settings': digest(settings().model_dump(mode='json')) != settings_hash,

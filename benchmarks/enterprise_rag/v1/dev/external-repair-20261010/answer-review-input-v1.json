@@ -1,0 +1,29 @@
+{
+  "version": "gpt-dev-answer-review-registration-v1",
+  "split": "dev",
+  "item_count": 94,
+  "packet_sha256": "cad6029dc20da911fca424af7467e64bb646d7bca6f192dd97bfbffc4e9a476e",
+  "projected_part_sha256": {
+    "1": "6a427650efbc2099bd69df98f87bd832992add14a8c0db6375afed345fb612ea",
+    "2": "5ddfefaf44007dc228fd6e91e31ba18c3a65189a31da65d66c75bc1e713a70e7"
+  },
+  "rubric_sha256": "acbed9b84ec2cd263570fbbb6c48f4a2c6430bca27b1f88c62fe7c8ab2cc87f1",
+  "human": false,
+  "generator_family": "Qwen2.5",
+  "reviewer_family": "GPT",
+  "reviewer_serving_variant": "unavailable; reviewer must state exposed identity",
+  "method_names_hidden": true,
+  "task_partition": "opaque_item_id_sorted_first47_last47",
+  "pending_task_ids": [
+    "U12",
+    "U22",
+    "SF-3e8219f58317",
+    "SF-56d3160a9c64",
+    "SF-59679085cc4a",
+    "SF-3ea856eeec7b",
+    "SF-3fb3599dcc99"
+  ],
+  "pending_policy": "retain original seven until separate full-question adjudication; no outcome-based relabeling",
+  "headline_eligible": false,
+  "review_model_http_cost": "not_exposed_by_subagent_tools; pending/null, not zero"
+}

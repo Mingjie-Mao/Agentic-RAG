@@ -1,0 +1,251 @@
+{
+  "version": "grounding-final-audit-dev-20261014-v1",
+  "split": "dev",
+  "review_sha256": "b46f799e7bd7883a3149e00200409a1387024583859ce61fff57ba42ee2612c1",
+  "attribution_sha256": "5ca80d1a78cc1bf70815e82e32fa9b9e4aec567b3899eccf08a2b22c730c3516",
+  "draft_binding_checks_sha256": "b2d08a6d905a68afe432ac3e6df5612d2f15c8ee1306a91f7e7caa5496f5b082",
+  "by_suite": {
+    "existing_recovery": {
+      "dev47": {
+        "n": 6,
+        "strict": 1
+      },
+      "dynamic_dev": {
+        "n": 3,
+        "strict": 1
+      }
+    },
+    "grounding_feedback": {
+      "dev47": {
+        "n": 6,
+        "strict": 1
+      },
+      "dynamic_dev": {
+        "n": 3,
+        "strict": 1
+      }
+    }
+  },
+  "cost": {
+    "existing_recovery": {
+      "physical_calls": 24,
+      "known_prompt_tokens": 35375,
+      "known_completion_tokens": 1977,
+      "unknown_counter_calls": 0,
+      "full_tokens": 37352
+    },
+    "grounding_feedback": {
+      "physical_calls": 22,
+      "known_prompt_tokens": 38748,
+      "known_completion_tokens": 1405,
+      "unknown_counter_calls": 1,
+      "full_tokens": null
+    }
+  },
+  "paired_all_tasks": [
+    {
+      "task_id": "U16",
+      "baseline_status": "answered",
+      "candidate_status": "insufficient_evidence",
+      "baseline_strict": false,
+      "candidate_strict": false,
+      "facts_gained": [],
+      "facts_lost": [
+        "shard"
+      ]
+    },
+    {
+      "task_id": "U22",
+      "baseline_status": "answered",
+      "candidate_status": "answered",
+      "baseline_strict": null,
+      "candidate_strict": null,
+      "facts_gained": [
+        "east_start",
+        "east_end"
+      ],
+      "facts_lost": []
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "baseline_status": "answered",
+      "candidate_status": "answered",
+      "baseline_strict": null,
+      "candidate_strict": null,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "baseline_status": "answered",
+      "candidate_status": "answered",
+      "baseline_strict": false,
+      "candidate_strict": false,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "baseline_status": "answered",
+      "candidate_status": "insufficient_evidence",
+      "baseline_strict": false,
+      "candidate_strict": false,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "baseline_status": "answered",
+      "candidate_status": "answered",
+      "baseline_strict": false,
+      "candidate_strict": false,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "baseline_status": "answered",
+      "candidate_status": "execution_failed",
+      "baseline_strict": null,
+      "candidate_strict": null,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "SF-64b127ac198d",
+      "baseline_status": "verification_failed",
+      "candidate_status": "insufficient_evidence",
+      "baseline_strict": false,
+      "candidate_strict": false,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "DD14",
+      "baseline_status": "verification_failed",
+      "candidate_status": "answered",
+      "baseline_strict": false,
+      "candidate_strict": false,
+      "facts_gained": [
+        "rate"
+      ],
+      "facts_lost": []
+    },
+    {
+      "task_id": "DD16",
+      "baseline_status": "answered",
+      "candidate_status": "answered",
+      "baseline_strict": true,
+      "candidate_strict": true,
+      "facts_gained": [],
+      "facts_lost": []
+    },
+    {
+      "task_id": "DD17",
+      "baseline_status": "verification_failed",
+      "candidate_status": "answered",
+      "baseline_strict": false,
+      "candidate_strict": false,
+      "facts_gained": [
+        "rate"
+      ],
+      "facts_lost": []
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "baseline_status": "answered",
+      "candidate_status": "answered",
+      "baseline_strict": true,
+      "candidate_strict": true,
+      "facts_gained": [],
+      "facts_lost": []
+    }
+  ],
+  "deterministic_numeric_checks": [
+    {
+      "task_id": "DD14",
+      "arm": "existing_recovery",
+      "source_observed_rate": "1.6",
+      "source_threshold": "3.0",
+      "gt_comparison": false,
+      "correct_rule_branch_in_decision_own_quotes": false,
+      "observation_in_decision_own_quotes": false,
+      "visible_decision_present": false,
+      "check_type": "literal source extraction and Decimal comparison, not LLM classification"
+    },
+    {
+      "task_id": "DD14",
+      "arm": "grounding_feedback",
+      "source_observed_rate": "1.6",
+      "source_threshold": "3.0",
+      "gt_comparison": false,
+      "correct_rule_branch_in_decision_own_quotes": false,
+      "observation_in_decision_own_quotes": true,
+      "visible_decision_present": true,
+      "check_type": "literal source extraction and Decimal comparison, not LLM classification"
+    },
+    {
+      "task_id": "DD16",
+      "arm": "grounding_feedback",
+      "source_observed_rate": "4.6",
+      "source_threshold": "3.0",
+      "gt_comparison": true,
+      "correct_rule_branch_in_decision_own_quotes": true,
+      "observation_in_decision_own_quotes": true,
+      "visible_decision_present": true,
+      "check_type": "literal source extraction and Decimal comparison, not LLM classification"
+    },
+    {
+      "task_id": "DD16",
+      "arm": "existing_recovery",
+      "source_observed_rate": "4.6",
+      "source_threshold": "3.0",
+      "gt_comparison": true,
+      "correct_rule_branch_in_decision_own_quotes": true,
+      "observation_in_decision_own_quotes": true,
+      "visible_decision_present": true,
+      "check_type": "literal source extraction and Decimal comparison, not LLM classification"
+    },
+    {
+      "task_id": "DD17",
+      "arm": "existing_recovery",
+      "source_observed_rate": "2.8",
+      "source_threshold": "3.0",
+      "gt_comparison": false,
+      "correct_rule_branch_in_decision_own_quotes": false,
+      "observation_in_decision_own_quotes": false,
+      "visible_decision_present": false,
+      "check_type": "literal source extraction and Decimal comparison, not LLM classification"
+    },
+    {
+      "task_id": "DD17",
+      "arm": "grounding_feedback",
+      "source_observed_rate": "2.8",
+      "source_threshold": "3.0",
+      "gt_comparison": false,
+      "correct_rule_branch_in_decision_own_quotes": false,
+      "observation_in_decision_own_quotes": true,
+      "visible_decision_present": true,
+      "check_type": "literal source extraction and Decimal comparison, not LLM classification"
+    }
+  ],
+  "old_artifacts_and_benchmarks_unchanged": 832,
+  "new_mechanically_accepted_but_strict_failed": [
+    "DD14",
+    "DD17"
+  ],
+  "adoption": {
+    "adopted": false,
+    "default": "legacy",
+    "reason": "No strict success gain; U16 loses an already-supported required fact; newly accepted DD14/DD17 remain unsupported/contradictory; one pending case exhausts budget. Stop this candidate; no rerun/tuning."
+  },
+  "scope_note": "Reference loss for SF-596 does not establish total evidence absence: alternative current passage, sufficiency unknown, pending unchanged. Two confirmed current-context absences are SF-64 required dated report and DD14 concrete owner.",
+  "validator_note": "No confirmed false rejection under the registered quote-only numeric/date contract. Publication metadata may support a fact semantically but does not satisfy a missing own quote; contract design is separate from a validator implementation bug.",
+  "reviewer": {
+    "type": "model",
+    "model": "GPT-6/Codex family; exact serving variant unavailable",
+    "independent": false,
+    "fully_blind": false,
+    "human_labels": 0
+  }
+}

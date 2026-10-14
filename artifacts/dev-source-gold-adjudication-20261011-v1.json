@@ -1,0 +1,240 @@
+{
+  "schema_version": "gold-adjudication-v2-metadata",
+  "created_at_utc": "2026-10-10T16:27:05.580726+00:00",
+  "contains_third_party_raw_text": false,
+  "contains_original_question_or_answer_text": false,
+  "artifact_path": ".runtime/external-repair-20261010/gold-adjudication-v2.json",
+  "artifact_sha256": "5228e6d7381194b8781c5f355fd8be384fd84201cb4889620c3e08f006e1e19b",
+  "artifact_byte_count": 68243,
+  "reviewer": {
+    "reviewer_type": "model",
+    "model_family": "GPT-6",
+    "model_identity": "GPT-6 family (Codex; developer instruction identity)",
+    "model_identity_precision": "family",
+    "serving_model_id": null,
+    "identity_basis": "Developer instructions identify Codex as based on GPT-6; exact serving model ID is unavailable.",
+    "human": false,
+    "agent_task_name": "/root/external_gold_adjudication",
+    "independence": {
+      "separate_source_only_context": true,
+      "fresh_context_at_initial_source_adjudication_assignment": true,
+      "same_context_reused_for_authorized_continuations": true,
+      "reviewed_prior_annotation_proposal": true,
+      "independent_of_annotation_proposal": false,
+      "model_family_independent": false,
+      "reviewed_generated_answers": false,
+      "reviewed_retrieval_or_implementation_outputs": false,
+      "reviewed_arm_outcomes": false,
+      "limitations": "The same model family may serve other agents. The prior source-annotation proposal was read and its limitations were visible. This is model annotation review, not human review or independent-family validation."
+    }
+  },
+  "inputs": {
+    "task_file": ".runtime/benchmark-package/v1/dev/tasks.json",
+    "task_file_sha256": "b03cf43592a370927059bab1eccf8c5c3442b5129bcfcf07c9a688bf55cce5ab",
+    "task_file_byte_count": 531828,
+    "prior_proposal_file": ".runtime/external-repair-20261010/pending-source-audit-v1.json",
+    "prior_proposal_sha256": "8f9b7b9a9619317b6de0b907983d5b4c9ede376d9ea98e1d41b24c05c1abcc91",
+    "prior_proposal_byte_count": 88117,
+    "task_file_matches_prior_proposal_hash": true,
+    "canonical_hash_algorithm": "sha256(sorted-key, ensure_ascii=false compact JSON encoded UTF-8)",
+    "selected_task_ids": [
+      "U12",
+      "U22",
+      "SF-3e8219f58317",
+      "SF-56d3160a9c64",
+      "SF-59679085cc4a",
+      "SF-3ea856eeec7b",
+      "SF-3fb3599dcc99"
+    ]
+  },
+  "source_hashes": [
+    {
+      "document_id": "lt-incident-417",
+      "source_sha256": "855a12dda577f991df27ef3c2e80b3f779073e0d8e69abc6968e3efe4d306798",
+      "byte_count": 723
+    },
+    {
+      "document_id": "lt-import-guide",
+      "source_sha256": "2f6ed3e53ab3f5cafa4200b2b9f3bb0a28f0affa4390675614efc55f19ef8f2b",
+      "byte_count": 342
+    },
+    {
+      "document_id": "lt-warehouse-east",
+      "source_sha256": "8421b434ea234cc34392011e3515d75663af8e2520f1546e5125b54a61fe43df",
+      "byte_count": 288
+    },
+    {
+      "document_id": "lt-warehouse-south",
+      "source_sha256": "4ed3b80e378a4d2ff03749add97be026560f012c831f93fc6419d3c43e3abc98",
+      "byte_count": 288
+    },
+    {
+      "document_id": "mh-6bb44145d86b9b03b4751e87",
+      "source_sha256": "c33c55867aa756b942b08770996b6e99a5574f22fd461afa936cb10bcc24b516",
+      "byte_count": 70127
+    },
+    {
+      "document_id": "mh-f7c56cc00e56977b3161ee42",
+      "source_sha256": "c1c6bebcf5e9738b987a7806ca2d2cd1994bfeb298b6a8a3a0d336163bcfa5d9",
+      "byte_count": 7044
+    },
+    {
+      "document_id": "mh-2fc8a73a6e3cddd7d247097a",
+      "source_sha256": "cd1ed5edf2d446615ed29cdffe74294a0e6d37505c3451b5da3a7f2a761e2b4f",
+      "byte_count": 9730
+    },
+    {
+      "document_id": "mh-e2a1cccc3dfacf3909f2206f",
+      "source_sha256": "75ec71f2a6dd7eef9ef489d1ad66e3738c990c0518c6fa4abb582a6bfe337088",
+      "byte_count": 15572
+    },
+    {
+      "document_id": "mh-d033e126e1ca1e4e5a1e9139",
+      "source_sha256": "ec9bcbfddaf095a80fd676d2309a3f1165fd18885ebcf9a184fb63c05d13abeb",
+      "byte_count": 22476
+    },
+    {
+      "document_id": "mh-563b2bc8a5b3994824dafd59",
+      "source_sha256": "38628c98aa333ae26f5186963786333159ae10c00f41f77102a8ff70cb34634a",
+      "byte_count": 7936
+    },
+    {
+      "document_id": "mh-477a7be7ac0328ef42e40c04",
+      "source_sha256": "e8cd1dcea2b012c9abbcf265fc01bb7436b1d5a6cbaa0a94d2e7e72d7c4b7b8a",
+      "byte_count": 6749
+    },
+    {
+      "document_id": "mh-d93d06d750604aa69261c8a6",
+      "source_sha256": "21be011858bdaf68395859817f09ea52fdc8aafac43b22b5b6c27867736d609e",
+      "byte_count": 6255
+    },
+    {
+      "document_id": "mh-f683cce45d08e8a16c72feec",
+      "source_sha256": "c6e7c840d95d92cc5da00bea6186581b843f0d43dd081b13d033a6a4c20b291a",
+      "byte_count": 6046
+    },
+    {
+      "document_id": "mh-a30096925c7c5cd86f7c85b3",
+      "source_sha256": "fad700de35a04ba69c6c6ad8ba6fe7dab5e722b3e3918066ec6da5b5e6c992e9",
+      "byte_count": 8474
+    },
+    {
+      "document_id": "mh-c5c0b3a0f641a3060b0e699c",
+      "source_sha256": "829935cc0f291cb7e2cab7ec3bdae23a2f0e4e453ecaf896472c78b79447890f",
+      "byte_count": 7415
+    },
+    {
+      "document_id": "mh-5576b8cb38915109979162b8",
+      "source_sha256": "135b5e600cddedfa3500889e60a9ce57590b26cc0d4a5f963af0da8ea0b0a56e",
+      "byte_count": 5331
+    },
+    {
+      "document_id": "mh-8a5d6f73bdb9deb0bc8bc865",
+      "source_sha256": "0ca20d8be63e72ef84eaa6fef16de06c1d4410c3eda17cc573c9af670d8641f8",
+      "byte_count": 13311
+    },
+    {
+      "document_id": "mh-7b4dca53eb674cfb87577561",
+      "source_sha256": "163d16a1947b910da6ed6f9028a61020248bba75fc9b94aee425f6d7054aa6bc",
+      "byte_count": 8415
+    },
+    {
+      "document_id": "mh-7eda6ab68ab0d9a8af0bf35d",
+      "source_sha256": "8700f3f833c43c0c3db491ba18b7e13da70e927ebb1bccba3e1ee5c06424363b",
+      "byte_count": 5131
+    }
+  ],
+  "summary": {
+    "task_count": 7,
+    "complete_bound_source_count": 19,
+    "source_binding_mismatch_count": 0,
+    "classification_counts": {
+      "supported": 2,
+      "ambiguous": 3,
+      "incomplete": 2
+    },
+    "approved_for_original_strict_review_count": 4,
+    "pending_original_strict_review_count": 3,
+    "generated_answers_reviewed_count": 0,
+    "actual_answer_success_rate": null
+  },
+  "task_statuses": [
+    {
+      "task_id": "U12",
+      "task_input_sha256": "b6a1b9bf53c96ac5838b25386e843cb96f6b51c207218f256ba87256c7f538bd",
+      "question_sha256": "f0b63332a1109ea3afef5b9436582ec175248e21170905c25e4a01680b1d75bc",
+      "required_facts_sha256": "23d2d4ec56551875c3c33d2f5220210c7dfa2638219dfa3443a2e3e81f62807a",
+      "expected_status_sha256": "1647ead06c4382e3f0420ed303af04da461e1b88edd7537fb014f9030c9f64b9",
+      "source_annotation_classification": "incomplete",
+      "approved_for_original_strict_review": true,
+      "adjudication_status": "approved_for_source_aware_original_strict_review",
+      "generated_answer_review_status": "not_reviewed"
+    },
+    {
+      "task_id": "U22",
+      "task_input_sha256": "46ddfe775cd582fc96bdf8d0c90d60d26fda9ca0e80e9d28e6b4d34999b048cf",
+      "question_sha256": "fe08392c1fa41cf2f4196315c24ad6fc18a82651ba9102769aae4733e77eb098",
+      "required_facts_sha256": "5bd420d718955d35adc5b5a1fd8f2dbfe2df38bfb8c41fe4bb0bdc47b37f5ad5",
+      "expected_status_sha256": "1647ead06c4382e3f0420ed303af04da461e1b88edd7537fb014f9030c9f64b9",
+      "source_annotation_classification": "incomplete",
+      "approved_for_original_strict_review": true,
+      "adjudication_status": "approved_for_source_aware_original_strict_review",
+      "generated_answer_review_status": "not_reviewed"
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "task_input_sha256": "6677bb3e840dd58a45ac0b97f4155b51a18af172af498dd42d15cef0be147ff7",
+      "question_sha256": "d26f6c2ca3da30624d583bc6ac598c202d7ebbe9a67e24d1bcaa2c92eea62e6b",
+      "required_facts_sha256": "35d16e7965c6d64bed4ae5586014b1b1f5239f0ae65adaee4ee8c91ee55eadc5",
+      "expected_status_sha256": "1647ead06c4382e3f0420ed303af04da461e1b88edd7537fb014f9030c9f64b9",
+      "source_annotation_classification": "ambiguous",
+      "approved_for_original_strict_review": false,
+      "adjudication_status": "pending_original_gold_semantics",
+      "generated_answer_review_status": "not_reviewed"
+    },
+    {
+      "task_id": "SF-56d3160a9c64",
+      "task_input_sha256": "f848ae252b8fec08c6446a02e5964ec1c90e7e6cadea091a2a7479562c97e0e0",
+      "question_sha256": "26b853943ca63fb57a6715efde553f016397ed14ecfa2cca6b752f7098bf0b36",
+      "required_facts_sha256": "9f81fb8cdad26c2ee31ef7912ae094a1e8d4a33d493b77612ceecd9f0438b842",
+      "expected_status_sha256": "1647ead06c4382e3f0420ed303af04da461e1b88edd7537fb014f9030c9f64b9",
+      "source_annotation_classification": "ambiguous",
+      "approved_for_original_strict_review": false,
+      "adjudication_status": "pending_original_gold_semantics",
+      "generated_answer_review_status": "not_reviewed"
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "task_input_sha256": "316b4246ed71180ba4faad03f0ce3cde7ee72087f14cd556f363e7378898bf31",
+      "question_sha256": "64bc860d1a5ed19f6e7ce8d0c34de1077795d2dc1809a1d57f853e8525cb789d",
+      "required_facts_sha256": "8333fbb8063a56da40a4d2a5b82bde112c8b5f1e02a4c5829a286718905b55cb",
+      "expected_status_sha256": "1647ead06c4382e3f0420ed303af04da461e1b88edd7537fb014f9030c9f64b9",
+      "source_annotation_classification": "ambiguous",
+      "approved_for_original_strict_review": false,
+      "adjudication_status": "pending_original_gold_semantics",
+      "generated_answer_review_status": "not_reviewed"
+    },
+    {
+      "task_id": "SF-3ea856eeec7b",
+      "task_input_sha256": "7e1ce87b2217b0987f17e680fef26acb6609a9aa4ded9a003f0e55fd19519d1c",
+      "question_sha256": "30a99737ba8cf44d4bedcfd896a53bb607ff1166b06e45dede8a522ed1f7fb81",
+      "required_facts_sha256": "9bea639e42553cf89fd452e242e87b5e5eca561e5639d0d2afaa7ef4466b3409",
+      "expected_status_sha256": "1647ead06c4382e3f0420ed303af04da461e1b88edd7537fb014f9030c9f64b9",
+      "source_annotation_classification": "supported",
+      "approved_for_original_strict_review": true,
+      "adjudication_status": "approved_for_source_aware_original_strict_review",
+      "generated_answer_review_status": "not_reviewed"
+    },
+    {
+      "task_id": "SF-3fb3599dcc99",
+      "task_input_sha256": "e93b5956fa9734247ea19c5bc765fb8ca85ca4faa661b023c82eb132837f1fcf",
+      "question_sha256": "0b53335b9db75d02c154d267c48a62973804b51d2d799a0b31f8f2903e6687f0",
+      "required_facts_sha256": "f1870702cfc7dd113f263972b1cd12637522f4d1bd51bff64cc618a37ddd6d0c",
+      "expected_status_sha256": "1647ead06c4382e3f0420ed303af04da461e1b88edd7537fb014f9030c9f64b9",
+      "source_annotation_classification": "supported",
+      "approved_for_original_strict_review": true,
+      "adjudication_status": "approved_for_source_aware_original_strict_review",
+      "generated_answer_review_status": "not_reviewed"
+    }
+  ]
+}

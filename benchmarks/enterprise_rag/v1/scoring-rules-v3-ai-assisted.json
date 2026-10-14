@@ -1,0 +1,46 @@
+{
+  "version": "enterprise-strict-scoring-v3-ai-assisted",
+  "status": "frozen_for_external_AI_review_20261014_v1",
+  "review_protocol": "enterprise-benchmark-review-v3-ai-assisted",
+  "basis": "Required facts, each actual claim, each citation and all strict checks; literal matches and expected execution paths remain diagnostics.",
+  "semantic_labels": {
+    "supported": "All material subject, value, unit, date, source, modality, polarity and active-branch requirements are satisfied; equivalent phrasing and valid alternative evidence are accepted.",
+    "partial": "A material part is missing or only partly supported; a known strict failure.",
+    "unsupported": "The required fact is absent or its own cited evidence does not support it; a known strict failure.",
+    "contradicted": "The answer contradicts the authoritative source or applicable condition; a known strict failure.",
+    "unclear": "Available review evidence or annotation does not establish a decision; retain pending, not an invented pass or failure."
+  },
+  "dimensions": [
+    "semantic_equivalence",
+    "explicit_yes_no_unclear_and_body_consistency",
+    "required_fact_completeness",
+    "claim_level_own_citation_support",
+    "date_and_temporal_scope",
+    "number_and_unit",
+    "subject_and_speaker_attribution",
+    "specified_source",
+    "active_condition_branch",
+    "version_and_authorization",
+    "justified_abstention",
+    "mechanical_validator_false_accept_or_false_reject"
+  ],
+  "strict_definition": "True only when every material required fact, actual claim, citation, strict check, expected answer status, execution/safety condition and mechanical binding is supported. A definite failed requirement yields false; otherwise any unresolved required review yields null. Missing annotation or unobserved answers are null, irrespective of model predictions.",
+  "strict_checks": [
+    "no_critical_error",
+    "version_correct",
+    "condition_correct",
+    "citations_supported",
+    "abstention_correct"
+  ],
+  "conclusion_requirement": "no_critical_error includes the final yes/no/unclear decision, its consistency with the body, complete response to the question, and correction of false premises. Correct direction alone does not establish strict success.",
+  "binding_boundary": "Literal occurrence is a mechanical requirement, not semantic entailment. Valid cited premise chains can span claims; unrelated evidence elsewhere in context cannot repair the answer.",
+  "unknown_telemetry": "Unknown token counters and incomplete full-run totals are null; measured subtotals and observed denominators are explicit. Actual zero counters remain zero. Failed calls and failed positions remain in cost/latency scope when observed.",
+  "latency": "Recorded per-task wall latency, P50 median, P95 nearest-rank; disclose observed/total positions and background load. Never infer latency or cause from token totals.",
+  "human_annotation": "Optional future enhancement; not a Core start or acceptance requirement. No human annotators assigned in this project. Preserve prior human-review protocol snapshots.",
+  "provenance": "AI-assisted semantic/source/citation assessment led by Codex. Record actual model family, available serving identity/digest, review version, original spans, source hashes, uncertainty and isolation limits. Never call model judgments independent human gold.",
+  "history": "Preserve old inputs, answers, annotations, judgments and reports. New protocol/reports are versioned; no post-Core changes to methods or thresholds.",
+  "third_party_text": "Question, answer, source text and review reasons stay in ignored local directories. Public outputs contain hashes, IDs, counts, status and derived diagnostics only.",
+  "supersedes_sha256": "850dd477920de0ca1d709ff5d70c5fa2ebe9ccbc12b6674a5abdc0aca34b6c63",
+  "cross_review": "Disputed or low-confidence cases receive fresh source-only context with no earlier judgments; compare after saving second decisions. Context isolation/model difference is recorded, not claimed as human or causal independence.",
+  "reference_gold_separation": "New AI references are sidecars; do not overwrite Benchmark gold. Unresolved stays null. Report review completion separately from resolved eligibility and scored denominator."
+}

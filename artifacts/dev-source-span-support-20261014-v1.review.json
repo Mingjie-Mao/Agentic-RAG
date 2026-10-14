@@ -1,0 +1,413 @@
+{
+  "version": "source-span-support-dev-review-v1",
+  "split": "dev",
+  "status": "complete",
+  "summary": {
+    "primary_tasks": 7,
+    "strict_success": 1,
+    "required_facts": 14,
+    "required_fact_expression": 6,
+    "required_fact_citation_support": 6,
+    "primary_evidence_complete": 7,
+    "primary_mechanical_pass": 6,
+    "direction_known": 4,
+    "direction_correct": 1,
+    "physical_calls": 17,
+    "known_prompt_tokens": 21826,
+    "known_completion_tokens": 1152,
+    "unknown_counter_calls": 0,
+    "prompt_tokens": 21826,
+    "completion_tokens": 1152,
+    "p50_seconds": 75.5299,
+    "p95_seconds": 123.1018,
+    "latency_n": 8,
+    "latency_clock": "time.monotonic; includes failed observed position; not calendar_elapsed",
+    "status_counts": {
+      "answered": 7,
+      "execution_failed": 1
+    },
+    "primary_explicit_yes": 4,
+    "primary_unclear": 1
+  },
+  "baseline_summary": {
+    "primary_tasks": 7,
+    "strict_success": 1,
+    "required_facts": 14,
+    "required_fact_expression": 3,
+    "required_fact_citation_support": 2,
+    "primary_evidence_complete": 7,
+    "primary_mechanical_pass": 3,
+    "direction_known": 2,
+    "direction_correct": 2,
+    "physical_calls": 13,
+    "prompt_tokens": 18767,
+    "completion_tokens": 1092,
+    "p50_seconds": 72.7981,
+    "p95_seconds": 132.5021,
+    "latency_n": 8,
+    "latency_scope": "all_8_positions_including_pending; actual_generation_verification_Legacy_wall",
+    "status_counts": {
+      "answered": 3,
+      "verification_failed": 5
+    }
+  },
+  "details": [
+    {
+      "task_id": "SF-64b127ac198d",
+      "arm": "original_source_spans",
+      "runtime_status": "answered",
+      "strict": false,
+      "required_fact_expression": {
+        "answer": false
+      },
+      "required_fact_support": {
+        "answer": false
+      },
+      "direction_correct": false,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "review_reason": "真实金额原文已呈现，但最终Yes将被原文反驳的金额前提判为成立；结论仅引用另一报道的标题。不是引文逐字失败，复合命题支持失败。",
+      "generation_request_equal": true,
+      "initial_draft_equal": true,
+      "execution_failure": null,
+      "new_wrong_answer_exposed": true,
+      "source_or_object_error": true,
+      "numeric_or_condition_error": true,
+      "time_relationship_unknown": false
+    },
+    {
+      "task_id": "DD14",
+      "arm": "original_source_spans",
+      "runtime_status": "answered",
+      "strict": false,
+      "required_fact_expression": {
+        "rate": true,
+        "decision": false,
+        "lead": false
+      },
+      "required_fact_support": {
+        "rate": true,
+        "decision": false,
+        "lead": false
+      },
+      "direction_correct": false,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "review_reason": "观测表和>分支原文被呈现，<=分支及已注入名录未被原生成选中；1.6<=3.0可复算，最终Yes错误，负责人仍缺失。",
+      "generation_request_equal": true,
+      "initial_draft_equal": true,
+      "execution_failure": null,
+      "new_wrong_answer_exposed": true,
+      "source_or_object_error": false,
+      "numeric_or_condition_error": true,
+      "time_relationship_unknown": false
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "original_source_spans",
+      "runtime_status": "answered",
+      "strict": null,
+      "required_fact_expression": {
+        "answer": false
+      },
+      "required_fact_support": {
+        "answer": false
+      },
+      "direction_correct": null,
+      "evidence_complete": "unknown",
+      "mechanical_pass": true,
+      "review_reason": "两来源原文均被呈现且保留Grey/Sullivan主体与否认限定；Yes仍仅引用TechCrunch断言，不能当完整跨来源证明。原标注pending不计严格。",
+      "generation_request_equal": true,
+      "initial_draft_equal": true,
+      "execution_failure": null,
+      "new_wrong_answer_exposed": false,
+      "source_or_object_error": true,
+      "numeric_or_condition_error": false,
+      "time_relationship_unknown": false
+    },
+    {
+      "task_id": "U16",
+      "arm": "original_source_spans",
+      "runtime_status": "answered",
+      "strict": false,
+      "required_fact_expression": {
+        "shard": true,
+        "alert": false
+      },
+      "required_fact_support": {
+        "shard": true,
+        "alert": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "review_reason": "仍只有每片5000行，告警原文虽在上下文但未被选中；直呈不能补遗漏。",
+      "generation_request_equal": true,
+      "initial_draft_equal": true,
+      "execution_failure": null,
+      "new_wrong_answer_exposed": false,
+      "source_or_object_error": false,
+      "numeric_or_condition_error": false,
+      "time_relationship_unknown": false
+    },
+    {
+      "task_id": "DD17",
+      "arm": "original_source_spans",
+      "runtime_status": "answered",
+      "strict": false,
+      "required_fact_expression": {
+        "rate": true,
+        "decision": false,
+        "lead": false
+      },
+      "required_fact_support": {
+        "rate": true,
+        "decision": false,
+        "lead": false
+      },
+      "direction_correct": false,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "review_reason": "已呈现观测表、>分支与完整名录；2.8<=3.0可复算，最终Yes错误，未选<=分支。表中出现目标主管姓名不等于已证明其应跟进本条件。",
+      "generation_request_equal": true,
+      "initial_draft_equal": true,
+      "execution_failure": null,
+      "new_wrong_answer_exposed": true,
+      "source_or_object_error": false,
+      "numeric_or_condition_error": true,
+      "time_relationship_unknown": false
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "original_source_spans",
+      "runtime_status": "execution_failed",
+      "strict": false,
+      "required_fact_expression": {
+        "answer": false
+      },
+      "required_fact_support": {
+        "answer": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": false,
+      "review_reason": "provider返回成功和完整token计数，但bounded_model返回后的业务预算检查失败，未保存初始草稿，也未执行直呈/判定；不从token或旧草稿推断新答。原因仅确认BudgetExceeded，108.1s是monotonic记录，不解释为180s超时。",
+      "generation_request_equal": true,
+      "initial_draft_equal": null,
+      "execution_failure": "BudgetExceeded",
+      "new_wrong_answer_exposed": false,
+      "source_or_object_error": false,
+      "numeric_or_condition_error": false,
+      "time_relationship_unknown": false
+    },
+    {
+      "task_id": "DD16",
+      "arm": "original_source_spans",
+      "runtime_status": "answered",
+      "strict": true,
+      "required_fact_expression": {
+        "rate": true,
+        "decision": true,
+        "lead": true
+      },
+      "required_fact_support": {
+        "rate": true,
+        "decision": true,
+        "lead": true
+      },
+      "direction_correct": true,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "review_reason": "分别引用真实观测表和>阈值规则；4.6>3.0由Decimal复算，触发升级，规则给出正确牵头人，最终Yes一致。所有必要前提均已在答复中各自引用。verdict字段只挂规则，不能声称其单个ID独立构成完整证明。",
+      "generation_request_equal": true,
+      "initial_draft_equal": true,
+      "execution_failure": null,
+      "new_wrong_answer_exposed": false,
+      "source_or_object_error": false,
+      "numeric_or_condition_error": false,
+      "time_relationship_unknown": false
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "original_source_spans",
+      "runtime_status": "answered",
+      "strict": false,
+      "required_fact_expression": {
+        "answer": false
+      },
+      "required_fact_support": {
+        "answer": false
+      },
+      "direction_correct": null,
+      "evidence_complete": true,
+      "mechanical_pass": true,
+      "review_reason": "保持原选中双方来源，但原时间关系结论被原文直呈移除，最后unclear，丢失原正确No。Legacy输入来源只带publication/title，不带已核实发表日期；这是明确的数据交付缺口，与退化一致，唯一根因仍不能证明。",
+      "generation_request_equal": true,
+      "initial_draft_equal": true,
+      "execution_failure": null,
+      "new_wrong_answer_exposed": false,
+      "source_or_object_error": false,
+      "numeric_or_condition_error": false,
+      "time_relationship_unknown": true
+    }
+  ],
+  "paired": [
+    {
+      "task_id": "SF-64b127ac198d",
+      "strict_B": false,
+      "strict_C": false,
+      "facts_gained": [],
+      "facts_lost": [],
+      "evidence_B": true,
+      "evidence_C": true
+    },
+    {
+      "task_id": "DD14",
+      "strict_B": false,
+      "strict_C": false,
+      "facts_gained": [
+        "rate"
+      ],
+      "facts_lost": [],
+      "evidence_B": true,
+      "evidence_C": true
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "strict_B": null,
+      "strict_C": null,
+      "facts_gained": [],
+      "facts_lost": [],
+      "evidence_B": "unknown",
+      "evidence_C": "unknown"
+    },
+    {
+      "task_id": "U16",
+      "strict_B": false,
+      "strict_C": false,
+      "facts_gained": [],
+      "facts_lost": [],
+      "evidence_B": true,
+      "evidence_C": true
+    },
+    {
+      "task_id": "DD17",
+      "strict_B": false,
+      "strict_C": false,
+      "facts_gained": [
+        "rate"
+      ],
+      "facts_lost": [],
+      "evidence_B": true,
+      "evidence_C": true
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "strict_B": false,
+      "strict_C": false,
+      "facts_gained": [],
+      "facts_lost": [],
+      "evidence_B": true,
+      "evidence_C": true
+    },
+    {
+      "task_id": "DD16",
+      "strict_B": false,
+      "strict_C": true,
+      "facts_gained": [
+        "rate",
+        "decision",
+        "lead"
+      ],
+      "facts_lost": [],
+      "evidence_B": true,
+      "evidence_C": true
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "strict_B": true,
+      "strict_C": false,
+      "facts_gained": [],
+      "facts_lost": [
+        "answer"
+      ],
+      "evidence_B": true,
+      "evidence_C": true
+    }
+  ],
+  "strict_gains": 1,
+  "strict_losses": 1,
+  "strict_net_gain": 0,
+  "deterministic_condition_checks": [
+    {
+      "task_id": "DD14",
+      "observed_value": "1.6",
+      "threshold": "3.0",
+      "actual_gt": false,
+      "observation_citation": "b9d4c15a-babe-5156-b31b-c81b68eee7d4",
+      "rule_citation": "1f1a9faa-8e8c-5126-be2a-436cd809bc65",
+      "observation_in_visible_own_quote": true,
+      "active_branch_in_visible_own_quotes": false,
+      "correct_decision_from_cited_premise_chain": false,
+      "verdict_own_refs_include_all_numeric_premises": false,
+      "body_proof_requires_only_already_cited_facts": true
+    },
+    {
+      "task_id": "DD17",
+      "observed_value": "2.8",
+      "threshold": "3.0",
+      "actual_gt": false,
+      "observation_citation": "b9d4c15a-babe-5156-b31b-c81b68eee7d4",
+      "rule_citation": "1f1a9faa-8e8c-5126-be2a-436cd809bc65",
+      "observation_in_visible_own_quote": true,
+      "active_branch_in_visible_own_quotes": false,
+      "correct_decision_from_cited_premise_chain": false,
+      "verdict_own_refs_include_all_numeric_premises": false,
+      "body_proof_requires_only_already_cited_facts": true
+    },
+    {
+      "task_id": "DD16",
+      "observed_value": "4.6",
+      "threshold": "3.0",
+      "actual_gt": true,
+      "observation_citation": "b9d4c15a-babe-5156-b31b-c81b68eee7d4",
+      "rule_citation": "1f1a9faa-8e8c-5126-be2a-436cd809bc65",
+      "observation_in_visible_own_quote": true,
+      "active_branch_in_visible_own_quotes": true,
+      "correct_decision_from_cited_premise_chain": true,
+      "verdict_own_refs_include_all_numeric_premises": false,
+      "body_proof_requires_only_already_cited_facts": true
+    }
+  ],
+  "literal_binding_count": 27,
+  "semantic_support_is_not_literal_transport": true,
+  "strict_scope": "whole_visible_answer_and_its_already_bound_fact_citations; valid premise chains across individually cited facts accepted; singleton verdict ID is not called an independent complete proof",
+  "proof_boundary": "DD16 observation and active positive rule are both cited; Decimal proves predicate; actor and Yes match. DD14/DD17 only positive branch cited with false predicate: cannot deny antecedent or activate that branch. Publication/event dates are distinct.",
+  "reviewer": {
+    "family": "GPT-6/Codex same session",
+    "exact_serving_variant": "unavailable",
+    "blind": false,
+    "independent": false,
+    "human_labels": 0,
+    "method": "manual actual source/claim inspection plus recomputed literal and Decimal checks; no automatic LLM-only category labels"
+  },
+  "gates": {
+    "strict_net_gain_ge1": false,
+    "zero_strict_loss": false,
+    "zero_required_fact_support_loss": false,
+    "zero_new_wrong_answer_or_execution_failure": false,
+    "all_initial_drafts_observed_and_equal": false,
+    "all_generation_requests_equal": true,
+    "zero_drift": true,
+    "tokens_le1_25": true,
+    "observed_p95_le1_5": true
+  },
+  "adoption": {
+    "adopted": false,
+    "default": "legacy",
+    "reason": "Net strict gain0: DD16 gains, SF66 regresses. Three new wrong Yes answers; one budget completion failure with missing draft. Stop this single candidate; no rerun/tuning or default switch."
+  },
+  "cost_note": "All17 provider event counters known, including SF4345 returned response. Budget role records1 failed completion despite provider success. No invented zero or reconstructed draft. Reviewer cloud tokens/currency unmeasured=null.",
+  "latency_note": "Monotonic latency recorded; SF4345 business deadline failed after108.1 recorded seconds, not asserted180s timeout. Calendar start/end and suspension/clock-change cause not logged, remainunknown. Cache/background load not isolated; no speedup claim.",
+  "formal_Core": false
+}

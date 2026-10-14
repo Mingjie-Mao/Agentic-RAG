@@ -68,3 +68,20 @@ def test_unobserved_answer_and_tokens_remain_null_with_complete_review():
     assert result['details']['treatment']['t']['retrieval']['gold_fact_recall'] is None
     assert result['summary']['treatment']['total_tokens']['sum'] is None
     assert result['paired']['treatment']['pending_pairs'] == 1
+
+
+@pytest.mark.parametrize(('usage', 'total'), [
+    ({'prompt_tokens': 30, 'completion_tokens': 15,
+      'unknown_prompt_tokens': 0, 'unknown_completion_tokens': 0}, 45),
+    ({'prompt_tokens': 30, 'completion_tokens': None,
+      'known_completion_tokens': 15, 'unknown_completion_tokens': 1}, None),
+    ({'prompt_tokens': None, 'completion_tokens': 15, 'unknown_prompt_tokens': 1}, None),
+    ({'prompt_tokens': 0, 'completion_tokens': 0,
+      'unknown_prompt_tokens': 0, 'unknown_completion_tokens': 0}, 0),
+])
+def test_physical_generation_token_summary_distinguishes_known_and_unknown(usage, total):
+    suite, raw, reviewed = fixture()
+    raw['results']['baseline'][0]['usage'] = usage
+    scored = report(raw, suite, reviewed, baseline_method='baseline')
+    assert scored['summary']['baseline']['total_tokens']['sum'] == total
+    assert scored['summary']['baseline']['total_tokens']['observed'] == (total is not None)

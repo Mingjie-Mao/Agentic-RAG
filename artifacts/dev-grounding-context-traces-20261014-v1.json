@@ -1,0 +1,64 @@
+{
+  "version": "grounding-context-traces-dev-20261014-v1",
+  "split": "dev",
+  "input_sha256": "927fb3e05cd20b744dcf09a52a9a31a0f96e07ebe3cd3462ef0740a271adf2d8",
+  "rows": [
+    {
+      "task_id": "SF-64b127ac198d",
+      "target_candidate_chunk_id": "25ae870c-2225-5772-89e6-4c50b007e4a6",
+      "candidate_records": [
+        {
+          "chunk_id": "25ae870c-2225-5772-89e6-4c50b007e4a6",
+          "document_id": "mh-6bb4cc76e6d5c4e82422e47c",
+          "version_id": "2aaee60c-6d42-4c37-9fad-fc6b207c02fe",
+          "source_sha256": "4003a4e531d446d35ecd2352f6e90f20cfc8c36d9a06277bee23184f0709ce51",
+          "admitted": false,
+          "excluded_because": "document_quota",
+          "lane_type": "source",
+          "rank": 21,
+          "retrieval_rank": 18,
+          "rerank_score": -0.770272970199585
+        },
+        {
+          "chunk_id": "25ae870c-2225-5772-89e6-4c50b007e4a6",
+          "document_id": "mh-6bb4cc76e6d5c4e82422e47c",
+          "version_id": "2aaee60c-6d42-4c37-9fad-fc6b207c02fe",
+          "source_sha256": "4003a4e531d446d35ecd2352f6e90f20cfc8c36d9a06277bee23184f0709ce51",
+          "admitted": false,
+          "excluded_because": "top_k_full",
+          "lane_type": "global",
+          "rank": 73,
+          "retrieval_rank": 20,
+          "rerank_score": -0.770272970199585
+        }
+      ],
+      "target_text_present_in_final_context": false,
+      "basis": "archived_20261012_context_and_candidate_pool",
+      "latest_retrieval_reexecuted": false,
+      "current_evidence_sufficiency": "missing_dated_report"
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "target_candidate_chunk_id": "b079d3b5-3dc3-5a84-9cbd-f9bbc59c70a4",
+      "candidate_records": [
+        {
+          "chunk_id": "b079d3b5-3dc3-5a84-9cbd-f9bbc59c70a4",
+          "document_id": "mh-563b2bc8a5b3994824dafd59",
+          "version_id": "9551a5b7-4f8d-46ec-abdb-dedf302eb142",
+          "source_sha256": "38628c98aa333ae26f5186963786333159ae10c00f41f77102a8ff70cb34634a",
+          "admitted": true,
+          "excluded_because": null,
+          "lane_type": "source",
+          "rank": 3,
+          "retrieval_rank": 4,
+          "rerank_score": -0.7170326709747314
+        }
+      ],
+      "target_text_present_in_final_context": false,
+      "basis": "archived_20261012_context_and_candidate_pool",
+      "latest_retrieval_reexecuted": false,
+      "current_evidence_sufficiency": "unknown_alternative_passage_present"
+    }
+  ],
+  "scope": "Historical selection/assembly attribution only; not new retrieval measurements."
+}

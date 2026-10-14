@@ -6,6 +6,7 @@ late requirements. Scores order candidates; they never certify semantic support.
 """
 
 from copy import deepcopy
+from collections.abc import Mapping
 from dataclasses import dataclass
 from math import isfinite
 import re
@@ -14,7 +15,9 @@ import time
 from app.evidence_selection import _Pool, _caps, _rank, _required, _result
 from app.retrieval import _DATE
 from app.supplement_contract import assess_slot_presence
-from app.task_contract import _UNIT, build_contract
+from app.task_contract import (
+    _UNIT, _literal_guard_reason, bind_values, build_contract,
+)
 
 
 @dataclass(frozen=True)
@@ -25,6 +28,21 @@ class FocusAspect:
     # None is the caller's authorization namespace; () is an empty source scope.
     document_versions: tuple[tuple[str, str], ...] | None
     source_request_ids: tuple[str, ...] = ()
+
+
+def metadata_only(text):
+    """Only a web title and explicit source metadata, never a content paragraph.
+
+    Require both markers; a factual native Markdown heading remains eligible.
+    Mixed title/body chunks keep their complete original bytes.
+    """
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    def heading(line):
+        return bool(re.fullmatch(r'#{1,6}\s+.+', line))
+    def metadata(line):
+        return bool(re.fullmatch(r'Source:\s+.+', line, re.I))
+    return bool(lines and any(heading(line) for line in lines) and
+                any(metadata(line) for line in lines) and all(heading(line) or metadata(line) for line in lines))
 
 
 def _content(query, requests):
@@ -42,6 +60,9 @@ def _content(query, requests):
     text = re.sub(r'\s+(?:according\s+to|as\s+reported\s+by|based\s+on)\s*[.?!]?\s*$', '', text, flags=re.I)
     text = re.sub(r'^\s*[,;:]?\s*(?:reported\s+)?that\s+', '', text, flags=re.I)
     text = re.sub(r'^\s*(?:articles?|reports?)\s+(?:about|on)\s+', '', text, flags=re.I)
+    # A source-clause boundary can end just before the next publisher's name.
+    # Its dangling reporting scaffold carries no requested content.
+    text = re.sub(r'\s+and\s+the\s+report\s+from\s*$', '', text, flags=re.I)
     return text.strip(' ,;:.?')
 
 
@@ -146,7 +167,7 @@ def _ranked(query, originals, ranker):
     return scored, elapsed
 
 
-def _reserve_condition_witness(contract, pool, presence, selected, assigned):
+def _reserve_condition_witness(contract, pool, presence, selected, assigned, *, assessor=assess_slot_presence):
     """Deactivate a branch only when its deciding literal fits final context.
 
     The existing contract resolves one coherent operand value. Equivalent
@@ -168,7 +189,7 @@ def _reserve_condition_witness(contract, pool, presence, selected, assigned):
         allocation, _ = pool.assign(prospective)
         if allocation is None:
             continue
-        confirmed = {slot['slot_id'] for slot in assess_slot_presence(contract, allocation)['slots']
+        confirmed = {slot['slot_id'] for slot in assessor(contract, allocation)['slots']
                      if slot['state'] == 'inactive'}
         if proposed <= confirmed:
             # Binding can omit a contradictory document version when all its
@@ -181,7 +202,7 @@ def _reserve_condition_witness(contract, pool, presence, selected, assigned):
                 if other in prospective:
                     continue
                 combined = [*allocation, pool.rows[other]]
-                later = {slot['slot_id'] for slot in assess_slot_presence(contract, combined)['slots']
+                later = {slot['slot_id'] for slot in assessor(contract, combined)['slots']
                          if slot['state'] == 'inactive'}
                 if not proposed <= later:
                     stable = False
@@ -191,14 +212,130 @@ def _reserve_condition_witness(contract, pool, presence, selected, assigned):
     return set(), selected, assigned, []
 
 
+def _guarded_presence(contract, rows):
+    """Narrow the existing literal result; never grant support from relevance.
+
+    The base binder and rank_floor stay unchanged. Recheck their recorded quotes
+    for explicit local subject/metric shape and provisional-value qualifiers.
+    Unverified rows remain in ranking/fill and diagnostics with original bytes.
+    """
+    presence = assess_slot_presence(contract, rows)
+    originals = {slot.slot_id: slot for slot in contract.slots}
+    conditions = {c.operand_slot_id for c in build_contract(contract.question).conditions}
+    unverified_operand = False
+    for state in presence['slots']:
+        if state['state'] != 'supported':
+            continue
+        spec = originals[state['slot_id']].slot_spec
+        # Match the base assessment's supported simple Latin possessive repair.
+        if not spec.subject:
+            named = re.fullmatch(r'([A-Za-z][A-Za-z0-9 _.-]{1,63}?)\s*的[^的]+', spec.query)
+            if named:
+                spec = spec.model_copy(update={'subject': named[1].strip()})
+        scoped = [dict(row, title='', id=row.get('id') or row['chunk_id'])
+                  for row in rows if row['chunk_id'] in state['scoped_ids']]
+        values = bind_values(spec, scoped)
+        source_texts = {row['chunk_id']: row['text'] for row in scoped}
+        reason = ('literal_quote_not_verified' if not values else
+                  next((reason for value in values
+                        if (reason := _literal_guard_reason(
+                            spec, value.quote, source_text=source_texts[value.chunk_id]))), None))
+        if reason:
+            state.update(state='unknown', reason=reason, witness_ids=[])
+            unverified_operand |= spec.slot_id in conditions
+    if unverified_operand:
+        # A rejected deciding literal cannot establish any conditional branch.
+        for state in presence['slots']:
+            state.update(state='unknown', reason='guarded_condition_operand_unverified', witness_ids=[])
+    presence['gate'] = any(s['state'] in {'missing', 'unknown'} for s in presence['slots'])
+    return presence
+
+
+def _guarded_floor(contract, pool, presence, aspects, orders, selected, assigned):
+    """Protect only literal witnesses that still bind in the actual allocation.
+
+    All verifiable slots run before relevance fill. An unsupported topic gets no
+    reservation, even when its background scores higher than another slot's
+    literal. Whole table chunks carry their own binding dependencies; a value
+    row alone cannot pass the same presence check used for the inspected pool.
+    """
+    states = {state['slot_id']: state for state in presence['slots']}
+    floor = []
+    for aspect, order in zip(aspects, orders, strict=True):
+        state = states[aspect.slot_id]
+        chosen, reason = None, state['reason']
+        if state['state'] == 'supported' and state['reason'] == 'coherent_literal_witness':
+            references = [pool.rows[cid] for cid in state['witness_ids']]
+
+            def confirms(rows):
+                return next(s for s in _guarded_presence(contract, rows)['slots']
+                            if s['slot_id'] == aspect.slot_id)
+
+            current = confirms(assigned)
+            coherent_current = confirms([*assigned, *references])
+            reason = (coherent_current if current['state'] == 'supported' else current)['reason']
+            if current['state'] == 'supported' and coherent_current['state'] == 'supported':
+                chosen = next((cid for cid in current['witness_ids'] if cid in order), None)
+            if chosen is None:
+                # bind_values retains one witness per coherent version. A later
+                # equivalent literal in that version may fit when its first
+                # witness does not. Validate the real subset and its coherence
+                # with recorded pool witnesses, never substitute lexical overlap.
+                for cid in order:
+                    if cid not in state['scoped_ids']:
+                        continue
+                    prospective = selected if cid in selected else [*selected, cid]
+                    proposed_rows = assigned if cid in selected else [*assigned, pool.rows[cid]]
+                    proposed_state = confirms(proposed_rows)
+                    if (proposed_state['state'] != 'supported' or cid not in proposed_state['witness_ids']
+                            or confirms([*proposed_rows, *references])['state'] != 'supported'):
+                        continue
+                    allocation, reason = pool.assign(prospective)
+                    if allocation is None:
+                        continue
+                    confirmed = confirms(allocation)
+                    if (confirmed['state'] != 'supported' or cid not in confirmed['witness_ids']
+                            or confirms([*allocation, *references])['state'] != 'supported'):
+                        reason = confirmed['reason']
+                        continue
+                    chosen, selected, assigned = cid, prospective, allocation
+                    break
+        floor.append({'aspect_id': aspect.aspect_id, 'slot_id': aspect.slot_id,
+                      'status': 'reserved' if chosen else 'unverified',
+                      'basis': 'coherent_literal' if chosen else 'unverified_relevance_only',
+                      'chunk_id': chosen, 'reason': None if chosen else reason,
+                      'reservation_reason': None if chosen else reason,
+                      'candidate_state': state['state']})
+    return selected, assigned, floor
+
+
+def _duplicate_identity(row):
+    # Exact original text only: no whitespace normalization or similarity rule.
+    return tuple(row[key] for key in ('document_id', 'version_id', 'source_sha256', 'text'))
+
+
 def select_aspect_evidence(contract, candidates, *, ranker, limit=8, token_budget=5000,
-                           document_quota=None, source_quota=None, required_ids=()):
+                           document_quota=None, source_quota=None, required_ids=(),
+                           selection_policy='rank_floor', focus_queries=None):
     """Reserve feasible whole chunks by aspect, then interleave per-query orders.
 
     The injected runner ranker should call app.rerank with the full scoped window.
     Scores from different queries are never compared. Call/pair/time telemetry is
     private and must be projected by the experiment runner before publication.
+    Experimental guarded protection certifies only structural literal presence,
+    never entailment. The default rank_floor policy preserves relevance floors.
     """
+    if not isinstance(selection_policy, str) or selection_policy not in {'rank_floor', 'guarded'}:
+        raise ValueError('Invalid selection policy')
+    if focus_queries is not None:
+        if not isinstance(focus_queries, Mapping):
+            raise ValueError('Invalid focus queries mapping')
+        known = {slot.slot_id for slot in contract.slots}
+        if any(key not in known or not isinstance(query, str)
+               or not 2 <= len(query) <= 200 or len(query.strip()) < 2
+               or '{' in query or '}' in query for key, query in focus_queries.items()):
+            raise ValueError('Invalid focus slot or query')
+    focus_queries = dict(focus_queries or {})
     aspects = question_aspects(contract)
     caps = _caps(limit, token_budget, document_quota, source_quota)
     expected = {(d, v): sha for d, v, sha in contract.authorized_bindings}
@@ -208,52 +345,69 @@ def select_aspect_evidence(contract, candidates, *, ranker, limit=8, token_budge
         return aspect.document_versions is None or pair in aspect.document_versions
 
     valid = []
+    content_rejected = 0
     for row in candidates:
+        if selection_policy == 'guarded' and (not isinstance(row, dict) or any(
+                not isinstance(row.get(key), str) for key in
+                ('chunk_id', 'document_id', 'version_id', 'source_sha256', 'text', 'title'))):
+            raise ValueError('Invalid candidate identity')
         pair = (row.get('document_id'), row.get('version_id'))
         if (row.get('authorized') is False or row.get('active') is False
                 or (expected and (pair not in expected or
                     (expected[pair] and expected[pair] != row.get('source_sha256'))))):
             continue
         if any(compatible(a, row) for a in aspects):
+            if metadata_only(row['text']) and row['chunk_id'] not in required_ids:
+                content_rejected += 1
+                continue
             valid.append(row)
     pool = _Pool(contract.question, valid, caps)
-    presence = assess_slot_presence(contract, list(pool.rows.values()))
+    assessor = _guarded_presence if selection_policy == 'guarded' else assess_slot_presence
+    presence = assessor(contract, list(pool.rows.values()))
     required, selected, assigned = _required(pool, required_ids)
     inactive, selected, assigned, condition_witnesses = _reserve_condition_witness(
-        contract, pool, presence, selected, assigned)
+        contract, pool, presence, selected, assigned, assessor=assessor)
     aspects = [aspect for aspect in aspects if aspect.slot_id not in inactive]
     orders, ranking, calls, pairs, wall = [], [], 0, 0, 0.0
     for aspect in aspects:
         rows = [pool.rows[cid] for cid in sorted(pool.rows, key=lambda c: (_rank(pool.rows[c]), c))
                 if compatible(aspect, pool.rows[cid])]
-        scores, elapsed = _ranked(aspect.query, rows, ranker) if rows else ([], 0.0)
+        actual_query = focus_queries.get(aspect.slot_id, aspect.query)
+        scores, elapsed = _ranked(actual_query, rows, ranker) if rows else ([], 0.0)
         calls += bool(rows)
         pairs += len(rows)
         wall += elapsed
         orders.append([cid for cid, _ in scores])
         ranking.append({'aspect_id': aspect.aspect_id, 'slot_id': aspect.slot_id,
-                        'query': aspect.query, 'document_versions': aspect.document_versions,
+                        'query': actual_query, 'document_versions': aspect.document_versions,
                         'scores': [{'chunk_id': cid, 'rerank_score': score} for cid, score in scores],
                         'pairs': len(rows), 'wall_ms': elapsed})
-    floor = []
-    for aspect, order in zip(aspects, orders, strict=True):
-        chosen = None
-        reason = None
-        if chosen is None:
-            for cid in order:
-                if cid in selected:
-                    chosen = cid
-                    break
-                allocation, reason = pool.assign([*selected, cid])
-                if allocation is not None:
-                    chosen = cid
-                    selected.append(cid)
-                    assigned = allocation
-                    break
-        floor.append({'aspect_id': aspect.aspect_id, 'slot_id': aspect.slot_id,
-                      'status': 'reserved' if chosen else 'infeasible' if order else 'no_eligible_candidate',
-                      'basis': 'scoped_relevance_only', 'chunk_id': chosen,
-                      'reason': None if chosen else reason})
+        if aspect.slot_id in focus_queries:
+            ranking[-1]['original_query'] = aspect.query
+    if selection_policy == 'guarded':
+        selected, assigned, floor = _guarded_floor(
+            contract, pool, presence, aspects, orders, selected, assigned)
+    else:
+        floor = []
+        for aspect, order in zip(aspects, orders, strict=True):
+            chosen = None
+            reason = None
+            if chosen is None:
+                for cid in order:
+                    if cid in selected:
+                        chosen = cid
+                        break
+                    allocation, reason = pool.assign([*selected, cid])
+                    if allocation is not None:
+                        chosen = cid
+                        selected.append(cid)
+                        assigned = allocation
+                        break
+            floor.append({'aspect_id': aspect.aspect_id, 'slot_id': aspect.slot_id,
+                          'status': 'reserved' if chosen else 'infeasible' if order else 'no_eligible_candidate',
+                          'basis': 'scoped_relevance_only', 'chunk_id': chosen,
+                          'reason': None if chosen else reason})
+    duplicates = {}
     # Round-robin retains query-local relevance order without treating distinct
     # query score scales as comparable. Infeasible rows remain whole and skipped.
     for position in range(max(map(len, orders), default=0)):
@@ -261,21 +415,45 @@ def select_aspect_evidence(contract, candidates, *, ranker, limit=8, token_budge
             if position >= len(order) or order[position] in selected:
                 continue
             cid = order[position]
+            if selection_policy == 'guarded':
+                representative = next((old for old in selected
+                                       if _duplicate_identity(pool.rows[old]) ==
+                                       _duplicate_identity(pool.rows[cid])), None)
+                if representative is not None:
+                    duplicates[cid] = representative
+                    continue
             allocation, _ = pool.assign([*selected, cid])
             if allocation is not None:
                 selected.append(cid)
                 assigned = allocation
     if inactive:
-        final_inactive = {slot['slot_id'] for slot in assess_slot_presence(contract, assigned)['slots']
+        final_inactive = {slot['slot_id'] for slot in assessor(contract, assigned)['slots']
                           if slot['state'] == 'inactive'}
         if not inactive <= final_inactive:
             raise ValueError('Condition changed during evidence selection')
     trace = pool.trace('query_aspect_relevance_v1', selected, assigned, required)
     for rejected in trace['rejected']:
-        if rejected['reasons'] == ['lower_lexical_objective']:
+        if rejected['chunk_id'] in duplicates:
+            rejected.update(reasons=['exact_duplicate_background'],
+                            representative_id=duplicates[rejected['chunk_id']])
+        elif rejected['reasons'] == ['lower_lexical_objective']:
             rejected['reasons'] = ['lower_interleaved_relevance_order']
     trace.update(coverage_type='relevance_ranking_only', aspect_floor=floor, aspect_ranking=ranking,
                  ranker_calls=calls, ranker_pairs=pairs, ranker_wall_ms=round(wall, 3),
-                 scope_rejected_count=len(candidates)-len(valid), inactive_slot_ids=sorted(inactive),
+                 scope_rejected_count=len(candidates)-len(valid)-content_rejected,
+                 content_rejected_count=content_rejected, inactive_slot_ids=sorted(inactive),
                  condition_witness_ids=condition_witnesses)
+    if selection_policy == 'guarded':
+        final = {s['slot_id']: s for s in _guarded_presence(contract, assigned)['slots']}
+        for entry in floor:
+            state = final[entry['slot_id']]
+            entry.update(selected_state=state['state'], selected_reason=state['reason'],
+                         witness_ids=state['witness_ids'])
+            if state['state'] != 'supported':
+                # Fill remains free to show negation/conflict. A reservation is
+                # never reported as retained support after its binding changes.
+                entry.update(status='unverified', basis='unverified_relevance_only',
+                             reason=state['reason'])
+        trace.update(method='query_aspect_guarded_v1', selection_policy='guarded',
+                     coverage_type='structural_literal_protection_with_unverified_relevance_fill')
     return _result(pool, selected, assigned, trace)

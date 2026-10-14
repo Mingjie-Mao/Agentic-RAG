@@ -226,6 +226,18 @@ def require_audit_gate():
 
 def provenance_hint(answer, issue, evidence):
     """Name the evidence that can carry a claim's named publication; never widen it."""
+    if "unsupported_cited_quantity" in issue["codes"]:
+        return (
+            "该断言的数值或阈值不在它自己的引文中。比较结论必须同时引用观测值和规则阈值的原文；"
+            "其他断言的引用不能代替本条引用。按真实条件选择对应分支的原文，不能引用相反分支。"
+            "原文没有依据时明确不足，不猜测数值、负责人或条件结论。"
+        )
+    if "unsupported_cited_date" in issue["codes"]:
+        return (
+            "该断言的日期不在它自己的引文中。不得把问题里的日期当成已查到的事实，"
+            "不得用另一日期的报道证明指定报道没有提及某事。"
+            "只表达可由原文支持的内容；缺少指定来源时明确不足，不能通过删掉日期掩盖来源缺失。"
+        )
     if "publication_reference_mismatch" not in issue["codes"] or issue["claim_index"] is None:
         return ""
     from app.answer_contract import source_scoped_evidence
@@ -238,11 +250,15 @@ def provenance_hint(answer, issue, evidence):
     return f"断言点名{named}，只能引用来自该媒体的原文：{'、'.join(ids)}。"
 
 
-def recover_answer(models, question, evidence, *, options=None):
+def recover_answer(models, question, evidence, *, options=None, grounding_feedback=False):
     """One local cited repair; no blind retries, no permission or budget bypass."""
     from app.qa import claim_validation_issues
 
     options = dict(options or {})
+    if grounding_feedback:
+        from app.answer_contract import grounding_requirements
+
+        options["grounding_requirements"] = grounding_requirements(question, evidence)
     from app.clients import evidence_spans
 
     if not evidence_spans(evidence)[0]:
@@ -412,6 +428,16 @@ def recover_answer(models, question, evidence, *, options=None):
             ],
             "retained_claims": [c.text for c in valid],
         }
+        if grounding_feedback:
+            # These are the draft's actual bindings, not inferred support. Keep
+            # the normal one-repair limit and the original strict validator.
+            for item, issue in zip(context["failed_claims"], state["issues"]):
+                index = issue["claim_index"]
+                claim = answer.claims[index] if index is not None else None
+                item["bound_evidence_ids"] = claim.evidence_ids if claim else []
+                item["bound_quotes"] = claim.quotes if claim else []
+            context["retained_claim_bindings"] = [c.model_dump() for c in valid]
+            context["retained_claims_are_only_mechanically_checked"] = True
         try:
             added, extra = models.generate(
                 question,

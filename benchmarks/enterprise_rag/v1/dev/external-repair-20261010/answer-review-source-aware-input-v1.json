@@ -1,0 +1,35 @@
+{
+  "version": "dev-source-aware-answer-analysis-registration-v1",
+  "split": "dev",
+  "primary_review_registration": "benchmarks/enterprise_rag/v1/dev/external-repair-20261010/answer-review-input-v1.json",
+  "source_only_adjudication_sha256": "5228e6d7381194b8781c5f355fd8be384fd84201cb4889620c3e08f006e1e19b",
+  "primary_pending_task_ids": [
+    "U12",
+    "U22",
+    "SF-3e8219f58317",
+    "SF-56d3160a9c64",
+    "SF-59679085cc4a",
+    "SF-3ea856eeec7b",
+    "SF-3fb3599dcc99"
+  ],
+  "secondary_pending_task_ids": [
+    "SF-3e8219f58317",
+    "SF-56d3160a9c64",
+    "SF-59679085cc4a"
+  ],
+  "secondary_approved_task_ids": [
+    "U12",
+    "U22",
+    "SF-3ea856eeec7b",
+    "SF-3fb3599dcc99"
+  ],
+  "original_facts_expected_status_and_generated_answers": "unchanged",
+  "primary_denominator": 47,
+  "secondary_denominator": 47,
+  "primary_reviewable_pairs": 40,
+  "secondary_reviewable_pairs": 44,
+  "publication": "separate sensitivity analysis; not substituted for preregistered primary result",
+  "human": false,
+  "headline_eligible": false,
+  "review_cost": null
+}

@@ -1,0 +1,73 @@
+{
+  "version": "grounding-workspace-completion-20261014-v1",
+  "split": "dev",
+  "status": "complete",
+  "stages": {
+    "source_attribution": "complete; v1/v2/v3 preserved",
+    "minimal_opt_in_candidate": "complete; not adopted",
+    "one_registered_dev_trial": "complete; 24 positions; one pending BudgetExceeded retained",
+    "source_review_and_deterministic_checks": "complete; same-session model; non-independent; human0"
+  },
+  "tests": {
+    "targeted_passed": 160,
+    "new_tests": 7,
+    "ruff": "passed",
+    "docs_consistency": "passed; 2231 collected",
+    "git_diff_check": "passed",
+    "full_suite_not_rerun": true
+  },
+  "snapshot": {
+    "path": ".runtime/grounding-attribution-20261014/v1/snapshot-after",
+    "files": 1845,
+    "manifest_sha256": "43afa3eaaa382a542a76c0c67d8f242f3804982f344ba78eef9ab6f284b0a1d3",
+    "self_excluded_from_snapshot": true,
+    "before_three_modified_code_files_match_prior_snapshot": true
+  },
+  "old_artifacts_and_benchmarks_unchanged": 832,
+  "qa_verdict_config_unchanged": true,
+  "third_party_scan": {
+    "scope": "exact SF questions and 120-char current/candidate paragraph prefixes; this round public code/artifacts plus reports",
+    "hits": [],
+    "not_a_complete_privacy_proof": true
+  },
+  "model_calls": 46,
+  "strict_success": {
+    "existing_recovery": "2/9",
+    "grounding_feedback": "2/9"
+  },
+  "adopted": false,
+  "default": "legacy",
+  "structured_verdict_changed": false,
+  "formal_Core_run": false,
+  "git_commit_push_deploy": false,
+  "proof_sha256": {
+    "artifacts/dev-grounding-attribution-20261014-v1.json": "f0e490841aa7f4bb225d5b9d915a024de1349ac5895b1b7ef49ad439c6fc8895",
+    "artifacts/dev-grounding-attribution-20261014-v2.json": "9b13236836f09e7dc06fe5b985b8ac94eea66873b8acd7d674ba0cbe5ac3c6ae",
+    "artifacts/dev-grounding-attribution-20261014-v3.json": "5ca80d1a78cc1bf70815e82e32fa9b9e4aec567b3899eccf08a2b22c730c3516",
+    "artifacts/dev-grounding-context-traces-20261014-v1.json": "1c79014284a6b952fba753fdc355204a9193e6d250b7a833ecdc0ecc0598f6c5",
+    "artifacts/dev-grounding-trial-20261014-v1.audit.json": "54b4e5fcfe3918527a7d3cc136e19d18249f3f7c59f7c95c2551a59aabe89358",
+    "artifacts/dev-grounding-trial-20261014-v1.json": "8edba6a5aa10c2f6cecdffddb93aa853f1ef3f5fe12ea1c8d53ebfd1b527c1ba",
+    "artifacts/dev-grounding-trial-20261014-v1.review.json": "b46f799e7bd7883a3149e00200409a1387024583859ce61fff57ba42ee2612c1",
+    "benchmarks/enterprise_rag/v1/dev/grounding-attribution-20261014/registration-v1.json": "1760c894ade382c94032dfc76e806b1a61a0c4ccfea933baf5ae2c0cfa917016",
+    ".runtime/grounding-attribution-20261014/v1/inputs.json": "927fb3e05cd20b744dcf09a52a9a31a0f96e07ebe3cd3462ef0740a271adf2d8",
+    ".runtime/grounding-attribution-20261014/v1/attributions.private.json": "d4f20c4ef9f115d79863706f6613e7732b304639ab5697c9b679ad4b3243b540",
+    ".runtime/grounding-attribution-20261014/v1/failure-attribution.md": "cc74d761ad56b329c1c0b66319f181718a48eed5f0192d76d91bb51c89c37ee3",
+    ".runtime/grounding-attribution-20261014/v1/candidate-gap-proof.md": "d095501145c3b2cf39bf5fdd92756c33bada5c6dd5cc351c8b6f3767dd8dc286",
+    ".runtime/grounding-attribution-20261014/v1/attribution-addendum-v2.md": "0513b3790e06261d330b985960a2d417a40dc1d148c8ea4068dfa414c4ca095d",
+    ".runtime/grounding-attribution-20261014/v1/attribution-addendum-v3.md": "3aafc65e00f5664724da0b250cb1b49a394034e61c8a93d28aace698683913c4",
+    ".runtime/grounding-attribution-20261014/v1/trial/raw.json": "6ad5f005413757f050248254b98fe374778bd80bc449cabb8093c7ab60914352",
+    ".runtime/grounding-attribution-20261014/v1/review-packet-final.json": "0a55b4411f74ecdee21b89e1a777e7b78ff74b194ad6e689a9b68aad9118f3e5",
+    ".runtime/grounding-attribution-20261014/v1/review-notes-final.json": "e2132a9a5d6f810139558bbcc3ae0f2a5a141ed136e20e022bcd8ce5f60c66d3",
+    ".runtime/grounding-attribution-20261014/v1/draft-binding-checks.json": "b2d08a6d905a68afe432ac3e6df5612d2f15c8ee1306a91f7e7caa5496f5b082",
+    ".runtime/grounding-attribution-20261014/v1/review-protocol.json": "b421d2e2044ec896565bd2321fab67449790fad409ef80789354152674b02ac8",
+    ".runtime/grounding-attribution-20261014/v1/candidate.patch": "ac1952465d7ef96de8f29035be5b18629ad5415c206e0028d31694f1e1508ddf",
+    ".runtime/grounding-attribution-20261014/v1/code-before.json": "47d479f5482e248fdece909d6eafe5471bf8e04e0eecf470a3854595fa186439",
+    ".runtime/grounding-attribution-20261014/v1/manifest-after.json": "43afa3eaaa382a542a76c0c67d8f242f3804982f344ba78eef9ab6f284b0a1d3",
+    ".runtime/grounding-attribution-20261014/v1/tests-before.log": "853b46199024fe0ed764235f62cf509188c1c3f0b8fdaebba8e1f0c9b218acbf",
+    ".runtime/grounding-attribution-20261014/v1/targeted-tests.log": "61eafae72620cd8f86221d01f718f671d95616b9d2ffca1874ba0435db14a0c2",
+    ".runtime/grounding-attribution-20261014/v1/ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".runtime/grounding-attribution-20261014/v1/docs-check.log": "95ad323072d798fed6873103fb8ab905f9e1148d7a68d0c8f978d0199bb78504",
+    ".runtime/grounding-attribution-20261014/v1/docs-check-final.log": "04491c022fd1ab8d98438a6f96e5d08cc7a199e936b5ea59ae4ca282428d1a68",
+    ".runtime/grounding-attribution-20261014/v1/docs-check-completion.log": "04491c022fd1ab8d98438a6f96e5d08cc7a199e936b5ea59ae4ca282428d1a68"
+  }
+}

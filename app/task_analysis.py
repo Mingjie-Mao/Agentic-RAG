@@ -5,7 +5,15 @@ import re
 
 CONFLICT_MARKERS = ("冲突", "不一致", "是否一致", "矛盾", "到底", "哪个规定", "哪些时段")
 COMPOSITE_MARKERS = ("分别", "以及", "同时", "并且", "和两项")
-VERSION_MARKERS = ("版本", "变更", "变化", "新版", "旧版", "历史", "之前")
+VERSION_MARKERS = ("版本", "变化", "新版", "旧版", "历史", "之前")
+# "变更" signals history only when it says that content changed ("有什么变更", "变更了",
+# "变更前", "最近一次变更"). As a noun modifier it names a business object instead:
+# 变更冻结规则 (change freeze), 变更管理, 变更申请.
+CHANGE_HISTORY = (
+    r"(?:有|有没有|有无|有何|发生(?:了|过)?|做(?:了|过)|经过|哪些|什么|几|次)[^，。？?]{0,4}"
+    r"变更(?!冻结|管理|申请|流程|窗口|单|审批|委员会|请求|评审|计划|控制)"
+    r"|变更(?:了|过|前|后|为|成|情况|历史|内容|之处)"
+)
 JUDGMENT_MARKERS = ("是否", "是不是", "有没有", "能否", "会不会", "对不对", "一致吗", "对吗")
 # A question that opens with an auxiliary verb expects a verdict, not a description.
 # The last clause matters too: "After …, was there a change in …?" asks for one.
@@ -72,7 +80,7 @@ def multi_source_intent(text: str) -> bool:
 
 
 def version_intent(text: str) -> bool:
-    return any(marker in text for marker in VERSION_MARKERS) or bool(re.search(
+    return any(marker in text for marker in VERSION_MARKERS) or bool(re.search(CHANGE_HISTORY, text or "")) or bool(re.search(
         r"\b(?:versions?|revisions?|historical|previous|older|newer)\b", text or "", re.IGNORECASE
     )) or bool(
         len(re.findall(r"(?<!\d)\d{4}-\d{2}-\d{2}(?!\d)|(?:\d{4}\s*年\s*)?\d{1,2}\s*月\s*\d{1,2}\s*日", text or "")) >= 2
@@ -84,7 +92,7 @@ def historical_route_intent(text: str) -> bool:
     """A current SDK version is not a request for a document's version history."""
     clean = text or ""
     return bool(re.search(
-        r"历史|旧版|之前|变更|演变|(?:比较|对比).{0,20}版本|"
+        CHANGE_HISTORY + r"|历史|旧版|之前|演变|(?:比较|对比).{0,20}版本|"
         r"\b(?:previous|older|historical)\b.{0,30}\b(?:versions?|revisions?|polic(?:y|ies)|rules?|standards?)\b|"
         r"\brevisions?\b|\bcompare\b.{0,40}\bversions?\b",
         clean, re.IGNORECASE,

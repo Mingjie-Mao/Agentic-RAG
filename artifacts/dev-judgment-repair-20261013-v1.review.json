@@ -1,0 +1,495 @@
+{
+  "version": "judgment-repair-reviewed-dev-v1",
+  "split": "dev",
+  "headline_eligible": false,
+  "source_artifact": "artifacts/dev-judgment-repair-20261013-v1.json",
+  "source_artifact_sha256": "ef8dd968e847a046c1b11f355e6ec807dabd908c535636b63668d7548a916c07",
+  "registration_sha256": "c3199726e4d300dffb74c1b1b0f57e81f54740e398eddc9e585a5d362b21c258",
+  "review": {
+    "version": "judgment-repair-review-v1",
+    "reviewer": {
+      "reviewer_type": "model",
+      "model": "GPT-6/Codex family; exact serving variant unavailable",
+      "independent": false,
+      "human_labels": 0,
+      "arm_labels_hidden_in_packet": true,
+      "fully_blind": false,
+      "limitation": "Same session implemented the candidate and saw labeled progress before reviewing the randomized packet."
+    },
+    "packet_sha256": "54e6dc4981344f30efe33f713f1b21ea1995d4e453ab614d6b61766d8df48331",
+    "private_raw_sha256": "115e5af065bccbb878ba1aba87d9938b66eb2b23439fb546e921d5670448a971"
+  },
+  "summary": {
+    "legacy": {
+      "primary_n": 4,
+      "primary_strict": 1,
+      "primary_direction_correct": 3,
+      "primary_yes": 2,
+      "primary_gold_yes": 1,
+      "original_n": 7,
+      "original_yes": 4,
+      "original_unknown": 1,
+      "pending_n": 3,
+      "counterfactual": {
+        "n": 7,
+        "decisive_pairs": 5,
+        "flipped": 2,
+        "stable_unknown": 1,
+        "consistent_including_unknown": 3,
+        "engineered_NOT_limit": false
+      },
+      "original_p50_ms": 8181.5,
+      "original_p95_ms": 8666.6,
+      "calls": 14,
+      "prompt_tokens": 5163,
+      "completion_tokens": 212
+    },
+    "structured_bound_quotes": {
+      "primary_n": 4,
+      "primary_strict": 1,
+      "primary_direction_correct": 3,
+      "primary_yes": 1,
+      "primary_gold_yes": 1,
+      "original_n": 7,
+      "original_yes": 3,
+      "original_unknown": 1,
+      "pending_n": 3,
+      "counterfactual": {
+        "n": 7,
+        "decisive_pairs": 6,
+        "flipped": 6,
+        "stable_unknown": 1,
+        "consistent_including_unknown": 7,
+        "engineered_NOT_limit": true
+      },
+      "original_p50_ms": 28311.3,
+      "original_p95_ms": 38665.7,
+      "calls": 14,
+      "prompt_tokens": 16596,
+      "completion_tokens": 1052
+    }
+  },
+  "paired_primary": {
+    "n": 4,
+    "strict_gain": [],
+    "strict_loss": [],
+    "direction_gain": [],
+    "direction_loss": [],
+    "required_fact_loss": [],
+    "body_fact_basis": "identical frozen bodies and source bindings; no claim or source change between judgment arms"
+  },
+  "repairs": [
+    {
+      "task_id": "SF-64b127ac198d",
+      "status": "verification_failed",
+      "value": null,
+      "strict": false,
+      "body_facts_supported": {}
+    },
+    {
+      "task_id": "DD14",
+      "status": "verification_failed",
+      "value": null,
+      "strict": false,
+      "body_facts_supported": {}
+    },
+    {
+      "task_id": "DD16",
+      "status": "answered",
+      "value": "unclear",
+      "strict": false,
+      "body_facts_supported": {
+        "rate": "supported",
+        "decision": "supported",
+        "lead": "supported"
+      }
+    },
+    {
+      "task_id": "DD17",
+      "status": "verification_failed",
+      "value": null,
+      "strict": false,
+      "body_facts_supported": {}
+    }
+  ],
+  "repair_summary": {
+    "n": 4,
+    "baseline_visible_strict": 0,
+    "mechanically_accepted": 1,
+    "candidate_strict": 0,
+    "body_required_facts_supported": 3,
+    "body_required_facts_total": 10,
+    "calls": 5,
+    "prompt_tokens": 7565,
+    "completion_tokens": 369
+  },
+  "checks": {
+    "ruff": "passed",
+    "full_tests": {
+      "passed": 2185,
+      "skipped": 36,
+      "xfailed": 3
+    },
+    "access_integration_passed": 4,
+    "docs_consistency": "passed",
+    "original_artifact_and_benchmark_files_unchanged": 672,
+    "drift": {
+      "code": false,
+      "inputs": false,
+      "settings": false,
+      "model": false
+    }
+  },
+  "adoption": {
+    "adopted": false,
+    "production_protocol": "legacy",
+    "reason": "No gain in primary strict success or original-question direction; the single repair does not yield a fully consistent strict answer. Structured original judgments cost more.",
+    "continued_tuning_in_this_trial": false
+  },
+  "limitations": [
+    "7 original tasks only; 4 annotation-valid primary, 3 pending unchanged.",
+    "Same cached answer bodies; not full Dev47 end-to-end generation or a formal Core run.",
+    "New GPT source audit differs from the old Claude reference; do not overwrite or combine those scores.",
+    "Outer NOT composition is engineered and does not establish general negation understanding.",
+    "Same-session model review; not independent or fully blind; human labels zero.",
+    "Concurrent test load and model prompt cache affect timing; monetary and review costs unmeasured."
+  ],
+  "details": [
+    {
+      "task_id": "U22",
+      "arm": "legacy",
+      "form": "original",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "U22",
+      "arm": "structured_bound_quotes",
+      "form": "original",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "U22",
+      "arm": "structured_bound_quotes",
+      "form": "negated",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "U22",
+      "arm": "legacy",
+      "form": "negated",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "arm": "structured_bound_quotes",
+      "form": "original",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "unclear"
+      },
+      "body_source_support": null,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "arm": "legacy",
+      "form": "original",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "unclear"
+      },
+      "body_source_support": null,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "arm": "legacy",
+      "form": "negated",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "unclear"
+      },
+      "body_source_support": null,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "arm": "structured_bound_quotes",
+      "form": "negated",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "unclear"
+      },
+      "body_source_support": null,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "arm": "legacy",
+      "form": "original",
+      "strict": false,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": true
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "arm": "structured_bound_quotes",
+      "form": "original",
+      "strict": false,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": true
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "arm": "structured_bound_quotes",
+      "form": "negated",
+      "strict": false,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": true
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "arm": "legacy",
+      "form": "negated",
+      "strict": false,
+      "direction_correct": false,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": false
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "structured_bound_quotes",
+      "form": "original",
+      "strict": false,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": true
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "legacy",
+      "form": "original",
+      "strict": false,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": true
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "legacy",
+      "form": "negated",
+      "strict": false,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": true
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "arm": "structured_bound_quotes",
+      "form": "negated",
+      "strict": false,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "partial"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": true
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "arm": "legacy",
+      "form": "original",
+      "strict": false,
+      "direction_correct": false,
+      "required_facts_supported": {
+        "answer": "unsupported"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": false
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "arm": "structured_bound_quotes",
+      "form": "original",
+      "strict": false,
+      "direction_correct": false,
+      "required_facts_supported": {
+        "answer": "unsupported"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": false
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "arm": "structured_bound_quotes",
+      "form": "negated",
+      "strict": false,
+      "direction_correct": false,
+      "required_facts_supported": {
+        "answer": "unsupported"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": false
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "arm": "legacy",
+      "form": "negated",
+      "strict": false,
+      "direction_correct": false,
+      "required_facts_supported": {
+        "answer": "unsupported"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": false
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "structured_bound_quotes",
+      "form": "original",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "unsupported"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "legacy",
+      "form": "original",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "unsupported"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "legacy",
+      "form": "negated",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "unsupported"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "arm": "structured_bound_quotes",
+      "form": "negated",
+      "strict": null,
+      "direction_correct": null,
+      "required_facts_supported": {
+        "answer": "unsupported"
+      },
+      "body_source_support": false,
+      "body_conclusion_consistent": null
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "legacy",
+      "form": "original",
+      "strict": true,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "supported"
+      },
+      "body_source_support": true,
+      "body_conclusion_consistent": true
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "structured_bound_quotes",
+      "form": "original",
+      "strict": true,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "supported"
+      },
+      "body_source_support": true,
+      "body_conclusion_consistent": true
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "structured_bound_quotes",
+      "form": "negated",
+      "strict": true,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "supported"
+      },
+      "body_source_support": true,
+      "body_conclusion_consistent": true
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "arm": "legacy",
+      "form": "negated",
+      "strict": true,
+      "direction_correct": true,
+      "required_facts_supported": {
+        "answer": "supported"
+      },
+      "body_source_support": true,
+      "body_conclusion_consistent": true
+    }
+  ]
+}

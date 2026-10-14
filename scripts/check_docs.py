@@ -122,6 +122,26 @@ def main():
         readme = Path("README.md").read_text()
         if any(value in readme for value in readme_figures.values() if value):
             problems.append("README.md: 历史分数不应混入当前主表")
+        from scripts.benchmark_package_scoring import EVALUATION_POLICY, SCORING_RULES
+        policy = json.loads(Path(EVALUATION_POLICY).read_text())
+        external = json.loads(Path(policy['external_summary_path']).read_text())
+        if policy.get('human_gold_required') is not False or policy.get('scoring_rules') != SCORING_RULES:
+            problems.append('当前评测协议与AI-assisted人工可选门槛不符')
+        if Path(SCORING_RULES).name not in text:
+            problems.append(f'{benchmark_doc}: 缺少当前评分版本')
+        current_report = Path('PROJECT_REPORT.md').read_text().split('### 20.1 ', 1)[1].split('### 20.2 ', 1)[0]
+        current_roadmap = Path('docs/problem-analysis-and-roadmap-20261012.md').read_text().split('## 2.', 1)[0]
+        for label, overview in [('PROJECT_REPORT §20.1', current_report), ('路线图当前结论', current_roadmap)]:
+            compact = re.sub(r'\s+', '', overview)
+            for method, display in [('rag', 'RAG'), ('workflow', 'Workflow')]:
+                strict = external['metrics'][method]['strict_success']
+                expected = rf"{display}(?:严格)?{strict['correct']}/{strict['resolved']}"
+                if not re.search(expected, compact):
+                    problems.append(f'{label}: External AI-assisted严格结果未同步')
+            if '人工审核可选' not in compact and '人工标注可选' not in compact:
+                problems.append(f'{label}: 缺少当前人工可选门槛')
+        if 'External 仍待审核' in text:
+            problems.append(f'{benchmark_doc}: External审核状态过期')
     except (ValueError, OSError) as exc:
         problems.append(f"benchmark package: {exc}")
 

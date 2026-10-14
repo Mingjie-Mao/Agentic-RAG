@@ -1,0 +1,20 @@
+{
+  "version": "evidence-first-code-checks-v1",
+  "split": "dev",
+  "scope": "selection_and_generation_code_before_bound_citation_and_policy",
+  "command": "RAG_RUN_INTEGRATION=0 make test",
+  "ruff": "passed",
+  "pytest": {
+    "passed": 1722,
+    "skipped": 36,
+    "warnings": 1,
+    "elapsed_seconds": 98.72
+  },
+  "docs": "passed",
+  "integration": "disabled_to_preserve_active_readonly_evaluation_corpus",
+  "ignored_review_assembly_synthetic_tests": 8,
+  "code_sha256": "b6d8a9b45615a0ef0726b3f184bd3422f740ae8d95285ce45374868306191956",
+  "registered_generation_code_unchanged": true,
+  "strict_task_success": null,
+  "headline_eligible": false
+}

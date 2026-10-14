@@ -390,6 +390,8 @@ def run_arm(db, user, task, arm, *, on_created=None, benchmark_run_token=None, s
             execution_error_kind = "unexpected"
             payload = {"status": "execution_failed", "claims": [], "citations": [], "usage": {"execution_budget": getattr(exc, "execution_budget", {})}}
         observable, trace, steps, run_id, scenario_events = payload, [], 1, None, {}
+        execution = {"requested_mode": "rag", "selected_mode": "rag", "route_reason": None,
+                     "executed_path": ["answer_question"]}
     else:
         task_input = {"use_memory": bool(task.get("memory_fixture")), "benchmark_id": task["id"]}
         task_input.update(task.get("task_input", {}))
@@ -412,6 +414,7 @@ def run_arm(db, user, task, arm, *, on_created=None, benchmark_run_token=None, s
             db.expire_all()
         try:
             observable = task_payload(db, user, row)
+            execution = observable["execution"]
             payload = observable["result"] or {
                 "status": "execution_failed", "claims": [], "citations": []
             }
@@ -426,7 +429,7 @@ def run_arm(db, user, task, arm, *, on_created=None, benchmark_run_token=None, s
         observable_payload=observable, scenario_events=scenario_events,
         execution_error_kind=execution_error_kind,
     )
-    result.update({"task_id": task["id"], "run_id": run_id})
+    result.update({"task_id": task["id"], "run_id": run_id, "execution_route": execution})
     if execution_error:
         result["execution_error"] = execution_error
     return result

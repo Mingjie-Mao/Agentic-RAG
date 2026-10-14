@@ -1,0 +1,562 @@
+{
+  "version": "judgment-repair-dev-v1",
+  "split": "dev",
+  "registration": "benchmarks/enterprise_rag/v1/dev/generation-diagnostic-20261013/judgment-repair-registration-v1.json",
+  "registration_sha256": "c3199726e4d300dffb74c1b1b0f57e81f54740e398eddc9e585a5d362b21c258",
+  "judgments": [
+    {
+      "task_id": "U22",
+      "form": "original",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 8230.9,
+      "value": "unclear",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 279,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "U22",
+      "form": "original",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 28311.3,
+      "value": "no",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 824,
+        "completion_tokens": 89
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "U22",
+      "form": "negated",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 14614.8,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 824,
+        "completion_tokens": 89
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "U22",
+      "form": "negated",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 7748.7,
+      "value": "unclear",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 296,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "form": "original",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 38665.7,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 1338,
+        "completion_tokens": 95
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "form": "original",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 8263.0,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 351,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "form": "negated",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 7168.4,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 366,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "form": "negated",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 38884.7,
+      "value": "no",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 1338,
+        "completion_tokens": 95
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "form": "original",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 7553.8,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 288,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "form": "original",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 24384.9,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 853,
+        "completion_tokens": 62
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "form": "negated",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 10267.1,
+      "value": "no",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 853,
+        "completion_tokens": 62
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "form": "negated",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 8281.0,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 303,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "form": "original",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 29291.0,
+      "value": "no",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 1072,
+        "completion_tokens": 66
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "form": "original",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 8181.5,
+      "value": "no",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 329,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "form": "negated",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 6977.7,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 344,
+        "completion_tokens": 17
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "form": "negated",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 25727.8,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 1072,
+        "completion_tokens": 66
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "form": "original",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 7125.7,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 424,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "form": "original",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 25899.7,
+      "value": "unclear",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 1149,
+        "completion_tokens": 88
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "form": "negated",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 11705.0,
+      "value": "unclear",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 1149,
+        "completion_tokens": 88
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "form": "negated",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 7077.9,
+      "value": "unclear",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 439,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "form": "original",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 32733.4,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 2069,
+        "completion_tokens": 62
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "form": "original",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 8666.6,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 574,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "form": "negated",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 7885.2,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 589,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "form": "negated",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 33316.8,
+      "value": "no",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 2069,
+        "completion_tokens": 62
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "form": "original",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 5369.6,
+      "value": "no",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 283,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "form": "original",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 21350.7,
+      "value": "no",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 993,
+        "completion_tokens": 64
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "form": "negated",
+      "arm": "structured_bound_quotes",
+      "error_kind": null,
+      "latency_ms": 8474.3,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 993,
+        "completion_tokens": 64
+      },
+      "validation_issues": []
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "form": "negated",
+      "arm": "legacy",
+      "error_kind": null,
+      "latency_ms": 5632.0,
+      "value": "yes",
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 298,
+        "completion_tokens": 15
+      },
+      "validation_issues": []
+    }
+  ],
+  "repairs": [
+    {
+      "task_id": "SF-64b127ac198d",
+      "error_kind": null,
+      "latency_ms": 51139.7,
+      "status": "verification_failed",
+      "value": null,
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 2833,
+        "completion_tokens": 102
+      },
+      "recovery": {
+        "framework": "langgraph",
+        "repair_attempts": 1,
+        "first_issues": [
+          {
+            "claim_index": 0,
+            "codes": [
+              "unsupported_cited_date"
+            ]
+          },
+          {
+            "claim_index": 1,
+            "codes": [
+              "unsupported_cited_date"
+            ]
+          }
+        ],
+        "remaining_issues": [
+          {
+            "claim_index": 0,
+            "codes": [
+              "unsupported_cited_date"
+            ]
+          },
+          {
+            "claim_index": 1,
+            "codes": [
+              "unsupported_cited_date"
+            ]
+          }
+        ],
+        "stages": {
+          "initial_generation_ms": 0.0,
+          "local_repair_ms": 51087.5
+        }
+      }
+    },
+    {
+      "task_id": "DD14",
+      "error_kind": null,
+      "latency_ms": 21814.2,
+      "status": "verification_failed",
+      "value": null,
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 1315,
+        "completion_tokens": 67
+      },
+      "recovery": {
+        "framework": "langgraph",
+        "repair_attempts": 1,
+        "first_issues": [
+          {
+            "claim_index": 0,
+            "codes": [
+              "unsupported_cited_quantity"
+            ]
+          }
+        ],
+        "remaining_issues": [
+          {
+            "claim_index": 0,
+            "codes": [
+              "unsupported_cited_quantity"
+            ]
+          }
+        ],
+        "stages": {
+          "initial_generation_ms": 0.0,
+          "local_repair_ms": 21786.8
+        }
+      }
+    },
+    {
+      "task_id": "DD16",
+      "error_kind": null,
+      "latency_ms": 40792.7,
+      "status": "answered",
+      "value": "unclear",
+      "cost": {
+        "physical_calls": 2,
+        "prompt_tokens": 2066,
+        "completion_tokens": 133
+      },
+      "recovery": {
+        "framework": "langgraph",
+        "repair_attempts": 1,
+        "first_issues": [
+          {
+            "claim_index": 0,
+            "codes": [
+              "unsupported_cited_quantity"
+            ]
+          }
+        ],
+        "remaining_issues": [],
+        "stages": {
+          "initial_generation_ms": 0.0,
+          "local_repair_ms": 22353.7
+        }
+      }
+    },
+    {
+      "task_id": "DD17",
+      "error_kind": null,
+      "latency_ms": 25630.0,
+      "status": "verification_failed",
+      "value": null,
+      "cost": {
+        "physical_calls": 1,
+        "prompt_tokens": 1351,
+        "completion_tokens": 67
+      },
+      "recovery": {
+        "framework": "langgraph",
+        "repair_attempts": 1,
+        "first_issues": [
+          {
+            "claim_index": 0,
+            "codes": [
+              "unsupported_cited_quantity"
+            ]
+          }
+        ],
+        "remaining_issues": [
+          {
+            "claim_index": 0,
+            "codes": [
+              "unsupported_cited_quantity"
+            ]
+          }
+        ],
+        "stages": {
+          "initial_generation_ms": 0.0,
+          "local_repair_ms": 25602.5
+        }
+      }
+    }
+  ],
+  "status": "complete",
+  "strict_task_success": null,
+  "review": "pending",
+  "adopted": false,
+  "private_raw_sha256": "115e5af065bccbb878ba1aba87d9938b66eb2b23439fb546e921d5670448a971",
+  "drift": {
+    "code": false,
+    "inputs": false,
+    "settings": false,
+    "model": false
+  }
+}

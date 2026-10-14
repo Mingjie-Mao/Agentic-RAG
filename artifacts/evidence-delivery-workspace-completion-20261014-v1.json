@@ -1,0 +1,95 @@
+{
+  "version": "evidence-delivery-workspace-completion-20261014-v1",
+  "status": "complete",
+  "split": "dev",
+  "continuation": {
+    "source_thread_id": "01a13501-9d66-7e53-8525-3d11ea701851",
+    "turns_read": 9,
+    "local_rollout_records": 2312,
+    "local_rollout_sha256": "f47bbd680b552fece6a81102c945ef3bedf55936d354f2564bc9d356f3311eac",
+    "scope": "Verify saved completed runs and finish reports; no new inference or experimental configuration changes."
+  },
+  "stages": {
+    "six_task_attribution": "complete",
+    "delivery_counterfactual_positions": 16,
+    "source_span_candidate_positions": 8,
+    "candidate_failed_positions": 1,
+    "primary_tasks": 7,
+    "pending_tasks": 1,
+    "saved_review": "complete",
+    "reports": "complete"
+  },
+  "strict_success": {
+    "A": {
+      "count": 1,
+      "n": 7
+    },
+    "B": {
+      "count": 1,
+      "n": 7
+    },
+    "C": {
+      "count": 1,
+      "n": 7
+    }
+  },
+  "adopted": false,
+  "default": "legacy",
+  "strict_gains": 1,
+  "strict_losses": 1,
+  "strict_net_gain": 0,
+  "tests": {
+    "prior_targeted_passed": 143,
+    "new_binding_edge_tests_included": 10,
+    "prior_targeted_source_bound": true,
+    "prior_ruff": "passed",
+    "new_docs_check": "passed",
+    "new_full_regression_run": false,
+    "prior_full_regression_scope": "2185 passed at section 20.36, not this continuation"
+  },
+  "verification": {
+    "old_artifact_benchmark_files_preserved": 689,
+    "production_files_unchanged": 64,
+    "original_drafts_mechanically_rechecked": 23,
+    "literal_rendered_claims_rechecked": 27,
+    "matching_initial_drafts": 7,
+    "missing_initial_drafts": 1,
+    "frozen_code_files": {
+      "registration-v1.json": 212,
+      "source-span-registration-v1.json": 213
+    }
+  },
+  "old_run_review_registration_artifacts_unchanged": true,
+  "original_snapshot_files": 1848,
+  "snapshot": {
+    "path": ".runtime/session-continuation-20261014/v1/snapshot-after",
+    "manifest": ".runtime/session-continuation-20261014/v1/manifest-after.json",
+    "files": 1859,
+    "scope": "Git tracked and non-ignored untracked files; private raw run/session data separately preserved in local .runtime directories."
+  },
+  "new_inference_calls": 0,
+  "score_or_reviewer_revision": false,
+  "human_labels": 0,
+  "formal_Core_run": false,
+  "formal_Security_run": false,
+  "git_commit_push_deploy": false,
+  "proof_sha256": {
+    "PROJECT_REPORT.md": "95f528c57721a029c474d882ad2ba584e026038cf054e4491aca31c85f579171",
+    "docs/problem-analysis-and-roadmap-20261012.md": "f5637ee9ec22858fcf093cbb0ed8a9b8223b27484f2defc242d1e9007f8ed3e4",
+    "artifacts/dev-evidence-delivery-20261014-v1.audit.json": "b95c5d560cd37a74ab9f58111061aef17b95f61c06df9d79bb8d2b8e03b0d033",
+    ".runtime/session-continuation-20261014/v1/saved-run-verification.json": "61937699d66bc96003cc8e1427a4709f09e02bcd6714e1ef1b5f1bb45a1ca07e",
+    ".runtime/session-continuation-20261014/v1/verify_saved_run.py": "878a17da52d452e2c7b28ab8e876172a039aec99f83e07cd05eca1e5a01d53e5",
+    ".runtime/session-continuation-20261014/v1/docs-check.log": "3120b28bf6a2bf5f9c17eb028eaf47ae7874df5d4ebc3cb64ca35b02ec843f92",
+    ".runtime/session-continuation-20261014/v1/manifest-after.json": "cf3120e85fc7fdb008fa8c50556e06d5e5f2f11888c98dda2fea3affab6801bc",
+    ".runtime/session-continuation-20261014/v1/source-session-index.json": "105fd40bdc8873340f50fe6aae24e9eea4ab1bb9fab27e72818c09fff1e01d63",
+    ".runtime/evidence-delivery-20261014/v1/targeted-tests-v2.log": "71ae7c73dd3871bf994b77e9828f52151be7fa5c0026331ddad9c29b436b8795",
+    ".runtime/evidence-delivery-20261014/v1/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "limits": [
+    "Selected Dev subset, not full Dev or Core accuracy.",
+    "Previous same-session GPT-6/Codex source review is non-independent and non-blind.",
+    "One missing post-provider-response draft remains unknown; not reconstructed or rerun.",
+    "BudgetExceeded not asserted to be a 180-second timeout.",
+    "Literal transport and mechanical acceptance do not establish semantic correctness."
+  ]
+}

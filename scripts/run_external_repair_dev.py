@@ -20,7 +20,8 @@ from sqlalchemy import text
 
 from agent.supplement_proposal import FocusProposal, UnknownProposal, make_proposal
 from agent.supplement_repair import run_repair
-from app.evidence_focus import question_aspects, select_aspect_evidence
+from app.evidence_focus import _ranked, metadata_only, question_aspects, select_aspect_evidence
+from app.evidence_selection import _HARD_EXCLUSIONS, _exclusions, _rank
 from app.execution_budget import ExecutionBudget, use_budget
 from app.retrieval import retrieve_authorized, routing_goal
 from app.security import readable_documents
@@ -68,6 +69,47 @@ def focus_proposal(models, contract, seed, needed):
     return FocusProposal(mode='independent', target_slot=i, query=query)
 
 
+def backbone_ids(contract, baseline, candidates):
+    """Keep at most four existing source witnesses, using no reference labels."""
+    available = {r['chunk_id'] for r in candidates if not _exclusions(r) & _HARD_EXCLUSIONS
+                 and not metadata_only(r['text'])}
+    allowed = {pair for request in contract.source_requests for pair in request.document_versions}
+    bindings = {(d, v): sha for d, v, sha in contract.authorized_bindings}
+    seen, ids = set(), []
+    for row in baseline:
+        pair = (row['document_id'], row['version_id'])
+        if (row['chunk_id'] not in available or pair in seen or pair not in bindings
+                or (bindings[pair] and bindings[pair] != row['source_sha256'])
+                or (contract.source_requests and pair not in allowed)):
+            continue
+        seen.add(pair)
+        ids.append(row['chunk_id'])
+        if len(ids) == 4:
+            break
+    return ids
+
+
+def cached_rank(query, rows, cache, ranker, budget, event):
+    """Memoize actual validated per-pair scores within this one task only."""
+    budget.check()
+    keys = {r['chunk_id']: digest([query, *[r[k] for k in
+        ('chunk_id', 'document_id', 'version_id', 'source_sha256', 'title', 'text')]]) for r in rows}
+    fresh = [r for r in rows if keys[r['chunk_id']] not in cache]
+    event.update(fresh_pairs=len(fresh), cached_pairs=len(rows)-len(fresh),
+                 physical_ranker_calls=int(bool(fresh)))
+    if fresh:
+        scores, _ = _ranked(query, fresh, ranker)
+        event['dispatch_completed'] = True
+        for cid, score in scores:
+            cache[keys[cid]] = score
+    else:
+        event['dispatch_completed'] = False
+    budget.check()
+    ranked = [dict(row, rerank_score=cache[keys[row['chunk_id']]], fused_rank=i)
+              for i, row in enumerate(rows, 1)]
+    return sorted(ranked, key=lambda r: (-r['rerank_score'], _rank(r), r['chunk_id']))
+
+
 def paths_for(args):
     return [Path(args.suite), SELECTION, Path(args.parent), Path(args.baseline),
             Path(args.overlay), Path(args.manifest)]
@@ -84,7 +126,11 @@ def registration_for(args):
     return {'version': 'external-repair-input-v1', 'split': 'dev',
         'input_bytes_sha256': [sha(p.read_bytes()) for p in paths_for(args)],
         'profiles': list(PROFILES), 'query_policy': 'least_query_word_coverage_late_tie_no_semantic_claim',
-        'ranking': 'BGE_all_eligible_pairs_per_aspect_no_cross_query_score_comparison',
+        'ranking': 'BGE_all_eligible_pairs_per_aspect_no_cross_query_score_comparison_v2',
+        'backbone': 'one_nonmetadata_existing_witness_per_document_version_first_four_in_seed_order',
+        'metadata_only': 'heading_and_explicit_Source_only_mixed_chunks_kept',
+        'unresolved_sources': 'retain_original_baseline_no_supplement',
+        'rank_cache': 'validated_observed_scores_same_query_doc_version_hash_title_text_task_local',
         'limits': {'chunks': 8, 'tokens': 5000, 'aspects': 8, 'search_per_arm': 1,
                    'shared_policy_calls': 2, 'seconds': 180},
         'scope': 'exact_question_source_version_bindings_no_global_lane_widening',
@@ -103,7 +149,7 @@ def collect(db, user, question, original, prior, corpus, cfg, source, offset, pr
     caps = replay.policy_caps(db, user, question)
     caps['document_quota'] = None
     models, backend = supplement.MeteredModels(), supplement.MeteredSearch(source)
-    rankings, searches, rank_events = [], [], []
+    rankings, searches, rank_events, rank_cache = [], [], [], {}
     budget = ExecutionBudget(cfg, saved={'limits': {'policy': 2, 'search': 2,
         'judge': 0, 'generation': 0, 'judge_tokens': 0}})
     budget.state['deadline'] = min(budget.state['deadline'], budget.clock()+180)
@@ -118,8 +164,8 @@ def collect(db, user, question, original, prior, corpus, cfg, source, offset, pr
         rank_events.append(event)
         try:
             budget.check()
-            result = rerank(query, rows, window=len(rows))
-            event['dispatch_completed'] = True
+            result = cached_rank(query, rows, rank_cache,
+                lambda q, rs: rerank(q, rs, window=len(rs)), budget, event)
             budget.check()
             event['status'] = 'ok'
             return result
@@ -127,6 +173,8 @@ def collect(db, user, question, original, prior, corpus, cfg, source, offset, pr
             event['wall_ms'] = (time.monotonic()-began)*1000
 
     def selector(c, rows, *, focus_queries=None, **kwargs):
+        kwargs['required_ids'] = list(dict.fromkeys([*kwargs.get('required_ids', []),
+                                                   *backbone_ids(c, baseline, rows)]))
         with use_budget(budget):
             result = select_aspect_evidence(c, rows, ranker=rank, **kwargs)
         rankings.append(public_trace(result.trace))
@@ -134,7 +182,10 @@ def collect(db, user, question, original, prior, corpus, cfg, source, offset, pr
         result.trace['slot_floor'] = result.trace['aspect_floor']
         return result
 
-    if contract.reason == 'unsupported_history':
+    if any(r.resolution != 'supported' for r in contract.source_requests):
+        selected = baseline
+        selection_status = 'original_scope_unresolved_baseline_retained'
+    elif contract.reason == 'unsupported_history':
         selected = baseline
         selection_status = 'history_baseline_retained'
     else:
@@ -195,6 +246,10 @@ def collect(db, user, question, original, prior, corpus, cfg, source, offset, pr
             order=('control', 'treatment') if offset % 2 == 0 else ('treatment', 'control'),
             proposal_provider=focus_proposal, evidence_selector=selector)
         trace = deepcopy(result.trace)
+        trace['proposal_provider'] = 'model_bridge' if contract.mode == 'entity_bridge' else 'question_only_heuristic'
+        if trace.get('decline_reason') and contract.mode != 'entity_bridge':
+            trace['decline_is_unverified_model_belief'] = False
+            trace['decline_is_unverified_heuristic'] = True
         private['arm_queries'] = {name: result.arms[name].get('query') for name in ('control', 'treatment')}
         for name in ('control', 'treatment'):
             arm = result.arms[name]

@@ -1,0 +1,73 @@
+{
+  "benchmark_id": "agentic-rag-observation-policy-v2",
+  "version": "2.0-proposed",
+  "status": "design_not_frozen_not_executed",
+  "relationship_to_v1": "Additive only. v1 manifest, registered matrix, frozen results and the Core headline metric are unchanged.",
+  "primary_test_metric": "dynamic_test.StrictTaskSuccessRate",
+  "original_v1_main_metric_unchanged": "core.StrictTaskSuccessRate",
+  "hypotheses": {
+    "H1": "B_minus_A",
+    "H2": "C_minus_B",
+    "H3": "D_minus_C_comparable_budget"
+  },
+  "methods": [
+    {"name": "A_single_shot_rag", "implementation": "rag", "availability": "existing"},
+    {"name": "B_deterministic_multihop", "implementation": "deterministic_multihop", "availability": "to_implement",
+     "rule": "observation_bound_program_decisions_no_task_specific_hardcoding"},
+    {"name": "C_structured_planner", "implementation": "planner", "availability": "existing",
+     "replan_label": "C_replan1_if_model_replan_allowed"},
+    {"name": "D_dynamic_agent", "implementation": "dynamic", "availability": "existing"}
+  ],
+  "supplementary_methods": ["workflow", "hybrid", "adaptive"],
+  "task_contract": {
+    "constraints": "kept_for_all_arms",
+    "prepare_to_finish_short_circuit": "disabled_in_v2_arm_experiments_only",
+    "production_default": "unchanged",
+    "trace_fields": ["requested_mode", "selected_mode", "executed_path"]
+  },
+  "suites": [
+    {"id": "dynamic_dev", "path": "benchmarks/enterprise_rag/v1/dynamic/dev/tasks.json", "expected_tasks": 30, "role": "development", "status": "existing_used"},
+    {"id": "dynamic_test", "path": "benchmarks/enterprise_rag/v1/dynamic/test/tasks.json", "expected_tasks": 40, "role": "primary_test_once", "status": "existing_pending_review"},
+    {"id": "core_test", "path": "benchmarks/enterprise_rag/v1/core/tasks.json", "expected_tasks": 70, "role": "separate_v1_main_metric", "status": "existing_pending_formal_run"},
+    {"id": "security", "path": "benchmarks/enterprise_rag/v1/security/tasks.json", "expected_tasks": 16, "role": "separate_safety_gate", "status": "existing_pending_formal_run"},
+    {"id": "out_of_template", "path": "benchmarks/enterprise_rag/v2/ood/tasks.json", "expected_tasks": 24, "role": "future_ood_test", "status": "proposed_not_created"}
+  ],
+  "known_exact_question_overlap": {
+    "dynamic_test": ["DT13", "DT14", "DT16", "DT17", "DT18", "DT21", "DT22", "DT33"],
+    "with": "dynamic_dev",
+    "verified": "2026-10-12"
+  },
+  "dynamic_test_reporting": {
+    "primary": "new_question_text_32",
+    "secondary": ["all_40", "exact_overlap_8"],
+    "label": "same_template_generalization_not_ood"
+  },
+  "resource_limits": {
+    "status": "proposal_calibrate_on_dev_then_freeze",
+    "hard_limits": ["tool_calls", "search_calls", "model_calls", "model_tokens"],
+    "max_total_tool_calls": 16,
+    "max_additional_search_calls": 12,
+    "max_context_tokens": 5000,
+    "max_context_chunks": 8,
+    "wall_seconds": "safety_cap_reported_not_a_method_difference",
+    "generation_model": "selected_on_dev_by_generation_diagnostic_before_freeze"
+  },
+  "must_not_enter_method_input": ["gold_answer", "gold_documents", "gold_evidence", "required_facts", "expected_behavior", "conditional_transition", "one_shot_gold_doc_gap", "dependency_graph"],
+  "strict_success": {
+    "requires": ["all_required_facts_supported", "no_material_errors", "valid_citations", "correct_conditions_and_versions", "correct_abstention_if_required", "no_safety_violation"],
+    "review_pending_result": null,
+    "expected_tool_order_is_not_required": true
+  },
+  "secondary_metrics": ["evidence_chain_complete", "intermediate_entity_binding", "valid_next_hop", "repeated_query", "premature_stop", "over_planning", "cost"],
+  "statistics": {
+    "report": ["paired_success_difference", "ci95", "per_task_win_loss_tie"],
+    "auxiliary_test": "exact_mcnemar",
+    "multiplicity": "holm_over_H1_H3",
+    "exploratory": ["per_family", "ablations", "routing"],
+    "cluster_bootstrap": "not_used_single_world_test",
+    "non_significant_is_not_equivalence": true
+  },
+  "ablations": {"minimum_viable": ["AB1", "AB2", "AB4", "AB7"], "deferred": ["AB3", "AB5", "AB6", "AB8"]},
+  "routing_evaluation": {"mixture_simple_share": [0.5, 0.7, 0.9], "sources": ["dev47", "dynamic_dev"], "label": "simulated_load_not_real_traffic"},
+  "execution_policy": "Freeze before test; one registered matrix; resume only from the identical snapshot/output; all errors and failures remain in the denominator."
+}

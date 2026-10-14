@@ -1,0 +1,50 @@
+{
+  "version": "slot-generation-primary-micro-dev-v1",
+  "split": "dev",
+  "status": "complete",
+  "valid": true,
+  "source": "artifacts/dev-slot-generation-review-20261011-v1.json",
+  "source_sha256": "01a7cbffa6d3f68e8c4a283f295f07847faf547dfd6021729ac367855a298c1e",
+  "reviewed_sha256": "a53a40db60dee25a3215c337d5fc1b468d9edc730c71547ee98263ff5a3f3383",
+  "aggregation": "posthoc_micro_supported_required_facts_same_original_primary40_no_new_inference",
+  "review_basis": "GPT-6 / Codex model_review_not_human",
+  "exact_serving_variant": null,
+  "excluded_pending_task_ids": [
+    "SF-3e8219f58317",
+    "SF-3ea856eeec7b",
+    "SF-3fb3599dcc99",
+    "SF-56d3160a9c64",
+    "SF-59679085cc4a",
+    "U12",
+    "U22"
+  ],
+  "methods": {
+    "direct": {
+      "scoreable_tasks": 40,
+      "required_facts": 58,
+      "retrieved_supported": 52,
+      "retrieval_micro_recall": 0.896551724137931,
+      "answer_supported": 39,
+      "answer_micro_recall": 0.6724137931034483
+    },
+    "shared_contract": {
+      "scoreable_tasks": 40,
+      "required_facts": 58,
+      "retrieved_supported": 52,
+      "retrieval_micro_recall": 0.896551724137931,
+      "answer_supported": 47,
+      "answer_micro_recall": 0.8103448275862069
+    },
+    "literal_slots": {
+      "scoreable_tasks": 40,
+      "required_facts": 58,
+      "retrieved_supported": 52,
+      "retrieval_micro_recall": 0.896551724137931,
+      "answer_supported": 40,
+      "answer_micro_recall": 0.6896551724137931
+    }
+  },
+  "headline_eligible": false,
+  "core_strict_task_success": null,
+  "comparison_to_historical": "unchanged_evidence_not_new_retrieval_gain"
+}

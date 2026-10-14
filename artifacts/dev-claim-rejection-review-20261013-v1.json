@@ -1,0 +1,107 @@
+{
+  "version": "claim-rejection-review-dev-v1",
+  "split": "dev",
+  "source": "artifacts/dev-claim-rejection-20261013-v1.json",
+  "private_raw_sha256": "5ce50aa09c781dc6c04ff31fc5061a7e7346de5cf49d4f7da3f2eb7938883f9e",
+  "reviewer": {
+    "reviewer_type": "model",
+    "model": "GPT-6/Codex family; exact serving variant unavailable",
+    "independent": false,
+    "human_labels": 0,
+    "basis": "This session inspected the new draft, its own quotations and the full reauthorized current context."
+  },
+  "rows": [
+    {
+      "task_id": "SF-64b127ac198d",
+      "sample_basis": "new_sample_original_rejected_draft_unavailable",
+      "draft_sha256": "40d7f1a2aa439c5120671dfdebeab26706876f607eba652140d842b7b5f9fbfd",
+      "issues": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_date"
+          ]
+        },
+        {
+          "claim_index": 1,
+          "codes": [
+            "unsupported_cited_date"
+          ]
+        }
+      ],
+      "primary": "required_source_absent_and_unbound_date",
+      "mechanical_rejection_justified": true,
+      "secondary": [
+        "negative_article_absence_not_supported",
+        "publication_date_present_only_in_metadata",
+        "cross_source_consistency_not_established"
+      ],
+      "repair_target": "Do not assert absent-source content; retain scope and date validation."
+    },
+    {
+      "task_id": "DD14",
+      "sample_basis": "new_sample_original_rejected_draft_unavailable",
+      "draft_sha256": "e70e76bfb9609e7db0243344f5f7ab74e0d06668487018048025fcfdbf064948",
+      "issues": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_quantity"
+          ]
+        }
+      ],
+      "primary": "threshold_missing_from_claim_own_quotes",
+      "mechanical_rejection_justified": true,
+      "secondary": [
+        "wrong_condition_branch_quote",
+        "specific_owner_missing_from_context"
+      ],
+      "repair_target": "Bind observation and threshold in the same claim; preserve unresolved owner."
+    },
+    {
+      "task_id": "DD16",
+      "sample_basis": "new_sample_original_rejected_draft_unavailable",
+      "draft_sha256": "c3478e9e16276669bf509d9a7ffd33ff3fa85b30d3b26123c503d556947e6612",
+      "issues": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_quantity"
+          ]
+        }
+      ],
+      "primary": "threshold_missing_from_claim_own_quotes",
+      "mechanical_rejection_justified": true,
+      "secondary": [],
+      "repair_target": "Bind both numeric inputs; retain correct escalation and owner facts."
+    },
+    {
+      "task_id": "DD17",
+      "sample_basis": "new_sample_original_rejected_draft_unavailable",
+      "draft_sha256": "b72c180dae161642599911b0fffa6601884deeb091d1df850324d20d28cf2ec4",
+      "issues": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_quantity"
+          ]
+        }
+      ],
+      "primary": "threshold_missing_from_claim_own_quotes",
+      "mechanical_rejection_justified": true,
+      "secondary": [
+        "wrong_condition_branch_quote",
+        "specific_owner_not_expressed_despite_available_directory"
+      ],
+      "repair_target": "Bind both inputs and the applicable branch, then express the sourced owner."
+    }
+  ],
+  "summary": {
+    "observed": 4,
+    "mechanical_rejections_justified_in_new_samples": 4,
+    "confirmed_validator_false_rejections": 0,
+    "quantity_binding_failures": 3,
+    "date_binding_failures": 1
+  },
+  "production_validation_change": "none; repair generation/provenance, not validator strength"
+}

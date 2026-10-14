@@ -1,0 +1,20 @@
+{
+  "version": "external-dev-final-verification-v1",
+  "split": "dev",
+  "initial_file_count": 1736,
+  "initial_files_deleted": [],
+  "historical_artifact_benchmark_count": 620,
+  "historical_bytes_changed": [],
+  "prior_report_bytes_unchanged": true,
+  "scoring_code_drift": false,
+  "initial_head": "3dffa7d5103b1a28e21e6aab9120cefbc2c5fec4",
+  "current_head": "5dfd1bbafdeda846d5fbd0d3a8c35c942e6256b5",
+  "current_task_git_mutations": false,
+  "tests": {
+    "passed": 1383,
+    "skipped": 36,
+    "collected": 1419
+  },
+  "core_executed": false,
+  "headline_eligible": false
+}

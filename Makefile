@@ -50,7 +50,8 @@ test:
 	$(PY) scripts/check_docs.py
 
 integration:
-	RAG_RUN_INTEGRATION=1 .venv/bin/pytest -q --junitxml=artifacts/s1-tests.xml
+	mkdir -p .runtime/test-reports
+	integration_report_dir="$$(mktemp -d .runtime/test-reports/integration-XXXXXX)" && RAG_RUN_INTEGRATION=1 .venv/bin/pytest -q --junitxml="$$integration_report_dir/junit.xml"
 
 browser:
 	npm --prefix web run test:e2e

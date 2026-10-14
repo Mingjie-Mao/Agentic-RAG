@@ -1,0 +1,27 @@
+{
+  "version": "external-independent-review-readiness-v1",
+  "status": "prepared_pending_real_independent_human_review",
+  "tasks": 150,
+  "sources": 609,
+  "reviewer_packets": 2,
+  "reviewers_assigned": 0,
+  "independent_human_labels": 0,
+  "reviews_received": 0,
+  "adjudications_completed": 0,
+  "gold_promoted": 0,
+  "third_party_text": "local_only",
+  "system_outputs_or_old_gold_in_first_pass": false,
+  "source_selection_independence": false,
+  "complete_source_catalog_available": true,
+  "suite_sha256": "c083c1f9b3442288caa5c6c854bb4cfb18aa710036e52ac77e0ddc7ef859e1c4",
+  "spec_sha256": "4d954751f517b123c9c468abc95049434a8f577ff9f04aa80e4c327f596ef19c",
+  "packet_sha256": {
+    "reviewer-1": "12d0cef07df5ae69d720437c0728c4980b3752fb75ae2c016538cf0c23568b85",
+    "reviewer-2": "6c603fae251649b051f365f8d195491995b964db432fc93167f1afefa58b065f"
+  },
+  "coordinator_key_sha256": "9e6c68aafd3dd2144d0a264313a85ff9f1171354a83ec79088e2c28cfa50f835",
+  "old_annotations_sha256": "c083c1f9b3442288caa5c6c854bb4cfb18aa710036e52ac77e0ddc7ef859e1c4",
+  "disagreement_status_sha256": "cbbf3988d743b76b399acd47241d6e13fa219a8bbd6a75faed56cd4af73232d9",
+  "blindness_scope": "Structural projection and random identifiers; actual independence requires real reviewer declarations and separate delivery. Not an access-control guarantee.",
+  "adjudication_template_sha256": "53f3b3d3f9060ba3dd7ecea487a06e9639287222af5e5bf73a65f4b2cc5dc286"
+}

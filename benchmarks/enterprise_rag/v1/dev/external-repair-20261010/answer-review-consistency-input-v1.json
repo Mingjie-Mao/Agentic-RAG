@@ -1,0 +1,19 @@
+{
+  "version": "dev-blind-review-consistency-adjudication-v1",
+  "split": "dev",
+  "input_sha256": "7d79c6cb5882a69604399c4ce0c14245f287dcf4d013fb8d06f0e7c99408b07d",
+  "prior_review_sha256": "259592df3c732516c1c0cb29c51610e8b81764a1c89b28dd5598dff2f1c03998",
+  "item_ids": [
+    "41a00799a1ae6dea99bc779c5b6d134c78f1b94c4c5ce6910a381635ffe9f0f0",
+    "4498730258944d7facb47fef3c6f9316932cfbbf9055af97f79da2ab7a28eead",
+    "a0568ebb59a56529174f8cf3efdc723ea26621c65eed2b8192e481f093fa4ea6",
+    "a8d4868bec89d533c30515a54e8fb77a3a7e341f85331e4e6d185f61319a2907",
+    "bf49429a1876d26dfcdbb3aa2b24b4075f9545b8c1da1bc78af32091de3a8c90",
+    "c7dca03984b3531d917586e38181862b67ba4f6fd2672581cd5b86c88726bbed"
+  ],
+  "inclusion_rule": "all duplicated exact task+visible answer payloads whose answer fact/claim/citation/strict checks differ; retrieved_fact verdicts may differ with observed evidence",
+  "review_prior_labels_hidden": true,
+  "human": false,
+  "primary_pending_unchanged": true,
+  "headline_eligible": false
+}

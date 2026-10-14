@@ -329,6 +329,214 @@ def validate_package(package=PACKAGE, *, require_private=True):
             "core_status": "candidate_not_run", "external": "historically_used_locked_selection"}
 
 
+def external_ai_review_readiness(policy, root=ROOT):
+    """Verify saved AI audit receipts, without running a reviewer or a task."""
+    reference_path = Path(root) / policy['external_review_path']
+    summary_path = Path(root) / policy['external_summary_path']
+    state = {'status': 'pending', 'human_gold_required': False, 'review_kind': 'AI-assisted',
+             'source_questions_reviewed': 0, 'answer_positions_reviewed': 0,
+             'unresolved': None, 'blocking_reasons': []}
+    if not reference_path.exists() or not summary_path.exists():
+        state['blocking_reasons'].append('external_AI_review_receipts_pending')
+        return state
+    reference, summary = read(reference_path), read(summary_path)
+    items = reference.get('items', [])
+    sha = hashlib.sha256(reference_path.read_bytes()).hexdigest()
+    if (reference.get('review_kind') != 'AI-assisted' or reference.get('human') is not False
+            or reference.get('independent') is not False or len(items) != 150
+            or len({r.get('id') for r in items}) != 150
+            or summary.get('reference_sha256') != sha):
+        state['blocking_reasons'].append('external_AI_review_identity_or_hash_invalid')
+    if any(r.get('reference_state') not in {'answered', 'unanswerable', 'unresolved'}
+           or not r.get('reason') or not r.get('reviewer', {}).get('model_identity') for r in items):
+        state['blocking_reasons'].append('external_AI_reference_records_invalid')
+    unresolved = [r['id'] for r in items if r.get('reference_state') == 'unresolved']
+    if (summary.get('unresolved_ids') != sorted(unresolved)
+            or summary.get('source_first_verified') is not True):
+        state['blocking_reasons'].append('external_AI_uncertainty_or_source_first_receipt_invalid')
+    if summary.get('answer_audit_complete') is not True:
+        state['blocking_reasons'].append('external_original_answer_or_citation_audit_incomplete')
+    if summary.get('isolated_cross_review_complete') is not True:
+        state['blocking_reasons'].append('external_isolated_cross_review_incomplete')
+    receipts = summary.get('local_receipts', {})
+    if (not receipts or any(not (Path(root) / name).is_file()
+            or hashlib.sha256((Path(root) / name).read_bytes()).hexdigest() != value
+            for name, value in receipts.items())
+            or summary.get('scoring_rules_sha256') != policy.get('scoring_rules_sha256')
+            or summary.get('answer_positions_reviewed') != 300
+            or summary.get('review_kind') != 'AI-assisted'
+            or summary.get('human') is not False or summary.get('independent') is not False):
+        state['blocking_reasons'].append('external_AI_audit_receipt_chain_invalid')
+    state.update(source_questions_reviewed=len(items),
+                 answer_positions_reviewed=summary.get('answer_positions_reviewed', 0),
+                 unresolved=len(unresolved), reference_sha256=sha,
+                 status='complete_with_explicit_unresolved' if not state['blocking_reasons'] else 'blocked')
+    return state
+
+
+def verify_formal_environment(package=PACKAGE):
+    """Read model metadata and existing indexes; no QA, ingestion or run ledger."""
+    from scripts.run_unseen_benchmark import configuration
+    from scripts.benchmark_package_runtime import indexed_corpus
+    from scripts.run_retrieval_quality_dev import code_fingerprints
+    from scripts.benchmark_package_scoring import SCORING_RULES
+    proof = {'formal_run_started': False, 'model_generation_calls': 0, 'index_mutations': 0,
+             'manifest_sha256': hashlib.sha256((package / 'manifest.json').read_bytes()).hexdigest(),
+             'code_sha256': code_fingerprints(),
+             'scoring_rules_sha256': hashlib.sha256((ROOT / SCORING_RULES).read_bytes()).hexdigest(),
+             'configuration': None, 'indexes': {}, 'errors': {}}
+    try:
+        proof['configuration'] = configuration()
+    except Exception as exc:
+        proof['errors']['configuration'] = {'type': type(exc).__name__, 'reason': str(exc)[:240]}
+    for split, entry in read(package / 'manifest.json')['splits'].items():
+        if split == 'dev':
+            continue
+        try:
+            corpus = indexed_corpus(read(ROOT / entry['suite_dir'] / 'documents.json'))
+            proof['indexes'][split] = {'sha256': digest(corpus), 'documents': len(corpus['documents']),
+                                      'search_chunks': len(corpus['search_documents'])}
+        except Exception as exc:
+            proof['errors'][split + '_index'] = {'type': type(exc).__name__, 'reason': str(exc)[:240]}
+    proof['status'] = 'verified' if not proof['errors'] else 'blocked'
+    return proof
+
+
+def freeze_readiness(package=PACKAGE, *, environment_proof=None):
+    """Inspect files/configuration only; never query models, index data or freeze."""
+    from importlib.metadata import PackageNotFoundError, version
+    import platform
+    import subprocess
+    from app.config import settings
+    from scripts.benchmark_package_scoring import SCORING_RULES, require_task_review
+    from scripts.run_retrieval_quality_dev import code_fingerprints
+
+    manifest = read(package / 'manifest.json')
+    policy_path = package / 'evaluation-policy-v2-ai-assisted.json'
+    policy = read(policy_path)
+    if policy.get('human_gold_required') is not False:
+        raise ValueError('active AI-assisted policy must not require human gold')
+    validation = validate_package(package)
+    fingerprints, splits, blockers = {}, {}, []
+    def fingerprint(path):
+        path = Path(path)
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    for split, entry in manifest['splits'].items():
+        directory = ROOT / entry['suite_dir']
+        suite, spec = read(directory / 'tasks.json'), read(directory / 'documents.json')
+        for name in ('tasks.json', 'documents.json', 'review.json'):
+            path = directory / name
+            fingerprints[path.relative_to(ROOT).as_posix()] = fingerprint(path) if path.exists() else None
+        review_status = 'pending'
+        try:
+            require_task_review(suite, spec, ROOT)
+            review_status = 'approved_with_recorded_provenance'
+        except ValueError:
+            if split != 'dev':
+                blockers.append(split + '_task_annotation_review_pending')
+        frozen = directory / 'freeze.json'
+        if split != 'dev' and not frozen.exists():
+            blockers.append(split + '_environment_and_index_not_frozen')
+        splits[split] = {'count': len(suite['tasks']), 'purpose':
+            'development_only' if split == 'dev' else 'separate_fixed_external_comparison' if split == 'external'
+            else 'security_test_separate' if split == 'security' else 'all_70_held_out_headline_test',
+            'allow_tuning': entry['allow_tuning'], 'historically_used': entry['historically_used'],
+            'task_review': review_status, 'freeze_file_exists': frozen.exists(),
+            'environment_verified_this_check': False, 'formal_run_started_this_check': False,
+            'registered_matrix': suite['method_matrix']}
+    if not all(fingerprint(ROOT / name) == value for name, value in manifest['sources'].items()):
+        blockers.append('upstream_source_fingerprint_mismatch')
+    external_review = external_ai_review_readiness(policy)
+    blockers.extend(external_review['blocking_reasons'])
+    if not external_review['blocking_reasons']:
+        # The source-bound AI sidecar is the active External reference. Original
+        # benchmark gold/review packets remain unchanged and are not relabelled.
+        blockers = [b for b in blockers if b != 'external_task_annotation_review_pending']
+        splits['external']['task_review'] = 'AI_assisted_source_sidecar_complete_with_explicit_unresolved'
+    rubric = ROOT / SCORING_RULES
+    if (policy.get('scoring_rules') != SCORING_RULES
+            or policy.get('scoring_rules_sha256') != fingerprint(rubric)
+            or not read(rubric).get('status', '').startswith('frozen_')):
+        blockers.append('active_scoring_rules_not_hash_bound_and_frozen')
+    environment_verified = bool(environment_proof) and (
+        environment_proof.get('status') == 'verified'
+        and environment_proof.get('manifest_sha256') == fingerprint(package / 'manifest.json')
+        and environment_proof.get('code_sha256') == code_fingerprints()
+        and environment_proof.get('scoring_rules_sha256') == fingerprint(rubric)
+        and set(environment_proof.get('indexes', {})) == {'core', 'security', 'external'}
+        and bool(environment_proof.get('configuration')))
+    if not environment_verified:
+        blockers.append('formal_environment_index_and_model_digests_not_verified_this_check')
+        if environment_proof:
+            blockers.extend('environment_' + k for k in environment_proof.get('errors', {}))
+    core_freeze = ROOT / manifest['splits']['core']['suite_dir'] / 'freeze.json'
+    if not core_freeze.exists():
+        blockers.append('final_snapshot_selection_pending')
+    else:
+        frozen_inputs = read(core_freeze).get('inputs', {})
+        if (frozen_inputs.get(SCORING_RULES) != fingerprint(rubric)
+                or any(not (ROOT / name).exists() or fingerprint(ROOT / name) != value
+                       for name, value in frozen_inputs.items())
+                or not frozen_inputs):
+            blockers.append('selected_core_snapshot_hashes_not_current')
+    for name in ('manifest.json', 'scoring-rules-v2.json', 'scoring-rules-v3-ai-assisted.json',
+                 'evaluation-policy-v2-ai-assisted.json'):
+        fingerprints[(package / name).relative_to(ROOT).as_posix()] = fingerprint(package / name)
+    for path in (ROOT / 'pyproject.toml', *ROOT.glob('requirements*.lock')):
+        fingerprints[path.relative_to(ROOT).as_posix()] = fingerprint(path)
+    cfg = settings()
+    fields = ('chat_model', 'embed_model', 'agent_policy_model', 'semantic_judge_model', 'rerank_model',
+              'verdict_protocol', 'retrieval_mode', 'rewrite_mode', 'passage_rerank',
+              'task_contract_enabled', 'answer_quality_enabled', 'answer_contract_enabled',
+              'answer_extractive_enabled', 'answer_semantic_audit_enabled', 'focused_generation_enabled',
+              'claim_consistency_enabled', 'top_k', 'retrieval_candidate_depth', 'context_token_budget', 'model_timeout_seconds',
+              'agent_task_timeout_seconds', 'agent_policy_max_calls', 'agent_judge_max_calls',
+              'agent_judge_token_budget', 'agent_generation_max_calls')
+    effective = {k: getattr(cfg, k) for k in fields}
+    libraries = {}
+    for name in ('torch', 'transformers', 'tokenizers', 'httpx', 'pydantic', 'sqlalchemy',
+                 'langgraph', 'langgraph-checkpoint-postgres', 'langgraph-checkpoint-sqlite', 'tiktoken'):
+        try:
+            libraries[name] = version(name)
+        except PackageNotFoundError:
+            libraries[name] = None
+            blockers.append('missing_dependency_' + name)
+    if cfg.verdict_protocol != 'legacy':
+        blockers.append('default_verdict_is_not_legacy')
+    dirty = subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT).decode().splitlines()
+    return {'version': 'enterprise-freeze-readiness-v2-ai-assisted', 'status': 'blocked' if blockers else 'ready_for_explicit_core_authorization',
+            'formal_core_ready': not blockers, 'formal_run_started': False, 'freeze_written': False,
+            'validation': validation, 'sha256': fingerprints, 'code_sha256': code_fingerprints(), 'splits': splits,
+            'effective_legacy_configuration': effective, 'python': platform.python_version(), 'libraries': libraries,
+            'working_tree_changed_paths': len(dirty), 'blockers': blockers,
+            'evaluation_policy': policy['version'], 'human_gold_required': False,
+            'external_AI_review': external_review,
+            'environment_proof': environment_proof, 'environment_verified': environment_verified,
+            'scoring_rules': SCORING_RULES,
+            'randomness': 'Generator/policy legacy requests temperature=0, seed=42; request options '
+                          'and model digests still need the actual formal freeze. Do not claim deterministic serving.',
+            'legacy_generation_request': {'temperature': 0, 'seed': 42, 'num_ctx': 8192,
+                'default_num_predict': 700, 'source': 'app.clients.Models.generate; actual per-call budgets and options retained'},
+            'legacy_verdict_request': {'temperature': 0, 'seed': 42, 'num_ctx': 4096,
+                'num_predict': 60, 'source': 'app.clients.Models.decide_verdict; verdict_protocol=legacy'},
+            'retrieval_limit_rule': f'Configured top_k is{cfg.top_k}; existing QA uses8 for multi-source questions '
+                'and6 for short questions. retrieve_authorized caps at8. Freeze code and actual per-task context, '
+                'not a claim that every task uses8 chunks.',
+            'failure_policy': 'Existing one-shot ledger and CheckpointStore; same-snapshot/same-output resume only. '
+                              'Transport/schema attempts count toward cumulative budgets. Failed attempts preserved; no answer resampling.',
+            'telemetry': 'Token full totals null when any position unmeasured; measured subtotals and observed/total '
+                         'denominators explicit. P50 median/P95 nearest-rank recorded wall time, including observed failures.',
+            'environment_freeze_entrypoints': ['scripts.run_unseen_benchmark.inputs', 'scripts.run_unseen_benchmark.configuration',
+                'scripts.benchmark_package_runtime.indexed_corpus', 'scripts.benchmark_package_runtime.reserve_test_run'],
+            'commands': {'readiness': '.venv/bin/python scripts/benchmark_package.py readiness --output NEW_PATH.json',
+                         'annotation_prepare': '.venv/bin/python scripts/prepare_source_human_review.py --external-suite '
+                          '.runtime/benchmark-package/v1/external/tasks.json --external-spec '
+                          '.runtime/benchmark-package/v1/external/documents.json --output NEW_LOCAL_RUNTIME_DIR'},
+            'limitations': ['File inspection is not a verified service/index/model freeze.',
+                           'Human review is optional; prior protocol and prepared packets are preserved.',
+                           'Existing Core/Security model annotation approval is non-independent, not human gold.']}
+
+
 def materialize(package=PACKAGE):
     """Reconstruct ignored third-party material from pinned local caches only."""
     manifest = read(package / "manifest.json")
@@ -386,13 +594,22 @@ def register_ablation(package=PACKAGE):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("command", choices=("build", "materialize", "validate", "register-ablation", "report"))
+    p.add_argument("command", choices=("build", "materialize", "validate", "register-ablation", "report", "readiness"))
     p.add_argument("--package", type=Path, default=PACKAGE)
     p.add_argument("--raw", type=Path)
     p.add_argument("--review", type=Path)
     p.add_argument("--output", type=Path)
+    p.add_argument('--verify-environment', action='store_true',
+                   help='Read installed model metadata and existing index fingerprints; never run QA')
     args = p.parse_args()
-    if args.command == "report":
+    if args.command == 'readiness':
+        proof = verify_formal_environment(args.package) if args.verify_environment else None
+        result = freeze_readiness(args.package, environment_proof=proof)
+        if args.output:
+            if args.output.exists():
+                raise ValueError('refusing to overwrite readiness audit')
+            atomic_json(args.output, result)
+    elif args.command == "report":
         from scripts.benchmark_package_scoring import report
         raw = read(args.raw)
         directory = ROOT / read(args.package / "manifest.json")["splits"][raw["split"]]["suite_dir"]

@@ -1,0 +1,34 @@
+{
+  "version": "enterprise-evaluation-policy-v2-ai-assisted",
+  "date": "2026-10-14",
+  "status": "active_user_authorized",
+  "scoring_rules": "benchmarks/enterprise_rag/v1/scoring-rules-v3-ai-assisted.json",
+  "scoring_rules_sha256": "04435dbdd52e0072bc5a873460c8977ac8b7a610d21b5cb828f0119e30a00326",
+  "superseded_protocol_files": [
+    "benchmarks/enterprise_rag/v1/scoring-rules-v2.json",
+    "docs/evaluation-review-and-freeze-20261014.md"
+  ],
+  "human_gold_required": false,
+  "human_review": "optional_future_enhancement",
+  "review_mode": "AI-assisted Codex source-first review plus isolated AI cross-review for disputes/low confidence",
+  "external_review_path": ".runtime/external-ai-review-20261014/v1/final-reference-review.json",
+  "external_summary_path": "artifacts/external-ai-assisted-review-20261014-v1.json",
+  "reference_first_required": true,
+  "external_unresolved_allowed_if_explicitly_recorded": true,
+  "core_start_requires": [
+    "frozen_scoring_rules",
+    "all_150_external_review_records_with_unresolved_ledger",
+    "data_code_config_model_index_traceability",
+    "verified_environment",
+    "split_isolation",
+    "consistent_failure_unknown_token_latency_policy",
+    "unchanged_security_and_authorization_requirements"
+  ],
+  "automatic_core_start": false,
+  "production_default": "Legacy_unchanged",
+  "claims_forbidden": [
+    "independent_human_gold",
+    "human_gold_reliability_certified",
+    "model_change_implies_independence"
+  ]
+}

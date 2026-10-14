@@ -5,6 +5,7 @@ represented as human gold, and missing observations/reviews are never zero score
 """
 import json
 import statistics
+from copy import deepcopy
 
 from scripts.benchmark_runtime import percentile
 from scripts.research_review import digest, paired_ci
@@ -12,6 +13,84 @@ from scripts.research_review import digest, paired_ci
 METHODS = ("rag", "workflow", "dynamic", "hybrid")
 VERDICTS = {"supported", "partial", "unsupported", "contradicted", "unclear"}
 CHECKS = ("no_critical_error", "version_correct", "condition_correct", "citations_supported", "abstention_correct")
+ANSWER_REVIEW_PROTOCOL = "enterprise-benchmark-review-v3-ai-assisted"
+SCORING_RULES = "benchmarks/enterprise_rag/v1/scoring-rules-v3-ai-assisted.json"
+EVALUATION_POLICY = "benchmarks/enterprise_rag/v1/evaluation-policy-v2-ai-assisted.json"
+REVIEW_RUBRICS = {
+    "enterprise-benchmark-review-v2": "benchmarks/enterprise_rag/v1/scoring-rules-v2.json",
+    ANSWER_REVIEW_PROTOCOL: SCORING_RULES,
+}
+
+
+def review_evidence(rows, *, blind_implementation=False):
+    if rows is None:
+        return None
+    projected = [{k: deepcopy(v) for k, v in row.items() if k in {
+        'id', 'chunk_id', 'document_id', 'version_id', 'source_sha256', 'text', 'title', 'locator',
+        'effective_from', 'is_active', 'authorized', 'active', 'metadata'}} for row in rows]
+    for row in projected:
+        if blind_implementation and isinstance(row.get('title'), str) and row['title'].endswith(' · 当前版本'):
+            row['title'] = row['title'].removesuffix(' · 当前版本')
+        if isinstance(row.get('metadata'), dict):
+            row['metadata'] = {k: v for k, v in row['metadata'].items() if k in {
+                'publication', 'publisher', 'author', 'published_at', 'published_date', 'date',
+                'effective_from', 'title', 'url'}}
+    return projected
+
+
+def review_answer(payload, *, blind_message=False):
+    """Keep answer content and provenance, excluding implementation metadata."""
+    fields = {'status', 'claims', 'verdict', 'citations', 'message', 'facts'}
+    answer = {k: deepcopy(v) for k, v in payload.items() if k in fields}
+    if isinstance(answer.get('verdict'), dict):
+        answer['verdict'] = {k: v for k, v in answer['verdict'].items()
+                             if k in {'value', 'claim_index', 'evidence_ids'}}
+    answer['claims'] = [{k: v for k, v in claim.items() if k in {'text', 'evidence_ids', 'quotes'}}
+                        for claim in answer.get('claims', [])]
+    answer['citations'] = review_evidence(answer.get('citations', []), blind_implementation=blind_message)
+    # This fixed product diagnostic reveals the method in an otherwise blinded
+    # abstention. Preserve the unredacted original in the coordinator/raw record.
+    if blind_message and answer.get('message') == 'Agent 找到了资料，但最终答案未通过引用校验。':
+        answer['message'] = '找到了资料，但最终答案未通过引用校验。'
+    return answer
+
+
+def conjunction(values):
+    """A definite failure dominates; otherwise uncertainty remains pending."""
+    values = list(values)
+    return False if False in values else None if None in values else True
+
+
+def semantic_success(verdicts):
+    return conjunction(None if v == 'unclear' else v == 'supported' for v in verdicts)
+
+
+def semantic_ratio(verdicts):
+    values = list(verdicts)
+    return None if 'unclear' in values else ratio(sum(v == 'supported' for v in values), len(values))
+
+
+def measured_token_total(usage):
+    """Require complete counters; an explicit measured zero is still valid."""
+    if any(usage.get('unknown_' + k, 0) for k in ('prompt_tokens', 'completion_tokens')):
+        return None
+    budget = usage.get('execution_budget', {})
+    if budget.get('calls') is not None:
+        calls = budget['calls']
+        records = budget.get('model_call_records', [])
+        if any(any(type(r.get(k)) is not int or r[k] < 0 for k in ('prompt_tokens', 'completion_tokens'))
+               for r in records):
+            return None
+        values = [r.get(k) for r in calls.values() for k in ('prompt_tokens', 'completion_tokens')]
+    elif 'total_prompt_tokens' in usage:
+        values = [usage.get(k) for k in ('total_prompt_tokens', 'total_completion_tokens')]
+    elif 'prompt_tokens' in usage or 'completion_tokens' in usage:
+        values = [usage.get(k) for k in ('prompt_tokens', 'completion_tokens')]
+    else:
+        return None
+    if any(type(v) is not int or v < 0 for v in values):
+        return None
+    return sum(values)
 
 
 def task_review_packet(suite, spec, root):
@@ -33,17 +112,21 @@ def validate_reviews(packet, reviewed):
         raise ValueError("review items changed")
     if reviewed.get("corpus_spec") != packet.get("corpus_spec"):
         raise ValueError("review corpus permissions/spec changed")
+    if packet['protocol'] in REVIEW_RUBRICS and any(
+            reviewed.get(k) != packet.get(k) for k in ('rubric_version', 'rubric_sha256')):
+        raise ValueError('review scoring rules changed')
     rows = reviewed.get("reviews", [])
     if len({r.get("id") for r in rows}) != len(rows):
         raise ValueError("duplicate review IDs")
     if {r.get("id") for r in rows} != {r["id"] for r in packet["items"]}:
         raise ValueError("review incomplete")
     for r in rows:
-        if r.get("reviewer_type") not in {"model", "human"} or not r.get("reviewer") or not r.get("reason"):
+        if r.get("reviewer_type") not in {"model", "human"} or any(
+                not isinstance(r.get(k), str) or not r[k].strip() for k in ('reviewer', 'reason')):
             raise ValueError("named reviewer, type and reason required")
         if not isinstance(r.get("independent"), bool):
             raise ValueError("review independence must be explicitly recorded")
-        if r["reviewer_type"] == "model" and not r.get("model"):
+        if r["reviewer_type"] == "model" and (not isinstance(r.get('model'), str) or not r['model'].strip()):
             raise ValueError("GPT review model identity required")
     return {r["id"]: r for r in rows}
 
@@ -79,7 +162,9 @@ def provisional_score(task, payload, trace, steps, latency_ms, **kwargs):
     return row
 
 
-def answer_review_packet(raw, suite):
+def answer_review_packet(raw, suite, *, protocol=ANSWER_REVIEW_PROTOCOL):
+    if protocol not in {'enterprise-benchmark-review-v1', *REVIEW_RUBRICS}:
+        raise ValueError('unknown answer review protocol')
     tasks = {t["id"]: t for t in suite["tasks"]}
     items = []
     for method, rows in raw["results"].items():
@@ -94,14 +179,29 @@ def answer_review_packet(raw, suite):
             # its name is removed. Keep only the actual user-facing answer.
             public_answer = {k: v for k, v in row["answer_payload"].items() if k in
                              {"status", "claims", "verdict", "citations", "message", "facts"}}
+            if protocol in REVIEW_RUBRICS:
+                public_answer = review_answer(row['answer_payload'], blind_message=protocol == ANSWER_REVIEW_PROTOCOL)
+                public_task = {k: deepcopy(v) for k, v in public_task.items() if k in {
+                    'id', 'question', 'goal', 'category', 'required_facts', 'gold_answer', 'gold_documents',
+                    'gold_evidence', 'answerable', 'expected_status', 'temporal_scope', 'requires_version',
+                    'annotation_status', 'forbidden', 'security_kind', 'state_change', 'scenario_events'}}
             items.append({"id": digest([method, row["task_id"], row.get("run_id")]),
                           "task": public_task, "answer": public_answer,
-                          "retrieved_evidence": row.get("retrieved_evidence"),
+                          "retrieved_evidence": review_evidence(row.get('retrieved_evidence'),
+                              blind_implementation=protocol == ANSWER_REVIEW_PROTOCOL)
+                          if protocol in REVIEW_RUBRICS else row.get('retrieved_evidence'),
                           "required_checks": list(CHECKS)})
     items.sort(key=lambda r: r["id"])
-    return {"protocol": "enterprise-benchmark-review-v1", "kind": "answer", "items": items,
+    packet = {"protocol": protocol, "kind": "answer", "items": items,
             "source_sha256": digest(items), "corpus_sha256": raw["corpus_sha256"], "reviews": [],
             "reviewer_policy": "blinded GPT factual assessment, explicit model provenance"}
+    if protocol in REVIEW_RUBRICS:
+        from pathlib import Path
+        import hashlib
+        rubric = Path(__file__).resolve().parents[1] / REVIEW_RUBRICS[protocol]
+        packet.update(rubric_version=json.loads(rubric.read_text())['version'],
+                      rubric_sha256=hashlib.sha256(rubric.read_bytes()).hexdigest())
+    return packet
 
 
 def ratio(n, d):
@@ -144,8 +244,8 @@ def assess(task, row, review=None):
     verdicts = review.get("fact_verdicts", {})
     if set(verdicts) != required or any(v not in VERDICTS for v in verdicts.values()):
         raise ValueError("every required fact needs a semantic verdict")
-    if any(not isinstance(review.get(k), bool) for k in CHECKS):
-        raise ValueError("all strict checks need boolean decisions")
+    if any(k not in review or (review[k] is not None and type(review[k]) is not bool) for k in CHECKS):
+        raise ValueError("all strict checks need explicit boolean or pending decisions")
     cited = review.get("citation_verdicts", [])
     claims = review.get("claim_verdicts", [])
     payload = row["answer_payload"]
@@ -164,23 +264,32 @@ def assess(task, row, review=None):
     # determines whether a branch was incorrectly asserted.
     if task["category"] == "conditional_planning":
         safe = True
-    complete = all(v == "supported" for v in verdicts.values())
+    complete = semantic_success(verdicts.values())
     # Reuse the production binding checks in addition to GPT's semantic review.
     # A correct value elsewhere in context cannot support a wrongly bound quote.
     binding_ok = True
     if payload.get('claims'):
         from app.clients import GeneratedAnswer
-        from app.qa import validate_claims
+        from app.qa import claim_validation_issues, validate_claims
         try:
             generated = GeneratedAnswer(answerable=True, claims=payload['claims'])
             sources = [dict(c, id=c['chunk_id']) for c in payload.get('citations', [])]
-            binding_ok = validate_claims(generated, sources)[1] == 'answered'
+            if review.get('scoring_protocol') == ANSWER_REVIEW_PROTOCOL:
+                # The current production guard also applies evolving number/date
+                # rules. Those are semantic audit dimensions, not forged binding.
+                # Reuse its ID/arity/literal checks; never replay a newer semantic
+                # guard as an unrecorded veto on a frozen historical answer.
+                mechanical = {'empty_answer', 'citation_arity', 'unknown_evidence', 'nonliteral_quote'}
+                binding_ok = not any(mechanical.intersection(issue['codes'])
+                                     for issue in claim_validation_issues(generated, sources))
+            else:
+                binding_ok = validate_claims(generated, sources)[1] == 'answered'
         except (ValueError, KeyError, TypeError):
             binding_ok = False
     answer['citation_binding_valid'] = binding_ok
-    success = bool(complete and all(review[k] for k in CHECKS) and status_ok and execution_ok and exercised and safe
-                   and all(v == "supported" for v in cited) and all(v == "supported" for v in claims)
-                   and binding_ok and (bool(cited) or not task["answerable"]))
+    success = conjunction([complete, *[review[k] for k in CHECKS], status_ok, execution_ok, exercised, safe,
+                           semantic_success(cited), semantic_success(claims), binding_ok,
+                           bool(cited) or not task['answerable']])
     atomic = review.get("answer_facts")
     precision = None
     if atomic is not None:
@@ -191,20 +300,20 @@ def assess(task, row, review=None):
             raise ValueError("atomic fact must bind to a real claim")
         if {r["claim_index"] for r in atomic} != set(range(len(claims))):
             raise ValueError("atomic answer facts must cover every claim")
-        precision = ratio(sum(r["verdict"] == "supported" for r in atomic), len(atomic))
-        success = success and all(r["verdict"] == "supported" for r in atomic)
-    answer.update(strict_task_success=success, fact_recall=ratio(sum(v == "supported" for v in verdicts.values()), len(required)),
+        precision = semantic_ratio(r['verdict'] for r in atomic)
+        success = conjunction([success, semantic_success(r['verdict'] for r in atomic)])
+    answer.update(strict_task_success=success, fact_recall=semantic_ratio(verdicts.values()),
                   fact_precision=precision,
-                  citation_correctness=ratio(sum(v == "supported" for v in cited), len(cited)),
-                  faithfulness=ratio(sum(v == "supported" for v in claims), len(claims)),
-                  answer_completeness=ratio(sum(v == "supported" for v in verdicts.values()), len(required)))
+                  citation_correctness=semantic_ratio(cited),
+                  faithfulness=semantic_ratio(claims),
+                  answer_completeness=semantic_ratio(verdicts.values()))
     answer["strict_checks"] = {k: review[k] for k in CHECKS}
     policy["task_success"] = success
     retrieved_facts = review.get("retrieved_fact_verdicts")
     if retrieved_facts is not None:
         if evidence is None or set(retrieved_facts) != required or any(v not in VERDICTS for v in retrieved_facts.values()):
             raise ValueError("retrieved fact assessment must bind every fact to observed evidence")
-        retrieval["gold_fact_recall"] = ratio(sum(v == "supported" for v in retrieved_facts.values()), len(required))
+        retrieval["gold_fact_recall"] = semantic_ratio(retrieved_facts.values())
         retrieval["evidence_coverage"] = retrieval["gold_fact_recall"]
     for k in ("unnecessary_tool_calls", "early_stop", "late_stop", "recovery_after_failed_retrieval"):
         value = review.get("policy", {}).get(k)
@@ -224,7 +333,7 @@ def report(raw, suite, reviewed=None, *, baseline_method="workflow", pending_tas
         raise ValueError("pending annotation overrides are Dev-only")
     if not pending <= tasks.keys() or baseline_method not in raw["results"]:
         raise ValueError("pending task or baseline comparator is not registered")
-    reviews = validate_reviews(answer_review_packet(raw, suite), reviewed) if reviewed else {}
+    reviews = validate_reviews(answer_review_packet(raw, suite, protocol=reviewed['protocol']), reviewed) if reviewed else {}
     by_method, details = {}, {}
     for method, rows in raw["results"].items():
         if len(rows) != len(tasks) or {r["task_id"] for r in rows} != set(tasks) or any(r.get("skipped") for r in rows):
@@ -232,7 +341,10 @@ def report(raw, suite, reviewed=None, *, baseline_method="workflow", pending_tas
         details[method] = {}
         for row in rows:
             rid = digest([method, row["task_id"], row.get("run_id")])
-            details[method][row["task_id"]] = assess(tasks[row["task_id"]], row, reviews.get(rid))
+            review = reviews.get(rid)
+            if review is not None:
+                review = {**review, 'scoring_protocol': reviewed['protocol']}
+            details[method][row["task_id"]] = assess(tasks[row["task_id"]], row, review)
             if row["task_id"] in pending or row.get('not_observed'):
                 result = details[method][row["task_id"]]
                 result["annotation_status"] = "pending" if row["task_id"] in pending else "not_observed"
@@ -247,20 +359,13 @@ def report(raw, suite, reviewed=None, *, baseline_method="workflow", pending_tas
             observed = [r[layer][field] for r in scored if r[layer].get(field) is not None]
             return {"value": statistics.mean(observed) if observed else None, "applicable": len(observed), "total": len(rows)}
         latencies = [r["latency_ms"] for r in rows if r.get("latency_ms") is not None]
-        def token_total(row):
-            usage = row.get("usage") or {}
-            calls = usage.get("execution_budget", {}).get("calls")
-            if calls is not None:
-                return sum((v.get("prompt_tokens") or 0) + (v.get("completion_tokens") or 0) for v in calls.values())
-            if "total_prompt_tokens" in usage:
-                return (usage.get("total_prompt_tokens") or 0) + (usage.get("total_completion_tokens") or 0)
-            return None
-        measured_tokens = [v for r in rows if (v := token_total(r)) is not None]
+        measured_tokens = [v for r in rows if (v := measured_token_total(r.get('usage') or {})) is not None]
         by_method[method] = {"tasks": len(rows), "strict_task_success_rate": mean("answer", "strict_task_success"),
                              "retrieval": {k: mean("retrieval", k) for k in ("gold_document_recall", "gold_fact_recall", "evidence_coverage")},
                              "answer": {k: mean("answer", k) for k in ("fact_recall", "fact_precision", "citation_correctness", "faithfulness", "answer_completeness")},
                              "policy": {k: mean("policy", k) for k in ("steps", "tool_calls", "unnecessary_tool_calls", "failed_tool_calls", "invalid_tool_calls", "repeated_tool_calls", "failed_queries", "repeated_queries", "early_stop", "late_stop", "recovery_after_failed_retrieval")},
-                             "total_tokens": {"sum": sum(measured_tokens) if measured_tokens else None,
+                             "total_tokens": {"sum": sum(measured_tokens) if len(measured_tokens) == len(rows) and rows else None,
+                                              "observed_sum": sum(measured_tokens) if measured_tokens else None,
                                               "mean": statistics.mean(measured_tokens) if measured_tokens else None,
                                               "observed": len(measured_tokens), "total": len(rows)},
                              "latency_ms": {"p50": statistics.median(latencies) if latencies else None,
@@ -301,14 +406,31 @@ def report(raw, suite, reviewed=None, *, baseline_method="workflow", pending_tas
                               "bootstrap_unit": "task_family"}
     registration = raw.get("registration", {})
     frozen_verified = False
+    frozen_rules_verified = False
     if registration.get("suite_sha256") == digest(suite) and raw.get("freeze"):
         from pathlib import Path
         root = Path(__file__).resolve().parents[1]
         freeze_path = root / raw["freeze"]
         if freeze_path.exists():
-            frozen_verified = digest(json.loads(freeze_path.read_text())) == registration.get("freeze_sha256")
-    return {"package": suite["version"], "split": suite["split"], "headline_eligible": suite["split"] == "core" and bool(reviewed) and frozen_verified,
+            frozen = json.loads(freeze_path.read_text())
+            frozen_verified = digest(frozen) == registration.get("freeze_sha256")
+            frozen_rules_verified = bool(reviewed) and (
+                frozen.get('inputs', {}).get(SCORING_RULES) == reviewed.get('rubric_sha256')
+                and digest(frozen.get('indexed_corpus')) == raw.get('corpus_sha256'))
+    complete_review = all(d['answer']['strict_task_success'] is not None for rows in details.values() for d in rows.values())
+    review_protocol_current = bool(reviewed) and reviewed['protocol'] == ANSWER_REVIEW_PROTOCOL
+    reviewer_policy_met = bool(reviews) and all(r['reviewer_type'] == 'human' or
+        (r['reviewer_type'] == 'model' and (review_protocol_current or
+         str(r.get('model', '')).lower().startswith('gpt-')))
+        for r in reviews.values())
+    full_core = suite.get('evaluation_protocol') == 'enterprise-benchmark-v1' and len(tasks) == 70
+    return {"package": suite["version"], "split": suite["split"], "headline_eligible": suite["split"] == "core" and full_core and bool(reviewed) and frozen_verified and frozen_rules_verified and complete_review and review_protocol_current and reviewer_policy_met,
+            "scoring_rules_version": reviewed.get('rubric_version') if reviewed else None,
+            "frozen_scoring_rules_verified": frozen_rules_verified,
+            "current_review_protocol": review_protocol_current, "headline_reviewer_policy_met": reviewer_policy_met,
             "frozen_registration_verified": frozen_verified,
-            "status": "GPT_or_human_reviewed" if reviewed else "provisional_no_accuracy_claim", "summary": by_method,
+            "status": ("AI_assisted_reviewed" if review_protocol_current else
+                       "GPT_or_human_reviewed" if reviewer_policy_met else "model_reference_reviewed")
+                      if reviewed else "provisional_no_accuracy_claim", "summary": by_method,
             "paired": paired, "details": details, "raw_sha256": digest(raw),
             "review_provenance": [{k: r.get(k) for k in ("reviewer", "reviewer_type", "model", "independent")} for r in reviews.values()]}

@@ -1,0 +1,273 @@
+{
+  "version": "grounding-attribution-dev-20261014-v3",
+  "split": "dev",
+  "failure_or_pending_cases": 11,
+  "positive_controls": 1,
+  "private_source_sha256": "d4f20c4ef9f115d79863706f6613e7732b304639ab5697c9b679ad4b3243b540",
+  "reviewer": {
+    "type": "model",
+    "model": "GPT-6/Codex family; exact serving variant unavailable",
+    "independent": false,
+    "human_labels": 0,
+    "basis": "Source-by-source inspection plus normalized literal checks and recomputed validator codes; not automated LLM classification."
+  },
+  "rows": [
+    {
+      "task_id": "U16",
+      "primary_layer": "fact_extraction",
+      "layers": [
+        "fact_extraction"
+      ],
+      "runtime_issue_codes": [],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "shard": "supported",
+        "alert": "omitted"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": true,
+      "finding": "两项必需事实都在最终上下文，生成只保留分片大小，漏掉行数告警。",
+      "basis": "分片=5000行；改进措施明示新增导入行数告警。"
+    },
+    {
+      "task_id": "U22",
+      "primary_layer": "temporal_reasoning",
+      "layers": [
+        "temporal_reasoning",
+        "citation_binding"
+      ],
+      "runtime_issue_codes": [],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "east_start": "wrong_scope",
+        "east_end": "wrong_scope",
+        "south_start": "supported",
+        "south_end": "supported"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": true,
+      "finding": "把仅10月的07–20窗口扩展至整个第四季度；未引用默认08–18或临时通知范围。标注仍pending。",
+      "basis": "默认收货窗口08–18；临时窗口仅10月且未注明优先关系。"
+    },
+    {
+      "task_id": "SF-3e8219f58317",
+      "primary_layer": "citation_binding",
+      "layers": [
+        "citation_binding"
+      ],
+      "runtime_issue_codes": [],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "answer": "pending"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": true,
+      "finding": "Sophie的引文只留下she，没有同引主体识别句；Polygon附多条无关游戏段落。标注pending。",
+      "basis": "当前BBC段落含Meanwhile Sophie；生成只引下一句。"
+    },
+    {
+      "task_id": "SF-3f2fcdb94b67",
+      "primary_layer": "citation_binding",
+      "layers": [
+        "citation_binding",
+        "fact_extraction"
+      ],
+      "runtime_issue_codes": [],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "answer": "partial"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": true,
+      "finding": "Guardian只引自由标题，遗漏同chunk的16岁隐私段；BBC只引人物创作想象及恋爱教程，漏掉可关联的I can use this。",
+      "basis": "年龄16及公众围观在已给chunk；自身引文不含年龄及隐私依据。"
+    },
+    {
+      "task_id": "SF-4345a2fc43c9",
+      "primary_layer": "citation_binding",
+      "layers": [
+        "citation_binding",
+        "fact_extraction"
+      ],
+      "runtime_issue_codes": [],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "answer": "partial"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": true,
+      "finding": "两家指定来源都在上下文；生成第二引文是Sporting News的南非队，漏掉Wide World Of Sports的Wallabies。",
+      "basis": "当前91241641…明确斐济/葡萄牙决定澳大利亚命运；生成没引。"
+    },
+    {
+      "task_id": "SF-43709086f7bb",
+      "primary_layer": "condition_reasoning",
+      "layers": [
+        "fact_extraction",
+        "condition_reasoning",
+        "citation_binding"
+      ],
+      "runtime_issue_codes": [],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "answer": "unsupported"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": true,
+      "finding": "当前上下文还有争取冠军的直接反证；旧答案漏掉该段。新候选选中此段却写成缺乏加入争冠队兴趣，断言与自身原文相反。另有条件与观点归属问题。",
+      "basis": "直接反证所在 chunk f5540389-b548-5274-a7d5-e452b73a998c；逐字存在与语义支持不同。",
+      "counterevidence_chunk_id": "f5540389-b548-5274-a7d5-e452b73a998c",
+      "counterevidence_text_sha256": "1dce8587bfe82268ed40f8961cb13f6afb72e894da7b6175fd17c1063043fd3a"
+    },
+    {
+      "task_id": "SF-59679085cc4a",
+      "primary_layer": "context_reference_loss_sufficiency_unknown",
+      "layers": [
+        "context_selection",
+        "citation_binding",
+        "evidence_sufficiency_unknown"
+      ],
+      "runtime_issue_codes": [],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "answer": "pending"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": true,
+      "finding": "指定参考段落在候选中未交付，但当前The Age另一片段仍含相关指控、否认和报道撤回；不能将参考引用丢失当作所有合法证据路径缺失。旧答案完全未引The Age，来源绑定失败明确；当前上下文充分性unknown，标注pending。",
+      "basis": "当前替代片段 542e1963-c155-5c7e-9f01-b09993a374cf 与候选 b079d3b5… 分别核验；允许合法替代证据，不要求指定Gold路径。",
+      "evidence_sufficiency": "unknown",
+      "alternative_chunk_id": "542e1963-c155-5c7e-9f01-b09993a374cf"
+    },
+    {
+      "task_id": "SF-64b127ac198d",
+      "primary_layer": "context_selection",
+      "layers": [
+        "context_selection",
+        "citation_binding",
+        "fact_extraction"
+      ],
+      "runtime_issue_codes": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_date"
+          ]
+        },
+        {
+          "claim_index": 1,
+          "codes": [
+            "unsupported_cited_date"
+          ]
+        }
+      ],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "answer": "unsupported"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": true,
+      "finding": "10月31日TechCrunch报道候选25ae870c…未入最终；用12月报道否定10月报道；12月15日仅metadata/header有日期，引文未选日期行。",
+      "basis": "候选明确$26.3 billion；当前全部12月15日。日期在metadata不能自动成为正文quote。"
+    },
+    {
+      "task_id": "DD14",
+      "primary_layer": "citation_binding",
+      "layers": [
+        "citation_binding",
+        "condition_reasoning",
+        "retrieval_stage_unknown"
+      ],
+      "runtime_issue_codes": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_quantity"
+          ]
+        }
+      ],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "rate": "supported",
+        "decision": "wrong_branch_quote",
+        "lead": "evidence_absent"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": false,
+      "finding": "1.6与3.0比较只引数值表；第二claim描述false分支却引true分支；宋子衿名录未入当前。无完整候选池，不能断定未检索到。",
+      "basis": "E1两条规则/E2观察完整；名录仅gold诊断中可见。"
+    },
+    {
+      "task_id": "DD16",
+      "primary_layer": "citation_binding",
+      "layers": [
+        "citation_binding"
+      ],
+      "runtime_issue_codes": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_quantity"
+          ]
+        }
+      ],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "rate": "supported",
+        "decision": "unbound_threshold",
+        "lead": "supported"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": false,
+      "finding": "4.6与3.0比较只引E2，E1阈值没有绑定本claim。修复后3事实支持但Structured返回unclear；本轮不改该裁判。",
+      "basis": "E1阈值与苏南星、E2东仓4.6均在当前；正确规则分支为gt。"
+    },
+    {
+      "task_id": "DD17",
+      "primary_layer": "citation_binding",
+      "layers": [
+        "citation_binding",
+        "condition_reasoning",
+        "fact_extraction"
+      ],
+      "runtime_issue_codes": [
+        {
+          "claim_index": 0,
+          "codes": [
+            "unsupported_cited_quantity"
+          ]
+        }
+      ],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "rate": "supported",
+        "decision": "wrong_branch_quote",
+        "lead": "omitted"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": false,
+      "finding": "2.8与3.0比较只引E2；规则claim仍引gt分支；钱清和在E3但仅说仓库主管。",
+      "basis": "E1的le分支及E3南仓钱清和均在当前。"
+    },
+    {
+      "task_id": "SF-66b7ed601d85",
+      "primary_layer": "positive_control",
+      "layers": [],
+      "runtime_issue_codes": [],
+      "literal_bindings_valid": true,
+      "required_fact_support": {
+        "answer": "supported"
+      },
+      "validator_false_rejection_confirmed": false,
+      "candidate_pool_available": true,
+      "finding": "上一轮严格通过，保留为退化检测；发布日期来自授权metadata，不是事件日期。",
+      "basis": "TechCrunch发布9月30早于Independent10月20，反证after；不能把正文9月21事件日当发布日期。"
+    }
+  ],
+  "scope_limit": "Previous trial and Dev47 failures, not population prevalence; pending labels unchanged",
+  "defaults": "legacy unchanged; no formal Core",
+  "previous_sha256": "9b13236836f09e7dc06fe5b985b8ac94eea66873b8acd7d674ba0cbe5ac3c6ae",
+  "addendum": "v3 narrows SF-596: reference passage loss is proven; total required evidence absence is not proven because a related alternative passage is present. Pending unchanged.",
+  "private_addendum_sha256": "0513b3790e06261d330b985960a2d417a40dc1d148c8ea4068dfa414c4ca095d",
+  "private_alternative_audit_sha256": "3aafc65e00f5664724da0b250cb1b49a394034e61c8a93d28aace698683913c4"
+}

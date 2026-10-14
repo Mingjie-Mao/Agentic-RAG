@@ -1,0 +1,1213 @@
+{
+  "version": "generation-diagnostic-review-v2",
+  "tier": "diagnostic",
+  "split": "dev",
+  "source_artifact": "artifacts/dev-generation-diagnostic-20261013-v1.json",
+  "supersedes": "artifacts/dev-generation-diagnostic-20261013-v1.review.json",
+  "registration": "benchmarks/enterprise_rag/v1/dev/generation-diagnostic-20261013/registration-v1.json",
+  "source_sha256": {
+    "artifacts/dev-generation-diagnostic-20261013-v1.json": "f18a21a136bba1ce93f92ab482a90f19414b7c0f980868c289965b73660ffa14",
+    "artifacts/dev-generation-diagnostic-20261013-v1.review.json": "93f11bf7aaa24c344a7d924cc54b525b72994def261c05a754f06ad56dc31b42",
+    ".runtime/generation-diagnostic-20261013/v1/raw.json": "4e50aee10d17182c49139db530b7790f3317abbcd3c6982f6169076f8756025f",
+    ".runtime/generation-diagnostic-20261013/v1/review-scored-v2.json": "572fb27edc54970647498eae9c98d336391c65b2516d9930fe8c48d3e17d8377",
+    ".runtime/generation-diagnostic-20261013/v1/review-packet-v2.json": "c272ca3775f3b37f811c5266fd5b80d26dddf07a98b7b0e14d8bea1660fb48ca",
+    ".runtime/generation-diagnostic-20261013/v1/review-key-v2.json": "3a80f9f6598821f345a04bd0d571beb1551fbabf3d8703452725169967e04f83"
+  },
+  "review": {
+    "reviewer": "Claude Opus 5.5 (claude-opus-5-5), same session as runner, blind to cell labels",
+    "reviewer_type": "model",
+    "independent": false,
+    "blind_to_cell_labels": true,
+    "packet_sha256": "c272ca3775f3b37f811c5266fd5b80d26dddf07a98b7b0e14d8bea1660fb48ca",
+    "human_labels": 0,
+    "correction": "Read verdict.value instead of verdict.label; 11 affected tasks re-reviewed, 66 carried forward; contradictory conclusion and body fails strict success.",
+    "protocol_qualification": "Claude diagnostic review; not the required GPT formal answer review"
+  },
+  "summary": {
+    "dev47_primary40": {
+      "n": 40,
+      "strict": {
+        "A": 33,
+        "B": 32,
+        "C": 34,
+        "D": 34
+      },
+      "paired": {
+        "C_vs_A": {
+          "gain": [
+            "U16",
+            "SF-43709086f7bb"
+          ],
+          "loss": [
+            "SF-66b7ed601d85"
+          ]
+        },
+        "B_vs_A": {
+          "gain": [
+            "U16"
+          ],
+          "loss": [
+            "U14",
+            "SF-66b7ed601d85"
+          ]
+        },
+        "D_vs_C": {
+          "gain": [
+            "SF-66b7ed601d85"
+          ],
+          "loss": [
+            "SF-43709086f7bb"
+          ]
+        },
+        "D_vs_B": {
+          "gain": [
+            "U14",
+            "SF-66b7ed601d85"
+          ],
+          "loss": []
+        }
+      },
+      "latency_s": {
+        "A": {
+          "p50": 23.4,
+          "p95": 60.2
+        },
+        "B": {
+          "p50": 8.5,
+          "p95": 61.1
+        },
+        "C": {
+          "p50": 22.8,
+          "p95": 87.8
+        },
+        "D": {
+          "p50": 10.3,
+          "p95": 81.3
+        }
+      },
+      "latency_basis": "same_original_inference_not_rerun"
+    },
+    "dev47_all47": {
+      "n": 47,
+      "strict": {
+        "A": 38,
+        "B": 36,
+        "C": 37,
+        "D": 37
+      },
+      "paired": {
+        "C_vs_A": {
+          "gain": [
+            "U16",
+            "SF-43709086f7bb"
+          ],
+          "loss": [
+            "U12",
+            "SF-59679085cc4a",
+            "SF-66b7ed601d85"
+          ]
+        },
+        "B_vs_A": {
+          "gain": [
+            "U16"
+          ],
+          "loss": [
+            "U14",
+            "SF-66b7ed601d85",
+            "SF-3fb3599dcc99"
+          ]
+        },
+        "D_vs_C": {
+          "gain": [
+            "SF-66b7ed601d85"
+          ],
+          "loss": [
+            "SF-43709086f7bb"
+          ]
+        },
+        "D_vs_B": {
+          "gain": [
+            "U14",
+            "SF-66b7ed601d85",
+            "SF-3fb3599dcc99"
+          ],
+          "loss": [
+            "U12",
+            "SF-59679085cc4a"
+          ]
+        }
+      },
+      "latency_s": {
+        "A": {
+          "p50": 29.7,
+          "p95": 67.4
+        },
+        "B": {
+          "p50": 21.8,
+          "p95": 64.9
+        },
+        "C": {
+          "p50": 35.1,
+          "p95": 103.0
+        },
+        "D": {
+          "p50": 28.8,
+          "p95": 100.4
+        }
+      },
+      "latency_basis": "same_original_inference_not_rerun"
+    },
+    "dynamic_dev30": {
+      "n": 30,
+      "strict": {
+        "A": 10,
+        "B": 19,
+        "C": 8,
+        "D": 21
+      },
+      "paired": {
+        "C_vs_A": {
+          "gain": [],
+          "loss": [
+            "DD24",
+            "DD25"
+          ]
+        },
+        "B_vs_A": {
+          "gain": [
+            "DD01",
+            "DD02",
+            "DD03",
+            "DD04",
+            "DD05",
+            "DD06",
+            "DD07",
+            "DD08",
+            "DD09",
+            "DD13"
+          ],
+          "loss": [
+            "DD24"
+          ]
+        },
+        "D_vs_C": {
+          "gain": [
+            "DD01",
+            "DD02",
+            "DD03",
+            "DD04",
+            "DD05",
+            "DD06",
+            "DD07",
+            "DD08",
+            "DD09",
+            "DD13",
+            "DD16",
+            "DD24",
+            "DD25"
+          ],
+          "loss": []
+        },
+        "D_vs_B": {
+          "gain": [
+            "DD16",
+            "DD24"
+          ],
+          "loss": []
+        }
+      },
+      "latency_s": {
+        "A": {
+          "p50": 15.8,
+          "p95": 39.5
+        },
+        "B": {
+          "p50": 27.9,
+          "p95": 55.2
+        },
+        "C": {
+          "p50": 15.4,
+          "p95": 59.3
+        },
+        "D": {
+          "p50": 34.4,
+          "p95": 79.4
+        }
+      },
+      "latency_basis": "same_original_inference_not_rerun"
+    }
+  },
+  "literal_vs_model_review": {
+    "n_cells": 308,
+    "literal_false_review_true": 21,
+    "literal_true_review_false": 9,
+    "disagreements": 30,
+    "basis": "literal_answer_diagnostic versus corrected model strict judgment; not human adjudication"
+  },
+  "primary_current_context_failures": {
+    "history_no_model_call": [
+      "U27",
+      "U28",
+      "U29",
+      "U30"
+    ],
+    "answered_review_failed": [
+      "U16",
+      "SF-43709086f7bb"
+    ],
+    "verification_failed": [
+      "SF-64b127ac198d"
+    ]
+  },
+  "dynamic_current_context_verification_failed": [
+    "DD14",
+    "DD15",
+    "DD16",
+    "DD17"
+  ],
+  "decision_rule_check": {
+    "net_strict_success_gain_gt_0": true,
+    "zero_tasks_correct_in_A_wrong_in_C": false,
+    "zero_required_fact_loss_C_vs_A": false,
+    "no_safety_regression": true,
+    "C_p95_le_1.5x_A_p95": true,
+    "switch_default_generator": false,
+    "outcome": "keep_qwen2.5_7b_default",
+    "blocking_task": "SF-66b7ed601d85"
+  },
+  "limitations": [
+    "gold context bounded by 5000 tokens only; 17 tasks exceed 8 chunks",
+    "10 tasks classified as history by the task contract never reached a model in any cell (fixed-context replay has no version chain); DD18-DD20 are misclassified as history because of the word 变更",
+    "host load from other processes and a concurrent full test run inflates latency",
+    "model review, not human labels; same session as the runner, blind to cell labels only",
+    "40-task primary denominator retains seven pending annotation tasks; all47 is sensitivity only.",
+    "Fixed-context replay does not evaluate full Agent or version-tool execution.",
+    "Rejected draft claims were not retained in original raw output; rejection-rule attribution remains pending."
+  ],
+  "cells": {
+    "DD19:A": {
+      "strict": false
+    },
+    "DD19:B": {
+      "strict": false
+    },
+    "DD19:C": {
+      "strict": false
+    },
+    "DD19:D": {
+      "strict": false
+    },
+    "DD18:A": {
+      "strict": false
+    },
+    "DD18:B": {
+      "strict": false
+    },
+    "DD18:C": {
+      "strict": false
+    },
+    "DD18:D": {
+      "strict": false
+    },
+    "SF-41b203e453a6:A": {
+      "strict": true
+    },
+    "SF-41b203e453a6:B": {
+      "strict": true
+    },
+    "SF-41b203e453a6:C": {
+      "strict": true
+    },
+    "SF-41b203e453a6:D": {
+      "strict": true
+    },
+    "U09:C": {
+      "strict": true
+    },
+    "U09:D": {
+      "strict": true
+    },
+    "U09:A": {
+      "strict": true
+    },
+    "U09:B": {
+      "strict": true
+    },
+    "U01:A": {
+      "strict": true
+    },
+    "U01:B": {
+      "strict": true
+    },
+    "U01:C": {
+      "strict": true
+    },
+    "U01:D": {
+      "strict": true
+    },
+    "DD11:D": {
+      "strict": true
+    },
+    "DD11:C": {
+      "strict": true
+    },
+    "DD11:A": {
+      "strict": true
+    },
+    "DD11:B": {
+      "strict": true
+    },
+    "U15:C": {
+      "strict": true
+    },
+    "U15:D": {
+      "strict": true
+    },
+    "U15:A": {
+      "strict": true
+    },
+    "U15:B": {
+      "strict": true
+    },
+    "DD06:A": {
+      "strict": false
+    },
+    "DD06:C": {
+      "strict": false
+    },
+    "DD06:B": {
+      "strict": true
+    },
+    "DD06:D": {
+      "strict": true
+    },
+    "U34:A": {
+      "strict": true
+    },
+    "U34:B": {
+      "strict": true
+    },
+    "U34:C": {
+      "strict": true
+    },
+    "U34:D": {
+      "strict": true
+    },
+    "U31:D": {
+      "strict": true
+    },
+    "U31:A": {
+      "strict": true
+    },
+    "U31:B": {
+      "strict": true
+    },
+    "U31:C": {
+      "strict": true
+    },
+    "U28:A": {
+      "strict": false
+    },
+    "U28:B": {
+      "strict": false
+    },
+    "U28:C": {
+      "strict": false
+    },
+    "U28:D": {
+      "strict": false
+    },
+    "U35:A": {
+      "strict": true
+    },
+    "U35:B": {
+      "strict": true
+    },
+    "U35:C": {
+      "strict": true
+    },
+    "U35:D": {
+      "strict": true
+    },
+    "U13:A": {
+      "strict": true
+    },
+    "U13:B": {
+      "strict": true
+    },
+    "U13:C": {
+      "strict": true
+    },
+    "U13:D": {
+      "strict": true
+    },
+    "DD24:D": {
+      "strict": true
+    },
+    "DD24:B": {
+      "strict": false
+    },
+    "DD24:C": {
+      "strict": false
+    },
+    "DD24:A": {
+      "strict": true
+    },
+    "SF-3fb3599dcc99:D": {
+      "strict": true
+    },
+    "SF-3fb3599dcc99:C": {
+      "strict": true
+    },
+    "SF-3fb3599dcc99:B": {
+      "strict": false
+    },
+    "SF-3fb3599dcc99:A": {
+      "strict": true
+    },
+    "U14:A": {
+      "strict": true
+    },
+    "U14:C": {
+      "strict": true
+    },
+    "U14:D": {
+      "strict": true
+    },
+    "U14:B": {
+      "strict": false
+    },
+    "U10:A": {
+      "strict": true
+    },
+    "U10:B": {
+      "strict": true
+    },
+    "U10:C": {
+      "strict": true
+    },
+    "U10:D": {
+      "strict": true
+    },
+    "U18:A": {
+      "strict": true
+    },
+    "U18:B": {
+      "strict": true
+    },
+    "U18:C": {
+      "strict": true
+    },
+    "U18:D": {
+      "strict": true
+    },
+    "DD02:A": {
+      "strict": false
+    },
+    "DD02:C": {
+      "strict": false
+    },
+    "DD02:D": {
+      "strict": true
+    },
+    "DD02:B": {
+      "strict": true
+    },
+    "U16:C": {
+      "strict": true
+    },
+    "U16:D": {
+      "strict": true
+    },
+    "U16:B": {
+      "strict": true
+    },
+    "U16:A": {
+      "strict": false
+    },
+    "DD04:A": {
+      "strict": false
+    },
+    "DD04:C": {
+      "strict": false
+    },
+    "DD04:D": {
+      "strict": true
+    },
+    "DD04:B": {
+      "strict": true
+    },
+    "DD08:A": {
+      "strict": false
+    },
+    "DD08:C": {
+      "strict": false
+    },
+    "DD08:B": {
+      "strict": true
+    },
+    "DD08:D": {
+      "strict": true
+    },
+    "SF-64b127ac198d:C": {
+      "strict": false
+    },
+    "SF-64b127ac198d:A": {
+      "strict": false
+    },
+    "SF-64b127ac198d:B": {
+      "strict": false
+    },
+    "SF-64b127ac198d:D": {
+      "strict": false
+    },
+    "U23:A": {
+      "strict": true
+    },
+    "U23:B": {
+      "strict": true
+    },
+    "U23:D": {
+      "strict": true
+    },
+    "U23:C": {
+      "strict": true
+    },
+    "DD23:A": {
+      "strict": false
+    },
+    "DD23:B": {
+      "strict": false
+    },
+    "DD23:C": {
+      "strict": false
+    },
+    "DD23:D": {
+      "strict": false
+    },
+    "DD05:B": {
+      "strict": true
+    },
+    "DD05:D": {
+      "strict": true
+    },
+    "DD05:A": {
+      "strict": false
+    },
+    "DD05:C": {
+      "strict": false
+    },
+    "U03:A": {
+      "strict": true
+    },
+    "U03:B": {
+      "strict": true
+    },
+    "U03:C": {
+      "strict": true
+    },
+    "U03:D": {
+      "strict": true
+    },
+    "DD01:A": {
+      "strict": false
+    },
+    "DD01:C": {
+      "strict": false
+    },
+    "DD01:B": {
+      "strict": true
+    },
+    "DD01:D": {
+      "strict": true
+    },
+    "DD20:A": {
+      "strict": false
+    },
+    "DD20:B": {
+      "strict": false
+    },
+    "DD20:C": {
+      "strict": false
+    },
+    "DD20:D": {
+      "strict": false
+    },
+    "U04:C": {
+      "strict": true
+    },
+    "U04:D": {
+      "strict": true
+    },
+    "U04:A": {
+      "strict": true
+    },
+    "U04:B": {
+      "strict": true
+    },
+    "DD30:A": {
+      "strict": true
+    },
+    "DD30:B": {
+      "strict": true
+    },
+    "DD30:C": {
+      "strict": true
+    },
+    "DD30:D": {
+      "strict": true
+    },
+    "DD28:C": {
+      "strict": true
+    },
+    "DD28:D": {
+      "strict": true
+    },
+    "DD28:A": {
+      "strict": true
+    },
+    "DD28:B": {
+      "strict": true
+    },
+    "U07:C": {
+      "strict": true
+    },
+    "U07:D": {
+      "strict": true
+    },
+    "U07:A": {
+      "strict": true
+    },
+    "U07:B": {
+      "strict": true
+    },
+    "U33:A": {
+      "strict": true
+    },
+    "U33:B": {
+      "strict": true
+    },
+    "U33:C": {
+      "strict": true
+    },
+    "U33:D": {
+      "strict": true
+    },
+    "SF-4252bdaf5890:A": {
+      "strict": true
+    },
+    "SF-4252bdaf5890:B": {
+      "strict": true
+    },
+    "SF-4252bdaf5890:C": {
+      "strict": true
+    },
+    "SF-4252bdaf5890:D": {
+      "strict": true
+    },
+    "U08:C": {
+      "strict": true
+    },
+    "U08:B": {
+      "strict": true
+    },
+    "U08:D": {
+      "strict": true
+    },
+    "U08:A": {
+      "strict": true
+    },
+    "U27:A": {
+      "strict": false
+    },
+    "U27:B": {
+      "strict": false
+    },
+    "U27:C": {
+      "strict": false
+    },
+    "U27:D": {
+      "strict": false
+    },
+    "DD22:A": {
+      "strict": false
+    },
+    "DD22:B": {
+      "strict": false
+    },
+    "DD22:C": {
+      "strict": false
+    },
+    "DD22:D": {
+      "strict": false
+    },
+    "U11:C": {
+      "strict": true
+    },
+    "U11:D": {
+      "strict": true
+    },
+    "U11:A": {
+      "strict": true
+    },
+    "U11:B": {
+      "strict": true
+    },
+    "DD27:A": {
+      "strict": true
+    },
+    "DD27:B": {
+      "strict": true
+    },
+    "DD27:C": {
+      "strict": true
+    },
+    "DD27:D": {
+      "strict": true
+    },
+    "DD26:A": {
+      "strict": true
+    },
+    "DD26:B": {
+      "strict": true
+    },
+    "DD26:C": {
+      "strict": true
+    },
+    "DD26:D": {
+      "strict": true
+    },
+    "DD21:A": {
+      "strict": false
+    },
+    "DD21:B": {
+      "strict": false
+    },
+    "DD21:C": {
+      "strict": false
+    },
+    "DD21:D": {
+      "strict": false
+    },
+    "U06:A": {
+      "strict": true
+    },
+    "U06:B": {
+      "strict": true
+    },
+    "U06:C": {
+      "strict": true
+    },
+    "U06:D": {
+      "strict": true
+    },
+    "U21:A": {
+      "strict": true
+    },
+    "U21:B": {
+      "strict": true
+    },
+    "U21:C": {
+      "strict": true
+    },
+    "U21:D": {
+      "strict": true
+    },
+    "DD12:C": {
+      "strict": true
+    },
+    "DD12:D": {
+      "strict": true
+    },
+    "DD12:A": {
+      "strict": true
+    },
+    "DD12:B": {
+      "strict": true
+    },
+    "U29:A": {
+      "strict": false
+    },
+    "U29:B": {
+      "strict": false
+    },
+    "U29:C": {
+      "strict": false
+    },
+    "U29:D": {
+      "strict": false
+    },
+    "U02:A": {
+      "strict": true
+    },
+    "U02:B": {
+      "strict": true
+    },
+    "U02:C": {
+      "strict": true
+    },
+    "U02:D": {
+      "strict": true
+    },
+    "U20:A": {
+      "strict": true
+    },
+    "U20:B": {
+      "strict": true
+    },
+    "U20:C": {
+      "strict": true
+    },
+    "U20:D": {
+      "strict": true
+    },
+    "U25:A": {
+      "strict": true
+    },
+    "U25:B": {
+      "strict": true
+    },
+    "U25:C": {
+      "strict": true
+    },
+    "U25:D": {
+      "strict": true
+    },
+    "U26:A": {
+      "strict": true
+    },
+    "U26:B": {
+      "strict": true
+    },
+    "U26:C": {
+      "strict": true
+    },
+    "U26:D": {
+      "strict": true
+    },
+    "U05:A": {
+      "strict": true
+    },
+    "U05:B": {
+      "strict": true
+    },
+    "U05:C": {
+      "strict": true
+    },
+    "U05:D": {
+      "strict": true
+    },
+    "U24:A": {
+      "strict": true
+    },
+    "U24:B": {
+      "strict": true
+    },
+    "U24:C": {
+      "strict": true
+    },
+    "U24:D": {
+      "strict": true
+    },
+    "U30:A": {
+      "strict": false
+    },
+    "U30:B": {
+      "strict": false
+    },
+    "U30:C": {
+      "strict": false
+    },
+    "U30:D": {
+      "strict": false
+    },
+    "DD09:A": {
+      "strict": false
+    },
+    "DD09:C": {
+      "strict": false
+    },
+    "DD09:B": {
+      "strict": true
+    },
+    "DD09:D": {
+      "strict": true
+    },
+    "SF-56d3160a9c64:A": {
+      "strict": false
+    },
+    "SF-56d3160a9c64:B": {
+      "strict": false
+    },
+    "SF-56d3160a9c64:C": {
+      "strict": false
+    },
+    "SF-56d3160a9c64:D": {
+      "strict": false
+    },
+    "SF-3ea856eeec7b:C": {
+      "strict": true
+    },
+    "SF-3ea856eeec7b:D": {
+      "strict": true
+    },
+    "SF-3ea856eeec7b:A": {
+      "strict": true
+    },
+    "SF-3ea856eeec7b:B": {
+      "strict": true
+    },
+    "DD29:A": {
+      "strict": true
+    },
+    "DD29:B": {
+      "strict": true
+    },
+    "DD29:C": {
+      "strict": true
+    },
+    "DD29:D": {
+      "strict": true
+    },
+    "DD03:B": {
+      "strict": true
+    },
+    "DD03:A": {
+      "strict": false
+    },
+    "DD03:C": {
+      "strict": false
+    },
+    "DD03:D": {
+      "strict": true
+    },
+    "DD10:D": {
+      "strict": true
+    },
+    "DD10:C": {
+      "strict": true
+    },
+    "DD10:A": {
+      "strict": true
+    },
+    "DD10:B": {
+      "strict": true
+    },
+    "DD07:A": {
+      "strict": false
+    },
+    "DD07:C": {
+      "strict": false
+    },
+    "DD07:B": {
+      "strict": true
+    },
+    "DD07:D": {
+      "strict": true
+    },
+    "U12:C": {
+      "strict": false
+    },
+    "U12:D": {
+      "strict": false
+    },
+    "U12:A": {
+      "strict": true
+    },
+    "U12:B": {
+      "strict": true
+    },
+    "DD13:B": {
+      "strict": true
+    },
+    "DD13:A": {
+      "strict": false
+    },
+    "DD13:C": {
+      "strict": false
+    },
+    "DD13:D": {
+      "strict": true
+    },
+    "U19:A": {
+      "strict": true
+    },
+    "U19:B": {
+      "strict": true
+    },
+    "U19:C": {
+      "strict": true
+    },
+    "U19:D": {
+      "strict": true
+    },
+    "U32:A": {
+      "strict": true
+    },
+    "U32:B": {
+      "strict": true
+    },
+    "U32:C": {
+      "strict": true
+    },
+    "U32:D": {
+      "strict": true
+    },
+    "DD25:D": {
+      "strict": true
+    },
+    "DD25:A": {
+      "strict": true
+    },
+    "DD25:B": {
+      "strict": true
+    },
+    "DD25:C": {
+      "strict": false
+    },
+    "U17:A": {
+      "strict": true
+    },
+    "U17:B": {
+      "strict": true
+    },
+    "U17:C": {
+      "strict": true
+    },
+    "U17:D": {
+      "strict": true
+    },
+    "DD17:C": {
+      "strict": false
+    },
+    "DD17:A": {
+      "strict": false
+    },
+    "DD17:B": {
+      "strict": false
+    },
+    "DD17:D": {
+      "strict": false
+    },
+    "SF-4345a2fc43c9:B": {
+      "strict": true
+    },
+    "SF-4345a2fc43c9:D": {
+      "strict": true
+    },
+    "SF-4345a2fc43c9:C": {
+      "strict": true
+    },
+    "SF-4345a2fc43c9:A": {
+      "strict": true
+    },
+    "SF-59679085cc4a:C": {
+      "strict": false
+    },
+    "SF-59679085cc4a:D": {
+      "strict": false
+    },
+    "SF-59679085cc4a:B": {
+      "strict": true
+    },
+    "SF-59679085cc4a:A": {
+      "strict": true
+    },
+    "SF-3f2fcdb94b67:C": {
+      "strict": true
+    },
+    "SF-3f2fcdb94b67:D": {
+      "strict": true
+    },
+    "SF-3f2fcdb94b67:A": {
+      "strict": true
+    },
+    "SF-3f2fcdb94b67:B": {
+      "strict": true
+    },
+    "DD16:D": {
+      "strict": true
+    },
+    "DD16:A": {
+      "strict": false
+    },
+    "DD16:B": {
+      "strict": false
+    },
+    "DD16:C": {
+      "strict": false
+    },
+    "SF-43709086f7bb:A": {
+      "strict": false
+    },
+    "SF-43709086f7bb:B": {
+      "strict": false
+    },
+    "SF-43709086f7bb:D": {
+      "strict": false
+    },
+    "SF-43709086f7bb:C": {
+      "strict": true
+    },
+    "DD15:D": {
+      "strict": false
+    },
+    "DD15:A": {
+      "strict": false
+    },
+    "DD15:B": {
+      "strict": false
+    },
+    "DD15:C": {
+      "strict": false
+    },
+    "U22:B": {
+      "strict": false
+    },
+    "U22:A": {
+      "strict": false
+    },
+    "U22:C": {
+      "strict": false
+    },
+    "U22:D": {
+      "strict": false
+    },
+    "DD14:A": {
+      "strict": false
+    },
+    "DD14:B": {
+      "strict": false
+    },
+    "DD14:C": {
+      "strict": false
+    },
+    "DD14:D": {
+      "strict": false
+    },
+    "SF-3e8219f58317:C": {
+      "strict": true
+    },
+    "SF-3e8219f58317:D": {
+      "strict": true
+    },
+    "SF-3e8219f58317:A": {
+      "strict": true
+    },
+    "SF-3e8219f58317:B": {
+      "strict": true
+    },
+    "SF-66b7ed601d85:B": {
+      "strict": false
+    },
+    "SF-66b7ed601d85:A": {
+      "strict": true
+    },
+    "SF-66b7ed601d85:C": {
+      "strict": false
+    },
+    "SF-66b7ed601d85:D": {
+      "strict": true
+    }
+  }
+}
